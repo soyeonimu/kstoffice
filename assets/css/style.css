@@ -1,11 +1,137 @@
-/* style.css - 헤더용  */
-body {
-  font-family: 'Noto Sans KR', sans-serif;
+/*
+ * 김성태 법무사 사무소 웹사이트 전체 스타일 시트
+ * 모든 페이지의 공통 스타일 및 개별 페이지 스타일을 포함합니다.
+ */
+
+/* ----------------------------------------------------- */
+/* 1. 기본 설정 (Reset & Common) */
+/* ----------------------------------------------------- */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f8f9fa;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f8f9fa; /* 기본 배경색 */
+  color: #222; /* 기본 텍스트 색상 */
+  line-height: 1.6; /* 기본 줄 간격 */
+}
+
+a {
+  text-decoration: none;
+  color: inherit; /* 부모 요소의 텍스트 색상 상속 */
+}
+
+ul {
+  list-style: none;
+}
+
+/* ----------------------------------------------------- */
+/* 2. 공통 요소 (General Components) */
+/* ----------------------------------------------------- */
+
+/* 페이지 제목 및 소개 */
+.page-title { /* h1 태그에 적용 */
+  text-align: center;
+  font-size: 2rem;
+  color: #0a3871;
+  margin-bottom: 1rem;
+}
+
+.page-intro { /* p 태그에 적용 */
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* 카드 공통 스타일 */
+.card-grid { /* 카드들을 감싸는 컨테이너 (display: grid) */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.common-card { /* 개별 카드에 적용되는 공통 스타일 */
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  color: #444; /* 카드 내부 텍스트 색상 */
+}
+
+.common-card h3 { /* 카드 내부 제목 */
+  font-size: 1.2rem;
+  color: #0a3871;
+  margin-top: 0;
+  margin-bottom: 0.8rem; /* 제목과 내용 사이 간격 */
+}
+
+.common-card p { /* 카드 내부 문단 */
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* 상담 유도 박스 (Call to Action) */
+.consultation-cta-box {
+  background-color: #ffffff;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 600px; /* 상담 박스 최대 너비 */
+  margin-left: auto; /* 중앙 정렬 */
+  margin-right: auto; /* 중앙 정렬 */
+}
+
+.cta-title {
+  font-size: 1.5rem;
+  color: #0a3871;
+  margin-bottom: 0.5rem;
+}
+
+.cta-description {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #007bff;
+  color: white;
+  padding: 0.8rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #0056b3;
+}
+
+/* 유틸리티 클래스 (General Utilities) */
+.text-center {
+  text-align: center;
+}
+
+.mb-2rem { /* margin-bottom: 2rem; */
+  margin-bottom: 2rem;
+}
+
+.mt-3rem { /* margin-top: 3rem; */
+  margin-top: 3rem;
+}
+
+/* ----------------------------------------------------- */
+/* 3. 헤더 (Header) */
+/* ----------------------------------------------------- */
 header {
   background: #fff;
   border-bottom: 1px solid #ddd;
@@ -15,6 +141,7 @@ header {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .logo {
@@ -24,19 +151,23 @@ header {
   font-weight: 700;
   font-size: 1.2rem;
   color: #222;
-  margin-right: auto;
+  margin-right: auto; /* 좌측 정렬 */
 }
 
 .logo img {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
+}
+
+nav {
+  flex: none;
 }
 
 nav ul {
   list-style: none;
   display: flex;
   gap: 2rem;
-  padding-left: 0;
+  position: relative;
 }
 
 nav li {
@@ -47,7 +178,20 @@ nav a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  padding: 0.5rem;
+  padding: 0.5rem 0.3rem;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #007bff; /* 호버 시 색상 변경 */
+}
+
+/* 드롭다운 메뉴 */
+nav li:hover > ul,
+nav li:focus-within > ul,
+nav li ul:hover {
+  display: block;
 }
 
 nav li ul {
@@ -56,135 +200,470 @@ nav li ul {
   top: 100%;
   left: 0;
   background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   border: 1px solid #eee;
   border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   min-width: 180px;
+  z-index: 999;
+  padding: 0.5rem 0; /* 드롭다운 메뉴 내부 패딩 */
 }
 
-nav li:hover > ul {
+nav li ul li {
+  padding: 0.6rem 1rem;
+}
+
+nav li ul li a {
+  color: #333;
+  font-weight: 400;
+  display: block; /* 전체 영역 클릭 가능하도록 */
+  padding: 0; /* 드롭다운 내부 링크 패딩 초기화 (li에서 패딩 조절) */
+}
+
+nav li ul li:hover {
+  background: #f0f0f0;
+}
+
+/* ----------------------------------------------------- */
+/* 4. 푸터 (Footer) */
+/* ----------------------------------------------------- */
+footer {
+  background-color: #032035;
+  color: #ccc;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-top: 4rem; /* 본문과의 여백 */
+}
+
+.footer-content { /* 푸터 내부 컨테이너 (max-width 적용) */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo-area {
+  margin-bottom: 1.2rem;
+}
+
+.footer-logo-area img {
+  width: 36px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.footer-office-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-phone {
+  margin-top: 0.6rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-phone a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-info {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.footer-info strong {
+  color: #eee;
+}
+
+.footer-info a {
+  color: #bbb;
+  text-decoration: underline;
+}
+
+.footer-copyright {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.footer-copyright span {
+  color: #ddd;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------- */
+/* 5. 개별 페이지 섹션 스타일 (Specific Page Sections) */
+/* ----------------------------------------------------- */
+
+/* 5.1 자가진단 페이지 (check.html) */
+.check-section {
+  padding: 3rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.check-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.check-form-group label {
   display: block;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
+.check-form-group input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.check-form-group input[type="radio"] + label {
+  display: inline-block;
+  font-weight: normal; /* 라디오 버튼 레이블 굵기 조정 */
+}
+
+.check-result-box {
+  background-color: #e0f7fa; /* 연한 파란색 배경 */
+  border: 1px solid #b2ebf2; /* 테두리 */
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.check-result-box p {
+  font-size: 1.1rem;
+  color: #00796b; /* 진한 초록색 계열 */
+  font-weight: bold;
+}
+
+.check-submit-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2rem;
+}
+
+.check-submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* 5.2 신고 vs 고소 페이지 (difference.html) */
+.diff-section {
+  padding: 3rem 1rem;
+  max-width: 1000px; /* 전체 너비 조절 */
+  margin: 0 auto;
+}
+
+.diff-intro-text { /* h1 아래 설명 문단 */
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.diff-grid-container { /* 두 개의 카드 컨테이너 */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2열로 구성 */
+  gap: 1.5rem;
+}
+
+.diff-card-title { /* 카드 내부 h2 */
+  font-size: 1.5rem;
+  color: #0a3871;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.diff-definition { /* 정의 문단 */
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.diff-feature-list { /* 특징 리스트 */
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.diff-feature-list li {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  display: flex; /* 아이콘과 텍스트 정렬 */
+  align-items: flex-start;
+}
+
+.diff-feature-list li strong {
+  color: #0a3871;
+  margin-right: 0.5rem;
+  flex-shrink: 0; /* 아이콘/제목이 줄바꿈되지 않도록 */
+}
+
+/* 5.3 자주 묻는 질문 페이지 (faq.html) */
+.faq-section { /* section 태그 스타일 대체 */
+  padding: 3rem 1rem;
+  max-width: 1000px; /* 적절한 최대 너비 설정 */
+  margin: 0 auto;
+}
+
+/* .page-title, .page-intro 사용 */
+
+.faq-card-grid { /* FAQ 카드들을 감싸는 그리드 */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.faq-card { /* 개별 FAQ 카드 */
+  background: #fff;
+  color: #444;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.faq-question { /* FAQ 질문 h3 */
+  color: #0a3871;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.faq-answer { /* FAQ 답변 p */
+  line-height: 1.6;
+}
+
+.faq-ordered-list { /* FAQ 답변 내부 ol */
+  padding-left: 1.2rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 5.4 개인회생 비용안내 페이지 (price.html) */
+.price-section {
+  padding: 3rem 1rem;
+  max-width: 1000px; /* 적절한 최대 너비 설정 */
+  margin: 0 auto;
+}
+
+.price-title { /* h1 스타일 대체 */
+  text-align: center;
+  font-size: 2rem;
+  color: #0a3871;
+  margin-bottom: 2rem;
+}
+
+.price-card-container { /* 카드 컨테이너 */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.price-card { /* 개별 가격 카드 */
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.price-card h3 {
+  font-size: 1.2rem;
+  color: #0a3871;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.price-card p {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0.4rem 0;
+}
+
+.price-highlight {
+  font-weight: bold;
+  color: #d03a3a; /* 강조 색상 */
+}
+
+/* 5.5 개인회생 절차 안내 페이지 (procedure.html) */
+.procedure-section {
+  padding: 3rem 1rem;
+  max-width: 1000px; /* 적절한 최대 너비 설정 */
+  margin: 0 auto;
+}
+
+/* .page-title, .page-intro 사용 */
+
+.section-divider { /* hr 스타일 대체 */
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 2rem 0;
+}
+
+.procedure-heading2 { /* h2 스타일 대체 */
+  font-size: 1.8rem;
+  color: #0a3871;
+  margin-bottom: 1.5rem;
+}
+
+/* .card-container와 .common-card는 이미 정의되어 있으므로 그대로 사용 가능 */
+
+.change-list-box { /* 변화 섹션 ul */
+  background: #ffffff;
+  color: #444;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  list-style: none;
+  padding-left: 0;
+  margin-top: 2rem; /* h2와의 간격 조정 */
+}
+
+.change-list-box li {
+  margin-bottom: 0.5rem;
+}
+
+/* 5.6 개인회생/파산 제도 안내 페이지 (what-is.html) */
+.info-section-container { /* 본문 전체를 감싸는 컨테이너 */
+  padding: 0 1rem 2rem;
+  max-width: 1000px; /* 적절한 최대 너비 설정 */
+  margin: 0 auto;
+}
+
+.info-title { /* h1 스타일 대체 */
+  text-align: center;
+  font-size: 2rem;
+  color: #0a3871;
+  margin: 2rem 0;
+}
+
+.info-card-container { /* 카드 컨테이너 */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-card { /* 개별 정보 카드 */
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.info-card h2 {
+  font-size: 1.2rem;
+  color: #0a3871;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.info-card p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+
+/* ----------------------------------------------------- */
+/* 6. 모바일 반응형 (Media Queries) */
+/* ----------------------------------------------------- */
 @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
   nav ul {
     flex-direction: column;
     gap: 0.8rem;
   }
-}
 
-/* style.css에 이 부분 추가 */
+  nav li ul {
+    position: static;
+    box-shadow: none;
+    border: none;
+    padding-left: 1rem;
+    background: transparent;
+  }
 
-/* 카드 그리드 컨테이너 */
-.card-grid {
-  display: grid; /* 그리드 레이아웃 사용 */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 반응형 컬럼 설정 */
-  gap: 20px; /* 카드 간의 간격 */
-  padding: 20px; /* 그리드 전체 패딩 */
-  max-width: 1200px; /* 최대 너비 설정 */
-  margin: 40px auto; /* 중앙 정렬 */
-}
+  nav li ul li:hover {
+    background: #f8f9fa; /* 모바일 드롭다운 호버 색상 */
+  }
 
-/* 개별 카드 스타일 */
-.card {
-  background-color: #fff; /* 배경색 흰색 */
-  border: 1px solid #eee; /* 테두리 */
-  border-radius: 8px; /* 둥근 모서리 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 그림자 효과 */
-  padding: 25px; /* 내부 패딩 */
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* 호버 애니메이션 */
-}
+  /* 모바일에서 섹션 패딩 조정 */
+  .check-section,
+  .diff-section,
+  .faq-section,
+  .price-section,
+  .procedure-section,
+  .info-section-container {
+    padding: 2rem 1rem; /* 모바일에서 좌우 패딩 유지하고 상하 패딩 줄임 */
+  }
 
-.card:hover {
-  transform: translateY(-5px); /* 호버 시 살짝 위로 */
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1); /* 호버 시 그림자 강화 */
-}
+  /* 그리드 컬럼 조정 (선택 사항, minmax가 대부분 처리) */
+  .card-grid,
+  .diff-grid-container,
+  .faq-card-grid,
+  .price-card-container,
+  .info-card-container {
+    grid-template-columns: 1fr; /* 모바일에서 1열로 표시 */
+    gap: 1rem; /* 간격 줄임 */
+  }
 
-.card h2 {
-  color: #333; /* 제목 색상 */
-  font-size: 1.5rem; /* 제목 폰트 크기 */
-  margin-top: 0; /* 위쪽 마진 제거 */
-  margin-bottom: 15px; /* 아래쪽 마진 */
-  line-height: 1.4;
-}
+  .page-title,
+  .price-title,
+  .info-title {
+    font-size: 1.8rem; /* 모바일에서 제목 크기 줄임 */
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 
-.card h2 br {
-    display: none; /* 모바일에서 줄바꿈 제거 (필요에 따라 조절) */
-}
-@media (max-width: 768px) {
-    .card h2 br {
-        display: block; /* 모바일에서 줄바꿈 다시 표시 */
-    }
-}
+  .page-intro,
+  .diff-intro-text {
+    font-size: 1rem; /* 모바일에서 소개 텍스트 크기 줄임 */
+  }
 
+  .procedure-heading2 {
+    font-size: 1.5rem; /* 모바일에서 서브 제목 크기 줄임 */
+  }
 
-.card ul {
-  list-style: none; /* 목록 스타일 제거 */
-  padding: 0; /* 패딩 제거 */
-  margin: 0; /* 마진 제거 */
-}
+  .cta-title {
+    font-size: 1.3rem;
+  }
 
-.card ul li {
-  margin-bottom: 10px; /* 목록 항목 간 간격 */
-  font-size: 1rem; /* 폰트 크기 */
-  color: #555; /* 텍스트 색상 */
-}
+  .cta-description {
+    font-size: 1rem;
+  }
 
-.card ul li strong {
-  color: #000; /* 강조 텍스트 색상 */
-}
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
 
-/* 서브 섹션 (하단 무료 상담 섹션) */
-.bottom-section {
-  text-align: center;
-  margin: 60px auto;
-  padding: 40px;
-  background-color: #f0f8ff; /* 연한 파란색 배경 */
-  border-radius: 10px;
-  max-width: 800px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.bottom-section h3 {
-  color: #222;
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-.bottom-section p {
-  color: #555;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-.bottom-section a {
-  display: inline-block;
-  background-color: #007bff; /* 파란색 버튼 */
-  color: #fff;
-  text-decoration: none;
-  padding: 15px 30px;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-}
-
-.bottom-section a:hover {
-  background-color: #0056b3;
-}
-
-/* 제목 및 서브텍스트 스타일 */
-.page-title {
-  text-align: center;
-  font-size: 2rem;
-  color: #0a3871;
-  margin-bottom: 1rem;
-}
-
-.page-intro {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.6;
+  .footer-office-name,
+  .footer-phone {
+    font-size: 1.2rem; /* 푸터 글꼴 크기 조정 */
+  }
 }

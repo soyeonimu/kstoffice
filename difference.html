@@ -1,4 +1,185 @@
-<!DOCTYPE html>
+!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김성태 법무사 사무소</title>
+  <meta name="description" content="개인회생·파산 전문 법무사 김성태. 상담부터 신청까지 믿고 맡기세요.">
+  <meta name="keywords" content="개인회생, 개인파산, 법무사, 김성태, 법률상담">
+  <meta name="author" content="김성태 법무사">
+
+  <!-- Open Graph (SNS 공유용) -->
+  <meta property="og:title" content="김성태 법무사 사무소" />
+  <meta property="og:description" content="개인회생·파산 상담 전문 법무사. 서초, 강남 지역 상담 가능." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.kstoffice.com" />
+  <meta property="og:image" content="https://www.kstoffice.com/og-image.jpg" /> <!-- 썸네일 이미지 경로 설정 -->
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f8f9fa;
+  }
+
+  header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #222;
+    margin-right: auto; /* 좌측 정렬 */
+  }
+
+  .logo img {
+    width: 28px;
+    height: 28px;
+  }
+
+  nav {
+    flex: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    position: relative;
+  }
+
+  nav li {
+    position: relative;
+  }
+
+  nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 0.3rem;
+  display: inline-block;
+}
+
+/* 드롭다운이 사라지지 않게 유지 */
+nav li:hover > ul,
+nav li:focus-within > ul,
+nav li ul:hover {
+  display: block;
+}
+
+nav li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  border-radius: 6px;
+  min-width: 180px;
+  z-index: 999;
+}
+
+  nav li ul li {
+    padding: 0.6rem 1rem;
+  }
+
+  nav li ul li a {
+    color: #333;
+    font-weight: 400;
+  }
+
+  nav li ul li:hover {
+    background: #f0f0f0;
+  }
+
+  /* 모바일 대응 */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    nav ul {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    nav li ul {
+      position: static;
+      box-shadow: none;
+      border: none;
+      padding-left: 1rem;
+      background: transparent;
+    }
+
+    nav li ul li:hover {
+      background: #f8f9fa;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+  <!-- 상단 헤더 -->
+ <header>
+    <div class="logo">
+      <img src="logo.png" alt="로고" />
+      김성태 법무사 사무소
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/">홈</a></li>
+        <li>
+          <a href="/procedure">개인회생·파산</a>
+          <ul>
+            <li><a href="/procedure">절차 안내</a></li>
+            <li><a href="/what-is">개인회생이란?</a></li>
+            <li><a href="/check">자가진단</a></li>
+            <li><a href="/cases">성공사례</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/complaint">고소장</a>
+          <ul>
+            <li><a href="/difference">신고 vs 고소</a></li>
+            <li><a href="/complaint">고소장 안내</a></li>
+            <li><a href="/settlement">형사합의</a></li>
+            <li><a href="/cases">성공사례</a></li>
+            <li><a href="/process">절차 안내</a></li>
+            <li><a href="/faq">자주 묻는 질문</a></li>
+          </ul>
+        </li>
+        <li><a href="/price">비용안내</a></li>
+        <li><a href="/chat">상담하기</a></li>
+      </ul>
+    </nav>
+  </header>
+<!-- 헤더 끝 -->
+
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -95,6 +276,37 @@
 
     <a href="/" class="back-btn">← 메인으로 돌아가기</a>
   </div>
+
+<!-- 푸터 시작 -->    
+<footer style="background-color: #032035; color: #ccc; text-align: center; padding: 2.5rem 1rem;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- 상호 및 연락처 -->
+    <div style="margin-bottom: 1.2rem;">
+      <img src="/logo.png" alt="김성태 법무사 로고" style="width: 36px; vertical-align: middle; margin-right: 0.5rem;">
+      <span style="font-size: 1.4rem; font-weight: 700; color: #fff;">김성태 법무사 사무소</span>
+      <div style="margin-top: 0.6rem; font-size: 1.6rem; font-weight: 700; color: #fff;">
+        <a href="tel:01047106885" style="color: #fff; text-decoration: none;">010 - 4710 - 6885</a>
+      </div>
+    </div>
+
+    <!-- 상세 정보 -->
+    <div style="font-size: 0.95rem; line-height: 1.7; color: #ccc; margin-bottom: 1rem;">
+      <strong style="color: #eee;">김성태 법무사 사무소</strong> |
+      대표: 김성태 |
+      주소: 경기도 수원시 영통구 광교중앙로248번길 7-2, D동 404호 |
+      사업자번호: 135-28-47886<br>
+      이메일: <a href="mailto:kstmae@naver.com" style="color: #bbb; text-decoration: underline;">kstmae@naver.com</a>
+    </div>
+
+    <!-- 저작권 -->
+    <div style="font-size: 0.85rem; color: #888;">
+      © 2023 <span style="color: #ddd; font-weight: 600;">KIM SUNG TAE Certified Judicial Scriveners Office</span>. All rights reserved.
+    </div>
+
+  </div>
+</footer>
+<!-- 푸터 끝 -->
 
 </body>
 </html>

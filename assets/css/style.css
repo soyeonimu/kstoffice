@@ -173,3 +173,18 @@ nav li:hover > ul {
 .bottom-section a:hover {
   background-color: #0056b3;
 }
+
+/* 제목 및 서브텍스트 스타일 */
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #0a3871;
+  margin-bottom: 1rem;
+}
+
+.page-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}

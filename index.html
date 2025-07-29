@@ -15,78 +15,132 @@
   <meta property="og:url" content="https://www.kstoffice.com" />
   <meta property="og:image" content="https://www.kstoffice.com/og-image.jpg" /> <!-- 썸네일 이미지 경로 설정 -->
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f8f9fa;
+  }
+
+  header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #222;
+    margin-right: auto; /* 좌측 정렬 */
+  }
+
+  .logo img {
+    width: 28px;
+    height: 28px;
+  }
+
+  nav {
+    flex: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    position: relative;
+  }
+
+  nav li {
+    position: relative;
+  }
+
+  nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 0.3rem;
+  display: inline-block;
+}
+
+/* 드롭다운이 사라지지 않게 유지 */
+nav li:hover > ul,
+nav li:focus-within > ul,
+nav li ul:hover {
+  display: block;
+}
+
+nav li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  border-radius: 6px;
+  min-width: 180px;
+  z-index: 999;
+}
+
+  nav li ul li {
+    padding: 0.6rem 1rem;
+  }
+
+  nav li ul li a {
+    color: #333;
+    font-weight: 400;
+  }
+
+  nav li ul li:hover {
+    background: #f0f0f0;
+  }
+
+  /* 모바일 대응 */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
+
+    nav {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    nav ul {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    nav li ul {
+      position: static;
+      box-shadow: none;
+      border: none;
+      padding-left: 1rem;
+      background: transparent;
+    }
+
+    nav li ul li:hover {
       background: #f8f9fa;
     }
-    header {
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #222;
-    }
-    .logo img {
-      width: 28px;
-      height: 28px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      position: relative;
-    }
-    nav li {
-      position: relative;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    nav li:hover > ul {
-      display: block;
-    }
-    nav li ul {
-      display: none;
-      position: absolute;
-      top: 2rem;
-      left: 0;
-      background: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      border: 1px solid #eee;
-      border-radius: 6px;
-      min-width: 180px;
-      z-index: 999;
-    }
-    nav li ul li {
-      padding: 0.6rem 1rem;
-    }
-    nav li ul li a {
-      color: #333;
-      font-weight: 400;
-    }
-    nav li ul li:hover {
-      background: #f0f0f0;
-    }
-  </style>
+  }
+</style>
+
 </head>
 <body>
 
@@ -155,148 +209,95 @@
   </div>
 </section>
 
+  <!-- 고소장 안내 섹션 -->
+<section id="complaint" style="padding: 3rem 1.5rem; background: #f8f9fc;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h2 style="font-size: 1.8rem; color: #0a3871; font-weight: 700; margin-bottom: 2rem;">고소장 안내</h2>
 
-  <!-- 카드 열 구조 -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; padding: 1rem; max-width: 1280px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+      
+      <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <h3 style="color: #222; font-size: 1.1rem;">신고와 고소의 차이</h3>
+        <p style="font-size: 0.95rem; color: #555;">신고와 고소는 법적 효과가 다릅니다. 반드시 구분해야 합니다.</p>
+        <a href="/difference" style="display: inline-block; margin-top: 0.8rem; color: #007bff; font-weight: 600;">자세히 보기 →</a>
+      </div>
 
-    <!-- 신고와 고소의 차이 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">📌 신고 vs 고소</h3>
-    <p style="color: #444; font-size: 0.95rem;">신고와 고소의 차이를 쉽게 알려드립니다.</p>
-    <a href="/difference"
-       style="display: inline-block; margin-top: 1rem; background: #007bff; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      차이점 알아보기
-    </a>
-  </div>
+      <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <h3 style="color: #222; font-size: 1.1rem;">정식 고소장 작성</h3>
+        <p style="font-size: 0.95rem; color: #555;">경찰·검찰 수사기관이 수사할 수 있도록 요건을 갖춘 고소장을 작성해드립니다.</p>
+        <a href="/complaint" style="display: inline-block; margin-top: 0.8rem; color: #dc3545; font-weight: 600;">작성 안내 →</a>
+      </div>
 
-  <!-- 실제 고소 성공 사례 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🏆 고소 성공 사례</h3>
-    <p style="color: #444; font-size: 0.95rem;">실제 사건을 통해 결과를 확인해보세요.</p>
-    <a href="/cases"
-       style="display: inline-block; margin-top: 1rem; background: #fd7e14; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      성공 사례 보기
-    </a>
-  </div>
+      <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <h3 style="color: #222; font-size: 1.1rem;">절차와 형사합의</h3>
+        <p style="font-size: 0.95rem; color: #555;">수사부터 재판까지의 흐름과 합의 시점·방법까지 안내해드립니다.</p>
+        <a href="/process" style="display: inline-block; margin-top: 0.8rem; color: #28a745; font-weight: 600;">절차 안내 →</a>
+      </div>
 
-  <!-- 형사합의 안내 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🤝 형사합의 안내</h3>
-    <p style="color: #444; font-size: 0.95rem;">합의 절차와 준비 방법을 정리해드립니다.</p>
-    <a href="/settlement"
-       style="display: inline-block; margin-top: 1rem; background: #20c997; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      형사합의 안내 보기
-    </a>
-  </div>
-
-     <!-- 고소장 작성 안내 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">📄 고소장을 써야 하나요?</h3>
-    <p style="color: #444; font-size: 0.95rem;">상대방을 처벌하기 위한 <br>정확한 고소장을 작성해드립니다.</p>
-    <a href="/complaint"
-       style="display: inline-block; margin-top: 1rem; background: #dc3545; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      고소장 안내 보기
-    </a>
-  </div>
-
-  <!-- 고소 절차 안내 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🕵️ 절차가 궁금하신가요?</h3>
-    <p style="color: #444; font-size: 0.95rem;">접수부터 수사, 기소 여부까지 <br>전체 절차를 알려드립니다.</p>
-    <a href="/process"
-       style="display: inline-block; margin-top: 1rem; background: #6f42c1; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      절차 안내 보기
-    </a>
-  </div>
-
-  <!-- 자주 묻는 질문 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">❓ 자주 묻는 질문</h3>
-    <p style="color: #444; font-size: 0.95rem;">고소 가능 여부, 준비서류까지 <br>궁금한 질문을 정리했습니다.</p>
-    <a href="/faq"
-       style="display: inline-block; margin-top: 1rem; background: #17a2b8; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      자주 묻는 질문 보기
-    </a>
-  </div>
- <!-- 비용 안내 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">💰 비용이 궁금해요</h3>
-    <p style="color: #444; font-size: 0.95rem;">법원 비용과 수임료를 미리 확인해보세요.</p>
-    <a href="/price"
-       style="display: inline-block; margin-top: 1rem; background: #6c757d; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      비용 안내 보기
-    </a>
-  </div>
-
-  <!-- 절차 안내 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">⏳ 얼마나 걸리나요?</h3>
-    <p style="color: #444; font-size: 0.95rem;">신청부터 면책까지 평균 소요 기간을 정리해드렸습니다.</p>
-    <a href="/procedure"
-       style="display: inline-block; margin-top: 1rem; background: #6610f2; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      절차 안내 보기
-    </a>
-  </div>
-
-  <!-- 상담 방법 -->
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">📍 어디서 상담하나요?</h3>
-    <p style="color: #444; font-size: 0.95rem;">카카오톡, 전화, 방문 상담까지 모두 가능합니다.</p>
-    <a href="/chat" target="_blank"
-       style="display: inline-block; margin-top: 1rem; background: #000; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      상담 안내 보기
-    </a>
-  </div>
-      <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🧮 개인회생이 뭔가요?</h3>
-    <p style="color: #444; font-size: 0.95rem;">제도가 생소하시다면  <br>이 글을 꼭 읽어보세요.</p>
-    <a href="https://www.kstoffice6885.com/what-is"
-       style="display: inline-block; margin-top: 1rem; background: #007bff; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      제도 설명 보러가기
-    </a>
-  </div>
-
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🧑‍ 나도 신청할 수 있나요?</h3>
-    <p style="color: #444; font-size: 0.95rem;">소득과 가족 수 입력만으로 <br>자격을 바로 확인해보세요.</p>
-    <a href="https://www.kstoffice6885.com/check"
-       style="display: inline-block; margin-top: 1rem; background: #28a745; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      자가진단 해보기
-    </a>
-  </div>
-
-  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">⚖️ 실제 사례가 궁금해요</h3>
-    <p style="color: #444; font-size: 0.95rem;">실제 신청인들이 어떻게 회생에 <br>성공했는지 확인해보세요.</p>
-    <a href="https://www.kstoffice6885.com/cases"
-       style="display: inline-block; margin-top: 1rem; background: #ffc107; color: black; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
-      성공 사례 보기
-    </a>    
-  </div>
-
- <!-- 푸터 시작 -->    
-<footer style="background-color: #032035; color: #ccc; text-align: center; padding: 2rem 1rem; font-family: 'Pretendard', sans-serif;">
-  <div style="margin-bottom: 1rem;">
-    <img src="/logo.png" alt="김성태 법무사 로고" style="width: 32px; vertical-align: middle; margin-right: 0.5rem;">
-    <span style="font-weight: 700; font-size: 1.4rem; color: #fff;">김성태 법무사 사무소</span>
-    <div style="font-size: 1.8rem; font-weight: 700; color: #fff; margin-top: 0.5rem;">
-      010 - 4710 - 6885
     </div>
   </div>
+</section>
 
-  <div style="font-size: 0.95rem; line-height: 1.6; color: #ccc;">
-    <strong style="color: #eee;">김성태 법무사 사무소</strong> |
-    대표 : 김성태 |
-    주소 : 경기도 수원시 영통구 광교중앙로248번길 7-2, D동 404호 |
-    사업자번호 : 135-28-47886<br>
-    이메일주소 : <a href="mailto:kstmae@naver.com" style="color: #bbb; text-decoration: underline;">kstmae@naver.com</a>
+<!-- 개인회생/파산 안내 섹션 -->
+<section id="rehabilitation" style="padding: 3rem 1.5rem; background: #ffffff;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h2 style="font-size: 1.8rem; color: #0a3871; font-weight: 700; margin-bottom: 2rem;">개인회생 · 파산 안내</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+      
+      <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <h3 style="color: #222; font-size: 1.1rem;">개인회생 제도</h3>
+        <p style="font-size: 0.95rem; color: #555;">일정 소득이 있는 분이 법원의 조정을 통해 채무를 감면받는 절차입니다.</p>
+        <a href="/what-is" style="display: inline-block; margin-top: 0.8rem; color: #007bff; font-weight: 600;">제도 소개 →</a>
+      </div>
+
+      <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <h3 style="color: #222; font-size: 1.1rem;">신청 자격 확인</h3>
+        <p style="font-size: 0.95rem; color: #555;">소득과 부양가족 수를 입력하면 자격 여부를 빠르게 확인할 수 있습니다.</p>
+        <a href="/check" style="display: inline-block; margin-top: 0.8rem; color: #28a745; font-weight: 600;">자가진단 →</a>
+      </div>
+
+      <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <h3 style="color: #222; font-size: 1.1rem;">절차 및 비용</h3>
+        <p style="font-size: 0.95rem; color: #555;">개시부터 면책까지 전체 흐름과 예상 비용을 상세히 알려드립니다.</p>
+        <a href="/procedure" style="display: inline-block; margin-top: 0.8rem; color: #6c757d; font-weight: 600;">자세히 보기 →</a>
+      </div>
+
+    </div>
   </div>
+</section>
 
-  <div style="margin-top: 1rem; font-size: 0.9rem; color: #888;">
-    Copyright ⓒ 2023 <span style="color: #ddd; font-weight: 600;">KIM SUNG TAE Certified Judicial Scriveners office</span> All rights reserved.
+<!-- 푸터 시작 -->    
+<footer style="background-color: #032035; color: #ccc; text-align: center; padding: 2.5rem 1rem;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- 상호 및 연락처 -->
+    <div style="margin-bottom: 1.2rem;">
+      <img src="/logo.png" alt="김성태 법무사 로고" style="width: 36px; vertical-align: middle; margin-right: 0.5rem;">
+      <span style="font-size: 1.4rem; font-weight: 700; color: #fff;">김성태 법무사 사무소</span>
+      <div style="margin-top: 0.6rem; font-size: 1.6rem; font-weight: 700; color: #fff;">
+        <a href="tel:01047106885" style="color: #fff; text-decoration: none;">010 - 4710 - 6885</a>
+      </div>
+    </div>
+
+    <!-- 상세 정보 -->
+    <div style="font-size: 0.95rem; line-height: 1.7; color: #ccc; margin-bottom: 1rem;">
+      <strong style="color: #eee;">김성태 법무사 사무소</strong> |
+      대표: 김성태 |
+      주소: 경기도 수원시 영통구 광교중앙로248번길 7-2, D동 404호 |
+      사업자번호: 135-28-47886<br>
+      이메일: <a href="mailto:kstmae@naver.com" style="color: #bbb; text-decoration: underline;">kstmae@naver.com</a>
+    </div>
+
+    <!-- 저작권 -->
+    <div style="font-size: 0.85rem; color: #888;">
+      © 2023 <span style="color: #ddd; font-weight: 600;">KIM SUNG TAE Certified Judicial Scriveners Office</span>. All rights reserved.
+    </div>
+
   </div>
 </footer>
-<!-- 푸터 끝 -->  
+<!-- 푸터 끝 -->
+
 </body>
 </html>
 '''

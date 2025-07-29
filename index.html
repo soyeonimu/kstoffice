@@ -23,30 +23,124 @@ html_code = '''<!DOCTYPE html>
   <!-- 카드 열 구조 -->
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; padding: 1rem; max-width: 1280px; margin: 0 auto;">
 
-    <!-- 카드 반복 영역: 카드 1개 -->
-    <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-      <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">📌 신고 vs 고소</h3>
-      <p style="color: #444; font-size: 0.95rem;">신고와 고소의 차이를 쉽게 알려드립니다.</p>
-      <a href="/criminal/difference" style="display: inline-block; margin-top: 1rem; background: #007bff; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">차이점 알아보기</a>
-    </div>
+    <!-- 신고와 고소의 차이 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">📌 신고 vs 고소</h3>
+    <p style="color: #444; font-size: 0.95rem;">신고와 고소의 차이를 쉽게 알려드립니다.</p>
+    <a href="/criminal/difference"
+       style="display: inline-block; margin-top: 1rem; background: #007bff; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      차이점 알아보기
+    </a>
+  </div>
 
-    <!-- 카드 2 -->
-    <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
-      <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🏆 고소 성공 사례</h3>
-      <p style="color: #444; font-size: 0.95rem;">실제 사건을 통해 결과를 확인해보세요.</p>
-      <a href="/criminal/cases" style="display: inline-block; margin-top: 1rem; background: #fd7e14; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">성공 사례 보기</a>
-    </div>
+  <!-- 실제 고소 성공 사례 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🏆 고소 성공 사례</h3>
+    <p style="color: #444; font-size: 0.95rem;">실제 사건을 통해 결과를 확인해보세요.</p>
+    <a href="/criminal/cases"
+       style="display: inline-block; margin-top: 1rem; background: #fd7e14; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      성공 사례 보기
+    </a>
+  </div>
 
-    <!-- 여기에 나머지 카드 계속 추가 가능 -->
+  <!-- 형사합의 안내 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🤝 형사합의 안내</h3>
+    <p style="color: #444; font-size: 0.95rem;">합의 절차와 준비 방법을 정리해드립니다.</p>
+    <a href="/criminal/settlement"
+       style="display: inline-block; margin-top: 1rem; background: #20c997; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      형사합의 안내 보기
+    </a>
+  </div>
+
+     <!-- 고소장 작성 안내 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">📄 고소장을 써야 하나요?</h3>
+    <p style="color: #444; font-size: 0.95rem;">상대방을 처벌하기 위한 <br>정확한 고소장을 작성해드립니다.</p>
+    <a href="/criminal/complaint"
+       style="display: inline-block; margin-top: 1rem; background: #dc3545; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      고소장 안내 보기
+    </a>
+  </div>
+
+  <!-- 고소 절차 안내 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🕵️ 절차가 궁금하신가요?</h3>
+    <p style="color: #444; font-size: 0.95rem;">접수부터 수사, 기소 여부까지 <br>전체 절차를 알려드립니다.</p>
+    <a href="/criminal/process"
+       style="display: inline-block; margin-top: 1rem; background: #6f42c1; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      절차 안내 보기
+    </a>
+  </div>
+
+  <!-- 자주 묻는 질문 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">❓ 자주 묻는 질문</h3>
+    <p style="color: #444; font-size: 0.95rem;">고소 가능 여부, 준비서류까지 <br>궁금한 질문을 정리했습니다.</p>
+    <a href="/criminal/faq"
+       style="display: inline-block; margin-top: 1rem; background: #17a2b8; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      자주 묻는 질문 보기
+    </a>
+  </div>
+ <!-- 비용 안내 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">💰 비용이 궁금해요</h3>
+    <p style="color: #444; font-size: 0.95rem;">법원 비용과 수임료를 미리 확인해보세요.</p>
+    <a href="/price"
+       style="display: inline-block; margin-top: 1rem; background: #6c757d; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      비용 안내 보기
+    </a>
+  </div>
+
+  <!-- 절차 안내 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">⏳ 얼마나 걸리나요?</h3>
+    <p style="color: #444; font-size: 0.95rem;">신청부터 면책까지 평균 소요 기간을 정리해드렸습니다.</p>
+    <a href="/procedure"
+       style="display: inline-block; margin-top: 1rem; background: #6610f2; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      절차 안내 보기
+    </a>
+  </div>
+
+  <!-- 상담 방법 -->
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">📍 어디서 상담하나요?</h3>
+    <p style="color: #444; font-size: 0.95rem;">카카오톡, 전화, 방문 상담까지 모두 가능합니다.</p>
+    <a href="/chat" target="_blank"
+       style="display: inline-block; margin-top: 1rem; background: #000; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      상담 안내 보기
+    </a>
+  </div>
+      <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🧮 개인회생이 뭔가요?</h3>
+    <p style="color: #444; font-size: 0.95rem;">제도가 생소하시다면  <br>이 글을 꼭 읽어보세요.</p>
+    <a href="https://www.kstoffice6885.com/what-is"
+       style="display: inline-block; margin-top: 1rem; background: #007bff; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      제도 설명 보러가기
+    </a>
+  </div>
+
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🧑‍ 나도 신청할 수 있나요?</h3>
+    <p style="color: #444; font-size: 0.95rem;">소득과 가족 수 입력만으로 <br>자격을 바로 확인해보세요.</p>
+    <a href="https://www.kstoffice6885.com/check"
+       style="display: inline-block; margin-top: 1rem; background: #28a745; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      자가진단 해보기
+    </a>
+  </div>
+
+  <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+    <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">⚖️ 실제 사례가 궁금해요</h3>
+    <p style="color: #444; font-size: 0.95rem;">실제 신청인들이 어떻게 회생에 <br>성공했는지 확인해보세요.</p>
+    <a href="https://www.kstoffice6885.com/cases"
+       style="display: inline-block; margin-top: 1rem; background: #ffc107; color: black; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">
+      성공 사례 보기
+    </a>
+  </div>
+  </div>
+    
 
   </div>
 </body>
 </html>
 '''
-
-# 파일로 저장
-file_path = "/mnt/data/index.html"
-with open(file_path, "w", encoding="utf-8") as f:
-    f.write(html_code)
-
-file_path

@@ -15,78 +15,130 @@
   <meta property="og:url" content="https://www.kstoffice.com" />
   <meta property="og:image" content="https://www.kstoffice.com/og-image.jpg" /> <!-- 썸네일 이미지 경로 설정 -->
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f8f9fa;
+  }
+
+  header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #222;
+    margin-right: auto; /* 좌측 정렬 */
+  }
+
+  .logo img {
+    width: 28px;
+    height: 28px;
+  }
+
+  nav {
+    flex: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    position: relative;
+  }
+
+  nav li {
+    position: relative;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 0.3rem;
+    display: inline-block;
+  }
+
+  nav li:hover > ul,
+  nav li ul:hover {
+    display: block;
+  }
+
+  nav li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    border-radius: 6px;
+    min-width: 180px;
+    z-index: 999;
+  }
+
+  nav li ul li {
+    padding: 0.6rem 1rem;
+  }
+
+  nav li ul li a {
+    color: #333;
+    font-weight: 400;
+  }
+
+  nav li ul li:hover {
+    background: #f0f0f0;
+  }
+
+  /* 모바일 대응 */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
+
+    nav {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    nav ul {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    nav li ul {
+      position: static;
+      box-shadow: none;
+      border: none;
+      padding-left: 1rem;
+      background: transparent;
+    }
+
+    nav li ul li:hover {
       background: #f8f9fa;
     }
-    header {
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #222;
-    }
-    .logo img {
-      width: 28px;
-      height: 28px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      position: relative;
-    }
-    nav li {
-      position: relative;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    nav li:hover > ul {
-      display: block;
-    }
-    nav li ul {
-      display: none;
-      position: absolute;
-      top: 2rem;
-      left: 0;
-      background: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      border: 1px solid #eee;
-      border-radius: 6px;
-      min-width: 180px;
-      z-index: 999;
-    }
-    nav li ul li {
-      padding: 0.6rem 1rem;
-    }
-    nav li ul li a {
-      color: #333;
-      font-weight: 400;
-    }
-    nav li ul li:hover {
-      background: #f0f0f0;
-    }
-  </style>
+  }
+</style>
+
 </head>
 <body>
 

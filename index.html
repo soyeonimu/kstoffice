@@ -106,24 +106,39 @@
 <body>
 
   <!-- 상단 헤더 -->
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #fff; border-bottom: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.03); font-family: 'Noto Sans KR', sans-serif;">
-
-  <!-- 로고 + 사무소명 -->
-  <div style="display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.2rem; color: #222;">
-    <img src="logo.png" alt="로고" style="width: 28px; height: 28px;" />
-    김성태 법무사 사무소
-  </div>
-
-  <!-- 네비게이션 메뉴 -->
-  <nav>
-    <ul style="display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0;">
-      <li><a href="/" style="text-decoration: none; color: #333; font-weight: 500;">홈</a></li>
-      <li><a href="/procedure" style="text-decoration: none; color: #333; font-weight: 500;">개인회생·파산</a></li>
-      <li><a href="/criminal/complaint" style="text-decoration: none; color: #333; font-weight: 500;">고소장</a></li>
-    </ul>
-  </nav>
-
-</header>
+ <header>
+    <div class="logo">
+      <img src="logo.png" alt="로고" />
+      김성태 법무사 사무소
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/">홈</a></li>
+        <li>
+          <a href="/procedure">개인회생·파산</a>
+          <ul>
+            <li><a href="/procedure">절차 안내</a></li>
+            <li><a href="/what-is">개인회생이란?</a></li>
+            <li><a href="/check">자가진단</a></li>
+            <li><a href="/cases">성공사례</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/criminal/complaint">고소장</a>
+          <ul>
+            <li><a href="/criminal/difference">신고 vs 고소</a></li>
+            <li><a href="/criminal/complaint">고소장 안내</a></li>
+            <li><a href="/criminal/settlement">형사합의</a></li>
+            <li><a href="/criminal/cases">성공사례</a></li>
+            <li><a href="/criminal/process">절차 안내</a></li>
+            <li><a href="/criminal/faq">자주 묻는 질문</a></li>
+          </ul>
+        </li>
+        <li><a href="/price">비용안내</a></li>
+        <li><a href="/chat">상담하기</a></li>
+      </ul>
+    </nav>
+  </header>
 <!-- 헤더 끝 -->
 
 

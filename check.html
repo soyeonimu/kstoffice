@@ -1,213 +1,37 @@
 ---
 layout: default
-title: 개인회생 신청 자격 테스트
-description: 간단한 테스트를 통해 개인회생 신청 자격을 확인하고, 법률 전문가의 도움을 받아보세요.
+title: 개인회생 · 파산 제도 안내
+description: 개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 안내해 드립니다.
 ---
 
-<div class="self-check-container">
-  <h1 class="self-check-title">개인회생 신청 자격 테스트</h1>
+<div class="info-section-container">
+  <h1 class="info-title">개인회생 · 파산 제도 안내</h1>
 
-  <div class="form-group">
-    <label for="debt">총 채무액 (만원):</label>
-    <input type="number" id="debt" placeholder="예: 8500">
+  <div class="info-card-container">
+    <div class="info-card">
+      <h2>📌 개인회생이란?</h2>
+      <p>일정한 소득이 있는 채무자가 법원의 승인 아래 채무를 일부 상환하고 나머지를 면책받는 제도입니다.</p>
+    </div>
 
-    <label for="monthlyIncome">월 소득 (원):</label>
-    <input type="number" id="monthlyIncome" placeholder="예: 2800000">
+    <div class="info-card">
+      <h2>📌 개인파산이란?</h2>
+      <p>채무를 전혀 상환할 수 없는 상태일 때, 법원을 통해 채무 전액에 대해 면책 결정을 받는 절차입니다.</p>
+    </div>
 
-    <label for="dependents">부양가족 수 (본인 제외):</label>
-    <input type="number" id="dependents" placeholder="예: 2">
+    <div class="info-card">
+      <h2>📌 회생과 파산의 차이점</h2>
+      <p><strong>회생:</strong> 소득으로 분할 상환 가능 시<br><strong>파산:</strong> 소득이 없거나 재산이 부족할 때</p>
+    </div>
 
-    <label for="job">직업:</label>
-    <select id="job">
-      <option value="">선택하세요</option>
-      <option value="직장인">직장인</option>
-      <option value="프리랜서">프리랜서</option>
-      <option value="자영업">자영업</option>
-      <option value="기타">기타</option>
-    </select>
-
-    <button onclick="checkEligibility()">결과 확인하기</button>
+    <div class="info-card">
+      <h2>📌 자격 조건</h2>
+      <p><strong>개인회생:</strong> 지속적인 수입, 총 채무 15억 이하<br><strong>개인파산:</strong> 상환 능력 없음, 급여·재산 거의 없음</p>
+    </div>
   </div>
 
-  <div id="result"></div>
-
-  <script>
-    function getLivingCost(familySize) {
-      const table = {
-        1: 1206000,
-        2: 2016000,
-        3: 2580000,
-        4: 3094000,
-        5: 3630000
-      };
-      return table[familySize] || 3630000 + (familySize - 5) * 400000;
-    }
-
-    function evaluateEligibility(debt, surplus, job) {
-      // 채무액은 만원 단위이므로 15억은 150000만원입니다.
-      if (debt * 10000 > 1500000000) { // 15억 (원)으로 비교
-        return {
-          status: '불가',
-          color: '#d03a3a',
-          message: '총 채무가 15억을 초과하여 개인회생 신청이 어렵습니다.'
-        };
-      }
-      // 담보채무 10억, 무담보채무 5억 기준도 고려 필요 (현재 코드에는 없음)
-      // 여기서는 총 채무만 기준으로 판단합니다.
-
-      let threshold = 100000; // 기본 잔여소득 기준
-      if (job === "프리랜서") threshold = 120000;
-      else if (job === "자영업") threshold = 150000;
-      else if (job === "기타") threshold = 200000;
-
-      if (surplus >= threshold) {
-        return {
-          status: '가능',
-          color: '#0a7e3f',
-          message: `신청 요건에 부합할 가능성이 높습니다. (${job})`
-        };
-      } else if (surplus > 0) {
-        return {
-          status: '조건부',
-          color: '#f0a400',
-          message: `잔여소득이 다소 부족하지만 상황에 따라 가능성이 있습니다. (${job})`
-        };
-      } else {
-        return {
-          status: '불가',
-          color: '#d03a3a',
-          message: `현재 소득으로는 신청이 어려울 수 있습니다. (${job})`
-        };
-      }
-    }
-
-    function checkEligibility() {
-      const debt = parseInt(document.getElementById("debt").value) || 0;
-      const income = parseInt(document.getElementById("monthlyIncome").value) || 0;
-      const dependents = parseInt(document.getElementById("dependents").value) || 0;
-      const job = document.getElementById("job").value || "기타";
-
-      const familySize = dependents + 1;
-      const livingCost = getLivingCost(familySize);
-      const surplus = income - livingCost;
-
-      const result = evaluateEligibility(debt, surplus, job);
-
-      const info = `
-        <p><strong>총 부양가족 수:</strong> ${familySize}명<br>
-        <strong>법정 생계비 기준:</strong> ${livingCost.toLocaleString()}원<br>
-        <strong>잔여소득:</strong> ${surplus.toLocaleString()}원</p>
-        <p style="color: ${result.color}; font-weight: bold;">${result.message}</p>
-        <a href="https://naver.me/xwmIDcba" class="result-link" target="_blank">→ 지금 바로 상담하러 가기</a>
-      `;
-
-      document.getElementById("result").innerHTML = info;
-    }
-  </script>
-</div>---
-layout: default
-title: 개인회생 신청 자격 테스트
-description: 간단한 테스트를 통해 개인회생 신청 자격을 확인하고, 법률 전문가의 도움을 받아보세요.
----
-
-<div class="self-check-container">
-  <h1 class="self-check-title">개인회생 신청 자격 테스트</h1>
-
-  <div class="form-group">
-    <label for="debt">총 채무액 (만원):</label>
-    <input type="number" id="debt" placeholder="예: 8500">
-
-    <label for="monthlyIncome">월 소득 (원):</label>
-    <input type="number" id="monthlyIncome" placeholder="예: 2800000">
-
-    <label for="dependents">부양가족 수 (본인 제외):</label>
-    <input type="number" id="dependents" placeholder="예: 2">
-
-    <label for="job">직업:</label>
-    <select id="job">
-      <option value="">선택하세요</option>
-      <option value="직장인">직장인</option>
-      <option value="프리랜서">프리랜서</option>
-      <option value="자영업">자영업</option>
-      <option value="기타">기타</option>
-    </select>
-
-    <button onclick="checkEligibility()">결과 확인하기</button>
+  <div class="consultation-cta-box">
+    <h3 class="cta-title">지금 바로 상담 받아보세요</h3>
+    <p class="cta-description">복잡한 절차, 혼자 고민하지 마세요.<br>무료 상담을 통해 내 상황에 맞는 해결책을 안내받을 수 있습니다.</p>
+    <a href="https://naver.me/xwmIDcba" target="_blank" class="cta-button"> → 무료 상담 받기</a>
   </div>
-
-  <div id="result"></div>
-
-  <script>
-    function getLivingCost(familySize) {
-      const table = {
-        1: 1206000,
-        2: 2016000,
-        3: 2580000,
-        4: 3094000,
-        5: 3630000
-      };
-      return table[familySize] || 3630000 + (familySize - 5) * 400000;
-    }
-
-    function evaluateEligibility(debt, surplus, job) {
-      // 채무액은 만원 단위이므로 15억은 150000만원입니다.
-      if (debt * 10000 > 1500000000) { // 15억 (원)으로 비교
-        return {
-          status: '불가',
-          color: '#d03a3a',
-          message: '총 채무가 15억을 초과하여 개인회생 신청이 어렵습니다.'
-        };
-      }
-      // 담보채무 10억, 무담보채무 5억 기준도 고려 필요 (현재 코드에는 없음)
-      // 여기서는 총 채무만 기준으로 판단합니다.
-
-      let threshold = 100000; // 기본 잔여소득 기준
-      if (job === "프리랜서") threshold = 120000;
-      else if (job === "자영업") threshold = 150000;
-      else if (job === "기타") threshold = 200000;
-
-      if (surplus >= threshold) {
-        return {
-          status: '가능',
-          color: '#0a7e3f',
-          message: `신청 요건에 부합할 가능성이 높습니다. (${job})`
-        };
-      } else if (surplus > 0) {
-        return {
-          status: '조건부',
-          color: '#f0a400',
-          message: `잔여소득이 다소 부족하지만 상황에 따라 가능성이 있습니다. (${job})`
-        };
-      } else {
-        return {
-          status: '불가',
-          color: '#d03a3a',
-          message: `현재 소득으로는 신청이 어려울 수 있습니다. (${job})`
-        };
-      }
-    }
-
-    function checkEligibility() {
-      const debt = parseInt(document.getElementById("debt").value) || 0;
-      const income = parseInt(document.getElementById("monthlyIncome").value) || 0;
-      const dependents = parseInt(document.getElementById("dependents").value) || 0;
-      const job = document.getElementById("job").value || "기타";
-
-      const familySize = dependents + 1;
-      const livingCost = getLivingCost(familySize);
-      const surplus = income - livingCost;
-
-      const result = evaluateEligibility(debt, surplus, job);
-
-      const info = `
-        <p><strong>총 부양가족 수:</strong> ${familySize}명<br>
-        <strong>법정 생계비 기준:</strong> ${livingCost.toLocaleString()}원<br>
-        <strong>잔여소득:</strong> ${surplus.toLocaleString()}원</p>
-        <p style="color: ${result.color}; font-weight: bold;">${result.message}</p>
-        <a href="https://naver.me/xwmIDcba" class="result-link" target="_blank">→ 지금 바로 상담하러 가기</a>
-      `;
-
-      document.getElementById("result").innerHTML = info;
-    }
-  </script>
 </div>

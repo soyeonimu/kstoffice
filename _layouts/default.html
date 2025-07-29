@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description | default: '김성태 법무사 사무소 - 수원·용인·화성 지역 개인회생·파산·고소장 상담 전문' }}">
+  <meta name="author" content="김성태 법무사" />
+
+  <!-- 기본 스타일시트 연결 (필요시 외부 CSS로 분리 가능) -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- 파비콘 -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- Open Graph (SNS 공유용) -->
+  <meta property="og:title" content="{{ page.title | default: '김성태 법무사 사무소' }}" />
+  <meta property="og:description" content="{{ page.description | default: '수원·용인·화성 지역 법률상담 전문 법무사. 친절하고 신속한 법률서비스 제공.' }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <meta property="og:image" content="/og-image.jpg" />
+</head>
+<body>
+
+  {% include header.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+</body>
+</html>

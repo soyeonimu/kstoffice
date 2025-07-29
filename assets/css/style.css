@@ -72,3 +72,104 @@ nav li:hover > ul {
     gap: 0.8rem;
   }
 }
+
+/* style.css에 이 부분 추가 */
+
+/* 카드 그리드 컨테이너 */
+.card-grid {
+  display: grid; /* 그리드 레이아웃 사용 */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 반응형 컬럼 설정 */
+  gap: 20px; /* 카드 간의 간격 */
+  padding: 20px; /* 그리드 전체 패딩 */
+  max-width: 1200px; /* 최대 너비 설정 */
+  margin: 40px auto; /* 중앙 정렬 */
+}
+
+/* 개별 카드 스타일 */
+.card {
+  background-color: #fff; /* 배경색 흰색 */
+  border: 1px solid #eee; /* 테두리 */
+  border-radius: 8px; /* 둥근 모서리 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 그림자 효과 */
+  padding: 25px; /* 내부 패딩 */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* 호버 애니메이션 */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* 호버 시 살짝 위로 */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1); /* 호버 시 그림자 강화 */
+}
+
+.card h2 {
+  color: #333; /* 제목 색상 */
+  font-size: 1.5rem; /* 제목 폰트 크기 */
+  margin-top: 0; /* 위쪽 마진 제거 */
+  margin-bottom: 15px; /* 아래쪽 마진 */
+  line-height: 1.4;
+}
+
+.card h2 br {
+    display: none; /* 모바일에서 줄바꿈 제거 (필요에 따라 조절) */
+}
+@media (max-width: 768px) {
+    .card h2 br {
+        display: block; /* 모바일에서 줄바꿈 다시 표시 */
+    }
+}
+
+
+.card ul {
+  list-style: none; /* 목록 스타일 제거 */
+  padding: 0; /* 패딩 제거 */
+  margin: 0; /* 마진 제거 */
+}
+
+.card ul li {
+  margin-bottom: 10px; /* 목록 항목 간 간격 */
+  font-size: 1rem; /* 폰트 크기 */
+  color: #555; /* 텍스트 색상 */
+}
+
+.card ul li strong {
+  color: #000; /* 강조 텍스트 색상 */
+}
+
+/* 서브 섹션 (하단 무료 상담 섹션) */
+.bottom-section {
+  text-align: center;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #f0f8ff; /* 연한 파란색 배경 */
+  border-radius: 10px;
+  max-width: 800px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.bottom-section h3 {
+  color: #222;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.bottom-section p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.bottom-section a {
+  display: inline-block;
+  background-color: #007bff; /* 파란색 버튼 */
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.bottom-section a:hover {
+  background-color: #0056b3;
+}

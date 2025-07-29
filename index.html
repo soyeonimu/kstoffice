@@ -106,18 +106,28 @@
 <body>
 
   <!-- 상단 헤더 -->
-  <header>
-    <div class="logo">
-      <img src="/favicon.png" alt="로고" style="width: 24px; height: 24px;" />
-      김성태 법무사 사무소
-    </div>
-    <nav>
-      <a href="/" class="active">홈</a>
-      <a href="/newpage">새 페이지</a>
-      <a href="/procedure">개인회생·파산</a>
-      <a href="/criminal/complaint">고소장</a>
-    </nav>
-  </header>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #fff; border-bottom: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.03); font-family: 'Noto Sans KR', sans-serif;">
+
+  <!-- 로고 + 사무소명 -->
+  <div style="display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.2rem; color: #222;">
+    <img src="logo.png" alt="로고" style="width: 28px; height: 28px;" />
+    김성태 법무사 사무소
+  </div>
+
+  <!-- 네비게이션 메뉴 -->
+  <nav>
+    <ul style="display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0;">
+      <li><a href="/" style="text-decoration: none; color: #333; font-weight: 500;">홈</a></li>
+      <li><a href="/procedure" style="text-decoration: none; color: #333; font-weight: 500;">개인회생·파산</a></li>
+      <li><a href="/criminal/complaint" style="text-decoration: none; color: #333; font-weight: 500;">고소장</a></li>
+    </ul>
+  </nav>
+
+</header>
+<!-- 헤더 끝 -->
+
+
+  
   <!-- 두 개의 소개 블록 -->
   <div style="background-color: #ffffff; padding: 1.2rem 1rem; border-radius: 12px; text-align: center; font-size: 1.1rem; font-weight: 500; color: #444; line-height: 1.5; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 1rem;">
     <span style="color: #dc3545; font-size: 2rem; font-weight: 700;">검찰청 20년 경력으로<br></span>

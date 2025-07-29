@@ -16,90 +16,75 @@
   <meta property="og:image" content="https://www.kstoffice.com/og-image.jpg" /> <!-- 썸네일 이미지 경로 설정 -->
 
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
       font-family: 'Noto Sans KR', sans-serif;
       background: #f8f9fa;
     }
     header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #fdeee8;
-      padding: 1rem 2rem;
-      border-bottom: 3px solid #a471d0;
+      position: relative;
     }
-    header .logo {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #222;
+    .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #222;
     }
-    header nav {
+    .logo img {
+      width: 28px;
+      height: 28px;
+    }
+    nav ul {
+      list-style: none;
       display: flex;
-      gap: 1.2rem;
-      font-size: 1rem;
-      font-weight: 500;
+      gap: 1.5rem;
+      position: relative;
     }
-    header nav a {
+    nav li {
+      position: relative;
+    }
+    nav a {
       text-decoration: none;
       color: #333;
-    }
-    header nav a.active {
-      color: #007bff;
-      font-weight: 700;
-    }
-    .intro-box {
-      background-color: #ffffff;
-      padding: 1.2rem 1rem;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 1.1rem;
       font-weight: 500;
-      color: #444;
-      line-height: 1.5;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      margin: 1rem;
     }
-    .intro-box span {
-      font-size: 2rem;
-      font-weight: 700;
+    nav li:hover > ul {
+      display: block;
     }
-    .grid-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.2rem;
-      padding: 1rem;
-      max-width: 1280px;
-      margin: 0 auto;
+    nav li ul {
+      display: none;
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      border-radius: 6px;
+      min-width: 180px;
+      z-index: 999;
     }
-    .card {
-      background: #ffffff;
-      padding: 1.2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.05);
-      text-align: center;
+    nav li ul li {
+      padding: 0.6rem 1rem;
     }
-    .card h3 {
-      color: #222;
-      margin-bottom: 0.6rem;
-      font-size: 1.1rem;
+    nav li ul li a {
+      color: #333;
+      font-weight: 400;
     }
-    .card p {
-      color: #444;
-      font-size: 0.95rem;
-    }
-    .card a {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.95rem;
-      color: white;
+    nav li ul li:hover {
+      background: #f0f0f0;
     }
   </style>
 </head>

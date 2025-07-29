@@ -579,7 +579,145 @@ footer {
   color: #444;
   line-height: 1.6;
 }
+/* style.css (홈페이지 관련 스타일) */
 
+/* 5.7 홈페이지 섹션 스타일 (index.html) */
+.home-intro-section { /* 경력/비용 강조 섹션 */
+  background: #f0f2f5;
+  padding: 3rem 1.5rem;
+}
+
+.home-intro-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.home-intro-card { /* 경력/비용 개별 카드 */
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.home-intro-card.career { /* 경력 카드 특정 스타일 */
+  border-left: 6px solid #dc3545;
+}
+
+.home-intro-card.cost { /* 비용 카드 특정 스타일 */
+  border-left: 6px solid #007bff;
+}
+
+.home-intro-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  /* color는 .career, .cost 클래스에서 재정의 */
+}
+
+.home-intro-card p {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* 고소장 안내 섹션 */
+.home-complaint-section {
+  padding: 3rem 1.5rem;
+  background: #f8f9fc;
+}
+
+.home-rehabilitation-section { /* 개인회생/파산 안내 섹션 */
+  padding: 3rem 1.5rem;
+  background: #ffffff;
+}
+
+.home-section-container { /* 각 섹션 내부의 최대 너비 컨테이너 */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-section-title { /* 섹션 h2 제목 */
+  font-size: 1.8rem;
+  color: #0a3871;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.home-card-link-grid { /* 링크 카드들을 감싸는 그리드 */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.home-link-card { /* 섹션 내 개별 링크 카드 */
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.home-link-card h3 {
+  color: #222;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-link-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.home-link-card .card-link { /* 카드 내 "자세히 보기" 등 링크 */
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.home-link-card .card-link.red { /* 고소장 섹션 링크 색상 */
+  color: #dc3545;
+}
+
+.home-link-card .card-link.green { /* 형사합의, 자가진단 링크 색상 */
+  color: #28a745;
+}
+
+.home-link-card .card-link.blue { /* 신고 vs 고소, 개인회생 제도 링크 색상 */
+  color: #007bff;
+}
+
+.home-link-card .card-link.gray { /* 절차 및 비용 링크 색상 */
+  color: #6c757d;
+}
+
+/* 모바일 반응형 (Home Page Specific) */
+@media (max-width: 768px) {
+  .home-intro-section,
+  .home-complaint-section,
+  .home-rehabilitation-section {
+    padding: 2rem 1rem; /* 모바일 패딩 조정 */
+  }
+
+  .home-intro-card h2,
+  .home-section-title {
+    font-size: 1.5rem; /* 모바일 제목 크기 조정 */
+  }
+
+  .home-intro-card p,
+  .home-link-card p {
+    font-size: 0.9rem; /* 모바일 본문 텍스트 크기 조정 */
+  }
+}
 
 /* ----------------------------------------------------- */
 /* 6. 모바일 반응형 (Media Queries) */

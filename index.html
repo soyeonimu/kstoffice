@@ -70,30 +70,32 @@
   }
 
   nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    padding: 0.5rem 0.3rem;
-    display: inline-block;
-  }
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 0.3rem;
+  display: inline-block;
+}
 
-  nav li:hover > ul,
-  nav li ul:hover {
-    display: block;
-  }
+/* 드롭다운이 사라지지 않게 유지 */
+nav li:hover > ul,
+nav li:focus-within > ul,
+nav li ul:hover {
+  display: block;
+}
 
-  nav li ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #fff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-    border-radius: 6px;
-    min-width: 180px;
-    z-index: 999;
-  }
+nav li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  border-radius: 6px;
+  min-width: 180px;
+  z-index: 999;
+}
 
   nav li ul li {
     padding: 0.6rem 1rem;

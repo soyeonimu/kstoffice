@@ -1,72 +1,52 @@
-<!DOCTYPE html>
+# HTML 코드 파일로 저장해서 사용자가 다운로드할 수 있도록 제공
+html_code = '''<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>김성태 법무사 사무소</title>
-  <meta name="description" content="개인회생·파산 전문 법무사 김성태. 상담부터 신청까지 믿고 맡기세요.">
-  <meta name="keywords" content="개인회생, 개인파산, 법무사, 김성태, 법률상담">
-  <meta name="author" content="김성태 법무사">
-
-  <!-- Open Graph (SNS 공유용) -->
-  <meta property="og:title" content="김성태 법무사 사무소" />
-  <meta property="og:description" content="개인회생·파산 상담 전문 법무사. 서초, 강남 지역 상담 가능." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.kstoffice.com" />
-  <!-- <meta property="og:image" content="썸네일 이미지 경로" /> -->
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Noto Sans KR', sans-serif;
-      background-color: #f5f7fa;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #0a3871;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    main {
-      padding: 2rem 1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1.1rem;
-    }
-  </style>
+  <meta name="description" content="고소장 작성 및 개인회생 상담 – 김성태 법무사 사무소">
 </head>
-<body>
+<body style="margin: 0; background: #f8f9fa; font-family: 'Noto Sans KR', sans-serif;">
 
-  <header>
-    <h1>김성태 법무사 사무소</h1>
-    <p>개인회생 · 개인파산 · 법률상담</p>
-  </header>
+  <!-- 두 개의 소개 블록 -->
+  <div style="background-color: #ffffff; padding: 1.2rem 1rem; border-radius: 12px; text-align: center; font-size: 1.1rem; font-weight: 500; color: #444; line-height: 1.5; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 1rem;">
+    <span style="color: #dc3545; font-size: 2rem; font-weight: 700;">검찰청 20년 경력으로<br></span>
+    정확하고 효과적인 고소장을 작성해드립니다.
+  </div>
 
-  <main>
-    <h2>안녕하세요!</h2>
-    <p>개인회생이나 파산으로 힘든 상황에 계신가요?<br />
-    김성태 법무사 사무소는 풍부한 경험과 노하우로 당신의 새로운 출발을 도와드립니다.</p>
+  <div style="background-color: #ffffff; padding: 1.2rem 1rem; border-radius: 12px; text-align: center; font-size: 1.1rem; font-weight: 500; color: #444; line-height: 1.5; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 1rem;">
+    <span style="color: #007bff; font-size: 2rem; font-weight: 700;">합리적인 비용으로<br></span>
+    개인회생·파산을 도와드립니다.
+  </div>
 
-    <h3>📌 주요 업무</h3>
-    <ul>
-      <li>개인회생 신청 및 대리</li>
-      <li>개인파산 절차 안내</li>
-      <li>법원 서류 작성 및 제출</li>
-    </ul>
+  <!-- 카드 열 구조 -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; padding: 1rem; max-width: 1280px; margin: 0 auto;">
 
-    <p>카카오톡 또는 전화 상담으로 빠르게 도움받으세요.</p>
-  </main>
+    <!-- 카드 반복 영역: 카드 1개 -->
+    <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+      <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">📌 신고 vs 고소</h3>
+      <p style="color: #444; font-size: 0.95rem;">신고와 고소의 차이를 쉽게 알려드립니다.</p>
+      <a href="/criminal/difference" style="display: inline-block; margin-top: 1rem; background: #007bff; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">차이점 알아보기</a>
+    </div>
 
+    <!-- 카드 2 -->
+    <div style="background: #ffffff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.05); text-align: center;">
+      <h3 style="color: #222; margin-bottom: 0.6rem; font-size: 1.1rem;">🏆 고소 성공 사례</h3>
+      <p style="color: #444; font-size: 0.95rem;">실제 사건을 통해 결과를 확인해보세요.</p>
+      <a href="/criminal/cases" style="display: inline-block; margin-top: 1rem; background: #fd7e14; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">성공 사례 보기</a>
+    </div>
+
+    <!-- 여기에 나머지 카드 계속 추가 가능 -->
+
+  </div>
 </body>
 </html>
+'''
+
+# 파일로 저장
+file_path = "/mnt/data/index.html"
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(html_code)
+
+file_path

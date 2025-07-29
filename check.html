@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개인회생 신청 자격 테스트</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f5f7fa;
+      padding: 3rem 1rem;
+      max-width: 700px;
+      margin: auto;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      font-weight: bold;
+      color: #0a3871;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: block;
+      margin-top: 1.4rem;
+      color: #333;
+    }
+
+    input, select {
+      padding: 0.8rem;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    a.result-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      background: #007bff;
+      color: white;
+      padding: 0.8rem 1.4rem;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.05rem;
+    }
+
+    a.result-link:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>개인회생 신청 자격 테스트</h1>
+
+  <div class="form-group">
+    <label for="debt">총 채무액 (만원):</label>
+    <input type="number" id="debt" placeholder="예: 8500">
+
+    <label for="monthlyIncome">월 소득 (원):</label>
+    <input type="number" id="monthlyIncome" placeholder="예: 2800000">
+
+    <label for="dependents">부양가족 수 (본인 제외):</label>
+    <input type="number" id="dependents" placeholder="예: 2">
+
+    <label for="job">직업:</label>
+    <select id="job">
+      <option value="">선택하세요</option>
+      <option value="직장인">직장인</option>
+      <option value="프리랜서">프리랜서</option>
+      <option value="자영업">자영업</option>
+      <option value="기타">기타</option>
+    </select>
+
+    <button onclick="checkEligibility()">결과 확인하기</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    function getLivingCost(familySize) {
+      const table = {
+        1: 1206000,
+        2: 2016000,
+        3: 2580000,
+        4: 3094000,
+        5: 3630000
+      };
+      return table[familySize] || 3630000 + (familySize - 5) * 400000;
+    }
+
+    function evaluateEligibility(debt, surplus, job) {
+      if (debt > 150000) {
+        return {
+          status: '불가',
+          color: '#d03a3a',
+          message: '총 채무가 15억을 초과하여 개인회생 신청이 어렵습니다.'
+        };
+      }
+
+      let threshold = 100000;
+      if (job === "프리랜서") threshold = 120000;
+      else if (job === "자영업") threshold = 150000;
+      else if (job === "기타") threshold = 200000;
+
+      if (surplus >= threshold) {
+        return {
+          status: '가능',
+          color: '#0a7e3f',
+          message: `신청 요건에 부합할 가능성이 높습니다. (${job})`
+        };
+      } else if (surplus > 0) {
+        return {
+          status: '조건부',
+          color: '#f0a400',
+          message: `잔여소득이 다소 부족하지만 상황에 따라 가능성이 있습니다. (${job})`
+        };
+      } else {
+        return {
+          status: '불가',
+          color: '#d03a3a',
+          message: `현재 소득으로는 신청이 어려울 수 있습니다. (${job})`
+        };
+      }
+    }
+
+    function checkEligibility() {
+      const debt = parseInt(document.getElementById("debt").value) || 0;
+      const income = parseInt(document.getElementById("monthlyIncome").value) || 0;
+      const dependents = parseInt(document.getElementById("dependents").value) || 0;
+      const job = document.getElementById("job").value || "기타";
+
+      const familySize = dependents + 1;
+      const livingCost = getLivingCost(familySize);
+      const surplus = income - livingCost;
+
+      const result = evaluateEligibility(debt, surplus, job);
+
+      const info = `
+        <p><strong>총 부양가족 수:</strong> ${familySize}명<br>
+        <strong>법정 생계비 기준:</strong> ${livingCost.toLocaleString()}원<br>
+        <strong>잔여소득:</strong> ${surplus.toLocaleString()}원</p>
+        <p style="color: ${result.color}; font-weight: bold;">${result.message}</p>
+        <a href="https://naver.me/xwmIDcba" class="result-link" target="_blank">→ 지금 바로 상담하러 가기</a>
+      `;
+
+      document.getElementById("result").innerHTML = info;
+    }
+  </script>
+
+</body>
+</html>

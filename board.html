@@ -27,7 +27,13 @@ description: 사무소 소식 및 법률정보를 정기적으로 안내드립�
     <div style="flex-grow: 1;">
       <h1 style="font-size: 2rem; color: #0a3871; margin-bottom: 1rem;">공지사항 · 정보게시판</h1>
 
-      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2rem;">
+      <div style="margin-bottom: 1.5rem; display: flex; gap: 0.5rem;">
+        <input type="text" id="search-input" placeholder="게시글 검색..." style="flex-grow: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+        <button id="search-button" style="padding: 0.8rem 1.2rem; background-color: #0a3871; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">검색</button>
+      </div>
+      <div id="search-results" style="margin-bottom: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem;">
+      </div>
+      <ul id="post-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2rem;">
         {% for post in site.board reversed %}
           <li style="background: #fff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.05);">
             <a href="{{ post.url }}" style="font-size: 1.1rem; color: #0a3871; font-weight: bold; text-decoration: none;">
@@ -40,3 +46,57 @@ description: 사무소 소식 및 법률정보를 정기적으로 안내드립�
     </div>
   </div>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleJekyllSearch/1.10.0/SimpleJekyllSearch.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
+  const searchResultsDiv = document.getElementById('search-results');
+  const postListUl = document.getElementById('post-list');
+
+  const sjs = SimpleJekyllSearch({
+    searchInput: searchInput,
+    resultsContainer: searchResultsDiv,
+    json: '/search.json',
+    searchResultTemplate: `
+      <li style="background: #eef; padding: 1rem; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <a href="{url}" style="font-size: 1.05rem; color: #0a3871; font-weight: bold; text-decoration: none;">{title}</a>
+        <div style="font-size: 0.85rem; color: #666;">{date}</div>
+        <p style="font-size: 0.95rem; color: #444; margin-top: 5px;">{description}...</p>
+      </li>
+    `,
+    noResultsText: '<p style="color: #888; text-align: center;">검색 결과가 없습니다.</p>',
+    limit: 10,
+    fuzzy: false,
+    exclude: ['category']
+  });
+
+  searchButton.addEventListener('click', function() {
+    sjs.search(searchInput.value);
+    if (searchInput.value.trim().length > 0) {
+      postListUl.style.display = 'none';
+      searchResultsDiv.style.display = 'block';
+    } else {
+      postListUl.style.display = 'flex';
+      searchResultsDiv.style.display = 'none';
+    }
+  });
+
+  searchInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      searchButton.click();
+    }
+  });
+
+  searchInput.addEventListener('input', function() {
+    if (this.value.trim().length === 0) {
+      postListUl.style.display = 'flex';
+      searchResultsDiv.style.display = 'none';
+      searchResultsDiv.innerHTML = '';
+    }
+  });
+
+  searchResultsDiv.style.display = 'none';
+});
+</script>

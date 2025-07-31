@@ -5,7 +5,7 @@
   <title>{{ page.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="{{ page.description | default: site.description }}" />
-    {% if page.keywords %}
+  {% if page.keywords %}
   <meta name="keywords" content="{{ page.keywords | join: ', ' }}" />
   {% endif %}
   <link rel="stylesheet" href="/assets/css/style.css" />
@@ -18,6 +18,13 @@
     <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
       <h1 style="font-size: 1.6rem; color: #0a3871; margin-bottom: 0.5rem;">{{ page.title }}</h1>
       <p style="color: #888; font-size: 0.95rem;">{{ page.date | date: "%Y년 %m월 %d일" }}</p>
+
+      {% if page.category %}
+      <div style="font-size: 0.95rem; color: #0a3871; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+        카테고리: <a href="/board/category/{{ page.category | slugify }}/" style="color: #0a3871; text-decoration: none; font-weight: bold;">{{ page.category }}</a>
+      </div>
+      {% endif %}
+
       <div style="margin-top: 1.5rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
         {{ content }}
       </div>

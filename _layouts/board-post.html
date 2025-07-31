@@ -9,6 +9,68 @@
   <meta name="keywords" content="{{ page.keywords | join: ', ' }}" />
   {% endif %}
   <link rel="stylesheet" href="/assets/css/style.css" />
+
+  {# 게시물 내용 내부의 간격을 조절하기 위한 스타일 추가 #}
+  <style>
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+      margin-top: 2em; /* 헤딩 위 간격 */
+      margin-bottom: 0.8em; /* 헤딩 아래 간격 */
+      line-height: 1.3;
+      color: #0a3871; /* 헤딩 색상 통일 */
+    }
+
+    .post-content h1 { font-size: 1.8em; }
+    .post-content h2 { font-size: 1.6em; }
+    .post-content h3 { font-size: 1.4em; }
+    .post-content h4 { font-size: 1.2em; }
+    .post-content h5 { font-size: 1.1em; }
+    .post-content h6 { font-size: 1em; }
+
+    .post-content p {
+      margin-bottom: 1em; /* 문단 아래 간격 */
+      line-height: 1.8; /* 줄 간격 */
+    }
+
+    .post-content ul,
+    .post-content ol {
+      margin-bottom: 1em; /* 목록 아래 간격 */
+      padding-left: 1.5em; /* 목록 들여쓰기 */
+    }
+
+    .post-content li {
+      margin-bottom: 0.5em; /* 목록 항목 간 간격 */
+      line-height: 1.6;
+    }
+
+    .post-content blockquote {
+      border-left: 4px solid #0a3871; /* 인용구 좌측 라인 */
+      padding: 0.8em 1.2em;
+      margin: 1.5em 0;
+      background-color: #f0f8ff; /* 연한 배경색 */
+      color: #555;
+      font-style: italic;
+    }
+
+    .post-content pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+
+    .post-content code {
+      font-family: 'Consolas', 'Monaco', monospace;
+      background-color: #eee;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+    }
+  </style>
 </head>
 <body>
 
@@ -19,13 +81,14 @@
       <h1 style="font-size: 1.6rem; color: #0a3871; margin-bottom: 0.5rem;">{{ page.title }}</h1>
       <p style="color: #888; font-size: 0.95rem;">{{ page.date | date: "%Y년 %m월 %d일" }}</p>
 
-      {% if page.category %}
-      <div style="font-size: 0.95rem; color: #0a3871; margin-top: 0.5rem; margin-bottom: 1.5rem;">
-        카테고리: <a href="/board/category/{{ page.category | slugify }}/" style="color: #0a3871; text-decoration: none; font-weight: bold;">{{ page.category }}</a>
-      </div>
-      {% endif %}
+      {% if page.category %}
+      <div style="font-size: 0.95rem; color: #0a3871; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+        카테고리: <a href="/board/category/{{ page.category | slugify }}/" style="color: #0a3871; text-decoration: none; font-weight: bold;">{{ page.category }}</a>
+      </div>
+      {% endif %}
 
-      <div style="margin-top: 1.5rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
+      {# content를 감싸는 div에 클래스 추가 #}
+      <div class="post-content" style="margin-top: 1.5rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
         {{ content }}
       </div>
 

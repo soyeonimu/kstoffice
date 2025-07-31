@@ -1,11 +1,16 @@
 title: 김성태 법무사 사무소
 description: 수원·용인·화성 개인회생·파산·고소장 전문 법무사
 theme: null
-baseurl: ""  # ← 깃허브 저장소 이름이 아님. 커스텀 도메인일 땐 빈 값
+baseurl: ""
 url: "https://kstoffice6885.com"
+
 include:
   - assets
+
 collections:
   board:
     output: true
     permalink: /board/:name
+
+plugins:
+  - jekyll-sitemap

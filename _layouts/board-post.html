@@ -1,104 +1,191 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <title>{{ page.title }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="{{ page.description | default: site.description }}" />
-  {% if page.keywords %}
-  <meta name="keywords" content="{{ page.keywords | join: ', ' }}" />
-  {% endif %}
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+  {% if page.keywords %}
+  <meta name="keywords" content="{{ page.keywords | join: ', ' }}" />
+  {% endif %}
+  <link rel="stylesheet" href="/assets/css/style.css" />
 
-  {# 게시물 내용 내부의 간격을 조절하기 위한 스타일 추가 #}
   <style>
+    /* 전체 콘텐츠 영역의 패딩 조정 및 배경색 일관성 유지 */
+    section {
+      padding: 2.5rem 1.5rem; /* 상하좌우 패딩 약간 증가 */
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #f9f9f9;
+    }
+
+    /* 게시물 박스 내부 패딩 및 그림자 조정 */
+    section > div {
+      padding: 2.5rem 3rem; /* 좌우 패딩을 더 넓게 */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 그림자 강조 */
+    }
+
+    /* 게시물 제목 */
+    h1 {
+      font-size: 2.2rem; /* 제목 크기 약간 키움 */
+      color: #0a3871;
+      margin-bottom: 0.8rem; /* 제목 아래 간격 증가 */
+      word-break: keep-all; /* 단어 단위 줄바꿈 */
+    }
+
+    /* 날짜 정보 */
+    p.post-date {
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem; /* 날짜 아래 간격 증가 */
+    }
+
+    /* 구분선 추가 */
+    .post-meta-divider {
+      border-bottom: 1px solid #eee; /* 얇은 구분선 */
+      margin-bottom: 2rem; /* 구분선 아래 간격 */
+    }
+
+    /* 카테고리 정보 */
+    .post-category {
+      font-size: 0.95rem;
+      color: #0a3871;
+      margin-top: 0.5rem; /* 기존 유지 */
+      margin-bottom: 1.5rem; /* 기존 유지 */
+    }
+    .post-category a {
+      color: #0a3871;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .post-category a:hover {
+      text-decoration: underline;
+    }
+
+    /* 게시물 내용 (post-content 클래스) 스타일 */
+    .post-content {
+      margin-top: 0; /* 구분선 아래이므로 margin-top 제거 */
+      line-height: 1.9; /* 줄 간격 약간 증가 (더 여유롭게) */
+      font-size: 1.08rem; /* 본문 폰트 크기 약간 증가 */
+      color: #333;
+      word-break: keep-all; /* 단어 단위 줄바꿈 */
+    }
+
     .post-content h1,
     .post-content h2,
     .post-content h3,
     .post-content h4,
     .post-content h5,
     .post-content h6 {
-      margin-top: 2em; /* 헤딩 위 간격 */
-      margin-bottom: 0.8em; /* 헤딩 아래 간격 */
-      line-height: 1.3;
-      color: #0a3871; /* 헤딩 색상 통일 */
+      margin-top: 2.5em; /* 헤딩 위 간격 더욱 증가 */
+      margin-bottom: 1em; /* 헤딩 아래 간격 약간 증가 */
+      line-height: 1.4;
+      color: #0a3871;
+      padding-bottom: 0.2em; /* 헤딩 아래에 약간의 여백 */
+      border-bottom: 1px dashed #eee; /* 헤딩 아래 점선 구분선 */
     }
 
-    .post-content h1 { font-size: 1.8em; }
-    .post-content h2 { font-size: 1.6em; }
+    .post-content h1 { font-size: 2em; border-bottom: 2px solid #0a3871; padding-bottom: 0.3em; } /* 최상위 헤딩 강조 */
+    .post-content h2 { font-size: 1.7em; }
     .post-content h3 { font-size: 1.4em; }
     .post-content h4 { font-size: 1.2em; }
     .post-content h5 { font-size: 1.1em; }
     .post-content h6 { font-size: 1em; }
 
     .post-content p {
-      margin-bottom: 1em; /* 문단 아래 간격 */
-      line-height: 1.8; /* 줄 간격 */
+      margin-bottom: 1.2em; /* 문단 아래 간격 증가 */
+      line-height: 1.9;
     }
 
     .post-content ul,
     .post-content ol {
-      margin-bottom: 1em; /* 목록 아래 간격 */
-      padding-left: 1.5em; /* 목록 들여쓰기 */
+      margin-bottom: 1.5em; /* 목록 아래 간격 증가 */
+      padding-left: 1.8em; /* 목록 들여쓰기 증가 */
     }
 
     .post-content li {
-      margin-bottom: 0.5em; /* 목록 항목 간 간격 */
-      line-height: 1.6;
+      margin-bottom: 0.7em; /* 목록 항목 간 간격 증가 */
+      line-height: 1.7;
     }
 
     .post-content blockquote {
-      border-left: 4px solid #0a3871; /* 인용구 좌측 라인 */
-      padding: 0.8em 1.2em;
-      margin: 1.5em 0;
-      background-color: #f0f8ff; /* 연한 배경색 */
-      color: #555;
+      border-left: 5px solid #0a3871; /* 인용구 좌측 라인 두께 증가 */
+      padding: 1em 1.5em; /* 패딩 증가 */
+      margin: 2em 0; /* 위아래 간격 증가 */
+      background-color: #f5fafd; /* 배경색 약간 진하게 */
+      color: #444;
       font-style: italic;
+      border-radius: 4px; /* 모서리 약간 둥글게 */
     }
 
     .post-content pre {
-      background-color: #f4f4f4;
-      padding: 1em;
-      border-radius: 5px;
+      background-color: #f8f8f8; /* 배경색 밝게 */
+      padding: 1.2em;
+      border-radius: 6px;
       overflow-x: auto;
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
+      border: 1px solid #eee;
     }
 
     .post-content code {
       font-family: 'Consolas', 'Monaco', monospace;
       background-color: #eee;
-      padding: 0.2em 0.4em;
-      border-radius: 3px;
+      padding: 0.25em 0.5em;
+      border-radius: 4px;
+    }
+
+    /* 이미지 스타일 */
+    .post-content img {
+      max-width: 100%; /* 이미지가 부모 너비를 넘지 않도록 */
+      height: auto;
+      display: block; /* 이미지 아래 불필요한 공백 제거 */
+      margin: 1.5em auto; /* 중앙 정렬 및 위아래 여백 */
+      border-radius: 8px; /* 이미지 모서리 둥글게 */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 이미지 그림자 */
+    }
+
+    /* 링크 스타일 */
+    .post-content a {
+      color: #0a3871;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .post-content a:hover {
+      color: #062b5a;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  {% include header.html %}
+  {% include header.html %}
 
-  <section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif; background: #f9f9f9;">
-    <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-      <h1 style="font-size: 1.6rem; color: #0a3871; margin-bottom: 0.5rem;">{{ page.title }}</h1>
-      <p style="color: #888; font-size: 0.95rem;">{{ page.date | date: "%Y년 %m월 %d일" }}</p>
+  <section>
+    <div style="max-width: 800px; margin: 0 auto; background: #fff;">
+      <h1>{{ page.title }}</h1>
+      <p class="post-date">{{ page.date | date: "%Y년 %m월 %d일" }}</p>
 
-      {% if page.category %}
-      <div style="font-size: 0.95rem; color: #0a3871; margin-top: 0.5rem; margin-bottom: 1.5rem;">
-        카테고리: <a href="/board/category/{{ page.category | slugify }}/" style="color: #0a3871; text-decoration: none; font-weight: bold;">{{ page.category }}</a>
-      </div>
-      {% endif %}
+      <div class="post-meta-divider"></div> {# 구분선 추가 #}
 
-      {# content를 감싸는 div에 클래스 추가 #}
-      <div class="post-content" style="margin-top: 1.5rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
-        {{ content }}
-      </div>
+      {% if page.category %}
+      <div class="post-category">
+        카테고리: <a href="/board/category/{{ page.category | slugify }}/">{{ page.category }}</a>
+      </div>
+      {% endif %}
 
-      <div style="margin-top: 2rem;">
-        <a href="/board" style="color: #0a3871; text-decoration: underline;">← 게시판 목록으로</a>
-      </div>
-    </div>
-  </section>
+      <div class="post-content">
+        {{ content }}
+      </div>
 
-  {% include footer.html %}
+      <div style="margin-top: 3rem; text-align: center;"> {# 목록으로 돌아가기 버튼 중앙 정렬 #}
+        <a href="/board" style="display: inline-block; padding: 0.8rem 1.5rem; background-color: #0a3871; color: #fff; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">
+          ← 게시판 목록으로
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {% include footer.html %}
 
 </body>
 </html>

@@ -9,8 +9,10 @@
 </head>
 <body>
 
+  <!-- 헤더 포함 -->
   {% include header.html %}
 
+  <!-- 본문 콘텐츠 -->
   <section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif; background: #f9f9f9;">
     <div style="max-width: 800px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); padding: 2rem;">
       <h1 style="font-size: 1.7rem; color: #0a3871; margin-bottom: 1rem;">{{ page.title }}</h1>
@@ -19,9 +21,15 @@
       <div class="post-content" style="line-height: 1.7; color: #333; font-size: 1.05rem;">
         {{ content }}
       </div>
+
+      <!-- 목록 돌아가기 버튼 -->
+      <div style="margin-top: 2rem;">
+        <a href="/board" style="color: #0a3871; text-decoration: underline; font-weight: bold;">← 게시판 목록으로</a>
+      </div>
     </div>
   </section>
 
+  <!-- 푸터 포함 -->
   {% include footer.html %}
 
 </body>

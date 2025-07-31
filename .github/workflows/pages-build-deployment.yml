@@ -1,10 +1,9 @@
-```yaml
 name: Build and deploy Jekyll site to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main # 또는 master 브랜치를 사용한다면 master로 변경
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -55,4 +54,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-```

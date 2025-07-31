@@ -1,0 +1,13 @@
+---
+layout: category_page
+---
+
+{% assign current_category = page.category %}
+{% assign filtered_posts = site.board | where:"category", current_category %}
+
+<h1>{{ current_category }} 게시물</h1>
+<ul>
+  {% for post in filtered_posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>

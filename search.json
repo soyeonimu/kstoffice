@@ -6,10 +6,10 @@ permalink: /search.json
 [
   {% for post in site.board %}
     {
-      "title": "{{ post.title | escape }}",
+      "title": "{{ post.title | escape | downcase }}",
       "url": "{{ post.url }}",
       "date": "{{ post.date | date: '%Y-%m-%d' }}",
-      "description": "{{ post.content | strip_html | truncate: 100 }}"
+      "description": "{{ post.content | strip_html | truncate: 100 | downcase }}"
     }{% if forloop.last == false %},{% endif %}
   {% endfor %}
 ]

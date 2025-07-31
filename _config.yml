@@ -6,7 +6,8 @@ url: "https://kstoffice6885.com"
 
 include:
   - assets
-
+  - category
+  
 collections:
   board:
     output: true

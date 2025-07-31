@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ site.description }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  {% include header.html %}
+
+  <section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif;">
+    <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 1px 8px rgba(0,0,0,0.05);">
+      <h1 style="font-size: 1.6rem; color: #0a3871;">{{ page.title }}</h1>
+      <div style="font-size: 0.9rem; color: #888;">{{ page.date | date: "%Y년 %m월 %d일" }}</div>
+      <hr style="margin: 1rem 0;" />
+      <div style="line-height: 1.8; color: #333;">
+        {{ content }}
+      </div>
+    </div>
+
+    <div style="max-width: 800px; margin: 2rem auto 0;">
+      <a href="/notice.html" style="color: #0a3871; text-decoration: underline;">← 목록으로 돌아가기</a>
+    </div>
+  </section>
+
+  {% include footer.html %}
+</body>
+</html>

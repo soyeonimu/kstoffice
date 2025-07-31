@@ -1,1 +1,23 @@
 
+---
+layout: default
+title: 공지사항 및 정보게시판
+description: 사무소 소식 및 법률정보를 정기적으로 안내드립니다.
+---
+
+<section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <h1 style="font-size: 2rem; color: #0a3871; margin-bottom: 1rem;">공지사항 · 정보게시판</h1>
+
+    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2rem;">
+      {% for post in site.board reversed %}
+        <li style="background: #fff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.05);">
+          <a href="{{ post.url }}" style="font-size: 1.1rem; color: #0a3871; font-weight: bold; text-decoration: none;">
+            {{ post.title }}
+          </a>
+          <div style="font-size: 0.9rem; color: #888;">{{ post.date | date: "%Y년 %m월 %d일" }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

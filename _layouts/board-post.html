@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <title>{{ page.title }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="{{ page.description | default: site.description }}" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+    {% if page.keywords %}
+  <meta name="keywords" content="{{ page.keywords | join: ', ' }}" />
+  {% endif %}
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
 
-  {% include header.html %}
+  {% include header.html %}
 
-  <section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif; background: #f9f9f9;">
-    <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-      <h1 style="font-size: 1.6rem; color: #0a3871; margin-bottom: 0.5rem;">{{ page.title }}</h1>
-      <p style="color: #888; font-size: 0.95rem;">{{ page.date | date: "%Y년 %m월 %d일" }}</p>
-      <div style="margin-top: 1.5rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
-        {{ content }}
-      </div>
+  <section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif; background: #f9f9f9;">
+    <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      <h1 style="font-size: 1.6rem; color: #0a3871; margin-bottom: 0.5rem;">{{ page.title }}</h1>
+      <p style="color: #888; font-size: 0.95rem;">{{ page.date | date: "%Y년 %m월 %d일" }}</p>
+      <div style="margin-top: 1.5rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
+        {{ content }}
+      </div>
 
-      <div style="margin-top: 2rem;">
-        <a href="/board" style="color: #0a3871; text-decoration: underline;">← 게시판 목록으로</a>
-      </div>
-    </div>
-  </section>
+      <div style="margin-top: 2rem;">
+        <a href="/board" style="color: #0a3871; text-decoration: underline;">← 게시판 목록으로</a>
+      </div>
+    </div>
+  </section>
 
-  {% include footer.html %}
+  {% include footer.html %}
 
 </body>
 </html>

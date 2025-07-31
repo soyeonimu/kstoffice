@@ -5,3 +5,7 @@ baseurl: ""  # ← 깃허브 저장소 이름이 아님. 커스텀 도메인일 
 url: "https://kstoffice6885.com"
 include:
   - assets
+collections:
+  board:
+    output: true
+    permalink: /board/:name

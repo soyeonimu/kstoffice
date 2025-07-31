@@ -14,3 +14,12 @@ collections:
 
 plugins:
   - jekyll-sitemap
+  
+simple_jekyll_search:
+  json: true # 검색 데이터를 JSON 파일로 생성할지 여부
+  url: '/search.json' # JSON 파일이 생성될 경로
+  collections: # 검색할 컬렉션 지정
+    board:
+      output: true # 컬렉션 항목이 검색 데이터에 포함되도록
+      limit: 1000 # 검색할 항목의 최대 개수 (필요에 따라 조절)
+      # fields: [title, content, category] # 검색할 필드 지정 (선택 사항, 지정 안 하면 모든 텍스트 필드)

@@ -10,7 +10,7 @@ include:
 collections:
   board:
     output: true
-    permalink: /board/:name.html
+    permalink: /board/:name
 
 plugins:
   - jekyll-sitemap

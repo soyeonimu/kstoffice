@@ -1,0 +1,16 @@
+<aside style="width: 200px; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+  <h3 style="font-size: 1.2rem; color: #0a3871; margin-bottom: 1rem;">카테고리</h3>
+  <ul style="list-style: none; padding: 0; margin: 0;">
+    <li style="margin-bottom: 0.5rem;">
+      <a href="/board/" style="color: #555; text-decoration: none; font-weight: bold;">전체보기</a>
+    </li>
+    {% assign categories = site.board | map:"category" | compact | uniq | sort %}
+    {% for category in categories %}
+      <li style="margin-bottom: 0.5rem;">
+        <a href="/board/category/{{ category | slugify }}/" style="color: #555; text-decoration: none;">
+          {{ category }} ({{ site.board | where:"category", category | size }})
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>

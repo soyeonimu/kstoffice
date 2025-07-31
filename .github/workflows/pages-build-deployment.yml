@@ -3,24 +3,20 @@ name: Build and deploy Jekyll site to GitHub Pages
 on:
   push:
     branches:
-      - main # 또는 master 브랜치를 사용한다면 master로 변경
+      - main
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -29,8 +25,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x' # 최신 Ruby 3.x 버전 사용 (Jekyll 3.x/4.x 호환)
-          bundler-cache: true # runs bundle install and caches gems automatically
+          ruby-version: '3.3'
+          bundler-cache: true
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -43,7 +39,6 @@ jobs:
         with:
           path: ${{ steps.pages.outputs.working-directory }}
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages

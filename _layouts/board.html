@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+
+  {% include header.html %}
+
+  <section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif; background: #f9f9f9;">
+    <div style="max-width: 800px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); padding: 2rem;">
+      <h1 style="font-size: 1.7rem; color: #0a3871; margin-bottom: 1rem;">{{ page.title }}</h1>
+      <div style="font-size: 0.9rem; color: #888; margin-bottom: 1.5rem;">작성일: {{ page.date | date: "%Y년 %m월 %d일" }}</div>
+
+      <div class="post-content" style="line-height: 1.7; color: #333; font-size: 1.05rem;">
+        {{ content }}
+      </div>
+    </div>
+  </section>
+
+  {% include footer.html %}
+
+</body>
+</html>

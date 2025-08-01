@@ -15,7 +15,8 @@ collections:
 plugins:
   - jekyll-sitemap
   - jekyll-feed
-
+  - jekyll-archives
+  
 simple_jekyll_search:
   json: true
   url: '/search.json'
@@ -23,3 +24,10 @@ simple_jekyll_search:
     board:
       output: true
       limit: 1000
+      
+jekyll-archives:
+  enabled:
+    - categories
+  layout: category  # _layouts/category.html 레이아웃 필요
+  permalinks:
+    category: '/category/:name/'  # URL 구조

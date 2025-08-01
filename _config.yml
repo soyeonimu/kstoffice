@@ -1,4 +1,4 @@
-title: 김성태 법무사 사무소
+title: 개인회생 개인파산 고소장 전문 김성태 법무사 사무소
 description: 수원·용인·화성 개인회생·파산·고소장 전문 법무사
 theme: null
 baseurl: ""
@@ -6,8 +6,7 @@ url: "https://kstoffice6885.com"
 
 include:
   - assets
-  - category
-  
+
 collections:
   board:
     output: true
@@ -15,21 +14,12 @@ collections:
 
 plugins:
   - jekyll-sitemap
-  - jekyll-archives
   - jekyll-feed
+
 simple_jekyll_search:
-  json: true # 검색 데이터를 JSON 파일로 생성할지 여부
-  url: '/search.json' # JSON 파일이 생성될 경로
-  collections: # 검색할 컬렉션 지정
+  json: true
+  url: '/search.json'
+  collections:
     board:
-      output: true # 컬렉션 항목이 검색 데이터에 포함되도록
-      limit: 1000 # 검색할 항목의 최대 개수 (필요에 따라 조절)
-      # fields: [title, content, category] # 검색할 필드 지정 (선택 사항, 지정 안 하면 모든 텍스트 필드)
-      
-# jekyll-archives 설정 추가
-jekyll-archives:
-  enabled:
-    - categories # 카테고리별 아카이브를 활성화합니다.
-  layout: 'category_page' # 아래 2단계에서 만들 레이아웃 파일 이름을 지정합니다.
-  permalink: '/board/category/:name/' # 카테고리 페이지의 URL 구조를 지정합니다.
-                                     # 이전에 카테고리 링크를 /board/category/{{ category | slugify }}/ 로 했으므로, 일치시켜야 합니다.
+      output: true
+      limit: 1000

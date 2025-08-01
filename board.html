@@ -12,12 +12,15 @@ description: 사무소 소식 및 법률정보를 정기적으로 안내드립�
       <h3 style="font-size: 1.2rem; color: #0a3871; margin-bottom: 1rem;">카테고리</h3>
       <ul style="list-style: none; padding: 0; margin: 0;">
         <li style="margin-bottom: 0.5rem;">
-          <a href="/board" style="color: #555; text-decoration: none; font-weight: bold;">전체보기</a>
+          <a href="#" class="category-link" data-filter="all" style="color: #0a3871; font-weight: bold; text-decoration: none;">전체보기</a>
         </li>
         {% assign categories = site.board | map:"category" | compact | uniq | sort %}
         {% for category in categories %}
           <li style="margin-bottom: 0.5rem;">
-            <a href="/category/{{ category | slugify }}/" style="color: #555; text-decoration: none;">
+            <a href="#"
+               class="category-link"
+               data-filter="{{ category | slugify }}"
+               style="color: #555; text-decoration: none;">
               {{ category }} ({{ site.board | where:"category", category | size }})
             </a>
           </li>
@@ -29,9 +32,13 @@ description: 사무소 소식 및 법률정보를 정기적으로 안내드립�
     <div style="flex-grow: 1;">
       <h1 style="font-size: 2rem; color: #0a3871; margin-bottom: 1rem;">공지사항 · 정보게시판</h1>
 
-      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2rem;">
+      <ul id="post-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2rem;">
         {% for post in site.board reversed %}
-          <li style="background: #fff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.05);">
+          <li
+            class="post-item"
+            data-category="{{ post.category | slugify }}"
+            style="background: #fff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.05);"
+          >
             <a href="{{ post.url }}" style="font-size: 1.1rem; color: #0a3871; font-weight: bold; text-decoration: none;">
               {{ post.title }}
             </a>
@@ -43,3 +50,28 @@ description: 사무소 소식 및 법률정보를 정기적으로 안내드립�
 
   </div>
 </section>
+
+<!-- 🔽 JS 필터링 스크립트 -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const categoryLinks = document.querySelectorAll(".category-link");
+    const postItems = document.querySelectorAll(".post-item");
+
+    categoryLinks.forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const filter = this.dataset.filter;
+
+        postItems.forEach(item => {
+          const itemCategory = item.dataset.category;
+          const show = (filter === "all" || itemCategory === filter);
+          item.style.display = show ? "" : "none";
+        });
+
+        // 선택된 링크 강조
+        categoryLinks.forEach(l => l.style.fontWeight = "normal");
+        this.style.fontWeight = "bold";
+      });
+    });
+  });
+</script>

@@ -144,6 +144,36 @@
       border-radius: 8px; /* 이미지 모서리 둥글게 */
       box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 이미지 그림자 */
     }
+      /* 반응형 표 스타일 */
+    .custom-table {
+      overflow-x: auto;
+      margin-bottom: 2rem;
+    }
+    
+    .custom-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1rem;
+      color: #333;
+    }
+    
+    .custom-table th,
+    .custom-table td {
+      border: 1px solid #ddd;
+      padding: 0.9rem 1rem;
+      text-align: center;
+      word-break: keep-all;
+    }
+    
+    .custom-table th {
+      background-color: #0a3871;
+      color: #fff;
+      font-weight: bold;
+    }
+    
+    .custom-table tr:nth-child(even) td {
+      background-color: #f7f9fc;
+    }
 
     /* 링크 스타일 */
     .post-content a {

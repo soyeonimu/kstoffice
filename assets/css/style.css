@@ -1095,27 +1095,37 @@ caption {
 .board-list li:hover{
   background: rgba(2,16,43,.03);
 }
-
-/* === Hero 타이트하게 + 타이틀 크게 (데스크톱) === */
+/* === Hero 사진을 텍스트 쪽으로 더 붙이기 (데스크톱) === */
 @media (min-width: 1024px){
-  /* 텍스트 영역 넓히고, 사진 영역 좁힘 */
+  /* 텍스트:이미지 비율 조정 + 컬럼 간격 더 좁게 */
   .hero{
-    grid-template-columns: 1.25fr 0.75fr; /* ← 왼쪽 더 넓게 */
-    gap: .9rem;                            /* ← 컬럼 간격 축소 */
+    grid-template-columns: 1.38fr 0.62fr;   /* ← 왼쪽 넓게 / 오른쪽 좁게 */
+    gap: .55rem;                            /* ← 칼럼 간격 더 줄임 */
   }
-  /* 헤드라인 더 키우기 */
-  .hero-headline{
-    font-size: clamp(38px, 5.6vw, 84px);   /* max 72px → 84px */
-    line-height: 1.06;                     /* 줄간격 더 타이트 */
-    letter-spacing: -0.02em;               /* 자간 살짝 더 압축 */
-  }
-  /* sub ↔ headline 간격 더 붙이기 */
-  .hero-text{ gap: .4rem; }
 
-  /* 사진 폭 조금 줄여서 간격 체감 ↓ (원하면 주석 해제) */
+  /* 사진 박스 정렬 */
+  .hero-img{
+    justify-self: end;                      /* 오른쪽 끝에 맞추되… */
+    position: relative;
+  }
+
+  /* 사진 자체를 왼쪽/위로 살짝 당겨서 '겹치는 느낌' */
   .hero-img img{
-    width: min(400px, 36vw);
+    width: min(388px, 34vw);                /* 폭 살짝 ↓ */
+    transform: translate(-28px, -8px);      /* ← 왼쪽 -28px, 위로 -8px */
+    /* 그림자는 조금 부드럽게 */
+    filter: drop-shadow(0 12px 22px rgba(0,0,0,.16));
+  }
+
+  /* 텍스트 오른쪽 여백 아주 약간만 */
+  .hero-text{ padding-right: .2rem; }
+
+  /* 헤드라인은 살짝 더 키워도 안정적 */
+  .hero-headline{
+    font-size: clamp(40px, 5.7vw, 86px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
   }
 }
 
-/* 모바일/태블릿은 지금 값 유지 (가독성 우선) */
+/* 태블릿 이하는 겹침 없이 기본 정렬 유지 */

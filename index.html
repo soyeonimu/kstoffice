@@ -6,31 +6,26 @@ keywords: 수원 법무사, 용인 법무사, 개인회생, 개인파산, 고소
 author: 김성태 법무사 사무소
 permalink: /
 ---
-<!-- Hero Section -->
-<section class="hero" aria-labelledby="home-hero-title">
+<section class="hero hero--plain" aria-labelledby="home-hero-title">
   <div class="hero-text">
-    <h1 id="home-hero-title">
-      <span id="typing"></span>
+    <h1 id="home-hero-title" class="hero-headline">
+      본질을 읽고, 최선의 해답을 제시합니다.
     </h1>
-    <p class="hero-sub">수원·용인·화성 개인회생·고소장 전문 법률 서비스</p>
-    <div class="hero-ctas">
-      <a class="btn" href="tel:010-1234-5678">📞 전화 상담</a>
-      <a class="btn secondary" href="https://pf.kakao.com/링크">💬 카톡 상담</a>
+
+    <div class="hero-sub">
+      <div class="line"><span class="dot" aria-hidden="true"></span> 검찰청 강력부 · 형사부 · 수사과 · 특별수사부 <strong>20년</strong></div>
+      <div class="line"><span class="dot" aria-hidden="true"></span> 법무사 <strong>13년</strong></div>
     </div>
   </div>
 
-  <!--  사진 (투명 PNG + WebP) -->
+  <!-- 투명 PNG (경로: /assets/css/image/lawyer.png) -->
   <div class="hero-img">
-    <picture>
-      <source srcset="{{ '/assets/img/lawyer.webp' | relative_url }}" type="image/webp">
-      <img
-        src="{{ '/assets/img/lawyer.png' | relative_url }}"
-        alt="김성태 법무사"
-        width="450" height="600"
-        loading="eager"
-        decoding="async"
-        class="fade-in">
-    </picture>
+    <img
+      src="{{ '/assets/css/image/lawyer.png' | relative_url }}"
+      alt="김성태 법무사"
+      width="450" height="600"
+      loading="eager" decoding="async"
+      class="fade-in">
   </div>
 </section>
 
@@ -93,5 +88,6 @@ function startTyping(){
   }
 }
 </script>
+
 
 

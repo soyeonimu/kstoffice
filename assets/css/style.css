@@ -977,3 +977,73 @@ caption {
   .hero { grid-template-columns: 1fr; }
   .hero img { height: 220px; }
 }
+/* ===== Feature Cards v2 ===== */
+.grid-2cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+.home-intro-card {
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 6px 22px rgba(2, 16, 43, .06);
+  border: 1px solid rgba(2,16,43,.06);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-intro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(2,16,43,.08);
+  border-color: rgba(10,56,113,.18);
+}
+.home-intro-card h2 {
+  font-size: 1.35rem;
+  letter-spacing: -.2px;
+  color: #0a3871;
+  margin: 0 0 .5rem;
+}
+.home-intro-card p {
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+}
+.home-intro-card .cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .58rem .9rem;
+  border-radius: 10px;
+  background: #0a66ff;
+  color: #fff;
+  font-weight: 700;
+  margin-top: .9rem !important;
+  transition: filter .18s ease, transform .18s ease;
+}
+.home-intro-card .cta-button:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+/* 좌측 컬러바(포인트) */
+.home-intro-card::before {
+  content: "";
+  position: absolute;
+  left: 14px; top: 16px; bottom: 16px;
+  width: 4px;
+  border-radius: 6px;
+  background: linear-gradient(180deg,#0a66ff,#0a3871);
+  opacity: .85;
+}
+.home-intro-card.career::before { background: linear-gradient(180deg,#ef4444,#f97316); }
+.home-intro-card.cost::before   { background: linear-gradient(180deg,#22c55e,#16a34a); }
+
+/* 카드 간 세로 리듬 + 반응형 */
+@media (max-width: 980px){
+  .grid-2cols { grid-template-columns: 1fr; }
+  .home-intro-card { min-height: auto; }
+}
+
+/* 구역 섹션의 여백을 조금 더 */
+.home-intro-section { padding: 1.6rem 1rem 0; }

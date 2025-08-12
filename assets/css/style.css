@@ -1047,3 +1047,37 @@ caption {
 
 /* 구역 섹션의 여백을 조금 더 */
 .home-intro-section { padding: 1.6rem 1rem 0; }
+
+
+/* ===== Dual Hero Cards ===== */
+.hero{
+  max-width: 1200px; margin: 1.2rem auto; padding: 2rem;
+  border-radius: 18px; color:#fff; display:grid; gap:2rem;
+  grid-template-columns: 1.15fr 1fr;
+  box-shadow: 0 10px 30px rgba(2,16,43,.08);
+}
+.hero--rehab{ background:#0a3871; }
+.hero--complaint{ background:#0e2a47; } /* 톤만 다르게 */
+
+.hero-content h1{ font-size: 2rem; line-height:1.25; margin:0 0 .6rem; }
+.hero-content p{ opacity:.95; margin:0 0 1rem; }
+.hero-ctas{ display:flex; gap:.6rem; flex-wrap:wrap; }
+.btn{ display:inline-block; padding:.7rem 1rem; border-radius:10px;
+      background:#ffffff; color:#0a3871; font-weight:700; }
+.btn.secondary{ background:rgba(255,255,255,.18); color:#fff; border:1px solid rgba(255,255,255,.35); }
+.btn:hover{ filter:brightness(1.05); transform:translateY(-1px); transition:.18s; }
+
+.hero-media img{
+  width:100%; height:280px; object-fit:cover; border-radius:12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+
+/* 이미지 왼쪽/오른쪽 스위치 */
+.hero--reverse .hero-media{ order:-1; }
+
+/* 반응형 */
+@media (max-width: 980px){
+  .hero{ grid-template-columns: 1fr; padding: 1.5rem; }
+  .hero-media img{ height:220px; }
+  .hero-content h1{ font-size: 1.6rem; }
+}

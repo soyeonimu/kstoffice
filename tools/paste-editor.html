@@ -78,4 +78,161 @@
   // 붙여넣기 이벤트 가로채서 HTML 우선 처리
   input.addEventListener('paste', async (e)=>{
     e.preventDefault();
-    const html = await readFromClipboar
+    const html = await readFromClipboardEvent(e);
+    if(html){ process(html); }
+  });
+
+  // 버튼: 클립보드에서 직접 읽기 (HTTPS 환경에서 동작)
+  $('#btnPaste').addEventListener('click', async ()=>{
+    try{
+      if(navigator.clipboard.read){
+        const items = await navigator.clipboard.read();
+        for(const item of items){
+          if(item.types.includes('text/html')){
+            const blob = await item.getType('text/html');
+            const html = await blob.text();
+            process(html);
+            return;
+          }
+        }
+      }
+      // fallback: 일반 텍스트
+      const txt = await navigator.clipboard.readText();
+      process(txt);
+    }catch(err){
+      alert('클립보드 접근이 차단되었어요. 입력창에 직접 붙여넣기(Ctrl/⌘+V) 해주세요.');
+    }
+  });
+
+  $('#btnClear').addEventListener('click', ()=>{
+    input.innerHTML = ''; outHtml.value = ''; preview.innerHTML = '';
+  });
+
+  $('#copyHtml').addEventListener('click', ()=>copyText(outHtml.value));
+  $('#copyMd').addEventListener('click', ()=>{
+    const turndown = new TurndownService({headingStyle:'atx',codeBlockStyle:'fenced',emDelimiter:'_'});
+    copyText(turndown.turndown(outHtml.value));
+  });
+
+  $('#downloadHtml').addEventListener('click', ()=>{
+    download('cleaned.html', outHtml.value);
+  });
+
+  $('#renderPreview').addEventListener('click', ()=>{
+    preview.innerHTML = outHtml.value;
+  });
+
+  async function readFromClipboardEvent(e){
+    // 우선순위: HTML -> 텍스트
+    const html = e.clipboardData.getData('text/html');
+    if(html) return html;
+    const txt = e.clipboardData.getData('text/plain');
+    return txt || '';
+  }
+
+  function process(rawHtml){
+    // 1) 파싱
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(rawHtml, 'text/html');
+
+    // 2) SmartEditor 본문 노드 탐색(여러 형태 대비)
+    let container =
+      doc.querySelector('.se-main-container, .se_main_container, [class*="se-main"][class*="container"]') ||
+      doc.querySelector('#content, article, main') ||
+      doc.body;
+
+    // 3) 본문만 임시 문서로 복사
+    const temp = document.implementation.createHTMLDocument('');
+    const holder = temp.body.appendChild(temp.createElement('div'));
+    holder.innerHTML = container.outerHTML ? container.outerHTML : container.innerHTML;
+
+    // 4) 불필요 속성/래퍼 제거, 이미지 src 정리
+    cleanup(holder);
+
+    // 5) 보안/태그 제한 Sanitize
+    const clean = DOMPurify.sanitize(holder.innerHTML, {
+      ALLOWED_TAGS: [
+        'h1','h2','h3','h4','p','strong','em','b','i','u','a','ul','ol','li',
+        'blockquote','img','figure','figcaption','table','thead','tbody','tr','th','td','br','hr','pre','code','span'
+      ],
+      ALLOWED_ATTR: ['href','target','rel','title','src','alt','width','height','rowspan','colspan']
+    });
+
+    outHtml.value = prettyHtml(clean);
+    preview.innerHTML = outHtml.value;
+  }
+
+  function cleanup(root){
+    // se-wrapper 같은 바깥 래퍼가 있으면 그 안쪽만 취함
+    const first = root.querySelector('.se-main-container, .se_main_container');
+    if(first){ root.innerHTML = first.innerHTML; }
+
+    // 모든 엘리먼트 순회
+    root.querySelectorAll('*').forEach(el=>{
+      // 1) 클래스/스타일/데이터 속성 제거
+      el.removeAttribute('class');
+      el.removeAttribute('style');
+      [...el.attributes].forEach(a=>{
+        if(a.name.startsWith('data-')) el.removeAttribute(a.name);
+        if(a.name.startsWith('aria-')) el.removeAttribute(a.name);
+      });
+
+      // 2) 링크 안전
+      if(el.tagName==='A'){
+        el.setAttribute('rel','noopener noreferrer');
+        if(!el.getAttribute('target')) el.setAttribute('target','_blank');
+      }
+
+      // 3) 이미지 lazy-src 복구
+      if(el.tagName==='IMG'){
+        const cand = el.getAttribute('data-src') || el.getAttribute('data-lazy-src') || el.getAttribute('data-original') || el.src;
+        if(cand && !el.getAttribute('src')) el.setAttribute('src', cand);
+        // width/height 숫자만 남기기
+        ['width','height'].forEach(k=>{
+          const v = el.getAttribute(k);
+          if(v && /\d+/.test(v)) el.setAttribute(k, v.match(/\d+/)[0]);
+        });
+      }
+
+      // 4) 의미 없는 div->p 승격 (텍스트만 가진 div)
+      if(el.tagName==='DIV' && el.childElementCount===0 && el.textContent.trim().length){
+        const p = document.createElement('p'); p.textContent = el.textContent; el.replaceWith(p);
+      }
+    });
+  }
+
+  function copyText(text){
+    navigator.clipboard.writeText(text).then(()=> {
+      toast('복사했어요!');
+    }).catch(()=> alert('복사 실패. 수동으로 Ctrl/⌘+C 를 사용하세요.'));
+  }
+
+  function download(filename, text){
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], {type:'text/html'}));
+    a.download = filename; a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  function prettyHtml(html){
+    // 간단 들여쓰기 포매터 (빠르고 가벼운 버전)
+    const tab = '  ';
+    let out = '', indent = 0;
+    html.replace(/>\s+</g,'><').split(/(?=<)/g).forEach(part=>{
+      if(/^<\/\w/.test(part)) indent = Math.max(indent-1,0);
+      out += tab.repeat(indent) + part.trim() + '\n';
+      if(/^<\w[^>]*[^/]>$/.test(part) && !/^<(br|hr|img|input)/i.test(part)) indent++;
+    });
+    return out.trim();
+  }
+
+  function toast(msg){
+    const t=document.createElement('div');
+    t.textContent=msg;
+    t.style.cssText='position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1c2b4a;color:#eaf0ff;padding:.55rem .8rem;border:1px solid #2a3d63;border-radius:10px;z-index:9999';
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(),1400);
+  }
+</script>
+</body>
+</html>

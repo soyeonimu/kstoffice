@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>{{ page.title }}</title>
+  <meta name="referrer" content="no-referrer">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="{{ page.description | default: site.description }}" />
   {% if page.keywords %}
@@ -187,26 +188,52 @@
     }
   </style>
   <script defer>
-    document.addEventListener('DOMContentLoaded', function(){
-      document.querySelectorAll('.post-content img').forEach(function(img){
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.post-content img').forEach(function(img){
+    try{
+      // 0) 원본 후보 우선 (네이버가 원본을 data-*에 숨기는 경우가 많음)
+      const hi =
+        img.getAttribute('data-lazy-src') ||
+        img.getAttribute('data-src') ||
+        img.getAttribute('data-original') ||
+        img.getAttribute('originSrc') ||
+        img.getAttribute('data-raw-src');
+
+      let src = hi || img.getAttribute('src') || '';
+
+      // 1) pstatic 썸네일 파라미터 정리
+      const upgradePstatic = (url) => {
         try{
-          // lazy-load 속성에서 src 복원
-          if(!img.src || img.src.trim() === ''){
-            const cand = img.getAttribute('data-src') || img.getAttribute('data-lazy-src') || img.getAttribute('data-original');
-            if(cand) img.src = cand;
+          const u = new URL(url, location.href);
+          if (!u.hostname.endsWith('pstatic.net')) return url;
+
+          // type 파라미터가 w80_blur 등 낮은 해상도면 제거하거나 w966로 승격
+          const type = u.searchParams.get('type');
+          if (type) {
+            // blur 또는 너무 작은 w 값이면 업그레이드
+            if (/blur/i.test(type) || /^w(\d+)/i.test(type) && parseInt(RegExp.$1,10) < 400) {
+              u.searchParams.set('type','w966'); // 보통 본문 너비에 충분
+            }
           }
-          const u = new URL(img.src, location.href);
-          if (u.host && u.host !== location.host) {
-            img.setAttribute('referrerpolicy','no-referrer');
-            img.setAttribute('loading','lazy');
-          }
-          if (/^http:\/\//i.test(img.src)) {
-            img.src = img.src.replace(/^http:\/\//i,'https://');
-          }
-        }catch(e){}
-      });
-    });
-  </script>
+          // 그 외 불필요 파라미터 제거(있을 경우)
+          ['t','q','f','fm'].forEach(k=>u.searchParams.delete(k));
+          return u.toString();
+        }catch(e){ return url; }
+      };
+
+      src = upgradePstatic(src);
+
+      // 2) http → https 강제 (혼합콘텐츠 차단 방지)
+      if(/^http:\/\//i.test(src)) src = src.replace(/^http:\/\//i,'https://');
+
+      // 3) 최종 적용 + 핫링크 대응
+      img.setAttribute('src', src);
+      img.setAttribute('referrerpolicy','no-referrer');
+      img.setAttribute('loading','lazy');
+    }catch(e){}
+  });
+});
+</script>
 </head>
 
 <body>

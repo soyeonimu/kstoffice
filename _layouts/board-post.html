@@ -190,6 +190,11 @@
     document.addEventListener('DOMContentLoaded', function(){
       document.querySelectorAll('.post-content img').forEach(function(img){
         try{
+          // lazy-load 속성에서 src 복원
+          if(!img.src || img.src.trim() === ''){
+            const cand = img.getAttribute('data-src') || img.getAttribute('data-lazy-src') || img.getAttribute('data-original');
+            if(cand) img.src = cand;
+          }
           const u = new URL(img.src, location.href);
           if (u.host && u.host !== location.host) {
             img.setAttribute('referrerpolicy','no-referrer');

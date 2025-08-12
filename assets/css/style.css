@@ -1128,4 +1128,20 @@ caption {
   }
 }
 
-/* 태블릿 이하는 겹침 없이 기본 정렬 유지 */
+/* === Hero 사진 더 크게 + 더 붙이기 (데스크톱) === */
+@media (min-width: 1024px){
+  .hero{
+    grid-template-columns: 1.28fr 0.72fr;  /* 왼쪽 더 넓게, 오른쪽 살짝 넓혀서 여백 줄이기 */
+    gap: .4rem;                             /* 칼럼 간격 더 축소 */
+  }
+  .hero-img img{
+    width: min(520px, 42vw);               /* ✅ 사진 폭 키움 (기존 388px → 520px) */
+    transform: translate(-36px, -10px);    /* 더 왼쪽/위로 붙여 보이게 */
+    filter: drop-shadow(0 12px 22px rgba(0,0,0,.16));
+  }
+  .hero-headline{
+    font-size: clamp(42px, 5.9vw, 88px);   /* 제목 살짝 더 키워 밸런스 맞춤 */
+    line-height: 1.06;
+  }
+}
+

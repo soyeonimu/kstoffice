@@ -9,16 +9,20 @@ permalink: /
 <!-- HERO #0 : 플레인(배경 없음) -->
 <section class="hero hero--plain" aria-labelledby="home-hero-title">
   <div class="hero-text">
-    <h1 id="home-hero-title" class="hero-headline">
-      본질을 읽고,<br> 최선의 해답을 제시합니다.
-    </h1>
+    <!-- 서브 문구 (위쪽) -->
     <div class="hero-sub">
       <ul class="hero-sublist">
         <li>검찰청 강력부 · 형사부 · 수사과 · 특별수사부 <strong>20년 경력의</strong></li>
         <li>실무중심, 절차전문 <strong>든든한 법무사</strong></li>
       </ul>
     </div>
-  </div>      
+
+    <!-- 큰 헤드라인 (아래쪽) -->
+    <h1 id="home-hero-title" class="hero-headline">
+      본질을 읽고,<br> 최선의 해답을<br>제시합니다.
+    </h1>
+  </div>
+
   <div class="hero-img">
     <img
       src="{{ '/assets/img/lawyer.png' | relative_url }}"
@@ -68,6 +72,7 @@ permalink: /
     document.querySelector('.hero--plain .hero-img img')?.classList.add('show');
   });
 </script>
+
 
 
 

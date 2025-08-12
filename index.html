@@ -7,18 +7,19 @@ author: 김성태 법무사 사무소
 permalink: /
 ---
 
-<!-- ✅ Hero with image1.jpg -->
-<section class="hero" aria-labelledby="home-hero-title">
-  <div>
-    <h1 id="home-hero-title">개인회생·파산, 고소장까지<br/>신속하고 정확하게 진행합니다</h1>
+<!-- Hero with image1.jpg -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>개인회생·파산, 고소장까지<br>신속하고 정확하게 진행합니다</h1>
     <p>수원·용인·화성 지역 맞춤 법률 서비스 / 상담부터 신청까지 원스톱</p>
-    <div class="hero-ctas">
-      <a class="btn" href="{{ '/check' | relative_url }}">자가진단 하기</a>
-      <a class="btn secondary" href="{{ '/board/' | relative_url }}">정보게시판 보기</a>
+    <div class="hero-buttons">
+      <a href="/check" class="btn primary">자가진단 하기</a>
+      <a href="/board/" class="btn secondary">정보게시판 보기</a>
     </div>
   </div>
-  <img src="{{ '/image1.jpg' | relative_url }}" alt="법률 상담을 상징하는 이미지">
 </section>
+
 
 <!-- 기존 섹션들 그대로 -->
 <section class="home-intro-section">
@@ -95,3 +96,4 @@ permalink: /
 
 <!-- ✅ 보드 최신글 6개 노출 -->
 {% include board-list.html limit=6 %}
+

@@ -6,19 +6,18 @@ keywords: 수원 법무사, 용인 법무사, 개인회생, 개인파산, 고소
 author: 김성태 법무사 사무소
 permalink: /
 ---
+<!-- HERO #0 : 플레인(배경 없음) -->
 <section class="hero hero--plain" aria-labelledby="home-hero-title">
   <div class="hero-text">
     <h1 id="home-hero-title" class="hero-headline">
       본질을 읽고, 최선의 해답을 제시합니다.
     </h1>
-
     <div class="hero-sub">
       <div class="line"><span class="dot" aria-hidden="true"></span> 검찰청 강력부 · 형사부 · 수사과 · 특별수사부 <strong>20년</strong></div>
       <div class="line"><span class="dot" aria-hidden="true"></span> 법무사 <strong>13년</strong></div>
     </div>
   </div>
 
-  <!-- 투명 PNG (경로: /assets/css/image/lawyer.png) -->
   <div class="hero-img">
     <img
       src="{{ '/assets/css/image/lawyer.png' | relative_url }}"
@@ -29,10 +28,10 @@ permalink: /
   </div>
 </section>
 
-<!-- HERO #1 : 개인회생 -->
-<section class="hero hero--rehab">
+<!-- HERO #1 : 개인회생 (카드형) -->
+<section class="hero hero--card hero--rehab">
   <div class="hero-content">
-    <h1>개인회생, 신속하고 정확하게</h1>
+    <h2>개인회생, 신속하고 정확하게</h2>
     <p>수원·용인·화성 지역 맞춤 법률 서비스 / 상담부터 신청까지 원스톱</p>
     <div class="hero-ctas">
       <a class="btn" href="{{ '/check' | relative_url }}">자가진단 하기</a>
@@ -44,10 +43,10 @@ permalink: /
   </div>
 </section>
 
-<!-- HERO #2 : 고소장 -->
-<section class="hero hero--complaint hero--reverse">
+<!-- HERO #2 : 고소장 (카드형, 반전 레이아웃) -->
+<section class="hero hero--card hero--complaint hero--reverse">
   <div class="hero-content">
-    <h1>고소장, 설득력 있게 준비합니다</h1>
+    <h2>고소장, 설득력 있게 준비합니다</h2>
     <p>수사기관 요건을 갖춘 정식 고소장 / 절차·형사합의까지 전 과정 안내</p>
     <div class="hero-ctas">
       <a class="btn" href="{{ '/complaint' | relative_url }}">고소장 작성 안내</a>
@@ -59,14 +58,14 @@ permalink: /
   </div>
 </section>
 
-<!-- 보드 최신글 6개 노출 -->
+<!-- 보드 최신글 -->
 {% include board-list.html limit=6 %}
 
 <script>
-window.addEventListener('load', () => {
-  document.querySelector('.hero-img img')?.classList.add('show');
-});
+  // 플레인 히어로 이미지 디졸브
+  window.addEventListener('load', () => {
+    document.querySelector('.hero--plain .hero-img img')?.classList.add('show');
+  });
 </script>
-
 
 

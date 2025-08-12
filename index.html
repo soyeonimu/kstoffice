@@ -63,30 +63,9 @@ permalink: /
 {% include board-list.html limit=6 %}
 
 <script>
-// 이미지 페이드인
 window.addEventListener('load', () => {
   document.querySelector('.hero-img img')?.classList.add('show');
-  setTimeout(startTyping, 700); // 이미지 나온 뒤 타이핑 시작
 });
-
-// 타이핑 애니메이션
-const lines = [
-  "검찰청 강력부·형사부·수사과·특별수사부 20년 경력",
-  "법무사 경력 13년"
-];
-let i=0, j=0, deleting=false;
-function startTyping(){
-  const el = document.getElementById('typing');
-  const txt = lines[i];
-  el.textContent = txt.slice(0, j);
-
-  if(!deleting && j < txt.length){ j++; setTimeout(startTyping, 70); }
-  else if(deleting && j > 0){ j--; setTimeout(startTyping, 40); }
-  else{
-    if(!deleting){ deleting = true; setTimeout(startTyping, 1000); }
-    else{ deleting = false; i = (i+1)%lines.length; setTimeout(startTyping, 400); }
-  }
-}
 </script>
 
 

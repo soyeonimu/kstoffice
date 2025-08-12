@@ -1025,3 +1025,53 @@ caption {
   .hero-img img{ transition: none; opacity:1; transform:none; }
 }
 
+/* 게시판 영역 */
+.board-section {
+  padding: 2rem 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.board-section h2 {
+  font-size: 1.5rem;
+  color: #0a3871;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.board-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.board-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.board-list li:last-child {
+  border-bottom: none;
+}
+
+.board-list a {
+  color: #222;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.board-list a:hover {
+  color: #0a3871;
+  text-decoration: underline;
+}
+
+.board-list .board-date {
+  font-size: 0.9rem;
+  color: #6b7280;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}

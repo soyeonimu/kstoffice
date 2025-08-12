@@ -1,23 +1,15 @@
-{%- comment -%} 공지/게시글 리스트 공통 {%- endcomment -%}
-{%- assign items = include.items | default: site.board | sort: 'date' | reverse -%}
-{%- assign lim = include.limit | default: 6 -%}
+{% assign items = include.items | default: site.board | sort: 'date' | reverse %}
+{% assign lim = include.limit | default: 6 %}
 
-<section class="home-board">
-  <div class="home-section-container">
-    <div class="home-board-header">
-      <h2 class="home-section-title">게시판</h2>
-      <a class="home-board-more" href="{{ '/board' | relative_url }}">전체 보기 →</a>
-    </div>
-
-    <ul class="home-board-list">
-      {%- for post in items limit: lim -%}
-      <li class="home-board-item">
-        <a href="{{ post.url | relative_url }}" class="home-board-link">
-          <span class="home-board-title">{{ post.title }}</span>
-          <time class="home-board-date">{{ post.date | date: "%Y.%m.%d" }}</time>
-        </a>
-      </li>
-      {%- endfor -%}
-    </ul>
-  </div>
+<section class="board-section">
+  <h2>게시판</h2>
+  <a href="{{ '/board' | relative_url }}" class="more-link">전체 보기 →</a>
+  <ul class="board-list">
+    {% for post in items limit: lim %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="board-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+    </li>
+    {% endfor %}
+  </ul>
 </section>

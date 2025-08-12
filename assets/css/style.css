@@ -926,6 +926,7 @@ caption {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
 /* ======= HERO: 공통 레이아웃 (컴팩트) ======= */
 .hero{
   max-width: 1200px;
@@ -1079,3 +1080,42 @@ caption {
   flex-shrink: 0;
   margin-left: 1rem;
 }
+
+/* 게시판 폭을 히어로와 통일 */
+.board-section{
+  max-width: 1200px;   /* ✅ hero와 동일 */
+  margin: 1.2rem auto; /* 가운데 정렬 */
+  padding: 1.2rem 1rem;
+}
+
+/* 행 간격도 살짝만 줄여서 컴팩트하게 */
+.board-list li{ padding: .6rem 0; }
+
+/* (선택) 행 hover 시 배경 살짝 */
+.board-list li:hover{
+  background: rgba(2,16,43,.03);
+}
+
+/* === Hero 타이트하게 + 타이틀 크게 (데스크톱) === */
+@media (min-width: 1024px){
+  /* 텍스트 영역 넓히고, 사진 영역 좁힘 */
+  .hero{
+    grid-template-columns: 1.25fr 0.75fr; /* ← 왼쪽 더 넓게 */
+    gap: .9rem;                            /* ← 컬럼 간격 축소 */
+  }
+  /* 헤드라인 더 키우기 */
+  .hero-headline{
+    font-size: clamp(38px, 5.6vw, 84px);   /* max 72px → 84px */
+    line-height: 1.06;                     /* 줄간격 더 타이트 */
+    letter-spacing: -0.02em;               /* 자간 살짝 더 압축 */
+  }
+  /* sub ↔ headline 간격 더 붙이기 */
+  .hero-text{ gap: .4rem; }
+
+  /* 사진 폭 조금 줄여서 간격 체감 ↓ (원하면 주석 해제) */
+  .hero-img img{
+    width: min(400px, 36vw);
+  }
+}
+
+/* 모바일/태블릿은 지금 값 유지 (가독성 우선) */

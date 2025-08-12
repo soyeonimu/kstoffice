@@ -119,31 +119,16 @@
   $('#copyHtml').addEventListener('click', ()=>copyText(outHtml.value));
   $('#copyMd').addEventListener('click', ()=>copyText(outMd.value));
   $('#downloadMd').addEventListener('click', ()=>{
-  const fm = frontMatter();
-  const fname = fileName(fm.title, dateEl.value);
-  const slug = slugify(fm.title);
-  const permalink = (permalinkEl && permalinkEl.value.trim())
-    ? permalinkEl.value.trim()
-    : `/board/${dateEl.value}-${slug}`;
-  const keywords = (keywordsEl && keywordsEl.value)
-    ? keywordsEl.value.split(',').map(s=>s.trim()).filter(Boolean).join(', ')
-    : '';
-  const category = (catEl && catEl.value ? catEl.value.trim() : '개인회생') || '개인회생';
-
-  const md = `---\n`
-    + `title: ${fm.title}\n`
-    + `date: ${dateEl.value}\n`
-    + `layout: ${layoutEl.value || 'board-post'}\n`
-    + `category: ${category}\n`
-    + (fm.description ? `description: ${fm.description}\n` : '')
-    + (keywords ? `keywords: ${keywords}\n` : '')
-    + (authorEl && authorEl.value ? `author: ${authorEl.value}\n` : '')
-    + `permalink: ${permalink}\n`
-    + `---\n\n${outMd.value}\n`;
-
-  download(fname, md);
-});
-
+    const fm = frontMatter();
+    const fname = fileName(fm.title, dateEl.value);
+    const md = `---\nlayout: ${layoutEl.value || 'board-post'}\n`+
+               `title: ${fm.title}\n`+
+               `date: ${dateEl.value}\n`+
+               `categories: [${(catEl.value||'').split(',').map(s=>s.trim()).filter(Boolean).join(', ')}]\n`+
+               (fm.description ? `description: ${fm.description}\n` : '')+
+               `---\n\n${outMd.value}\n`;
+    download(fname, md);
+  });
 
   async function readFromClipboardEvent(e){
     const html = e.clipboardData.getData('text/html');
@@ -210,17 +195,13 @@
 
   function fileName(title, dateStr){
     const d = (dateStr||new Date().toISOString().slice(0,10));
-    const slug = slugify(title);
-    return `${d}-${slug}.md`;
-  }
-  function slugify(title){
-    return (title||'post').toLowerCase()
+    const slug = (title||'post').toLowerCase()
       .replace(/\s+/g,'-')
       .replace(/[^0-9a-z가-힣-_]/g,'')
       .replace(/-+/g,'-')
       .replace(/^-+|-+$/g,'') || 'post';
+    return `${d}-${slug}.md`;
   }
-
 
   function copyText(text){ navigator.clipboard.writeText(text).then(()=>toast('복사했어요!')).catch(()=>alert('복사 실패. 수동 복사해주세요.')); }
   function download(filename, text){ const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], {type:'text/markdown'})); a.download = filename; a.click(); URL.revokeObjectURL(a.href); }

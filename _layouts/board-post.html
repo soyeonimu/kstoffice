@@ -186,7 +186,24 @@
       text-decoration: none;
     }
   </style>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.post-content img').forEach(function(img){
+        try{
+          const u = new URL(img.src, location.href);
+          if (u.host && u.host !== location.host) {
+            img.setAttribute('referrerpolicy','no-referrer');
+            img.setAttribute('loading','lazy');
+          }
+          if (/^http:\/\//i.test(img.src)) {
+            img.src = img.src.replace(/^http:\/\//i,'https://');
+          }
+        }catch(e){}
+      });
+    });
+  </script>
 </head>
+
 <body>
 
   {% include header.html %}

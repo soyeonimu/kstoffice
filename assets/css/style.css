@@ -987,44 +987,96 @@ caption {
 
 /* 1) 카드형 공통 */
 .hero--card{
-  background: #0a3871;
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 텍스트 : 이미지 = 1:1 */
+  align-items: stretch;             /* 두 컬럼 높이 동일화 */
+  gap: 1.2rem;
+  background: #0a3871;              /* 기본 톤 (개별 클래스에서 덮어씀) */
   color: #fff;
   border-radius: 18px;
   box-shadow: 0 10px 30px rgba(2,16,43,.08);
-  padding: 1.8rem;                       /* 카드형도 살짝 컴팩트하게 */
+  padding: 1.6rem;
+  min-height: 360px;                /* 카드 최소 높이(필요 시 조절) */
 }
+
+.hero--card .hero-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;          /* 텍스트 수직 가운데 */
+  gap: .8rem;
+}
+
 .hero--card .hero-content h2{
   font-size: clamp(20px, 2vw + 12px, 34px);
   line-height: 1.22;
-  margin: 0 0 .5rem;
+  margin: 0;
   color: #fff;
 }
-.hero--card .hero-content p{ opacity:.95; margin:0 0 .8rem; }
-.hero--card .hero-ctas{ display:flex; gap:.55rem; flex-wrap:wrap; }
+
+.hero--card .hero-content p{
+  opacity: .95;
+  margin: 0;
+}
+
+.hero--card .hero-ctas{
+  display: flex;
+  gap: .55rem;
+  flex-wrap: wrap;
+  margin-top: .4rem;
+}
+
 .hero--card .btn{
-  display:inline-block; padding:.62rem .95rem; border-radius:10px;
-  background:#ffffff; color:#0a3871; font-weight:700;
+  display: inline-block;
+  padding: .62rem .95rem;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0a3871;
+  font-weight: 700;
 }
 .hero--card .btn.secondary{
-  background:rgba(255,255,255,.18); color:#fff; border:1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.35);
+}
+
+/* 이미지 영역: 부모 높이에 맞춰 꽉 채우기 */
+.hero--card .hero-media{
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  /* 데스크톱에서 균일한 높이가 되도록 보정 */
+  min-height: 360px;
 }
 .hero--card .hero-media img{
-  width:100%; height:260px;              /* 이미지 높이 ↓ */
-  object-fit:cover; border-radius:12px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                 /* 비율 유지하며 채우기 */
   box-shadow: 0 8px 20px rgba(0,0,0,.18);
 }
+
+/* 색상 변형 */
 .hero--rehab{ background:#0a3871; }
 .hero--complaint{ background:#0e2a47; }
-.hero--reverse .hero-media{ order:-1; }
 
-/* ======= 반응형 ======= */
+/* 레이아웃 반전 (우→좌) */
+.hero--reverse .hero-media{ order: -1; }
+
+/* ====== 반응형 ====== */
 @media (max-width: 900px){
-  .hero{ grid-template-columns: 1fr; gap: 1rem; padding: 1.2rem 0; }
-  .hero--plain{ text-align: left; }
-  .hero-headline{ font-size: clamp(28px, 7.2vw, 40px); line-height:1.12; }
-  .hero-img{ order:-1; }
-  .hero--card .hero-media img{ height:200px; }
+  .hero--card{
+    grid-template-columns: 1fr;      /* 한 줄로 */
+    gap: 1rem;
+    padding: 1.2rem;
+    min-height: unset;
+  }
+  .hero--card .hero-media{
+    min-height: 200px;               /* 모바일에서 카드 이미지 높이 */
+  }
 }
+
+/* 모션 최소화 환경 */
 @media (prefers-reduced-motion: reduce){
   .hero-img img{ transition: none; opacity:1; transform:none; }
 }

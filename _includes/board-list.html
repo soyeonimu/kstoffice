@@ -1,0 +1,23 @@
+{%- comment -%} 공지/게시글 리스트 공통 {%- endcomment -%}
+{%- assign items = include.items | default: site.board | sort: 'date' | reverse -%}
+{%- assign lim = include.limit | default: 6 -%}
+
+<section class="home-board">
+  <div class="home-section-container">
+    <div class="home-board-header">
+      <h2 class="home-section-title">공지사항 · 정보게시판</h2>
+      <a class="home-board-more" href="{{ '/board/' | relative_url }}">전체 보기 →</a>
+    </div>
+
+    <ul class="home-board-list">
+      {%- for post in items limit: lim -%}
+      <li class="home-board-item">
+        <a href="{{ post.url | relative_url }}" class="home-board-link">
+          <span class="home-board-title">{{ post.title }}</span>
+          <time class="home-board-date">{{ post.date | date: "%Y.%m.%d" }}</time>
+        </a>
+      </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>

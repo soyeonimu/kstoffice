@@ -40,35 +40,36 @@ permalink: /
   </div>
 </section>
 
-<!-- HERO #1 : 개인회생 (카드형) -->
-<section class="hero hero--card hero--rehab">
-  <div class="hero-content">
+<!-- 개인회생 슬림카드 -->
+<section class="hero hero--slice rehab">
+  <div class="copy">
     <h2>개인회생, 신속하고 정확하게</h2>
-    <p>수원·용인·화성·동탄·오산 <br>상담부터 신청까지 원스톱</p>
-    <div class="hero-ctas">
+    <p>수원·용인·화성·동탄·오산 — 상담부터 신청까지 원스톱</p>
+    <div class="actions">
       <a class="btn" href="{{ '/check' | relative_url }}">자가진단 하기</a>
       <a class="btn secondary" href="{{ '/procedure' | relative_url }}">절차·비용 보기</a>
     </div>
   </div>
-  <div class="hero-media">
+  <div class="media">
     <img src="{{ '/image1.jpg' | relative_url }}" alt="개인회생 상담 이미지">
   </div>
 </section>
 
-<!-- HERO #2 : 고소장 (카드형, 반전 레이아웃) -->
-<section class="hero hero--card hero--complaint hero--reverse">
-  <div class="hero-content">
+<!-- 고소장 슬림카드 -->
+<section class="hero hero--slice complaint">
+  <div class="copy">
     <h2>고소장, 설득력 있게</h2>
-    <p>논리와 요건을 갖춘 정식 전문 고소장 작성<br>절차·합의까지 전 과정 안내</p>
-    <div class="hero-ctas">
+    <p>논리와 요건을 갖춘 정식 고소장·형사합의까지 전 과정 안내</p>
+    <div class="actions">
       <a class="btn" href="{{ '/complaint' | relative_url }}">고소장 작성 안내</a>
       <a class="btn secondary" href="{{ '/difference.html' | relative_url }}">신고 vs 고소 보기</a>
     </div>
   </div>
-  <div class="hero-media">
+  <div class="media">
     <img src="{{ '/image2.jpg' | relative_url }}" alt="고소장 법률 이미지">
   </div>
 </section>
+
 
 <!-- 보드 최신글 -->
 {% include board-list.html limit=6 %}
@@ -79,5 +80,6 @@ permalink: /
     document.querySelector('.hero--plain .hero-img img')?.classList.add('show');
   });
 </script>
+
 
 

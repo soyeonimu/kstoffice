@@ -930,10 +930,10 @@ caption {
 /* ======= HERO: 공통 레이아웃 (컴팩트) ======= */
 .hero{
   max-width: 1200px;
-  margin: 1.2rem auto;                   /* 바깥 여백 ↓ */
+  margin: 1.5rem auto;                   /* 바깥 여백 ↓ */
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;    /* 텍스트 : 이미지 비율 살짝 좁힘 */
-  gap: 1.4rem;                           /* 내부 간격 ↓ */
+  grid-template-columns: 1.5fr 0.9fr;    /* 텍스트 : 이미지 비율 살짝 좁힘 */
+  gap: 1.8rem;                           /* 내부 간격 ↓ */
   align-items: center;
   padding: 1.6rem 0;                     /* 안쪽 상하 여백 크게 ↓ (핵심) */
 }

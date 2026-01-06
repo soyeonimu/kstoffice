@@ -1653,3 +1653,27 @@ header .logo span {
   color: #ffffff;       /* 흰색 */
   letter-spacing: -0.02em;
 }
+header {
+  padding-left: 32px;   /* ← 기존보다 줄임 */
+  padding-right: 32px;
+}
+header .logo a {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* ← 핵심: 기존 12~16px이면 너무 멂 */
+}
+header .logo span {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+header nav ul li a {
+  font-size: 1.05rem;    /* ← 확실히 키움 */
+  font-weight: 500;      /* ← 세미볼드 (딱 좋음) */
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+header nav ul {
+  gap: 28px; /* 기존 16~20px이면 좁음 */
+}

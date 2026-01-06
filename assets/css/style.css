@@ -1,16 +1,4 @@
-/* 전체 페이지의 텍스트 클릭 시 커서(캐럿)를 숨깁니다 */
-html, body {
-  -webkit-tap-highlight-color: transparent; /* 모바일 터치 하이라이트 제거 */
-}
-
-* {
-  caret-color: transparent !important; /* 모든 요소에서 깜빡이는 커서 제거 */
-}
-
-/* 단, 입력이 필요한 input이나 textarea에서는 커서가 보여야 하므로 제외합니다 */
-input, textarea {
-  caret-color: auto !important;
-}/*
+/*
  * 김성태 법무사 사무소 웹사이트 전체 스타일 시트
  * 모든 페이지의 공통 스타일 및 개별 페이지 스타일을 포함합니다.
  */
@@ -1306,33 +1294,3 @@ h1, h2, h3, h4, strong, b {
   animation-play-state: paused;
   color: #ffeb3b; /* 마우스 올리면 강조색 유지 */
 }
-/* 리더스 성공사례 카드 시스템 */
-.leaders-case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
-
-.case-card { 
-  background: #fff; padding: 40px; border-radius: var(--radius-md); border: 1px solid var(--border);
-  transition: var(--transition); display: flex; flex-direction: column;
-}
-.case-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); border-color: var(--brand-accent); }
-
-.case-tag { font-size: 11px; font-weight: 800; color: var(--brand-accent); background: var(--brand-soft); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 20px; width: fit-content; }
-.case-title { font-size: 1.35rem; font-weight: 800; color: var(--brand); margin-bottom: 20px; letter-spacing: -0.03em; line-height: 1.4; }
-
-/* 글자 밀림 방지 핵심 코드 */
-.case-info { background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
-.info-item { display: flex; align-items: flex-start; margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
-.info-item:last-child { margin-bottom: 0; }
-
-.info-item span { 
-  color: var(--text-sub); 
-  width: 75px;        /* 제목 영역 너비 고정 */
-  flex-shrink: 0;     /* 너비 압축 방지 */
-  font-weight: 500; 
-}
-.info-item strong { color: var(--brand); font-weight: 700; word-break: keep-all; }
-
-.case-desc { font-size: 0.95rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; word-break: keep-all; }
-.case-result { font-weight: 800; color: var(--brand-accent); border-top: 1px solid var(--border); padding-top: 20px; font-size: 15px; }
-
-@media (max-width: 1100px) { .leaders-case-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 768px) { .leaders-case-grid { grid-template-columns: 1fr; } }

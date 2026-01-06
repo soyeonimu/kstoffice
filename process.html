@@ -90,7 +90,23 @@ description: 고소장 작성부터 수사 결과 통보까지. 검찰 20년 경
     </div>
   </section>
 
-  {% include cta.html title="혼자 고민하면 골든타임을 놓칠 수 있습니다." desc="지금 바로 베테랑 법무사에게 사건의 해답을 물어보세요." %}
+  <section class="unified-cta-section js-reveal">
+    <div class="container-cta">
+      <div class="cta-box-wrapper">
+        <div class="cta-inner-content">
+          <div class="cta-text-area">
+            <div class="cta-badge">URGENT CONSULTING</div>
+            <h3 class="cta-title">혼자 고민하면 골든타임을 놓칠 수 있습니다.</h3>
+            <p class="cta-desc">지금 바로 베테랑 법무사에게 사건의 해답을 물어보세요.</p>
+          </div>
+          <div class="cta-action-area">
+            <a href="tel:031-225-6885" class="cta-btn secondary">전화 상담: 031-225-6885</a>
+            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn kakao">온라인 상담예약</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <style>
@@ -140,6 +156,19 @@ description: 고소장 작성부터 수사 결과 통보까지. 검찰 20년 경
   .focus-card h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; color: #fff; }
   .focus-card p { font-size: 0.95rem; color: #94a3b8; line-height: 1.7; }
 
+  /* UNIFIED CTA */
+  .unified-cta-section { padding: 60px 24px 120px; background: transparent; }
+  .container-cta { max-width: 1200px; margin: 0 auto; }
+  .cta-box-wrapper { background: var(--brand); border-radius: var(--radius-lg); padding: 64px 60px; box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2); }
+  .cta-inner-content { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
+  .cta-badge { font-size: 12px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.15em; margin-bottom: 16px; }
+  .cta-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; color: #ffffff; margin-bottom: 14px; letter-spacing: -0.03em; }
+  .cta-desc { font-size: 1.15rem; color: #94a3b8; }
+  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
+  .cta-btn { display: flex; align-items: center; justify-content: center; min-width: 180px; height: 60px; border-radius: 14px; font-weight: 800; text-decoration: none; transition: var(--transition); }
+  .cta-btn.kakao { background: #fee500; color: #3c1e1e; }
+  .cta-btn.secondary { background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); }
+
   /* Animation */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -148,6 +177,9 @@ description: 고소장 작성부터 수사 결과 통보까지. 검찰 20년 경
     .proc-item { flex-direction: column; gap: 20px; padding: 30px; }
     .focus-grid { grid-template-columns: 1fr; gap: 48px; }
     .leaders-focus-box { padding: 60px 24px; }
+    .cta-inner-content { flex-direction: column; text-align: center; }
+    .cta-action-area { width: 100%; flex-direction: column; }
+    .cta-btn { width: 100%; }
   }
 </style>
 

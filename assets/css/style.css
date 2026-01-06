@@ -129,169 +129,6 @@ ul {
   margin-top: 3rem;
 }
 
-/* ----------------------------------------------------- */
-/* 3. 헤더 (Header) */
-/* ----------------------------------------------------- */
-header {
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #222;
-  margin-right: auto; /* 좌측 정렬 */
-}
-
-.logo img {
-  width: 28px;
-  height: 28px;
-}
-
-nav {
-  flex: none;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  position: relative;
-}
-
-nav li {
-  position: relative;
-}
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  padding: 0.5rem 0.3rem;
-  display: inline-block;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #007bff; /* 호버 시 색상 변경 */
-}
-
-/* 드롭다운 메뉴 */
-nav li:hover > ul,
-nav li:focus-within > ul,
-nav li ul:hover {
-  display: block;
-}
-
-nav li ul {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  border: 1px solid #eee;
-  border-radius: 6px;
-  min-width: 180px;
-  z-index: 999;
-  padding: 0.5rem 0; /* 드롭다운 메뉴 내부 패딩 */
-}
-
-nav li ul li {
-  padding: 0.6rem 1rem;
-}
-
-nav li ul li a {
-  color: #333;
-  font-weight: 400;
-  display: block; /* 전체 영역 클릭 가능하도록 */
-  padding: 0; /* 드롭다운 내부 링크 패딩 초기화 (li에서 패딩 조절) */
-}
-
-nav li ul li:hover {
-  background: #f0f0f0;
-}
-
-/* ----------------------------------------------------- */
-/* 4. 푸터 (Footer) */
-/* ----------------------------------------------------- */
-footer {
-  background-color: #032035;
-  color: #ccc;
-  text-align: center;
-  padding: 2.5rem 1rem;
-  margin-top: 4rem; /* 본문과의 여백 */
-}
-
-.footer-content { /* 푸터 내부 컨테이너 (max-width 적용) */
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-logo-area {
-  margin-bottom: 1.2rem;
-}
-
-.footer-logo-area img {
-  width: 36px;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-
-.footer-office-name {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.footer-phone {
-  margin-top: 0.6rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.footer-phone a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-info {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #ccc;
-  margin-bottom: 1rem;
-}
-
-.footer-info strong {
-  color: #eee;
-}
-
-.footer-info a {
-  color: #bbb;
-  text-decoration: underline;
-}
-
-.footer-copyright {
-  font-size: 0.85rem;
-  color: #888;
-}
-
-.footer-copyright span {
-  color: #ddd;
-  font-weight: 600;
-}
 
 /* ----------------------------------------------------- */
 /* 5. 개별 페이지 섹션 스타일 (Specific Page Sections) */
@@ -927,143 +764,6 @@ caption {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* ======= HERO: 공통 레이아웃 (컴팩트) ======= */
-.hero{
-  max-width: 1200px;
-  margin: 1.5rem auto;                   /* 바깥 여백 ↓ */
-  display: grid;
-  grid-template-columns: 1.5fr 0.9fr;    /* 텍스트 : 이미지 비율 살짝 좁힘 */
-  gap: 1.8rem;                           /* 내부 간격 ↓ */
-  align-items: center;
-  padding: 1.6rem 0;                     /* 안쪽 상하 여백 크게 ↓ (핵심) */
-}
-
-.hero-text{
-  display: flex;
-  flex-direction: column;
-  gap: .6rem;                            /* sub ↔ headline 간격 최소화 */
-}
-
-/* 서브(위) */
-.hero-sub{
-  display: grid;
-  gap: .25rem;                           /* 행 간격 ↓ */
-  font-size: clamp(14px, 1vw + 11px, 20px);
-  color: #384250;
-  line-height: 1.45;
-}
-.hero-sub strong{ font-weight: 800; color:#0a3871; }
-
-/* 헤드라인(아래, 큼) */
-.hero-headline{
-  margin: 0;
-  font-weight: 900;
-  letter-spacing: -0.015em;              /* 자간 살짝 압축 */
-  line-height: 1.08;                     /* 줄간격 타이트 */
-  font-size: clamp(34px, 5vw + 18px, 72px);  /* 최대값 72px로 안정화 */
-  color: #0a3871;
-}
-
-/* 이미지(디졸브) */
-.hero-img img{
-  width: min(420px, 40vw);               /* 폭 약간 ↓ */
-  height: auto;
-  opacity: 0;
-  transform: scale(.985);
-  transition: opacity 1.0s ease, transform 1.0s ease;
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,.18));
-}
-.hero-img img.show{ opacity:1; transform: scale(1); }
-
-/* ======= 변형 ======= */
-/* 0) 플레인(배경 없음) */
-.hero--plain{
-  background: transparent !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  color: #222;
-  padding: 1.4rem 0;                     /* 섹션 자체 여백 추가 축소 */
-}
-
-/* --- Slim Slice Card --- */
-.hero--slice{
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;   /* 텍스트:이미지 */
-  align-items: center;
-  gap: 1.2rem;
-  padding: 1.4rem 1.6rem;
-  border-radius: 16px;
-  background: #0a2d52;                    /* 기본 톤 */
-  color: #fff;
-  overflow: hidden;
-  box-shadow: 0 8px 22px rgba(2,16,43,.08);
-}
-
-/* 오른쪽 이미지 풀블리드 */
-.hero--slice .media{
-  position: relative;
-  height: 270px;                           /* 카드 높이의 기준 */
-  border-radius: 12px;
-  overflow: hidden;
-  isolation: isolate;
-}
-.hero--slice .media img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.02);
-  transition: transform .6s ease;
-}
-/* 텍스트 가독성용 그라데이션 */
-.hero--slice .media::after{
-  content:"";
-  position: absolute; inset:0;
-  background: linear-gradient(90deg, rgba(10,45,82,.75) 0%, rgba(10,45,82,0) 45%);
-}
-
-/* 좌측 카피 */
-.hero--slice .copy h2{
-  font-size: clamp(22px, 2.2vw + 10px, 34px);
-  line-height: 1.22;
-  margin: 0 0 .6rem 0;
-  letter-spacing: -.015em;
-}
-.hero--slice .copy p{
-  margin: 0 0 1rem 0;
-  opacity: .9;
-}
-
-/* 버튼 */
-.hero--slice .actions{ display:flex; gap:.6rem; flex-wrap:wrap; }
-.hero--slice .btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:.62rem .9rem; border-radius:10px; font-weight:700;
-  background:#ffffff; color:#0a3871; border:none;
-  transition: transform .15s ease, filter .15s ease;
-}
-.hero--slice .btn.secondary{
-  background:rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.35);
-  backdrop-filter: blur(3px);
-}
-.hero--slice .btn:hover{ transform: translateY(-1px); filter:brightness(1.05); }
-
-/* 호버 시 이미지 살짝 확대 */
-.hero--slice:hover .media img{ transform: scale(1.06); }
-
-/* 컬러 버전 */
-.hero--slice.rehab{ background:#0e2a47; }          /* 개인회생 */
-.hero--slice.complaint{ background:#0e2a47; }      /* 고소장 */
-
-/* 모바일 */
-@media (max-width: 900px){
-  .hero--slice{
-    grid-template-columns: 1fr;
-    gap: .9rem;
-    padding: 1rem 1rem;
-  }
-  .hero--slice .media{ order:-1; height: 200px; border-radius: 10px; }
-}
 
 /* 게시판 영역 */
 .board-section {
@@ -1857,4 +1557,36 @@ header nav ul {
   background: #fff;
   border: 1px solid rgba(255,255,255,.16);
   color: #0a3871;
+}
+/* =========================
+   Footer top align fix
+   ========================= */
+
+/* 상단 라인을 정확히 한 줄로 맞춤 */
+.site-footer .footer-top{
+  display: flex;
+  align-items: center;          /* ✅ 로고/텍스트/버튼 세로 중앙 정렬 */
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* 브랜드(로고+상호) 자체 높이/라인 정리 */
+.site-footer .footer-brand{
+  display: inline-flex;
+  align-items: center;          /* ✅ 로고와 텍스트 수평/수직 정렬 */
+  gap: 10px;
+  line-height: 1;               /* ✅ 텍스트가 버튼보다 아래로 처지는 현상 방지 */
+}
+
+/* 버튼 영역도 중앙 정렬 */
+.site-footer .footer-cta{
+  display: inline-flex;
+  align-items: center;          /* ✅ 버튼 2개 높이 동일 라인 */
+  gap: 10px;
+}
+
+/* 혹시 버튼이 미세하게 내려가면 이걸로 보정 */
+.site-footer .footer-cta a{
+  margin-top: 0;
+  line-height: 1;
 }

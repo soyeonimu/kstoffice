@@ -1092,56 +1092,24 @@ caption {
     #082b52 100%
   );
 }
-/* ===== Header Logo Upgrade ===== */
-header{
-  padding: 1.1rem 2rem;      /* 헤더 높이 조금 여유 */
-}
 
-.logo-link{
-  display:flex;
-  align-items:center;
-  gap:.8rem;
-  text-decoration:none;
-  color:inherit;
-}
-
-.logo img{
-  width:36px;
-  height:36px;
-}
-
-.logo-text strong{
-  display:block;
-  font-size:1.35rem;         /* ✅ 메인 텍스트 크게 */
-  font-weight:800;
-  color:#0a3871;
-  line-height:1.1;
-}
-
-.logo-text span{
-  display:block;
-  font-size:.92rem;          /* ✅ 서브텍스트 */
-  color:#555;
-  margin-top:.18rem;
-  line-height:1.2;
-}
-
-/* ===== Header (Black / Hide on scroll down, show on scroll up) ===== */
-:root{
-  --header-h: 72px;
+/* ===== 1. 전역 변수 및 초기화 ===== */
+:root {
+  --header-h: 76px;
   --header-bg: rgba(10, 12, 16, 0.92);
-  --header-border: rgba(255,255,255,0.10);
-  --header-text: rgba(255,255,255,0.92);
-  --header-muted: rgba(255,255,255,0.68);
-  --header-accent: #f2c14e; /* 포인트(골드 느낌) */
+  --header-border: rgba(255, 255, 255, 0.10);
+  --header-text: rgba(255, 255, 255, 0.95);
+  --header-muted: rgba(255, 255, 255, 0.68);
+  --header-accent: #f2c14e;
+  --footer-bg: #0b0f14;
 }
 
-/* 고정 헤더로 바꿔서 본문이 가려지지 않게 */
-body{
+body {
   padding-top: var(--header-h);
 }
 
-.site-header{
+/* ===== 2. 헤더 (Header) ===== */
+.site-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -1151,386 +1119,200 @@ body{
   background: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
   backdrop-filter: blur(10px);
+  padding: 0 32px;
   transform: translateY(0);
   transition: transform .22s ease, background-color .22s ease;
 }
 
-.site-header.header--hidden{
+.site-header.header--hidden {
   transform: translateY(-110%);
 }
 
-.header-inner{
+.header-inner {
   max-width: 1200px;
   height: 100%;
   margin: 0 auto;
-  padding: 0 18px;
   display: flex;
   align-items: center;
-  gap: 18px;
+  justify-content: space-between;
 }
 
-.logo{
-  margin-right: auto;
+/* 로고 섹션 */
+.logo {
   display: flex;
   align-items: center;
 }
 
-.logo-link{
-  display:flex;
-  align-items:center;
-  gap: 10px;
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
   color: var(--header-text);
-  text-decoration:none;
 }
 
-.logo-img{
-  width: 34px;
-  height: 34px;
+.logo-img {
+  width: 42px;
+  height: 42px;
   object-fit: contain;
 }
 
-.logo-text{
-  display:flex;
-  flex-direction:column;
-  line-height:1.1;
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
 }
 
-.logo-title{
-  font-size: 18px;  /* ✅ 글자 키움 */
-  font-weight: 800;
+.logo-title {
+  font-size: 1.15rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--header-text);
+  color: #ffffff;
+  white-space: nowrap;
 }
 
-.logo-sub{
+.logo-sub {
   margin-top: 3px;
   font-size: 12.5px;
   font-weight: 600;
   color: var(--header-muted);
 }
 
-/* nav */
-.gnb{ flex: none; }
-.gnb-list{
-  display:flex;
-  align-items:center;
-  gap: 22px;
+/* ===== 3. 네비게이션 (GNB) ===== */
+.gnb-list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
 }
 
-.gnb-list > li > a{
+.gnb-list > li > a {
   color: var(--header-text);
-  font-weight: 700;
-  font-size: 14.5px;
-  padding: 10px 6px;
-  display:inline-block;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 12px 8px;
+  text-decoration: none;
   transition: color .15s ease;
 }
 
-.gnb-list > li > a:hover{
+.gnb-list > li > a:hover {
   color: #ffffff;
 }
 
-/* dropdown */
-.has-sub{ position: relative; }
-.sub{
-  display:none;
-  position:absolute;
+/* 드롭다운 (Dropdown) */
+.has-sub { position: relative; }
+
+.sub {
+  display: none;
+  position: absolute;
   top: calc(100% + 8px);
   left: 0;
   min-width: 190px;
   background: rgba(12, 14, 18, 0.98);
-  border: 1px solid rgba(255,255,255,0.10);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 10px;
   padding: 8px 0;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  list-style: none;
 }
 
 .has-sub:hover .sub,
-.has-sub:focus-within .sub{
-  display:block;
+.has-sub:focus-within .sub {
+  display: block;
 }
 
-.sub li a{
-  display:block;
+.sub li a {
+  display: block;
   padding: 10px 14px;
-  font-size: 13.5px;
-  color: rgba(255,255,255,0.86);
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.86);
   font-weight: 600;
+  text-decoration: none;
 }
 
-.sub li a:hover{
-  background: rgba(255,255,255,0.06);
+.sub li a:hover {
+  background: rgba(255, 255, 255, 0.06);
   color: #fff;
 }
 
-/* CTA 버튼(전화) */
-.header-cta{ display:flex; align-items:center; }
-.cta-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+/* 헤더 CTA */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 38px;
   padding: 0 12px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   color: #fff;
   font-weight: 800;
   font-size: 13.5px;
   text-decoration: none;
   transition: transform .12s ease, background .12s ease;
 }
-.cta-btn:hover{
+
+.cta-btn:hover {
   transform: translateY(-1px);
-  background: rgba(255,255,255,0.14);
+  background: rgba(255, 255, 255, 0.14);
 }
 
-/* 모바일 */
-@media (max-width: 900px){
-  :root{ --header-h: 64px; }
-  .logo-title{ font-size: 16px; }
-  .logo-sub{ display:none; }
-  .gnb{ display:none; } /* 모바일은 일단 숨김(원하면 햄버거 메뉴로 바꿔줄게) */
-  .cta-btn{ height: 36px; font-size: 13px; }
-}
-.logo-title{
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 15.5px; /* 지금 헤더랑 딱 어울리는 크기 */
-  letter-spacing: -0.02em;
-}
-
-header {
-  padding-bottom: 14px; /* 기존보다 여유 */
-}
-
-.hero {
-  padding-top: 120px; /* 핵심 */
-}
-.hero-content {
-  max-width: 1200px;
-  padding-left: 80px;
-  padding-top: 40px;
-}
-.hero h1 {
-  line-height: 1.15;
-  margin-top: 18px;
-  margin-bottom: 28px;
-}
-.hero + section {
-  margin-top: 80px;
-}
-.section,
-.hero--slice {
-  margin-top: 80px;
-}
-.logo-img{
-  width: 42px;      /* 🔥 로고 존재감 */
-  height: 42px;
-  object-fit: contain;
-}
-.gnb-list > li > a{
-  font-weight: 700;
-  font-size: 14.5px;
-}
-.gnb-list > li > a{
-  font-size: 16.5px;     /* ⬆ 폰트 키움 */
-  font-weight: 800;     /* ⬆ 더 Bold */
-  letter-spacing: -0.02em;
-  color: rgba(255,255,255,0.95);
-  padding: 12px 8px;
-}
-.sub li a{
-  font-size: 14.5px;   /* 메인보다 살짝 작게 */
-  font-weight: 600;
-}
-:root{
-  --header-h: 76px; /* 기존보다 살짝 키움 */
-}
-header .logo span {
-  font-size: 1.15rem;   /* ← 지금 체감상 가장 적당 */
-  font-weight: 700;     /* 볼드 */
-  color: #ffffff;       /* 흰색 */
-  letter-spacing: -0.02em;
-}
-header {
-  padding-left: 32px;   /* ← 기존보다 줄임 */
-  padding-right: 32px;
-}
-header .logo a {
-  display: flex;
-  align-items: center;
-  gap: 6px; /* ← 핵심: 기존 12~16px이면 너무 멂 */
-}
-header .logo span {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #ffffff;
-  white-space: nowrap;
-}
-header nav ul li a {
-  font-size: 1.05rem;    /* ← 확실히 키움 */
-  font-weight: 500;      /* ← 세미볼드 (딱 좋음) */
-  color: #ffffff;
-  letter-spacing: -0.01em;
-}
-header nav ul {
-  gap: 28px; /* 기존 16~20px이면 좁음 */
-}
-/* ===== Footer (Dark, Header 톤 맞춤) ===== */
-.site-footer{
-  background: #0b0f14;          /* 헤더랑 같은 다크톤 */
-  color: rgba(255,255,255,.78);
+/* ===== 4. 푸터 (Footer) ===== */
+.site-footer {
+  background: var(--footer-bg);
+  color: rgba(255, 255, 255, .78);
   padding: 44px 18px;
 }
 
-.footer-inner{
+.footer-inner {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.footer-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 18px;
   flex-wrap: wrap;
 }
 
-/* 브랜드 */
-.footer-brand{
-  display:flex;
-  align-items:center;
-  gap: 10px;                    /* 로고-상호 간격 */
-  text-decoration:none;
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
   color: #fff;
+  line-height: 1;
 }
 
-.footer-logo{
+.footer-logo {
   width: 34px;
   height: 34px;
   object-fit: contain;
 }
 
-.footer-name{
+.footer-name {
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
-/* 오른쪽 CTA */
-.footer-cta{
-  display:flex;
+/* 푸터 CTA 버튼 (통일형) */
+.footer-cta {
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
-  align-items:center;
-  flex-wrap: wrap;
 }
 
-.footer-phone{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.18);
-  color:#fff;
-  text-decoration:none;
-  font-weight: 700;
-  font-size: 0.98rem;
-}
-
-.footer-kakao{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: #ffffff;
-  color: #0a3871;
-  text-decoration:none;
-  font-weight: 800;
-  font-size: 0.98rem;
-}
-
-.footer-phone:hover,
-.footer-kakao:hover{
-  filter: brightness(1.06);
-  transform: translateY(-1px);
-  transition: transform .15s ease, filter .15s ease;
-}
-
-.footer-divider{
-  height: 1px;
-  background: rgba(255,255,255,.10);
-  margin: 18px 0 16px;
-}
-
-/* 정보 */
-.footer-info p{
-  margin: 8px 0;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,.72);
-}
-
-.footer-info strong{
-  color: rgba(255,255,255,.92);
-  font-weight: 700;
-}
-
-.footer-info a{
-  color: rgba(255,255,255,.86);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.footer-info .sep{
-  margin: 0 10px;
-  color: rgba(255,255,255,.22);
-}
-
-/* 맨 아래 */
-.footer-bottom{
-  margin-top: 18px;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,.50);
-}
-
-.footer-bottom span{
-  color: rgba(255,255,255,.72);
-  font-weight: 600;
-}
-
-/* 모바일 */
-@media (max-width: 768px){
-  .footer-top{
-    align-items:flex-start;
-  }
-  .footer-name{
-    font-size: 1.05rem;
-  }
-  .footer-phone,
-  .footer-kakao{
-    width: 100%;
-    justify-content: center;
-  }
-}
-/* =========================
-   Footer buttons unify
-   (override at the very end)
-   ========================= */
-
-/* 푸터 영역 버튼 공통(전화/온라인상담) */
-.site-footer .footer-cta a,
-.site-footer .footer-cta .footer-phone,
-.site-footer .footer-cta .footer-kakao{
+.footer-cta a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 40px;                 /* 헤더 CTA랑 같은 계열 */
+  height: 40px;
   padding: 0 14px;
-  border-radius: 10px;          /* ✅ 캡슐(999px) 제거 */
+  border-radius: 10px;
   font-weight: 700;
   font-size: 14.5px;
   letter-spacing: -0.01em;
@@ -1538,55 +1320,68 @@ header nav ul {
   transition: transform .12s ease, filter .12s ease, background .12s ease;
 }
 
-.site-footer .footer-cta a:hover,
-.site-footer .footer-cta .footer-phone:hover,
-.site-footer .footer-cta .footer-kakao:hover{
+.footer-phone {
+  background: rgba(255, 255, 255, .10);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: #fff;
+}
+
+.footer-kakao {
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, .16);
+  color: #0a3871;
+}
+
+.footer-cta a:hover {
   transform: translateY(-1px);
   filter: brightness(1.05);
 }
 
-/* 푸터 전화 버튼(다크 버튼) */
-.site-footer .footer-phone{
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.18);
-  color: #fff;
+.footer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, .10);
+  margin: 18px 0 16px;
 }
 
-/* 푸터 온라인 상담 버튼(라이트 버튼) */
-.site-footer .footer-kakao{
-  background: #fff;
-  border: 1px solid rgba(255,255,255,.16);
-  color: #0a3871;
-}
-/* =========================
-   Footer top align fix
-   ========================= */
-
-/* 상단 라인을 정확히 한 줄로 맞춤 */
-.site-footer .footer-top{
-  display: flex;
-  align-items: center;          /* ✅ 로고/텍스트/버튼 세로 중앙 정렬 */
-  justify-content: space-between;
-  gap: 18px;
+.footer-info p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .72);
 }
 
-/* 브랜드(로고+상호) 자체 높이/라인 정리 */
-.site-footer .footer-brand{
-  display: inline-flex;
-  align-items: center;          /* ✅ 로고와 텍스트 수평/수직 정렬 */
-  gap: 10px;
-  line-height: 1;               /* ✅ 텍스트가 버튼보다 아래로 처지는 현상 방지 */
+.footer-bottom {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, .50);
 }
 
-/* 버튼 영역도 중앙 정렬 */
-.site-footer .footer-cta{
-  display: inline-flex;
-  align-items: center;          /* ✅ 버튼 2개 높이 동일 라인 */
-  gap: 10px;
+/* ===== 5. 히어로 및 섹션 여백 ===== */
+.hero {
+  padding-top: 120px;
 }
 
-/* 혹시 버튼이 미세하게 내려가면 이걸로 보정 */
-.site-footer .footer-cta a{
-  margin-top: 0;
-  line-height: 1;
+.hero-content {
+  max-width: 1200px;
+  padding-left: 80px;
+  padding-top: 40px;
+}
+
+.section, .hero--slice, .hero + section {
+  margin-top: 80px;
+}
+
+/* ===== 6. 반응형 (Media Query) ===== */
+@media (max-width: 900px) {
+  :root { --header-h: 64px; }
+  .site-header { padding: 0 18px; }
+  .logo-title { font-size: 16px; }
+  .logo-sub, .gnb { display: none; }
+  .cta-btn { height: 36px; font-size: 13px; }
+}
+
+@media (max-width: 768px) {
+  .footer-top { align-items: flex-start; }
+  .footer-cta { width: 100%; }
+  .footer-cta a { width: 100%; }
 }

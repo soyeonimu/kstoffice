@@ -212,6 +212,83 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     .nav-item { border-right: none !important; border-bottom: 1px solid var(--border); padding: 24px; }
     .service-navigation { margin-top: 40px; }
   }
+  /* --- 게시판 목록 활성화 --- */
+.custom-board-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.board-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 24px 32px;
+  border-radius: 16px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  /* 애니메이션 준비 */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* 스크립트에 의해 보일 때 */
+.board-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.board-card:hover {
+  border-color: var(--brand-accent);
+  transform: translateX(10px) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.board-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 65px;
+  height: 65px;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-right: 28px;
+  color: var(--brand);
+  transition: var(--transition);
+}
+
+.board-card:hover .board-date {
+  background: var(--brand-accent);
+  color: #fff;
+}
+
+.board-date .day { font-size: 1.3rem; font-weight: 800; line-height: 1; }
+.board-date .month { font-size: 11px; font-weight: 700; text-transform: uppercase; margin-top: 4px; opacity: 0.7; }
+
+.board-content { flex: 1; }
+.board-tag { 
+  font-size: 11px; font-weight: 800; color: var(--brand-accent); 
+  background: rgba(37, 99, 235, 0.08); padding: 3px 10px; 
+  border-radius: 4px; margin-bottom: 8px; display: inline-block;
+}
+.board-title { 
+  font-size: 1.2rem; font-weight: 700; color: var(--brand); 
+  margin: 0 0 6px 0; letter-spacing: -0.02em; text-align: left;
+}
+.board-excerpt { 
+  font-size: 0.95rem; color: var(--text-sub); margin: 0; text-align: left;
+  overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+  -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+}
+
+.board-link-icon {
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  color: var(--border); transition: var(--transition);
+}
+.board-link-icon svg { width: 24px; height: 24px; }
 </style>
 
 <script>
@@ -224,4 +301,5 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });
 </script>
+
 

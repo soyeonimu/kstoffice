@@ -3,15 +3,18 @@ layout: default
 title: 게시판
 ---
 
-<section class="board-section" style="background-color: #f8fafc; min-height: 100vh;">
+<section class="success-cases" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
   <div class="container">
     
     <header class="page-head js-reveal">
       <div class="head-badge">NEWS & INSIGHTS</div>
       <h1 class="page-title">공지사항 · 법률정보</h1>
+      <p class="page-desc">
+        검찰 실무 경력 20년의 전문 지식으로 일상에 힘이 되는 법률 정보를 정기적으로 안내드립니다.
+      </p>
     </header>
 
-    <nav class="category-nav js-reveal">
+    <nav class="category-nav js-reveal" style="margin-bottom: 30px;">
       <div class="category-wrapper">
         <a href="#" class="cat-btn active" data-filter="all">전체보기</a>
         {% assign categories = site.board | map:"category" | compact | uniq | sort %}
@@ -25,7 +28,7 @@ title: 게시판
 
     <div class="search-container js-reveal">
       <div class="search-box">
-        <input type="text" id="board-search" placeholder="검색어를 입력하세요">
+        <input type="text" id="board-search" placeholder="궁금하신 내용을 검색하세요">
         <button type="button" class="search-icon-btn">🔍</button>
       </div>
     </div>
@@ -47,11 +50,14 @@ title: 게시판
         </article>
         {% endfor %}
       </div>
-      <div id="no-results" style="display: none; text-align: center; padding: 60px 0; color: #64748b; font-size: 0.9rem;">
+      <div id="no-results" style="display: none; text-align: center; padding: 80px 0; color: #64748b; font-size: 0.95rem;">
         검색 결과가 없습니다.
       </div>
     </main>
 
+    {% include cta-box.html 
+       title="상담이 필요하신가요?" 
+       desc="글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 정확합니다." %}
   </div>
 </section>
 
@@ -65,67 +71,76 @@ title: 게시판
     --border: #e2e8f0;
   }
 
-  .board-section { padding: 80px 0; font-family: 'Pretendard', sans-serif; }
-  .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+  /* 성공 사례(success-cases) 스타일 상속 */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-  .page-head { text-align: center; margin-bottom: 35px; }
-  .head-badge { font-size: 12px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.15em; margin-bottom: 10px; }
-  .page-title { font-size: 1.8rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.03em; }
+  /* Header */
+  .page-head { text-align: center; margin-bottom: 50px; }
+  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
+  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
+  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto; }
 
-  /* 카테고리 버튼 (기준 크기 0.9rem) */
-  .category-nav { margin-bottom: 25px; }
-  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; }
+  /* Category Nav (상단 탭) */
+  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
   .cat-btn { 
     text-decoration: none; background: var(--white); color: var(--text-sub);
-    padding: 8px 16px; border-radius: 50px; border: 1px solid var(--border);
-    font-size: 0.9rem; font-weight: 600; transition: 0.2s;
+    padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border);
+    font-weight: 700; font-size: 0.9rem; transition: 0.3s;
   }
-  .cat-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+  .cat-btn:hover, .cat-btn.active { 
+    background: var(--primary-blue); color: white; border-color: var(--primary-blue); 
+    box-shadow: 0 10px 20px rgba(10,56,113,0.1);
+  }
+  .cat-btn .count { font-size: 0.8rem; opacity: 0.6; margin-left: 4px; }
 
-  /* 검색창 */
-  .search-container { max-width: 500px; margin: 0 auto 40px; }
+  /* Search Box */
+  .search-container { max-width: 600px; margin: 0 auto 50px; }
   .search-box { 
     display: flex; background: #fff; border: 1px solid var(--border); 
-    border-radius: 10px; padding: 2px 12px;
+    border-radius: 14px; padding: 4px 16px; transition: 0.3s;
   }
-  .search-box input { 
-    flex-grow: 1; border: none; outline: none; padding: 10px; 
-    font-size: 0.9rem; font-family: inherit; 
-  }
-  .search-icon-btn { background: none; border: none; font-size: 1rem; cursor: pointer; opacity: 0.5; }
+  .search-box:focus-within { border-color: var(--primary-blue); box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.05); }
+  .search-box input { flex-grow: 1; border: none; outline: none; padding: 12px; font-size: 0.95rem; font-family: inherit; }
+  .search-icon-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0.5; }
 
-  /* 게시글 카드 디자인 (글자 크기 대폭 축소) */
-  .post-list-stack { display: flex; flex-direction: column; gap: 10px; }
+  /* Post Card (성공 사례 카드의 슬림 버전) */
+  .post-list-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 60px; }
   .post-title-card {
     display: flex; justify-content: space-between; align-items: center;
-    background: var(--white); padding: 15px 25px; border-radius: 12px; text-decoration: none;
-    border: 1px solid var(--border); transition: 0.2s;
+    background: var(--white); padding: 22px 35px; border-radius: 20px; text-decoration: none;
+    border: 1px solid var(--border); transition: all 0.3s ease;
   }
-  .post-title-card:hover { border-color: var(--primary-blue); background: #fdfdfe; transform: translateX(4px); }
+  .post-title-card:hover { 
+    transform: translateX(8px); 
+    border-color: var(--primary-blue); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+  }
 
-  .post-info-left { display: flex; align-items: center; gap: 15px; overflow: hidden; }
+  .post-info-left { display: flex; align-items: center; gap: 20px; flex-grow: 1; overflow: hidden; }
   .post-tag { 
-    background: #eff6ff; color: var(--primary-blue); font-size: 10px; 
-    font-weight: 800; padding: 4px 8px; border-radius: 4px; white-space: nowrap;
+    background: #eff6ff; color: var(--primary-blue); font-size: 11px; 
+    font-weight: 800; padding: 5px 12px; border-radius: 6px; white-space: nowrap;
   }
-  /* 제목 크기를 1.05rem으로 조정하여 카테고리(0.9rem)보다 약간만 크게 설정 */
+  /* 제목 크기를 1.05rem으로 대폭 축소 (단정함 유지) */
   .post-title { 
     font-size: 1.05rem; font-weight: 700; color: var(--text-main); 
     margin: 0; letter-spacing: -0.02em; line-height: 1.4;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
 
-  .post-info-right { display: flex; align-items: center; gap: 12px; color: var(--text-sub); font-size: 13px; flex-shrink: 0; }
-  .arrow { color: var(--primary-blue); font-size: 14px; }
+  .post-info-right { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+  .post-date { font-size: 13px; color: var(--text-sub); font-weight: 500; }
+  .arrow { font-size: 16px; color: var(--primary-blue); transition: 0.3s; opacity: 0.6; }
+  .post-title-card:hover .arrow { transform: translateX(5px); opacity: 1; }
 
-  /* Reveal */
-  .js-reveal { opacity: 0; transform: translateY(15px); transition: 0.5s ease-out; }
+  /* Reveal Animation */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 768px) {
-    .post-title-card { padding: 15px 20px; }
-    .post-title { font-size: 1rem; }
-    .post-info-right .post-date { font-size: 12px; }
+  @media (max-width: 850px) {
+    .post-title-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 25px; }
+    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+    .post-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
   }
 </style>
 
@@ -139,12 +154,11 @@ title: 게시판
     const searchInput = document.getElementById('board-search');
     const postItems = document.querySelectorAll('.post-item');
     const catBtns = document.querySelectorAll('.cat-btn');
-    const noResults = document.getElementById('no-results');
 
     function filterPosts() {
       const searchTerm = searchInput.value.toLowerCase();
       const activeCat = document.querySelector('.cat-btn.active').dataset.filter;
-      let visibleCount = 0;
+      let count = 0;
 
       postItems.forEach(item => {
         const title = item.querySelector('.post-title').innerText.toLowerCase();
@@ -154,12 +168,12 @@ title: 게시판
 
         if (matchesSearch && matchesCat) {
           item.style.display = 'block';
-          visibleCount++;
+          count++;
         } else {
           item.style.display = 'none';
         }
       });
-      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      document.getElementById('no-results').style.display = count === 0 ? 'block' : 'none';
     }
 
     searchInput.addEventListener('input', filterPosts);

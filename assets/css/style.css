@@ -1275,19 +1275,22 @@ h1, h2, h3, h4, strong, b {
 /* 전화번호 깜빡임 애니메이션 정의 */
 @keyframes colorPulse {
   0% { color: #ffffff; }
-  50% { color: #ffeb3b; } /* 중간에 노란색으로 변함 */
+  50% { color: #ffeb3b; } /* 부드러운 노란색으로 강조 */
   100% { color: #ffffff; }
 }
 
 /* 전화번호 클래스에 애니메이션 적용 */
 .contact-number {
-  animation: phonePulse 2s ease-in-out infinite; /* 2초 간격으로 무한 반복 */
-  color: #ffffff; /* 색상은 유지 */
-  display: inline-block;
+  /* animation 이름을 colorPulse로 맞춰야 움직입니다 */
+  animation: colorPulse 2s ease-in-out infinite; 
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-block; /* 애니메이션이 잘 먹도록 설정 */
 }
 
-/* 마우스를 올렸을 때는 깜빡임 멈추게 설정 (선택 사항) */
+/* 마우스를 올렸을 때는 깜빡임 멈춤 */
 .contact-number:hover {
   animation-play-state: paused;
-  opacity: 1;
+  color: #ffeb3b; /* 마우스 올리면 강조색 유지 */
 }

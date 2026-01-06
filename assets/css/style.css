@@ -1210,3 +1210,65 @@ h1, h2, h3, h4, strong, b {
   .gnb { display: none; } /* 모바일 메뉴는 따로 구현 */
   .logo-title { font-size: 1.2rem; }
 }
+/* ===== 푸터 전화번호 강조 스타일 추가 ===== */
+
+/* 1. 기존 버튼 영역 숨기기 (혹시 남아있을 경우) */
+.footer-cta {
+  display: none !important;
+}
+
+/* 2. 새로운 전화번호 영역 스타일 */
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.contact-number {
+  font-size: 1.8rem; /* ✅ 번호를 크게 강조 */
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+}
+
+.contact-number:hover {
+  color: #ffffff; /* 혹은 포인트 컬러 */
+  opacity: 0.8;
+}
+
+/* 3. 푸터 슬림화 보정 (여백 줄이기) */
+.site-footer {
+  padding: 30px 20px !important;
+}
+
+.footer-top {
+  margin-bottom: 15px !important;
+}
+
+.footer-divider {
+  margin: 15px 0 !important;
+}
+
+.footer-info p {
+  margin: 3px 0 !important;
+}
+
+/* 4. 모바일 대응 */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .contact-number {
+    font-size: 1.5rem;
+  }
+}

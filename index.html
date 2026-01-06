@@ -100,7 +100,7 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
         {% assign latest_board = site.board | sort: "date" | reverse %}
 
         {% if latest_board and latest_board.size > 0 %}
-          {% for post in latest_board limit:6 %}
+          {% for post in latest_board limit:3 %}
             <a href="{{ post.url | relative_url }}" class="board-card js-reveal">
               <div class="board-date">
                 <span class="day">{{ post.date | date: "%d" }}</span>
@@ -311,6 +311,7 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });
 </script>
+
 
 
 

@@ -1816,3 +1816,45 @@ header nav ul {
     justify-content: center;
   }
 }
+/* =========================
+   Footer buttons unify
+   (override at the very end)
+   ========================= */
+
+/* 푸터 영역 버튼 공통(전화/온라인상담) */
+.site-footer .footer-cta a,
+.site-footer .footer-cta .footer-phone,
+.site-footer .footer-cta .footer-kakao{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;                 /* 헤더 CTA랑 같은 계열 */
+  padding: 0 14px;
+  border-radius: 10px;          /* ✅ 캡슐(999px) 제거 */
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: transform .12s ease, filter .12s ease, background .12s ease;
+}
+
+.site-footer .footer-cta a:hover,
+.site-footer .footer-cta .footer-phone:hover,
+.site-footer .footer-cta .footer-kakao:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+/* 푸터 전화 버튼(다크 버튼) */
+.site-footer .footer-phone{
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+}
+
+/* 푸터 온라인 상담 버튼(라이트 버튼) */
+.site-footer .footer-kakao{
+  background: #fff;
+  border: 1px solid rgba(255,255,255,.16);
+  color: #0a3871;
+}

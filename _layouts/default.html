@@ -31,6 +31,42 @@
   </main>
 
   {% include footer.html %}
+<script>
+  (function () {
+    const header = document.getElementById('siteHeader');
+    if (!header) return;
+
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      const y = window.scrollY;
+
+      // 맨 위 근처에서는 항상 보이게
+      if (y < 10) {
+        header.classList.remove('header--hidden');
+        lastY = y;
+        return;
+      }
+
+      // 아래로 스크롤 => 숨김 / 위로 스크롤 => 보임
+      if (y > lastY + 8) header.classList.add('header--hidden');
+      else if (y < lastY - 8) header.classList.remove('header--hidden');
+
+      lastY = y;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          onScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+</script>
 
 </body>
 </html>

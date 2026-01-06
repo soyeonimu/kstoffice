@@ -1452,3 +1452,129 @@ body {
     padding-top: calc(var(--header-h) + 15px) !important;
   }
 }
+/* =====================================================
+   [최종 해결] 헤더/푸터 색상 복구 및 여백 극최소화
+   ===================================================== */
+
+/* 1. 헤더 & 푸터 내 모든 링크 색상 강제 고정 */
+.site-header a, 
+.site-footer a,
+.logo-link,
+.logo-title,
+.footer-logo-text {
+  color: #ffffff !important; /* 상호명과 메뉴를 다시 흰색으로 */
+  text-decoration: none !important;
+}
+
+/* 2. 푸터 텍스트 색상 (회색조가 필요할 경우) */
+.site-footer p, 
+.site-footer .copyright {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 3. 상단 여백(LEGAL GUIDE/CASE STUDIES 위쪽) 대폭 축소 */
+.success-cases,
+.rehabilitation-cases,
+.check-section,
+.diff-section,
+.faq-section,
+.price-section,
+.procedure-section,
+.info-section-container {
+  /* 이미지상의 허전함을 없애기 위해 헤더와 거의 밀착 */
+  padding-top: calc(var(--header-h) + 20px) !important; 
+  padding-bottom: 60px !important;
+  
+  /* 그라데이션이 더 위쪽에서 시작되도록 조정 */
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 200px) !important;
+}
+
+/* 4. 제목과 설명글 사이의 벙벙한 느낌 제거 */
+.page-head {
+  margin-bottom: 40px !important;
+}
+
+.page-title {
+  font-size: 2.6rem !important;
+  margin-bottom: 10px !important;
+}
+
+/* 5. 가독성 개선 (모든 본문 글씨 얇게) */
+.page-desc, 
+.case-text, 
+.career-text p, 
+.tip-text,
+.info-txt {
+  font-weight: 400 !important; /* 굵기 해제 */
+  color: #475569 !important;
+  line-height: 1.6 !important;
+  letter-spacing: -0.01em !important;
+}
+/* =====================================================
+   [최종 수정] 푸터 디자인 고도화 및 가독성 최적화
+   ===================================================== */
+
+.site-footer {
+  background-color: #1a1c1e !important; /* 배경을 조금 더 깊이감 있는 블랙으로 */
+  padding: 60px 20px 40px !important;
+  color: #cbd5e1 !important; /* 기본 글씨색을 부드러운 회색으로 */
+  border-top: 1px solid #2d2f31 !important;
+}
+
+/* 1. 푸터 로고/상호명: 선명하게 밝힘 */
+.site-footer .footer-logo-link,
+.site-footer .logo-text,
+.site-footer .logo-title {
+  color: #ffffff !important; /* 상호명을 순백색으로 강제 고정 */
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  margin-bottom: 25px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+/* 2. 푸터 정보 텍스트: 볼드 해제 및 가독성 상향 */
+.site-footer .footer-info {
+  margin-top: 20px !important;
+  line-height: 1.8 !important;
+}
+
+.site-footer .info-item {
+  font-weight: 400 !important; /* 모든 볼드 해제 */
+  font-size: 0.95rem !important;
+  color: #94a3b8 !important; /* 중요도가 낮은 정보는 연한 회색 */
+  margin-bottom: 5px !important;
+}
+
+/* 상호명이나 대표자 등 강조하고 싶은 부분만 살짝 밝게 */
+.site-footer .info-item strong {
+  font-weight: 600 !important;
+  color: #e2e8f0 !important;
+}
+
+/* 3. 연락처/상담 버튼 영역 정리 */
+.site-footer .footer-contact {
+  display: flex !important;
+  gap: 15px !important;
+  margin-bottom: 30px !important;
+}
+
+.site-footer .contact-btn {
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+}
+
+/* 4. 카피라이트: 가장 하단에 작게 배치 */
+.site-footer .copyright {
+  margin-top: 40px !important;
+  padding-top: 20px !important;
+  border-top: 1px solid #2d2f31 !important;
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  color: #64748b !important;
+  text-align: left !important;
+}

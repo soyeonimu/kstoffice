@@ -1,41 +1,148 @@
 ---
 layout: default
-title: 수원·용인 개인회생 파산 고소장 전문 법무사 - 김성태 법무사 사무소
-description: 경기 수원·용인·화성·평택 지역 개인회생, 개인파산, 고소장 작성 및 형사합의 전문 법무사. 무료 상담 가능. 신속하고 정확한 법률 절차 진행.
-keywords: 수원 법무사, 용인 법무사, 개인회생, 개인파산, 고소장, 형사합의, 법률상담, 김성태, 채무상담, 회생절차, 파산신청
-author: 김성태 법무사 사무소
-permalink: /
+title: 리더스 합동 법무사 사무소 | 수원·용인 개인회생·파산·고소장 전문
+description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인회생, 파산, 고소장 작성을 도와드립니다.
 ---
 
-<!-- HERO : 비디오 배경 + 텍스트 오버레이 -->
-<section class="hero-video" aria-labelledby="home-hero-title">
-  <video class="hero-video__media" autoplay muted playsinline loop preload="metadata">
+<section class="premium-hero">
+  <video class="hero-bg-video" autoplay muted playsinline loop>
     <source src="{{ '/assets/video/main.mp4' | relative_url }}" type="video/mp4">
   </video>
-
-  <div class="hero-video__overlay" aria-hidden="true"></div>
-
-  <div class="hero-video__content">
-    <div class="hero-video__eyebrow">
-      검찰청 강력부 · 형사부 · 수사과 · 특별수사부 <strong>20년 경력</strong><br>
-      실무중심, 절차전문 <strong>든든한 법무사</strong>
-    </div>
-
-    <h1 id="home-hero-title" class="hero-video__headline">
-      본질을 읽고,<br>
-      최선의 해답을<br>
-      제시합니다.
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-container">
+    <div class="hero-badge js-reveal">PROVEN EXPERTISE</div>
+    <h1 class="hero-title js-reveal">
+      검찰 20년 경력의 통찰,<br>
+      <span class="text-accent">당신의 일상을 되찾는 힘</span>이 됩니다.
     </h1>
-
-    <div class="hero-video__actions">
-      <a class="btn hero-btn" href="tel:031-225-6885">전화 상담 031-225-6885</a>
-      <a class="btn hero-btn secondary" href="{{ '/consult' | relative_url }}">상담 예약하기</a>
+    <p class="hero-subtitle js-reveal">
+      수원·용인 지역 개인회생, 파산부터 정교한 고소장 작성까지<br>
+      실무 중심의 베테랑 법무사가 직접 사건을 진두지휘합니다.
+    </p>
+    <div class="hero-btns js-reveal">
+      <a href="tel:031-225-6885" class="btn-primary">전화 상담 : 031-225-6885</a>
+      <a href="/consult" class="btn-secondary">1:1 맞춤 상담예약</a>
     </div>
   </div>
 </section>
 
+<section class="service-shortcuts js-reveal">
+  <div class="container">
+    <div class="shortcut-grid">
+      <a href="/rehabilitation" class="shortcut-card">
+        <div class="card-icon">⚖️</div>
+        <h3>개인회생·파산</h3>
+        <p>채무 탕감부터 압류 해제까지,<br>새로운 경제적 재기 가이드</p>
+        <span class="view-more">바로가기 →</span>
+      </a>
+      <a href="/complaint" class="shortcut-card">
+        <div class="card-icon">📜</div>
+        <h3>고소장·형사대응</h3>
+        <p>검찰 실무 경력 20년의 노하우로<br>핵심을 찌르는 고소장 작성</p>
+        <span class="view-more">바로가기 →</span>
+      </a>
+      <a href="/cases" class="shortcut-card">
+        <div class="card-icon">✅</div>
+        <h3>성공 사례</h3>
+        <p>다양한 상황에서 도출해낸<br>리더스만의 실제 해결 사례</p>
+        <span class="view-more">바로가기 →</span>
+      </a>
+      <a href="/faq" class="shortcut-card">
+        <div class="card-icon">💬</div>
+        <h3>자주 묻는 질문</h3>
+        <p>고민하시는 문제에 대한<br>명쾌한 법률 문답 리스트</p>
+        <span class="view-more">바로가기 →</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-<!-- 보드 최신글 -->
-{% include board-list.html limit=6 %}
+<section class="main-board">
+  <div class="container">
+    <div class="board-header js-reveal">
+      <h2>최신 법률 소식</h2>
+      <a href="/board" class="btn-text">전체보기 +</a>
+    </div>
+    <div class="board-wrapper js-reveal">
+      {% include board-list.html limit=6 %}
+    </div>
+  </div>
+</section>
 
+<style>
+  :root {
+    --primary: #0a3871;
+    --accent: #f2c14e;
+    --dark: #121416;
+    --light-gray: #f8fafc;
+    --white: #ffffff;
+  }
 
+  /* Hero Section */
+  .premium-hero {
+    position: relative; height: 90vh; min-height: 700px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; color: var(--white); text-align: center;
+  }
+  .hero-bg-video {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;
+  }
+  .hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10,56,113,0.4), rgba(18,20,22,0.8)); z-index: 2;
+  }
+  .hero-container { position: relative; z-index: 3; max-width: 900px; padding: 0 20px; }
+  
+  .hero-badge { font-size: 14px; font-weight: 800; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 20px; }
+  .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1.2; margin-bottom: 25px; }
+  .text-accent { color: var(--accent); }
+  .hero-subtitle { font-size: 1.2rem; line-height: 1.8; opacity: 0.9; margin-bottom: 40px; font-weight: 300; }
+
+  .hero-btns { display: flex; gap: 15px; justify-content: center; }
+  .btn-primary { background: var(--primary); color: white; padding: 18px 35px; border-radius: 50px; font-weight: 800; text-decoration: none; transition: 0.3s; }
+  .btn-secondary { background: var(--white); color: var(--dark); padding: 18px 35px; border-radius: 50px; font-weight: 800; text-decoration: none; transition: 0.3s; }
+  .btn-primary:hover { background: #082d5a; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+  .btn-secondary:hover { background: var(--accent); transform: translateY(-3px); }
+
+  /* Service Shortcuts */
+  .service-shortcuts { margin-top: -80px; position: relative; z-index: 10; padding-bottom: 80px; }
+  .shortcut-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .shortcut-card {
+    background: var(--white); padding: 40px 30px; border-radius: 24px; text-decoration: none;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: 0.3s; display: block; border: 1px solid rgba(0,0,0,0.05);
+  }
+  .shortcut-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+  .card-icon { font-size: 40px; margin-bottom: 20px; display: block; }
+  .shortcut-card h3 { font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .shortcut-card p { font-size: 0.95rem; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
+  .view-more { font-size: 14px; font-weight: 700; color: var(--primary); }
+
+  /* Board Section */
+  .main-board { padding: 80px 0; background: var(--light-gray); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  .board-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+  .board-header h2 { font-size: 2rem; font-weight: 800; color: var(--dark); }
+  .btn-text { color: var(--primary); text-decoration: none; font-weight: 700; }
+
+  /* Reveal Animation */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .hero-btns { flex-direction: column; }
+    .hero-title { font-size: 2.2rem; }
+    .service-shortcuts { margin-top: 0; padding-top: 40px; }
+  }
+</style>
+
+<script>
+  // Scroll Animation Logic
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.js-reveal').forEach(el => revealObserver.observe(el));
+</script>

@@ -29,43 +29,59 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
 
 <section class="service-navigation js-reveal">
   <div class="container">
-    <div class="nav-grid">
-      <a href="/rehabilitation" class="nav-item">
-        <div class="nav-info">
-          <span class="nav-label">DEBT RELIEF</span>
-          <h3>개인회생·파산</h3>
-          <p>압류 해제 및 채무 탕감</p>
-        </div>
-        <div class="nav-arrow">→</div>
-      </a>
-
-      <a href="/complaint" class="nav-item">
-        <div class="nav-info">
-          <span class="nav-label">CRIMINAL CASE</span>
-          <h3>고소장·형사대응</h3>
-          <p>검찰 실무 기반의 논리</p>
-        </div>
-        <div class="nav-arrow">→</div>
-      </a>
-
-      <a href="/cases" class="nav-item">
-        <div class="nav-info">
-          <span class="nav-label">EXPERIENCE</span>
-          <h3>성공 사례</h3>
-          <p>데이터로 증명된 결과</p>
-        </div>
-        <div class="nav-arrow">→</div>
-      </a>
-
-      <a href="/faq" class="nav-item">
-        <div class="nav-info">
-          <span class="nav-label">SUPPORT</span>
-          <h3>상담 가이드</h3>
-          <p>자주 묻는 질문 확인</p>
-        </div>
-        <div class="nav-arrow">→</div>
-      </a>
+    
+    <div class="nav-row">
+      <div class="nav-topic-label">DEBT SOLUTION</div>
+      <div class="nav-grid">
+        <a href="/rehabilitation" class="nav-item main-work">
+          <div class="nav-info">
+            <span class="nav-label">MAIN SERVICE</span>
+            <h3>개인회생·파산</h3>
+            <p>압류 해제 및 채무 탕감 솔루션</p>
+          </div>
+          <div class="nav-arrow">→</div>
+        </a>
+        <a href="/cases" class="nav-item side-link">
+          <div class="nav-info">
+            <h3>회생 성공사례</h3>
+            <p>실제 인가 결정 데이터</p>
+          </div>
+        </a>
+        <a href="/faq" class="nav-item side-link">
+          <div class="nav-info">
+            <h3>회생 FAQ</h3>
+            <p>자주 묻는 질문</p>
+          </div>
+        </a>
+      </div>
     </div>
+
+    <div class="nav-row">
+      <div class="nav-topic-label">CRIMINAL DEFENSE</div>
+      <div class="nav-grid">
+        <a href="/complaint" class="nav-item main-work">
+          <div class="nav-info">
+            <span class="nav-label">MAIN SERVICE</span>
+            <h3>고소장·형사대응</h3>
+            <p>검찰 20년 경력의 전략적 대응</p>
+          </div>
+          <div class="nav-arrow">→</div>
+        </a>
+        <a href="/cases" class="nav-item side-link">
+          <div class="nav-info">
+            <h3>형사 성공사례</h3>
+            <p>무혐의·기소유예 결과</p>
+          </div>
+        </a>
+        <a href="/faq" class="nav-item side-link">
+          <div class="nav-info">
+            <h3>형사 FAQ</h3>
+            <p>자주 묻는 질문</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -115,38 +131,43 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
   .btn-primary:hover { background: #082d5a; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
   .btn-secondary:hover { background: var(--accent); transform: translateY(-3px); }
 
-  /* New Wide Navigation Style (Replacing Cards) */
-  .service-navigation { margin-top: -60px; position: relative; z-index: 10; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  /* Service Navigation (2-Row Layout) */
+  .service-navigation { margin-top: -80px; position: relative; z-index: 10; padding-bottom: 50px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
   
+  .nav-row { margin-bottom: 30px; }
+  .nav-topic-label { 
+    font-size: 11px; font-weight: 800; color: var(--white); 
+    background: var(--primary); display: inline-block; 
+    padding: 5px 15px; border-radius: 8px 8px 0 0;
+    letter-spacing: 0.1em; margin-left: 5px;
+  }
+
   .nav-grid { 
     display: flex; 
     background: var(--white); 
-    border-radius: 12px; 
+    border-radius: 0 12px 12px 12px; 
     box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
     overflow: hidden;
     border: 1px solid var(--border);
   }
 
   .nav-item { 
-    flex: 1; 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    padding: 35px 30px; 
-    text-decoration: none; 
-    color: var(--dark); 
-    border-right: 1px solid var(--border); 
-    transition: 0.3s ease;
+    display: flex; align-items: center; justify-content: space-between; 
+    padding: 28px 35px; text-decoration: none; color: var(--dark); 
+    border-right: 1px solid var(--border); transition: 0.3s ease;
   }
   .nav-item:last-child { border-right: none; }
   .nav-item:hover { background: #fbfcfd; }
-  .nav-item:hover .nav-arrow { transform: translateX(5px); color: var(--primary); }
 
-  .nav-label { display: block; font-size: 10px; font-weight: 800; color: var(--primary); letter-spacing: 0.1em; margin-bottom: 8px; opacity: 0.8; }
-  .nav-info h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 5px; letter-spacing: -0.02em; }
-  .nav-info p { font-size: 0.9rem; color: var(--text-slate); margin: 0; }
-  .nav-arrow { font-size: 20px; color: #cbd5e1; transition: 0.3s; }
+  .nav-item.main-work { flex: 1.4; background: #fbfcfd; }
+  .nav-item.side-link { flex: 1; }
+
+  .nav-label { display: block; font-size: 10px; font-weight: 800; color: var(--primary); letter-spacing: 0.1em; margin-bottom: 6px; opacity: 0.8; }
+  .nav-info h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.02em; }
+  .nav-info p { font-size: 0.85rem; color: var(--text-slate); margin: 0; white-space: nowrap; }
+  .nav-arrow { font-size: 18px; color: var(--primary); font-weight: bold; transition: 0.3s; }
+  .nav-item:hover .nav-arrow { transform: translateX(5px); }
 
   /* Board Section */
   .main-board { padding: 100px 0; background: var(--light-gray); }
@@ -162,8 +183,8 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
   /* Responsive */
   @media (max-width: 1024px) {
     .nav-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-    .nav-item:nth-child(2) { border-right: none; }
-    .nav-item:nth-child(1), .nav-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+    .nav-item.main-work { grid-column: span 2; border-bottom: 1px solid var(--border); border-right: none; }
+    .nav-item.side-link:last-child { border-right: none; }
   }
 
   @media (max-width: 640px) {
@@ -171,8 +192,10 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     .hero-btns { flex-direction: column; padding: 0 40px; }
     .service-navigation { margin-top: 20px; }
     .nav-grid { display: block; }
-    .nav-item { border-right: none; border-bottom: 1px solid var(--border); padding: 25px; }
+    .nav-item { border-right: none !important; border-bottom: 1px solid var(--border); padding: 25px; }
     .nav-item:last-child { border-bottom: none; }
+    .nav-topic-label { border-radius: 4px; margin-bottom: 5px; }
+    .nav-grid { border-radius: 12px; }
   }
 </style>
 

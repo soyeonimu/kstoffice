@@ -1,113 +1,238 @@
 ---
 layout: default
-title: 개인회생 신청 자격 테스트
+title: 개인회생 신청 자격 테스트 - 리더스 합동 법무사 사무소
 description: 간단한 테스트를 통해 개인회생 신청 자격을 확인하고, 법률 전문가의 도움을 받아보세요.
 ---
-<div class="self-check-container">
-  <div class="text-center mb-2rem">
-    <h1 class="page-title">개인회생 자가진단</h1>
-    <p class="page-intro">
-      총 채무, 월소득, 부양가족 수만 입력하면<br>
-      개인회생 신청 가능성을 빠르게 확인할 수 있습니다.<br>
-      아래 항목을 입력해 자격을 확인해보세요.
+
+<section class="self-check-section">
+  <div class="container">
+    <header class="page-head js-reveal">
+      <div class="head-badge">QUICK CHECK</div>
+      <h1 class="page-title">개인회생 자가진단</h1>
+      <p class="page-desc">
+        복잡한 서류 없이 30초 만에 확인하세요.<br>
+        <strong>총 채무, 소득, 부양가족</strong> 정보를 바탕으로 신청 가능성을 분석합니다.
+      </p>
+    </header>
+
+    <div class="check-card js-reveal">
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="debt">총 채무액</label>
+          <div class="input-wrapper">
+            <input type="number" id="debt" placeholder="예: 8500">
+            <span class="unit">만원</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="monthlyIncome">월 평균 소득</label>
+          <div class="input-wrapper">
+            <input type="number" id="monthlyIncome" placeholder="예: 2800000">
+            <span class="unit">원</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="dependents">부양가족 수 <small>(본인 제외)</small></label>
+          <div class="input-wrapper">
+            <input type="number" id="dependents" placeholder="예: 1">
+            <span class="unit">명</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="job">현재 직업군</label>
+          <div class="input-wrapper">
+            <select id="job">
+              <option value="">직업 선택</option>
+              <option value="직장인">직장인 (4대보험)</option>
+              <option value="프리랜서">프리랜서 / 일용직</option>
+              <option value="자영업">자영업자 / 사업자</option>
+              <option value="기타">무직 / 기타</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="checkEligibility()" class="btn-check">분석 결과 확인하기</button>
+
+      <div id="result" class="result-container"></div>
+    </div>
+
+    <p class="check-notice">
+      ※ 본 진단 결과는 입력하신 기초 자료를 바탕으로 한 단순 참고용이며, <br>
+      실제 법원 접수 시 재산 상황 및 최근 채무 비율에 따라 결과가 달라질 수 있습니다.
     </p>
+  </div>
+</section>
+
+<style>
+  :root {
+    --primary-blue: #0a3871;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --border-gray: #e2e8f0;
+  }
+
+  .self-check-section { background: #f8fafc; padding: 100px 20px; font-family: 'Pretendard', sans-serif; }
+  .container { max-width: 800px; margin: 0 auto; }
+
+  /* Head */
+  .page-head { text-align: center; margin-bottom: 50px; }
+  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 12px; }
+  .page-title { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-dark); margin-bottom: 15px; }
+  .page-desc { color: var(--text-light); line-height: 1.7; font-size: 1.1rem; }
+
+  /* Card & Form */
+  .check-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+
+  .input-group label { display: block; font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+  .input-group label small { font-weight: 400; color: var(--text-light); }
+
+  .input-wrapper { position: relative; display: flex; align-items: center; }
+  
+  .input-wrapper input, .input-wrapper select {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border-gray);
+    font-size: 16px;
+    background: #fdfdfd;
+    transition: all 0.2s;
+    outline: none;
+  }
+
+  .input-wrapper input:focus, .input-wrapper select:focus {
+    border-color: var(--primary-blue);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.1);
+  }
+
+  .unit { position: absolute; right: 18px; font-size: 14px; color: var(--text-light); font-weight: 600; pointer-events: none; }
+
+  .btn-check {
+    width: 100%;
+    padding: 18px;
+    background: var(--primary-blue);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn-check:hover { background: #082d5a; transform: translateY(-2px); }
+
+  /* Result Display */
+  .result-container { margin-top: 30px; padding-top: 30px; border-top: 2px dashed var(--border-gray); display: none; }
+  
+  .result-box {
+    padding: 24px;
+    border-radius: 16px;
+    background: #f8fafc;
+    text-align: center;
+  }
+  
+  .result-status { font-size: 24px; font-weight: 900; margin-bottom: 10px; }
+  .result-data { display: flex; justify-content: space-around; margin: 20px 0; padding: 15px; background: #fff; border-radius: 12px; }
+  .data-item span { display: block; font-size: 12px; color: var(--text-light); }
+  .data-item strong { font-size: 16px; color: var(--text-dark); }
+
+  .result-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: var(--text-dark);
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .check-notice { text-align: center; margin-top: 30px; font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  /* Animation */
+  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .check-card { padding: 25px; }
+  }
+</style>
+
+<script>
+  function getLivingCost(familySize) {
+    const table = { 1: 1206000, 2: 2016000, 3: 2580000, 4: 3094000, 5: 3630000 };
+    return table[familySize] || 3630000 + (familySize - 5) * 400000;
+  }
+
+  function evaluateEligibility(debt, surplus, job) {
+    if (debt * 10000 > 1500000000) {
+      return { status: '신청 불가', color: '#e11d48', message: '총 채무가 15억을 초과하여 개인회생 신청이 불가능합니다.' };
+    }
     
-  </div>
-  <div class="form-group">
-    <label for="debt">총 채무액 (만원):</label>
-    <input type="number" id="debt" placeholder="예: 8500">
+    let threshold = 100000;
+    if (job === "프리랜서") threshold = 120000;
+    else if (job === "자영업") threshold = 150000;
 
-    <label for="monthlyIncome">월 소득 (원):</label>
-    <input type="number" id="monthlyIncome" placeholder="예: 2800000">
-
-    <label for="dependents">부양가족 수 (본인 제외):</label>
-    <input type="number" id="dependents" placeholder="예: 2">
-
-    <label for="job">직업:</label>
-    <select id="job">
-      <option value="">선택하세요</option>
-      <option value="직장인">직장인</option>
-      <option value="프리랜서">프리랜서</option>
-      <option value="자영업">자영업</option>
-      <option value="기타">기타</option>
-    </select>
-
-    <button onclick="checkEligibility()">결과 확인하기</button>
-  </div>
-
-  <div id="result"></div>
-
-  <script>
-    function getLivingCost(familySize) {
-      const table = {
-        1: 1206000,
-        2: 2016000,
-        3: 2580000,
-        4: 3094000,
-        5: 3630000
-      };
-      return table[familySize] || 3630000 + (familySize - 5) * 400000;
+    if (surplus >= threshold) {
+      return { status: '신청 가능', color: '#16a34a', message: '회생 신청 요건에 부합할 가능성이 매우 높습니다!' };
+    } else if (surplus > 0) {
+      return { status: '검토 필요', color: '#ca8a04', message: '잔여소득이 다소 부족하나 법리적 검토를 통해 진행 가능합니다.' };
+    } else {
+      return { status: '진단 필요', color: '#e11d48', message: '현재 소득만으로는 신청이 어려우나, 가용자금 확인이 필요합니다.' };
     }
+  }
 
-    function evaluateEligibility(debt, surplus, job) {
-      // 채무액은 만원 단위이므로 15억은 150000만원입니다.
-      if (debt * 10000 > 1500000000) { // 15억 (원)으로 비교
-        return {
-          status: '불가',
-          color: '#d03a3a',
-          message: '총 채무가 15억을 초과하여 개인회생 신청이 어렵습니다.'
-        };
-      }
-      // 담보채무 10억, 무담보채무 5억 기준도 고려 필요 (현재 코드에는 없음)
-      // 여기서는 총 채무만 기준으로 판단합니다.
+  function checkEligibility() {
+    const debt = parseInt(document.getElementById("debt").value) || 0;
+    const income = parseInt(document.getElementById("monthlyIncome").value) || 0;
+    const dependents = parseInt(document.getElementById("dependents").value) || 0;
+    const job = document.getElementById("job").value || "기타";
 
-      let threshold = 100000; // 기본 잔여소득 기준
-      if (job === "프리랜서") threshold = 120000;
-      else if (job === "자영업") threshold = 150000;
-      else if (job === "기타") threshold = 200000;
+    if(debt === 0 || income === 0) { alert("정보를 정확히 입력해주세요."); return; }
 
-      if (surplus >= threshold) {
-        return {
-          status: '가능',
-          color: '#0a7e3f',
-          message: `신청 요건에 부합할 가능성이 높습니다. (${job})`
-        };
-      } else if (surplus > 0) {
-        return {
-          status: '조건부',
-          color: '#f0a400',
-          message: `잔여소득이 다소 부족하지만 상황에 따라 가능성이 있습니다. (${job})`
-        };
-      } else {
-        return {
-          status: '불가',
-          color: '#d03a3a',
-          message: `현재 소득으로는 신청이 어려울 수 있습니다. (${job})`
-        };
-      }
-    }
+    const familySize = dependents + 1;
+    const livingCost = getLivingCost(familySize);
+    const surplus = income - livingCost;
+    const result = evaluateEligibility(debt, surplus, job);
 
-    function checkEligibility() {
-      const debt = parseInt(document.getElementById("debt").value) || 0;
-      const income = parseInt(document.getElementById("monthlyIncome").value) || 0;
-      const dependents = parseInt(document.getElementById("dependents").value) || 0;
-      const job = document.getElementById("job").value || "기타";
+    const resultArea = document.getElementById("result");
+    resultArea.style.display = "block";
+    resultArea.innerHTML = `
+      <div class="result-box js-reveal is-visible">
+        <div class="result-status" style="color: ${result.color}">${result.status}</div>
+        <p style="font-weight: 600; color: #475569;">${result.message}</p>
+        
+        <div class="result-data">
+          <div class="data-item"><span>부양가족</span><strong>${familySize}인</strong></div>
+          <div class="data-item"><span>인정 생계비</span><strong>${livingCost.toLocaleString()}원</strong></div>
+          <div class="data-item"><span>예상 변제금</span><strong>${surplus > 0 ? surplus.toLocaleString() : 0}원</strong></div>
+        </div>
 
-      const familySize = dependents + 1;
-      const livingCost = getLivingCost(familySize);
-      const surplus = income - livingCost;
+        <a href="https://naver.me/xwmIDcba" class="result-link" target="_blank">상세 법률 진단 신청하기</a>
+      </div>
+    `;
+    
+    window.scrollTo({ top: resultArea.offsetTop + 200, behavior: 'smooth' });
+  }
 
-      const result = evaluateEligibility(debt, surplus, job);
-
-      const info = `
-        <p><strong>총 부양가족 수:</strong> ${familySize}명<br>
-        <strong>법정 생계비 기준:</strong> ${livingCost.toLocaleString()}원<br>
-        <strong>잔여소득:</strong> ${surplus.toLocaleString()}원</p>
-        <p style="color: ${result.color}; font-weight: bold;">${result.message}</p>
-        <a href="https://naver.me/xwmIDcba" class="result-link" target="_blank">→ 지금 바로 상담하러 가기</a>
-      `;
-
-      document.getElementById("result").innerHTML = info;
-    }
-  </script>
-</div>
+  // Reveal Logic
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+</script>

@@ -1093,7 +1093,14 @@ caption {
   );
 }
 
-/* ===== 1. 전역 변수 및 본문 리셋 ===== */
+/*
+  리더스 법무사 통합 스타일시트
+  - 상호명 확대 (헤더/푸터)
+  - 푸터 세로 길이 최소화 (슬림화)
+  - 본문 볼드 해제 및 세련된 타이포그래피
+*/
+
+/* ===== 1. 전역 변수 및 본문 기본 설정 ===== */
 :root {
   --theme-dark-bg: #1a1c1e;
   --theme-border: rgba(255, 255, 255, 0.08);
@@ -1107,21 +1114,20 @@ body {
   margin: 0;
   padding-top: var(--header-h);
   font-family: 'Pretendard', -apple-system, sans-serif;
-  /* ✅ 본문 볼드 해제: 세련된 400 굵기 */
-  font-weight: 400; 
+  font-weight: 400; /* 본문 전체 볼드 해제 */
   color: var(--body-black);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   background-color: #ffffff;
 }
 
-/* 제목만 적당히 강조 */
-h1, h2, h3, h4, .logo-title, .footer-name {
-  font-weight: 800;
+/* 제목 및 강조 텍스트 */
+h1, h2, h3, h4, strong, b {
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-/* ===== 2. 헤더 (Header) 스타일 ===== */
+/* ===== 2. 헤더 (Header): 상호명 강조 버전 ===== */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--header-h); z-index: 10000;
@@ -1134,60 +1140,95 @@ h1, h2, h3, h4, .logo-title, .footer-name {
   display: flex; align-items: center; justify-content: space-between;
 }
 
-.logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-img { width: 40px; height: 40px; }
-.logo-title { color: #fff; font-size: 1.1rem; }
+.logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-img { width: 44px; height: 44px; object-fit: contain; }
+
+.logo-title { 
+  color: #fff; 
+  font-size: 1.35rem; /* 상호명 확대 */
+  font-weight: 800; 
+  letter-spacing: -0.03em; 
+}
 
 /* GNB 메뉴 */
-.gnb-list { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.gnb-list { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
 .gnb-list a { 
   color: var(--text-muted); text-decoration: none; 
   font-size: 15px; font-weight: 500; transition: 0.2s;
 }
 .gnb-list a:hover { color: #fff; }
 
-/* 드롭다운 서브메뉴 */
+/* 드롭다운 메뉴 */
 .has-sub { position: relative; }
 .sub {
   display: none; position: absolute; top: 100%; left: 0;
   background: #25282b; padding: 10px 0; border-radius: 8px;
-  min-width: 160px; list-style: none; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  min-width: 170px; list-style: none; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 .has-sub:hover .sub { display: block; }
-.sub a { display: block; padding: 8px 15px; font-size: 14px; color: var(--text-muted); }
+.sub a { display: block; padding: 8px 18px; font-size: 14.5px; color: var(--text-muted); }
 .sub a:hover { background: rgba(255,255,255,0.05); color: #fff; }
 
-/* ===== 3. 푸터 (Footer) 스타일 ===== */
+/* ===== 3. 푸터 (Footer): 슬림 압축 버전 ===== */
 .site-footer {
   background: var(--theme-dark-bg);
   border-top: 1px solid var(--theme-border);
-  padding: 50px 20px; color: var(--text-muted);
+  padding: 30px 20px; /* 세로 여백 축소 */
+  color: var(--text-muted);
 }
 
 .footer-inner { max-width: 1200px; margin: 0 auto; }
-.footer-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
-.footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.footer-logo { width: 32px; height: 32px; }
-.footer-name { color: #fff; font-size: 1.1rem; }
 
-/* 푸터 버튼 (아이콘 포함 고려) */
-.footer-cta { display: flex; gap: 10px; }
+.footer-top { 
+  display: flex; align-items: center; justify-content: space-between; 
+  margin-bottom: 15px; /* 하단 간격 축소 */
+}
+
+.footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.footer-logo { width: 34px; height: 34px; }
+
+.footer-name { 
+  color: #fff; 
+  font-size: 1.25rem; /* 푸터 상호명 확대 */
+  font-weight: 800; 
+}
+
+/* 푸터 버튼 */
+.footer-cta { display: flex; gap: 8px; }
 .footer-phone, .footer-kakao {
-  display: inline-flex; align-items: center; height: 40px; padding: 0 18px;
-  border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: 0.2s;
+  display: inline-flex; align-items: center; height: 36px; padding: 0 15px;
+  border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none;
 }
 .footer-phone { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--theme-border); }
 .footer-kakao { background: #fff; color: #111; }
-.footer-phone:hover, .footer-kakao:hover { transform: translateY(-2px); }
 
-.footer-divider { height: 1px; background: var(--theme-border); margin: 30px 0; }
+.footer-divider { 
+  height: 1px; background: var(--theme-border); 
+  margin: 15px 0; /* 구분선 위아래 간격 축소 */
+}
 
-/* ❌ 푸터 정보: 볼드 강제 해제 */
+/* 푸터 정보 텍스트 (슬림 & 볼드 해제) */
 .footer-info p { 
-  margin: 6px 0; font-size: 0.9rem; font-weight: 400 !important; 
-  line-height: 1.6; color: var(--text-muted); 
+  margin: 3px 0; /* 줄 간격 최소화 */
+  font-size: 0.85rem; 
+  font-weight: 400 !important; 
+  line-height: 1.5;
+  color: var(--text-muted); 
 }
 .footer-info strong { color: #fff; font-weight: 600; margin-right: 4px; }
 .sep { margin: 0 8px; color: rgba(255,255,255,0.1); }
 
-.footer-bottom { margin-top: 30px; font-size: 0.8rem; font-weight: 400 !important; }
+.footer-bottom { 
+  margin-top: 15px; 
+  font-size: 0.75rem; 
+  font-weight: 400 !important; 
+  color: rgba(255,255,255,0.3);
+}
+
+/* 모바일 반응형 간소화 */
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; align-items: flex-start; gap: 15px; }
+  .footer-cta { width: 100%; }
+  .footer-cta a { flex: 1; text-align: center; }
+  .logo-title { font-size: 1.1rem; }
+}

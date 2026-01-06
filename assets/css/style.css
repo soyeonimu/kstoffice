@@ -1127,10 +1127,8 @@ h1, h2, h3, h4, strong, b {
 
 /* ===== 2. 헤더 (Header): 상호명 & 메뉴 확대 ===== */
 .site-header {
-  position: fixed; top: 0; left: 0; right: 0;
-  height: var(--header-h); z-index: 10000;
-  background: var(--theme-dark-bg);
-  border-bottom: 1px solid var(--theme-border);
+  background: #0f172a;              /* 진중한 네이비 */
+  border-bottom: 1px solid rgba(0,0,0,.15);
 }
 
 .header-inner {

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: 게시판
-description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 정보를 안내드립니다.
 ---
 
 <section class="board-section" style="background-color: #f8fafc; min-height: 100vh;">
@@ -10,9 +9,6 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
     <header class="page-head js-reveal">
       <div class="head-badge">NEWS & INSIGHTS</div>
       <h1 class="page-title">공지사항 · 법률정보</h1>
-      <p class="page-desc">
-        리더스에서 전해드리는 최신 법률 소식과 공지사항입니다.
-      </p>
     </header>
 
     <nav class="category-nav js-reveal">
@@ -26,6 +22,13 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
         {% endfor %}
       </div>
     </nav>
+
+    <div class="search-container js-reveal">
+      <div class="search-box">
+        <input type="text" id="board-search" placeholder="궁금하신 키워드를 입력하세요 (예: 수원개인회생, 면책)">
+        <button type="button" class="search-icon-btn">🔍</button>
+      </div>
+    </div>
 
     <main class="post-area js-reveal">
       <div id="post-list" class="post-list-stack">
@@ -44,11 +47,11 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
         </article>
         {% endfor %}
       </div>
+      <div id="no-results" style="display: none; text-align: center; padding: 80px 0; color: #64748b;">
+        검색 결과가 없습니다. 다른 키워드로 검색해 보세요.
+      </div>
     </main>
 
-    {% include cta-box.html 
-       title="상담이 필요하신가요?" 
-       desc="글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 정확합니다." %}
   </div>
 </section>
 
@@ -62,69 +65,66 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
     --border: #e2e8f0;
   }
 
-  .board-section { padding: 120px 0 100px; font-family: 'Pretendard', sans-serif; }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  .board-section { padding: 100px 0; font-family: 'Pretendard', sans-serif; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-  /* Page Header */
-  .page-head { text-align: center; margin-bottom: 50px; }
-  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
-  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
-  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; }
+  .page-head { text-align: center; margin-bottom: 40px; }
+  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 12px; }
+  .page-title { font-size: 2.2rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.03em; }
 
-  /* Category Nav (상단 탭 디자인) */
-  .category-nav { text-align: center; margin-bottom: 50px; }
-  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+  /* 카테고리 버튼 */
+  .category-nav { margin-bottom: 30px; }
+  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
   .cat-btn { 
     text-decoration: none; background: var(--white); color: var(--text-sub);
-    padding: 12px 24px; border-radius: 50px; border: 1px solid var(--border);
-    font-weight: 700; font-size: 0.95rem; transition: 0.3s;
+    padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border);
+    font-size: 0.9rem; font-weight: 600; transition: 0.3s;
   }
-  .cat-btn .count { font-size: 0.8rem; opacity: 0.5; margin-left: 4px; }
-  .cat-btn:hover, .cat-btn.active { 
-    background: var(--primary-blue); color: var(--white); border-color: var(--primary-blue); 
-    box-shadow: 0 10px 20px rgba(10, 56, 113, 0.1);
-  }
+  .cat-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
 
-  /* Post List (제목 중심) */
-  .post-list-stack { display: flex; flex-direction: column; gap: 16px; margin-bottom: 80px; }
-  
+  /* 검색창 스타일 */
+  .search-container { max-width: 600px; margin: 0 auto 50px; }
+  .search-box { 
+    display: flex; background: #fff; border: 1.5px solid var(--border); 
+    border-radius: 12px; padding: 5px 15px; transition: 0.3s;
+  }
+  .search-box:focus-within { border-color: var(--primary-blue); box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.05); }
+  .search-box input { 
+    flex-grow: 1; border: none; outline: none; padding: 12px; 
+    font-size: 0.95rem; font-family: inherit; 
+  }
+  .search-icon-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; }
+
+  /* 게시글 카드 (글자 크기 축소) */
+  .post-list-stack { display: flex; flex-direction: column; gap: 12px; }
   .post-title-card {
     display: flex; justify-content: space-between; align-items: center;
-    background: var(--white); padding: 25px 40px; border-radius: 20px; text-decoration: none;
-    border: 1px solid var(--border); transition: all 0.3s ease;
+    background: var(--white); padding: 20px 30px; border-radius: 16px; text-decoration: none;
+    border: 1px solid var(--border); transition: 0.3s;
   }
-  .post-title-card:hover { 
-    transform: translateX(10px); 
-    border-color: var(--primary-blue); 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-  }
+  .post-title-card:hover { border-color: var(--primary-blue); background: #fdfdfe; }
 
-  .post-info-left { display: flex; align-items: center; gap: 25px; flex-grow: 1; }
+  .post-info-left { display: flex; align-items: center; gap: 20px; }
   .post-tag { 
-    background: #eff6ff; color: var(--primary-blue); font-size: 12px; 
-    font-weight: 800; padding: 6px 14px; border-radius: 6px; white-space: nowrap;
+    background: #eff6ff; color: var(--primary-blue); font-size: 11px; 
+    font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;
   }
   .post-title { 
-    font-size: 1.25rem; font-weight: 700; color: var(--text-main); 
+    font-size: 1.1rem; font-weight: 700; color: var(--text-main); 
     margin: 0; letter-spacing: -0.02em; line-height: 1.4;
-    overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
   }
 
-  .post-info-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
-  .post-date { font-size: 14px; color: var(--text-sub); font-weight: 500; }
-  .arrow { font-size: 18px; color: var(--primary-blue); font-weight: bold; transition: 0.3s; }
+  .post-info-right { display: flex; align-items: center; gap: 15px; color: var(--text-sub); font-size: 13px; }
+  .arrow { color: var(--primary-blue); transition: 0.3s; }
   .post-title-card:hover .arrow { transform: translateX(5px); }
 
   /* Reveal */
-  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-  /* Responsive */
-  @media (max-width: 850px) {
-    .post-title-card { flex-direction: column; align-items: flex-start; gap: 15px; padding: 25px; }
-    .post-info-left { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; }
-    .post-title { -webkit-line-clamp: 2; font-size: 1.15rem; }
+  @media (max-width: 768px) {
+    .post-title-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f8fafc; padding-top: 10px; }
   }
 </style>
 
@@ -135,18 +135,44 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
     }, { threshold: 0.1 });
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
 
-    const catBtns = document.querySelectorAll(".cat-btn");
-    const postItems = document.querySelectorAll(".post-item");
+    const searchInput = document.getElementById('board-search');
+    const postItems = document.querySelectorAll('.post-item');
+    const catBtns = document.querySelectorAll('.cat-btn');
+    const noResults = document.getElementById('no-results');
 
+    function filterPosts() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const activeCat = document.querySelector('.cat-btn.active').dataset.filter;
+      let visibleCount = 0;
+
+      postItems.forEach(item => {
+        const title = item.querySelector('.post-title').innerText.toLowerCase();
+        const category = item.dataset.category;
+        
+        const matchesSearch = title.includes(searchTerm);
+        const matchesCat = (activeCat === 'all' || category === activeCat);
+
+        if (matchesSearch && matchesCat) {
+          item.style.display = 'block';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // 검색창 입력 이벤트
+    searchInput.addEventListener('input', filterPosts);
+
+    // 카테고리 클릭 이벤트
     catBtns.forEach(btn => {
-      btn.addEventListener("click", function (e) {
+      btn.addEventListener('click', (e) => {
         e.preventDefault();
-        catBtns.forEach(b => b.classList.remove("active"));
-        this.classList.add("active");
-        const filter = this.dataset.filter;
-        postItems.forEach(item => {
-          item.style.display = (filter === "all" || item.dataset.category === filter) ? "block" : "none";
-        });
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterPosts();
       });
     });
   });

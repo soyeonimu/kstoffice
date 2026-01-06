@@ -1,8 +1,39 @@
 ---
 layout: default
+# 상세 페이지에서도 카테고리별 맞춤 CTA가 노출되도록 설정
+cta_title: "{{ page.category }} 관련 고민이 있으신가요?"
+cta_desc: "검찰 20년 경력의 베테랑 법무사가 직접 당신의 사건을 검토합니다."
 ---
 
-<section class="post-detail-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
+<style>
+  /* 상세 페이지 전용 스타일 보정 */
+  .post-detail-section { background-color: #ffffff; min-height: 100vh; padding: 120px 0 100px; }
+  .post-content-card { 
+    background: #fff; padding: 60px 50px; border-radius: 24px; border: 1px solid #e2e8f0; 
+    line-height: 1.8; color: #334155; font-size: 1.1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); 
+  }
+  
+  /* 본문 내 콘텐츠 스타일 (에디터 출력물 대응) */
+  .inner-content { word-break: keep-all; }
+  .inner-content img { max-width: 100%; border-radius: 12px; margin: 30px 0; display: block; }
+  .inner-content h2 { font-size: 1.6rem; color: #1e293b; margin-top: 50px; margin-bottom: 20px; border-left: 4px solid #0a3871; padding-left: 15px; }
+  .inner-content h3 { font-size: 1.3rem; color: #1e293b; margin-top: 35px; margin-bottom: 15px; }
+  .inner-content p { margin-bottom: 20px; }
+  
+  /* 하단 버튼 */
+  .back-btn { 
+    text-decoration: none; background: #0a3871; color: #fff; padding: 14px 40px; 
+    border-radius: 50px; font-weight: 700; font-size: 1rem; display: inline-block; transition: 0.3s; 
+  }
+  .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(10, 56, 113, 0.2); color: #fff; }
+
+  @media (max-width: 768px) {
+    .post-content-card { padding: 40px 25px; font-size: 1.05rem; }
+    .post-header { margin-bottom: 35px; }
+  }
+</style>
+
+<section class="post-detail-section">
   <div class="container" style="max-width: 850px; margin: 0 auto; padding: 0 20px;">
     
     <header class="post-header js-reveal" style="text-align: center; margin-bottom: 50px;">
@@ -19,28 +50,18 @@ layout: default
       </div>
     </header>
 
-    <article class="post-content js-reveal" style="background: #fff; padding: 60px 50px; border-radius: 24px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
-      <div class="inner-content" style="word-break: keep-all;">
+    <article class="post-content-card js-reveal">
+      <div class="inner-content">
         {{ content }}
       </div>
     </article>
 
-    <footer style="margin-top: 50px; text-align: center;">
-      <a href="/board" class="back-btn" style="text-decoration: none; background: #0a3871; color: #fff; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; display: inline-block; transition: 0.3s;">
-        목록으로 돌아가기
-      </a>
+    <footer class="post-footer js-reveal" style="margin-top: 50px; text-align: center;">
+      <a href="/board" class="back-btn">목록으로 돌아가기</a>
     </footer>
 
   </div>
 </section>
-
-<style>
-  .post-content img { max-width: 100%; border-radius: 12px; margin: 30px 0; }
-  .post-content h2 { font-size: 1.6rem; color: #1e293b; margin-top: 50px; margin-bottom: 20px; border-left: 4px solid #0a3871; padding-left: 15px; }
-  .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(10, 56, 113, 0.2); }
-  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {

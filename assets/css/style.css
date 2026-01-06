@@ -1336,65 +1336,7 @@ body {
   .footer-cta { width: 100%; }
   .footer-cta a { flex: 1; }
 }
-/* =====================================================
-   [최종 조정] 상단 여백 축소 및 본문 굵기 최적화
-   ===================================================== */
 
-/* 1. 배지(LEGAL GUIDE) 위쪽 여백을 대폭 줄임 */
-.success-cases,
-.rehabilitation-cases,
-.check-section,
-.diff-section,
-.faq-section,
-.price-section,
-.procedure-section,
-.info-section-container {
-  /* 헤더 높이(약 76px)에 딱 붙지 않을 정도의 최소 여백만 남김 */
-  padding-top: calc(var(--header-h) + 40px) !important; 
-  padding-bottom: 80px !important;
-  
-  /* 그라데이션은 유지하되 범위를 좁게 조정 */
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 300px) !important;
-}
-
-/* 2. 배지(head-badge)와 제목 사이 간격도 소폭 축소 */
-.head-badge {
-  margin-bottom: 10px !important;
-  font-weight: 700 !important;
-}
-
-/* 3. 제목(page-title) 크기와 여백 조정 */
-.page-title {
-  font-size: 2.6rem !important; /* 너무 크면 공간을 많이 차지하므로 살짝 축소 */
-  margin-bottom: 15px !important;
-}
-
-/* 4. 제목 밑 강조선(After) 위치 조정 */
-.page-title::after {
-  margin-top: 10px !important;
-}
-
-/* 5. [중요] 읽기 불편했던 본문 굵기 강제 해제 */
-.page-desc, 
-.case-text, 
-.career-text p, 
-.tip-text,
-.info-txt {
-  font-weight: 400 !important; /* 얇은 두께로 변경 */
-  color: #475569 !important; /* 눈이 편한 진한 회색 */
-  line-height: 1.6 !important;
-  letter-spacing: -0.01em !important;
-}
-
-/* 6. 모바일에서는 여백을 더 극단적으로 줄임 */
-@media (max-width: 768px) {
-  .success-cases, .rehabilitation-cases, .diff-section {
-    padding-top: calc(var(--header-h) + 25px) !important;
-  }
-  .page-title {
-    font-size: 2rem !important;
-  }
-}
 /* =====================================================
    [최종] 상단 여백 극최소화 및 로고 색상 정상화
    ===================================================== */
@@ -1510,74 +1452,7 @@ body {
   line-height: 1.6 !important;
   letter-spacing: -0.01em !important;
 }
-/* =====================================================
-   [최종 수정] 푸터 디자인 고도화 및 가독성 최적화
-   ===================================================== */
 
-.site-footer {
-  background-color: #1a1c1e !important; /* 배경을 조금 더 깊이감 있는 블랙으로 */
-  padding: 60px 20px 40px !important;
-  color: #cbd5e1 !important; /* 기본 글씨색을 부드러운 회색으로 */
-  border-top: 1px solid #2d2f31 !important;
-}
-
-/* 1. 푸터 로고/상호명: 선명하게 밝힘 */
-.site-footer .footer-logo-link,
-.site-footer .logo-text,
-.site-footer .logo-title {
-  color: #ffffff !important; /* 상호명을 순백색으로 강제 고정 */
-  font-size: 1.25rem !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  margin-bottom: 25px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-}
-
-/* 2. 푸터 정보 텍스트: 볼드 해제 및 가독성 상향 */
-.site-footer .footer-info {
-  margin-top: 20px !important;
-  line-height: 1.8 !important;
-}
-
-.site-footer .info-item {
-  font-weight: 400 !important; /* 모든 볼드 해제 */
-  font-size: 0.95rem !important;
-  color: #94a3b8 !important; /* 중요도가 낮은 정보는 연한 회색 */
-  margin-bottom: 5px !important;
-}
-
-/* 상호명이나 대표자 등 강조하고 싶은 부분만 살짝 밝게 */
-.site-footer .info-item strong {
-  font-weight: 600 !important;
-  color: #e2e8f0 !important;
-}
-
-/* 3. 연락처/상담 버튼 영역 정리 */
-.site-footer .footer-contact {
-  display: flex !important;
-  gap: 15px !important;
-  margin-bottom: 30px !important;
-}
-
-.site-footer .contact-btn {
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-  padding: 10px 18px !important;
-  border-radius: 8px !important;
-}
-
-/* 4. 카피라이트: 가장 하단에 작게 배치 */
-.site-footer .copyright {
-  margin-top: 40px !important;
-  padding-top: 20px !important;
-  border-top: 1px solid #2d2f31 !important;
-  font-size: 0.85rem !important;
-  font-weight: 400 !important;
-  color: #64748b !important;
-  text-align: left !important;
-}
 /* =====================================================
    [최종 조정] 섹션 간 여백 축소 및 레이아웃 밀착
    ===================================================== */
@@ -1630,6 +1505,7 @@ body {
         font-size: 1.3rem !important;
     }
 }
+
 /* =====================================================
    [최종 해결] 푸터 복구 및 섹션 간격 밀착 조정
    ===================================================== */

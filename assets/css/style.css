@@ -1217,3 +1217,48 @@ caption {
   line-height: 1.15;
   margin: 0;
 }
+/* ✅ hero--bg 오버레이가 페이지 전체를 덮지 못하게 고정 */
+.hero--bg{
+  position: relative;
+  overflow: hidden;
+  height: 75vh;
+  min-height: 520px;
+
+  /* 기존 hero 공통 max-width/grid 영향 제거 */
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* ✅ 배경이미지는 overlay가 아니라 hero 자체 배경으로 유지 */
+.hero--bg{
+  background: url('/assets/img/business (2000 x 700 px).png') center/cover no-repeat;
+}
+
+/* ✅ 오버레이는 hero 영역 안에서만 */
+.hero--bg .hero-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0,0,0,.55);
+  pointer-events: none;
+}
+
+/* ✅ 글씨는 오버레이 위 */
+.hero--bg .hero-content{
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  color: #fff;
+}
+
+.hero--bg .hero-sub,
+.hero--bg .hero-sub * ,
+.hero--bg .hero-headline{
+  color: #fff !important;
+  text-shadow: 0 8px 24px rgba(0,0,0,.45);
+}
+

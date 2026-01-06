@@ -1,42 +1,47 @@
 ---
 layout: default
-title: 수원·용인 개인회생 파산 고소장 전문 법무사 - 김성태 법무사 사무소
+title: 수원·용인 개인회생 파산 고소장 전문 법무사
 description: 경기 수원·용인·화성·평택 지역 개인회생, 개인파산, 고소장 작성 및 형사합의 전문 법무사. 무료 상담 가능. 신속하고 정확한 법률 절차 진행.
 keywords: 수원 법무사, 용인 법무사, 개인회생, 개인파산, 고소장, 형사합의, 법률상담, 김성태, 채무상담, 회생절차, 파산신청
-author: 김성태 법무사 사무소
+author: 리더스 합동 법무사 사무소
 permalink: /
 ---
 
-<!-- HERO #0 : 플레인(배경 없음) -->
-<section class="hero hero--plain" aria-labelledby="home-hero-title">
-  <div class="hero-text">
-    <!-- 서브 문구 (위쪽) -->
-    <div class="hero-sub">
-      <ul class="hero-sublist">
-        <li>검찰청 강력부 · 형사부 · 수사과 · 특별수사부 <strong>20년 경력의</strong></li>
-        <li>실무중심, 절차전문 <strong>든든한 법무사</strong></li>
-      </ul>
-    </div>
+<!-- SEO용 텍스트 히어로 (검색엔진/접근성용) -->
+<section class="hero hero--seo" aria-labelledby="seo-title">
+  <h1 id="seo-title">
+    수원·용인 개인회생 · 개인파산 · 고소장 전문 리더스 합동 법무사 사무소
+  </h1>
+  <p>
+    경기 수원·용인·화성·평택 지역 개인회생, 개인파산, 고소장 작성 및 형사합의 절차를
+    실무 중심으로 신속하고 정확하게 진행합니다.
+  </p>
+</section>
 
-    <!-- 큰 헤드라인 (아래쪽) -->
-    <h1 id="home-hero-title" class="hero-headline">
-      본질을 읽고,<br> 최선의 해답을<br>제시합니다.
-    </h1>
-  </div>
+<!-- HERO #0 : 메인 배너 -->
+<section class="hero hero--banner" aria-label="리더스 합동 법무사 사무소 메인 배너">
+  <img
+    class="hero-banner__img"
+    src="{{ '/assets/img/business_main (2000 x 700 px).png' | relative_url }}"
+    alt="리더스 합동 법무사 사무소 – 개인회생·개인파산·고소장 전문"
+    width="2000"
+    height="700"
+    loading="eager"
+    decoding="async"
+  >
+</section>
 
-  <div class="hero-img">
-    <img
-      src="{{ '/assets/img/법무사-김성태.webp' | relative_url }}"
-      srcset="
-        {{ '/assets/img/법무사-김성태.webp' | relative_url }} 400w
-      "
-      sizes="(min-width:1024px) 42vw, 60vw"
-      alt="김성태 법무사"
-      width="400"
-      height="400"
-      loading="eager"
-      decoding="async"
-    >
+<!-- 배너 아래 CTA (이미지에만 의존하지 않도록 실버튼 제공) -->
+<section class="hero hero--banner-cta" aria-label="상담 바로가기">
+  <div class="container banner-cta__inner">
+    <a class="btn primary" href="tel:031-225-6885">전화 상담 031-225-6885</a>
+    <a class="btn secondary" href="{{ '/consult' | relative_url }}">방문 예약하기</a>
+    <button
+      class="btn ghost"
+      type="button"
+      data-copy="수원시 영통구 광교중앙로248번길 7-2, A동 702호(하동)"
+      aria-label="주소 복사"
+    >주소 복사</button>
   </div>
 </section>
 
@@ -51,7 +56,7 @@ permalink: /
     </div>
   </div>
   <div class="media">
-    <img src="{{ '/image1.jpg' | relative_url }}" alt="개인회생 상담 이미지">
+    <img src="{{ '/image1.jpg' | relative_url }}" alt="개인회생 상담 이미지" loading="lazy" decoding="async">
   </div>
 </section>
 
@@ -66,21 +71,26 @@ permalink: /
     </div>
   </div>
   <div class="media">
-    <img src="{{ '/image2.jpg' | relative_url }}" alt="고소장 법률 이미지">
+    <img src="{{ '/image2.jpg' | relative_url }}" alt="고소장 법률 이미지" loading="lazy" decoding="async">
   </div>
 </section>
-
 
 <!-- 보드 최신글 -->
 {% include board-list.html limit=6 %}
 
+<!-- 주소 복사 기능 (프로젝트에 main.js가 있으면 이건 생략 가능) -->
 <script>
-  // 플레인 히어로 이미지 디졸브
-  window.addEventListener('load', () => {
-    document.querySelector('.hero--plain .hero-img img')?.classList.add('show');
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.getAttribute('data-copy');
+      try{
+        await navigator.clipboard.writeText(text);
+        const old = btn.textContent;
+        btn.textContent = '복사 완료!';
+        setTimeout(()=>btn.textContent = old, 1200);
+      }catch(e){
+        alert('복사에 실패했습니다. 주소를 드래그해서 복사해주세요.');
+      }
+    });
   });
 </script>
-
-
-
-

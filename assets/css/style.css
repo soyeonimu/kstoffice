@@ -1578,3 +1578,139 @@ body {
   color: #64748b !important;
   text-align: left !important;
 }
+/* =====================================================
+   [최종 조정] 섹션 간 여백 축소 및 레이아웃 밀착
+   ===================================================== */
+
+/* 1. 인사이트 섹션과 상하 여백 축소 */
+.career-highlight, 
+.insight-section {
+    margin-top: 40px !important;    /* 위쪽 사례 카드와의 간격 축소 */
+    margin-bottom: 40px !important; /* 아래 CTA 박스와의 간격 축소 */
+    padding: 60px 40px !important;   /* 박스 내부 여백 최적화 */
+}
+
+/* 2. 하단 CTA 박스(비슷한 상황으로 해결책...) 상단 여백 제거 */
+.cta-box-simple,
+.home-rehabilitation-section .cta-box {
+    margin-top: 0 !important;
+    padding: 50px 40px !important;
+}
+
+/* 3. 성공사례 그리드(카드들) 하단 여백 축소 */
+.rehab-grid, 
+.success-grid {
+    margin-bottom: 40px !important;
+}
+
+/* 4. 푸터 상단 여백 축소 */
+.site-footer {
+    margin-top: 60px !important;
+    padding-top: 50px !important;
+}
+
+/* 5. [가독성] 인사이트 박스 내 본문 굵기 해제 (얇게) */
+.career-text p,
+.insight-section p {
+    font-weight: 400 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.7 !important;
+    margin-top: 15px !important;
+    color: #475569 !important;
+}
+
+/* 6. 모바일 대응: 여백을 더 극단적으로 축소 */
+@media (max-width: 768px) {
+    .career-highlight, .cta-box-simple {
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+        padding: 40px 20px !important;
+    }
+    .career-text h3 {
+        font-size: 1.3rem !important;
+    }
+}
+/* =====================================================
+   [최종 해결] 푸터 복구 및 섹션 간격 밀착 조정
+   ===================================================== */
+
+/* 1. 인사이트 박스 - CTA 박스 간격 극소화 */
+.career-highlight, .insight-section {
+    margin-bottom: 20px !important; /* 아래 CTA와의 간격을 20px로 밀착 */
+    padding: 50px 30px !important;
+}
+
+.cta-box-simple, .home-rehabilitation-section .cta-box {
+    margin-top: 0 !important; /* 위쪽 섹션에 딱 붙임 */
+    padding: 40px !important;
+}
+
+/* 2. 푸터 디자인 전면 수정 (색상 및 버튼 복구) */
+.site-footer {
+    background-color: #1a1c1e !important;
+    padding: 50px 20px !important;
+    margin-top: 50px !important;
+    border-top: 1px solid #2d2f31 !important;
+}
+
+/* 푸터 내 상호명 색상 복구 */
+.site-footer .logo-text, 
+.site-footer .logo-title,
+.site-footer a[class*="logo"] {
+    color: #ffffff !important; 
+    font-weight: 700 !important;
+    font-size: 1.15rem !important;
+    opacity: 1 !important;
+}
+
+/* 푸터 정보 텍스트 볼드 해제 및 가독성 */
+.site-footer p, 
+.site-footer .info-item,
+.site-footer .footer-info {
+    color: #94a3b8 !important;
+    font-weight: 400 !important; /* 얇게 수정 */
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 5px !important;
+}
+
+/* 3. 푸터 버튼 스타일 정교화 (흰색 뭉침 방지) */
+.site-footer .footer-btns,
+.site-footer .contact-area {
+    display: flex !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+/* 전화상담 버튼 */
+.site-footer a.btn-tel,
+.site-footer [class*="contact-btn"] {
+    background: #2d2f31 !important;
+    color: #ffffff !important;
+    border: 1px solid #3f4144 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+}
+
+/* 온라인 상담 버튼 (흰색 뭉침 해결) */
+.site-footer a.btn-online,
+.site-footer [class*="online-btn"] {
+    background: #ffffff !important;
+    color: #1a1c1e !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-align: center !important;
+}
+
+/* 카피라이트 */
+.site-footer .copyright {
+    border-top: 1px solid #2d2f31 !important;
+    margin-top: 30px !important;
+    padding-top: 20px !important;
+    color: #64748b !important;
+    font-size: 0.8rem !important;
+}

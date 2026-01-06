@@ -1677,3 +1677,142 @@ header nav ul li a {
 header nav ul {
   gap: 28px; /* 기존 16~20px이면 좁음 */
 }
+/* ===== Footer (Dark, Header 톤 맞춤) ===== */
+.site-footer{
+  background: #0b0f14;          /* 헤더랑 같은 다크톤 */
+  color: rgba(255,255,255,.78);
+  padding: 44px 18px;
+}
+
+.footer-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* 브랜드 */
+.footer-brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;                    /* 로고-상호 간격 */
+  text-decoration:none;
+  color: #fff;
+}
+
+.footer-logo{
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.footer-name{
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* 오른쪽 CTA */
+.footer-cta{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  flex-wrap: wrap;
+}
+
+.footer-phone{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  color:#fff;
+  text-decoration:none;
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+.footer-kakao{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0a3871;
+  text-decoration:none;
+  font-weight: 800;
+  font-size: 0.98rem;
+}
+
+.footer-phone:hover,
+.footer-kakao:hover{
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.footer-divider{
+  height: 1px;
+  background: rgba(255,255,255,.10);
+  margin: 18px 0 16px;
+}
+
+/* 정보 */
+.footer-info p{
+  margin: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.72);
+}
+
+.footer-info strong{
+  color: rgba(255,255,255,.92);
+  font-weight: 700;
+}
+
+.footer-info a{
+  color: rgba(255,255,255,.86);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-info .sep{
+  margin: 0 10px;
+  color: rgba(255,255,255,.22);
+}
+
+/* 맨 아래 */
+.footer-bottom{
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,.50);
+}
+
+.footer-bottom span{
+  color: rgba(255,255,255,.72);
+  font-weight: 600;
+}
+
+/* 모바일 */
+@media (max-width: 768px){
+  .footer-top{
+    align-items:flex-start;
+  }
+  .footer-name{
+    font-size: 1.05rem;
+  }
+  .footer-phone,
+  .footer-kakao{
+    width: 100%;
+    justify-content: center;
+  }
+}

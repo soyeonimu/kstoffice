@@ -1422,3 +1422,74 @@ body {
     padding: 0 20px;
   }
 }
+<style>
+  :root {
+    --bg-soft: #f8fafc;
+    --white: #ffffff;
+    --primary-blue: #0a3871;
+    --text-main: #1e293b;
+    --text-sub: #475569; /* 조금 더 진하게 조정하여 얇아져도 잘 보이게 함 */
+    --border: #e2e8f0;
+  }
+
+  .success-cases { background: var(--bg-soft); padding: calc(var(--header-h) + 80px) 20px 100px; font-family: 'Pretendard', sans-serif; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header - 제목만 강하게, 설명은 부드럽게 */
+  .page-head { text-align: center; margin-bottom: 50px; }
+  .head-badge { font-size: 13px; font-weight: 700; color: var(--primary-blue); letter-spacing: 0.15em; margin-bottom: 15px; }
+  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 800; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
+  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.7; max-width: 700px; margin: 0 auto; font-weight: 400; } /* 본문 두께 해제 */
+
+  /* Career Highlight Box - 숫자만 강조 */
+  .career-highlight {
+    background: #fff; border: 1px solid var(--border); border-radius: 24px;
+    padding: 40px; margin-bottom: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  }
+  .career-content { display: flex; align-items: center; gap: 40px; }
+  .career-stat { text-align: center; border-right: 1px solid #e2e8f0; padding-right: 40px; }
+  .stat-number { display: block; font-size: 3rem; font-weight: 800; color: var(--primary-blue); line-height: 1; }
+  .stat-label { font-size: 14px; color: var(--text-sub); font-weight: 600; margin-top: 10px; white-space: nowrap; }
+  .career-text h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px; }
+  .career-text p { color: var(--text-sub); line-height: 1.7; font-weight: 400; } /* 본문 두께 해제 */
+
+  /* Case Card - 카드 내 텍스트 정돈 */
+  .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 60px; }
+  .case-card {
+    background: var(--white); border-radius: 24px; padding: 40px;
+    border: 1px solid var(--border); transition: all 0.3s ease; display: flex; flex-direction: column;
+  }
+  .case-card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
+
+  /* Tag - 너무 두꺼우면 뭉쳐보임 */
+  .case-tag { font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 6px; display: inline-block; }
+  
+  .case-title { font-size: 1.35rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; letter-spacing: -0.01em; }
+  .case-text { font-size: 0.95rem; color: var(--text-sub); line-height: 1.65; margin-bottom: 25px; flex-grow: 1; font-weight: 400; } /* 본문 가독성 핵심 */
+
+  .case-footer { display: flex; gap: 12px; flex-wrap: wrap; border-top: 1px solid #f1f5f9; padding-top: 20px; }
+  .case-footer span { font-size: 13px; font-weight: 500; color: var(--primary-blue); opacity: 0.9; } /* 해시태그 두께 줄임 */
+
+  /* Insight Box - 명언 느낌으로 정리 */
+  .pro-tip-container {
+    background: #f1f5f9; border-radius: 24px; padding: 50px 40px;
+    text-align: center; margin-bottom: 50px;
+  }
+  .tip-badge {
+    display: inline-block; background: var(--primary-blue); color: #fff;
+    padding: 5px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; margin-bottom: 20px;
+  }
+  .tip-title { font-size: 1.6rem; font-weight: 700; color: #1e293b; margin-bottom: 18px; letter-spacing: -0.03em; }
+  .tip-text { font-size: 1.05rem; color: #475569; line-height: 1.75; max-width: 750px; margin: 0 auto; font-weight: 400; }
+
+  /* Reveal Animation */
+  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 850px) {
+    .case-grid { grid-template-columns: 1fr; }
+    .case-card { padding: 30px; }
+    .career-content { flex-direction: column; text-align: center; gap: 20px; }
+    .career-stat { border-right: none; border-bottom: 1px solid #e2e8f0; padding: 0 0 20px; }
+  }
+</style>

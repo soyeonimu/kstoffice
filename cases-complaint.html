@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 형사 고소 성공사례 | 리더스 합동 법무사
+title: 고소장 작성 성공사례 | 리더스 합동 법무사
 ---
 
 <section class="leaders-page">
@@ -9,7 +9,7 @@ title: 형사 고소 성공사례 | 리더스 합동 법무사
       <div class="leaders-badge-wrapper">
         <span class="leaders-badge">SUCCESS CASES</span>
       </div>
-      <h1 class="leaders-title">형사 고소 <span class="text-gradient">성공사례</span></h1>
+      <h1 class="leaders-title">고소장 작성 <span class="text-gradient">성공사례</span></h1>
       <p class="leaders-desc">
         치밀한 법리 검토와 수사관의 시각으로 구성한 고소장은 결과가 다릅니다.<br>
         리더스가 이끌어낸 <strong>기소 및 처벌</strong> 실제 사례를 확인하세요.
@@ -75,23 +75,11 @@ title: 형사 고소 성공사례 | 리더스 합동 법무사
     </div>
   </section>
 
-  <section class="unified-cta-section js-reveal">
-    <div class="container-cta">
-      <div class="cta-box-wrapper">
-        <div class="cta-inner-content">
-          <div class="cta-text-area">
-            <div class="cta-badge">DIRECT CONSULTING</div>
-            <h3 class="cta-title">나의 사건도 성공 사례가 될 수 있습니다.</h3>
-            <p class="cta-desc">답답한 마음을 해결할 가장 강력한 방법, 리더스의 법리 검토에서 시작됩니다.</p>
-          </div>
-          <div class="cta-action-area">
-            <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
-            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  {% include cta-box.html 
+     title="나의 사건도 성공 사례가 될 수 있습니다." 
+     desc="답답한 마음을 해결할 가장 강력한 방법, 리더스의 법리 검토에서 시작됩니다." 
+  %}
+
 </section>
 
 <style>
@@ -150,19 +138,6 @@ title: 형사 고소 성공사례 | 리더스 합동 법무사
   .leaders-insight-desc { opacity: 0.8; max-width: 850px; font-weight: 300; line-height: 1.8; }
   .leaders-insight-desc strong { color: #fff; font-weight: 700; }
 
-  /* UNIFIED CTA */
-  .unified-cta-section { padding: 60px 24px 120px; background: transparent; }
-  .container-cta { max-width: 1200px; margin: 0 auto; }
-  .cta-box-wrapper { background: var(--brand); border-radius: var(--radius-lg); padding: 64px 60px; box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2); }
-  .cta-inner-content { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
-  .cta-badge { font-size: 12px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.15em; margin-bottom: 16px; }
-  .cta-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; color: #ffffff; margin-bottom: 14px; letter-spacing: -0.03em; }
-  .cta-desc { font-size: 1.15rem; color: #94a3b8; }
-  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
-  .cta-btn { display: flex; align-items: center; justify-content: center; min-width: 180px; height: 60px; border-radius: 14px; font-weight: 800; text-decoration: none; transition: var(--transition); }
-  .cta-btn.kakao { background: #fee500; color: #3c1e1e; }
-  .cta-btn.secondary { background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); }
-
   /* Animations */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -170,9 +145,6 @@ title: 형사 고소 성공사례 | 리더스 합동 법무사
   @media (max-width: 1100px) { .leaders-case-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 768px) {
     .leaders-case-grid { grid-template-columns: 1fr; }
-    .cta-inner-content { flex-direction: column; text-align: center; }
-    .cta-action-area { width: 100%; flex-direction: column; }
-    .cta-btn { width: 100%; }
   }
 </style>
 

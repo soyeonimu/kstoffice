@@ -1093,121 +1093,96 @@ caption {
   );
 }
 
-/* ===== 1. 전역 변수 설정 ===== */
+/* ===== 1. 전역 및 레이아웃 ===== */
 :root {
   --theme-dark-bg: #1a1c1e;
   --header-h: 76px;
-  --text-main: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.65);
-  --body-gray: #475569;
 }
 
-/* 기본 레이아웃 가독성 */
-body {
-  padding-top: var(--header-h);
-  margin: 0;
-  font-family: 'Pretendard', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
+body { padding-top: var(--header-h); margin: 0; font-family: 'Pretendard', sans-serif; }
 
-/* ===== 2. 헤더 (Header) 정상화 ===== */
+/* ===== 2. 헤더 (Header) - 레이아웃 강제 고정 ===== */
 .site-header {
-  position: fixed; top: 0; left: 0; right: 0;
-  height: var(--header-h); z-index: 9999;
-  background: var(--theme-dark-bg);
-  display: flex; align-items: center;
+  position: fixed !important; top: 0; left: 0; right: 0;
+  height: var(--header-h) !important; z-index: 10000 !important;
+  background: var(--theme-dark-bg) !important;
+  display: flex !important; align-items: center !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
 }
 
-/* 헤더 내 로고 크기 고정 */
-.site-header .logo-img {
-  width: 42px !important;
-  height: 42px !important;
-  object-fit: contain;
+.header-inner {
+  display: flex !important; 
+  flex-direction: row !important; /* 가로 정렬 강제 */
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important; max-width: 1200px !important;
+  margin: 0 auto !important; padding: 0 20px !important;
 }
 
-/* 헤더 메뉴(GNB) 링크 스타일 보호 */
+/* 메뉴 리스트 가로 정렬 복구 */
+.gnb-list {
+  display: flex !important;
+  flex-direction: row !important; /* 세로로 쌓이는 문제 해결 */
+  gap: 30px !important;
+  list-style: none !important;
+  margin: 0 !important; padding: 0 !important;
+}
+
 .gnb-list a {
   color: var(--text-muted) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
   text-decoration: none !important;
-  font-weight: 500;
-  padding: 10px 15px;
-}
-.gnb-list a:hover { color: #fff !important; }
-
-/* ===== 3. 본문 및 섹션 간격 (밀착형) ===== */
-/* 모든 본문 설명글 볼드 해제 */
-.page-desc, .info-txt, .case-text, .career-text p, .case-info .info-txt {
-  font-weight: 400 !important;
-  color: var(--body-gray) !important;
-  line-height: 1.6;
 }
 
-/* 섹션 사이 거대 공백 제거 */
-.insight-section, .career-highlight {
-  padding-bottom: 20px !important;
-}
-.cta-box-simple {
-  margin-top: 0 !important;
-  padding-top: 30px !important;
+/* 로고 크기 고정 */
+.site-header .logo-img {
+  width: 42px !important; height: 42px !important;
 }
 
-/* ===== 4. 푸터 (Footer) 슬림 최적화 ===== */
+/* ===== 3. 푸터 (Footer) - 슬림 & 높이 축소 ===== */
 footer.site-footer {
   background-color: var(--theme-dark-bg) !important;
-  padding: 25px 0 !important; /* 높이 최소화 */
+  padding: 20px 0 !important; /* 높이 대폭 축소 */
   border-top: 1px solid rgba(255,255,255,0.08) !important;
 }
 
-/* 푸터 내부 정렬 */
-.footer-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 20px;
-}
-
 .footer-top {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 15px !important;
+  display: flex !important; 
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 10px !important;
 }
 
-/* 푸터 로고 및 상호명 (슬림) */
-.footer-brand { display: flex; align-items: center; gap: 10px; }
-.footer-logo { width: 30px !important; height: auto !important; }
-.footer-name { color: #fff !important; font-weight: 700 !important; font-size: 1rem !important; }
-
-/* 푸터 정보 텍스트 (줄간격 밀착) */
-.footer-info p {
-  color: var(--text-muted) !important;
+/* 푸터 정보 텍스트 슬림화 */
+footer.site-footer .footer-info p {
   font-weight: 400 !important;
   font-size: 0.85rem !important;
-  margin: 2px 0 !important; /* 줄간격 최소화 */
+  color: var(--text-muted) !important;
+  margin: 2px 0 !important; /* 줄간격 밀착 */
   line-height: 1.4 !important;
 }
 
-/* 푸터 버튼 디자인 (흰색 뭉침 방지) */
-.footer-cta { display: flex; gap: 8px; }
-.footer-cta a {
-  display: inline-flex !important;
-  align-items: center; justify-content: center;
-  height: 36px !important; padding: 0 15px !important;
+/* 푸터 버튼 디자인 고정 */
+footer.site-footer .footer-cta { display: flex !important; gap: 8px !important; }
+footer.site-footer .footer-cta a {
+  display: inline-flex !important; align-items: center; justify-content: center;
+  height: 34px !important; padding: 0 15px !important;
   border-radius: 6px !important; font-size: 13px !important;
   text-decoration: none !important;
 }
 
-/* 전화 버튼 */
-.footer-phone, .btn-tel {
-  background: rgba(255,255,255,0.08) !important;
-  color: #fff !important;
+/* 버튼 색상 */
+footer.site-footer .btn-online, footer.site-footer .footer-kakao {
+  background: #ffffff !important; color: #1a1c1e !important; font-weight: 700 !important;
+}
+footer.site-footer .btn-tel, footer.site-footer .footer-phone {
+  background: rgba(255,255,255,0.1) !important; color: #fff !important;
 }
 
-/* 온라인 상담 버튼 (대비 강화) */
-.footer-kakao, .btn-online {
-  background: #ffffff !important;
-  color: #1a1c1e !important; /* 배경 흰색에 글자 검정 */
-  font-weight: 800 !important;
-}
-
-/* 하단 카피라이트 */
-.footer-bottom {
-  margin-top: 15px !important; padding-top: 15px !important;
-  border-top: 1px solid rgba(255,255,255,0.05) !important;
-  font-size: 0.75rem !important; color: rgba(255,255,255,0.3) !important;
+/* 본문 설명글 볼드 해제 */
+.page-desc, .info-txt, .career-text p {
+  font-weight: 400 !important;
+  color: #475569 !important;
 }

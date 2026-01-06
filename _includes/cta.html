@@ -1,0 +1,116 @@
+<section class="unified-cta-section js-reveal">
+  <div class="container-cta">
+    <div class="cta-box-wrapper">
+      <div class="cta-inner-content">
+        <div class="cta-text-area">
+          <div class="cta-badge">CONTACT US</div>
+          <h3 class="cta-title">{{ include.title | default: "나의 사건도 성공 사례가 될 수 있습니다." }}</h3>
+          <p class="cta-desc">{{ include.desc | default: "답답한 마음을 해결할 가장 강력한 방법, 리더스의 법리 검토에서 시작됩니다." }}</p>
+        </div>
+        <div class="cta-action-area">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
+          <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --cta-bg-gray: #f8fafc; /* 아주 연한 회색 */
+    --cta-border: #e2e8f0; /* 경계선 회색 */
+    --cta-text-dark: #0f172a;
+    --cta-accent-blue: #2563eb;
+    --cta-kakao: #fee500;
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .unified-cta-section { padding: 100px 24px; background: transparent; }
+  .container-cta { max-width: 1200px; margin: 0 auto; }
+
+  .cta-box-wrapper { 
+    background: var(--cta-bg-gray); 
+    border: 1px solid var(--cta-border);
+    border-radius: 32px; 
+    padding: 60px; 
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 은은한 포인트 효과 (회색 바탕에 깔끔한 포인트) */
+  .cta-box-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -5%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-inner-content { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 48px; 
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-text-area { flex: 1; }
+  .cta-badge { 
+    font-size: 13px; font-weight: 800; color: var(--cta-accent-blue); 
+    letter-spacing: 0.1em; margin-bottom: 16px; 
+  }
+  .cta-title { 
+    font-size: clamp(1.6rem, 4vw, 2.2rem); 
+    font-weight: 800; color: var(--cta-text-dark); 
+    margin-bottom: 14px; letter-spacing: -0.03em; 
+    word-break: keep-all;
+  }
+  .cta-desc { 
+    font-size: 1.15rem; color: #64748b; 
+    margin: 0; font-weight: 400; line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
+
+  .cta-btn {
+    display: flex; align-items: center; justify-content: center;
+    min-width: 190px; height: 64px; border-radius: 16px;
+    font-weight: 800; text-decoration: none; font-size: 1.05rem; 
+    transition: var(--transition-smooth);
+  }
+
+  /* 카카오톡 버튼 (노란색 유지하되 텍스트 가독성 강화) */
+  .cta-btn.kakao { background: var(--cta-kakao); color: #3c1e1e; box-shadow: 0 4px 12px rgba(254, 229, 0, 0.2); }
+  .cta-btn.kakao:hover { 
+    background: #fada00; 
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(254, 229, 0, 0.3); 
+  }
+
+  /* 전화 예약 버튼 (어두운 회색/네이비로 대비감 부여) */
+  .cta-btn.secondary { 
+    background: var(--cta-text-dark); 
+    color: #ffffff; 
+  }
+  .cta-btn.secondary:hover { 
+    background: #1e293b;
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.15);
+  }
+
+  @media (max-width: 960px) {
+    .cta-box-wrapper { padding: 48px 32px; border-radius: 24px; }
+    .cta-inner-content { flex-direction: column; text-align: center; gap: 32px; }
+    .cta-action-area { width: 100%; flex-direction: column; }
+    .cta-btn { width: 100%; min-width: unset; }
+  }
+
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+</style>

@@ -8,10 +8,78 @@ cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상�
 {% assign current_category = page.category %}
 {% assign filtered_posts = site.board | where:"category", current_category | reversed %}
 
-<section class="board-category-section">
-  <div class="container">
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #2563eb;
+    --brand-soft: #f0f7ff;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 20px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #ffffff; line-height: 1.6; overflow-x: hidden; }
+  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  
+  /* Hero Section */
+  .leaders-hero { padding: 120px 0 60px; text-align: center; }
+  .head-badge { 
+    font-size: 12px; font-weight: 700; color: var(--brand-accent); 
+    border: 1px solid var(--brand-accent); padding: 4px 12px; border-radius: 100px; 
+    letter-spacing: 0.1em; margin-bottom: 20px; display: inline-block;
+  }
+  .page-title { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; }
+  .page-desc { font-size: 1.15rem; color: var(--text-sub); word-break: keep-all; }
+
+  /* Category Nav */
+  .category-nav { margin-bottom: 48px; text-align: center; }
+  .category-wrapper { display: inline-flex; gap: 12px; background: #f8fafc; padding: 8px; border-radius: 16px; border: 1px solid var(--border); }
+  .cat-btn { 
+    padding: 12px 24px; border-radius: 12px; font-weight: 700; text-decoration: none; color: var(--text-sub); 
+    transition: var(--transition); font-size: 0.95rem;
+  }
+  .cat-btn.active { background: var(--brand); color: #fff; }
+  .cat-btn:hover:not(.active) { background: #fff; color: var(--brand); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .count { opacity: 0.6; font-size: 0.85em; margin-left: 4px; }
+
+  /* Post List Stack (Detail Card 스타일 계승) */
+  .post-list-stack { display: flex; flex-direction: column; gap: 16px; margin-bottom: 100px; }
+  .post-item { text-decoration: none; display: block; }
+  .post-title-card { 
+    background: #fff; padding: 32px 40px; border-radius: var(--radius-md); border: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; transition: var(--transition); text-decoration: none;
+  }
+  .post-title-card:hover { transform: translateY(-5px); border-color: var(--brand-accent); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+  
+  .post-tag { font-size: 11px; font-weight: 800; color: var(--brand-accent); background: var(--brand-soft); padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; display: inline-block; }
+  .post-title { font-size: 1.25rem; font-weight: 800; color: var(--brand); margin: 0; letter-spacing: -0.02em; }
+  
+  .post-info-right { display: flex; align-items: center; gap: 20px; }
+  .post-date { color: var(--text-sub); font-size: 0.95rem; }
+  .arrow { font-size: 1.2rem; color: var(--border); transition: var(--transition); }
+  .post-title-card:hover .arrow { color: var(--brand-accent); transform: translateX(5px); }
+
+  /* Animations */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .post-title-card { flex-direction: column; align-items: flex-start; gap: 20px; padding: 30px; }
+    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+    .category-wrapper { flex-direction: column; width: 100%; padding: 12px; }
+    .cat-btn { text-align: center; }
+  }
+</style>
+
+<section class="leaders-page">
+  <div class="leaders-container">
     
-    <header class="page-head js-reveal">
+    <header class="leaders-hero js-reveal">
       <div class="head-badge">CATEGORY ARCHIVE</div>
       <h1 class="page-title">{{ current_category }}</h1>
       <p class="page-desc">
@@ -28,10 +96,10 @@ cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상�
       </div>
     </nav>
 
-    <main class="post-area js-reveal">
+    <main class="leaders-section">
       <div id="post-list" class="post-list-stack">
         {% for post in filtered_posts %}
-        <article class="post-item">
+        <article class="js-reveal">
           <a href="{{ post.url }}" class="post-title-card">
             <div class="post-info-left">
               <span class="post-tag">{{ post.category }}</span>
@@ -44,7 +112,7 @@ cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상�
           </a>
         </article>
         {% else %}
-        <div style="text-align: center; padding: 100px 0; color: #64748b; font-size: 1rem; background: #fff; border-radius: 20px; border: 1px dashed #e2e8f0;">
+        <div style="text-align: center; padding: 100px 0; color: var(--text-sub); background: #fff; border-radius: var(--radius-md); border: 1px dashed var(--border);">
           현재 해당 카테고리에 등록된 게시물이 없습니다.
         </div>
         {% endfor %}
@@ -55,12 +123,9 @@ cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상�
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Reveal 애니메이션 적용
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { 
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible'); 
-        }
+        if (entry.isIntersecting) entry.target.classList.add('is-visible'); 
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));

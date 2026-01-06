@@ -1162,6 +1162,10 @@ caption {
     letter-spacing: -0.02em;
   }
 }
+/* 헤더 좌우 여백 */
+header {
+  padding: 0 40px;
+}
 
 /* === Hero 사진 더 크게 + 더 붙이기 (데스크톱) === */
 @media (min-width: 1024px){

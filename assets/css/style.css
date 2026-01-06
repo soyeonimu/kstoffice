@@ -1092,501 +1092,115 @@ caption {
     #082b52 100%
   );
 }
-
-/* 통합 스타일시트: 다크 그레이 톤업데이트 
-  - 헤더/푸터 색상 통일 (#1a1c1e)
-  - 중복 선언 제거 및 최신 수치 적용
-*/
-
-/* ===== 1. 전역 변수 (색상 및 규격) ===== */
+/* ===== 1. 전역 변수 및 기본 설정 ===== */
 :root {
-  --theme-dark-bg: #1a1c1e;         /* ✅ 헤더/푸터 공통 다크 그레이 */
+  --theme-dark-bg: #1a1c1e;
   --theme-border: rgba(255, 255, 255, 0.08);
-  --header-h: 76px;                 /* ✅ 최신 헤더 높이 */
+  --header-h: 76px;
   --text-main: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.65);
-  --accent-blue: #0a3871;           /* 포인트 컬러 */
+  --accent-blue: #0a3871;
+  --body-gray: #475569; /* 본문용 가독성 회색 */
 }
 
-/* 본문 영역 확보 */
 body {
   padding-top: var(--header-h);
   margin: 0;
-  font-family: 'Pretendard', sans-serif; /* 기본 폰트 설정 권장 */
+  font-family: 'Pretendard', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ===== 2. 헤더 (Header) ===== */
+/* ===== 2. 헤더 (Header) - 로고 및 GNB 고정 ===== */
 .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--header-h);
-  z-index: 10000;
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--header-h); z-index: 10000;
   background: var(--theme-dark-bg);
   border-bottom: 1px solid var(--theme-border);
-  backdrop-filter: blur(12px);
-  padding: 0 32px;
-  transform: translateY(0);
-  transition: transform .22s ease;
-}
-
-.site-header.header--hidden {
-  transform: translateY(-110%);
+  display: flex; align-items: center; padding: 0 32px;
 }
 
 .header-inner {
-  max-width: 1200px;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
 }
 
-/* 로고 영역 */
-.logo-link {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* 최신 간격 보정 */
-  text-decoration: none;
-}
-
-.logo-img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-}
-
-.logo-title {
-  font-size: 1.15rem;
+/* 헤더/푸터 로고 공통: 무조건 흰색 */
+.logo-link, .logo-title, .footer-name {
+  color: #ffffff !important;
+  text-decoration: none !important;
   font-weight: 700;
-  color: var(--text-main);
-  letter-spacing: -0.02em;
-  white-space: nowrap;
 }
 
-/* 네비게이션 (GNB) */
-.gnb-list {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.gnb-list { display: flex; gap: 28px; list-style: none; }
+.gnb-list a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
+.gnb-list a:hover { color: #fff; }
+
+/* ===== 3. 본문 가독성 및 섹션 여백 (밀착형) ===== */
+.page-desc, .case-text, .career-text p, .info-txt {
+  font-weight: 400 !important; /* 볼드 해제 */
+  color: var(--body-gray) !important;
+  line-height: 1.6;
 }
 
-.gnb-list > li > a {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  padding: 12px 8px;
-  text-decoration: none;
-  transition: color .2s ease;
+/* 섹션 간 상단 여백 최소화 */
+.success-cases, .rehabilitation-cases, .insight-section, .cta-box-simple {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
 }
 
-.gnb-list > li > a:hover {
-  color: var(--text-main);
+/* 인사이트 박스와 CTA 박스 사이 여백 삭제 */
+.insight-section + .cta-box-simple {
+  margin-top: -20px !important;
 }
 
-/* 드롭다운 (Sub Menu) */
-.has-sub { position: relative; }
-.sub {
-  display: none;
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  min-width: 190px;
-  background: #25282b; /* 배경보다 살짝 밝은 그레이 */
-  border: 1px solid var(--theme-border);
-  border-radius: 10px;
-  padding: 8px 0;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-  list-style: none;
-}
-
-.has-sub:hover .sub { display: block; }
-
-.sub li a {
-  display: block;
-  padding: 10px 14px;
-  font-size: 14.5px;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.sub li a:hover {
-  background: rgba(255,255,255,0.06);
-  color: #fff;
-}
-
-/* ===== 3. 공통 버튼 스타일 (CTA) ===== */
-.cta-btn, .footer-phone, .footer-kakao {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 14px;
-  text-decoration: none;
-  transition: all .15s ease;
-}
-
-/* 다크 타입 버튼 (전화 등) */
-.cta-btn, .footer-phone {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
-}
-
-/* 라이트 타입 버튼 (상담 등) */
-.footer-kakao {
-  background: #fff;
-  color: var(--accent-blue);
-}
-
-.cta-btn:hover, .footer-phone:hover, .footer-kakao:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-}
-
-/* ===== 4. 푸터 (Footer) ===== */
+/* ===== 4. 푸터 (Footer) - 디자인 및 버튼 복구 ===== */
 .site-footer {
-  background: var(--theme-dark-bg);
-  border-top: 1px solid var(--theme-border);
-  color: var(--text-muted);
-  padding: 50px 20px;
+  background: var(--theme-dark-bg) !important;
+  padding: 60px 20px 40px !important;
+  border-top: 1px solid var(--theme-border) !important;
+  color: var(--text-muted) !important;
 }
 
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
 
 .footer-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 30px;
 }
 
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.footer-logo {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-}
-
-.footer-name {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--text-main);
-  letter-spacing: -0.02em;
-}
-
-.footer-cta {
-  display: flex;
-  gap: 10px;
-}
-
-.footer-divider {
-  height: 1px;
-  background: var(--theme-border);
-  margin: 25px 0;
-}
-
+/* 푸터 정보 텍스트 (볼드 해제) */
 .footer-info p {
-  margin: 6px 0;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  color: var(--text-muted) !important;
+  font-weight: 400 !important;
+  font-size: 0.9rem !important;
+  margin: 4px 0 !important;
+}
+
+/* ⚠️ 핵심: 푸터 버튼 (색상 대비 확실히) */
+.footer-cta { display: flex; gap: 10px; }
+
+.footer-phone, .btn-tel {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none;
+}
+
+.footer-kakao, .btn-online {
+  background: #ffffff !important; /* 배경 흰색 */
+  color: #1a1c1e !important;    /* 글자 검은색 (중요!) */
+  padding: 10px 20px; border-radius: 8px; font-weight: 700; text-decoration: none;
 }
 
 .footer-bottom {
-  margin-top: 20px;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.4);
+  margin-top: 30px; padding-top: 20px;
+  border-top: 1px solid var(--theme-border);
+  font-size: 0.8rem; opacity: 0.5;
 }
 
-/* ===== 5. 섹션 및 히어로 여백 ===== */
-.hero { padding-top: 120px; }
-.hero-content { max-width: 1200px; padding-left: 80px; }
-.section, .hero--slice { margin-top: 80px; }
-
-/* ===== 6. 반응형 (Media Queries) ===== */
-@media (max-width: 900px) {
-  :root { --header-h: 64px; }
-  .site-header { padding: 0 18px; }
-  .gnb, .logo-sub { display: none; } /* 모바일 메뉴는 별도 구현 필요 */
-  .logo-title { font-size: 16px; }
-}
-
+/* ===== 5. 반응형 보정 ===== */
 @media (max-width: 768px) {
-  .footer-top { flex-direction: column; align-items: flex-start; }
+  .footer-top { flex-direction: column; align-items: flex-start; gap: 20px; }
   .footer-cta { width: 100%; }
-  .footer-cta a { flex: 1; }
-}
-
-/* =====================================================
-   [최종] 상단 여백 극최소화 및 로고 색상 정상화
-   ===================================================== */
-
-/* 1. 로고 옆 상호명 파란색 문제 해결 */
-.logo-link, 
-.logo-text, 
-.logo-title {
-  color: #ffffff !important; /* 무조건 흰색으로 고정 */
-  text-decoration: none !important;
-}
-
-/* 2. 모든 히어로 섹션 상단 여백 대폭 축소 */
-.success-cases,
-.rehabilitation-cases,
-.check-section,
-.diff-section,
-.faq-section,
-.price-section,
-.procedure-section,
-.info-section-container {
-  /* 헤더 바로 아래에 붙도록 여백 최소화 */
-  padding-top: calc(var(--header-h) + 20px) !important; 
-  padding-bottom: 70px !important;
-  
-  /* 그라데이션이 위쪽에서 선명하게 시작되도록 조정 */
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 250px) !important;
-}
-
-/* 3. 배지(LEGAL GUIDE / CASE STUDIES) 상단 마진 제거 */
-.page-head {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-.head-badge {
-  margin-top: 0 !important;
-  margin-bottom: 12px !important;
-}
-
-/* 4. 본문 가독성 (얇은 글씨로 최종 고정) */
-.page-desc, 
-.case-text, 
-.career-text p, 
-.tip-text,
-.info-txt {
-  font-weight: 400 !important;
-  color: #475569 !important;
-  line-height: 1.6 !important;
-}
-
-/* 5. 모바일 환경 여백 (거의 밀착) */
-@media (max-width: 768px) {
-  .success-cases, .rehabilitation-cases, .diff-section {
-    padding-top: calc(var(--header-h) + 15px) !important;
-  }
-}
-/* =====================================================
-   [최종 해결] 헤더/푸터 색상 복구 및 여백 극최소화
-   ===================================================== */
-
-/* 1. 헤더 & 푸터 내 모든 링크 색상 강제 고정 */
-.site-header a, 
-.site-footer a,
-.logo-link,
-.logo-title,
-.footer-logo-text {
-  color: #ffffff !important; /* 상호명과 메뉴를 다시 흰색으로 */
-  text-decoration: none !important;
-}
-
-/* 2. 푸터 텍스트 색상 (회색조가 필요할 경우) */
-.site-footer p, 
-.site-footer .copyright {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* 3. 상단 여백(LEGAL GUIDE/CASE STUDIES 위쪽) 대폭 축소 */
-.success-cases,
-.rehabilitation-cases,
-.check-section,
-.diff-section,
-.faq-section,
-.price-section,
-.procedure-section,
-.info-section-container {
-  /* 이미지상의 허전함을 없애기 위해 헤더와 거의 밀착 */
-  padding-top: calc(var(--header-h) + 20px) !important; 
-  padding-bottom: 60px !important;
-  
-  /* 그라데이션이 더 위쪽에서 시작되도록 조정 */
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 200px) !important;
-}
-
-/* 4. 제목과 설명글 사이의 벙벙한 느낌 제거 */
-.page-head {
-  margin-bottom: 40px !important;
-}
-
-.page-title {
-  font-size: 2.6rem !important;
-  margin-bottom: 10px !important;
-}
-
-/* 5. 가독성 개선 (모든 본문 글씨 얇게) */
-.page-desc, 
-.case-text, 
-.career-text p, 
-.tip-text,
-.info-txt {
-  font-weight: 400 !important; /* 굵기 해제 */
-  color: #475569 !important;
-  line-height: 1.6 !important;
-  letter-spacing: -0.01em !important;
-}
-
-/* =====================================================
-   [최종 조정] 섹션 간 여백 축소 및 레이아웃 밀착
-   ===================================================== */
-
-/* 1. 인사이트 섹션과 상하 여백 축소 */
-.career-highlight, 
-.insight-section {
-    margin-top: 40px !important;    /* 위쪽 사례 카드와의 간격 축소 */
-    margin-bottom: 40px !important; /* 아래 CTA 박스와의 간격 축소 */
-    padding: 60px 40px !important;   /* 박스 내부 여백 최적화 */
-}
-
-/* 2. 하단 CTA 박스(비슷한 상황으로 해결책...) 상단 여백 제거 */
-.cta-box-simple,
-.home-rehabilitation-section .cta-box {
-    margin-top: 0 !important;
-    padding: 50px 40px !important;
-}
-
-/* 3. 성공사례 그리드(카드들) 하단 여백 축소 */
-.rehab-grid, 
-.success-grid {
-    margin-bottom: 40px !important;
-}
-
-/* 4. 푸터 상단 여백 축소 */
-.site-footer {
-    margin-top: 60px !important;
-    padding-top: 50px !important;
-}
-
-/* 5. [가독성] 인사이트 박스 내 본문 굵기 해제 (얇게) */
-.career-text p,
-.insight-section p {
-    font-weight: 400 !important;
-    font-size: 1.05rem !important;
-    line-height: 1.7 !important;
-    margin-top: 15px !important;
-    color: #475569 !important;
-}
-
-/* 6. 모바일 대응: 여백을 더 극단적으로 축소 */
-@media (max-width: 768px) {
-    .career-highlight, .cta-box-simple {
-        margin-top: 30px !important;
-        margin-bottom: 30px !important;
-        padding: 40px 20px !important;
-    }
-    .career-text h3 {
-        font-size: 1.3rem !important;
-    }
-}
-
-/* =====================================================
-   [최종 해결] 푸터 복구 및 섹션 간격 밀착 조정
-   ===================================================== */
-
-/* 1. 인사이트 박스 - CTA 박스 간격 극소화 */
-.career-highlight, .insight-section {
-    margin-bottom: 20px !important; /* 아래 CTA와의 간격을 20px로 밀착 */
-    padding: 50px 30px !important;
-}
-
-.cta-box-simple, .home-rehabilitation-section .cta-box {
-    margin-top: 0 !important; /* 위쪽 섹션에 딱 붙임 */
-    padding: 40px !important;
-}
-
-/* 2. 푸터 디자인 전면 수정 (색상 및 버튼 복구) */
-.site-footer {
-    background-color: #1a1c1e !important;
-    padding: 50px 20px !important;
-    margin-top: 50px !important;
-    border-top: 1px solid #2d2f31 !important;
-}
-
-/* 푸터 내 상호명 색상 복구 */
-.site-footer .logo-text, 
-.site-footer .logo-title,
-.site-footer a[class*="logo"] {
-    color: #ffffff !important; 
-    font-weight: 700 !important;
-    font-size: 1.15rem !important;
-    opacity: 1 !important;
-}
-
-/* 푸터 정보 텍스트 볼드 해제 및 가독성 */
-.site-footer p, 
-.site-footer .info-item,
-.site-footer .footer-info {
-    color: #94a3b8 !important;
-    font-weight: 400 !important; /* 얇게 수정 */
-    font-size: 0.9rem !important;
-    line-height: 1.6 !important;
-    margin-bottom: 5px !important;
-}
-
-/* 3. 푸터 버튼 스타일 정교화 (흰색 뭉침 방지) */
-.site-footer .footer-btns,
-.site-footer .contact-area {
-    display: flex !important;
-    gap: 10px !important;
-    margin-bottom: 20px !important;
-}
-
-/* 전화상담 버튼 */
-.site-footer a.btn-tel,
-.site-footer [class*="contact-btn"] {
-    background: #2d2f31 !important;
-    color: #ffffff !important;
-    border: 1px solid #3f4144 !important;
-    padding: 8px 16px !important;
-    border-radius: 6px !important;
-    font-weight: 600 !important;
-    font-size: 0.85rem !important;
-}
-
-/* 온라인 상담 버튼 (흰색 뭉침 해결) */
-.site-footer a.btn-online,
-.site-footer [class*="online-btn"] {
-    background: #ffffff !important;
-    color: #1a1c1e !important;
-    padding: 8px 16px !important;
-    border-radius: 6px !important;
-    font-weight: 700 !important;
-    font-size: 0.85rem !important;
-    text-align: center !important;
-}
-
-/* 카피라이트 */
-.site-footer .copyright {
-    border-top: 1px solid #2d2f31 !important;
-    margin-top: 30px !important;
-    padding-top: 20px !important;
-    color: #64748b !important;
-    font-size: 0.8rem !important;
+  .footer-cta a { flex: 1; text-align: center; }
 }

@@ -1337,10 +1337,10 @@ body {
   .footer-cta a { flex: 1; }
 }
 /* =====================================================
-   [최종 수정] 페이지 상단 시작 지점 및 여백 통일
+   [최종 수정] 페이지 상단 히어로 영역 시각적 강화 및 여백 통일
    ===================================================== */
 
-/* 1. 모든 페이지 첫 섹션의 상단 여백 강제 고정 */
+/* 1. 상단 첫 섹션: 배경색(그라데이션)을 넣어 비어 보이는 느낌 제거 */
 .check-section,
 .diff-section,
 .faq-section,
@@ -1351,24 +1351,55 @@ body {
 .info-section-container,
 .home-complaint-section,
 .home-rehabilitation-section {
-  /* 헤더 높이(76px) + 여유 여백(60px) */
-  padding-top: calc(var(--header-h) + 60px) !important;
+  /* 상단 여백 설정 (헤더 높이 고려) */
+  padding-top: calc(var(--header-h) + 100px) !important; /* 여백을 조금 더 늘리되 배경을 채움 */
   padding-bottom: 100px !important;
-  min-height: 60vh;
+  
+  /* 시각적 포인트: 상단에 은은한 그라데이션을 넣어 헤더와의 경계를 부드럽게 연결 */
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 400px) !important;
+  min-height: 50vh;
 }
 
-/* 2. 제목 영역 마진 정리 (위아래 덜컹거림 방지) */
-.page-head, 
-.price-title, 
-.info-title, 
-.page-title,
-.home-section-title {
+/* 2. 제목 영역(page-head): 배지와 타이틀 사이 간격 및 디자인 보정 */
+.page-head {
   margin-top: 0 !important;
-  margin-bottom: 50px !important;
+  margin-bottom: 60px !important;
   text-align: center;
+  position: relative;
 }
 
-/* 3. 모바일 환경(768px 이하) 대응 */
+/* 3. 타이틀 텍스트 강조 및 언더라인 포인트 (허전함 방지) */
+.page-title {
+  font-size: 3rem !important;
+  font-weight: 900 !important;
+  color: #1a1c1e !important;
+  letter-spacing: -0.04em !important;
+  margin-bottom: 20px !important;
+  position: relative;
+  display: inline-block;
+}
+
+/* 타이틀 아래에 짧은 강조선 추가 (선택 사항) */
+.page-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 4px;
+  background: #0a3871; /* 리더스 메인 컬러 */
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* 4. 설명 문구(page-desc) 가독성 상향 */
+.page-desc {
+  font-size: 1.15rem !important;
+  color: #64748b !important;
+  line-height: 1.8 !important;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 5. 모바일 환경(768px 이하) 최적화 */
 @media (max-width: 768px) {
   .check-section,
   .diff-section,
@@ -1376,15 +1407,18 @@ body {
   .price-section,
   .procedure-section,
   .success-cases,
-  .rehabilitation-cases,
-  .info-section-container {
-    /* 모바일 헤더(64px) + 여유 여백(30px) */
-    padding-top: calc(var(--header-h) + 30px) !important;
+  .rehabilitation-cases {
+    padding-top: calc(var(--header-h) + 50px) !important;
     padding-bottom: 60px !important;
   }
   
-  .page-title, .price-title, .info-title {
-    margin-bottom: 30px !important;
-    font-size: 1.8rem !important;
+  .page-title {
+    font-size: 2.2rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .page-desc {
+    font-size: 1rem !important;
+    padding: 0 20px;
   }
 }

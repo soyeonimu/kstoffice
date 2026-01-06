@@ -1,24 +1,24 @@
 ---
 layout: default
-title: 개인회생 신청 자격 테스트 | 리더스 합동 법무사
-description: 30초면 확인 가능한 개인회생 자가진단. 채무액, 소득, 부양가족 정보를 바탕으로 신청 가능성을 즉시 분석해 드립니다.
+title: 개인회생 정밀 자가진단 | 김성태 법무사 사무소
+description: 30초 정밀 진단을 통해 개인회생 신청 가능성과 예상 탕감액을 확인하세요. 2026년 최신 생계비 기준을 반영합니다.
 ---
 
 <section class="self-check-section">
   <div class="container">
     <header class="page-head js-reveal">
-      <div class="head-badge">QUICK CHECK</div>
-      <h1 class="page-title">개인회생 자가진단</h1>
+      <div class="head-badge">PRECISION CHECK</div>
+      <h1 class="page-title">개인회생 정밀 자가진단</h1>
       <p class="page-desc">
-        복잡한 서류 없이 30초 만에 확인하세요.<br>
-        <strong>총 채무, 소득, 부양가족</strong> 정보를 바탕으로 신청 가능성을 분석합니다.
+        법원 실무 기준인 <strong>청산가치 보장의 원칙</strong>을 반영한 정밀 테스트입니다.<br>
+        실제 탕감 가능한 예상 금액을 즉시 확인해 보세요.
       </p>
     </header>
 
     <div class="check-card js-reveal">
       <div class="form-grid">
         <div class="input-group">
-          <label for="debt">총 채무액</label>
+          <label for="debt">총 채무액 (원금 기준)</label>
           <div class="input-wrapper">
             <input type="number" id="debt" placeholder="예: 8500">
             <span class="unit">만원</span>
@@ -26,7 +26,15 @@ description: 30초면 확인 가능한 개인회생 자가진단. 채무액, 소
         </div>
 
         <div class="input-group">
-          <label for="monthlyIncome">월 평균 소득</label>
+          <label for="asset">보유 재산 합계 <small>(부동산, 예금, 차량)</small></label>
+          <div class="input-wrapper">
+            <input type="number" id="asset" placeholder="예: 3000">
+            <span class="unit">만원</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="monthlyIncome">월 평균 소득 <small>(세후 실수령)</small></label>
           <div class="input-wrapper">
             <input type="number" id="monthlyIncome" placeholder="예: 2800000">
             <span class="unit">원</span>
@@ -41,33 +49,32 @@ description: 30초면 확인 가능한 개인회생 자가진단. 채무액, 소
           </div>
         </div>
 
-        <div class="input-group">
+        <div class="input-group" style="grid-column: span 2;">
           <label for="job">현재 직업군</label>
           <div class="input-wrapper">
             <select id="job">
-              <option value="">직업 선택</option>
-              <option value="직장인">직장인 (4대보험)</option>
-              <option value="프리랜서">프리랜서 / 일용직</option>
+              <option value="">직업을 선택해 주세요</option>
+              <option value="직장인">직장인 (급여소득자)</option>
+              <option value="프리랜서">프리랜서 / 일용직 / 아르바이트</option>
               <option value="자영업">자영업자 / 사업자</option>
-              <option value="기타">무직 / 기타</option>
+              <option value="기타">기타 (소득 증빙 가능자)</option>
             </select>
           </div>
         </div>
       </div>
 
-      <button onclick="checkEligibility()" class="btn-check">분석 결과 확인하기</button>
+      <button onclick="checkEligibility()" class="btn-check">정밀 분석 결과 확인하기</button>
 
       <div id="result" class="result-container"></div>
     </div>
 
     <p class="check-notice">
-      ※ 본 진단 결과는 입력하신 기초 자료를 바탕으로 한 단순 참고용이며, <br>
-      실제 법원 접수 시 재산 상황 및 최근 채무 비율에 따라 결과가 달라질 수 있습니다.
+      ※ 본 진단은 입력하신 데이터를 바탕으로 한 시뮬레이션이며, 실제 접수 시에는 '최근 채무 비율' 및 '거주 지역'에 따른 추가 생계비 인정 여부에 따라 결과가 달라질 수 있습니다.
     </p>
 
     {% include cta-box.html 
-       title="상세한 법률 검토가 필요하신가요?" 
-       desc="자가진단 결과는 참고용일 뿐입니다. 법무사가 직접 분석하는 1:1 무료 상담으로 정확한 해결책을 찾으세요." %}
+       title="전문가의 정밀 검토가 필요하신가요?" 
+       desc="자가진단 결과보다 더 많은 탕감을 받을 수 있는 법리적 방법이 있습니다. 김성태 법무사가 직접 당신의 사건을 분석해 드립니다." %}
 
   </div>
 </section>
@@ -79,19 +86,23 @@ description: 30초면 확인 가능한 개인회생 자가진단. 채무액, 소
     --text-sub: #64748b;
     --white: #ffffff;
     --border-light: #e2e8f0;
-    --bg-soft: #f8fafc;
   }
 
-  .self-check-section { background: var(--bg-soft); padding: 100px 20px; font-family: 'Pretendard', sans-serif; }
+  /* 섹션 전체 레이아웃 (공통 규격 반영) */
+  .self-check-section { 
+    background: #f8fafc; 
+    padding: calc(var(--header-h) + 60px) 20px 100px; /* 상단 여백 통일 */
+    font-family: 'Pretendard', sans-serif; 
+  }
   .container { max-width: 800px; margin: 0 auto; }
 
-  /* Head */
+  /* 헤더 스타일 */
   .page-head { text-align: center; margin-bottom: 50px; }
   .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 12px; }
   .page-title { font-size: 2.8rem; font-weight: 900; color: var(--text-main); margin-bottom: 15px; }
   .page-desc { color: var(--text-sub); line-height: 1.7; font-size: 1.1rem; }
 
-  /* Check Card */
+  /* 진단 카드 디자인 */
   .check-card {
     background: var(--white); padding: 45px; border-radius: 24px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.06); border: 1px solid var(--border-light);
@@ -103,16 +114,13 @@ description: 30초면 확인 가능한 개인회생 자가진단. 채무액, 소
   .input-group label small { font-weight: 400; color: var(--text-sub); }
 
   .input-wrapper { position: relative; }
-  
   .input-wrapper input, .input-wrapper select {
     width: 100%; padding: 15px 18px; border-radius: 12px;
     border: 1px solid var(--border-light); font-size: 16px;
     background: #fdfdfd; transition: all 0.2s; outline: none;
   }
-
   .input-wrapper input:focus, .input-wrapper select:focus {
-    border-color: var(--primary-blue); background: #fff;
-    box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.08);
+    border-color: var(--primary-blue); box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.08);
   }
 
   .unit { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--text-sub); font-weight: 600; }
@@ -124,99 +132,132 @@ description: 30초면 확인 가능한 개인회생 자가진단. 채무액, 소
   }
   .btn-check:hover { background: #082d5a; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(10, 56, 113, 0.2); }
 
-  /* Result Area */
-  .result-container { margin-top: 30px; padding-top: 35px; border-top: 2px dashed var(--border-light); display: none; }
+  /* 결과창 디자인 */
+  .result-container { margin-top: 35px; padding-top: 35px; border-top: 2px dashed var(--border-light); display: none; }
   .result-box { padding: 30px; border-radius: 20px; background: #f8fafc; text-align: center; }
-  .result-status { font-size: 26px; font-weight: 900; margin-bottom: 12px; }
+  .result-status { font-size: 28px; font-weight: 900; margin-bottom: 15px; }
   
   .result-data { 
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-    margin: 25px 0; padding: 20px; background: #fff; border-radius: 16px; 
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin: 25px 0; padding: 20px; background: #fff; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   }
-  .data-item span { display: block; font-size: 12px; color: var(--text-sub); margin-bottom: 5px; }
+  .data-item span { display: block; font-size: 12px; color: var(--text-sub); margin-bottom: 6px; }
   .data-item strong { font-size: 15px; color: var(--text-main); word-break: keep-all; }
 
-  .result-btn-wrap { margin-top: 25px; }
   .result-link {
-    display: inline-block; padding: 14px 30px; background: var(--text-main);
+    display: inline-block; padding: 16px 35px; background: var(--text-main);
     color: #fff; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.2s;
   }
-  .result-link:hover { opacity: 0.9; transform: scale(1.02); }
+  .result-link:hover { transform: scale(1.03); filter: brightness(1.2); }
 
   .check-notice { text-align: center; margin: 40px 0 60px; font-size: 13px; color: var(--text-sub); line-height: 1.8; }
 
-  /* Animation */
+  /* 애니메이션 */
   .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 640px) {
-    .form-grid { grid-template-columns: 1fr; gap: 18px; }
+  @media (max-width: 768px) {
+    .self-check-section { padding-top: calc(var(--header-h) + 30px); }
+    .page-title { font-size: 2rem; }
+    .form-grid { grid-template-columns: 1fr; }
     .result-data { grid-template-columns: 1fr; gap: 15px; }
-    .check-card { padding: 30px 20px; }
   }
 </style>
 
 <script>
   function getLivingCost(familySize) {
-    // 2024~2025 기준 기준중위소득 60% 생계비 테이블
-    const table = { 1: 1337067, 2: 2209565, 3: 2828794, 4: 3437948, 5: 4017441 };
-    return table[familySize] || table[5] + (familySize - 5) * 500000;
-  }
-
-  function evaluateEligibility(debt, surplus, job) {
-    if (debt * 10000 > 1500000000) {
-      return { status: '신청 불가', color: '#e11d48', message: '총 채무가 15억(담보 15억, 무담보 10억)을 초과할 경우 개인회생 신청이 어렵습니다.' };
-    }
-    
-    let threshold = 100000; 
-    if (surplus >= threshold) {
-      return { status: '신청 가능', color: '#16a34a', message: '회생 신청 요건에 부합할 가능성이 매우 높습니다!' };
-    } else if (surplus > 0) {
-      return { status: '검토 필요', color: '#ca8a04', message: '가용 소득이 다소 부족할 수 있으나 생계비 조정을 통해 진행 가능합니다.' };
-    } else {
-      return { status: '진단 필요', color: '#e11d48', message: '현재 소득 정보만으로는 생계비 확보가 어려울 수 있으니 전문가 진단이 필요합니다.' };
-    }
+    // 2026년 기준 법원 인정 생계비 (중위소득 60% 예상치)
+    const table = { 
+      1: 1430000, 
+      2: 2360000, 
+      3: 3020000, 
+      4: 3670000, 
+      5: 4300000 
+    };
+    return table[familySize] || table[5] + (familySize - 5) * 600000;
   }
 
   function checkEligibility() {
-    const debt = parseInt(document.getElementById("debt").value) || 0;
+    // 값 가져오기 및 단위 환산
+    const debt = (parseInt(document.getElementById("debt").value) || 0) * 10000;
+    const asset = (parseInt(document.getElementById("asset").value) || 0) * 10000;
     const income = parseInt(document.getElementById("monthlyIncome").value) || 0;
     const dependents = parseInt(document.getElementById("dependents").value) || 0;
-    const job = document.getElementById("job").value || "기타";
+    const job = document.getElementById("job").value;
 
-    if(debt <= 0 || income <= 0) { alert("총 채무액과 소득을 정확히 입력해 주세요."); return; }
+    if (debt <= 0 || income <= 0 || job === "") {
+      alert("모든 항목을 정확히 입력해 주세요.");
+      return;
+    }
 
     const familySize = dependents + 1;
     const livingCost = getLivingCost(familySize);
-    const surplus = income - livingCost;
-    const result = evaluateEligibility(debt, surplus, job);
+    
+    // 기본 가용소득 계산
+    let monthlyPayment = income - livingCost;
+    
+    let status = "";
+    let color = "";
+    let message = "";
+
+    // [정밀 분석 로직]
+    // 1. 재산이 채무보다 많은 경우
+    if (debt <= asset) {
+      status = "신청 불가";
+      color = "#e11d48";
+      message = "보유하신 재산이 총 채무보다 많아 개인회생 신청이 불가능합니다. 재산 매각을 통한 변제가 우선되어야 합니다.";
+    } 
+    // 2. 소득이 생계비보다 적은 경우
+    else if (monthlyPayment <= 0) {
+      status = "진단 필요";
+      color = "#ca8a04";
+      message = "소득이 법정 생계비보다 적어 현재로선 신청이 어렵습니다. 추가 소득 증빙이나 부양가족 조정 상담이 필요합니다.";
+      monthlyPayment = 0;
+    } 
+    // 3. 청산가치 보장의 원칙 (36개월 총 변제액이 재산보다는 커야 함)
+    else if (monthlyPayment * 36 < asset) {
+      status = "검토 필요";
+      color = "#ca8a04";
+      monthlyPayment = Math.floor(asset / 36); // 재산만큼 갚도록 상향 조정
+      message = "보유 재산이 많아 월 변제금이 <strong>생계비를 제외한 금액보다 높게 설정</strong>되었습니다. 법리적 검토가 필요합니다.";
+    } 
+    // 4. 정상 신청 가능
+    else {
+      status = "신청 가능";
+      color = "#16a34a";
+      message = "축하합니다! 회생 요건에 부합합니다. 현재 조건에서 최대의 탕감률을 이끌어낼 수 있습니다.";
+    }
+
+    // 예상 탕감액 계산
+    const totalRepayment = monthlyPayment * 36;
+    const totalCut = Math.max(0, debt - totalRepayment);
 
     const resultArea = document.getElementById("result");
     resultArea.style.display = "block";
     resultArea.innerHTML = `
       <div class="result-box js-reveal is-visible">
-        <div class="result-status" style="color: ${result.color}">${result.status}</div>
-        <p style="font-weight: 600; color: #475569; margin-bottom: 10px;">${result.message}</p>
+        <div class="result-status" style="color: ${color}">${status}</div>
+        <p style="font-weight: 500; color: #475569; margin-bottom: 20px; line-height: 1.6;">${message}</p>
         
         <div class="result-data">
-          <div class="data-item"><span>산정 가족수</span><strong>${familySize}인 가구</strong></div>
-          <div class="data-item"><span>인정 생계비</span><strong>${Math.floor(livingCost).toLocaleString()}원</strong></div>
-          <div class="data-item"><span>예상 변제금</span><strong>${surplus > 0 ? Math.floor(surplus).toLocaleString() : 0}원</strong></div>
+          <div class="data-item"><span>예상 변제기간</span><strong>36개월 (3년)</strong></div>
+          <div class="data-item"><span>월 예상 변제금</span><strong>${monthlyPayment.toLocaleString()}원</strong></div>
+          <div class="data-item"><span>총 예상 탕감액</span><strong>${totalCut.toLocaleString()}원</strong></div>
         </div>
 
         <div class="result-btn-wrap">
-          <a href="https://naver.me/xwmIDcba" class="result-link" target="_blank">1:1 상세 법률 진단 신청</a>
+          <a href="https://naver.me/xwmIDcba" class="result-link" target="_blank">1:1 법률 진단 및 서류 안내받기</a>
         </div>
       </div>
     `;
     
-    // 결과창으로 부드럽게 스크롤
+    // 결과창으로 이동
     setTimeout(() => {
         resultArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 100);
   }
 
-  // Reveal 효과
+  // Reveal 관찰자 설정
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
   }, { threshold: 0.1 });

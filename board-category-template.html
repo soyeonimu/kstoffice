@@ -1,13 +1,117 @@
 ---
-layout: category_page
+layout: default
 ---
 
 {% assign current_category = page.category %}
-{% assign filtered_posts = site.board | where:"category", current_category %}
+{% assign filtered_posts = site.board | where:"category", current_category | reversed %}
 
-<h1>{{ current_category }} 게시물</h1>
-<ul>
-  {% for post in filtered_posts %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+<section class="board-section" style="background-color: #f8fafc; min-height: 100vh;">
+  <div class="container">
+    
+    <header class="page-head js-reveal">
+      <div class="head-badge">CATEGORY ARCHIVE</div>
+      <h1 class="page-title">{{ current_category }}</h1>
+      <p class="page-desc">
+        '{{ current_category }}' 카테고리에 등록된 리더스의 전문 법률 정보를 확인하세요.
+      </p>
+    </header>
+
+    <div class="category-nav js-reveal">
+      <div class="category-wrapper">
+        <a href="/board" class="cat-btn">전체 게시판으로 돌아가기</a>
+        <a href="#" class="cat-btn active">{{ current_category }} ({{ filtered_posts.size }})</a>
+      </div>
+    </div>
+
+    <main class="post-area js-reveal">
+      <div id="post-list" class="post-list-stack">
+        {% for post in filtered_posts %}
+        <article class="post-item">
+          <a href="{{ post.url }}" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">{{ post.category }}</span>
+              <h2 class="post-title">{{ post.title }}</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        </article>
+        {% else %}
+        <div style="text-align: center; padding: 100px 0; color: var(--text-sub);">
+          등록된 게시물이 없습니다.
+        </div>
+        {% endfor %}
+      </div>
+    </main>
+
+    {% include cta-box.html 
+       title="상담이 필요하신가요?" 
+       desc="글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 정확합니다." %}
+  </div>
+</section>
+
+<style>
+  :root {
+    --bg-soft: #f8fafc;
+    --white: #ffffff;
+    --primary-blue: #0a3871;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+  }
+
+  .board-section { padding: 120px 0 100px; font-family: 'Pretendard', sans-serif; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  .page-head { text-align: center; margin-bottom: 50px; }
+  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
+  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
+  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; }
+
+  .category-nav { text-align: center; margin-bottom: 50px; }
+  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+  .cat-btn { 
+    text-decoration: none; background: var(--white); color: var(--text-sub);
+    padding: 12px 24px; border-radius: 50px; border: 1px solid var(--border);
+    font-weight: 700; font-size: 0.95rem; transition: 0.3s;
+  }
+  .cat-btn.active { background: var(--primary-blue); color: var(--white); border-color: var(--primary-blue); }
+  .cat-btn:hover { background: #eef2f7; color: var(--primary-blue); }
+
+  .post-list-stack { display: flex; flex-direction: column; gap: 16px; margin-bottom: 80px; }
+  
+  .post-title-card {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--white); padding: 25px 40px; border-radius: 20px; text-decoration: none;
+    border: 1px solid var(--border); transition: all 0.3s ease;
+  }
+  .post-title-card:hover { transform: translateX(10px); border-color: var(--primary-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+  .post-info-left { display: flex; align-items: center; gap: 25px; flex-grow: 1; }
+  .post-tag { background: #eff6ff; color: var(--primary-blue); font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 6px; }
+  .post-title { font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin: 0; letter-spacing: -0.02em; }
+
+  .post-info-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+  .post-date { font-size: 14px; color: var(--text-sub); font-weight: 500; }
+  .arrow { font-size: 18px; color: var(--primary-blue); font-weight: bold; transition: 0.3s; }
+
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 850px) {
+    .post-title-card { flex-direction: column; align-items: flex-start; gap: 15px; padding: 25px; }
+    .post-info-left { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
+</script>

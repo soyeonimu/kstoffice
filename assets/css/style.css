@@ -1593,3 +1593,9 @@ body{
   .gnb{ display:none; } /* 모바일은 일단 숨김(원하면 햄버거 메뉴로 바꿔줄게) */
   .cta-btn{ height: 36px; font-size: 13px; }
 }
+.logo-title{
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15.5px; /* 지금 헤더랑 딱 어울리는 크기 */
+  letter-spacing: -0.02em;
+}

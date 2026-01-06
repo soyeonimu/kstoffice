@@ -27,55 +27,44 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
   </div>
 </section>
 
-<section class="service-shortcuts js-reveal">
+<section class="service-navigation js-reveal">
   <div class="container">
-    <div class="shortcut-grid">
-      
-      <a href="/rehabilitation" class="shortcut-card has-bg">
-        <div class="card-bg-img">
-          <img src="{{ '/assets/img/빚.png' | relative_url }}" alt="개인회생 빚 탕감">
-        </div>
-        <div class="card-content">
-          <div class="card-icon-wrap">⚖️</div>
+    <div class="nav-grid">
+      <a href="/rehabilitation" class="nav-item">
+        <div class="nav-info">
+          <span class="nav-label">DEBT RELIEF</span>
           <h3>개인회생·파산</h3>
-          <p>채무 탕감부터 압류 해제까지,<br>새로운 경제적 재기 가이드</p>
-          <span class="view-more">상세보기 →</span>
+          <p>압류 해제 및 채무 탕감</p>
         </div>
+        <div class="nav-arrow">→</div>
       </a>
 
-      <a href="/complaint" class="shortcut-card has-bg">
-        <div class="card-bg-img">
-          <img src="{{ '/assets/img/고소장 법률 이미지.jpg' | relative_url }}" alt="고소장 작성 전문">
-        </div>
-        <div class="card-content">
-          <div class="card-icon-wrap">📜</div>
+      <a href="/complaint" class="nav-item">
+        <div class="nav-info">
+          <span class="nav-label">CRIMINAL CASE</span>
           <h3>고소장·형사대응</h3>
-          <p>검찰 실무 경력 20년의 노하우로<br>핵심을 찌르는 고소장 작성</p>
-          <span class="view-more">상세보기 →</span>
+          <p>검찰 실무 기반의 논리</p>
         </div>
+        <div class="nav-arrow">→</div>
       </a>
 
-      <a href="/cases" class="shortcut-card has-bg">
-        <div class="card-bg-img">
-          <img src="{{ '/assets/img/고소.png' | relative_url }}" alt="법률 상담 성공사례">
-        </div>
-        <div class="card-content">
-          <div class="card-icon-wrap">✅</div>
+      <a href="/cases" class="nav-item">
+        <div class="nav-info">
+          <span class="nav-label">EXPERIENCE</span>
           <h3>성공 사례</h3>
-          <p>다양한 상황에서 도출해낸<br>리더스만의 실제 해결 사례</p>
-          <span class="view-more">상세보기 →</span>
+          <p>데이터로 증명된 결과</p>
         </div>
+        <div class="nav-arrow">→</div>
       </a>
 
-      <a href="/faq" class="shortcut-card">
-        <div class="card-content">
-          <div class="card-icon-wrap">💬</div>
-          <h3>자주 묻는 질문</h3>
-          <p>고민하시는 문제에 대한<br>명쾌한 법률 문답 리스트</p>
-          <span class="view-more">상세보기 →</span>
+      <a href="/faq" class="nav-item">
+        <div class="nav-info">
+          <span class="nav-label">SUPPORT</span>
+          <h3>상담 가이드</h3>
+          <p>자주 묻는 질문 확인</p>
         </div>
+        <div class="nav-arrow">→</div>
       </a>
-
     </div>
   </div>
 </section>
@@ -100,6 +89,7 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     --light-gray: #f8fafc;
     --white: #ffffff;
     --text-slate: #64748b;
+    --border: #e2e8f0;
   }
 
   /* Hero Section */
@@ -125,36 +115,38 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
   .btn-primary:hover { background: #082d5a; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
   .btn-secondary:hover { background: var(--accent); transform: translateY(-3px); }
 
-  /* Service Shortcuts - Image Cards */
-  .service-shortcuts { margin-top: -100px; position: relative; z-index: 10; padding-bottom: 80px; }
+  /* New Wide Navigation Style (Replacing Cards) */
+  .service-navigation { margin-top: -60px; position: relative; z-index: 10; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-  .shortcut-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-
-  .shortcut-card {
-    position: relative; height: 340px; background: var(--white); border-radius: 24px;
-    overflow: hidden; text-decoration: none; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); display: flex; flex-direction: column; justify-content: flex-end;
-  }
-  .shortcut-card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
-
-  /* 배경 이미지 관련 */
-  .card-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-  .card-bg-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65); transition: 0.6s ease; }
-  .shortcut-card:hover .card-bg-img img { transform: scale(1.1); filter: brightness(0.45); }
-
-  .card-content { position: relative; z-index: 2; padding: 35px; width: 100%; }
-  .has-bg .card-content { background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 100%); }
   
-  /* 이미지가 없는 FAQ 카드 스타일 */
-  .shortcut-card:not(.has-bg) { background: var(--white); border: 1px solid rgba(0,0,0,0.05); justify-content: center; }
-  .shortcut-card:not(.has-bg) .card-content { background: none; }
-  .shortcut-card:not(.has-bg) h3 { color: var(--dark); }
-  .shortcut-card:not(.has-bg) p { color: var(--text-slate); }
+  .nav-grid { 
+    display: flex; 
+    background: var(--white); 
+    border-radius: 12px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
 
-  .shortcut-card h3 { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: 12px; }
-  .shortcut-card p { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 20px; word-break: keep-all; }
-  .card-icon-wrap { font-size: 36px; margin-bottom: 15px; }
-  .view-more { font-size: 14px; font-weight: 700; color: var(--accent); }
+  .nav-item { 
+    flex: 1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 35px 30px; 
+    text-decoration: none; 
+    color: var(--dark); 
+    border-right: 1px solid var(--border); 
+    transition: 0.3s ease;
+  }
+  .nav-item:last-child { border-right: none; }
+  .nav-item:hover { background: #fbfcfd; }
+  .nav-item:hover .nav-arrow { transform: translateX(5px); color: var(--primary); }
+
+  .nav-label { display: block; font-size: 10px; font-weight: 800; color: var(--primary); letter-spacing: 0.1em; margin-bottom: 8px; opacity: 0.8; }
+  .nav-info h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 5px; letter-spacing: -0.02em; }
+  .nav-info p { font-size: 0.9rem; color: var(--text-slate); margin: 0; }
+  .nav-arrow { font-size: 20px; color: #cbd5e1; transition: 0.3s; }
 
   /* Board Section */
   .main-board { padding: 100px 0; background: var(--light-gray); }
@@ -167,22 +159,24 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 850px) {
-    .shortcut-grid { grid-template-columns: repeat(2, 1fr); }
-    .service-shortcuts { margin-top: -50px; }
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .nav-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .nav-item:nth-child(2) { border-right: none; }
+    .nav-item:nth-child(1), .nav-item:nth-child(2) { border-bottom: 1px solid var(--border); }
   }
 
   @media (max-width: 640px) {
-    .shortcut-grid { grid-template-columns: 1fr; }
-    .hero-btns { flex-direction: column; padding: 0 40px; }
     .hero-title { font-size: 2.2rem; }
-    .service-shortcuts { margin-top: 0; padding: 40px 20px; }
-    .shortcut-card { height: 300px; }
+    .hero-btns { flex-direction: column; padding: 0 40px; }
+    .service-navigation { margin-top: 20px; }
+    .nav-grid { display: block; }
+    .nav-item { border-right: none; border-bottom: 1px solid var(--border); padding: 25px; }
+    .nav-item:last-child { border-bottom: none; }
   }
 </style>
 
 <script>
-  // Intersection Observer for Scroll Animations
   document.addEventListener('DOMContentLoaded', () => {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {

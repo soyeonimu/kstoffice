@@ -16,7 +16,6 @@ description: 1억 이상의 고액 채무부터 생계비 확보 사례까지. �
     </header>
 
     <div class="rehab-grid">
-      
       <article class="rehab-card js-reveal">
         <div class="card-header">
           <span class="job-tag">직장인 A씨</span>
@@ -128,12 +127,20 @@ description: 1억 이상의 고액 채무부터 생계비 확보 사례까지. �
           </div>
         </div>
       </article>
-
     </div>
 
-    {% include cta-box.html 
-       title="감당하기 힘든 채무, 해결의 길은 반드시 있습니다" 
-       desc="당신의 소득과 재산 상황에 맞는 최적의 변제 계획을 지금 바로 확인해 보세요." %}
+    <div class="cta-box-simple js-reveal">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h3>나도 빚 탕감이 가능할까?</h3>
+          <p>현재 소득과 채무 상황에 맞는 최적의 탕감률을 1분 만에 확인해보세요.</p>
+        </div>
+        <div class="cta-btns">
+          <a href="https://naver.me/xwmIDcba" target="_blank" class="btn-primary">1분 자격진단</a>
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-kakao">카카오톡 상담</a>
+        </div>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -146,21 +153,20 @@ description: 1억 이상의 고액 채무부터 생계비 확보 사례까지. �
     --text-main: #1e293b;
     --text-sub: #64748b;
     --border: #e2e8f0;
+    --kakao-yellow: #fee500;
   }
 
-  .rehabilitation-cases { background: var(--bg-soft); padding: 100px 20px; font-family: 'Pretendard', sans-serif; }
+  .rehabilitation-cases { background: var(--bg-soft); padding: calc(var(--header-h) + 60px) 20px 100px; font-family: 'Pretendard', sans-serif; }
   .container { max-width: 1200px; margin: 0 auto; }
 
   /* Header */
   .page-head { text-align: center; margin-bottom: 70px; }
   .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
-  .page-title { font-size: 2.8rem; font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
+  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
   .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; }
 
-  /* Grid */
+  /* Grid & Cards */
   .rehab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 80px; }
-
-  /* Card */
   .rehab-card {
     background: var(--white); border-radius: 24px; padding: 40px;
     border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);
@@ -170,7 +176,6 @@ description: 1억 이상의 고액 채무부터 생계비 확보 사례까지. �
 
   .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
   .job-tag { font-size: 16px; font-weight: 800; color: var(--text-main); }
-  
   .status-badge { padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; }
   .status-done { background: #f0fdf4; color: #16a34a; }
   .status-ing { background: #eff6ff; color: #2563eb; }
@@ -181,32 +186,37 @@ description: 1억 이상의 고액 채무부터 생계비 확보 사례까지. �
   .debt-row { display: flex; justify-content: space-between; align-items: center; }
   .debt-row .label { font-size: 13px; color: var(--text-sub); }
   .debt-row .value { font-size: 17px; font-weight: 700; color: var(--text-main); }
-  
-  .debt-divider { 
-    text-align: center; font-size: 11px; font-weight: 800; color: var(--primary-blue); 
-    padding: 10px 0; position: relative; opacity: 0.6;
-  }
-  .debt-divider::before, .debt-divider::after {
-    content: ''; position: absolute; top: 50%; width: 35%; height: 1px; background: #cbd5e1;
-  }
+  .debt-divider { text-align: center; font-size: 11px; font-weight: 800; color: var(--primary-blue); padding: 10px 0; position: relative; opacity: 0.6; }
+  .debt-divider::before, .debt-divider::after { content: ''; position: absolute; top: 50%; width: 35%; height: 1px; background: #cbd5e1; }
   .debt-divider::before { left: 0; }
   .debt-divider::after { right: 0; }
-
   .debt-row.highlight .value { color: var(--primary-blue); font-size: 20px; }
 
-  /* Case Info */
   .case-info { display: flex; flex-direction: column; gap: 12px; }
   .info-item { display: flex; gap: 12px; font-size: 14px; line-height: 1.6; }
   .info-label { font-weight: 800; color: var(--text-main); white-space: nowrap; width: 35px; }
   .info-txt { color: var(--text-sub); }
 
-  /* Reveal Animation */
+  /* 회생 전용 CTA 스타일 */
+  .cta-box-simple { background: #111827; border-radius: 24px; padding: 50px 40px; color: #fff; }
+  .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+  .cta-text h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+  .cta-text p { color: #94a3b8; }
+  .cta-btns { display: flex; gap: 12px; flex-shrink: 0; }
+  
+  .btn-primary { background: #fff; color: #111827; padding: 16px 32px; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.2s; }
+  .btn-primary:hover { background: #f3f4f6; transform: translateY(-3px); }
+  
+  .btn-kakao { background: var(--kakao-yellow); color: #3c1e1e; padding: 16px 32px; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.2s; }
+  .btn-kakao:hover { background: #fada00; transform: translateY(-3px); }
+
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 850px) {
     .rehab-grid { grid-template-columns: 1fr; }
-    .page-title { font-size: 2.2rem; }
+    .cta-inner { flex-direction: column; text-align: center; }
+    .cta-btns { width: 100%; flex-direction: column; }
   }
 </style>
 

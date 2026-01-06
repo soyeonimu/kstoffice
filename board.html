@@ -4,21 +4,20 @@ title: 게시판
 description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 정보를 안내드립니다.
 ---
 
-<div class="board-page-container">
-  <header class="board-hero">
-    <div class="container">
-      <span class="sub-title">NEWS & INSIGHTS</span>
-      <h1>공지사항 · 법률정보</h1>
-      <p>검찰 실무 경력 20년의 전문 지식으로 유익한 정보를 전달합니다.</p>
-    </div>
-  </header>
+<section class="board-section">
+  <div class="container">
+    <header class="page-head js-reveal">
+      <div class="head-badge">NEWS & INSIGHTS</div>
+      <h1 class="page-title">공지사항 · 법률정보</h1>
+      <p class="page-desc">
+        검찰 실무 경력 20년의 전문 지식으로 일상에 힘이 되는 법률 정보를 정기적으로 안내드립니다.
+      </p>
+    </header>
 
-  <section class="board-content">
-    <div class="container board-flex">
-      
-      <aside class="board-sidebar">
+    <div class="board-layout">
+      <aside class="board-sidebar js-reveal">
         <div class="sticky-sidebar">
-          <h3>카테고리</h3>
+          <h3 class="sidebar-title">카테고리</h3>
           <ul class="category-list">
             <li>
               <a href="#" class="category-link active" data-filter="all">전체보기</a>
@@ -27,7 +26,7 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
             {% for category in categories %}
             <li>
               <a href="#" class="category-link" data-filter="{{ category | slugify }}">
-                {{ category }} <span>{{ site.board | where:"category", category | size }}</span>
+                {{ category }} <span class="count">{{ site.board | where:"category", category | size }}</span>
               </a>
             </li>
             {% endfor %}
@@ -35,102 +34,127 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
         </div>
       </aside>
 
-      <main class="post-area">
+      <main class="post-area js-reveal">
         <div id="post-list" class="post-grid">
           {% for post in site.board reversed %}
           <article class="post-item" data-category="{{ post.category | slugify }}">
             <a href="{{ post.url }}" class="post-card">
-              <div class="post-meta">
-                <span class="post-cat">{{ post.category }}</span>
+              <div class="post-header">
+                <span class="post-tag">{{ post.category }}</span>
                 <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
               </div>
               <h2 class="post-title">{{ post.title }}</h2>
               <p class="post-excerpt">{{ post.content | strip_html | truncate: 120 }}</p>
-              <span class="post-more">자세히 보기 →</span>
+              <div class="post-footer">
+                <span class="view-more">내용 읽기</span>
+                <span class="arrow">→</span>
+              </div>
             </a>
           </article>
           {% endfor %}
         </div>
       </main>
-
     </div>
-  </section>
-</div>
+
+    {% include cta-box.html 
+       title="상담이 필요하신가요?" 
+       desc="글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 정확합니다." %}
+  </div>
+</section>
 
 <style>
   :root {
-    --primary: #0a3871;
-    --accent: #f2c14e;
+    --bg-soft: #f8fafc;
+    --white: #ffffff;
+    --primary-blue: #0a3871;
     --text-main: #1e293b;
-    --text-muted: #64748b;
-    --bg-light: #f8fafc;
+    --text-sub: #64748b;
     --border: #e2e8f0;
   }
 
-  .board-page-container { background: var(--bg-light); min-height: 100vh; padding-bottom: 100px; }
+  /* 성공 사례 페이지와 동일한 컨테이너 및 패딩 */
+  .board-section { 
+    background: var(--bg-soft); 
+    padding: 120px 20px 100px; /* 성공 사례와 일치하는 상단 여백 */
+    font-family: 'Pretendard', sans-serif; 
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
 
-  /* 헤더 섹션 */
-  .board-hero { background: white; padding: 80px 0 60px; border-bottom: 1px solid var(--border); text-align: center; }
-  .board-hero .sub-title { display: block; font-size: 12px; font-weight: 800; color: var(--primary); letter-spacing: 0.2em; margin-bottom: 15px; }
-  .board-hero h1 { font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin-bottom: 15px; letter-spacing: -0.03em; }
-  .board-hero p { color: var(--text-muted); font-size: 1.1rem; }
+  /* Page Header (성공사례 스타일 복제) */
+  .page-head { text-align: center; margin-bottom: 60px; }
+  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
+  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
+  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto; word-break: keep-all; }
 
-  .board-flex { display: flex; gap: 40px; margin-top: 50px; }
+  /* Board Layout */
+  .board-layout { display: flex; gap: 40px; margin-bottom: 80px; align-items: flex-start; }
 
-  /* 사이드바 */
-  .board-sidebar { width: 220px; flex-shrink: 0; }
-  .sticky-sidebar { position: sticky; top: 100px; }
-  .board-sidebar h3 { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+  /* Sidebar */
+  .board-sidebar { width: 200px; flex-shrink: 0; }
+  .sticky-sidebar { position: sticky; top: 120px; }
+  .sidebar-title { font-size: 14px; font-weight: 800; color: var(--primary-blue); margin-bottom: 20px; border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; }
   
   .category-list { list-style: none; padding: 0; }
-  .category-list li { margin-bottom: 8px; }
   .category-link { 
     display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 15px; text-decoration: none; color: #475569; border-radius: 8px; font-weight: 500; transition: 0.2s;
+    padding: 12px 15px; text-decoration: none; color: var(--text-sub); border-radius: 10px; 
+    font-weight: 600; font-size: 0.95rem; transition: 0.3s; margin-bottom: 4px;
   }
-  .category-link span { font-size: 0.8rem; opacity: 0.5; }
-  .category-link:hover { background: #f1f5f9; color: var(--primary); }
-  .category-link.active { background: var(--primary); color: white; }
-  .category-link.active span { opacity: 0.8; }
+  .category-link .count { font-size: 0.8rem; opacity: 0.6; }
+  .category-link:hover { background: #eef2f7; color: var(--primary-blue); }
+  .category-link.active { background: var(--primary-blue); color: white; }
 
-  /* 게시글 영역 */
+  /* Post Area */
   .post-area { flex-grow: 1; }
-  .post-grid { display: flex; flex-direction: column; gap: 20px; }
+  .post-grid { display: flex; flex-direction: column; gap: 24px; }
 
   .post-card {
-    display: block; background: white; padding: 35px; border-radius: 16px; text-decoration: none;
-    border: 1px solid var(--border); transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block; background: var(--white); padding: 40px; border-radius: 24px; text-decoration: none;
+    border: 1px solid var(--border); transition: all 0.4s ease;
   }
-  .post-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--primary); }
+  .post-card:hover { transform: translateY(-8px); border-color: var(--primary-blue); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
 
-  .post-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-  .post-cat { background: #eef2f7; color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
-  .post-date { font-size: 0.85rem; color: var(--text-muted); }
+  .post-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
+  .post-tag { background: #eff6ff; color: var(--primary-blue); font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 6px; }
+  .post-date { font-size: 14px; color: var(--text-sub); }
 
-  .post-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; line-height: 1.4; transition: 0.2s; }
-  .post-card:hover .post-title { color: var(--primary); }
-  
-  .post-excerpt { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; margin-bottom: 20px; word-break: keep-all; }
-  .post-more { font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase; }
+  .post-title { font-size: 1.5rem; font-weight: 850; color: var(--text-main); margin-bottom: 15px; letter-spacing: -0.02em; line-height: 1.4; }
+  .post-excerpt { font-size: 1.05rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 25px; word-break: keep-all; }
 
-  /* 반응형 */
+  .post-footer { display: flex; align-items: center; gap: 8px; border-top: 1px solid #f1f5f9; padding-top: 20px; }
+  .view-more { font-size: 14px; font-weight: 700; color: var(--primary-blue); }
+  .arrow { font-size: 16px; color: var(--primary-blue); transition: 0.3s; }
+  .post-card:hover .arrow { transform: translateX(5px); }
+
+  /* Reveal */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* Responsive */
   @media (max-width: 960px) {
-    .board-flex { flex-direction: column; }
+    .board-layout { flex-direction: column; }
     .board-sidebar { width: 100%; }
     .category-list { display: flex; flex-wrap: wrap; gap: 10px; }
-    .category-link { background: white; border: 1px solid var(--border); }
+    .category-link { border: 1px solid var(--border); background: white; }
     .sticky-sidebar { position: static; }
   }
-  
+
   @media (max-width: 640px) {
-    .board-hero { padding: 50px 20px; }
-    .board-hero h1 { font-size: 1.8rem; }
-    .post-card { padding: 25px; }
+    .board-section { padding-top: 80px; }
+    .post-card { padding: 30px; }
+    .post-title { font-size: 1.3rem; }
   }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    // Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+
+    // Category Filter
     const categoryLinks = document.querySelectorAll(".category-link");
     const postItems = document.querySelectorAll(".post-item");
 
@@ -139,17 +163,12 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
         e.preventDefault();
         const filter = this.dataset.filter;
 
-        // 버튼 활성화 클래스 전환
         categoryLinks.forEach(l => l.classList.remove("active"));
         this.classList.add("active");
 
         postItems.forEach(item => {
           const itemCategory = item.dataset.category;
-          if (filter === "all" || itemCategory === filter) {
-            item.style.display = "block";
-          } else {
-            item.style.display = "none";
-          }
+          item.style.display = (filter === "all" || itemCategory === filter) ? "block" : "none";
         });
       });
     });

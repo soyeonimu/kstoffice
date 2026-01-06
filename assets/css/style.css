@@ -1377,3 +1377,115 @@ h1, h2, h3, h4, strong, b {
   .board-excerpt { display: none; } /* 모바일에서는 제목만 깔끔하게 */
   .board-link-icon { display: none; }
 }
+/* Service Navigation 카드 스타일 복원 */
+.nav-row { 
+  margin-bottom: 40px;
+}
+
+.nav-topic-label { 
+  font-size: 11px; 
+  font-weight: 900; 
+  color: #fff; 
+  background: var(--brand); 
+  display: inline-block; 
+  padding: 6px 18px; 
+  border-radius: 8px 8px 0 0;
+  letter-spacing: 0.1em; 
+  margin-left: 10px;
+}
+
+.nav-grid { 
+  display: flex; 
+  background: #fff; 
+  border-radius: 0 16px 16px 16px; 
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.1); 
+  overflow: hidden; 
+  border: 1px solid var(--border);
+}
+
+.nav-item { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 32px 40px; 
+  text-decoration: none; 
+  color: var(--text-main); 
+  border-right: 1px solid var(--border); 
+  transition: var(--transition);
+}
+
+.nav-item:last-child { border-right: none; }
+
+.nav-item.main-work { 
+  flex: 1.5; 
+  background: #fcfdfe; 
+}
+
+.nav-item.side-link { 
+  flex: 1; 
+}
+
+.nav-tag { 
+  display: block; 
+  font-size: 10px; 
+  font-weight: 800; 
+  color: var(--brand-accent); 
+  letter-spacing: 0.1em; 
+  margin-bottom: 8px; 
+}
+
+.nav-info h3 { 
+  font-size: 1.3rem; 
+  font-weight: 800; 
+  margin-bottom: 6px; 
+  letter-spacing: -0.03em; 
+}
+
+.nav-info p { 
+  font-size: 0.9rem; 
+  color: var(--text-sub); 
+  margin: 0; 
+}
+
+.nav-arrow { 
+  font-size: 20px; 
+  color: var(--brand-accent); 
+  font-weight: bold; 
+  transition: var(--transition); 
+}
+
+.nav-item:hover { 
+  background: #f8fafc; 
+}
+
+.nav-item:hover .nav-arrow { 
+  transform: translateX(8px); 
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .nav-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  .nav-item.main-work { 
+    grid-column: span 2; 
+    border-bottom: 1px solid var(--border); 
+    border-right: none; 
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-grid { 
+    display: block; 
+    border-radius: 12px; 
+  }
+  .nav-item { 
+    border-right: none !important; 
+    border-bottom: 1px solid var(--border); 
+    padding: 24px; 
+  }
+  .service-navigation { 
+    margin-top: 40px; 
+  }
+}

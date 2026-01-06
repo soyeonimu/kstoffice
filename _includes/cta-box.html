@@ -1,0 +1,118 @@
+<section class="unified-cta-section js-reveal">
+  <div class="container-cta">
+    <div class="cta-box-wrapper">
+      <div class="cta-inner-content">
+        <div class="cta-text-area">
+          <h3>{{ include.title | default: "더 궁금한 점이 있으신가요?" }}</h3>
+          <p>{{ include.desc | default: "베테랑 법무사의 1:1 진단으로 가장 빠른 해결책을 찾아보세요." }}</p>
+        </div>
+        <div class="cta-action-area">
+          <a href="https://naver.me/xwmIDcba" target="_blank" class="cta-btn primary">1분 자격진단</a>
+          <a href="tel:031-225-6885" class="cta-btn secondary">전화 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+<section class="unified-cta-section js-reveal">
+  <div class="container-cta">
+    <div class="cta-box-wrapper">
+      <div class="cta-inner-content">
+        <div class="cta-text-area">
+          <h3>더 궁금한 점이 있으신가요?</h3>
+          <p>베테랑 법무사의 1:1 진단으로 가장 빠른 해결책을 찾아보세요.</p>
+        </div>
+        <div class="cta-action-area">
+          <a href="https://naver.me/xwmIDcba" target="_blank" class="cta-btn primary">1분 자격진단</a>
+          <a href="tel:031-225-6885" class="cta-btn secondary">전화 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 크기 편차를 없애기 위한 절대 규격 설정 */
+  .unified-cta-section {
+    padding: 80px 20px; /* 외부 여백 통일 */
+    background-color: transparent;
+  }
+
+  .container-cta {
+    max-width: 1100px; /* 모든 페이지에서 동일한 너비 유지 */
+    margin: 0 auto;
+  }
+
+  .cta-box-wrapper {
+    background: #1a1c1e;
+    border-radius: 24px;
+    padding: 60px 50px; /* 내부 여백 고정으로 크기 통일 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+
+  .cta-inner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .cta-text-area { flex: 1; }
+  
+  .cta-text-area h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    letter-spacing: -0.03em;
+  }
+
+  .cta-text-area p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  .cta-action-area {
+    display: flex;
+    gap: 15px;
+    flex-shrink: 0;
+  }
+
+  /* 버튼 규격 통일 */
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px; /* 버튼 최소 너비 고정 */
+    height: 56px;
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .cta-btn.primary { background: #ffffff; color: #1a1c1e; }
+  .cta-btn.secondary { 
+    background: transparent; 
+    color: #ffffff; 
+    border: 1px solid rgba(255,255,255,0.2); 
+  }
+
+  .cta-btn:hover { transform: translateY(-3px); }
+  .cta-btn.primary:hover { background: #0a3871; color: #ffffff; }
+  .cta-btn.secondary:hover { background: rgba(255,255,255,0.1); }
+
+  /* 반응형: 모바일에서도 찌그러지지 않게 */
+  @media (max-width: 900px) {
+    .cta-box-wrapper { padding: 40px 30px; }
+    .cta-inner-content { flex-direction: column; text-align: center; gap: 30px; }
+    .cta-action-area { width: 100%; flex-direction: column; }
+    .cta-btn { width: 100%; }
+    .cta-text-area h3 { font-size: 1.5rem; }
+  }
+</style>
+</style>

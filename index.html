@@ -1,67 +1,106 @@
-/* 배너 오버레이 텍스트 */
-.hero--banner{
-  position: relative;
-  max-width: 1200px;
-  margin: 1.5rem auto;
-}
+---
+layout: default
+title: 수원·용인 개인회생·개인파산·고소장 전문 | 리더스 합동 법무사 사무소
+description: 경기 수원·용인·화성·평택 개인회생, 개인파산, 고소장 작성 및 형사합의 전문. 검찰청 출신 실무 중심 법무사 상담.
+keywords: 수원 법무사, 용인 법무사, 개인회생, 개인파산, 고소장, 형사합의, 리더스 법무사
+author: 리더스 합동 법무사 사무소
+permalink: /
+---
 
-.hero-banner__img{
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 14px;
-}
+<!-- ================= SEO 전용 (화면 비노출) ================= -->
+<section class="hero hero--seo" aria-labelledby="seo-title" style="display:none">
+  <h1 id="seo-title">
+    수원·용인 개인회생 · 개인파산 · 고소장 전문 리더스 합동 법무사 사무소
+  </h1>
+  <p>
+    경기 수원·용인·화성·평택 지역 개인회생, 개인파산, 고소장 작성 및
+    형사합의 절차를 실무 중심으로 신속하고 정확하게 진행합니다.
+  </p>
+</section>
 
-/* 텍스트가 사진 위에 올라가게 */
-.hero-banner__overlay{
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 48px;
-  color: #fff;
-}
+<!-- ================= 메인 배너 ================= -->
+<section class="hero hero--banner" aria-label="리더스 합동 법무사 사무소 메인 배너">
+  <div class="container">
 
-/* 가독성용 어두운 그라데이션 */
-.hero-banner__overlay::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius: 14px;
-  background: linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.25) 45%, rgba(0,0,0,0) 70%);
-}
-.hero-banner__overlay > *{
-  position: relative;
-  z-index: 1;
-}
+    <div class="hero-banner">
+      <img
+        class="hero-banner__img"
+        src="{{ '/assets/img/business (2000 x 700 px).png' | relative_url }}"
+        alt=""
+        width="2000"
+        height="700"
+        loading="eager"
+        decoding="async"
+      >
 
-.hero-banner__title{
-  margin: 0 0 12px 0;
-  font-size: clamp(28px, 3.2vw, 44px);
-  line-height: 1.15;
-  font-weight: 800;
-}
+      <!-- 배너 위 텍스트 -->
+      <div class="hero-banner__overlay">
+        <h1 class="hero-banner__title">
+          수원·용인 개인회생 · 개인파산 · 고소장 전문<br>
+          리더스 합동 법무사 사무소
+        </h1>
 
-.hero-banner__desc{
-  margin: 0 0 18px 0;
-  max-width: 52ch;
-  opacity: .95;
-  line-height: 1.6;
-}
+        <p class="hero-banner__desc">
+          경기 수원·용인·화성·평택 지역<br>
+          개인회생, 개인파산, 고소장 및 형사합의를<br>
+          실무 중심으로 신속하고 정확하게 진행합니다.
+        </p>
 
-.hero-banner__actions{
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+        <div class="hero-banner__actions">
+          <a class="btn primary" href="tel:031-225-6885">전화 상담 031-225-6885</a>
+          <a class="btn secondary" href="{{ '/contact' | relative_url }}">문의하기</a>
+        </div>
+      </div>
+    </div>
 
-/* 모바일 최적화 */
-@media (max-width: 768px){
-  .hero-banner__overlay{
-    padding: 22px;
-  }
-  .hero-banner__overlay::before{
-    background: linear-gradient(180deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,0) 100%);
-  }
-}
+  </div>
+</section>
+
+<!-- ================= 개인회생 슬림 카드 ================= -->
+<section class="hero hero--slice rehab">
+  <div class="container">
+    <div class="copy">
+      <h2>개인회생, 신속하고 정확하게</h2>
+      <p>
+        수원·용인·화성·동탄·오산 등 경기 남부지역<br>
+        상담부터 신청까지 원스톱 진행
+      </p>
+      <div class="actions">
+        <a class="btn" href="{{ '/check' | relative_url }}">자가진단 하기</a>
+        <a class="btn secondary" href="{{ '/procedure' | relative_url }}">절차·비용 보기</a>
+      </div>
+    </div>
+
+    <div class="media">
+      <img src="{{ '/image1.jpg' | relative_url }}" alt="개인회생 상담">
+    </div>
+  </div>
+</section>
+
+<!-- ================= 고소장 슬림 카드 ================= -->
+<section class="hero hero--slice complaint">
+  <div class="container">
+    <div class="copy">
+      <h2>고소장, 설득력 있게</h2>
+      <p>
+        논리와 요건을 갖춘 정식 고소장 작성<br>
+        형사합의까지 전 과정 안내
+      </p>
+      <div class="actions">
+        <a class="btn" href="{{ '/complaint' | relative_url }}">고소장 안내</a>
+        <a class="btn secondary" href="{{ '/difference' | relative_url }}">신고 vs 고소</a>
+      </div>
+    </div>
+
+    <div class="media">
+      <img src="{{ '/image2.jpg' | relative_url }}" alt="고소장 작성">
+    </div>
+  </div>
+</section>
+
+<!-- ================= 게시판 최신글 ================= -->
+<section class="board-section">
+  <div class="container">
+    {% include board-list.html limit=6 %}
+  </div>
+</section>

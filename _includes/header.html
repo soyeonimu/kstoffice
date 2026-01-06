@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/lucide@latest"></script>
+
 <header class="site-header">
   <div class="header-inner">
     <div class="logo">
@@ -7,7 +9,7 @@
     <nav class="gnb">
       <ul class="gnb-list">
         <li>
-          <a href="/team">사무소 안내</a>
+          <a href="/team"><i data-lucide="info"></i> 사무소 안내</a>
           <ul class="sub">
             <li><a href="/team">구성원 소개</a></li>
             <li><a href="/location">오시는 길</a></li>
@@ -15,7 +17,7 @@
         </li>
 
         <li>
-          <a href="/complaint">고소장 작성</a>
+          <a href="/complaint"><i data-lucide="file-text"></i> 고소장 작성</a>
           <ul class="sub">
             <li><a href="/complaint">작성 안내</a></li>
             <li><a href="/cases-complaint">성공 사례</a></li>
@@ -24,7 +26,7 @@
         </li>
 
         <li>
-          <a href="/procedure">회생·파산</a>
+          <a href="/procedure"><i data-lucide="scale"></i> 회생·파산</a>
           <ul class="sub">
             <li><a href="/procedure">절차/비용</a></li>
             <li><a href="/cases">성공 사례</a></li>
@@ -33,7 +35,7 @@
         </li>
 
         <li>
-          <a href="/check">온라인 상담</a>
+          <a href="/check"><i data-lucide="message-square-more"></i> 온라인 상담</a>
           <ul class="sub">
             <li><a href="/check">회생 자가진단</a></li>
             <li><a href="/chat">AI 상담</a></li>
@@ -41,9 +43,14 @@
         </li>
 
         <li>
-          <a href="/board">소식 및 자료</a>
+          <a href="/board"><i data-lucide="bell"></i> 소식 및 자료</a>
         </li>
       </ul>
     </nav>
   </div>
 </header>
+
+<script>
+  // 아이콘 렌더링 실행
+  lucide.createIcons();
+</script>

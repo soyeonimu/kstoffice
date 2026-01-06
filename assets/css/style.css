@@ -1395,3 +1395,60 @@ body {
     font-size: 2rem !important;
   }
 }
+/* =====================================================
+   [최종] 상단 여백 극최소화 및 로고 색상 정상화
+   ===================================================== */
+
+/* 1. 로고 옆 상호명 파란색 문제 해결 */
+.logo-link, 
+.logo-text, 
+.logo-title {
+  color: #ffffff !important; /* 무조건 흰색으로 고정 */
+  text-decoration: none !important;
+}
+
+/* 2. 모든 히어로 섹션 상단 여백 대폭 축소 */
+.success-cases,
+.rehabilitation-cases,
+.check-section,
+.diff-section,
+.faq-section,
+.price-section,
+.procedure-section,
+.info-section-container {
+  /* 헤더 바로 아래에 붙도록 여백 최소화 */
+  padding-top: calc(var(--header-h) + 20px) !important; 
+  padding-bottom: 70px !important;
+  
+  /* 그라데이션이 위쪽에서 선명하게 시작되도록 조정 */
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 250px) !important;
+}
+
+/* 3. 배지(LEGAL GUIDE / CASE STUDIES) 상단 마진 제거 */
+.page-head {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.head-badge {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+/* 4. 본문 가독성 (얇은 글씨로 최종 고정) */
+.page-desc, 
+.case-text, 
+.career-text p, 
+.tip-text,
+.info-txt {
+  font-weight: 400 !important;
+  color: #475569 !important;
+  line-height: 1.6 !important;
+}
+
+/* 5. 모바일 환경 여백 (거의 밀착) */
+@media (max-width: 768px) {
+  .success-cases, .rehabilitation-cases, .diff-section {
+    padding-top: calc(var(--header-h) + 15px) !important;
+  }
+}

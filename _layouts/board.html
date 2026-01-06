@@ -1,32 +1,52 @@
 ---
-layout: default # board.html은 default 레이아웃을 상속받습니다.
+layout: default
 ---
 
-{% include header.html %}
+<section class="post-detail-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
+  <div class="container" style="max-width: 850px; margin: 0 auto; padding: 0 20px;">
+    
+    <header class="post-header js-reveal" style="text-align: center; margin-bottom: 50px;">
+      <div style="margin-bottom: 15px;">
+        <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 6px;">
+          {{ page.category }}
+        </span>
+      </div>
+      <h1 class="post-title" style="font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.03em; line-height: 1.4;">
+        {{ page.title }}
+      </h1>
+      <div style="color: #64748b; font-size: 14px; font-weight: 500;">
+        {{ page.date | date: "%Y.%m.%d" }}
+      </div>
+    </header>
 
-<section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif; background: #f9f9f9;">
-  <div style="max-width: 960px; margin: 0 auto; display: flex; gap: 2rem;">
-    <aside style="width: 200px; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
-      <h3 style="font-size: 1.2rem; color: #0a3871; margin-bottom: 1rem;">카테고리</h3>
-      <ul style="list-style: none; padding: 0; margin: 0;">
-        <li style="margin-bottom: 0.5rem;">
-          <a href="/board/" style="color: #555; text-decoration: none; font-weight: bold;">전체보기</a>
-        </li>
-        {% assign categories = site.board | map:"category" | compact | uniq | sort %}
-        {% for category in categories %}
-          <li style="margin-bottom: 0.5rem;">
-            <a href="/board/category/{{ category | slugify }}/" style="color: #555; text-decoration: none;">
-              {{ category }} ({{ site.board | where:"category", category | size }})
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </aside>
+    <article class="post-content js-reveal" style="background: #fff; padding: 60px 50px; border-radius: 24px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
+      <div class="inner-content" style="word-break: keep-all;">
+        {{ content }}
+      </div>
+    </article>
 
-    <div style="flex-grow: 1;">
-      {{ content }}
-    </div>
+    <footer style="margin-top: 50px; text-align: center;">
+      <a href="/board" class="back-btn" style="text-decoration: none; background: #0a3871; color: #fff; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; display: inline-block; transition: 0.3s;">
+        목록으로 돌아가기
+      </a>
+    </footer>
+
   </div>
 </section>
 
-{% include footer.html %}
+<style>
+  .post-content img { max-width: 100%; border-radius: 12px; margin: 30px 0; }
+  .post-content h2 { font-size: 1.6rem; color: #1e293b; margin-top: 50px; margin-bottom: 20px; border-left: 4px solid #0a3871; padding-left: 15px; }
+  .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(10, 56, 113, 0.2); }
+  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
+</script>

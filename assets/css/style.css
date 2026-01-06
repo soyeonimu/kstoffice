@@ -1092,18 +1092,30 @@ caption {
     #082b52 100%
   );
 }
-/* ===== 1. 통합 컬러 변수 설정 ===== */
+
+/* 통합 스타일시트: 다크 그레이 톤업데이트 
+  - 헤더/푸터 색상 통일 (#1a1c1e)
+  - 중복 선언 제거 및 최신 수치 적용
+*/
+
+/* ===== 1. 전역 변수 (색상 및 규격) ===== */
 :root {
-  /* 메인 다크 그레이 톤 */
-  --theme-dark-bg: #1a1c1e;        /* 헤더/푸터 공통 배경색 */
-  --theme-border: rgba(255, 255, 255, 0.08); /* 은은한 경계선 */
-  
-  --header-h: 76px;
+  --theme-dark-bg: #1a1c1e;         /* ✅ 헤더/푸터 공통 다크 그레이 */
+  --theme-border: rgba(255, 255, 255, 0.08);
+  --header-h: 76px;                 /* ✅ 최신 헤더 높이 */
   --text-main: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.65);
+  --accent-blue: #0a3871;           /* 포인트 컬러 */
 }
 
-/* ===== 2. 헤더 (Header) 수정 ===== */
+/* 본문 영역 확보 */
+body {
+  padding-top: var(--header-h);
+  margin: 0;
+  font-family: 'Pretendard', sans-serif; /* 기본 폰트 설정 권장 */
+}
+
+/* ===== 2. 헤더 (Header) ===== */
 .site-header {
   position: fixed;
   top: 0;
@@ -1111,73 +1123,216 @@ caption {
   right: 0;
   height: var(--header-h);
   z-index: 10000;
-  background: var(--theme-dark-bg); /* 통일된 그레이 */
+  background: var(--theme-dark-bg);
   border-bottom: 1px solid var(--theme-border);
-  backdrop-filter: blur(12px);      /* 약간의 투명감 유지 */
+  backdrop-filter: blur(12px);
   padding: 0 32px;
+  transform: translateY(0);
   transition: transform .22s ease;
 }
 
-/* 로고 및 텍스트 색상 정돈 */
+.site-header.header--hidden {
+  transform: translateY(-110%);
+}
+
+.header-inner {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 로고 영역 */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 최신 간격 보정 */
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
 .logo-title {
-  color: var(--text-main);
   font-size: 1.15rem;
   font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* 네비게이션 (GNB) */
+.gnb-list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .gnb-list > li > a {
-  color: var(--text-muted); /* 평소엔 살짝 흐리게 */
-  transition: color 0.2s;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 12px 8px;
+  text-decoration: none;
+  transition: color .2s ease;
 }
 
 .gnb-list > li > a:hover {
-  color: var(--text-main);  /* 호버 시 선명하게 */
+  color: var(--text-main);
 }
 
-/* ===== 3. 푸터 (Footer) 수정 ===== */
+/* 드롭다운 (Sub Menu) */
+.has-sub { position: relative; }
+.sub {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 190px;
+  background: #25282b; /* 배경보다 살짝 밝은 그레이 */
+  border: 1px solid var(--theme-border);
+  border-radius: 10px;
+  padding: 8px 0;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  list-style: none;
+}
+
+.has-sub:hover .sub { display: block; }
+
+.sub li a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 14.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.sub li a:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+/* ===== 3. 공통 버튼 스타일 (CTA) ===== */
+.cta-btn, .footer-phone, .footer-kakao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all .15s ease;
+}
+
+/* 다크 타입 버튼 (전화 등) */
+.cta-btn, .footer-phone {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* 라이트 타입 버튼 (상담 등) */
+.footer-kakao {
+  background: #fff;
+  color: var(--accent-blue);
+}
+
+.cta-btn:hover, .footer-phone:hover, .footer-kakao:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* ===== 4. 푸터 (Footer) ===== */
 .site-footer {
-  background: var(--theme-dark-bg); /* 헤더와 동일한 그레이 */
+  background: var(--theme-dark-bg);
   border-top: 1px solid var(--theme-border);
   color: var(--text-muted);
   padding: 50px 20px;
 }
 
-.footer-brand .footer-name {
-  color: var(--text-main);
-  font-weight: 800;
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* 푸터 내 구분선 색상도 통일 */
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.footer-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.footer-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.footer-cta {
+  display: flex;
+  gap: 10px;
+}
+
 .footer-divider {
   height: 1px;
   background: var(--theme-border);
-  margin: 24px 0;
+  margin: 25px 0;
 }
 
-/* ===== 4. 버튼 디자인 (CTA) ===== */
-/* 헤더와 푸터의 버튼을 세련된 반투명 스타일로 통일 */
-.cta-btn, .footer-phone {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: var(--text-main) !important;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+.footer-info p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
-.cta-btn:hover, .footer-phone:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  transform: translateY(-2px);
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
 }
 
-/* 강조 버튼 (카카오/상담 등) */
-.footer-kakao {
-  background: #ffffff !important;
-  color: #1a1c1e !important; /* 배경색과 대비 */
-  border-radius: 8px;
-}
+/* ===== 5. 섹션 및 히어로 여백 ===== */
+.hero { padding-top: 120px; }
+.hero-content { max-width: 1200px; padding-left: 80px; }
+.section, .hero--slice { margin-top: 80px; }
 
-/* ===== 5. 반응형 보정 ===== */
+/* ===== 6. 반응형 (Media Queries) ===== */
 @media (max-width: 900px) {
   :root { --header-h: 64px; }
-  .site-header { padding: 0 16px; }
+  .site-header { padding: 0 18px; }
+  .gnb, .logo-sub { display: none; } /* 모바일 메뉴는 별도 구현 필요 */
+  .logo-title { font-size: 16px; }
+}
+
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; align-items: flex-start; }
+  .footer-cta { width: 100%; }
+  .footer-cta a { flex: 1; }
 }

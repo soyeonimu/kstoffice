@@ -90,23 +90,7 @@ title: 개인회생·파산 자주 묻는 질문(FAQ) | 리더스 합동 법무�
     </div>
   </section>
 
-  <section class="unified-cta-section js-reveal">
-    <div class="container-cta">
-      <div class="cta-box-wrapper">
-        <div class="cta-inner-content">
-          <div class="cta-text-area">
-            <div class="cta-badge">DIRECT CONSULTING</div>
-            <h3 class="cta-title">고민만으로는 채무가 줄어들지 않습니다.</h3>
-            <p class="cta-desc">지금 바로 법적 보호를 받고 평범한 일상으로 돌아가세요.</p>
-          </div>
-          <div class="cta-action-area">
-            <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
-            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  {% include cta.html title="고민만으로는 채무가 줄어들지 않습니다." desc="더 궁금한 점이 있으신가요? 지금 바로 법무사에게 직접 물어보고 명쾌한 해답을 얻으세요." %}
 </section>
 
 <style>
@@ -147,8 +131,8 @@ title: 개인회생·파산 자주 묻는 질문(FAQ) | 리더스 합동 법무�
   .leaders-faq-q { 
     list-style: none; padding: 32px 10px; cursor: pointer; display: flex; align-items: center; 
     font-size: 1.15rem; font-weight: 700; position: relative;
+  summary::-webkit-details-marker { display: none; }
   }
-  .leaders-faq-q::-webkit-details-marker { display: none; }
   
   .leaders-q-num { font-size: 0.9rem; color: var(--brand-accent); margin-right: 20px; font-weight: 800; }
   .leaders-qtext { flex: 1; padding-right: 40px; }
@@ -167,37 +151,11 @@ title: 개인회생·파산 자주 묻는 질문(FAQ) | 리더스 합동 법무�
   .leaders-a-inner { line-height: 1.8; word-break: keep-all; }
   .leaders-a-inner strong { color: var(--brand); }
 
-  /* UNIFIED CTA */
-  .unified-cta-section { padding: 60px 24px 120px; background: transparent; }
-  .container-cta { max-width: 1200px; margin: 0 auto; }
-  .cta-box-wrapper { 
-    background: var(--brand); border-radius: var(--radius-lg); padding: 64px 60px; 
-    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2); position: relative; overflow: hidden;
-  }
-  .cta-inner-content { display: flex; justify-content: space-between; align-items: center; gap: 48px; position: relative; z-index: 1; }
-  .cta-badge { font-size: 12px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.15em; margin-bottom: 16px; }
-  .cta-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; color: #ffffff; margin-bottom: 14px; letter-spacing: -0.03em; }
-  .cta-desc { font-size: 1.15rem; color: #94a3b8; }
-  .cta-action-area { display: flex; gap: 14px; }
-  .cta-btn {
-    display: flex; align-items: center; justify-content: center;
-    min-width: 180px; height: 60px; border-radius: 14px; font-weight: 800; text-decoration: none; 
-    transition: var(--transition);
-  }
-  .cta-btn.kakao { background: #fee500; color: #3c1e1e; }
-  .cta-btn.kakao:hover { background: #fada00; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(254, 229, 0, 0.2); }
-  .cta-btn.secondary { background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); }
-  .cta-btn.secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; transform: translateY(-5px); }
-
   /* Animations */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 960px) {
-    .cta-box-wrapper { padding: 48px 32px; border-radius: 24px; }
-    .cta-inner-content { flex-direction: column; text-align: center; gap: 32px; }
-    .cta-action-area { width: 100%; flex-direction: column; }
-    .cta-btn { width: 100%; }
     .leaders-faq-a { padding-left: 10px; }
     .leaders-hero { padding: 80px 0 40px; }
   }

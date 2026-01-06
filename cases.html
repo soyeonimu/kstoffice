@@ -173,6 +173,71 @@ description: 1억 이상의 고액 채무부터 생계비 확보 사례까지. �
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
+  /* 인사이트 섹션 스타일 */
+.career-highlight {
+  background: #f1f5f9;
+  border-radius: 24px;
+  padding: 50px;
+  margin: 80px 0;
+  border-left: 8px solid var(--primary-blue);
+  position: relative;
+  overflow: hidden;
+}
+
+.insight-badge {
+  display: inline-block;
+  background: var(--primary-blue);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.insight-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 25px;
+  letter-spacing: -0.02em;
+}
+
+.insight-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-sub);
+  margin-bottom: 25px;
+}
+
+.insight-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.insight-list li {
+  position: relative;
+  padding-left: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+.insight-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary-blue);
+  font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .career-highlight { padding: 40px 25px; }
+  .insight-title { font-size: 1.4rem; }
+}
   @media (max-width: 850px) {
     .rehab-grid { grid-template-columns: 1fr; }
     .cta-inner { flex-direction: column; text-align: center; }

@@ -1647,3 +1647,9 @@ header {
 :root{
   --header-h: 76px; /* 기존보다 살짝 키움 */
 }
+header .logo span {
+  font-size: 1.15rem;   /* ← 지금 체감상 가장 적당 */
+  font-weight: 700;     /* 볼드 */
+  color: #ffffff;       /* 흰색 */
+  letter-spacing: -0.02em;
+}

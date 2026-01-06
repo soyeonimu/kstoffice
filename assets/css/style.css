@@ -1426,3 +1426,95 @@ body {
   font-weight: 700;
   font-size: 0.85rem;
 }
+/* --- 프리미엄 히어로 스타일 (수정) --- */
+.hero-premium {
+  position: relative;
+  width: 100%;
+  height: 600px; /* 높이 고정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/assets/img/business (2000 x 700 px).png') center/cover no-repeat; /* 이미지 경로 확인 */
+  overflow: hidden;
+}
+
+.hero-premium-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* 어둡게 처리하여 글자 강조 */
+  z-index: 1;
+}
+
+.hero-premium-content {
+  position: relative;
+  z-index: 2; /* 오버레이보다 위로 */
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 40px;
+  color: #ffffff;
+}
+
+.hero-badge {
+  background: #007bff;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.hero-title span { color: #64b5f6; }
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+}
+
+.stat-item strong {
+  display: block;
+  font-size: 1.8rem;
+}
+
+/* --- 서비스 카드 스타일 --- */
+.service-section {
+  padding: 80px 20px;
+  background: #f8f9fa;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body { padding: 30px; }
+
+.btn-main {
+  display: inline-block;
+  background: #0a3871;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+}

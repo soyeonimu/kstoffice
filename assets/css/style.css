@@ -1204,3 +1204,65 @@ body {
   .footer-cta { width: 100%; }
   .footer-cta a { flex: 1; text-align: center; }
 }
+/* 1. 로고 이미지 크기 강제 고정 (커지는 문제 해결) */
+.logo-img, .footer-logo, .site-header img {
+  width: 42px !important;
+  height: 42px !important;
+  object-fit: contain !important;
+}
+
+/* 2. 푸터 상호명 및 정보 가독성 (볼드 해제 및 색상 복구) */
+.site-footer {
+  background-color: #1a1c1e !important;
+  padding: 50px 20px !important;
+}
+
+.site-footer .footer-name, 
+.site-footer .logo-title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 15px !important;
+  display: block !important;
+}
+
+/* 푸터 본문 글씨: 얇게(400) + 가독성 높은 회색 */
+.site-footer p, 
+.site-footer .info-item,
+.site-footer .footer-info {
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.7 !important;
+  margin-top: 4px !important;
+}
+
+/* 3. 푸터 버튼 (흰색 뭉침 해결 및 대비 강화) */
+.footer-phone, .btn-tel {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.footer-kakao, .btn-online {
+  background: #ffffff !important;
+  color: #1a1c1e !important; /* 배경 흰색에 글자 검정색 */
+  font-weight: 700 !important;
+}
+
+/* 4. 섹션 간 여백 밀착 (인사이트 박스 ~ CTA 박스) */
+.career-highlight, .insight-section {
+  margin-bottom: 0 !important;
+  padding-bottom: 40px !important;
+}
+
+.cta-box-simple {
+  margin-top: 0 !important;
+  padding-top: 40px !important;
+}
+
+/* 5. 본문 가독성 보정 (모든 굵은 글씨 해제) */
+.page-desc, .info-txt, .case-text, .career-text p {
+  font-weight: 400 !important;
+  color: #475569 !important;
+}

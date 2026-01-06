@@ -1,57 +1,134 @@
 ---
 layout: default
 title: 게시판
-description: 사무소 소식 및 법률정보를 정기적으로 안내드립니다.
+description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 정보를 안내드립니다.
 ---
 
-<section style="padding: 2rem 1rem; font-family: 'Noto Sans KR', sans-serif;">
-  <div style="max-width: 960px; margin: 0 auto; display: flex; gap: 2rem;">
-
-    <!-- 사이드 카테고리 -->
-    <aside style="width: 200px; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
-      <h3 style="font-size: 1.2rem; color: #0a3871; margin-bottom: 1rem;">카테고리</h3>
-      <ul style="list-style: none; padding: 0; margin: 0;">
-        <li style="margin-bottom: 0.5rem;">
-          <a href="#" class="category-link" data-filter="all" style="color: #0a3871; font-weight: bold; text-decoration: none;">전체보기</a>
-        </li>
-        {% assign categories = site.board | map:"category" | compact | uniq | sort %}
-        {% for category in categories %}
-          <li style="margin-bottom: 0.5rem;">
-            <a href="#"
-               class="category-link"
-               data-filter="{{ category | slugify }}"
-               style="color: #555; text-decoration: none;">
-              {{ category }} ({{ site.board | where:"category", category | size }})
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </aside>
-
-    <!-- 게시글 목록 -->
-    <div style="flex-grow: 1;">
-      <h1 style="font-size: 2rem; color: #0a3871; margin-bottom: 1rem;">공지사항 · 정보게시판</h1>
-
-      <ul id="post-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2rem;">
-        {% for post in site.board reversed %}
-          <li
-            class="post-item"
-            data-category="{{ post.category | slugify }}"
-            style="background: #fff; padding: 1.2rem; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.05);"
-          >
-            <a href="{{ post.url }}" style="font-size: 1.1rem; color: #0a3871; font-weight: bold; text-decoration: none;">
-              {{ post.title }}
-            </a>
-            <div style="font-size: 0.9rem; color: #888;">{{ post.date | date: "%Y년 %m월 %d일" }}</div>
-          </li>
-        {% endfor %}
-      </ul>
+<div class="board-page-container">
+  <header class="board-hero">
+    <div class="container">
+      <span class="sub-title">NEWS & INSIGHTS</span>
+      <h1>공지사항 · 법률정보</h1>
+      <p>검찰 실무 경력 20년의 전문 지식으로 유익한 정보를 전달합니다.</p>
     </div>
+  </header>
 
-  </div>
-</section>
+  <section class="board-content">
+    <div class="container board-flex">
+      
+      <aside class="board-sidebar">
+        <div class="sticky-sidebar">
+          <h3>카테고리</h3>
+          <ul class="category-list">
+            <li>
+              <a href="#" class="category-link active" data-filter="all">전체보기</a>
+            </li>
+            {% assign categories = site.board | map:"category" | compact | uniq | sort %}
+            {% for category in categories %}
+            <li>
+              <a href="#" class="category-link" data-filter="{{ category | slugify }}">
+                {{ category }} <span>{{ site.board | where:"category", category | size }}</span>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </aside>
 
-<!-- 🔽 JS 필터링 스크립트 -->
+      <main class="post-area">
+        <div id="post-list" class="post-grid">
+          {% for post in site.board reversed %}
+          <article class="post-item" data-category="{{ post.category | slugify }}">
+            <a href="{{ post.url }}" class="post-card">
+              <div class="post-meta">
+                <span class="post-cat">{{ post.category }}</span>
+                <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+              </div>
+              <h2 class="post-title">{{ post.title }}</h2>
+              <p class="post-excerpt">{{ post.content | strip_html | truncate: 120 }}</p>
+              <span class="post-more">자세히 보기 →</span>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+      </main>
+
+    </div>
+  </section>
+</div>
+
+<style>
+  :root {
+    --primary: #0a3871;
+    --accent: #f2c14e;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --border: #e2e8f0;
+  }
+
+  .board-page-container { background: var(--bg-light); min-height: 100vh; padding-bottom: 100px; }
+
+  /* 헤더 섹션 */
+  .board-hero { background: white; padding: 80px 0 60px; border-bottom: 1px solid var(--border); text-align: center; }
+  .board-hero .sub-title { display: block; font-size: 12px; font-weight: 800; color: var(--primary); letter-spacing: 0.2em; margin-bottom: 15px; }
+  .board-hero h1 { font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin-bottom: 15px; letter-spacing: -0.03em; }
+  .board-hero p { color: var(--text-muted); font-size: 1.1rem; }
+
+  .board-flex { display: flex; gap: 40px; margin-top: 50px; }
+
+  /* 사이드바 */
+  .board-sidebar { width: 220px; flex-shrink: 0; }
+  .sticky-sidebar { position: sticky; top: 100px; }
+  .board-sidebar h3 { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+  
+  .category-list { list-style: none; padding: 0; }
+  .category-list li { margin-bottom: 8px; }
+  .category-link { 
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 15px; text-decoration: none; color: #475569; border-radius: 8px; font-weight: 500; transition: 0.2s;
+  }
+  .category-link span { font-size: 0.8rem; opacity: 0.5; }
+  .category-link:hover { background: #f1f5f9; color: var(--primary); }
+  .category-link.active { background: var(--primary); color: white; }
+  .category-link.active span { opacity: 0.8; }
+
+  /* 게시글 영역 */
+  .post-area { flex-grow: 1; }
+  .post-grid { display: flex; flex-direction: column; gap: 20px; }
+
+  .post-card {
+    display: block; background: white; padding: 35px; border-radius: 16px; text-decoration: none;
+    border: 1px solid var(--border); transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .post-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--primary); }
+
+  .post-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+  .post-cat { background: #eef2f7; color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
+  .post-date { font-size: 0.85rem; color: var(--text-muted); }
+
+  .post-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; line-height: 1.4; transition: 0.2s; }
+  .post-card:hover .post-title { color: var(--primary); }
+  
+  .post-excerpt { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; margin-bottom: 20px; word-break: keep-all; }
+  .post-more { font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase; }
+
+  /* 반응형 */
+  @media (max-width: 960px) {
+    .board-flex { flex-direction: column; }
+    .board-sidebar { width: 100%; }
+    .category-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .category-link { background: white; border: 1px solid var(--border); }
+    .sticky-sidebar { position: static; }
+  }
+  
+  @media (max-width: 640px) {
+    .board-hero { padding: 50px 20px; }
+    .board-hero h1 { font-size: 1.8rem; }
+    .post-card { padding: 25px; }
+  }
+</style>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const categoryLinks = document.querySelectorAll(".category-link");
@@ -62,15 +139,18 @@ description: 사무소 소식 및 법률정보를 정기적으로 안내드립�
         e.preventDefault();
         const filter = this.dataset.filter;
 
+        // 버튼 활성화 클래스 전환
+        categoryLinks.forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+
         postItems.forEach(item => {
           const itemCategory = item.dataset.category;
-          const show = (filter === "all" || itemCategory === filter);
-          item.style.display = show ? "" : "none";
+          if (filter === "all" || itemCategory === filter) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
         });
-
-        // 선택된 링크 강조
-        categoryLinks.forEach(l => l.style.fontWeight = "normal");
-        this.style.fontWeight = "bold";
       });
     });
   });

@@ -1599,3 +1599,51 @@ body{
   font-size: 15.5px; /* 지금 헤더랑 딱 어울리는 크기 */
   letter-spacing: -0.02em;
 }
+
+header {
+  padding-bottom: 14px; /* 기존보다 여유 */
+}
+
+.hero {
+  padding-top: 120px; /* 핵심 */
+}
+.hero-content {
+  max-width: 1200px;
+  padding-left: 80px;
+  padding-top: 40px;
+}
+.hero h1 {
+  line-height: 1.15;
+  margin-top: 18px;
+  margin-bottom: 28px;
+}
+.hero + section {
+  margin-top: 80px;
+}
+.section,
+.hero--slice {
+  margin-top: 80px;
+}
+.logo-img{
+  width: 42px;      /* 🔥 로고 존재감 */
+  height: 42px;
+  object-fit: contain;
+}
+.gnb-list > li > a{
+  font-weight: 700;
+  font-size: 14.5px;
+}
+.gnb-list > li > a{
+  font-size: 16.5px;     /* ⬆ 폰트 키움 */
+  font-weight: 800;     /* ⬆ 더 Bold */
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,0.95);
+  padding: 12px 8px;
+}
+.sub li a{
+  font-size: 14.5px;   /* 메인보다 살짝 작게 */
+  font-weight: 600;
+}
+:root{
+  --header-h: 76px; /* 기존보다 살짝 키움 */
+}

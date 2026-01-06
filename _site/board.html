@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게시판</title>
+  <meta name="description" content="김성태 법무사 사무소 - 수원·용인·화성 지역 개인회생·파산·고소장 상담 전문">
+  <meta name="author" content="김성태 법무사" />
+
+  <!-- 기본 스타일시트 연결 (필요시 외부 CSS로 분리 가능) -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+
+  <!-- 파비콘 -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- Open Graph (SNS 공유용) -->
+  <meta property="og:title" content="게시판" />
+  <meta property="og:description" content="수원·용인·화성 지역 법률상담 전문 법무사. 친절하고 신속한 법률서비스 제공." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://localhost:4000/board.html" />
+  <meta property="og:image" content="/og-image.jpg" />
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="/" class="logo-link" aria-label="홈으로">
+        <img src="/logo.png" alt="로고" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-title">리더스 합동 법무사 사무소</span>
+        </div>
+      </a>
+    </div>
+
+    <nav class="gnb" aria-label="주요 메뉴">
+      <ul class="gnb-list">
+        
+        <!-- 소개 -->
+        <li class="has-sub">
+          <a href="/team" aria-haspopup="true">소개</a>
+          <ul class="sub">
+            <li><a href="/team">구성원 소개</a></li>
+            <li><a href="/location">오시는 길</a></li>
+          </ul>
+        </li>
+
+        <!-- 고소장 작성 -->
+        <li class="has-sub">
+          <a href="/complaint" aria-haspopup="true">고소장 작성</a>
+          <ul class="sub">
+            <li><a href="/complaint">안내</a></li>
+            <li><a href="/process">절차</a></li>
+            <li><a href="/cases-complaint">사례</a></li>
+            <li><a href="/difference">신고 vs 고소</a></li>
+            <li><a href="/settlement">형사합의</a></li>
+            <li><a href="/faq-complaint.html">FAQ</a></li>
+          </ul>
+        </li>
+
+        <!-- 개인회생·파산 -->
+        <li class="has-sub">
+          <a href="/what-is" aria-haspopup="true">개인회생·파산</a>
+          <ul class="sub">
+            <li><a href="/what-is">개인회생 안내</a></li>
+            <li><a href="/procedure">개인회생 절차</a></li>
+            <li><a href="/price">개인회생 비용</a></li>
+            <li><a href="/cases">사례</a></li>
+            <li><a href="/faq">FAQ</a></li>
+          </ul>
+        </li>
+
+        <!-- 온라인상담 -->
+        <li class="has-sub">
+          <a href="/chat" aria-haspopup="true">온라인상담</a>
+          <ul class="sub">
+            <li><a href="/check">개인회생 자가진단</a></li>
+            <li><a href="/chat">AI 상담</a></li>
+          </ul>
+        </li>
+        <!--  단독 게시판  -->
+        <li>
+          <a href="/board">법률정보</a>
+        </li>
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <main>
+    <section class="success-cases" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
+  <div class="container">
+    
+    <header class="page-head js-reveal">
+      <div class="head-badge">NEWS & INSIGHTS</div>
+      <h1 class="page-title">공지사항 · 법률정보</h1>
+      <p class="page-desc">
+        검찰 실무 경력 20년의 전문 지식으로 일상에 힘이 되는 법률 정보를 정기적으로 안내드립니다.
+      </p>
+    </header>
+
+    <nav class="category-nav js-reveal" style="margin-bottom: 30px;">
+      <div class="category-wrapper">
+        <a href="#" class="cat-btn active" data-filter="all">전체보기</a>
+        
+        
+          <a href="#" class="cat-btn" data-filter="개인회생">
+            개인회생 <span class="count">4</span>
+          </a>
+        
+          <a href="#" class="cat-btn" data-filter="개인회생-개인워크아웃">
+            개인회생, 개인워크아웃 <span class="count">1</span>
+          </a>
+        
+          <a href="#" class="cat-btn" data-filter="공지사항">
+            공지사항 <span class="count">1</span>
+          </a>
+        
+      </div>
+    </nav>
+
+    <div class="search-container js-reveal">
+      <div class="search-box">
+        <input type="text" id="board-search" placeholder="궁금하신 내용을 검색하세요">
+        <button type="button" class="search-icon-btn">🔍</button>
+      </div>
+    </div>
+
+    <main class="post-area js-reveal">
+      <div id="post-list" class="post-list-stack">
+        
+        <article class="post-item" data-category="개인회생">
+          <a href="/board/2025-08-12-%EC%88%98%EC%9B%90%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B2%95%EC%9B%90-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EC%9C%84%EC%9B%90%EC%9D%98-%EC%97%85%EB%AC%B4%EC%99%80-%EA%B0%81-%EB%8B%A8%EA%B3%84%EB%B3%84-%EC%A4%91%EC%A0%90%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EB%8A%94-%EC%82%AC%EC%95%88%EC%9D%80/" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">개인회생</span>
+              <h2 class="post-title">수원개인회생 법원 개인회생위원의 업무와 각 단계별 중점적으로 보는 사안은?</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">2025.08.12</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        </article>
+        
+        <article class="post-item" data-category="개인회생">
+          <a href="/board/2025-08-01-recovery-vs-general" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">개인회생</span>
+              <h2 class="post-title">개인회생과 일반회생의 차이 - 유사절차 비교</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">2025.08.01</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        </article>
+        
+        <article class="post-item" data-category="개인회생">
+          <a href="/board/20250801-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EA%B0%9C%EC%9D%B8%ED%8C%8C%EC%82%B0%EC%9D%98-%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">개인회생</span>
+              <h2 class="post-title">개인회생과 개인파산의 절차 비교</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">2025.08.01</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        </article>
+        
+        <article class="post-item" data-category="개인회생-개인워크아웃">
+          <a href="/board/2025-08-01-workout-vs-recovery" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">개인회생, 개인워크아웃</span>
+              <h2 class="post-title">개인회생과 개인워크아웃 절차 비교</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">2025.08.01</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        </article>
+        
+        <article class="post-item" data-category="개인회생">
+          <a href="/board/%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%8B%A0%EC%B2%AD-%EC%9E%90%EA%B2%A9/" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">개인회생</span>
+              <h2 class="post-title">개인회생 신청 자격 및 절차 상세 안내</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">2025.07.31</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        </article>
+        
+        <article class="post-item" data-category="공지사항">
+          <a href="/board/temp-test-post/" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">공지사항</span>
+              <h2 class="post-title">김성태 법무사 사무소 홈페이지 리뉴얼 안내 (2025년 최신)</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">2025.07.31</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        </article>
+        
+      </div>
+      <div id="no-results" style="display: none; text-align: center; padding: 80px 0; color: #64748b; font-size: 0.95rem;">
+        검색 결과가 없습니다.
+      </div>
+    </main>
+
+    <section class="unified-cta-section js-reveal">
+  <div class="container-cta">
+    <div class="cta-box-wrapper">
+      <div class="cta-inner-content">
+        <div class="cta-text-area">
+          <div class="cta-badge">DIRECT CONSULTING</div>
+          <h3 class="cta-title">상담이 필요하신가요?</h3>
+          <p class="cta-desc">글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 정확합니다.</p>
+        </div>
+        <div class="cta-action-area">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
+          <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 리더스 공통 디자인 시스템 변수 수정 */
+  :root {
+    /* 배경을 밝고 투명한 회색조로 변경 */
+    --cta-bg-glass: rgba(226, 232, 240, 0.82);
+    --cta-accent: #2563eb;
+    --cta-kakao: #fee500;
+    --cta-text-main: #0f172a; /* 글자색을 어두운 네이비로 */
+    --cta-text-sub: #64748b;
+    --cta-radius: 32px;
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .unified-cta-section { padding: 80px 24px; background: transparent; }
+  .container-cta { max-width: 1200px; margin: 0 auto; }
+
+  .cta-box-wrapper { 
+    background: var(--cta-bg-glass); 
+    backdrop-filter: blur(12px); /* 뒤 배경 블러 효과 */
+    -webkit-backdrop-filter: blur(12px);
+    
+    border-radius: var(--cta-radius); 
+    padding: 64px 60px; 
+    border: 1px solid rgba(226, 232, 240, 0.8); /* 연한 테두리 */
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05); /* 훨씬 가벼워진 그림자 */
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 은은한 포인트 원형 효과 (회색 톤에 맞게 조정) */
+  .cta-box-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-inner-content { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 48px; 
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 텍스트 영역 */
+  .cta-text-area { flex: 1; }
+  .cta-badge { 
+    font-size: 12px; font-weight: 800; color: var(--cta-accent); 
+    letter-spacing: 0.15em; margin-bottom: 16px; 
+  }
+  .cta-title { 
+    font-size: clamp(1.6rem, 4vw, 2.2rem); 
+    font-weight: 800; color: var(--cta-text-main); /* 텍스트 진하게 */
+    margin-bottom: 14px; letter-spacing: -0.03em; 
+    word-break: keep-all;
+  }
+  .cta-desc { 
+    font-size: 1.15rem; color: var(--cta-text-sub); /* 서브 텍스트 가독성 확보 */
+    margin: 0; font-weight: 400; line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  /* 액션 버튼 영역 */
+  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
+
+  .cta-btn {
+    display: flex; align-items: center; justify-content: center;
+    min-width: 180px; height: 60px; border-radius: 14px;
+    font-weight: 800; text-decoration: none; font-size: 1.05rem; 
+    transition: var(--transition-smooth);
+    will-change: transform;
+  }
+
+  .cta-btn.kakao { 
+    background: var(--cta-kakao); 
+    color: #3c1e1e; 
+    box-shadow: 0 4px 12px rgba(254, 229, 0, 0.2);
+  }
+  .cta-btn.kakao:hover { 
+    background: #fada00; 
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(254, 229, 0, 0.3); 
+  }
+
+  .cta-btn.secondary { 
+    background: #ffffff; /* 버튼은 흰색으로 띄워서 대비 효과 */
+    color: var(--cta-text-main); 
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  .cta-btn.secondary:hover { 
+    background: #ffffff; 
+    border-color: var(--cta-accent);
+    color: var(--cta-accent);
+    transform: translateY(-5px); 
+    box-shadow:
+
+  /* 스크롤 애니메이션 (js-reveal 클래스 대응) */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+</style>
+
+  </div>
+</section>
+
+<style>
+  :root {
+    --bg-soft: #f8fafc;
+    --white: #ffffff;
+    --primary-blue: #0a3871;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+  }
+
+  /* 성공 사례(success-cases) 스타일 상속 */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  .page-head { text-align: center; margin-bottom: 50px; }
+  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
+  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
+  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto; }
+
+  /* Category Nav (상단 탭) */
+  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+  .cat-btn { 
+    text-decoration: none; background: var(--white); color: var(--text-sub);
+    padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border);
+    font-weight: 700; font-size: 0.9rem; transition: 0.3s;
+  }
+  .cat-btn:hover, .cat-btn.active { 
+    background: var(--primary-blue); color: white; border-color: var(--primary-blue); 
+    box-shadow: 0 10px 20px rgba(10,56,113,0.1);
+  }
+  .cat-btn .count { font-size: 0.8rem; opacity: 0.6; margin-left: 4px; }
+
+  /* Search Box */
+  .search-container { max-width: 600px; margin: 0 auto 50px; }
+  .search-box { 
+    display: flex; background: #fff; border: 1px solid var(--border); 
+    border-radius: 14px; padding: 4px 16px; transition: 0.3s;
+  }
+  .search-box:focus-within { border-color: var(--primary-blue); box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.05); }
+  .search-box input { flex-grow: 1; border: none; outline: none; padding: 12px; font-size: 0.95rem; font-family: inherit; }
+  .search-icon-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0.5; }
+
+  /* Post Card (성공 사례 카드의 슬림 버전) */
+  .post-list-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 60px; }
+  .post-title-card {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--white); padding: 22px 35px; border-radius: 20px; text-decoration: none;
+    border: 1px solid var(--border); transition: all 0.3s ease;
+  }
+  .post-title-card:hover { 
+    transform: translateX(8px); 
+    border-color: var(--primary-blue); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+  }
+
+  .post-info-left { display: flex; align-items: center; gap: 20px; flex-grow: 1; overflow: hidden; }
+  .post-tag { 
+    background: #eff6ff; color: var(--primary-blue); font-size: 11px; 
+    font-weight: 800; padding: 5px 12px; border-radius: 6px; white-space: nowrap;
+  }
+  /* 제목 크기를 1.05rem으로 대폭 축소 (단정함 유지) */
+  .post-title { 
+    font-size: 1.05rem; font-weight: 700; color: var(--text-main); 
+    margin: 0; letter-spacing: -0.02em; line-height: 1.4;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .post-info-right { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+  .post-date { font-size: 13px; color: var(--text-sub); font-weight: 500; }
+  .arrow { font-size: 16px; color: var(--primary-blue); transition: 0.3s; opacity: 0.6; }
+  .post-title-card:hover .arrow { transform: translateX(5px); opacity: 1; }
+
+  /* Reveal Animation */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 850px) {
+    .post-title-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 25px; }
+    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+    .post-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+
+    const searchInput = document.getElementById('board-search');
+    const postItems = document.querySelectorAll('.post-item');
+    const catBtns = document.querySelectorAll('.cat-btn');
+
+    function filterPosts() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const activeCat = document.querySelector('.cat-btn.active').dataset.filter;
+      let count = 0;
+
+      postItems.forEach(item => {
+        const title = item.querySelector('.post-title').innerText.toLowerCase();
+        const category = item.dataset.category;
+        const matchesSearch = title.includes(searchTerm);
+        const matchesCat = (activeCat === 'all' || category === activeCat);
+
+        if (matchesSearch && matchesCat) {
+          item.style.display = 'block';
+          count++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      document.getElementById('no-results').style.display = count === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', filterPosts);
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterPosts();
+      });
+    });
+  });
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-top">
+      <a class="footer-brand" href="/">
+        <img class="footer-logo" src="/logo.png" alt="리더스 합동 법무사 사무소 로고">
+        <span class="footer-name">리더스 합동 법무사 사무소</span>
+      </a>
+
+      <div class="footer-contact">
+        <span class="contact-label">전화상담</span>
+        <a href="tel:0312256885" class="contact-number">031-225-6885</a>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-info">
+      <p>
+        <strong>상호</strong> 리더스 합동 법무사 사무소
+        <span class="sep">|</span>
+        <strong>대표</strong> 김성태
+        <span class="sep">|</span>
+        <strong>사업자등록번호</strong> 135-28-47886
+      </p>
+      <p>
+        <strong>주소</strong> 경기도 수원시 영통구 광교중앙로248번길 7-2, D동 404호
+      </p>
+      <p>
+        <strong>이메일</strong>
+        <a href="mailto:kstmae@naver.com" class="footer-mail">kstmae@naver.com</a>
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 <span>LEADERS Judicial Scriveners Office</span>. All rights reserved.
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const header = document.getElementById('siteHeader');
+    if (!header) return;
+
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      const y = window.scrollY;
+
+      // 맨 위 근처에서는 항상 보이게
+      if (y < 10) {
+        header.classList.remove('header--hidden');
+        lastY = y;
+        return;
+      }
+
+      // 아래로 스크롤 => 숨김 / 위로 스크롤 => 보임
+      if (y > lastY + 8) header.classList.add('header--hidden');
+      else if (y < lastY - 8) header.classList.remove('header--hidden');
+
+      lastY = y;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          onScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>

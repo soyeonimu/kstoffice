@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개인회생 정밀 자가진단 | 리더스 합동 법무사</title>
+  <meta name="description" content="김성태 법무사 사무소 - 수원·용인·화성 지역 개인회생·파산·고소장 상담 전문">
+  <meta name="author" content="김성태 법무사" />
+
+  <!-- 기본 스타일시트 연결 (필요시 외부 CSS로 분리 가능) -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+
+  <!-- 파비콘 -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- Open Graph (SNS 공유용) -->
+  <meta property="og:title" content="개인회생 정밀 자가진단 | 리더스 합동 법무사" />
+  <meta property="og:description" content="수원·용인·화성 지역 법률상담 전문 법무사. 친절하고 신속한 법률서비스 제공." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://localhost:4000/check.html" />
+  <meta property="og:image" content="/og-image.jpg" />
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="/" class="logo-link" aria-label="홈으로">
+        <img src="/logo.png" alt="로고" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-title">리더스 합동 법무사 사무소</span>
+        </div>
+      </a>
+    </div>
+
+    <nav class="gnb" aria-label="주요 메뉴">
+      <ul class="gnb-list">
+        
+        <!-- 소개 -->
+        <li class="has-sub">
+          <a href="/team" aria-haspopup="true">소개</a>
+          <ul class="sub">
+            <li><a href="/team">구성원 소개</a></li>
+            <li><a href="/location">오시는 길</a></li>
+          </ul>
+        </li>
+
+        <!-- 고소장 작성 -->
+        <li class="has-sub">
+          <a href="/complaint" aria-haspopup="true">고소장 작성</a>
+          <ul class="sub">
+            <li><a href="/complaint">안내</a></li>
+            <li><a href="/process">절차</a></li>
+            <li><a href="/cases-complaint">사례</a></li>
+            <li><a href="/difference">신고 vs 고소</a></li>
+            <li><a href="/settlement">형사합의</a></li>
+            <li><a href="/faq-complaint.html">FAQ</a></li>
+          </ul>
+        </li>
+
+        <!-- 개인회생·파산 -->
+        <li class="has-sub">
+          <a href="/what-is" aria-haspopup="true">개인회생·파산</a>
+          <ul class="sub">
+            <li><a href="/what-is">개인회생 안내</a></li>
+            <li><a href="/procedure">개인회생 절차</a></li>
+            <li><a href="/price">개인회생 비용</a></li>
+            <li><a href="/cases">사례</a></li>
+            <li><a href="/faq">FAQ</a></li>
+          </ul>
+        </li>
+
+        <!-- 온라인상담 -->
+        <li class="has-sub">
+          <a href="/chat" aria-haspopup="true">온라인상담</a>
+          <ul class="sub">
+            <li><a href="/check">개인회생 자가진단</a></li>
+            <li><a href="/chat">AI 상담</a></li>
+          </ul>
+        </li>
+        <!--  단독 게시판  -->
+        <li>
+          <a href="/board">법률정보</a>
+        </li>
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <main>
+    <section class="leaders-page">
+  <section class="leaders-hero js-reveal">
+    <div class="leaders-container leaders-container--narrow">
+      <div class="leaders-badge-wrapper">
+        <span class="leaders-badge">PRECISION CHECK</span>
+      </div>
+      <h1 class="leaders-title">개인회생 <span class="text-gradient">정밀 자가진단</span></h1>
+      <p class="leaders-desc">
+        법원 실무 기준인 <strong>청산가치 보장의 원칙</strong>을 반영한 테스트입니다.<br>
+        실제 탕감 가능한 예상 금액을 즉시 확인해 보세요.
+      </p>
+    </div>
+  </section>
+
+  <section class="leaders-section" style="padding-top: 0;">
+    <div class="leaders-container leaders-container--narrow">
+      <div class="leaders-check-card js-reveal">
+        <div class="leaders-form-grid">
+          
+          <div class="leaders-input-group">
+            <label>총 채무액 (원금 기준)</label>
+            <div class="input-wrapper">
+              <input type="number" id="debt" placeholder="예: 8500">
+              <span class="unit">만원</span>
+            </div>
+          </div>
+
+          <div class="leaders-input-group">
+            <label>보유 재산 합계</label>
+            <div class="input-wrapper">
+              <input type="number" id="asset" placeholder="예: 3000">
+              <span class="unit">만원</span>
+            </div>
+          </div>
+
+          <div class="leaders-input-group">
+            <label>월 평균 소득 (세후)</label>
+            <div class="input-wrapper">
+              <input type="number" id="monthlyIncome" placeholder="예: 280">
+              <span class="unit">만원</span>
+            </div>
+          </div>
+
+          <div class="leaders-input-group">
+            <label>부양가족 수 (본인 제외)</label>
+            <div class="input-wrapper">
+              <input type="number" id="dependents" placeholder="예: 1">
+              <span class="unit">명</span>
+            </div>
+          </div>
+
+          <div class="leaders-input-group full-width">
+            <label>현재 직업군</label>
+            <select id="job">
+              <option value="">직업을 선택해 주세요</option>
+              <option value="직장인">직장인 (급여소득자)</option>
+              <option value="프리랜서">프리랜서 / 일용직</option>
+              <option value="자영업">자영업자 / 사업자</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="checkEligibility()" class="leaders-btn-primary">
+          분석 결과 확인하기
+        </button>
+
+        <div id="result" class="leaders-result-container"></div>
+      </div>
+
+      <p class="disclaimer-text">
+        ※ 본 진단은 2026년 생계비 기준 시뮬레이션이며, 실제 결과는 법원의 판단에 따라 달라질 수 있습니다.
+      </p>
+    </div>
+  </section>
+</section>
+
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #2563eb;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 16px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #f8fafc; line-height: 1.6; overflow-x: hidden; }
+  .leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .leaders-container--narrow { max-width: 800px; }
+
+  /* Hero Section */
+  .leaders-hero { padding: 120px 0 60px; text-align: center; }
+  .leaders-badge { 
+    font-size: 12px; font-weight: 700; color: var(--brand-accent); 
+    border: 1px solid var(--brand-accent); padding: 4px 12px; border-radius: 100px; 
+    letter-spacing: 0.1em; margin-bottom: 20px; display: inline-block;
+  }
+  .leaders-title { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; }
+  .text-gradient { background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .leaders-desc { font-size: 1.15rem; color: var(--text-sub); word-break: keep-all; }
+
+  /* Form Design */
+  .leaders-check-card { 
+    background: #fff; padding: 48px; border-radius: var(--radius-lg); border: 1px solid var(--border); 
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.05); margin-bottom: 30px;
+  }
+  .leaders-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .full-width { grid-column: span 2; }
+
+  .leaders-input-group label { display: block; font-size: 14px; font-weight: 700; color: var(--brand); margin-bottom: 10px; }
+  .input-wrapper { position: relative; }
+  
+  .leaders-input-group input, .leaders-input-group select {
+    width: 100%; padding: 16px 20px; border-radius: 12px; border: 1px solid var(--border); 
+    font-size: 16px; transition: var(--transition); appearance: none;
+  }
+  .leaders-input-group input:focus { border-color: var(--brand-accent); outline: none; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+  
+  .unit { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--text-sub); font-weight: 600; font-size: 14px; pointer-events: none; }
+
+  .leaders-btn-primary { 
+    width: 100%; padding: 20px; background: var(--brand); color: #fff; border: none; 
+    border-radius: 14px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: var(--transition);
+  }
+  .leaders-btn-primary:hover { background: var(--brand-accent); transform: translateY(-3px); }
+
+  /* Result Styling */
+  .leaders-result-container { margin-top: 40px; padding-top: 40px; border-top: 2px dashed var(--border); display: none; }
+  .result-box { background: var(--brand-soft); padding: 40px; border-radius: 20px; text-align: center; border: 1px solid var(--border); }
+  .result-status { font-size: 2rem; font-weight: 900; margin-bottom: 8px; }
+  .result-msg { color: var(--text-sub); margin-bottom: 32px; word-break: keep-all; }
+  
+  .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: #fff; padding: 24px; border-radius: 16px; margin-bottom: 32px; box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+  .stat-item span { font-size: 12px; color: var(--text-sub); display: block; margin-bottom: 4px; }
+  .stat-item strong { font-size: 1.25rem; font-weight: 800; color: var(--brand); }
+  .stat-highlight { color: #dc2626 !important; }
+
+  .disclaimer-text { text-align: center; color: var(--text-sub); font-size: 13px; opacity: 0.7; margin: 20px 0 20px;}
+
+  /* Animation */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .leaders-form-grid { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
+    .leaders-check-card { padding: 32px 20px; }
+    .result-stats { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  function checkEligibility() {
+    const debt = (parseInt(document.getElementById("debt").value) || 0);
+    const asset = (parseInt(document.getElementById("asset").value) || 0);
+    const income = (parseInt(document.getElementById("monthlyIncome").value) || 0);
+    const dependents = (parseInt(document.getElementById("dependents").value) || 0);
+    
+    if(!debt || !income) { alert("총 채무액과 월 소득을 입력해주세요."); return; }
+
+    const livingCosts = [0, 143, 236, 302, 367, 430];
+    const myLivingCost = livingCosts[dependents + 1] || 500;
+    
+    let monthlyPay = income - myLivingCost;
+    if(monthlyPay < 0) monthlyPay = 0;
+
+    let status = "신청 가능";
+    let color = "#16a34a";
+    let msg = "회생 요건에 부합합니다. 법무사 검토를 통해 최대의 탕감률을 설계할 수 있습니다.";
+
+    if (debt <= asset) {
+      status = "신청 불가"; color = "#dc2626"; msg = "재산이 채무보다 많은 경우 원칙적으로 신청이 어렵습니다.";
+    } else if (monthlyPay <= 0) {
+      status = "상담 필요"; color = "#eab308"; msg = "가용 소득이 최저생계비에 미달합니다. 소득 증빙이나 부양가족 조정이 필요합니다.";
+    }
+
+    const totalRepay = monthlyPay * 36;
+    const totalCut = Math.max(0, debt - totalRepay);
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.style.display = "block";
+    resultDiv.innerHTML = `
+      <div class="result-box js-reveal is-visible">
+        <div class="result-status" style="color: ${color}">${status}</div>
+        <p class="result-msg">${msg}</p>
+        <div class="result-stats">
+          <div class="stat-item"><span>월 예상 변제금</span><strong>${monthlyPay.toLocaleString()}만원</strong></div>
+          <div class="stat-item"><span>변제 기간</span><strong>36개월</strong></div>
+          <div class="stat-item"><span>예상 탕감액</span><strong class="stat-highlight">${totalCut.toLocaleString()}만원</strong></div>
+        </div>
+        <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="leaders-btn-primary" style="display:inline-block; text-decoration:none;">상세 서류 및 절차 안내받기</a>
+      </div>
+    `;
+    
+    window.scrollTo({ top: resultDiv.offsetTop + 200, behavior: 'smooth' });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-top">
+      <a class="footer-brand" href="/">
+        <img class="footer-logo" src="/logo.png" alt="리더스 합동 법무사 사무소 로고">
+        <span class="footer-name">리더스 합동 법무사 사무소</span>
+      </a>
+
+      <div class="footer-contact">
+        <span class="contact-label">전화상담</span>
+        <a href="tel:0312256885" class="contact-number">031-225-6885</a>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-info">
+      <p>
+        <strong>상호</strong> 리더스 합동 법무사 사무소
+        <span class="sep">|</span>
+        <strong>대표</strong> 김성태
+        <span class="sep">|</span>
+        <strong>사업자등록번호</strong> 135-28-47886
+      </p>
+      <p>
+        <strong>주소</strong> 경기도 수원시 영통구 광교중앙로248번길 7-2, D동 404호
+      </p>
+      <p>
+        <strong>이메일</strong>
+        <a href="mailto:kstmae@naver.com" class="footer-mail">kstmae@naver.com</a>
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 <span>LEADERS Judicial Scriveners Office</span>. All rights reserved.
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const header = document.getElementById('siteHeader');
+    if (!header) return;
+
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      const y = window.scrollY;
+
+      // 맨 위 근처에서는 항상 보이게
+      if (y < 10) {
+        header.classList.remove('header--hidden');
+        lastY = y;
+        return;
+      }
+
+      // 아래로 스크롤 => 숨김 / 위로 스크롤 => 보임
+      if (y > lastY + 8) header.classList.add('header--hidden');
+      else if (y < lastY - 8) header.classList.remove('header--hidden');
+
+      lastY = y;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          onScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>

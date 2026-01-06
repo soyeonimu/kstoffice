@@ -1,4 +1,6 @@
-/*
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+*
  * 김성태 법무사 사무소 웹사이트 전체 스타일 시트
  * 모든 페이지의 공통 스타일 및 개별 페이지 스타일을 포함합니다.
  */
@@ -1378,4 +1380,268 @@ h1, h2, h3, h4, strong, b {
   .board-title { font-size: 1rem; }
   .board-excerpt { display: none; } /* 모바일에서는 제목만 깔끔하게 */
   .board-link-icon { display: none; }
+}
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --brand: #0f172a;
+  --brand-accent: #2563eb;
+  --text-main: #1e293b;
+  --text-sub: #64748b;
+  --border: #e2e8f0;
+  --radius-lg: 32px;
+  --radius-md: 24px;
+  --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Base */
+.leaders-page {
+  font-family: 'Pretendard', sans-serif;
+  color: var(--text-main);
+  background: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.leaders-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.leaders-container--narrow { max-width: 840px; }
+
+/* Hero */
+.leaders-hero { padding: 120px 0 60px; text-align: center; }
+
+.leaders-badge { 
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brand-accent); 
+  border: 1px solid var(--brand-accent);
+  padding: 4px 12px;
+  border-radius: 100px; 
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.leaders-title {
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.leaders-desc {
+  font-size: 1.15rem;
+  color: var(--text-sub);
+  word-break: keep-all;
+}
+
+/* Guide */
+.leaders-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.leaders-guide-card { 
+  background: #fff;
+  padding: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.leaders-guide-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--brand-accent);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.guide-card-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.guide-num { 
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--brand-accent);
+  opacity: 0.3; 
+  font-family: serif;
+  font-style: italic; 
+}
+
+.guide-card-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: -0.02em;
+}
+
+.guide-card-text {
+  color: var(--text-sub);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.guide-card-text strong { color: var(--brand-accent); }
+
+/* Insight */
+.leaders-insight {
+  padding: 60px;
+  background: var(--brand);
+  border-radius: var(--radius-lg);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.leaders-insight::after {
+  content: '“';
+  position: absolute;
+  right: 40px;
+  bottom: -20px;
+  font-size: 15rem;
+  color: rgba(255,255,255,0.05);
+  font-family: serif;
+}
+
+.leaders-insight-tag {
+  color: var(--brand-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.leaders-insight-title {
+  font-size: 1.8rem;
+  margin: 15px 0;
+  font-weight: 700;
+}
+
+.leaders-insight-desc {
+  opacity: 0.8;
+  max-width: 800px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.leaders-insight-desc strong {
+  color: #fff;
+  font-weight: 700;
+}
+/* ===== CTA BOX ===== */
+
+.leaders-cta {
+  padding: 80px 0 120px;
+}
+
+.leaders-cta-card {
+  background: #0f172a;
+  border-radius: var(--radius-lg);
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  color: #ffffff;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.22);
+}
+
+.leaders-cta-badge {
+  margin-bottom: 14px;
+}
+
+.leaders-cta-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+
+.leaders-cta-desc {
+  font-size: 0.98rem;
+  color: rgba(226, 232, 240, 0.9);
+  line-height: 1.8;
+}
+
+.leaders-cta-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.leaders-cta-btn {
+  min-width: 180px;
+  height: 56px;
+  border-radius: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+/* 카카오 버튼 */
+.leaders-cta-btn--kakao {
+  background: #fee500;
+  color: #3c1e1e;
+}
+
+.leaders-cta-btn--kakao:hover {
+  background: #fada00;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(254, 229, 0, 0.25);
+}
+
+/* 회색 버튼 */
+.leaders-cta-btn--secondary {
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.leaders-cta-btn--secondary:hover {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: #ffffff;
+  transform: translateY(-4px);
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .leaders-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 32px 24px;
+  }
+
+  .leaders-cta-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .leaders-cta-btn {
+    width: 100%;
+  }
+}
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    system-ui, sans-serif;
 }

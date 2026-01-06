@@ -23,7 +23,7 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
       </p>
       <div class="hero-btns js-reveal">
         <a href="tel:031-225-6885" class="btn-primary">전화 상담 : 031-225-6885</a>
-        <a href="/consult" class="btn-secondary">1:1 맞춤 상담예약</a>
+        <a href="https://naver.me/xwmIDcba" class="btn-secondary">1:1 맞춤 상담예약</a>
       </div>
     </div>
   </section>
@@ -70,13 +70,13 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
           </a>
           <a href="/cases" class="nav-item side-link">
             <div class="nav-info">
-              <h3>형사 성공사례</h3>
-              <p>무혐의 · 기소 결과</p>
+              <h3>고소장 작성사례</h3>
+              <p>실제 사례</p>
             </div>
           </a>
           <a href="/faq" class="nav-item side-link">
             <div class="nav-info">
-              <h3>형사 FAQ</h3>
+              <h3>고소장 FAQ</h3>
               <p>자주 묻는 질문</p>
             </div>
           </a>
@@ -90,7 +90,7 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     <div class="board-header">
       <div class="header-left">
         <span class="sub-title">NEWS & NOTICE</span>
-        <h2>최신 법률 소식</h2>
+        <h2>법률정보</h2>
       </div>
       <a href="/board" class="btn-text-link">전체보기 <span>+</span></a>
     </div>
@@ -156,7 +156,7 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(to bottom, rgba(15,23,42,0.5), rgba(15,23,42,0.85)); z-index: 2;
   }
-  .hero-container { position: relative; z-index: 3; max-width: 900px; padding: 0 24px; }
+  .hero-container { position: relative; z-index: 3; max-width: 900px; padding: 0 24px; transform: translateY(-40px);}
   .hero-badge { font-size: 13px; font-weight: 800; letter-spacing: 0.3em; color: var(--gold); margin-bottom: 24px; }
   .hero-title { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900; line-height: 1.25; margin-bottom: 25px; letter-spacing: -0.04em; }
   .text-gradient-gold { background: linear-gradient(135deg, #fff 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -299,6 +299,44 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
   color: var(--border); transition: var(--transition);
 }
 .board-link-icon svg { width: 24px; height: 24px; }
+/* 🔹 뉴스 카드 높이 줄이기 */
+.board-card {
+  padding: 14px 22px;     /* 기존 24px 32px → 더 낮게 */
+}
+
+/* 🔹 날짜 박스도 조금만 낮게 */
+.board-date {
+  min-width: 55px;
+  height: 55px;           /* 기존 65px → 조금 줄임 */
+}
+
+/* 🔹 제목 간격도 살짝 정리 */
+.board-title {
+  margin-bottom: 2px;
+}
+/* 🔹 뉴스 제목 + 전체보기 한 줄 정렬 */
+.board-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 🔹 버튼이 줄 바꿈되지 않게 */
+.btn-text-link{
+  white-space: nowrap;
+}
+/* 뉴스 섹션 위아래 여백 줄이기 */
+.main-board {
+  padding: 60px 0 80px;  /* 원래가 100px 0 이었을 거라서 위쪽만 줄임 */
+}
+
+/* 제목과 카드 사이 간격 줄이기 */
+.board-header {
+  margin-bottom: -30px;   /* 기존 48px 정도 → 20px 정도로 */
+}
+
+
 </style>
 
 <script>

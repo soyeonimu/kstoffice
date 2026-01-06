@@ -75,32 +75,19 @@ title: 고소장 작성 자주 묻는 질문(FAQ) | 리더스 합동 법무사
 
       <div class="leaders-insight js-reveal">
         <div class="leaders-insight-content">
-          <span class="leaders-insight-tag">Practical Insight</span>
-          <h2 class="leaders-insight-title">“수사관이 반박할 수 없는 논리를 설계합니다.”</h2>
-          <p class="leaders-insight-desc">수백 페이지의 기록 중 <strong>핵심 쟁점</strong>을 가려내어, 수사관이 첫 페이지에서 사건의 본질을 이해하도록 논리와 증거 순서를 배치합니다.</p>
+          <span class="leaders-insight-tag">전문가의 Insight</span>
+          <h2 class="leaders-insight-title">“수사관이 이해하기 쉬운 구조로 정리합니다.”</h2>
+          <p class="leaders-insight-desc">수백 페이지의 기록 중 <strong>핵심 쟁점</strong>먼저 드러내도록, 수사관이 첫 페이지에서 사건의 본질을 이해하도록 작성합니다.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="unified-cta-section js-reveal">
-    <div class="container-cta">
-      <div class="cta-box-wrapper">
-        <div class="cta-inner-content">
-          <div class="cta-text-area">
-            <div class="cta-badge">DIRECT CONSULTING</div>
-            <h3 class="cta-title">해결의 실마리가 필요하신가요?</h3>
-            <p class="cta-desc">검찰수사관 출신 베테랑 법무사가 직접 실시간으로 명쾌한 해결책을 제시해 드립니다.</p>
-          </div>
-          <div class="cta-action-area">
-            <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
-            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</section>
+
+{% include cta-box.html 
+   title="고소장 작성을 준비하고 계신가요?"
+   desc="20년이상 경력의 전문가들이 법리 검토부터 증거 정리까지 꼼꼼히 도와드립니다."
+%}
 
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -167,32 +154,7 @@ title: 고소장 작성 자주 묻는 질문(FAQ) | 리더스 합동 법무사
   .leaders-insight-title { font-size: 1.8rem; margin: 15px 0; font-weight: 700; letter-spacing: -0.02em; }
   .leaders-insight-desc { opacity: 0.8; max-width: 600px; font-weight: 300; }
 
-  /* UNIFIED CTA DESIGN */
-  .unified-cta-section { padding: 100px 24px; background: transparent; }
-  .container-cta { max-width: 1200px; margin: 0 auto; }
-  .cta-box-wrapper { 
-    background: var(--brand); border-radius: var(--radius-lg); padding: 64px 60px; 
-    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2); position: relative; overflow: hidden;
-  }
-  .cta-box-wrapper::before {
-    content: ''; position: absolute; top: -50%; right: -10%; width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%); pointer-events: none;
-  }
-  .cta-inner-content { display: flex; justify-content: space-between; align-items: center; gap: 48px; position: relative; z-index: 1; }
-  .cta-badge { font-size: 12px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.15em; margin-bottom: 16px; }
-  .cta-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; color: #ffffff; margin-bottom: 14px; letter-spacing: -0.03em; }
-  .cta-desc { font-size: 1.15rem; color: #94a3b8; line-height: 1.6; }
-  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
-  .cta-btn {
-    display: flex; align-items: center; justify-content: center;
-    min-width: 180px; height: 60px; border-radius: 14px; font-weight: 800; text-decoration: none; 
-    transition: var(--transition); will-change: transform;
-  }
-  .cta-btn.kakao { background: #fee500; color: #3c1e1e; }
-  .cta-btn.kakao:hover { background: #fada00; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(254, 229, 0, 0.2); }
-  .cta-btn.secondary { background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); }
-  .cta-btn.secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; transform: translateY(-5px); }
-
+  
   /* Reveal Animation */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }

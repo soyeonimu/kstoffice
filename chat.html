@@ -51,24 +51,10 @@ title: 온라인 챗봇 상담 | 리더스 합동 법무사
     </div>
   </section>
 
-  <section class="unified-cta-section js-reveal">
-    <div class="container-cta">
-      <div class="cta-box-wrapper">
-        <div class="cta-inner-content">
-          <div class="cta-text-area">
-            <div class="cta-badge">DIRECT CONSULTING</div>
-            <h3 class="cta-title">AI 상담으로 해결되지 않으셨나요?</h3>
-            <p class="cta-desc">검찰수사관 출신 법무사가 당신의 사건을 직접 검토하고 전략을 세워드립니다.</p>
-          </div>
-          <div class="cta-action-area">
-            <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
-            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</section>
+{% include cta-box.html 
+   title="지금 상황, 정확한 판단이 필요할 때입니다."
+   desc="AI가 알려준 정보만으로 불안하다면, 언제든 전문가 상담을 이용해 주세요."
+%}
 
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -128,29 +114,7 @@ title: 온라인 챗봇 상담 | 리더스 합동 법무사
   .notice-text { font-size: 14px; color: var(--text-sub); margin: 0; line-height: 1.6; }
   .notice-text strong { color: var(--brand); }
 
-  /* UNIFIED CTA */
-  .unified-cta-section { padding: 60px 24px 120px; background: transparent; }
-  .container-cta { max-width: 1200px; margin: 0 auto; }
-  .cta-box-wrapper { 
-    background: var(--brand); border-radius: var(--radius-lg); padding: 64px 60px; 
-    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2); position: relative; overflow: hidden;
-  }
-  .cta-inner-content { display: flex; justify-content: space-between; align-items: center; gap: 48px; position: relative; z-index: 1; }
-  .cta-badge { font-size: 12px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.15em; margin-bottom: 16px; }
-  .cta-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; color: #ffffff; margin-bottom: 14px; letter-spacing: -0.03em; }
-  .cta-desc { font-size: 1.15rem; color: #94a3b8; }
-  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
   
-  .cta-btn {
-    display: flex; align-items: center; justify-content: center;
-    min-width: 180px; height: 60px; border-radius: 14px; font-weight: 800; text-decoration: none; 
-    transition: var(--transition);
-  }
-  .cta-btn.kakao { background: #fee500; color: #3c1e1e; }
-  .cta-btn.kakao:hover { background: #fada00; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(254, 229, 0, 0.2); }
-  .cta-btn.secondary { background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); }
-  .cta-btn.secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; transform: translateY(-5px); }
-
   /* Animations */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }

@@ -5,6 +5,7 @@ description: 법원 비용, 회생위원 보수, 법무사 수임료까지 개�
 ---
 
 <section class="leaders-page">
+  <!-- Hero -->
   <section class="leaders-hero js-reveal">
     <div class="leaders-container leaders-container--narrow">
       <div class="leaders-badge-wrapper">
@@ -18,6 +19,7 @@ description: 법원 비용, 회생위원 보수, 법무사 수임료까지 개�
     </div>
   </section>
 
+  <!-- Price Section -->
   <section class="leaders-section" style="padding-top: 0;">
     <div class="leaders-container">
       
@@ -97,23 +99,16 @@ description: 법원 비용, 회생위원 보수, 법무사 수임료까지 개�
           </div>
         </article>
 
-      </div>
+      </div><!-- /.leaders-price-grid -->
 
-      <div class="leaders-cta-card js-reveal">
-        <div class="cta-inner">
-          <div class="cta-text">
-            <h3 class="cta-title">상황에 맞는 정확한 견적이 필요하신가요?</h3>
-            <p class="cta-desc">채무 규모와 소득 상황에 따라 비용은 달라질 수 있습니다. 지금 바로 1:1 맞춤 진단을 받아보세요.</p>
-          </div>
-          <div class="cta-action">
-            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="leaders-btn-gold">무료 자격진단 및 견적문의</a>
-          </div>
-        </div>
-      </div>
+    </div><!-- /.leaders-container -->
+  </section><!-- /.leaders-section -->
+</section><!-- /.leaders-page -->
 
-    </div>
-  </section>
-</section>
+{% include cta-box.html 
+   title="상황에 맞는 정확한 견적이 필요하신가요?"
+   desc="채무 규모와 소득 상황에 따라 비용은 달라질 수 있습니다. 지금 바로 1:1 맞춤 진단을 받아보세요."
+%}
 
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -167,7 +162,7 @@ description: 법원 비용, 회생위원 보수, 법무사 수임료까지 개�
   .total-label { font-size: 12px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 4px; }
   .total-value { font-size: 1.25rem; font-weight: 800; color: var(--brand-accent); }
 
-  /* ★ 여기만 수정 — info-guide를 total-highlight 스타일에 맞춤 */
+  /* info-guide를 total-highlight 느낌으로 */
   .info-guide {
     background: #f8fafc;
     padding: 20px;
@@ -175,7 +170,6 @@ description: 법원 비용, 회생위원 보수, 법무사 수임료까지 개�
     margin-top: auto;
     border-left: none;
   }
-
   .info-guide p {
     font-size: 1.15rem;
     font-weight: 700;
@@ -200,4 +194,22 @@ description: 법원 비용, 회생위원 보수, 법무사 수임료까지 개�
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 992px) {
-    .leaders-price-grid { grid-template-column
+    .leaders-price-grid {
+      grid-template-columns: 1fr;
+    }
+    .price-card {
+      padding: 32px 24px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
+</script>

@@ -98,30 +98,35 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     <div class="board-wrapper">
       <div class="custom-board-list">
         {% assign latest_board = site.board | sort: "date" | reverse %}
-        {% for post in latest_board limit:6 %}
-          <a href="{{ post.url | relative_url }}" class="board-card js-reveal">
-            <div class="board-date">
-              <span class="day">{{ post.date | date: "%d" }}</span>
-              <span class="month">{{ post.date | date: "%b" }}</span>
-            </div>
-            <div class="board-content">
-              <span class="board-tag">법률정보</span>
-              <h3 class="board-title">{{ post.title }}</h3>
-              <p class="board-excerpt">{{ post.excerpt | strip_html | truncate: 80 }}</p>
-            </div>
-            <div class="board-link-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
-          </a>
-        {% endfor %}
+
+        {% if latest_board and latest_board.size > 0 %}
+          {% for post in latest_board limit:6 %}
+            <a href="{{ post.url | relative_url }}" class="board-card js-reveal">
+              <div class="board-date">
+                <span class="day">{{ post.date | date: "%d" }}</span>
+                <span class="month">{{ post.date | date: "%b" }}</span>
+              </div>
+              <div class="board-content">
+                <span class="board-tag">법률정보</span>
+                <h3 class="board-title">{{ post.title }}</h3>
+                <p class="board-excerpt">{{ post.excerpt | strip_html | truncate: 80 }}</p>
+              </div>
+              <div class="board-link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </a>
+          {% endfor %}
+        {% else %}
+          <p style="font-size: 0.95rem; color: var(--text-sub);">
+            아직 등록된 게시글이 없습니다.
+          </p>
+        {% endif %}
       </div>
     </div>
   </div>
 </section>
-</section>  <!-- leaders-main 닫는 태그 맞으면 OK -->
-
 
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -306,6 +311,7 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });
 </script>
+
 
 
 

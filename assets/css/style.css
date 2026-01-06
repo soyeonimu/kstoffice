@@ -1093,97 +1093,101 @@ caption {
   );
 }
 
-/* 통합 스타일시트 최종 교정본 
-  1. 본문 전체 볼드 해제 및 세련된 서체 렌더링 적용
-  2. 상단 여백: 헤더 바로 아래 적당한 간격(30px)만 유지
-  3. 푸터: 볼드 해제 및 슬림화
-*/
-
+/* ===== 1. 전역 변수 및 본문 리셋 ===== */
 :root {
-  --theme-dark-bg: #1a1c1e;         
+  --theme-dark-bg: #1a1c1e;
   --theme-border: rgba(255, 255, 255, 0.08);
-  --header-h: 76px;                 
+  --header-h: 76px;
   --text-main: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.65);
-  --body-text: #334155; /* 본문용 부드러운 검정색 */
+  --body-black: #1e293b;
 }
 
-/* ===== 1. 전역 스타일 (본문 볼드 해제) ===== */
 body {
-  padding-top: var(--header-h); /* 헤더 높이만큼만 띄움 */
   margin: 0;
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-  font-weight: 400; /* ✅ 본문 기본 굵기를 일반으로 고정 */
-  color: var(--body-text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased; /* ✅ 글씨를 더 날렵하고 세련되게 만듦 */
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* 본문 내 모든 볼드 강제 해제 (strong, b 태그 제외) */
-p, span, div, li {
+  padding-top: var(--header-h);
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  /* ✅ 본문 볼드 해제: 세련된 400 굵기 */
   font-weight: 400; 
+  color: var(--body-black);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-color: #ffffff;
 }
 
-/* 제목 부분만 적당히 굵게 */
-h1, h2, h3, h4, strong {
-  font-weight: 700;
-  color: #0f172a;
+/* 제목만 적당히 강조 */
+h1, h2, h3, h4, .logo-title, .footer-name {
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-/* ===== 2. 헤더 (기본 다크 유지) ===== */
+/* ===== 2. 헤더 (Header) 스타일 ===== */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0;
-  height: var(--header-h);
-  z-index: 10000;
+  height: var(--header-h); z-index: 10000;
   background: var(--theme-dark-bg);
   border-bottom: 1px solid var(--theme-border);
-  display: flex; align-items: center;
-  padding: 0 32px;
 }
 
 .header-inner {
-  max-width: 1200px; width: 100%; margin: 0 auto;
+  max-width: 1200px; height: 100%; margin: 0 auto; padding: 0 20px;
   display: flex; align-items: center; justify-content: space-between;
 }
 
-.gnb-list { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
-.gnb-list a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 15px;
-}
+.logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-img { width: 40px; height: 40px; }
+.logo-title { color: #fff; font-size: 1.1rem; }
 
-/* ===== 3. 푸터 (볼드 해제 및 슬림화) ===== */
+/* GNB 메뉴 */
+.gnb-list { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.gnb-list a { 
+  color: var(--text-muted); text-decoration: none; 
+  font-size: 15px; font-weight: 500; transition: 0.2s;
+}
+.gnb-list a:hover { color: #fff; }
+
+/* 드롭다운 서브메뉴 */
+.has-sub { position: relative; }
+.sub {
+  display: none; position: absolute; top: 100%; left: 0;
+  background: #25282b; padding: 10px 0; border-radius: 8px;
+  min-width: 160px; list-style: none; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.has-sub:hover .sub { display: block; }
+.sub a { display: block; padding: 8px 15px; font-size: 14px; color: var(--text-muted); }
+.sub a:hover { background: rgba(255,255,255,0.05); color: #fff; }
+
+/* ===== 3. 푸터 (Footer) 스타일 ===== */
 .site-footer {
   background: var(--theme-dark-bg);
   border-top: 1px solid var(--theme-border);
-  padding: 40px 20px; /* ✅ 위아래 적당한 여백 */
+  padding: 50px 20px; color: var(--text-muted);
 }
 
 .footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
+.footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.footer-logo { width: 32px; height: 32px; }
+.footer-name { color: #fff; font-size: 1.1rem; }
 
-.footer-info p {
-  margin: 4px 0;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  font-weight: 400 !important; /* ✅ 푸터 글씨 얇게 고정 */
-  letter-spacing: -0.01em;
+/* 푸터 버튼 (아이콘 포함 고려) */
+.footer-cta { display: flex; gap: 10px; }
+.footer-phone, .footer-kakao {
+  display: inline-flex; align-items: center; height: 40px; padding: 0 18px;
+  border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: 0.2s;
 }
+.footer-phone { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--theme-border); }
+.footer-kakao { background: #fff; color: #111; }
+.footer-phone:hover, .footer-kakao:hover { transform: translateY(-2px); }
 
-.footer-name {
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  display: block;
-}
+.footer-divider { height: 1px; background: var(--theme-border); margin: 30px 0; }
 
-/* ===== 4. 본문 상단 적당한 여백 추가 ===== */
-/* 첫 번째 섹션이 헤더와 너무 붙지 않게 조정 */
-main section:first-of-type, 
-.hero, 
-.rehabilitation-cases {
-  margin-top: 30px; /* ✅ 답답하지 않을 정도의 간격 */
+/* ❌ 푸터 정보: 볼드 강제 해제 */
+.footer-info p { 
+  margin: 6px 0; font-size: 0.9rem; font-weight: 400 !important; 
+  line-height: 1.6; color: var(--text-muted); 
 }
+.footer-info strong { color: #fff; font-weight: 600; margin-right: 4px; }
+.sep { margin: 0 8px; color: rgba(255,255,255,0.1); }
+
+.footer-bottom { margin-top: 30px; font-size: 0.8rem; font-weight: 400 !important; }

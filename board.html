@@ -1,104 +1,17 @@
 ---
 layout: default
 title: 공지사항 · 법률정보 | 리더스 합동 법무사
+description: 검찰 실무 경력 20년의 전문 지식으로 일상에 힘이 되는 법률 정보를 정기적으로 안내드립니다.
 cta_title: "상담이 필요하신가요?"
 cta_desc: "글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 정확합니다."
 ---
-
-<style>
-  /* [공통] 전체 페이지 커서 깜빡임 방지 */
-  h1, h2, h3, h4, p, span, a, div { caret-color: transparent; }
-  input { caret-color: auto; } /* 검색창은 커서가 보여야 함 */
-
-  :root {
-    --bg-soft: #f8fafc;
-    --white: #ffffff;
-    --primary-blue: #0a3871;
-    --text-main: #1e293b;
-    --text-sub: #64748b;
-    --border: #e2e8f0;
-  }
-
-  .board-main-section { background-color: var(--bg-soft); min-height: 100vh; padding: 120px 0 100px; }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-  /* Header */
-  .page-head { text-align: center; margin-bottom: 50px; }
-  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
-  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
-  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto; }
-
-  /* Category Nav */
-  .category-nav { margin-bottom: 30px; }
-  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-  .cat-btn { 
-    text-decoration: none; background: var(--white); color: var(--text-sub);
-    padding: 10px 22px; border-radius: 50px; border: 1px solid var(--border);
-    font-weight: 700; font-size: 0.9rem; transition: 0.3s; cursor: pointer;
-  }
-  .cat-btn:hover, .cat-btn.active { 
-    background: var(--primary-blue); color: white; border-color: var(--primary-blue); 
-    box-shadow: 0 10px 20px rgba(10,56,113,0.1);
-  }
-  .cat-btn .count { font-size: 0.8rem; opacity: 0.7; margin-left: 5px; }
-
-  /* Search Box */
-  .search-container { max-width: 600px; margin: 0 auto 50px; }
-  .search-box { 
-    display: flex; background: #fff; border: 1px solid var(--border); 
-    border-radius: 16px; padding: 6px 18px; transition: 0.3s;
-  }
-  .search-box:focus-within { border-color: var(--primary-blue); box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.05); }
-  .search-box input { flex-grow: 1; border: none; outline: none; padding: 12px; font-size: 1rem; font-family: inherit; }
-  .search-icon-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; opacity: 0.4; transition: 0.3s; }
-  .search-box:focus-within .search-icon-btn { opacity: 1; color: var(--primary-blue); }
-
-  /* Post List (최신 슬림 디자인) */
-  .post-list-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
-  .post-title-card {
-    display: flex; justify-content: space-between; align-items: center;
-    background: var(--white); padding: 22px 35px; border-radius: 20px; text-decoration: none;
-    border: 1px solid var(--border); transition: all 0.3s ease;
-  }
-  .post-title-card:hover { 
-    transform: translateX(8px); 
-    border-color: var(--primary-blue); 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-  }
-
-  .post-info-left { display: flex; align-items: center; gap: 20px; flex-grow: 1; overflow: hidden; }
-  .post-tag { 
-    background: #eff6ff; color: var(--primary-blue); font-size: 11px; 
-    font-weight: 800; padding: 5px 12px; border-radius: 6px; white-space: nowrap;
-  }
-  .post-title { 
-    font-size: 1.05rem; font-weight: 700; color: var(--text-main); 
-    margin: 0; letter-spacing: -0.02em; line-height: 1.4;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-
-  .post-info-right { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
-  .post-date { font-size: 13px; color: var(--text-sub); font-weight: 500; }
-  .arrow { font-size: 16px; color: var(--primary-blue); transition: 0.3s; opacity: 0.6; }
-  .post-title-card:hover .arrow { transform: translateX(5px); opacity: 1; }
-
-  /* Reveal Animation */
-  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 850px) {
-    .post-title-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 22px 25px; }
-    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 12px; }
-    .post-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-  }
-</style>
 
 <section class="board-main-section">
   <div class="container">
     
     <header class="page-head js-reveal">
       <div class="head-badge">NEWS & INSIGHTS</div>
-      <h1 class="page-title">공지사항 · 법률정보</h1>
+      <h1 class="page-title">공지사항 · <span class="text-gradient">법률정보</span></h1>
       <p class="page-desc">
         검찰 실무 경력 20년의 전문 지식으로 일상에 힘이 되는 법률 정보를 정기적으로 안내드립니다.
       </p>
@@ -141,7 +54,8 @@ cta_desc: "글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 �
         </article>
         {% endfor %}
       </div>
-      <div id="no-results" style="display: none; text-align: center; padding: 100px 0; color: #64748b; font-size: 1rem; background: #fff; border-radius: 20px; border: 1px dashed var(--border);">
+
+      <div id="no-results" style="display: none; text-align: center; padding: 100px 0; color: #64748b; background: #fff; border-radius: 20px; border: 1px dashed #e2e8f0;">
         검색 결과가 없습니다. 다른 검색어를 입력해 보세요.
       </div>
     </main>
@@ -155,7 +69,6 @@ cta_desc: "글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 �
     const catBtns = document.querySelectorAll('.cat-btn');
     const noResults = document.getElementById('no-results');
 
-    // 필터링 기능 통합
     function filterPosts() {
       const searchTerm = searchInput.value.toLowerCase();
       const activeCat = document.querySelector('.cat-btn.active').getAttribute('data-filter');
@@ -174,11 +87,9 @@ cta_desc: "글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 �
           item.style.display = 'none';
         }
       });
-
       noResults.style.display = visibleCount === 0 ? 'block' : 'none';
     }
 
-    // 카테고리 클릭 이벤트
     catBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -188,10 +99,8 @@ cta_desc: "글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 �
       });
     });
 
-    // 검색 입력 이벤트
     searchInput.addEventListener('input', filterPosts);
 
-    // Reveal 애니메이션
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
     }, { threshold: 0.1 });

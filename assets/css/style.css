@@ -1392,3 +1392,36 @@ caption {
     #082b52 100%
   );
 }
+/* ===== Header Logo Upgrade ===== */
+header{
+  padding: 1.1rem 2rem;      /* 헤더 높이 조금 여유 */
+}
+
+.logo-link{
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  text-decoration:none;
+  color:inherit;
+}
+
+.logo img{
+  width:36px;
+  height:36px;
+}
+
+.logo-text strong{
+  display:block;
+  font-size:1.35rem;         /* ✅ 메인 텍스트 크게 */
+  font-weight:800;
+  color:#0a3871;
+  line-height:1.1;
+}
+
+.logo-text span{
+  display:block;
+  font-size:.92rem;          /* ✅ 서브텍스트 */
+  color:#555;
+  margin-top:.18rem;
+  line-height:1.2;
+}

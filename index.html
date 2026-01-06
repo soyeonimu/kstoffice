@@ -95,9 +95,25 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
         </div>
         <a href="/board" class="btn-text-link">전체보기 <span>+</span></a>
       </div>
-      <div class="board-wrapper">
-        {% include board-list.html limit=6 %}
+<div class="board-wrapper">
+  <div class="custom-board-list">
+    {% for post in site.posts limit:6 %}
+    <a href="{{ post.url | relative_url }}" class="board-card js-reveal">
+      <div class="board-date">
+        <span class="day">{{ post.date | date: "%d" }}</span>
+        <span class="month">{{ post.date | date: "%b" }}</span>
       </div>
+      <div class="board-content">
+        <span class="board-tag">법률정보</span> <h3 class="board-title">{{ post.title }}</h3>
+        <p class="board-excerpt">{{ post.excerpt | strip_html | truncate: 80 }}</p>
+      </div>
+      <div class="board-link-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+    {% endfor %}
+    </div>
+</div>
     </div>
   </section>
 </section>
@@ -208,3 +224,4 @@ description: 검찰 20년 경력의 전문성으로 수원, 용인 지역 개인
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });
 </script>
+

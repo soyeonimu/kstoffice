@@ -1,44 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
   <title>{{ page.title }}</title>
-  <meta name="description" content="{{ page.description | default: '김성태 법무사 사무소 - 수원·용인·화성 지역 개인회생·파산·고소장 상담 전문' }}">
-  <meta name="author" content="김성태 법무사" />
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="keywords" content="{{ page.keywords | default: site.keywords }}">
+  <meta name="author" content="{{ page.author | default: site.author }}">
 
-  <!-- 기본 스타일시트 연결 (필요시 외부 CSS로 분리 가능) -->
+  <!-- Pretendard -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-
-
-  <!-- 파비콘 -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- Open Graph (SNS 공유용) -->
-  <meta property="og:title" content="{{ page.title | default: '김성태 법무사 사무소' }}" />
-  <meta property="og:description" content="{{ page.description | default: '수원·용인·화성 지역 법률상담 전문 법무사. 친절하고 신속한 법률서비스 제공.' }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{ page.url | absolute_url }}" />
-  <meta property="og:image" content="/og-image.jpg" />
-  
-  <!-- Pretendard 폰트 -->
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link
-  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
-  rel="stylesheet"
-/>
-
 </head>
+
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <a href="{{ '/' | relative_url }}" style="display:flex;align-items:center;gap:10px;">
+          <img src="{{ '/logo.png' | relative_url }}" alt="리더스 합동 법무사 사무소 로고" width="28" height="28">
+          <span>리더스 합동 법무사 사무소</span>
+        </a>
+      </div>
 
-  {% include header.html %}
+      <!-- ✅ 너가 쓰던 nav 그대로 넣어도 됨 -->
+      <nav class="site-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="{{ '/about' | relative_url }}">리더스 소개</a></li>
+          <li><a href="{{ '/location' | relative_url }}">오시는 길</a></li>
+          <li><a href="{{ '/services' | relative_url }}">업무분야</a></li>
+          <li><a href="{{ '/contact' | relative_url }}">문의하기</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <main>
+  <!-- ✅ 모든 페이지가 이 main 안으로 들어감 (중복 main 금지) -->
+  <main class="site-main">
     {{ content }}
   </main>
 
-  {% include footer.html %}
-
+  <footer class="site-footer">
+    <div class="container">
+      <strong>리더스 합동 법무사 사무소</strong><br>
+      수원시 영통구 광교중앙로248번길 7-2, A동 702호(하동) ·
+      <a href="tel:031-225-6885">031-225-6885</a> ·
+      <a href="tel:010-4710-6885">010-4710-6885</a>
+    </div>
+  </footer>
 </body>
 </html>

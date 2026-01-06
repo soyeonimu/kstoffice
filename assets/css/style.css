@@ -1092,23 +1092,18 @@ caption {
     #082b52 100%
   );
 }
-
-/* ===== 1. 전역 변수 및 초기화 ===== */
+/* ===== 1. 통합 컬러 변수 설정 ===== */
 :root {
+  /* 메인 다크 그레이 톤 */
+  --theme-dark-bg: #1a1c1e;        /* 헤더/푸터 공통 배경색 */
+  --theme-border: rgba(255, 255, 255, 0.08); /* 은은한 경계선 */
+  
   --header-h: 76px;
-  --header-bg: rgba(10, 12, 16, 0.92);
-  --header-border: rgba(255, 255, 255, 0.10);
-  --header-text: rgba(255, 255, 255, 0.95);
-  --header-muted: rgba(255, 255, 255, 0.68);
-  --header-accent: #f2c14e;
-  --footer-bg: #0b0f14;
+  --text-main: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.65);
 }
 
-body {
-  padding-top: var(--header-h);
-}
-
-/* ===== 2. 헤더 (Header) ===== */
+/* ===== 2. 헤더 (Header) 수정 ===== */
 .site-header {
   position: fixed;
   top: 0;
@@ -1116,272 +1111,73 @@ body {
   right: 0;
   height: var(--header-h);
   z-index: 10000;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-  backdrop-filter: blur(10px);
+  background: var(--theme-dark-bg); /* 통일된 그레이 */
+  border-bottom: 1px solid var(--theme-border);
+  backdrop-filter: blur(12px);      /* 약간의 투명감 유지 */
   padding: 0 32px;
-  transform: translateY(0);
-  transition: transform .22s ease, background-color .22s ease;
+  transition: transform .22s ease;
 }
 
-.site-header.header--hidden {
-  transform: translateY(-110%);
-}
-
-.header-inner {
-  max-width: 1200px;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* 로고 섹션 */
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  color: var(--header-text);
-}
-
-.logo-img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
+/* 로고 및 텍스트 색상 정돈 */
 .logo-title {
+  color: var(--text-main);
   font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-.logo-sub {
-  margin-top: 3px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--header-muted);
-}
-
-/* ===== 3. 네비게이션 (GNB) ===== */
-.gnb-list {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  list-style: none;
 }
 
 .gnb-list > li > a {
-  color: var(--header-text);
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  padding: 12px 8px;
-  text-decoration: none;
-  transition: color .15s ease;
+  color: var(--text-muted); /* 평소엔 살짝 흐리게 */
+  transition: color 0.2s;
 }
 
 .gnb-list > li > a:hover {
-  color: #ffffff;
+  color: var(--text-main);  /* 호버 시 선명하게 */
 }
 
-/* 드롭다운 (Dropdown) */
-.has-sub { position: relative; }
-
-.sub {
-  display: none;
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  min-width: 190px;
-  background: rgba(12, 14, 18, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 10px;
-  padding: 8px 0;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  list-style: none;
-}
-
-.has-sub:hover .sub,
-.has-sub:focus-within .sub {
-  display: block;
-}
-
-.sub li a {
-  display: block;
-  padding: 10px 14px;
-  font-size: 14.5px;
-  color: rgba(255, 255, 255, 0.86);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.sub li a:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-}
-
-/* 헤더 CTA */
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 38px;
-  padding: 0 12px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #fff;
-  font-weight: 800;
-  font-size: 13.5px;
-  text-decoration: none;
-  transition: transform .12s ease, background .12s ease;
-}
-
-.cta-btn:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.14);
-}
-
-/* ===== 4. 푸터 (Footer) ===== */
+/* ===== 3. 푸터 (Footer) 수정 ===== */
 .site-footer {
-  background: var(--footer-bg);
-  color: rgba(255, 255, 255, .78);
-  padding: 44px 18px;
+  background: var(--theme-dark-bg); /* 헤더와 동일한 그레이 */
+  border-top: 1px solid var(--theme-border);
+  color: var(--text-muted);
+  padding: 50px 20px;
 }
 
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.footer-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #fff;
-  line-height: 1;
-}
-
-.footer-logo {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-}
-
-.footer-name {
-  font-size: 1.15rem;
+.footer-brand .footer-name {
+  color: var(--text-main);
   font-weight: 800;
-  letter-spacing: -0.02em;
 }
 
-/* 푸터 CTA 버튼 (통일형) */
-.footer-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-cta a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  padding: 0 14px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 14.5px;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  transition: transform .12s ease, filter .12s ease, background .12s ease;
-}
-
-.footer-phone {
-  background: rgba(255, 255, 255, .10);
-  border: 1px solid rgba(255, 255, 255, .18);
-  color: #fff;
-}
-
-.footer-kakao {
-  background: #fff;
-  border: 1px solid rgba(255, 255, 255, .16);
-  color: #0a3871;
-}
-
-.footer-cta a:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.05);
-}
-
+/* 푸터 내 구분선 색상도 통일 */
 .footer-divider {
   height: 1px;
-  background: rgba(255, 255, 255, .10);
-  margin: 18px 0 16px;
+  background: var(--theme-border);
+  margin: 24px 0;
 }
 
-.footer-info p {
-  margin: 8px 0;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, .72);
+/* ===== 4. 버튼 디자인 (CTA) ===== */
+/* 헤더와 푸터의 버튼을 세련된 반투명 스타일로 통일 */
+.cta-btn, .footer-phone {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: var(--text-main) !important;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.footer-bottom {
-  margin-top: 18px;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, .50);
+.cta-btn:hover, .footer-phone:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px);
 }
 
-/* ===== 5. 히어로 및 섹션 여백 ===== */
-.hero {
-  padding-top: 120px;
+/* 강조 버튼 (카카오/상담 등) */
+.footer-kakao {
+  background: #ffffff !important;
+  color: #1a1c1e !important; /* 배경색과 대비 */
+  border-radius: 8px;
 }
 
-.hero-content {
-  max-width: 1200px;
-  padding-left: 80px;
-  padding-top: 40px;
-}
-
-.section, .hero--slice, .hero + section {
-  margin-top: 80px;
-}
-
-/* ===== 6. 반응형 (Media Query) ===== */
+/* ===== 5. 반응형 보정 ===== */
 @media (max-width: 900px) {
   :root { --header-h: 64px; }
-  .site-header { padding: 0 18px; }
-  .logo-title { font-size: 16px; }
-  .logo-sub, .gnb { display: none; }
-  .cta-btn { height: 36px; font-size: 13px; }
-}
-
-@media (max-width: 768px) {
-  .footer-top { align-items: flex-start; }
-  .footer-cta { width: 100%; }
-  .footer-cta a { width: 100%; }
+  .site-header { padding: 0 16px; }
 }

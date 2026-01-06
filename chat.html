@@ -3,54 +3,173 @@ layout: default
 title: 온라인 챗봇 상담 | 리더스 합동 법무사
 ---
 
-<section class="chatbot-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 80px; font-family: 'Pretendard', sans-serif;">
-  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
-    
-    <header class="page-head js-reveal" style="text-align: center; margin-bottom: 40px;">
-      <div class="head-badge" style="font-size: 13px; font-weight: 800; color: #0a3871; letter-spacing: 0.2em; margin-bottom: 15px;">AI ASSISTANT</div>
-      <h1 class="page-title" style="font-size: 2.2rem; font-weight: 900; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.03em;">24시간 챗봇 상담</h1>
-      <p class="page-desc" style="color: #64748b; font-size: 1.05rem; line-height: 1.6; max-width: 600px; margin: 0 auto; word-break: keep-all;">
+<section class="leaders-page">
+  <section class="leaders-hero js-reveal">
+    <div class="leaders-container leaders-container--narrow">
+      <div class="leaders-badge-wrapper">
+        <span class="leaders-badge">AI ASSISTANT</span>
+      </div>
+      <h1 class="leaders-title">24시간 <span class="text-gradient">챗봇 상담</span></h1>
+      <p class="leaders-desc">
         기다릴 필요 없이 AI 챗봇이 궁금하신 내용을 즉시 답변해 드립니다.<br>
-        구체적인 사건 상담은 하단의 '상담원 연결'을 이용해 주세요.
+        구체적인 사건 상담은 하단의 <strong>'전문가 상담'</strong>을 이용해 주세요.
       </p>
-    </header>
-
-    <div class="chatbot-wrapper js-reveal" style="background: #fff; border-radius: 24px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); height: 700px;">
-      <iframe
-        src="https://www.chatbase.co/chatbot-iframe/fTNbvrvKs5X-KIupsUFCj"
-        width="100%"
-        height="100%"
-        frameborder="0"
-        style="display: block;"
-      ></iframe>
     </div>
+  </section>
 
-    <footer class="chatbot-footer js-reveal" style="margin-top: 30px; text-align: center;">
-      <p style="font-size: 14px; color: #94a3b8;">
-        ※ 챗봇 답변은 AI 기술을 기반으로 하며, 법적 효력을 갖지 않습니다.
-      </p>
-    </footer>
+  <section class="leaders-section" style="padding-top: 0;">
+    <div class="leaders-container">
+      
+      <div class="leaders-chatbot-window js-reveal">
+        <div class="chatbot-header">
+          <div class="header-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="header-title">LEADERS AI CONSULTANT</div>
+        </div>
+        <div class="chatbot-iframe-container">
+          <iframe
+            src="https://www.chatbase.co/chatbot-iframe/fTNbvrvKs5X-KIupsUFCj"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            title="리더스 AI 챗봇"
+          ></iframe>
+        </div>
+      </div>
 
-  </div>
+      <div class="leaders-notice-card js-reveal">
+        <div class="notice-icon">i</div>
+        <div class="notice-content">
+          <p class="notice-text">
+            챗봇 답변은 <strong>리더스 합동 법무사의 법률 데이터</strong>를 기반으로 AI가 생성하며, 정식 법적 효력을 갖지 않습니다. 
+            상세한 법리 검토가 필요한 경우 반드시 법무사와 직접 상담하시기 바랍니다.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="unified-cta-section js-reveal">
+    <div class="container-cta">
+      <div class="cta-box-wrapper">
+        <div class="cta-inner-content">
+          <div class="cta-text-area">
+            <div class="cta-badge">DIRECT CONSULTING</div>
+            <h3 class="cta-title">AI 상담으로 해결되지 않으셨나요?</h3>
+            <p class="cta-desc">검찰수사관 출신 법무사가 당신의 사건을 직접 검토하고 전략을 세워드립니다.</p>
+          </div>
+          <div class="cta-action-area">
+            <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
+            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <style>
-  /* 다른 페이지와 동일한 애니메이션 효과 */
-  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #2563eb;
+    --brand-soft: #f8fafc;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 20px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #ffffff; line-height: 1.6; overflow-x: hidden; }
+  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .leaders-container--narrow { max-width: 800px; }
+
+  /* Hero Section */
+  .leaders-hero { padding: 120px 0 60px; text-align: center; }
+  .leaders-badge { 
+    font-size: 12px; font-weight: 700; color: var(--brand-accent); 
+    border: 1px solid var(--brand-accent); padding: 4px 12px; border-radius: 100px; 
+    letter-spacing: 0.1em; margin-bottom: 20px; display: inline-block;
+  }
+  .leaders-title { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; }
+  .text-gradient { background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .leaders-desc { font-size: 1.15rem; color: var(--text-sub); word-break: keep-all; }
+
+  /* Chatbot Window Design */
+  .leaders-chatbot-window {
+    background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--border);
+    box-shadow: 0 40px 80px rgba(15, 23, 42, 0.08); overflow: hidden;
+    height: 750px; display: flex; flex-direction: column; margin-bottom: 40px;
+  }
   
-  /* 모바일 대응: 높이 조절 */
-  @media (max-width: 768px) {
-    .chatbot-section { padding: 100px 0 60px; }
-    .chatbot-wrapper { height: 600px !important; border-radius: 16px; }
-    .page-title { font-size: 1.8rem; }
+  .chatbot-header {
+    background: var(--brand); padding: 16px 24px; display: flex; align-items: center; justify-content: center; position: relative;
+  }
+  .header-dots { position: absolute; left: 24px; display: flex; gap: 6px; }
+  .header-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+  .header-title { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; opacity: 0.8; }
+  
+  .chatbot-iframe-container { flex: 1; background: #fff; }
+
+  /* Notice Card */
+  .leaders-notice-card {
+    background: var(--brand-soft); border-radius: var(--radius-md); padding: 24px 32px;
+    display: flex; gap: 20px; align-items: center; border: 1px solid var(--border); margin-bottom: 60px;
+  }
+  .notice-icon {
+    width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-family: serif; font-weight: 800; flex-shrink: 0;
+  }
+  .notice-text { font-size: 14px; color: var(--text-sub); margin: 0; line-height: 1.6; }
+  .notice-text strong { color: var(--brand); }
+
+  /* UNIFIED CTA */
+  .unified-cta-section { padding: 60px 24px 120px; background: transparent; }
+  .container-cta { max-width: 1200px; margin: 0 auto; }
+  .cta-box-wrapper { 
+    background: var(--brand); border-radius: var(--radius-lg); padding: 64px 60px; 
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2); position: relative; overflow: hidden;
+  }
+  .cta-inner-content { display: flex; justify-content: space-between; align-items: center; gap: 48px; position: relative; z-index: 1; }
+  .cta-badge { font-size: 12px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.15em; margin-bottom: 16px; }
+  .cta-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; color: #ffffff; margin-bottom: 14px; letter-spacing: -0.03em; }
+  .cta-desc { font-size: 1.15rem; color: #94a3b8; }
+  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
+  
+  .cta-btn {
+    display: flex; align-items: center; justify-content: center;
+    min-width: 180px; height: 60px; border-radius: 14px; font-weight: 800; text-decoration: none; 
+    transition: var(--transition);
+  }
+  .cta-btn.kakao { background: #fee500; color: #3c1e1e; }
+  .cta-btn.kakao:hover { background: #fada00; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(254, 229, 0, 0.2); }
+  .cta-btn.secondary { background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); }
+  .cta-btn.secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; transform: translateY(-5px); }
+
+  /* Animations */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .cta-inner-content { flex-direction: column; text-align: center; gap: 32px; }
+    .cta-action-area { width: 100%; flex-direction: column; }
+    .cta-btn { width: 100%; }
+    .leaders-chatbot-window { height: 600px; border-radius: 20px; }
+    .leaders-notice-card { padding: 20px; flex-direction: column; text-align: center; }
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
     }, { threshold: 0.1 });
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });

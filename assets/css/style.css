@@ -303,3 +303,103 @@ footer strong{ color:#fff; }
   nav ul{ flex-wrap:wrap; justify-content:flex-end; }
   .btn{ width:100%; }
 }
+/* ====== Layout baseline (다른 사이트처럼 보이는 핵심) ====== */
+:root{
+  --container: 1200px;
+  --gutter: 24px;
+  --bg: #f6f7f9;
+  --panel: #fff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: rgba(15,23,42,.10);
+  --primary: #0a3871;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+body{ background: var(--bg); color: var(--text); font-family: "Pretendard", "Noto Sans KR", sans-serif; }
+.container{ max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+.site-header{
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.header-inner{ display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
+.site-main{ padding: 22px 0 60px; }
+.site-footer{ margin-top: 40px; padding: 28px 0; background:#0b1220; color: rgba(255,255,255,.78); }
+.site-footer a{ color:#fff; text-decoration: underline; }
+
+nav ul{ display:flex; gap: 24px; align-items:center; }
+nav a{ font-weight: 650; padding: 10px 8px; border-radius: 10px; }
+nav a:hover{ background: rgba(10,56,113,.08); color: var(--primary); }
+
+/* ====== Hero ====== */
+.hero{ margin-top: 8px; }
+.hero-card{ position:relative; border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); background:#0b1220; }
+.hero-img{ width:100%; height:auto; display:block; aspect-ratio: 2000/700; object-fit: cover; opacity:.92; }
+.hero-overlay{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 46px; color:#fff;
+}
+.hero-overlay::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.22) 50%, rgba(0,0,0,0) 75%);
+}
+.hero-overlay > *{ position:relative; z-index:1; }
+.hero-eyebrow{ font-weight:700; opacity:.9; margin-bottom: 10px; }
+.hero-title{ font-size: clamp(28px, 3vw, 46px); letter-spacing: -0.03em; font-weight: 850; margin-bottom: 10px; }
+.hero-desc{ color: rgba(255,255,255,.86); max-width: 58ch; }
+.hero-actions{ display:flex; gap: 10px; margin-top: 18px; flex-wrap:wrap; }
+
+/* buttons */
+.btn{ display:inline-flex; align-items:center; justify-content:center; padding: 12px 14px; border-radius: 12px; font-weight: 750; border:1px solid transparent; }
+.btn-primary{ background:#fff; color:#0b2b52; }
+.btn-ghost{ background: rgba(255,255,255,.12); color:#fff; border-color: rgba(255,255,255,.28); }
+
+/* ====== Sections / Cards ====== */
+.section{ margin-top: 18px; }
+.grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.service-card{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items:stretch;
+}
+.service-copy{ padding: 20px; }
+.service-copy h2{ font-size: 22px; letter-spacing:-0.02em; margin-bottom: 8px; }
+.service-copy p{ color: var(--muted); margin-bottom: 12px; }
+.service-card .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.service-media{ height: 220px; overflow:hidden; }
+.service-media img{ width:100%; height:100%; object-fit: cover; display:block; transform: scale(1.02); transition: transform .5s ease; }
+.service-card:hover .service-media img{ transform: scale(1.07); }
+
+/* ====== Panel (board) ====== */
+.panel{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.panel-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom: 10px; }
+.panel-head h2{ font-size: 18px; font-weight: 800; color: var(--primary); }
+.panel-link{ color: var(--muted); font-weight: 650; }
+.panel-link:hover{ color: var(--primary); text-decoration: underline; }
+
+/* ====== Responsive ====== */
+@media (max-width: 900px){
+  .grid-2{ grid-template-columns: 1fr; }
+  .service-card{ grid-template-columns: 1fr; }
+  .service-media{ height: 190px; order:-1; }
+  .hero-overlay{ padding: 22px; }
+  .hero-overlay::before{ background: linear-gradient(180deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.22) 70%, rgba(0,0,0,0) 100%); }
+}

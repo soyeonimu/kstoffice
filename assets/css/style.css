@@ -1181,16 +1181,12 @@ caption {
 }
 
 /* ===== HERO : 배경 이미지 오버레이 ===== */
-.hero--bg {
-  position: relative;
-  width: 100%;
-  height: 75vh; /* 화면 기준 높이 */
-  min-height: 520px;
-  background: url('/assets/img/business (2000 x 700 px).png') center / cover no-repeat;
-  display: flex;
-  align-items: center;
-  color: #fff;
+.hero.hero--bg{
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
+
 
 /* 어두운 오버레이 (글자 가독성) */
 .hero--bg .hero-overlay {

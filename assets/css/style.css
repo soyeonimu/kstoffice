@@ -1384,3 +1384,11 @@ caption {
     line-height: 1.12;
   }
 }
+.hero--slice.rehab,
+.hero--slice.complaint {
+  background: linear-gradient(
+    135deg,
+    #0a3871 0%,
+    #082b52 100%
+  );
+}

@@ -1816,3 +1816,156 @@ header nav ul {
     justify-content: center;
   }
 }
+/* =========================
+   HEADER (푸터와 톤 통일)
+========================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(
+    180deg,
+    rgba(15,18,20,0.95) 0%,
+    rgba(15,18,20,0.88) 100%
+  );
+  backdrop-filter: blur(6px);
+}
+
+/* 푸터와 동일한 내부 폭 */
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;   /* ← 푸터 상단과 동일 체감 */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 2.5rem;
+}
+
+/* =========================
+   BRAND (좌측 로고 영역)
+========================= */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: #fff;
+  justify-self: start;   /* ← 확실히 좌측 고정 */
+}
+
+.header-logo {
+  width: 34px;
+  height: auto;
+}
+
+.header-name {
+  font-size: 1.25rem;    /* ← 작던 문제 해결 */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* =========================
+   NAV MENU
+========================= */
+.header-nav {
+  justify-self: end;
+}
+
+.header-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;           /* 메뉴 간격 여유 */
+  margin: 0;
+  padding: 0;
+}
+
+.header-menu > li > a {
+  color: #f1f1f1;
+  font-size: 1.05rem;    /* ← 더 크게 */
+  font-weight: 500;      /* ← 너무 두꺼운 문제 해결 */
+  text-decoration: none;
+  padding: 0.4rem 0;
+  transition: color .2s ease;
+}
+
+.header-menu > li > a:hover {
+  color: #ffffff;
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+.has-dropdown {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 140%;
+  left: 0;
+  min-width: 180px;
+  background: #0f1216;
+  border-radius: 10px;
+  padding: 0.6rem 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.has-dropdown:hover .dropdown {
+  display: block;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  color: #ddd;
+  font-weight: 400;
+}
+
+.dropdown li a:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+/* =========================
+   HEADER CTA (푸터 버튼과 동일)
+========================= */
+.header-cta {
+  justify-self: end;
+}
+
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: background .2s ease;
+}
+
+.header-phone:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 900px) {
+  .header-inner {
+    grid-template-columns: auto auto;
+    row-gap: 0.8rem;
+  }
+
+  .header-nav {
+    display: none; /* 모바일은 이후 햄버거로 */
+  }
+}

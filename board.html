@@ -4,17 +4,18 @@ title: 게시판
 description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 정보를 안내드립니다.
 ---
 
-<section class="board-section success-cases">
+<section class="board-section" style="background-color: #f8fafc; min-height: 100vh;">
   <div class="container">
+    
     <header class="page-head js-reveal">
       <div class="head-badge">NEWS & INSIGHTS</div>
       <h1 class="page-title">공지사항 · 법률정보</h1>
       <p class="page-desc">
-        리더스는 단순한 정보 전달을 넘어 <strong>실제 수사 및 회생 실무</strong>에 기반한 깊이 있는 통찰을 공유합니다.
+        리더스에서 전해드리는 최신 법률 소식과 공지사항입니다.
       </p>
     </header>
 
-    <div class="category-nav js-reveal">
+    <nav class="category-nav js-reveal">
       <div class="category-wrapper">
         <a href="#" class="cat-btn active" data-filter="all">전체보기</a>
         {% assign categories = site.board | map:"category" | compact | uniq | sort %}
@@ -24,28 +25,26 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
           </a>
         {% endfor %}
       </div>
-    </div>
+    </nav>
 
-    <div id="post-list" class="case-grid">
-      {% for post in site.board reversed %}
-      <article class="post-item js-reveal" data-category="{{ post.category | slugify }}">
-        <a href="{{ post.url }}" class="case-card">
-          <div class="case-header">
-            <span class="case-tag result-blue">{{ post.category }}</span>
-            <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-          </div>
-          <div class="case-content">
-            <h3 class="case-title">{{ post.title }}</h3>
-            <p class="case-text">{{ post.content | strip_html | truncate: 120 }}</p>
-            <div class="case-footer">
-              <span>내용 더보기</span>
+    <main class="post-area js-reveal">
+      <div id="post-list" class="post-list-stack">
+        {% for post in site.board reversed %}
+        <article class="post-item" data-category="{{ post.category | slugify }}">
+          <a href="{{ post.url }}" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">{{ post.category }}</span>
+              <h2 class="post-title">{{ post.title }}</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
               <span class="arrow">→</span>
             </div>
-          </div>
-        </a>
-      </article>
-      {% endfor %}
-    </div>
+          </a>
+        </article>
+        {% endfor %}
+      </div>
+    </main>
 
     {% include cta-box.html 
        title="상담이 필요하신가요?" 
@@ -63,103 +62,90 @@ description: 리더스 합동 법무사 사무소의 최신 소식 및 법률 �
     --border: #e2e8f0;
   }
 
-  /* 배경이 꽉 차도록 설정 */
-  .board-section { 
-    background: var(--bg-soft); 
-    padding: 120px 0 100px; /* 좌우 패딩을 빼고 컨테이너에서 조절 */
-    min-height: 100vh;
-    font-family: 'Pretendard', sans-serif;
-    margin: 0; /* 마진 초기화 */
-  }
-
+  .board-section { padding: 120px 0 100px; font-family: 'Pretendard', sans-serif; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-  /* Header */
+  /* Page Header */
   .page-head { text-align: center; margin-bottom: 50px; }
   .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
   .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
-  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto; word-break: keep-all; }
+  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; }
 
-  /* Category Nav (세련된 버튼 스타일) */
+  /* Category Nav (상단 탭 디자인) */
   .category-nav { text-align: center; margin-bottom: 50px; }
   .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
   .cat-btn { 
     text-decoration: none; background: var(--white); color: var(--text-sub);
-    padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border);
-    font-weight: 700; font-size: 0.95rem; transition: all 0.3s;
+    padding: 12px 24px; border-radius: 50px; border: 1px solid var(--border);
+    font-weight: 700; font-size: 0.95rem; transition: 0.3s;
   }
   .cat-btn .count { font-size: 0.8rem; opacity: 0.5; margin-left: 4px; }
   .cat-btn:hover, .cat-btn.active { 
     background: var(--primary-blue); color: var(--white); border-color: var(--primary-blue); 
     box-shadow: 0 10px 20px rgba(10, 56, 113, 0.1);
   }
-  .cat-btn.active .count { opacity: 0.8; }
 
-  /* Case Grid (성공사례 2열 그리드 계승) */
-  .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 60px; }
+  /* Post List (제목 중심) */
+  .post-list-stack { display: flex; flex-direction: column; gap: 16px; margin-bottom: 80px; }
   
-  /* Case Card (성공사례 디자인 가이드 적용) */
-  .case-card {
-    background: var(--white); border-radius: 24px; padding: 40px;
-    border: 1px solid var(--border); transition: all 0.4s ease; display: flex; flex-direction: column;
-    text-decoration: none; height: 100%;
+  .post-title-card {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--white); padding: 25px 40px; border-radius: 20px; text-decoration: none;
+    border: 1px solid var(--border); transition: all 0.3s ease;
   }
-  .case-card:hover { transform: translateY(-10px); border-color: var(--primary-blue); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+  .post-title-card:hover { 
+    transform: translateX(10px); 
+    border-color: var(--primary-blue); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+  }
 
-  .case-header { margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-  .case-tag { font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-block; }
-  .result-blue { background: #eff6ff; color: #1d4ed8; }
-  .post-date { font-size: 13px; color: var(--text-sub); font-weight: 500; }
+  .post-info-left { display: flex; align-items: center; gap: 25px; flex-grow: 1; }
+  .post-tag { 
+    background: #eff6ff; color: var(--primary-blue); font-size: 12px; 
+    font-weight: 800; padding: 6px 14px; border-radius: 6px; white-space: nowrap;
+  }
+  .post-title { 
+    font-size: 1.25rem; font-weight: 700; color: var(--text-main); 
+    margin: 0; letter-spacing: -0.02em; line-height: 1.4;
+    overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+  }
 
-  .case-title { font-size: 1.4rem; font-weight: 850; color: var(--text-main); margin-bottom: 15px; line-height: 1.4; transition: 0.3s; }
-  .case-card:hover .case-title { color: var(--primary-blue); }
-  
-  .case-text { font-size: 1rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 25px; flex-grow: 1; word-break: keep-all; }
-  
-  .case-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 20px; }
-  .case-footer span { font-size: 14px; font-weight: 700; color: var(--primary-blue); }
-  .case-footer .arrow { transition: 0.3s; }
-  .case-card:hover .arrow { transform: translateX(5px); }
+  .post-info-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+  .post-date { font-size: 14px; color: var(--text-sub); font-weight: 500; }
+  .arrow { font-size: 18px; color: var(--primary-blue); font-weight: bold; transition: 0.3s; }
+  .post-title-card:hover .arrow { transform: translateX(5px); }
 
-  /* Reveal Animation */
+  /* Reveal */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
+  /* Responsive */
   @media (max-width: 850px) {
-    .case-grid { grid-template-columns: 1fr; }
-    .case-card { padding: 30px; }
-    .board-section { padding-top: 80px; }
+    .post-title-card { flex-direction: column; align-items: flex-start; gap: 15px; padding: 25px; }
+    .post-info-left { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+    .post-title { -webkit-line-clamp: 2; font-size: 1.15rem; }
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Reveal Observer
+  document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
 
-    // Category Filter
     const catBtns = document.querySelectorAll(".cat-btn");
     const postItems = document.querySelectorAll(".post-item");
 
     catBtns.forEach(btn => {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
-        const filter = this.dataset.filter;
-
         catBtns.forEach(b => b.classList.remove("active"));
         this.classList.add("active");
-
+        const filter = this.dataset.filter;
         postItems.forEach(item => {
-          const itemCategory = item.dataset.category;
-          if (filter === "all" || itemCategory === filter) {
-            item.style.display = "block";
-            // 애니메이션 초기화를 원할 경우 클래스 뺐다 넣기 가능
-          } else {
-            item.style.display = "none";
-          }
+          item.style.display = (filter === "all" || item.dataset.category === filter) ? "block" : "none";
         });
       });
     });

@@ -2,50 +2,66 @@
 layout: default
 title: 형사 고소 성공사례 | 리더스 합동 법무사
 description: 전직 검찰수사관이 직접 구성한 고소장은 결과가 다릅니다. 리더스가 이끌어낸 기소 및 처벌 실제 사례를 확인하세요.
+# 성공사례 전용 CTA 문구 설정
 cta_title: "억울한 피해, 전문가와 상의하세요."
 cta_desc: "수사관의 시각에서 사건을 분석하여 상대방의 죄를 명확히 입증해 드립니다."
 ---
 
 <style>
-  /* [보정] 공통 CSS와 충돌하지 않도록 핵심 레이아웃만 유지 */
-  .leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  .leaders-container--narrow { max-width: 800px; }
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #2563eb;
+    --brand-soft: #f0f7ff;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 20px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #ffffff; line-height: 1.6; overflow-x: hidden; }
+  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .leaders-container--narrow { max-width: 840px; }
 
   /* Hero Section */
   .leaders-hero { padding: 120px 0 60px; text-align: center; }
   .leaders-badge { 
-    font-size: 12px; font-weight: 700; color: #2563eb; 
-    border: 1px solid #2563eb; padding: 4px 12px; border-radius: 100px; 
+    font-size: 12px; font-weight: 700; color: var(--brand-accent); 
+    border: 1px solid var(--brand-accent); padding: 4px 12px; border-radius: 100px; 
     letter-spacing: 0.1em; margin-bottom: 20px; display: inline-block;
   }
   .leaders-title { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; }
   .text-gradient { background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .leaders-desc { font-size: 1.15rem; color: #64748b; word-break: keep-all; }
+  .leaders-desc { font-size: 1.15rem; color: var(--text-sub); word-break: keep-all; }
 
-  /* Case Card Grid */
+  /* Case Card Grid (표본의 Grid 시스템 유지) */
   .leaders-case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
   .case-card { 
-    background: #fff; padding: 40px; border-radius: 24px; border: 1px solid #e2e8f0;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); display: flex; flex-direction: column;
+    background: #fff; padding: 40px; border-radius: var(--radius-md); border: 1px solid var(--border);
+    transition: var(--transition); display: flex; flex-direction: column;
   }
-  .case-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); border-color: #2563eb; }
+  .case-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); border-color: var(--brand-accent); }
   
-  .case-tag { font-size: 11px; font-weight: 800; color: #2563eb; background: rgba(37, 99, 235, 0.08); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 20px; width: fit-content; }
-  .case-title { font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 20px; letter-spacing: -0.03em; line-height: 1.4; }
+  .case-tag { font-size: 11px; font-weight: 800; color: var(--brand-accent); background: var(--brand-soft); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 20px; width: fit-content; }
+  .case-title { font-size: 1.35rem; font-weight: 800; color: var(--brand); margin-bottom: 20px; letter-spacing: -0.03em; line-height: 1.4; }
   
   .case-info { background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
   .info-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
-  .info-item span { color: #64748b; }
-  .info-item strong { color: #0f172a; font-weight: 700; }
+  .info-item span { color: var(--text-sub); }
+  .info-item strong { color: var(--brand); font-weight: 700; }
   
-  .case-desc { font-size: 0.95rem; color: #64748b; line-height: 1.7; margin-bottom: 24px; flex-grow: 1; word-break: keep-all; }
-  .case-result { font-weight: 800; color: #2563eb; border-top: 1px solid #e2e8f0; padding-top: 20px; font-size: 15px; }
+  .case-desc { font-size: 0.95rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; word-break: keep-all; }
+  .case-result { font-weight: 800; color: var(--brand-accent); border-top: 1px solid var(--border); padding-top: 20px; font-size: 15px; }
 
-  /* Insight Card */
-  .leaders-insight { padding: 60px; background: #0f172a; border-radius: 32px; color: #fff; margin-bottom: 80px; }
-  .leaders-insight-tag { color: #2563eb; font-weight: 700; font-size: 13px; letter-spacing: 2px; }
+  /* Insight Card (표본의 Insight 디자인 일치) */
+  .leaders-insight { padding: 60px; background: var(--brand); border-radius: var(--radius-lg); color: #fff; margin-bottom: 80px; position: relative; overflow: hidden; }
+  .leaders-insight::after { content: '“'; position: absolute; right: 40px; bottom: -20px; font-size: 15rem; color: rgba(255,255,255,0.05); font-family: serif; }
+  .leaders-insight-tag { color: var(--brand-accent); font-weight: 700; font-size: 13px; letter-spacing: 2px; }
   .leaders-insight-title { font-size: 1.8rem; margin: 15px 0; font-weight: 700; }
-  .leaders-insight-desc { opacity: 0.8; line-height: 1.8; font-size: 1.05rem; }
+  .leaders-insight-desc { opacity: 0.8; line-height: 1.8; font-size: 1.05rem; font-weight: 300; }
 
   /* Reveal Animations */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -58,7 +74,7 @@ cta_desc: "수사관의 시각에서 사건을 분석하여 상대방의 죄를 
   }
 </style>
 
-<section class="leaders-page" style="background: #ffffff;">
+<section class="leaders-page">
   <section class="leaders-hero js-reveal">
     <div class="leaders-container leaders-container--narrow">
       <div class="leaders-badge-wrapper">

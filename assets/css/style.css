@@ -1493,3 +1493,70 @@ body {
     .career-stat { border-right: none; border-bottom: 1px solid #e2e8f0; padding: 0 0 20px; }
   }
 </style>
+/* =====================================================
+   [최종 수정] 시각적 밸런스 및 가독성 최적화
+   ===================================================== */
+
+/* 1. 섹션 배경 및 여백 설정 */
+.success-cases,
+.rehabilitation-cases,
+.check-section,
+.price-section {
+  padding-top: calc(var(--header-h) + 80px) !important;
+  padding-bottom: 100px !important;
+  /* 상단이 휑하지 않게 은은한 그라데이션 추가 */
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 500px) !important;
+}
+
+/* 2. 타이틀: 굵게(800), 포인트 강조선 추가 */
+.page-title {
+  font-size: 3rem !important;
+  font-weight: 800 !important; /* 900보다 조금 더 세련된 800 추천 */
+  color: #1a1c1e !important;
+  letter-spacing: -0.04em !important;
+  margin-bottom: 20px !important;
+  display: inline-block;
+}
+
+.page-title::after {
+  content: '';
+  display: block;
+  width: 45px;
+  height: 4px;
+  background: #0a3871; /* 리더스 메인 컬러 */
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* 3. 본문 설명글: 두께를 400으로 낮춰 눈의 피로도 감소 */
+.page-desc, 
+.case-text, 
+.career-text p, 
+.tip-text {
+  font-weight: 400 !important; /* 얇게 조정하여 가독성 확보 */
+  font-size: 1.1rem !important;
+  color: #475569 !important; /* 가독성을 위해 살짝 더 진한 회색 사용 */
+  line-height: 1.75 !important;
+  word-break: keep-all;
+}
+
+/* 4. 카드 내 제목 및 태그: 중간 굵기(600~700) */
+.case-title {
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+}
+
+.case-tag, .case-footer span {
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+/* 5. 모바일 최적화 */
+@media (max-width: 768px) {
+  .success-cases, .rehabilitation-cases {
+    padding-top: calc(var(--header-h) + 50px) !important;
+  }
+  .page-title {
+    font-size: 2.2rem !important;
+  }
+}

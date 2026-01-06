@@ -1,9 +1,16 @@
 ---
-layout: default
+layout: main
 title: 전문가 소개 | 검찰수사관 출신 3인 합동 시스템 - 김성태 법무사 사무소
 description: 수원·용인 지역 최고의 베테랑, 검찰 20년 경력의 김성태 법무사와 수사 전문가들이 당신의 사건을 직접 검토합니다.
 keywords: 수원 법무사, 용인 법무사, 김성태 법무사, 검찰출신 법무사, 법률상담, 개인회생 법무사, 고소장 작성
+cta_title: "베테랑의 경험이 당신의 결과가 됩니다."
+cta_desc: "답답한 법률 고민, 전직 검찰수사관 출신 전문가들이 명쾌한 해답을 드립니다."
 ---
+
+<style>
+  /* [필독] 전체 페이지 커서 깜빡임 방지 - 최상단 배치 */
+  h1, h2, h3, h4, h5, h6, p, span, strong, a, div, section, article, li { caret-color: transparent !important; }
+</style>
 
 <section class="team-intro">
   <div class="team-wrap">
@@ -17,7 +24,6 @@ keywords: 수원 법무사, 용인 법무사, 김성태 법무사, 검찰출신 
     </header>
 
     <div class="team-grid">
-      
       <article class="profile-card js-reveal">
         <div class="profile-media">
           <img src="{{ '/assets/img/kim.webp' | relative_url }}" alt="법무사 김성태" loading="lazy">
@@ -83,7 +89,6 @@ keywords: 수원 법무사, 용인 법무사, 김성태 법무사, 검찰출신 
           </div>
         </div>
       </article>
-      
     </div>
 
     <div class="team-highlight js-reveal">
@@ -100,76 +105,8 @@ keywords: 수원 법무사, 용인 법무사, 김성태 법무사, 검찰출신 
   </div>
 </section>
 
-<style>
-  :root {
-    --primary-blue: #0a3871;
-    --text-dark: #1a1c1e;
-    --text-slate: #64748b;
-    --white: #ffffff;
-    --bg-gray: #f8fafc;
-    --card-shadow: 0 20px 40px rgba(0,0,0,0.06);
-  }
-
-  .team-intro { background: var(--bg-gray); padding: 100px 20px; font-family: 'Pretendard', sans-serif; }
-  .team-wrap { max-width: 1200px; margin: 0 auto; }
-
-  /* Header */
-  .team-head { text-align: center; margin-bottom: 70px; }
-  .head-badge { font-size: 13px; font-weight: 800; letter-spacing: 0.2em; color: var(--primary-blue); margin-bottom: 15px; }
-  .team-title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: var(--text-dark); margin-bottom: 25px; letter-spacing: -0.03em; }
-  .team-desc { font-size: 1.15rem; color: var(--text-slate); max-width: 750px; margin: 0 auto; line-height: 1.8; }
-
-  /* Grid */
-  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 60px; }
-
-  /* Card Style */
-  .profile-card {
-    background: var(--white); border-radius: 24px; overflow: hidden;
-    box-shadow: var(--card-shadow); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid rgba(0,0,0,0.05);
-  }
-  .profile-card:hover { transform: translateY(-15px); box-shadow: 0 40px 80px rgba(0,0,0,0.12); border-color: var(--primary-blue); }
-
-  .profile-media { position: relative; aspect-ratio: 4/5; overflow: hidden; background: #e2e8f0; }
-  .profile-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-  .profile-card:hover .profile-media img { transform: scale(1.1); }
-  .media-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,56,113,0.25), transparent); }
-
-  .profile-body { padding: 35px; }
-  .profile-role { font-size: 13px; font-weight: 800; color: var(--primary-blue); text-transform: uppercase; }
-  .profile-name { font-size: 26px; font-weight: 900; margin: 8px 0 18px; color: var(--text-dark); }
-
-  .profile-list { list-style: none; padding: 0; margin: 0 0 25px; border-top: 1px solid #f1f5f9; padding-top: 20px; }
-  .profile-list li { font-size: 15px; color: #475569; margin-bottom: 10px; position: relative; padding-left: 16px; line-height: 1.5; }
-  .profile-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; background: var(--primary-blue); border-radius: 50%; }
-
-  .tag { font-size: 12px; font-weight: 700; color: var(--primary-blue); background: #f0f7ff; padding: 7px 14px; border-radius: 8px; margin-right: 6px; }
-
-  /* Highlight Banner */
-  .team-highlight { background: #1a1c1e; border-radius: 28px; padding: 45px; color: #fff; }
-  .highlight-content { display: flex; align-items: center; gap: 35px; }
-  .highlight-icon {
-    width: 64px; height: 64px; background: var(--primary-blue); border-radius: 18px;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .highlight-icon svg { width: 32px; height: 32px; color: #fff; }
-  .highlight-text h3 { font-size: 22px; margin-bottom: 10px; font-weight: 800; }
-  .highlight-text p { font-size: 17px; color: #94a3b8; line-height: 1.7; }
-  .highlight-text strong { color: #fff; border-bottom: 2px solid var(--primary-blue); }
-
-  /* Animation */
-  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 992px) { .team-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) {
-    .team-grid { grid-template-columns: 1fr; }
-    .highlight-content { flex-direction: column; text-align: center; }
-    .team-intro { padding: 60px 20px; }
-  }
-</style>
-
 <script>
+  /* 스크롤 애니메이션 스크립트 */
   document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

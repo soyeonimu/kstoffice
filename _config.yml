@@ -11,7 +11,7 @@ include:
 collections:
   board:
     output: true
-    permalink: /board/:name
+    permalink: /board/:name/
 
 plugins:
   - jekyll-sitemap

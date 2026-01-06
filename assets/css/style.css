@@ -1052,7 +1052,7 @@ caption {
 .hero--slice:hover .media img{ transform: scale(1.06); }
 
 /* 컬러 버전 */
-.hero--slice.rehab{ background:#0a3871; }          /* 개인회생 */
+.hero--slice.rehab{ background:#0e2a47; }          /* 개인회생 */
 .hero--slice.complaint{ background:#0e2a47; }      /* 고소장 */
 
 /* 모바일 */

@@ -1294,3 +1294,88 @@ h1, h2, h3, h4, strong, b {
   animation-play-state: paused;
   color: #ffeb3b; /* 마우스 올리면 강조색 유지 */
 }
+/* 게시판 섹션 스타일 업그레이드 */
+.board-wrapper {
+  margin-top: 20px;
+}
+
+.custom-board-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* 항목 간 간격 */
+}
+
+.board-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 24px 32px;
+  border-radius: 20px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.02);
+}
+
+.board-card:hover {
+  border-color: var(--brand-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+/* 날짜 영역 */
+.board-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  height: 70px;
+  background: #f1f5f9;
+  border-radius: 14px;
+  margin-right: 24px;
+  color: var(--brand);
+  transition: var(--transition);
+}
+
+.board-card:hover .board-date {
+  background: var(--brand-accent);
+  color: #fff;
+}
+
+.board-date .day { font-size: 1.2rem; font-weight: 800; line-height: 1; }
+.board-date .month { font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.7; }
+
+/* 콘텐츠 영역 */
+.board-content { flex: 1; }
+.board-tag { 
+  font-size: 11px; font-weight: 700; color: var(--brand-accent); 
+  background: rgba(37, 99, 235, 0.08); padding: 4px 10px; 
+  border-radius: 6px; margin-bottom: 8px; display: inline-block;
+}
+.board-title { 
+  font-size: 1.15rem; font-weight: 700; color: var(--brand); 
+  margin: 0 0 4px 0; line-height: 1.4;
+  word-break: keep-all;
+}
+.board-excerpt { 
+  font-size: 0.95rem; color: var(--text-sub); margin: 0; 
+  display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* 아이콘 */
+.board-link-icon {
+  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+  color: #cbd5e1; transition: var(--transition);
+}
+.board-link-icon svg { width: 24px; height: 24px; }
+.board-card:hover .board-link-icon { color: var(--brand-accent); transform: translateX(5px); }
+
+/* 반응형 모바일 */
+@media (max-width: 640px) {
+  .board-card { padding: 20px; }
+  .board-date { min-width: 60px; height: 60px; margin-right: 16px; }
+  .board-title { font-size: 1rem; }
+  .board-excerpt { display: none; } /* 모바일에서는 제목만 깔끔하게 */
+  .board-link-icon { display: none; }
+}

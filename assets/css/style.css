@@ -1425,3 +1425,171 @@ header{
   margin-top:.18rem;
   line-height:1.2;
 }
+
+/* ===== Header (Black / Hide on scroll down, show on scroll up) ===== */
+:root{
+  --header-h: 72px;
+  --header-bg: rgba(10, 12, 16, 0.92);
+  --header-border: rgba(255,255,255,0.10);
+  --header-text: rgba(255,255,255,0.92);
+  --header-muted: rgba(255,255,255,0.68);
+  --header-accent: #f2c14e; /* 포인트(골드 느낌) */
+}
+
+/* 고정 헤더로 바꿔서 본문이 가려지지 않게 */
+body{
+  padding-top: var(--header-h);
+}
+
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  z-index: 10000;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  backdrop-filter: blur(10px);
+  transform: translateY(0);
+  transition: transform .22s ease, background-color .22s ease;
+}
+
+.site-header.header--hidden{
+  transform: translateY(-110%);
+}
+
+.header-inner{
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.logo{
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo-link{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  color: var(--header-text);
+  text-decoration:none;
+}
+
+.logo-img{
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.logo-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+
+.logo-title{
+  font-size: 18px;  /* ✅ 글자 키움 */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--header-text);
+}
+
+.logo-sub{
+  margin-top: 3px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--header-muted);
+}
+
+/* nav */
+.gnb{ flex: none; }
+.gnb-list{
+  display:flex;
+  align-items:center;
+  gap: 22px;
+}
+
+.gnb-list > li > a{
+  color: var(--header-text);
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 10px 6px;
+  display:inline-block;
+  transition: color .15s ease;
+}
+
+.gnb-list > li > a:hover{
+  color: #ffffff;
+}
+
+/* dropdown */
+.has-sub{ position: relative; }
+.sub{
+  display:none;
+  position:absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 190px;
+  background: rgba(12, 14, 18, 0.98);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  padding: 8px 0;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+.has-sub:hover .sub,
+.has-sub:focus-within .sub{
+  display:block;
+}
+
+.sub li a{
+  display:block;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.86);
+  font-weight: 600;
+}
+
+.sub li a:hover{
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+/* CTA 버튼(전화) */
+.header-cta{ display:flex; align-items:center; }
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: #fff;
+  font-weight: 800;
+  font-size: 13.5px;
+  text-decoration: none;
+  transition: transform .12s ease, background .12s ease;
+}
+.cta-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.14);
+}
+
+/* 모바일 */
+@media (max-width: 900px){
+  :root{ --header-h: 64px; }
+  .logo-title{ font-size: 16px; }
+  .logo-sub{ display:none; }
+  .gnb{ display:none; } /* 모바일은 일단 숨김(원하면 햄버거 메뉴로 바꿔줄게) */
+  .cta-btn{ height: 36px; font-size: 13px; }
+}

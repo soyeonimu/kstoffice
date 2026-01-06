@@ -11,15 +11,18 @@
 
     <nav class="gnb" aria-label="주요 메뉴">
       <ul class="gnb-list">
-        <li><a href="/location">오시는 길</a></li>
-        <li><a href="/team">구성원 소개</a></li>
+        <li class="has-sub">
+          <a href="/team" aria-haspopup="true">소개</a>
+          <ul class="sub">
+            <li><a href="/team">구성원 소개</a></li>
+            <li><a href="/location">오시는 길</a></li>
         
         <li class="has-sub">
-          <a href="/complaint" aria-haspopup="true">고소장</a>
+          <a href="/complaint" aria-haspopup="true">고소장 작성</a>
           <ul class="sub">
             <li><a href="/complaint">안내</a></li>
             <li><a href="/process">절차</a></li>
-            <li><a href="/cases-complaint">작성사례</a></li>
+            <li><a href="/cases-complaint">사례</a></li>
             <li><a href="/difference">신고 vs 고소</a></li>
             <li><a href="/settlement">형사합의</a></li>
             <li><a href="/faq-complaint.html">FAQ</a></li>
@@ -31,9 +34,8 @@
           <ul class="sub">
             <li><a href="/what-is">안내</a></li>
             <li><a href="/procedure">절차</a></li>
-            <li><a href="/price">비용 안내</a></li>
-            <li><a href="/cases">성공사례</a></li>
-            <li><a href="/check">자가진단</a></li>
+            <li><a href="/price">비용</a></li>
+            <li><a href="/cases">사례</a></li>
             <li><a href="/faq">FAQ</a></li>
           </ul>
         </li>
@@ -45,9 +47,6 @@
             <li><a href="/chat">AI 상담</a></li>
           </ul>
         </li>
-
-        <li><a href="/chat">AI 상담</a></li>
-        <li><a href="/board">소식 및 자료</a></li>
       </ul>
     </nav>
   </div>

@@ -1,271 +1,63 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <title>{{ page.title }}</title>
-  <meta name="referrer" content="no-referrer">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="{{ page.description | default: site.description }}" />
-  {% if page.keywords %}
-  <meta name="keywords" content="{{ page.keywords | join: ', ' }}" />
-  {% endif %}
-  <link rel="stylesheet" href="/assets/css/style.css" />
+---
+layout: default
+---
 
-  <style>
-    /* 전체 콘텐츠 영역의 패딩 조정 및 배경색 일관성 유지 */
-    section {
-      padding: 2.5rem 1.5rem; /* 상하좌우 패딩 약간 증가 */
-      font-family: 'Noto Sans KR', sans-serif;
-      background: #f9f9f9;
-    }
-
-    /* 게시물 박스 내부 패딩 및 그림자 조정 */
-    section > div {
-      padding: 2.5rem 3rem; /* 좌우 패딩을 더 넓게 */
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 그림자 강조 */
-    }
+<section class="post-detail-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
+  <div class="container" style="max-width: 850px; margin: 0 auto; padding: 0 20px;">
     
-    /* 카테고리 정보 */
-    .post-category {
-      font-size: 0.95rem;
-      color: #0a3871;
-      margin-top: 0.5rem; /* 기존 유지 */
-      margin-bottom: 1.5rem; /* 기존 유지 */
-    }
-    .post-category a {
-      color: #0a3871;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .post-category a:hover {
-      text-decoration: underline;
-    }
-
-    
-    /* 게시물 제목 */
-    h1 {
-      font-size: 2.2rem; /* 제목 크기 약간 키움 */
-      color: #0a3871;
-      margin-bottom: 0.8rem; /* 제목 아래 간격 증가 */
-      word-break: keep-all; /* 단어 단위 줄바꿈 */
-    }
-
-    /* 날짜 정보 */
-    p.post-date {
-      color: #888;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem; /* 날짜 아래 간격 증가 */
-    }
-
-    /* 구분선 추가 */
-    .post-meta-divider {
-      border-bottom: 1px solid #eee; /* 얇은 구분선 */
-      margin-bottom: 2rem; /* 구분선 아래 간격 */
-    }
-
-    /* 게시물 내용 (post-content 클래스) 스타일 */
-    .post-content {
-      margin-top: 0; /* 구분선 아래이므로 margin-top 제거 */
-      line-height: 1.9; /* 줄 간격 약간 증가 (더 여유롭게) */
-      font-size: 1.08rem; /* 본문 폰트 크기 약간 증가 */
-      color: #333;
-      word-break: keep-all; /* 단어 단위 줄바꿈 */
-    }
-
-    .post-content h1,
-    .post-content h2,
-    .post-content h3,
-    .post-content h4,
-    .post-content h5,
-    .post-content h6 {
-      margin-top: 2.5em; /* 헤딩 위 간격 더욱 증가 */
-      margin-bottom: 1em; /* 헤딩 아래 간격 약간 증가 */
-      line-height: 1.4;
-      color: #0a3871;
-      padding-bottom: 0.2em; /* 헤딩 아래에 약간의 여백 */
-      border-bottom: 1px dashed #eee; /* 헤딩 아래 점선 구분선 */
-    }
-
-    .post-content h1 { font-size: 2em; border-bottom: 2px solid #0a3871; padding-bottom: 0.3em; } /* 최상위 헤딩 강조 */
-    .post-content h2 { font-size: 1.7em; }
-    .post-content h3 { font-size: 1.4em; }
-    .post-content h4 { font-size: 1.2em; }
-    .post-content h5 { font-size: 1.1em; }
-    .post-content h6 { font-size: 1em; }
-
-    .post-content p {
-      margin-bottom: 1.2em; /* 문단 아래 간격 증가 */
-      line-height: 1.9;
-    }
-
-    .post-content ul,
-    .post-content ol {
-      margin-bottom: 1.5em; /* 목록 아래 간격 증가 */
-      padding-left: 1.8em; /* 목록 들여쓰기 증가 */
-    }
-
-    .post-content li {
-      margin-bottom: 0.7em; /* 목록 항목 간 간격 증가 */
-      line-height: 1.7;
-    }
-
-    .post-content blockquote {
-      border-left: 5px solid #0a3871; /* 인용구 좌측 라인 두께 증가 */
-      padding: 1em 1.5em; /* 패딩 증가 */
-      margin: 2em 0; /* 위아래 간격 증가 */
-      background-color: #f5fafd; /* 배경색 약간 진하게 */
-      color: #444;
-      font-style: italic;
-      border-radius: 4px; /* 모서리 약간 둥글게 */
-    }
-
-    .post-content pre {
-      background-color: #f8f8f8; /* 배경색 밝게 */
-      padding: 1.2em;
-      border-radius: 6px;
-      overflow-x: auto;
-      margin-bottom: 1.5em;
-      border: 1px solid #eee;
-    }
-
-    .post-content code {
-      font-family: 'Consolas', 'Monaco', monospace;
-      background-color: #eee;
-      padding: 0.25em 0.5em;
-      border-radius: 4px;
-    }
-
-    /* 이미지 스타일 */
-    .post-content img {
-      max-width: 100%; /* 이미지가 부모 너비를 넘지 않도록 */
-      height: auto;
-      display: block; /* 이미지 아래 불필요한 공백 제거 */
-      margin: 1.5em auto; /* 중앙 정렬 및 위아래 여백 */
-      border-radius: 8px; /* 이미지 모서리 둥글게 */
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 이미지 그림자 */
-    }
-      /* 반응형 표 스타일 */
-    .custom-table {
-      overflow-x: auto;
-      margin-bottom: 2rem;
-    }
-    
-    .custom-table table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 1rem;
-      color: #333;
-    }
-    
-    .custom-table th,
-    .custom-table td {
-      border: 1px solid #ddd;
-      padding: 0.9rem 1rem;
-      text-align: center;
-      word-break: keep-all;
-    }
-    
-    .custom-table th {
-      background-color: #0a3871;
-      color: #fff;
-      font-weight: bold;
-    }
-    
-    .custom-table tr:nth-child(even) td {
-      background-color: #f7f9fc;
-    }
-
-    /* 링크 스타일 */
-    .post-content a {
-      color: #0a3871;
-      text-decoration: underline;
-      font-weight: 500;
-    }
-    .post-content a:hover {
-      color: #062b5a;
-      text-decoration: none;
-    }
-  </style>
-  <script defer>
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.post-content img').forEach(function(img){
-    try{
-      // 0) 원본 후보 우선 (네이버가 원본을 data-*에 숨기는 경우가 많음)
-      const hi =
-        img.getAttribute('data-lazy-src') ||
-        img.getAttribute('data-src') ||
-        img.getAttribute('data-original') ||
-        img.getAttribute('originSrc') ||
-        img.getAttribute('data-raw-src');
-
-      let src = hi || img.getAttribute('src') || '';
-
-      // 1) pstatic 썸네일 파라미터 정리
-      const upgradePstatic = (url) => {
-        try{
-          const u = new URL(url, location.href);
-          if (!u.hostname.endsWith('pstatic.net')) return url;
-
-          // type 파라미터가 w80_blur 등 낮은 해상도면 제거하거나 w966로 승격
-          const type = u.searchParams.get('type');
-          if (type) {
-            // blur 또는 너무 작은 w 값이면 업그레이드
-            if (/blur/i.test(type) || /^w(\d+)/i.test(type) && parseInt(RegExp.$1,10) < 400) {
-              u.searchParams.set('type','w966'); // 보통 본문 너비에 충분
-            }
-          }
-          // 그 외 불필요 파라미터 제거(있을 경우)
-          ['t','q','f','fm'].forEach(k=>u.searchParams.delete(k));
-          return u.toString();
-        }catch(e){ return url; }
-      };
-
-      src = upgradePstatic(src);
-
-      // 2) http → https 강제 (혼합콘텐츠 차단 방지)
-      if(/^http:\/\//i.test(src)) src = src.replace(/^http:\/\//i,'https://');
-
-      // 3) 최종 적용 + 핫링크 대응
-      img.setAttribute('src', src);
-      img.setAttribute('referrerpolicy','no-referrer');
-      img.setAttribute('loading','lazy');
-    }catch(e){}
-  });
-});
-</script>
-</head>
-
-<body>
-
-  {% include header.html %}
-
-  <section>
-    <div style="max-width: 800px; margin: 0 auto; background: #fff;">
-      <h1>{{ page.title }}</h1>
-      <p class="post-date">{{ page.date | date: "%Y년 %m월 %d일" }}</p>
-
-      <div class="post-meta-divider"></div>
-
-      {% if page.category %}
-      <div class="post-category">
-        카테고리: <a href="/board/category/{{ page.category | slugify }}/">{{ page.category }}</a>
+    <header class="post-header js-reveal" style="text-align: center; margin-bottom: 50px;">
+      <div style="margin-bottom: 15px;">
+        <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 6px;">
+          {{ page.category }}
+        </span>
       </div>
-      {% endif %}
+      <h1 class="post-title" style="font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.03em; line-height: 1.4;">
+        {{ page.title }}
+      </h1>
+      <div style="color: #64748b; font-size: 14px; font-weight: 500;">
+        {{ page.date | date: "%Y.%m.%d" }}
+      </div>
+    </header>
 
-      <div class="post-content">
+    <article class="post-content js-reveal" style="background: #fff; padding: 60px 50px; border-radius: 24px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
+      <div class="inner-content" style="word-break: keep-all;">
         {{ content }}
       </div>
+    </article>
 
-      <div style="margin-top: 3rem; text-align: center;">
-        <a href="/board" style="display: inline-block; padding: 0.8rem 1.5rem; background-color: #0a3871; color: #fff; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">
-          ← 게시판 목록으로
-        </a>
-      </div>
-    </div>
-  </section>
+    <footer class="post-footer js-reveal" style="margin-top: 50px; text-align: center;">
+      <a href="/board" class="back-btn" style="text-decoration: none; background: #0a3871; color: #fff; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; display: inline-block; transition: 0.3s;">
+        목록으로 돌아가기
+      </a>
+    </footer>
 
-  {% include footer.html %}
+  </div>
+</section>
 
-</body>
-</html>
+<style>
+  /* 본문 내 이미지와 제목 스타일 조정 */
+  .post-content img { max-width: 100%; border-radius: 12px; margin: 30px 0; }
+  .post-content h2 { font-size: 1.6rem; color: #1e293b; margin-top: 50px; margin-bottom: 20px; border-left: 4px solid #0a3871; padding-left: 15px; }
+  .post-content h3 { font-size: 1.3rem; color: #1e293b; margin-top: 35px; }
+  .post-content p { margin-bottom: 20px; }
+  
+  .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(10, 56, 113, 0.2); }
+
+  /* 애니메이션 */
+  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .post-content { padding: 40px 25px; font-size: 1.05rem; }
+    .post-header { margin-bottom: 35px; }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
+</script>

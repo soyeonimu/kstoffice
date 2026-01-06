@@ -1,6 +1,6 @@
 ---
 layout: default
-# 제목과 설명은 상단 Front Matter에서 관리하는 게 깔끔해요!
+# 카테고리명에 따라 CTA 문구가 자동 최적화되도록 설정했습니다.
 cta_title: "{{ page.category }}에 대해 더 궁금하신가요?"
 cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상세히 상담해 드립니다."
 ---
@@ -8,52 +8,10 @@ cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상�
 {% assign current_category = page.category %}
 {% assign filtered_posts = site.board | where:"category", current_category | reversed %}
 
-<section class="success-cases" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 60px;">
-  <div class="container">
-    
-    <header class="page-head js-reveal">
-      <div class="head-badge">CATEGORY ARCHIVE</div>
-      <h1 class="page-title">{{ current_category }}</h1>
-      <p class="page-desc">
-        '{{ current_category }}' 카테고리에 등록된 리더스의 전문 법률 정보를 확인하세요.
-      </p>
-    </header>
-
-    <nav class="category-nav js-reveal" style="margin-bottom: 40px;">
-      <div class="category-wrapper">
-        <a href="/board" class="cat-btn">전체 게시판으로 돌아가기</a>
-        <a href="#" class="cat-btn active">
-          {{ current_category }} <span class="count">{{ filtered_posts.size }}</span>
-        </a>
-      </div>
-    </nav>
-
-    <main class="post-area js-reveal">
-      <div id="post-list" class="post-list-stack">
-        {% for post in filtered_posts %}
-        <article class="post-item">
-          <a href="{{ post.url }}" class="post-title-card">
-            <div class="post-info-left">
-              <span class="post-tag">{{ post.category }}</span>
-              <h2 class="post-title">{{ post.title }}</h2>
-            </div>
-            <div class="post-info-right">
-              <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-              <span class="arrow">→</span>
-            </div>
-          </a>
-        </article>
-        {% else %}
-        <div style="text-align: center; padding: 80px 0; color: #64748b; font-size: 0.95rem;">
-          등록된 게시물이 없습니다.
-        </div>
-        {% endfor %}
-      </div>
-    </main>
-  </div>
-</section>
-
 <style>
+  /* [공통] 텍스트 클릭 시 커서 깜빡임 방지 (전체 적용을 위해 추가) */
+  h1, h2, h3, h4, p, span, a, div { caret-color: transparent; }
+  
   :root {
     --bg-soft: #f8fafc;
     --white: #ffffff;
@@ -63,28 +21,30 @@ cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상�
     --border: #e2e8f0;
   }
 
+  .board-category-section { background-color: var(--bg-soft); min-height: 100vh; padding: 120px 0 100px; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-  /* Header */
+  /* Header 스타일 */
   .page-head { text-align: center; margin-bottom: 50px; }
   .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
   .page-title { font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 900; color: var(--text-main); margin-bottom: 20px; letter-spacing: -0.03em; }
   .page-desc { color: var(--text-sub); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
 
-  /* Category Nav */
+  /* Category Navigation */
+  .category-nav { margin-bottom: 40px; }
   .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
   .cat-btn { 
     text-decoration: none; background: var(--white); color: var(--text-sub);
-    padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border);
+    padding: 10px 24px; border-radius: 50px; border: 1px solid var(--border);
     font-weight: 700; font-size: 0.9rem; transition: 0.3s;
   }
   .cat-btn:hover, .cat-btn.active { 
     background: var(--primary-blue); color: white; border-color: var(--primary-blue); 
   }
-  .cat-btn .count { font-size: 0.8rem; opacity: 0.6; margin-left: 4px; }
+  .cat-btn .count { font-size: 0.8rem; opacity: 0.7; margin-left: 6px; }
 
-  /* Post Card (board.html과 동일하게 축소) */
-  .post-list-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+  /* Post 리스트 스타일 (최신 슬림 디자인 적용) */
+  .post-list-stack { display: flex; flex-direction: column; gap: 14px; }
   .post-title-card {
     display: flex; justify-content: space-between; align-items: center;
     background: var(--white); padding: 22px 35px; border-radius: 20px; text-decoration: none;
@@ -112,7 +72,7 @@ cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상�
   .arrow { font-size: 16px; color: var(--primary-blue); transition: 0.3s; opacity: 0.6; }
   .post-title-card:hover .arrow { transform: translateX(5px); opacity: 1; }
 
-  /* Reveal Animation */
+  /* Reveal 애니메이션 */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
@@ -123,10 +83,59 @@ cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상�
   }
 </style>
 
+<section class="board-category-section">
+  <div class="container">
+    
+    <header class="page-head js-reveal">
+      <div class="head-badge">CATEGORY ARCHIVE</div>
+      <h1 class="page-title">{{ current_category }}</h1>
+      <p class="page-desc">
+        '{{ current_category }}' 카테고리에 등록된 리더스의 전문 법률 정보를 확인하세요.
+      </p>
+    </header>
+
+    <nav class="category-nav js-reveal">
+      <div class="category-wrapper">
+        <a href="/board" class="cat-btn">전체 게시판으로 돌아가기</a>
+        <a href="#" class="cat-btn active">
+          {{ current_category }} <span class="count">{{ filtered_posts.size }}</span>
+        </a>
+      </div>
+    </nav>
+
+    <main class="post-area js-reveal">
+      <div id="post-list" class="post-list-stack">
+        {% for post in filtered_posts %}
+        <article class="post-item">
+          <a href="{{ post.url }}" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">{{ post.category }}</span>
+              <h2 class="post-title">{{ post.title }}</h2>
+            </div>
+            <div class="post-info-right">
+              <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        </article>
+        {% else %}
+        <div style="text-align: center; padding: 100px 0; color: #64748b; font-size: 1rem; background: #fff; border-radius: 20px; border: 1px dashed var(--border);">
+          현재 해당 카테고리에 등록된 게시물이 없습니다.
+        </div>
+        {% endfor %}
+      </div>
+    </main>
+  </div>
+</section>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible'); 
+        }
+      });
     }, { threshold: 0.1 });
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });

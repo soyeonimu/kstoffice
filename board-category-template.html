@@ -1,44 +1,45 @@
 ---
 layout: default
+# 제목과 설명은 상단 Front Matter에서 관리하는 게 깔끔해요!
+cta_title: "{{ page.category }}에 대해 더 궁금하신가요?"
+cta_desc: "관련 분야의 실무 경험이 풍부한 법무사가 직접 상세히 상담해 드립니다."
 ---
 
 {% assign current_category = page.category %}
 {% assign filtered_posts = site.board | where:"category", current_category | reversed %}
 
-<section class="board-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
-  <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+<section class="success-cases" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 60px;">
+  <div class="container">
     
-    <header class="page-head js-reveal" style="text-align: center; margin-bottom: 40px;">
-      <div class="head-badge" style="font-size: 12px; font-weight: 800; color: #0a3871; letter-spacing: 0.15em; margin-bottom: 10px;">CATEGORY ARCHIVE</div>
-      <h1 class="page-title" style="font-size: 1.8rem; font-weight: 900; color: #1e293b; letter-spacing: -0.03em;">{{ current_category }}</h1>
-      <p class="page-desc" style="color: #64748b; font-size: 1rem; margin-top: 15px;">
+    <header class="page-head js-reveal">
+      <div class="head-badge">CATEGORY ARCHIVE</div>
+      <h1 class="page-title">{{ current_category }}</h1>
+      <p class="page-desc">
         '{{ current_category }}' 카테고리에 등록된 리더스의 전문 법률 정보를 확인하세요.
       </p>
     </header>
 
-    <nav class="category-nav js-reveal" style="text-align: center; margin-bottom: 40px;">
-      <div class="category-wrapper" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
-        <a href="/board" class="cat-btn" style="text-decoration: none; background: #fff; color: #64748b; padding: 8px 18px; border-radius: 50px; border: 1px solid #e2e8f0; font-size: 0.9rem; font-weight: 600; transition: 0.2s;">
-          전체 게시판으로 돌아가기
-        </a>
-        <a href="#" class="cat-btn active" style="text-decoration: none; background: #0a3871; color: #fff; padding: 8px 18px; border-radius: 50px; border: 1px solid #0a3871; font-size: 0.9rem; font-weight: 600;">
-          {{ current_category }} ({{ filtered_posts.size }})
+    <nav class="category-nav js-reveal" style="margin-bottom: 40px;">
+      <div class="category-wrapper">
+        <a href="/board" class="cat-btn">전체 게시판으로 돌아가기</a>
+        <a href="#" class="cat-btn active">
+          {{ current_category }} <span class="count">{{ filtered_posts.size }}</span>
         </a>
       </div>
     </nav>
 
     <main class="post-area js-reveal">
-      <div id="post-list" class="post-list-stack" style="display: flex; flex-direction: column; gap: 12px;">
+      <div id="post-list" class="post-list-stack">
         {% for post in filtered_posts %}
         <article class="post-item">
-          <a href="{{ post.url }}" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">{{ post.category }}</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ post.title }}</h2>
+          <a href="{{ post.url }}" class="post-title-card">
+            <div class="post-info-left">
+              <span class="post-tag">{{ post.category }}</span>
+              <h2 class="post-title">{{ post.title }}</h2>
             </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">{{ post.date | date: "%Y.%m.%d" }}</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
+            <div class="post-info-right">
+              <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+              <span class="arrow">→</span>
             </div>
           </a>
         </article>
@@ -49,20 +50,76 @@ layout: default
         {% endfor %}
       </div>
     </main>
-
   </div>
 </section>
 
 <style>
-  /* 호버 효과를 위해 필요한 최소한의 CSS */
-  .post-title-card:hover { border-color: #0a3871 !important; transform: translateX(8px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
-  .cat-btn:hover { background: #eef2f7 !important; color: #0a3871 !important; }
-  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+  :root {
+    --bg-soft: #f8fafc;
+    --white: #ffffff;
+    --primary-blue: #0a3871;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  .page-head { text-align: center; margin-bottom: 50px; }
+  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
+  .page-title { font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 900; color: var(--text-main); margin-bottom: 20px; letter-spacing: -0.03em; }
+  .page-desc { color: var(--text-sub); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+  /* Category Nav */
+  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+  .cat-btn { 
+    text-decoration: none; background: var(--white); color: var(--text-sub);
+    padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border);
+    font-weight: 700; font-size: 0.9rem; transition: 0.3s;
+  }
+  .cat-btn:hover, .cat-btn.active { 
+    background: var(--primary-blue); color: white; border-color: var(--primary-blue); 
+  }
+  .cat-btn .count { font-size: 0.8rem; opacity: 0.6; margin-left: 4px; }
+
+  /* Post Card (board.html과 동일하게 축소) */
+  .post-list-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+  .post-title-card {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--white); padding: 22px 35px; border-radius: 20px; text-decoration: none;
+    border: 1px solid var(--border); transition: all 0.3s ease;
+  }
+  .post-title-card:hover { 
+    transform: translateX(8px); 
+    border-color: var(--primary-blue); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+  }
+
+  .post-info-left { display: flex; align-items: center; gap: 20px; flex-grow: 1; overflow: hidden; }
+  .post-tag { 
+    background: #eff6ff; color: var(--primary-blue); font-size: 11px; 
+    font-weight: 800; padding: 5px 12px; border-radius: 6px; white-space: nowrap;
+  }
+  .post-title { 
+    font-size: 1.05rem; font-weight: 700; color: var(--text-main); 
+    margin: 0; letter-spacing: -0.02em; line-height: 1.4;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .post-info-right { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+  .post-date { font-size: 13px; color: var(--text-sub); font-weight: 500; }
+  .arrow { font-size: 16px; color: var(--primary-blue); transition: 0.3s; opacity: 0.6; }
+  .post-title-card:hover .arrow { transform: translateX(5px); opacity: 1; }
+
+  /* Reveal Animation */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-  
-  @media (max-width: 768px) {
-    .post-title-card { flex-direction: column; align-items: flex-start !important; gap: 12px; padding: 20px !important; }
-    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 10px; }
+
+  @media (max-width: 850px) {
+    .post-title-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 25px; }
+    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+    .post-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
   }
 </style>
 

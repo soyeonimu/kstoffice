@@ -1,4 +1,16 @@
-/*
+/* 전체 페이지의 텍스트 클릭 시 커서(캐럿)를 숨깁니다 */
+html, body {
+  -webkit-tap-highlight-color: transparent; /* 모바일 터치 하이라이트 제거 */
+}
+
+* {
+  caret-color: transparent !important; /* 모든 요소에서 깜빡이는 커서 제거 */
+}
+
+/* 단, 입력이 필요한 input이나 textarea에서는 커서가 보여야 하므로 제외합니다 */
+input, textarea {
+  caret-color: auto !important;
+}/*
  * 김성태 법무사 사무소 웹사이트 전체 스타일 시트
  * 모든 페이지의 공통 스타일 및 개별 페이지 스타일을 포함합니다.
  */

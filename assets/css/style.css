@@ -1092,17 +1092,17 @@ caption {
     #082b52 100%
   );
 }
-/* ===== 1. 전역 변수 및 기본 설정 ===== */
+
+/* ===== 1. 전역 변수 설정 ===== */
 :root {
   --theme-dark-bg: #1a1c1e;
-  --theme-border: rgba(255, 255, 255, 0.08);
   --header-h: 76px;
   --text-main: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.65);
-  --accent-blue: #0a3871;
-  --body-gray: #475569; /* 본문용 가독성 회색 */
+  --body-gray: #475569;
 }
 
+/* 기본 레이아웃 가독성 */
 body {
   padding-top: var(--header-h);
   margin: 0;
@@ -1110,215 +1110,104 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ===== 2. 헤더 (Header) - 로고 및 GNB 고정 ===== */
+/* ===== 2. 헤더 (Header) 정상화 ===== */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0;
-  height: var(--header-h); z-index: 10000;
+  height: var(--header-h); z-index: 9999;
   background: var(--theme-dark-bg);
-  border-bottom: 1px solid var(--theme-border);
-  display: flex; align-items: center; padding: 0 32px;
+  display: flex; align-items: center;
 }
 
-.header-inner {
-  max-width: 1200px; width: 100%; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
+/* 헤더 내 로고 크기 고정 */
+.site-header .logo-img {
+  width: 42px !important;
+  height: 42px !important;
+  object-fit: contain;
 }
 
-/* 헤더/푸터 로고 공통: 무조건 흰색 */
-.logo-link, .logo-title, .footer-name {
-  color: #ffffff !important;
+/* 헤더 메뉴(GNB) 링크 스타일 보호 */
+.gnb-list a {
+  color: var(--text-muted) !important;
   text-decoration: none !important;
-  font-weight: 700;
+  font-weight: 500;
+  padding: 10px 15px;
 }
+.gnb-list a:hover { color: #fff !important; }
 
-.gnb-list { display: flex; gap: 28px; list-style: none; }
-.gnb-list a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
-.gnb-list a:hover { color: #fff; }
-
-/* ===== 3. 본문 가독성 및 섹션 여백 (밀착형) ===== */
-.page-desc, .case-text, .career-text p, .info-txt {
-  font-weight: 400 !important; /* 볼드 해제 */
+/* ===== 3. 본문 및 섹션 간격 (밀착형) ===== */
+/* 모든 본문 설명글 볼드 해제 */
+.page-desc, .info-txt, .case-text, .career-text p, .case-info .info-txt {
+  font-weight: 400 !important;
   color: var(--body-gray) !important;
   line-height: 1.6;
 }
 
-/* 섹션 간 상단 여백 최소화 */
-.success-cases, .rehabilitation-cases, .insight-section, .cta-box-simple {
-  padding-top: 40px !important;
-  padding-bottom: 40px !important;
+/* 섹션 사이 거대 공백 제거 */
+.insight-section, .career-highlight {
+  padding-bottom: 20px !important;
+}
+.cta-box-simple {
+  margin-top: 0 !important;
+  padding-top: 30px !important;
 }
 
-/* 인사이트 박스와 CTA 박스 사이 여백 삭제 */
-.insight-section + .cta-box-simple {
-  margin-top: -20px !important;
+/* ===== 4. 푸터 (Footer) 슬림 최적화 ===== */
+footer.site-footer {
+  background-color: var(--theme-dark-bg) !important;
+  padding: 25px 0 !important; /* 높이 최소화 */
+  border-top: 1px solid rgba(255,255,255,0.08) !important;
 }
 
-/* ===== 4. 푸터 (Footer) - 디자인 및 버튼 복구 ===== */
-.site-footer {
-  background: var(--theme-dark-bg) !important;
-  padding: 60px 20px 40px !important;
-  border-top: 1px solid var(--theme-border) !important;
-  color: var(--text-muted) !important;
+/* 푸터 내부 정렬 */
+.footer-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 20px;
 }
-
-.footer-inner { max-width: 1200px; margin: 0 auto; }
 
 .footer-top {
   display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px !important;
 }
 
-/* 푸터 정보 텍스트 (볼드 해제) */
+/* 푸터 로고 및 상호명 (슬림) */
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-logo { width: 30px !important; height: auto !important; }
+.footer-name { color: #fff !important; font-weight: 700 !important; font-size: 1rem !important; }
+
+/* 푸터 정보 텍스트 (줄간격 밀착) */
 .footer-info p {
   color: var(--text-muted) !important;
   font-weight: 400 !important;
-  font-size: 0.9rem !important;
-  margin: 4px 0 !important;
+  font-size: 0.85rem !important;
+  margin: 2px 0 !important; /* 줄간격 최소화 */
+  line-height: 1.4 !important;
 }
 
-/* ⚠️ 핵심: 푸터 버튼 (색상 대비 확실히) */
-.footer-cta { display: flex; gap: 10px; }
+/* 푸터 버튼 디자인 (흰색 뭉침 방지) */
+.footer-cta { display: flex; gap: 8px; }
+.footer-cta a {
+  display: inline-flex !important;
+  align-items: center; justify-content: center;
+  height: 36px !important; padding: 0 15px !important;
+  border-radius: 6px !important; font-size: 13px !important;
+  text-decoration: none !important;
+}
 
+/* 전화 버튼 */
 .footer-phone, .btn-tel {
-  background: rgba(255, 255, 255, 0.06) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none;
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
 }
 
-.footer-kakao, .btn-online {
-  background: #ffffff !important; /* 배경 흰색 */
-  color: #1a1c1e !important;    /* 글자 검은색 (중요!) */
-  padding: 10px 20px; border-radius: 8px; font-weight: 700; text-decoration: none;
-}
-
-.footer-bottom {
-  margin-top: 30px; padding-top: 20px;
-  border-top: 1px solid var(--theme-border);
-  font-size: 0.8rem; opacity: 0.5;
-}
-
-/* ===== 5. 반응형 보정 ===== */
-@media (max-width: 768px) {
-  .footer-top { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .footer-cta { width: 100%; }
-  .footer-cta a { flex: 1; text-align: center; }
-}
-/* 1. 로고 이미지 크기 강제 고정 (커지는 문제 해결) */
-.logo-img, .footer-logo, .site-header img {
-  width: 42px !important;
-  height: 42px !important;
-  object-fit: contain !important;
-}
-
-/* 2. 푸터 상호명 및 정보 가독성 (볼드 해제 및 색상 복구) */
-.site-footer {
-  background-color: #1a1c1e !important;
-  padding: 50px 20px !important;
-}
-
-.site-footer .footer-name, 
-.site-footer .logo-title {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  font-size: 1.1rem !important;
-  margin-bottom: 15px !important;
-  display: block !important;
-}
-
-/* 푸터 본문 글씨: 얇게(400) + 가독성 높은 회색 */
-.site-footer p, 
-.site-footer .info-item,
-.site-footer .footer-info {
-  font-weight: 400 !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-  font-size: 0.9rem !important;
-  line-height: 1.7 !important;
-  margin-top: 4px !important;
-}
-
-/* 3. 푸터 버튼 (흰색 뭉침 해결 및 대비 강화) */
-.footer-phone, .btn-tel {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-}
-
+/* 온라인 상담 버튼 (대비 강화) */
 .footer-kakao, .btn-online {
   background: #ffffff !important;
-  color: #1a1c1e !important; /* 배경 흰색에 글자 검정색 */
-  font-weight: 700 !important;
+  color: #1a1c1e !important; /* 배경 흰색에 글자 검정 */
+  font-weight: 800 !important;
 }
 
-/* 4. 섹션 간 여백 밀착 (인사이트 박스 ~ CTA 박스) */
-.career-highlight, .insight-section {
-  margin-bottom: 0 !important;
-  padding-bottom: 40px !important;
-}
-
-.cta-box-simple {
-  margin-top: 0 !important;
-  padding-top: 40px !important;
-}
-
-/* 5. 본문 가독성 보정 (모든 굵은 글씨 해제) */
-.page-desc, .info-txt, .case-text, .career-text p {
-  font-weight: 400 !important;
-  color: #475569 !important;
-}
-/* 푸터 전체 높이 및 상하 여백 최소화 */
-.site-footer, #footer {
-    background-color: #1a1c1e !important;
-    padding: 25px 20px !important; /* 상하 여백을 확 줄임 */
-}
-
-.footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* 상단 라인(로고/버튼 영역) 간격 축소 */
-.footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px !important; /* 하단 정보와의 간격 축소 */
-}
-
-/* 로고와 상호명 사이 간격 및 크기 조절 */
-.site-footer .footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.site-footer .footer-logo {
-    width: 28px !important; /* 로고 사이즈 살짝 더 축소 */
-    height: auto !important;
-    margin: 0 !important;
-}
-
-.site-footer .footer-name {
-    margin: 0 !important;
-    font-size: 0.95rem !important;
-}
-
-/* 푸터 정보(주소 등) 줄간격 및 마진 최소화 */
-.site-footer .footer-info p {
-    margin: 2px 0 !important; /* 줄 사이 간격 거의 없앰 */
-    font-size: 0.85rem !important;
-    line-height: 1.4 !important;
-}
-
-/* 구분선 마진 축소 */
-.footer-divider {
-    margin: 15px 0 !important;
-    opacity: 0.1;
-}
-
-/* 카피라이트 영역 밀착 */
+/* 하단 카피라이트 */
 .footer-bottom {
-    margin-top: 10px !important;
-    padding-top: 10px !important;
-    font-size: 0.75rem !important;
+  margin-top: 15px !important; padding-top: 15px !important;
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+  font-size: 0.75rem !important; color: rgba(255,255,255,0.3) !important;
 }

@@ -1,78 +1,9 @@
 ---
 layout: default
 title: 형사 고소 성공사례 | 리더스 합동 법무사
-description: 전직 검찰수사관이 직접 구성한 고소장은 결과가 다릅니다. 리더스가 이끌어낸 기소 및 처벌 실제 사례를 확인하세요.
-# 성공사례 전용 CTA 문구 설정
 cta_title: "억울한 피해, 전문가와 상의하세요."
 cta_desc: "수사관의 시각에서 사건을 분석하여 상대방의 죄를 명확히 입증해 드립니다."
 ---
-
-<style>
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
-  :root {
-    --brand: #0f172a;
-    --brand-accent: #2563eb;
-    --brand-soft: #f0f7ff;
-    --text-main: #1e293b;
-    --text-sub: #64748b;
-    --border: #e2e8f0;
-    --radius-lg: 32px;
-    --radius-md: 20px;
-    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #ffffff; line-height: 1.6; overflow-x: hidden; }
-  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-  .leaders-container--narrow { max-width: 840px; }
-
-  /* Hero Section */
-  .leaders-hero { padding: 120px 0 60px; text-align: center; }
-  .leaders-badge { 
-    font-size: 12px; font-weight: 700; color: var(--brand-accent); 
-    border: 1px solid var(--brand-accent); padding: 4px 12px; border-radius: 100px; 
-    letter-spacing: 0.1em; margin-bottom: 20px; display: inline-block;
-  }
-  .leaders-title { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; }
-  .text-gradient { background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .leaders-desc { font-size: 1.15rem; color: var(--text-sub); word-break: keep-all; }
-
-  /* Case Card Grid (표본의 Grid 시스템 유지) */
-  .leaders-case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
-  .case-card { 
-    background: #fff; padding: 40px; border-radius: var(--radius-md); border: 1px solid var(--border);
-    transition: var(--transition); display: flex; flex-direction: column;
-  }
-  .case-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); border-color: var(--brand-accent); }
-  
-  .case-tag { font-size: 11px; font-weight: 800; color: var(--brand-accent); background: var(--brand-soft); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 20px; width: fit-content; }
-  .case-title { font-size: 1.35rem; font-weight: 800; color: var(--brand); margin-bottom: 20px; letter-spacing: -0.03em; line-height: 1.4; }
-  
-  .case-info { background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
-  .info-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
-  .info-item span { color: var(--text-sub); }
-  .info-item strong { color: var(--brand); font-weight: 700; }
-  
-  .case-desc { font-size: 0.95rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; word-break: keep-all; }
-  .case-result { font-weight: 800; color: var(--brand-accent); border-top: 1px solid var(--border); padding-top: 20px; font-size: 15px; }
-
-  /* Insight Card (표본의 Insight 디자인 일치) */
-  .leaders-insight { padding: 60px; background: var(--brand); border-radius: var(--radius-lg); color: #fff; margin-bottom: 80px; position: relative; overflow: hidden; }
-  .leaders-insight::after { content: '“'; position: absolute; right: 40px; bottom: -20px; font-size: 15rem; color: rgba(255,255,255,0.05); font-family: serif; }
-  .leaders-insight-tag { color: var(--brand-accent); font-weight: 700; font-size: 13px; letter-spacing: 2px; }
-  .leaders-insight-title { font-size: 1.8rem; margin: 15px 0; font-weight: 700; }
-  .leaders-insight-desc { opacity: 0.8; line-height: 1.8; font-size: 1.05rem; font-weight: 300; }
-
-  /* Reveal Animations */
-  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 1100px) { .leaders-case-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 768px) {
-    .leaders-case-grid { grid-template-columns: 1fr; }
-    .leaders-insight { padding: 40px 30px; }
-  }
-</style>
 
 <section class="leaders-page">
   <section class="leaders-hero js-reveal">
@@ -99,9 +30,7 @@ cta_desc: "수사관의 시각에서 사건을 분석하여 상대방의 죄를 
             <div class="info-item"><span>사건요약</span><strong>비상장 주식 투자 명목 편취</strong></div>
             <div class="info-item"><span>핵심전략</span><strong>자금 이력 분석 및 기망행위 입증</strong></div>
           </div>
-          <p class="case-desc">
-            가해자가 투자를 빙자하여 자금을 개인 용도로 사용했음을 입증하는 것이 관건이었습니다. 리더스는 수백 장의 계좌 내역을 분석하여 자금의 최종 목적지가 개인 도박 사이트임을 밝혀내는 고소 의견서를 제출, <strong>송치 2주 만에 구속 기소</strong>를 이끌어냈습니다.
-          </p>
+          <p class="case-desc">가해자가 투자를 빙자하여 자금을 개인 용도로 사용했음을 입증하는 것이 관건이었습니다. 리더스는 계좌 분석을 통해 자금의 최종 목적지가 개인 도박 사이트임을 밝혀냈습니다.</p>
           <div class="case-result">결과: 가해자 구속 기소 및 실형 확정</div>
         </article>
 
@@ -112,9 +41,7 @@ cta_desc: "수사관의 시각에서 사건을 분석하여 상대방의 죄를 
             <div class="info-item"><span>사건요약</span><strong>커뮤니티 내 지속적 비방 게시물</strong></div>
             <div class="info-item"><span>핵심전략</span><strong>디지털 증거 확보 및 특정인 식별</strong></div>
           </div>
-          <p class="case-desc">
-            익명 뒤에 숨은 가해자를 특정하기 위해 IP 추적 근거와 피해자의 사회적 가치 훼손 여부를 법리적으로 소명했습니다. 수사관이 즉시 영장을 신청할 수 있도록 정돈된 증거 목록을 제출하여 <strong>가해자 특정 성공 후 상당액의 합의금</strong>으로 사건을 마무리했습니다.
-          </p>
+          <p class="case-desc">익명 뒤에 숨은 가해자를 특정하기 위해 IP 추적 근거와 피해자의 가치 훼손 여부를 법리적으로 소명하여 가해자 특정 후 상당액의 합의금을 이끌어냈습니다.</p>
           <div class="case-result">결과: 피의자 특정 및 피해 보상 합의</div>
         </article>
 
@@ -125,9 +52,7 @@ cta_desc: "수사관의 시각에서 사건을 분석하여 상대방의 죄를 
             <div class="info-item"><span>사건요약</span><strong>경리 직원의 공금 3억 원 횡령</strong></div>
             <div class="info-item"><span>핵심전략</span><strong>회계 장부 전수조사 및 범행 은폐 입증</strong></div>
           </div>
-          <p class="case-desc">
-            장부를 조작하여 다년간 횡령을 이어온 직원을 대상으로 고소를 진행했습니다. 단순 횡령이 아닌 업무상 임무 위배와 상습성을 입증하는 고소 의견서를 작성하여 수사 과정에서 <strong>범죄 수익 은닉 정황까지 추가로 확보</strong>, 피해액 환수의 근거를 마련했습니다.
-          </p>
+          <p class="case-desc">단순 횡령이 아닌 업무상 임무 위배와 상습성을 입증하는 고소 의견서를 작성하여 수사 과정에서 범죄 수익 은닉 정황까지 추가로 확보했습니다.</p>
           <div class="case-result">결과: 기소의견 송치 및 추징보전 인용</div>
         </article>
 
@@ -137,21 +62,9 @@ cta_desc: "수사관의 시각에서 사건을 분석하여 상대방의 죄를 
         <div class="leaders-insight-content">
           <span class="leaders-insight-tag">The Leadership Advantage</span>
           <h2 class="leaders-insight-title">“고소장의 질이 수사의 방향을 결정합니다.”</h2>
-          <p class="leaders-insight-desc">
-            수사관은 증거가 불충분하거나 법리가 어긋난 고소장에 긴 시간을 할애하지 않습니다. 
-            <strong>전직 검찰수사관</strong>들이 직접 작성한 리더스의 고소장은 수사관이 읽는 즉시 '범죄 구성 요건'을 파악하게 하여, 사건이 방치되지 않고 <strong>가장 빠른 속도로 진행</strong>되도록 합니다.
-          </p>
+          <p class="leaders-insight-desc">전직 검찰수사관들이 직접 작성한 고소장은 수사관이 읽는 즉시 범죄 요건을 파악하게 하여, 사건이 가장 빠른 속도로 진행되게 합니다.</p>
         </div>
       </div>
     </div>
   </section>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
-  });
-</script>

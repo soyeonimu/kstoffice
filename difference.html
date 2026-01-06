@@ -74,20 +74,29 @@ description: 형사 사건 발생 시 신고와 고소 중 무엇을 선택해�
       </article>
     </div>
 
-    <div class="pro-tip js-reveal">
-      <div class="tip-inner">
+    <div class="pro-tip-container js-reveal">
+      <div class="tip-content">
         <span class="tip-badge">검찰수사관 출신의 Insight</span>
-        <h3>"수사관은 잘 정리된 고소장에 먼저 손이 갑니다."</h3>
-        <p>
+        <h3 class="tip-title">"수사관은 잘 정리된 고소장에 먼저 손이 갑니다."</h3>
+        <p class="tip-text">
           수천 건의 사건을 다루는 수사관에게 법리적으로 완벽한 고소장을 제출하는 것은 사건 진행 속도를 높이는 핵심적인 방법입니다. 
-          리더스가 그 속도를 만들어 드립니다.
+          리더스가 <strong>수사기관의 시각</strong>에서 그 속도를 만들어 드립니다.
         </p>
       </div>
     </div>
 
-    {% include cta-box.html 
-       title="내 상황에 맞는 법적 대응, 상담이 먼저입니다." 
-       desc="신고로 끝낼지, 정식 고소를 진행할지 고민되시나요? 수사 흐름을 정확히 아는 법무사가 직접 최적의 전략을 제시해 드립니다." %}
+    <div class="cta-box-simple js-reveal">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h3>내 상황에 맞는 법적 대응, 상담이 먼저입니다.</h3>
+          <p>신고로 끝낼지, 정식 고소를 진행할지 고민되시나요? 최적의 전략을 제시해 드립니다.</p>
+        </div>
+        <div class="cta-btns">
+          <a href="/check" class="btn-white">1분 자격진단</a>
+          <a href="tel:02-1234-5678" class="btn-outline">전화 상담</a>
+        </div>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -101,6 +110,7 @@ description: 형사 사건 발생 시 신고와 고소 중 무엇을 선택해�
     --border-color: #e2e8f0;
   }
 
+  /* 섹션 레이아웃 (상단 여백 통일) */
   .comparison-section { 
     background: var(--bg-gray); 
     padding: calc(var(--header-h) + 60px) 20px 100px; 
@@ -108,11 +118,13 @@ description: 형사 사건 발생 시 신고와 고소 중 무엇을 선택해�
   }
   .container { max-width: 1000px; margin: 0 auto; }
 
+  /* Page Head */
   .page-head { text-align: center; margin-bottom: 50px; }
   .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.15em; margin-bottom: 12px; }
   .page-title { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-dark); margin-bottom: 20px; letter-spacing: -0.02em; }
   .page-desc { color: var(--text-slate); line-height: 1.8; font-size: 1.1rem; }
 
+  /* Table Card */
   .table-card {
     background: #fff; border-radius: 24px; padding: 10px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.06); overflow: hidden;
@@ -126,30 +138,54 @@ description: 형사 사건 발생 시 신고와 고소 중 무엇을 선택해�
   td.label { font-weight: 800; color: var(--text-dark); background: #fcfcfc; text-align: center; width: 22%; }
   td strong { color: var(--primary-blue); }
 
-  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px; }
+  /* Detail Cards */
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
   .detail-card { background: #fff; padding: 35px; border-radius: 20px; border: 1px solid var(--border-color); }
   .detail-title { font-size: 1.25rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; border-left: 4px solid var(--primary-blue); padding-left: 15px; }
   .detail-card p { font-size: 15px; color: var(--text-slate); line-height: 1.7; word-break: keep-all; }
 
-  .pro-tip { 
-    background: #1a1c1e; border-radius: 24px; padding: 50px; 
-    color: #fff; text-align: center; margin-bottom: 60px;
+  /* Insight Section (밝은 톤) */
+  .pro-tip-container {
+    background: #f1f5f9; 
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px; 
+    border: 1px solid #e2e8f0;
   }
-  .tip-badge { 
-    display: inline-block; background: var(--primary-blue); 
-    padding: 6px 15px; border-radius: 99px; font-size: 13px; 
-    font-weight: 700; margin-bottom: 20px;
+  .tip-badge {
+    display: inline-block; background: var(--primary-blue); color: #fff;
+    padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 700; margin-bottom: 25px;
   }
-  .pro-tip h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 15px; }
-  .pro-tip p { color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 650px; margin: 0 auto; }
+  .tip-title { font-size: clamp(1.4rem, 4vw, 1.8rem); font-weight: 850; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.04em; }
+  .tip-text { font-size: 1.1rem; color: #475569; line-height: 1.8; max-width: 700px; margin: 0 auto; word-break: keep-all; }
 
+  /* CTA Section (어두운 톤) */
+  .cta-box-simple {
+    background: #111827; border-radius: 24px; padding: 50px 40px; color: #fff;
+  }
+  .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+  .cta-text { text-align: left; }
+  .cta-text h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+  .cta-text p { color: rgba(255,255,255,0.7); font-size: 1.05rem; }
+  .cta-btns { display: flex; gap: 12px; flex-shrink: 0; }
+  .btn-white { background: #fff; color: #111827; padding: 16px 32px; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.2s; }
+  .btn-white:hover { background: #f3f4f6; transform: translateY(-2px); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+
+  /* Reveal Animation */
   .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.7s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 768px) {
+  @media (max-width: 850px) {
     .comparison-section { padding-top: calc(var(--header-h) + 30px); }
     .detail-grid { grid-template-columns: 1fr; }
-    td.label { width: 30%; font-size: 14px; }
+    .cta-inner { flex-direction: column; text-align: center; gap: 30px; }
+    .cta-text { text-align: center; }
+    .cta-btns { width: 100%; flex-direction: column; }
+    .btn-white, .btn-outline { width: 100%; text-align: center; }
   }
 </style>
 

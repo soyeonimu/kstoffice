@@ -1093,157 +1093,298 @@ caption {
   );
 }
 
-/* ===== 1. 전역 및 레이아웃 ===== */
+/* 통합 스타일시트: 다크 그레이 톤업데이트 
+  - 헤더/푸터 색상 통일 (#1a1c1e)
+  - 중복 선언 제거 및 최신 수치 적용
+*/
+
+/* ===== 1. 전역 변수 (색상 및 규격) ===== */
 :root {
-  --theme-dark-bg: #1a1c1e;
-  --header-h: 76px;
+  --theme-dark-bg: #1a1c1e;         /* ✅ 헤더/푸터 공통 다크 그레이 */
+  --theme-border: rgba(255, 255, 255, 0.08);
+  --header-h: 76px;                 /* ✅ 최신 헤더 높이 */
+  --text-main: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.65);
+  --accent-blue: #0a3871;           /* 포인트 컬러 */
 }
 
-body { padding-top: var(--header-h); margin: 0; font-family: 'Pretendard', sans-serif; }
+/* 본문 영역 확보 */
+body {
+  padding-top: var(--header-h);
+  margin: 0;
+  font-family: 'Pretendard', sans-serif; /* 기본 폰트 설정 권장 */
+}
 
-/* ===== 2. 헤더 (Header) - 레이아웃 강제 고정 ===== */
+/* ===== 2. 헤더 (Header) ===== */
 .site-header {
-  position: fixed !important; top: 0; left: 0; right: 0;
-  height: var(--header-h) !important; z-index: 10000 !important;
-  background: var(--theme-dark-bg) !important;
-  display: flex !important; align-items: center !important;
-  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  z-index: 10000;
+  background: var(--theme-dark-bg);
+  border-bottom: 1px solid var(--theme-border);
+  backdrop-filter: blur(12px);
+  padding: 0 32px;
+  transform: translateY(0);
+  transition: transform .22s ease;
+}
+
+.site-header.header--hidden {
+  transform: translateY(-110%);
 }
 
 .header-inner {
-  display: flex !important; 
-  flex-direction: row !important; /* 가로 정렬 강제 */
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important; max-width: 1200px !important;
-  margin: 0 auto !important; padding: 0 20px !important;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* 메뉴 리스트 가로 정렬 복구 */
+/* 로고 영역 */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 최신 간격 보정 */
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.logo-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* 네비게이션 (GNB) */
 .gnb-list {
-  display: flex !important;
-  flex-direction: row !important; /* 세로로 쌓이는 문제 해결 */
-  gap: 30px !important;
-  list-style: none !important;
-  margin: 0 !important; padding: 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.gnb-list a {
-  color: var(--text-muted) !important;
-  font-size: 15px !important;
-  font-weight: 500 !important;
-  text-decoration: none !important;
+.gnb-list > li > a {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 12px 8px;
+  text-decoration: none;
+  transition: color .2s ease;
 }
 
-/* 로고 크기 고정 */
-.site-header .logo-img {
-  width: 42px !important; height: 42px !important;
+.gnb-list > li > a:hover {
+  color: var(--text-main);
 }
 
-/* ===== 3. 푸터 (Footer) - 슬림 & 높이 축소 ===== */
-footer.site-footer {
-  background-color: var(--theme-dark-bg) !important;
-  padding: 20px 0 !important; /* 높이 대폭 축소 */
-  border-top: 1px solid rgba(255,255,255,0.08) !important;
+/* 드롭다운 (Sub Menu) */
+.has-sub { position: relative; }
+.sub {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 190px;
+  background: #25282b; /* 배경보다 살짝 밝은 그레이 */
+  border: 1px solid var(--theme-border);
+  border-radius: 10px;
+  padding: 8px 0;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  list-style: none;
+}
+
+.has-sub:hover .sub { display: block; }
+
+.sub li a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 14.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.sub li a:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+/* ===== 3. 공통 버튼 스타일 (CTA) ===== */
+.cta-btn, .footer-phone, .footer-kakao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all .15s ease;
+}
+
+/* 다크 타입 버튼 (전화 등) */
+.cta-btn, .footer-phone {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* 라이트 타입 버튼 (상담 등) */
+.footer-kakao {
+  background: #fff;
+  color: var(--accent-blue);
+}
+
+.cta-btn:hover, .footer-phone:hover, .footer-kakao:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* ===== 4. 푸터 (Footer) ===== */
+.site-footer {
+  background: var(--theme-dark-bg);
+  border-top: 1px solid var(--theme-border);
+  color: var(--text-muted);
+  padding: 50px 20px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-top {
-  display: flex !important; 
-  justify-content: space-between !important;
-  align-items: center !important;
-  margin-bottom: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* 푸터 정보 텍스트 슬림화 */
-footer.site-footer .footer-info p {
-  font-weight: 400 !important;
-  font-size: 0.85rem !important;
-  color: var(--text-muted) !important;
-  margin: 2px 0 !important; /* 줄간격 밀착 */
-  line-height: 1.4 !important;
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
 
-/* 푸터 버튼 디자인 고정 */
-footer.site-footer .footer-cta { display: flex !important; gap: 8px !important; }
-footer.site-footer .footer-cta a {
-  display: inline-flex !important; align-items: center; justify-content: center;
-  height: 34px !important; padding: 0 15px !important;
-  border-radius: 6px !important; font-size: 13px !important;
-  text-decoration: none !important;
+.footer-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
 }
 
-/* 버튼 색상 */
-footer.site-footer .btn-online, footer.site-footer .footer-kakao {
-  background: #ffffff !important; color: #1a1c1e !important; font-weight: 700 !important;
-}
-footer.site-footer .btn-tel, footer.site-footer .footer-phone {
-  background: rgba(255,255,255,0.1) !important; color: #fff !important;
-}
-
-/* 본문 설명글 볼드 해제 */
-.page-desc, .info-txt, .career-text p {
-  font-weight: 400 !important;
-  color: #475569 !important;
-}
-/* 1. 헤더 전체 컨테이너 정렬 강제 */
-.site-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 76px !important;
-    display: flex !important;
-    align-items: center !important;
-    z-index: 10000 !important;
-    background: #1a1c1e !important; /* 배경색 유실 방지 */
+.footer-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
 }
 
-/* 2. 내부 요소(로고-메뉴) 양끝 정렬 복구 */
-.header-inner {
-    display: flex !important;
-    flex-direction: row !important; /* 가로 정렬 강제 */
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 20px !important;
+.footer-cta {
+  display: flex;
+  gap: 10px;
 }
 
-/* 3. [핵심] 메뉴 리스트 가로 정렬 강제 */
-.gnb-list {
-    display: flex !important;
-    flex-direction: row !important; /* 세로로 쌓이는 문제 해결 */
-    align-items: center !important;
-    gap: 30px !important; /* 메뉴 간 간격 */
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
+.footer-divider {
+  height: 1px;
+  background: var(--theme-border);
+  margin: 25px 0;
 }
 
-/* 4. 메뉴 텍스트 스타일 보호 */
-.gnb-list li {
-    display: block !important;
-    margin: 0 !important;
+.footer-info p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
-.gnb-list a {
-    color: rgba(255, 255, 255, 0.65) !important;
-    text-decoration: none !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    white-space: nowrap !important; /* 줄바꿈 방지 */
-    transition: 0.2s;
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
 }
 
-.gnb-list a:hover {
-    color: #ffffff !important;
+/* ===== 5. 섹션 및 히어로 여백 ===== */
+.hero { padding-top: 120px; }
+.hero-content { max-width: 1200px; padding-left: 80px; }
+.section, .hero--slice { margin-top: 80px; }
+
+/* ===== 6. 반응형 (Media Queries) ===== */
+@media (max-width: 900px) {
+  :root { --header-h: 64px; }
+  .site-header { padding: 0 18px; }
+  .gnb, .logo-sub { display: none; } /* 모바일 메뉴는 별도 구현 필요 */
+  .logo-title { font-size: 16px; }
 }
 
-/* 5. 로고 이미지 크기 고정 */
-.site-header .logo-img {
-    width: 42px !important;
-    height: 42px !important;
-    display: block !important;
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; align-items: flex-start; }
+  .footer-cta { width: 100%; }
+  .footer-cta a { flex: 1; }
+}
+/* =====================================================
+   [최종 수정] 페이지 상단 시작 지점 및 여백 통일
+   ===================================================== */
+
+/* 1. 모든 페이지 첫 섹션의 상단 여백 강제 고정 */
+.check-section,
+.diff-section,
+.faq-section,
+.price-section,
+.procedure-section,
+.success-cases,
+.rehabilitation-cases,
+.info-section-container,
+.home-complaint-section,
+.home-rehabilitation-section {
+  /* 헤더 높이(76px) + 여유 여백(60px) */
+  padding-top: calc(var(--header-h) + 60px) !important;
+  padding-bottom: 100px !important;
+  min-height: 60vh;
+}
+
+/* 2. 제목 영역 마진 정리 (위아래 덜컹거림 방지) */
+.page-head, 
+.price-title, 
+.info-title, 
+.page-title,
+.home-section-title {
+  margin-top: 0 !important;
+  margin-bottom: 50px !important;
+  text-align: center;
+}
+
+/* 3. 모바일 환경(768px 이하) 대응 */
+@media (max-width: 768px) {
+  .check-section,
+  .diff-section,
+  .faq-section,
+  .price-section,
+  .procedure-section,
+  .success-cases,
+  .rehabilitation-cases,
+  .info-section-container {
+    /* 모바일 헤더(64px) + 여유 여백(30px) */
+    padding-top: calc(var(--header-h) + 30px) !important;
+    padding-bottom: 60px !important;
+  }
+  
+  .page-title, .price-title, .info-title {
+    margin-bottom: 30px !important;
+    font-size: 1.8rem !important;
+  }
 }

@@ -1101,7 +1101,7 @@ caption {
 
 /* ===== 1. 전역 변수 및 본문 기본 설정 ===== */
 :root {
-  --theme-dark-bg: #1a1c1e;
+  --theme-dark-bg: #dfe3ea;
   --theme-border: rgba(255, 255, 255, 0.08);
   --header-h: 80px; /* 메뉴가 커짐에 따라 헤더 높이 살짝 보정 */
   --text-main: #ffffff;

@@ -1266,3 +1266,59 @@ body {
   font-weight: 400 !important;
   color: #475569 !important;
 }
+/* 푸터 전체 높이 및 상하 여백 최소화 */
+.site-footer, #footer {
+    background-color: #1a1c1e !important;
+    padding: 25px 20px !important; /* 상하 여백을 확 줄임 */
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 상단 라인(로고/버튼 영역) 간격 축소 */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px !important; /* 하단 정보와의 간격 축소 */
+}
+
+/* 로고와 상호명 사이 간격 및 크기 조절 */
+.site-footer .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.site-footer .footer-logo {
+    width: 28px !important; /* 로고 사이즈 살짝 더 축소 */
+    height: auto !important;
+    margin: 0 !important;
+}
+
+.site-footer .footer-name {
+    margin: 0 !important;
+    font-size: 0.95rem !important;
+}
+
+/* 푸터 정보(주소 등) 줄간격 및 마진 최소화 */
+.site-footer .footer-info p {
+    margin: 2px 0 !important; /* 줄 사이 간격 거의 없앰 */
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+}
+
+/* 구분선 마진 축소 */
+.footer-divider {
+    margin: 15px 0 !important;
+    opacity: 0.1;
+}
+
+/* 카피라이트 영역 밀착 */
+.footer-bottom {
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+    font-size: 0.75rem !important;
+}

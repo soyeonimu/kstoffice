@@ -1602,3 +1602,28 @@ body { padding-top: 0 !important; }
   filter: brightness(0) invert(1);
   image-rendering: -webkit-optimize-contrast;
 }
+/* 서브메뉴 위치 기준 */
+.gnb-list > li.has-sub { position: relative; }
+
+/* 기본은 숨김 */
+.gnb-list > li.has-sub > .sub {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999; /* 중요: 다른 요소에 가리지 않게 */
+}
+
+/* PC: li에 hover 또는 focus-within(키보드/클릭 포커스)일 때 열기 */
+@media (min-width: 1024px) {
+  .gnb-list > li.has-sub:hover > .sub,
+  .gnb-list > li.has-sub:focus-within > .sub {
+    display: block;
+  }
+}
+
+/* 서브메뉴 위로 마우스 이동해도 hover 유지되도록(간격 문제 방지) */
+@media (min-width: 1024px) {
+  .gnb-list > li.has-sub > a { padding-bottom: 16px; }
+  .gnb-list > li.has-sub > .sub { margin-top: 0; }
+}

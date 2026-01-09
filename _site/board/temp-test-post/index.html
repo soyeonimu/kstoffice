@@ -8,50 +8,62 @@
   <meta name="description" content="김성태 법무사 사무소 홈페이지가 새롭게 리뉴얼되었습니다. 개인회생, 파산, 고소장 등 최신 법률 정보를 확인하세요.">
   <meta name="author" content="김성태 법무사" />
 
-  <!-- 기본 스타일시트 연결 (필요시 외부 CSS로 분리 가능) -->
   <link rel="stylesheet" href="/assets/css/style.css">
-
-
-  <!-- 파비콘 -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Open Graph (SNS 공유용) -->
   <meta property="og:title" content="김성태 법무사 사무소 홈페이지 리뉴얼 안내 (2025년 최신)" />
   <meta property="og:description" content="김성태 법무사 사무소 홈페이지가 새롭게 리뉴얼되었습니다. 개인회생, 파산, 고소장 등 최신 법률 정보를 확인하세요." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://localhost:4000/board/temp-test-post/" />
   <meta property="og:image" content="/og-image.jpg" />
 </head>
+
 <body>
 
   <header class="site-header" id="siteHeader">
   <div class="header-inner">
+    <!-- 로고 -->
     <div class="logo">
-      <a href="/" class="logo-link" aria-label="홈으로">
-        <img src="/logo.png" alt="로고" class="logo-img" />
-        <div class="logo-text">
-          <span class="logo-title">리더스 합동 법무사 사무소</span>
-        </div>
+      <a href="/" class="logo-link" aria-label="리더스 합동 법무사 사무소 홈으로">
+        <img
+          src="/assets/img/logo/F_logo.svg"
+          alt="리더스 합동 법무사 사무소"
+          class="logo-img"
+        />
+
       </a>
     </div>
 
-    <nav class="gnb" aria-label="주요 메뉴">
+    <!-- 모바일 메뉴 버튼 -->
+    <button
+      type="button"
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="전체 메뉴 열기"
+      aria-expanded="false"
+      aria-controls="gnb"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- GNB -->
+    <nav class="gnb" id="gnb" aria-label="주요 메뉴">
       <ul class="gnb-list">
-        
-        <!-- 소개 -->
         <li class="has-sub">
-          <a href="/team" aria-haspopup="true">소개</a>
+          <a href="/team">리더스 소개</a>
           <ul class="sub">
             <li><a href="/team">구성원 소개</a></li>
+            <li><a href="/services">업무분야</a></li>
             <li><a href="/location">오시는 길</a></li>
           </ul>
         </li>
 
-        <!-- 고소장 작성 -->
         <li class="has-sub">
-          <a href="/complaint" aria-haspopup="true">고소장 작성</a>
+          <a href="/complaint">형사사건</a>
           <ul class="sub">
-            <li><a href="/complaint">안내</a></li>
+            <li><a href="/complaint">고소장 작성</a></li>
             <li><a href="/process">절차</a></li>
             <li><a href="/cases-complaint">사례</a></li>
             <li><a href="/difference">신고 vs 고소</a></li>
@@ -60,9 +72,8 @@
           </ul>
         </li>
 
-        <!-- 개인회생·파산 -->
         <li class="has-sub">
-          <a href="/what-is" aria-haspopup="true">개인회생·파산</a>
+          <a href="/what-is">개인회생·파산</a>
           <ul class="sub">
             <li><a href="/what-is">개인회생 안내</a></li>
             <li><a href="/procedure">개인회생 절차</a></li>
@@ -71,21 +82,38 @@
             <li><a href="/faq">FAQ</a></li>
           </ul>
         </li>
-
-        <!-- 온라인상담 -->
         <li class="has-sub">
-          <a href="/chat" aria-haspopup="true">온라인상담</a>
+          <a href="#" onclick="event.preventDefault();">등기</a>
           <ul class="sub">
-            <li><a href="/check">개인회생 자가진단</a></li>
-            <li><a href="/chat">AI 상담</a></li>
+            <li><a href="/registry/realestate">부동산 등기</a></li>
+            <li><a href="/registry/corporate">법인 등기</a></li>
+            <li><a href="/registry/inheritance">상속 등기</a></li>
           </ul>
         </li>
-        <!--  단독 게시판  -->
+        
+        <li class="has-sub">
+          <a href="#" onclick="event.preventDefault();">민사소송</a>
+          <ul class="sub">
+            <li><a href="/civil/complaint">소장</a></li>
+            <li><a href="/civil/brief">준비서면</a></li>
+            <li><a href="/civil/answer">답변서</a></li>
+            <li><a href="/civil/payment-order">지급명령</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/international-divorce">국제이혼</a>
+        </li>
+        <li class="has-sub">
+          <a href="/chat">온라인상담</a>
+          <ul class="sub">
+            <li><a href="/chat">AI상담</a></li>
+            <li><a href="/check">개인회생 자가진단</a></li>
+          </ul>
+        </li>
+
         <li>
           <a href="/board">법률정보</a>
         </li>
-
-
       </ul>
     </nav>
   </div>
@@ -93,24 +121,24 @@
 
 
   <main>
-    <section class="post-detail-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
-  <div class="container" style="max-width: 850px; margin: 0 auto; padding: 0 20px;">
+    <section class="post-detail-section" style="background-color: #f8fafc; min-height: 100vh; padding: 60px 0 100px;">
+  <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 24px;">
     
-    <header class="post-header js-reveal" style="text-align: center; margin-bottom: 50px;">
+    <header class="post-header" style="text-align: center; margin-bottom: 40px;">
       <div style="margin-bottom: 15px;">
-        <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 6px;">
+        <span class="post-tag" style="background: #e2e8f0; color: #475569; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 4px;">
           공지사항
         </span>
       </div>
-      <h1 class="post-title" style="font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.03em; line-height: 1.4;">
+      <h1 class="post-title" style="font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; color: #0f172a; margin-bottom: 15px; letter-spacing: -0.03em; line-height: 1.3;">
         김성태 법무사 사무소 홈페이지 리뉴얼 안내 (2025년 최신)
       </h1>
-      <div style="color: #64748b; font-size: 14px; font-weight: 500;">
+      <div style="color: #94a3b8; font-size: 14px;">
         2025.07.31
       </div>
     </header>
 
-    <article class="post-content js-reveal" style="background: #fff; padding: 60px 50px; border-radius: 24px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
+    <article class="post-content" style="background: #fff; padding: 50px; border-radius: 16px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; font-size: 1.1rem;">
       <div class="inner-content" style="word-break: keep-all;">
         <p>안녕하세요, <strong>김성태 법무사 사무소</strong>입니다.</p>
 
@@ -140,8 +168,8 @@
       </div>
     </article>
 
-    <footer class="post-footer js-reveal" style="margin-top: 50px; text-align: center;">
-      <a href="/board" class="back-btn" style="text-decoration: none; background: #0a3871; color: #fff; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; display: inline-block; transition: 0.3s;">
+    <footer class="post-footer" style="margin-top: 40px; text-align: center;">
+      <a href="/board" class="back-btn" style="text-decoration: none; border: 1px solid #cbd5e1; color: #64748b; padding: 12px 30px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; display: inline-block; transition: 0.2s;">
         목록으로 돌아가기
       </a>
     </footer>
@@ -150,50 +178,79 @@
 </section>
 
 <style>
-  /* 본문 내 이미지와 제목 스타일 조정 */
-  .post-content img { max-width: 100%; border-radius: 12px; margin: 30px 0; }
-  .post-content h2 { font-size: 1.6rem; color: #1e293b; margin-top: 50px; margin-bottom: 20px; border-left: 4px solid #0a3871; padding-left: 15px; }
-  .post-content h3 { font-size: 1.3rem; color: #1e293b; margin-top: 35px; }
+  /* 본문 내 스타일 정의 */
+  .post-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 25px 0; display: block; }
+  
+  /* 제목 스타일: 너무 튀지 않으면서 구분되게 */
+  .post-content h2 { font-size: 1.6rem; color: #0f172a; margin-top: 45px; margin-bottom: 20px; font-weight: 700; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+  .post-content h3 { font-size: 1.3rem; color: #0f172a; margin-top: 35px; font-weight: 700; }
   .post-content p { margin-bottom: 20px; }
   
-  .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(10, 56, 113, 0.2); }
+  /* 리스트 스타일 추가 */
+  .post-content ul, .post-content ol { margin-bottom: 25px; padding-left: 20px; }
+  .post-content li { margin-bottom: 8px; }
 
-  /* 애니메이션 */
-  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .back-btn:hover { background: #f8fafc; color: #0f172a; border-color: #94a3b8; }
 
   @media (max-width: 768px) {
-    .post-content { padding: 40px 25px; font-size: 1.05rem; }
-    .post-header { margin-bottom: 35px; }
+    .post-detail-section { padding-top: 40px; }
+    .post-content { padding: 30px 20px; font-size: 1rem; border-radius: 0; border-left: none; border-right: none; }
+    .post-header { padding: 0 10px; }
   }
 </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
-  });
-</script>
-
   </main>
+
+  <!-- 사이드 바로가기 버튼 -->
+<div class="side-links">
+
+  <!-- PC용 -->
+  <a href="https://blog.naver.com/mae6885"
+     target="_blank"
+     class="side-btn side-btn--blog">
+    블로그
+  </a>
+
+  <a href="https://www.youtube.com/@유튜브주소"
+     target="_blank"
+     class="side-btn side-btn--youtube">
+    유튜브
+  </a>
+
+  <!-- 모바일 전화 버튼 (페이지별 분기) -->
+  
+    <a href="tel:0312256885" class="side-btn side-btn--call">전화상담</a>
+  
+
+</div>
 
   <footer class="site-footer">
   <div class="footer-inner">
 
     <div class="footer-top">
       <a class="footer-brand" href="/">
-        <img class="footer-logo" src="/logo.png" alt="리더스 합동 법무사 사무소 로고">
-        <span class="footer-name">리더스 합동 법무사 사무소</span>
+        <img class="footer-logo" src="assets/img/logo/F_logo.svg" alt="리더스 합동 법무사 사무소 로고">
+
+        
       </a>
 
       <div class="footer-contact">
-        <span class="contact-label">전화상담</span>
-        <a href="tel:0312256885" class="contact-number">031-225-6885</a>
+
+        <div class="contact-item">
+          <span class="contact-label">형사·민사·개인회생</span>
+          <a href="tel:0312256885" class="contact-number">
+            031-225-6885
+          </a>
+        </div>
+
+        <div class="contact-item contact-item--intl">
+          <span class="contact-label">국제이혼 전용</span>
+          <a href="tel:0312156883" class="contact-number contact-number--intl">
+            031-215-6883
+          </a>
+        </div>
+
       </div>
     </div>
-
     <div class="footer-divider"></div>
 
     <div class="footer-info">
@@ -220,42 +277,88 @@
   </div>
 </footer>
 
-<script>
-  (function () {
-    const header = document.getElementById('siteHeader');
-    if (!header) return;
 
-    let lastY = window.scrollY;
-    let ticking = false;
+  <!-- ✅ 헤더 스크롤 숨김/표시 -->
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      if (!header) return;
 
-    function onScroll() {
-      const y = window.scrollY;
+      let lastY = window.scrollY;
+      let ticking = false;
 
-      // 맨 위 근처에서는 항상 보이게
-      if (y < 10) {
-        header.classList.remove('header--hidden');
+      function onScroll() {
+        const y = window.scrollY;
+
+        if (y < 10) {
+          header.classList.remove('header--hidden');
+          lastY = y;
+          return;
+        }
+
+        if (y > lastY + 8) header.classList.add('header--hidden');
+        else if (y < lastY - 8) header.classList.remove('header--hidden');
+
         lastY = y;
-        return;
       }
 
-      // 아래로 스크롤 => 숨김 / 위로 스크롤 => 보임
-      if (y > lastY + 8) header.classList.add('header--hidden');
-      else if (y < lastY - 8) header.classList.remove('header--hidden');
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            onScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
 
-      lastY = y;
-    }
+  <!-- ✅ 모바일 메뉴 + 서브메뉴 토글 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("menuToggle");
+      const gnb = document.getElementById("gnb");
+      if (!btn || !gnb) return;
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          onScroll();
-          ticking = false;
+      // 전체 메뉴 열기/닫기
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = gnb.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      // 모바일에서 서브메뉴 토글
+      gnb.querySelectorAll("li.has-sub > a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (window.innerWidth > 1024) return; // PC는 링크 동작 유지
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          const li = link.parentElement;
+          li.classList.toggle("sub-open");
         });
-        ticking = true;
-      }
-    }, { passive: true });
-  })();
-</script>
+      });
+
+      // 메뉴 바깥 클릭하면 닫기
+      document.addEventListener("click", (e) => {
+        if (!gnb.classList.contains("is-open")) return;
+        if (btn.contains(e.target) || gnb.contains(e.target)) return;
+
+        gnb.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
+        gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
+      });
+
+      // 화면이 커지면 열린 서브 정리
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1024) {
+          gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

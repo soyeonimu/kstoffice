@@ -4,54 +4,66 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>리더스 합동 법무사 사무소 | 수원·용인 개인회생·파산·고소장 전문</title>
-  <meta name="description" content="검찰 20년 경력의 전문성으로 수원, 용인 지역 개인회생, 파산, 고소장 작성을 도와드립니다. 검찰수사관 출신 법무사의 정교한 솔루션.">
+  <title>리더스 합동 법무사 사무소 | 검찰 20년 실무의 격이 다른 솔루션</title>
+  <meta name="description" content="김성태 법무사 사무소 - 수원·용인·화성 지역 개인회생·파산·고소장 상담 전문">
   <meta name="author" content="김성태 법무사" />
 
-  <!-- 기본 스타일시트 연결 (필요시 외부 CSS로 분리 가능) -->
   <link rel="stylesheet" href="/assets/css/style.css">
-
-
-  <!-- 파비콘 -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Open Graph (SNS 공유용) -->
-  <meta property="og:title" content="리더스 합동 법무사 사무소 | 수원·용인 개인회생·파산·고소장 전문" />
-  <meta property="og:description" content="검찰 20년 경력의 전문성으로 수원, 용인 지역 개인회생, 파산, 고소장 작성을 도와드립니다. 검찰수사관 출신 법무사의 정교한 솔루션." />
+  <meta property="og:title" content="리더스 합동 법무사 사무소 | 검찰 20년 실무의 격이 다른 솔루션" />
+  <meta property="og:description" content="수원·용인·화성 지역 법률상담 전문 법무사. 친절하고 신속한 법률서비스 제공." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://localhost:4000/" />
   <meta property="og:image" content="/og-image.jpg" />
 </head>
+
 <body>
 
   <header class="site-header" id="siteHeader">
   <div class="header-inner">
+    <!-- 로고 -->
     <div class="logo">
-      <a href="/" class="logo-link" aria-label="홈으로">
-        <img src="/logo.png" alt="로고" class="logo-img" />
-        <div class="logo-text">
-          <span class="logo-title">리더스 합동 법무사 사무소</span>
-        </div>
+      <a href="/" class="logo-link" aria-label="리더스 합동 법무사 사무소 홈으로">
+        <img
+          src="/assets/img/logo/F_logo.svg"
+          alt="리더스 합동 법무사 사무소"
+          class="logo-img"
+        />
+
       </a>
     </div>
 
-    <nav class="gnb" aria-label="주요 메뉴">
+    <!-- 모바일 메뉴 버튼 -->
+    <button
+      type="button"
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="전체 메뉴 열기"
+      aria-expanded="false"
+      aria-controls="gnb"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- GNB -->
+    <nav class="gnb" id="gnb" aria-label="주요 메뉴">
       <ul class="gnb-list">
-        
-        <!-- 소개 -->
         <li class="has-sub">
-          <a href="/team" aria-haspopup="true">소개</a>
+          <a href="/team">리더스 소개</a>
           <ul class="sub">
             <li><a href="/team">구성원 소개</a></li>
+            <li><a href="/services">업무분야</a></li>
             <li><a href="/location">오시는 길</a></li>
           </ul>
         </li>
 
-        <!-- 고소장 작성 -->
         <li class="has-sub">
-          <a href="/complaint" aria-haspopup="true">고소장 작성</a>
+          <a href="/complaint">형사사건</a>
           <ul class="sub">
-            <li><a href="/complaint">안내</a></li>
+            <li><a href="/complaint">고소장 작성</a></li>
             <li><a href="/process">절차</a></li>
             <li><a href="/cases-complaint">사례</a></li>
             <li><a href="/difference">신고 vs 고소</a></li>
@@ -60,9 +72,8 @@
           </ul>
         </li>
 
-        <!-- 개인회생·파산 -->
         <li class="has-sub">
-          <a href="/what-is" aria-haspopup="true">개인회생·파산</a>
+          <a href="/what-is">개인회생·파산</a>
           <ul class="sub">
             <li><a href="/what-is">개인회생 안내</a></li>
             <li><a href="/procedure">개인회생 절차</a></li>
@@ -71,21 +82,38 @@
             <li><a href="/faq">FAQ</a></li>
           </ul>
         </li>
-
-        <!-- 온라인상담 -->
         <li class="has-sub">
-          <a href="/chat" aria-haspopup="true">온라인상담</a>
+          <a href="#" onclick="event.preventDefault();">등기</a>
           <ul class="sub">
-            <li><a href="/check">개인회생 자가진단</a></li>
-            <li><a href="/chat">AI 상담</a></li>
+            <li><a href="/registry/realestate">부동산 등기</a></li>
+            <li><a href="/registry/corporate">법인 등기</a></li>
+            <li><a href="/registry/inheritance">상속 등기</a></li>
           </ul>
         </li>
-        <!--  단독 게시판  -->
+        
+        <li class="has-sub">
+          <a href="#" onclick="event.preventDefault();">민사소송</a>
+          <ul class="sub">
+            <li><a href="/civil/complaint">소장</a></li>
+            <li><a href="/civil/brief">준비서면</a></li>
+            <li><a href="/civil/answer">답변서</a></li>
+            <li><a href="/civil/payment-order">지급명령</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/international-divorce">국제이혼</a>
+        </li>
+        <li class="has-sub">
+          <a href="/chat">온라인상담</a>
+          <ul class="sub">
+            <li><a href="/chat">AI상담</a></li>
+            <li><a href="/check">개인회생 자가진단</a></li>
+          </ul>
+        </li>
+
         <li>
           <a href="/board">법률정보</a>
         </li>
-
-
       </ul>
     </nav>
   </div>
@@ -99,369 +127,488 @@
       <source src="/assets/video/main.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
-    
-    <div class="hero-container">
-      <div class="hero-badge js-reveal">PROVEN EXPERTISE</div>
+      <div class="hero-container">
+      <div class="hero-members-wrapper js-reveal">
+        <div class="hero-badge">검찰 20년 실무 경력 · 분야별 베테랑 실무진</div>
+        <div class="hero-members-group">
+          
+          
+          
+          <div class="member-item">
+            <div class="img-frame">
+              <img src="/assets/img/kim.png" alt="김성태 전문가">
+            </div>
+            <span class="member-name">김성태</span>
+          </div>
+          
+          <div class="member-item">
+            <div class="img-frame">
+              <img src="/assets/img/park.png" alt="박인복 전문가">
+            </div>
+            <span class="member-name">박인복</span>
+          </div>
+          
+          <div class="member-item">
+            <div class="img-frame">
+              <img src="/assets/img/lee.png" alt="이현구 전문가">
+            </div>
+            <span class="member-name">이현구</span>
+          </div>
+          
+          <div class="member-item">
+            <div class="img-frame">
+              <img src="/assets/img/hong.png" alt="홍의선 전문가">
+            </div>
+            <span class="member-name">홍의선</span>
+          </div>
+          
+        </div>
+      </div>
+
       <h1 class="hero-title js-reveal">
-        검찰 20년 경력의 통찰,<br>
-        <span class="text-gradient-gold">당신의 일상을 되찾는 힘</span>이 됩니다.
+        <span class="hero-kicker">
+          <span class="highlight-box">검찰 수사관 출신</span> 법무사는<br>
+          사건을 보는 <strong>'눈'</strong>이 다릅니다
+        </span><br>
+        <span class="text-gradient-gold">리더스 합동 법무사 사무소</span>
       </h1>
+
+      <div class="career-badges js-reveal">
+        <div class="badge-item">⚖️ 법무사 16년 실무 경험</div>
+        <div class="badge-item">🔍 검찰 수사 실무 기준의</div>
+        <div class="badge-item">🏛️ 전직 검찰 수사관 중심 사무소</div>
+      </div>
+
       <p class="hero-subtitle js-reveal">
-        수원·용인 지역 개인회생, 파산부터 정교한 고소장 작성까지<br>
-        실무 중심의 베테랑 법무사가 직접 사건을 진두지휘합니다.
+        단순 서류 대행이 아닙니다. 수사 흐름을 꿰뚫는 전략으로<br>
+        의뢰인의 일상을 가장 빠르게 회복시켜 드립니다.
       </p>
+
       <div class="hero-btns js-reveal">
-        <a href="tel:031-225-6885" class="btn-primary">전화 상담 : 031-225-6885</a>
-        <a href="https://naver.me/xwmIDcba" class="btn-secondary">1:1 맞춤 상담예약</a>
+        <a href="tel:031-123-4567" class="btn-primary">실무 전문가 직통 상담</a>
+        <a href="/location" class="btn-secondary">사무소 오시는 길</a>
       </div>
     </div>
   </section>
 
-  <section class="service-navigation js-reveal">
+  <section class="service-navigation">
     <div class="leaders-container">
-      
-      <div class="nav-row">
-        <div class="nav-topic-label">DEBT SOLUTION</div>
-        <div class="nav-grid">
-          <a href="/rehabilitation" class="nav-item main-work">
-            <div class="nav-info">
-              <span class="nav-tag">MAIN SERVICE</span>
-              <h3>개인회생 · 파산</h3>
-              <p>압류 해제 및 채무 탕감 솔루션</p>
-            </div>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="/cases" class="nav-item side-link">
-            <div class="nav-info">
-              <h3>회생 성공사례</h3>
-              <p>실제 인가 결정 데이터</p>
-            </div>
-          </a>
-          <a href="/faq" class="nav-item side-link">
-            <div class="nav-info">
-              <h3>회생 FAQ</h3>
-              <p>자주 묻는 질문</p>
-            </div>
-          </a>
-        </div>
-      </div>
+      <div class="service-grid">
+        <a href="/rehabilitation" class="service-card js-reveal">
+          <div class="card-content">
+            <span class="card-tag">채무 해결</span>
+            <h3>개인회생 · 파산</h3>
+            <p>막막한 채무, 수사관 출신의 치밀한 서류 준비로 기각 없는 면책을 지원합니다.</p>
+          </div>
+          <div class="card-footer">성공사례 보기 <span class="arrow">→</span></div>
+        </a>
 
-      <div class="nav-row">
-        <div class="nav-topic-label">CRIMINAL DEFENSE</div>
-        <div class="nav-grid">
-          <a href="/complaint" class="nav-item main-work">
-            <div class="nav-info">
-              <span class="nav-tag">MAIN SERVICE</span>
-              <h3>고소장 · 형사대응</h3>
-              <p>검찰 20년 경력의 전략적 대응</p>
-            </div>
-            <div class="nav-arrow">→</div>
-          </a>
-          <a href="/cases" class="nav-item side-link">
-            <div class="nav-info">
-              <h3>고소장 작성사례</h3>
-              <p>실제 사례</p>
-            </div>
-          </a>
-          <a href="/faq" class="nav-item side-link">
-            <div class="nav-info">
-              <h3>고소장 FAQ</h3>
-              <p>자주 묻는 질문</p>
-            </div>
-          </a>
-        </div>
-      </div>
+        <a href="/complaint" class="service-card highlight js-reveal">
+          <div class="card-content">
+            <span class="card-tag gold">검찰 실무 특화</span>
+            <h3>고소장 · 형사 대응</h3>
+            <p>검찰에서 쌓은 20년 노하우. 상대의 허점을 찌르는 전략적 고소장을 작성합니다.</p>
+          </div>
+          <div class="card-footer">실무 솔루션 보기 <span class="arrow">→</span></div>
+        </a>
 
+        <a href="/team" class="service-card js-reveal">
+          <div class="card-content">
+            <span class="card-tag">전문가 그룹</span>
+            <h3>리더스 구성원</h3>
+            <p>수원 법조타운의 중심, 각 분야 베테랑들이 당신의 든든한 조력자가 됩니다.</p>
+          </div>
+          <div class="card-footer">팀 프로필 보기 <span class="arrow">→</span></div>
+        </a>
+      </div>
     </div>
   </section>
-<section class="main-board js-reveal">
-  <div class="leaders-container">
-    <div class="board-header">
-      <div class="header-left">
-        <span class="sub-title">NEWS & NOTICE</span>
-        <h2>법률정보</h2>
+
+  <section class="main-board js-reveal">
+    <div class="leaders-container">
+      <div class="board-header">
+        <div class="title-area">
+          <span class="sub-title">Leaders Legal Report</span>
+          <h2>리더스 <strong>법률 정보 센터</strong></h2>
+        </div>
+        <a href="/board" class="btn-text-link">전체보기 +</a>
       </div>
-      <a href="/board" class="btn-text-link">전체보기 <span>+</span></a>
-    </div>
-
-    <div class="board-wrapper">
-      <div class="custom-board-list">
+      <div class="board-list">
         
-
         
-          
-            <a href="/board/2025-08-12-%EC%88%98%EC%9B%90%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B2%95%EC%9B%90-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EC%9C%84%EC%9B%90%EC%9D%98-%EC%97%85%EB%AC%B4%EC%99%80-%EA%B0%81-%EB%8B%A8%EA%B3%84%EB%B3%84-%EC%A4%91%EC%A0%90%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EB%8A%94-%EC%82%AC%EC%95%88%EC%9D%80/" class="board-card js-reveal">
-              <div class="board-date">
-                <span class="day">12</span>
-                <span class="month">Aug</span>
-              </div>
-              <div class="board-content">
-                <span class="board-tag">법률정보</span>
-                <h3 class="board-title">수원개인회생 법원 개인회생위원의 업무와 각 단계별 중점적으로 보는 사안은?</h3>
-                <p class="board-excerpt">안녕하세요! 김성태 법무사 사무소입니다.
-
-</p>
-              </div>
-              <div class="board-link-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </a>
-          
-            <a href="/board/2025-08-01-workout-vs-recovery" class="board-card js-reveal">
-              <div class="board-date">
-                <span class="day">01</span>
-                <span class="month">Aug</span>
-              </div>
-              <div class="board-content">
-                <span class="board-tag">법률정보</span>
-                <h3 class="board-title">개인회생과 개인워크아웃 절차 비교</h3>
-                <p class="board-excerpt">안녕하세요, 김성태 법무사입니다 😊
-
-</p>
-              </div>
-              <div class="board-link-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </a>
-          
-            <a href="/board/2025-08-01-recovery-vs-general" class="board-card js-reveal">
-              <div class="board-date">
-                <span class="day">01</span>
-                <span class="month">Aug</span>
-              </div>
-              <div class="board-content">
-                <span class="board-tag">법률정보</span>
-                <h3 class="board-title">개인회생과 일반회생의 차이 - 유사절차 비교</h3>
-                <p class="board-excerpt">제1절. 유사절차와의 비교 - 개인회생과 일반회생의 차이
-
-</p>
-              </div>
-              <div class="board-link-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </a>
-          
+        <a href="/board/2025-08-12-%EC%88%98%EC%9B%90%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B2%95%EC%9B%90-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EC%9C%84%EC%9B%90%EC%9D%98-%EC%97%85%EB%AC%B4%EC%99%80-%EA%B0%81-%EB%8B%A8%EA%B3%84%EB%B3%84-%EC%A4%91%EC%A0%90%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EB%8A%94-%EC%82%AC%EC%95%88%EC%9D%80/" class="board-item">
+          <div class="post-info">
+            <span class="post-date">2025.08.12</span>
+            <h3 class="post-title">수원개인회생 법원 개인회생위원의 업무와 각 단계별 중점적으로 보는 사안은?</h3>
+          </div>
+          <span class="post-arrow">→</span>
+        </a>
+        
+        <a href="/board/2025-08-01-workout-vs-recovery" class="board-item">
+          <div class="post-info">
+            <span class="post-date">2025.08.01</span>
+            <h3 class="post-title">개인회생과 개인워크아웃 절차 비교</h3>
+          </div>
+          <span class="post-arrow">→</span>
+        </a>
+        
+        <a href="/board/2025-08-01-recovery-vs-general" class="board-item">
+          <div class="post-info">
+            <span class="post-date">2025.08.01</span>
+            <h3 class="post-title">개인회생과 일반회생의 차이 - 유사절차 비교</h3>
+          </div>
+          <span class="post-arrow">→</span>
+        </a>
         
       </div>
     </div>
-  </div>
+  </section>
+  
+  <section class="main-gallery-fluid">
+    <div class="infinite-slider">
+      <div class="slider-track">
+        <div class="slider-item"><img src="/assets/img/gallery/1.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/2.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/3.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/4.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/5.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/6.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/7.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/8.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/9.jpg"></div>
+        <div class="slider-item"><img src="/assets/img/gallery/1.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/2.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/3.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/4.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/5.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/6.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/7.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/8.jpg"></div><div class="slider-item"><img src="/assets/img/gallery/9.jpg"></div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <style>
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
+  /* --- 핵심 스타일 추가 --- */
   :root {
-    --brand: #0f172a; /* Leaders Deep Navy */
+    --brand: #0f172a;
     --brand-accent: #2563eb;
     --gold: #f2c14e;
     --text-main: #1e293b;
     --text-sub: #64748b;
     --border: #e2e8f0;
-    --radius-lg: 24px;
     --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .leaders-main { font-family: 'Pretendard', sans-serif; color: var(--text-main); line-height: 1.6; }
-  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .leaders-main { font-family: 'Pretendard', sans-serif; overflow-x: hidden; }
+  .leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-  /* Hero Section Refined */
-  .premium-hero {
-    position: relative; height: 85vh; min-height: 700px;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; color: #fff; text-align: center;
-  }
-  .hero-bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-  .hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(15,23,42,0.5), rgba(15,23,42,0.85)); z-index: 2;
-  }
-  .hero-container { position: relative; z-index: 3; max-width: 900px; padding: 0 24px; transform: translateY(-40px);}
-  .hero-badge { font-size: 13px; font-weight: 800; letter-spacing: 0.3em; color: var(--gold); margin-bottom: 24px; }
-  .hero-title { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900; line-height: 1.25; margin-bottom: 25px; letter-spacing: -0.04em; }
-  .text-gradient-gold { background: linear-gradient(135deg, #fff 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-subtitle { font-size: 1.25rem; line-height: 1.8; opacity: 0.9; margin-bottom: 48px; font-weight: 300; word-break: keep-all; }
-
-  .hero-btns { display: flex; gap: 16px; justify-content: center; }
-  .btn-primary { background: var(--brand-accent); color: white; padding: 20px 40px; border-radius: 100px; font-weight: 800; text-decoration: none; transition: var(--transition); }
-  .btn-secondary { background: #fff; color: var(--brand); padding: 20px 40px; border-radius: 100px; font-weight: 800; text-decoration: none; transition: var(--transition); }
-  .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3); }
-  .btn-secondary:hover { background: var(--gold); transform: translateY(-5px); }
-
-  /* Service Navigation Design */
-  .service-navigation { margin-top: -100px; position: relative; z-index: 10; padding-bottom: 80px; }
-  .nav-row { margin-bottom: 40px; }
-  .nav-topic-label { 
-    font-size: 11px; font-weight: 900; color: #fff; 
-    background: var(--brand); display: inline-block; 
-    padding: 6px 18px; border-radius: 8px 8px 0 0;
-    letter-spacing: 0.1em; margin-left: 10px;
-  }
-  .nav-grid { 
-    display: flex; background: #fff; border-radius: 0 16px 16px 16px; 
-    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.1); overflow: hidden; border: 1px solid var(--border);
-  }
-  .nav-item { 
-    display: flex; align-items: center; justify-content: space-between; 
-    padding: 32px 40px; text-decoration: none; color: var(--text-main); 
-    border-right: 1px solid var(--border); transition: var(--transition);
-  }
-  .nav-item:last-child { border-right: none; }
-  .nav-item:hover { background: #f8fafc; }
-  .nav-item.main-work { flex: 1.5; background: #fcfdfe; }
-  .nav-item.side-link { flex: 1; }
+  /* Hero 가독성 보완 */
+  .premium-hero { position: relative; padding: 40px 0 60px; text-align: center; color: #fff; background: var(--brand); }
+  .hero-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,23,42,0.5), rgba(15,23,42,0.95)); }
   
-  .nav-tag { display: block; font-size: 10px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.1em; margin-bottom: 8px; }
-  .nav-info h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.03em; }
-  .nav-info p { font-size: 0.9rem; color: var(--text-sub); margin: 0; }
-  .nav-arrow { font-size: 20px; color: var(--brand-accent); font-weight: bold; transition: var(--transition); }
-  .nav-item:hover .nav-arrow { transform: translateX(8px); }
+  /* 멤버 이미지 프레임 */
+  .hero-members-group { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+  .member-item { display: flex; flex-direction: column; align-items: center; width: 85px; }
+  .img-frame { 
+    width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--gold); 
+    overflow: hidden; background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+  .img-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .member-name { font-size: 13px; font-weight: 700; margin-top: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-  /* Board Section Design */
-  .main-board { padding: 100px 0; background: #f8fafc; }
-  .board-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
-  .sub-title { font-size: 12px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.2em; display: block; margin-bottom: 12px; }
-  .board-header h2 { font-size: 2.2rem; font-weight: 800; color: var(--brand); letter-spacing: -0.04em; }
-  .btn-text-link { color: var(--brand); text-decoration: none; font-weight: 700; font-size: 15px; transition: var(--transition); }
-  .btn-text-link span { color: var(--brand-accent); }
-  .btn-text-link:hover { opacity: 0.7; transform: translateX(5px); }
+  /* 타이틀 및 강조 효과 */
+  .hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.25; margin-bottom: 30px; }
+  .highlight-box { background: var(--gold); color: var(--brand); padding: 2px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+  .text-gradient-gold { background: linear-gradient(135deg, #fff 20%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-  /* Animation */
-  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  /* 배지 디자인 */
+  .career-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+  .badge-item { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 50px; font-weight: 700; backdrop-filter: blur(10px); font-size: 0.95rem; }
+
+  /* 서비스 카드 */
+/* 서비스 카드 섹션 */
+.service-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; /* 간격을 살짝 좁힘 */
+  margin-top: 40px; 
+}
+
+.service-card { 
+  background: #fff; 
+  padding: 30px 25px; /* 상하 여백 45px -> 30px로 대폭 축소 */
+  border-radius: 16px; /* 너무 둥근 느낌에서 세련된 곡률로 변경 */
+  text-decoration: none; 
+  color: var(--text-main);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.08); /* 그림자도 가볍게 수정 */
+  border: 1px solid var(--border); 
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 내용과 푸터 사이 균형 */
+}
+
+.service-card:hover { 
+  transform: translateY(-8px); 
+  border-color: var(--brand-accent); 
+  box-shadow: 0 15px 35px rgba(15,23,42,0.12);
+}
+
+.service-card.highlight { 
+  background: var(--brand); 
+  color: #fff; 
+  border: none; 
+}
+
+/* 내부 요소 디테일 수정 */
+.card-tag { 
+  font-size: 10px; /* 11px -> 10px */
+  font-weight: 800; 
+  color: var(--brand-accent); 
+  background: #ebf2ff; 
+  padding: 3px 10px; 
+  border-radius: 4px; 
+  display: inline-block; 
+  margin-bottom: 15px; /* 여백 축소 */
+}
+
+.service-card h3 {
+  font-size: 1.25rem; /* 제목 크기 최적화 */
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.95rem; /* 본문 크기 살짝 축소 */
+  line-height: 1.5;
+  margin-bottom: 20px;
+  word-break: keep-all; /* 한글 줄바꿈 예쁘게 */
+}
+
+.card-footer {
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.service-card.highlight p { color: rgba(255,255,255,0.7); }
+.service-card.highlight .card-tag { background: rgba(242,193,78,0.2); color: var(--gold); }
+
+/* 모바일 대응 */
+@media (max-width: 1024px) {
+  .service-grid { 
+    grid-template-columns: 1fr; 
+    gap: 12px;
+  }
+  .service-card { padding: 25px; } /* 모바일에서는 더 슬림하게 */
+}
+
+  /* 무한 슬라이더 CSS (핵심!) */
+  .main-gallery-fluid { padding: 10px 0; background: #fff; }
+  .infinite-slider { width: 100%; overflow: hidden; position: relative; }
+  .slider-track { display: flex; width: calc(200px * 18); animation: scroll 40s linear infinite; }
+  .slider-item { width: 200px; padding: 0 10px; flex-shrink: 0; }
+  .slider-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+  @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 9)); } }
+
+  /* 게시판 */
+.main-board { 
+  padding: 40px 0; 
+  background: #f8fafc; 
+}
+
+/* 2. 헤더 영역: 제목과 상단 간격 축소 */
+.board-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-end; 
+  margin-bottom: 20px; /* 아래 리스트와의 간격을 좁힘 */
+}
+
+.board-header .title-area h2 {
+  font-size: 1.5rem; /* 제목 크기를 살짝 줄여 부피 감소 */
+  margin: 0;
+  line-height: 1.2;
+}
+
+.board-header .sub-title {
+  color: var(--brand-accent);
+  font-weight: 800;
+  font-size: 11px; /* 텍스트 크기 축소 */
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* 3. 게시물 리스트: 각 항목의 세로폭(Padding)과 간격 최소화 */
+.board-item { 
+  background: #fff; 
+  padding: 12px 25px; /* 세로 25px -> 12px로 절반 이상 축소 */
+  border-radius: 8px; /* 더 날렵한 곡률 */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  text-decoration: none; 
+  color: var(--text-main); 
+  margin-bottom: 8px; /* 항목 간 간격 12px -> 8px */
+  border: 1px solid var(--border); 
+  transition: all 0.3s ease;
+}
+
+.board-item:last-child {
+  margin-bottom: 0; /* 마지막 항목 여백 제거 */
+}
+
+.board-item:hover { 
+  border-color: var(--brand-accent); 
+  transform: translateX(5px); /* 이동 거리 축소 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+}
+
+/* 4. 내부 텍스트 구성: 폰트 사이즈 및 배치 최적화 */
+.post-info {
+  display: flex;
+  align-items: center; /* 날짜와 제목을 가로로 배치하여 높이 절약 */
+  gap: 15px;
+}
+
+.post-date { 
+  font-size: 0.8rem; 
+  color: var(--text-sub); 
+  font-family: 'Montserrat', sans-serif;
+  min-width: 80px; /* 날짜 영역 너비 고정 */
+}
+
+.post-title { 
+  font-size: 1rem; /* 1.15rem -> 1rem */
+  font-weight: 600; 
+  margin: 0; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 제목이 길면 줄바꿈 대신 말줄임표 사용 */
+}
+
+.post-arrow { 
+  color: var(--brand-accent); 
+  font-size: 1rem; 
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.board-item:hover .post-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* 5. "전체보기" 링크 버튼 */
+.btn-text-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-sub);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border);
+  transition: 0.3s;
+}
+
+.btn-text-link:hover {
+  color: var(--brand-accent);
+  border-color: var(--brand-accent);
+}
+
+/* 모바일 대응: 더 촘촘하게 */
+@media (max-width: 768px) {
+  .main-board { padding: 30px 0; }
+  .post-info { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .board-item { padding: 10px 15px; }
+}
+  /* 애니메이션 */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-  /* Responsive */
+  /* 반응형 */
   @media (max-width: 1024px) {
-    .nav-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-    .nav-item.main-work { grid-column: span 2; border-bottom: 1px solid var(--border); border-right: none; }
+    .service-grid { grid-template-columns: 1fr; margin-top: 40px; }
+    .premium-hero { padding: 80px 0; }
+    .hero-members-group { gap: 10px; }
   }
-  @media (max-width: 640px) {
-    .hero-title { font-size: 2.4rem; }
-    .hero-btns { flex-direction: column; }
-    .nav-grid { display: block; border-radius: 12px; }
-    .nav-item { border-right: none !important; border-bottom: 1px solid var(--border); padding: 24px; }
-    .service-navigation { margin-top: 40px; }
+
+  /* 상단 '검찰 20년 실무 경력' 배지 스타일 */
+.hero-badge {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gold); /* 황금색 글자 */
+  background: rgba(15, 23, 42, 0.7); /* 반투명 다크 배경 */
+  padding: 8px 22px;
+  border-radius: 50px; /* 캡슐 모양 */
+  border: 1px solid var(--gold); /* 황금색 테두리 */
+  margin-bottom: 25px;
+  backdrop-filter: blur(4px); /* 배경 흐림 효과로 고급스럽게 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+}
+
+/* 모바일에서의 크기 조정 */
+@media (max-width: 640px) {
+  .hero-badge {
+    font-size: 12px;
+    padding: 6px 16px;
   }
-  /* --- 게시판 목록 활성화 --- */
-.custom-board-list {
+}
+/* --- Hero Buttons (직통 상담 & 오시는 길) --- */
+.hero-btns {
   display: flex;
-  flex-direction: column;
   gap: 16px;
-  margin-top: 20px;
+  justify-content: center;
+  margin-top: 40px;
 }
 
-.board-card {
-  display: flex;
-  align-items: center;
-  background: #ffffff;
-  padding: 24px 32px;
-  border-radius: 16px;
+/* 실무 전문가 직통 상담 (주요 버튼) */
+.btn-primary {
+  background: var(--brand-accent); /* 파란색 포인트 */
+  color: #fff;
+  padding: 18px 36px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 800;
   text-decoration: none;
-  border: 1px solid var(--border);
   transition: var(--transition);
-  /* 애니메이션 준비 */
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* 스크립트에 의해 보일 때 */
-.board-card.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.board-card:hover {
-  border-color: var(--brand-accent);
-  transform: translateX(10px) !important;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
-}
-
-.board-date {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 65px;
-  height: 65px;
-  background: #f8fafc;
-  border-radius: 12px;
-  margin-right: 28px;
-  color: var(--brand);
-  transition: var(--transition);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
 }
 
-.board-card:hover .board-date {
-  background: var(--brand-accent);
+.btn-primary:hover {
+  transform: translateY(-5px);
+  background: #1d4ed8; /* 더 짙은 파란색 */
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.5);
+}
+
+/* 사무소 오시는 길 (보조 버튼) */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1); /* 반투명 화이트 */
   color: #fff;
+  padding: 18px 36px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
 }
 
-.board-date .day { font-size: 1.3rem; font-weight: 800; line-height: 1; }
-.board-date .month { font-size: 11px; font-weight: 700; text-transform: uppercase; margin-top: 4px; opacity: 0.7; }
-
-.board-content { flex: 1; }
-.board-tag { 
-  font-size: 11px; font-weight: 800; color: var(--brand-accent); 
-  background: rgba(37, 99, 235, 0.08); padding: 3px 10px; 
-  border-radius: 4px; margin-bottom: 8px; display: inline-block;
-}
-.board-title { 
-  font-size: 1.2rem; font-weight: 700; color: var(--brand); 
-  margin: 0 0 6px 0; letter-spacing: -0.02em; text-align: left;
-}
-.board-excerpt { 
-  font-size: 0.95rem; color: var(--text-sub); margin: 0; text-align: left;
-  overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
-  -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+.btn-secondary:hover {
+  background: #fff;
+  color: var(--brand);
+  transform: translateY(-5px);
 }
 
-.board-link-icon {
-  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-  color: var(--border); transition: var(--transition);
+/* 모바일 대응 */
+@media (max-width: 640px) {
+  .hero-btns {
+    flex-direction: column; /* 모바일에선 버튼을 세로로 쌓음 */
+    gap: 12px;
+    padding: 0 20px;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+  }
 }
-.board-link-icon svg { width: 24px; height: 24px; }
-/* 🔹 뉴스 카드 높이 줄이기 */
-.board-card {
-  padding: 14px 22px;     /* 기존 24px 32px → 더 낮게 */
-}
-
-/* 🔹 날짜 박스도 조금만 낮게 */
-.board-date {
-  min-width: 55px;
-  height: 55px;           /* 기존 65px → 조금 줄임 */
-}
-
-/* 🔹 제목 간격도 살짝 정리 */
-.board-title {
-  margin-bottom: 2px;
-}
-/* 🔹 뉴스 제목 + 전체보기 한 줄 정렬 */
-.board-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-/* 🔹 버튼이 줄 바꿈되지 않게 */
-.btn-text-link{
-  white-space: nowrap;
-}
-/* 뉴스 섹션 위아래 여백 줄이기 */
-.main-board {
-  padding: 60px 0 80px;  /* 원래가 100px 0 이었을 거라서 위쪽만 줄임 */
-}
-
-/* 제목과 카드 사이 간격 줄이기 */
-.board-header {
-  margin-bottom: -30px;   /* 기존 48px 정도 → 20px 정도로 */
-}
-
-
 </style>
 
 <script>
@@ -474,30 +621,59 @@
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });
 </script>
-
-
-
-
-
-
-
   </main>
+
+  <!-- 사이드 바로가기 버튼 -->
+<div class="side-links">
+
+  <!-- PC용 -->
+  <a href="https://blog.naver.com/mae6885"
+     target="_blank"
+     class="side-btn side-btn--blog">
+    블로그
+  </a>
+
+  <a href="https://www.youtube.com/@유튜브주소"
+     target="_blank"
+     class="side-btn side-btn--youtube">
+    유튜브
+  </a>
+
+  <!-- 모바일 전화 버튼 (페이지별 분기) -->
+  
+    <a href="tel:0312256885" class="side-btn side-btn--call">전화상담</a>
+  
+
+</div>
 
   <footer class="site-footer">
   <div class="footer-inner">
 
     <div class="footer-top">
       <a class="footer-brand" href="/">
-        <img class="footer-logo" src="/logo.png" alt="리더스 합동 법무사 사무소 로고">
-        <span class="footer-name">리더스 합동 법무사 사무소</span>
+        <img class="footer-logo" src="assets/img/logo/F_logo.svg" alt="리더스 합동 법무사 사무소 로고">
+
+        
       </a>
 
       <div class="footer-contact">
-        <span class="contact-label">전화상담</span>
-        <a href="tel:0312256885" class="contact-number">031-225-6885</a>
+
+        <div class="contact-item">
+          <span class="contact-label">형사·민사·개인회생</span>
+          <a href="tel:0312256885" class="contact-number">
+            031-225-6885
+          </a>
+        </div>
+
+        <div class="contact-item contact-item--intl">
+          <span class="contact-label">국제이혼 전용</span>
+          <a href="tel:0312156883" class="contact-number contact-number--intl">
+            031-215-6883
+          </a>
+        </div>
+
       </div>
     </div>
-
     <div class="footer-divider"></div>
 
     <div class="footer-info">
@@ -524,42 +700,88 @@
   </div>
 </footer>
 
-<script>
-  (function () {
-    const header = document.getElementById('siteHeader');
-    if (!header) return;
 
-    let lastY = window.scrollY;
-    let ticking = false;
+  <!-- ✅ 헤더 스크롤 숨김/표시 -->
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      if (!header) return;
 
-    function onScroll() {
-      const y = window.scrollY;
+      let lastY = window.scrollY;
+      let ticking = false;
 
-      // 맨 위 근처에서는 항상 보이게
-      if (y < 10) {
-        header.classList.remove('header--hidden');
+      function onScroll() {
+        const y = window.scrollY;
+
+        if (y < 10) {
+          header.classList.remove('header--hidden');
+          lastY = y;
+          return;
+        }
+
+        if (y > lastY + 8) header.classList.add('header--hidden');
+        else if (y < lastY - 8) header.classList.remove('header--hidden');
+
         lastY = y;
-        return;
       }
 
-      // 아래로 스크롤 => 숨김 / 위로 스크롤 => 보임
-      if (y > lastY + 8) header.classList.add('header--hidden');
-      else if (y < lastY - 8) header.classList.remove('header--hidden');
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            onScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
 
-      lastY = y;
-    }
+  <!-- ✅ 모바일 메뉴 + 서브메뉴 토글 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("menuToggle");
+      const gnb = document.getElementById("gnb");
+      if (!btn || !gnb) return;
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          onScroll();
-          ticking = false;
+      // 전체 메뉴 열기/닫기
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = gnb.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      // 모바일에서 서브메뉴 토글
+      gnb.querySelectorAll("li.has-sub > a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (window.innerWidth > 1024) return; // PC는 링크 동작 유지
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          const li = link.parentElement;
+          li.classList.toggle("sub-open");
         });
-        ticking = true;
-      }
-    }, { passive: true });
-  })();
-</script>
+      });
+
+      // 메뉴 바깥 클릭하면 닫기
+      document.addEventListener("click", (e) => {
+        if (!gnb.classList.contains("is-open")) return;
+        if (btn.contains(e.target) || gnb.contains(e.target)) return;
+
+        gnb.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
+        gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
+      });
+
+      // 화면이 커지면 열린 서브 정리
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1024) {
+          gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

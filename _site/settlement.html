@@ -8,50 +8,62 @@
   <meta name="description" content="형사 사건에서 피해자와의 원만한 합의를 통해 처벌을 줄이거나 피할 수 있습니다. 합의가 필요한 경우, 법무사의 도움을 받아 안전하게 절차를 진행하세요.">
   <meta name="author" content="김성태 법무사" />
 
-  <!-- 기본 스타일시트 연결 (필요시 외부 CSS로 분리 가능) -->
   <link rel="stylesheet" href="/assets/css/style.css">
-
-
-  <!-- 파비콘 -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Open Graph (SNS 공유용) -->
   <meta property="og:title" content="형사합의 안내 | 리더스 합동 법무사" />
   <meta property="og:description" content="형사 사건에서 피해자와의 원만한 합의를 통해 처벌을 줄이거나 피할 수 있습니다. 합의가 필요한 경우, 법무사의 도움을 받아 안전하게 절차를 진행하세요." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://localhost:4000/settlement.html" />
+  <meta property="og:url" content="http://localhost:4000/settlement" />
   <meta property="og:image" content="/og-image.jpg" />
 </head>
+
 <body>
 
   <header class="site-header" id="siteHeader">
   <div class="header-inner">
+    <!-- 로고 -->
     <div class="logo">
-      <a href="/" class="logo-link" aria-label="홈으로">
-        <img src="/logo.png" alt="로고" class="logo-img" />
-        <div class="logo-text">
-          <span class="logo-title">리더스 합동 법무사 사무소</span>
-        </div>
+      <a href="/" class="logo-link" aria-label="리더스 합동 법무사 사무소 홈으로">
+        <img
+          src="/assets/img/logo/F_logo.svg"
+          alt="리더스 합동 법무사 사무소"
+          class="logo-img"
+        />
+
       </a>
     </div>
 
-    <nav class="gnb" aria-label="주요 메뉴">
+    <!-- 모바일 메뉴 버튼 -->
+    <button
+      type="button"
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="전체 메뉴 열기"
+      aria-expanded="false"
+      aria-controls="gnb"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- GNB -->
+    <nav class="gnb" id="gnb" aria-label="주요 메뉴">
       <ul class="gnb-list">
-        
-        <!-- 소개 -->
         <li class="has-sub">
-          <a href="/team" aria-haspopup="true">소개</a>
+          <a href="/team">리더스 소개</a>
           <ul class="sub">
             <li><a href="/team">구성원 소개</a></li>
+            <li><a href="/services">업무분야</a></li>
             <li><a href="/location">오시는 길</a></li>
           </ul>
         </li>
 
-        <!-- 고소장 작성 -->
         <li class="has-sub">
-          <a href="/complaint" aria-haspopup="true">고소장 작성</a>
+          <a href="/complaint">형사사건</a>
           <ul class="sub">
-            <li><a href="/complaint">안내</a></li>
+            <li><a href="/complaint">고소장 작성</a></li>
             <li><a href="/process">절차</a></li>
             <li><a href="/cases-complaint">사례</a></li>
             <li><a href="/difference">신고 vs 고소</a></li>
@@ -60,9 +72,8 @@
           </ul>
         </li>
 
-        <!-- 개인회생·파산 -->
         <li class="has-sub">
-          <a href="/what-is" aria-haspopup="true">개인회생·파산</a>
+          <a href="/what-is">개인회생·파산</a>
           <ul class="sub">
             <li><a href="/what-is">개인회생 안내</a></li>
             <li><a href="/procedure">개인회생 절차</a></li>
@@ -71,21 +82,38 @@
             <li><a href="/faq">FAQ</a></li>
           </ul>
         </li>
-
-        <!-- 온라인상담 -->
         <li class="has-sub">
-          <a href="/chat" aria-haspopup="true">온라인상담</a>
+          <a href="#" onclick="event.preventDefault();">등기</a>
           <ul class="sub">
-            <li><a href="/check">개인회생 자가진단</a></li>
-            <li><a href="/chat">AI 상담</a></li>
+            <li><a href="/registry/realestate">부동산 등기</a></li>
+            <li><a href="/registry/corporate">법인 등기</a></li>
+            <li><a href="/registry/inheritance">상속 등기</a></li>
           </ul>
         </li>
-        <!--  단독 게시판  -->
+        
+        <li class="has-sub">
+          <a href="#" onclick="event.preventDefault();">민사소송</a>
+          <ul class="sub">
+            <li><a href="/civil/complaint">소장</a></li>
+            <li><a href="/civil/brief">준비서면</a></li>
+            <li><a href="/civil/answer">답변서</a></li>
+            <li><a href="/civil/payment-order">지급명령</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/international-divorce">국제이혼</a>
+        </li>
+        <li class="has-sub">
+          <a href="/chat">온라인상담</a>
+          <ul class="sub">
+            <li><a href="/chat">AI상담</a></li>
+            <li><a href="/check">개인회생 자가진단</a></li>
+          </ul>
+        </li>
+
         <li>
           <a href="/board">법률정보</a>
         </li>
-
-
       </ul>
     </nav>
   </div>
@@ -541,21 +569,57 @@
 
   </main>
 
+  <!-- 사이드 바로가기 버튼 -->
+<div class="side-links">
+
+  <!-- PC용 -->
+  <a href="https://blog.naver.com/mae6885"
+     target="_blank"
+     class="side-btn side-btn--blog">
+    블로그
+  </a>
+
+  <a href="https://www.youtube.com/@유튜브주소"
+     target="_blank"
+     class="side-btn side-btn--youtube">
+    유튜브
+  </a>
+
+  <!-- 모바일 전화 버튼 (페이지별 분기) -->
+  
+    <a href="tel:0312256885" class="side-btn side-btn--call">전화상담</a>
+  
+
+</div>
+
   <footer class="site-footer">
   <div class="footer-inner">
 
     <div class="footer-top">
       <a class="footer-brand" href="/">
-        <img class="footer-logo" src="/logo.png" alt="리더스 합동 법무사 사무소 로고">
-        <span class="footer-name">리더스 합동 법무사 사무소</span>
+        <img class="footer-logo" src="assets/img/logo/F_logo.svg" alt="리더스 합동 법무사 사무소 로고">
+
+        
       </a>
 
       <div class="footer-contact">
-        <span class="contact-label">전화상담</span>
-        <a href="tel:0312256885" class="contact-number">031-225-6885</a>
+
+        <div class="contact-item">
+          <span class="contact-label">형사·민사·개인회생</span>
+          <a href="tel:0312256885" class="contact-number">
+            031-225-6885
+          </a>
+        </div>
+
+        <div class="contact-item contact-item--intl">
+          <span class="contact-label">국제이혼 전용</span>
+          <a href="tel:0312156883" class="contact-number contact-number--intl">
+            031-215-6883
+          </a>
+        </div>
+
       </div>
     </div>
-
     <div class="footer-divider"></div>
 
     <div class="footer-info">
@@ -582,42 +646,88 @@
   </div>
 </footer>
 
-<script>
-  (function () {
-    const header = document.getElementById('siteHeader');
-    if (!header) return;
 
-    let lastY = window.scrollY;
-    let ticking = false;
+  <!-- ✅ 헤더 스크롤 숨김/표시 -->
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      if (!header) return;
 
-    function onScroll() {
-      const y = window.scrollY;
+      let lastY = window.scrollY;
+      let ticking = false;
 
-      // 맨 위 근처에서는 항상 보이게
-      if (y < 10) {
-        header.classList.remove('header--hidden');
+      function onScroll() {
+        const y = window.scrollY;
+
+        if (y < 10) {
+          header.classList.remove('header--hidden');
+          lastY = y;
+          return;
+        }
+
+        if (y > lastY + 8) header.classList.add('header--hidden');
+        else if (y < lastY - 8) header.classList.remove('header--hidden');
+
         lastY = y;
-        return;
       }
 
-      // 아래로 스크롤 => 숨김 / 위로 스크롤 => 보임
-      if (y > lastY + 8) header.classList.add('header--hidden');
-      else if (y < lastY - 8) header.classList.remove('header--hidden');
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            onScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
 
-      lastY = y;
-    }
+  <!-- ✅ 모바일 메뉴 + 서브메뉴 토글 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("menuToggle");
+      const gnb = document.getElementById("gnb");
+      if (!btn || !gnb) return;
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          onScroll();
-          ticking = false;
+      // 전체 메뉴 열기/닫기
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = gnb.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      // 모바일에서 서브메뉴 토글
+      gnb.querySelectorAll("li.has-sub > a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (window.innerWidth > 1024) return; // PC는 링크 동작 유지
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          const li = link.parentElement;
+          li.classList.toggle("sub-open");
         });
-        ticking = true;
-      }
-    }, { passive: true });
-  })();
-</script>
+      });
+
+      // 메뉴 바깥 클릭하면 닫기
+      document.addEventListener("click", (e) => {
+        if (!gnb.classList.contains("is-open")) return;
+        if (btn.contains(e.target) || gnb.contains(e.target)) return;
+
+        gnb.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
+        gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
+      });
+
+      // 화면이 커지면 열린 서브 정리
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1024) {
+          gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

@@ -1,10 +1,12 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
 *
  * 김성태 법무사 사무소 웹사이트 전체 스타일 시트
  * 모든 페이지의 공통 스타일 및 개별 페이지 스타일을 포함합니다.
  */
-
 /* ----------------------------------------------------- */
 /* 1. 기본 설정 (Reset & Common) */
 /* ----------------------------------------------------- */
@@ -13,27 +15,22 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: 'Noto Sans KR', sans-serif;
   background: #f8f9fa; /* 기본 배경색 */
   color: #222; /* 기본 텍스트 색상 */
   line-height: 1.6; /* 기본 줄 간격 */
 }
-
 a {
   text-decoration: none;
   color: inherit; /* 부모 요소의 텍스트 색상 상속 */
 }
-
 ul {
   list-style: none;
 }
-
 /* ----------------------------------------------------- */
 /* 2. 공통 요소 (General Components) */
 /* ----------------------------------------------------- */
-
 /* 페이지 제목 및 소개 */
 .page-title { /* h1 태그에 적용 */
   text-align: center;
@@ -41,21 +38,18 @@ ul {
   color: #0a3871;
   margin-bottom: 1rem;
 }
-
 .page-intro { /* p 태그에 적용 */
   text-align: center;
   font-size: 1.1rem;
   color: #555;
   line-height: 1.6;
 }
-
 /* 카드 공통 스타일 */
 .card-grid { /* 카드들을 감싸는 컨테이너 (display: grid) */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
-
 .common-card { /* 개별 카드에 적용되는 공통 스타일 */
   background: #fff;
   padding: 1.5rem;
@@ -63,19 +57,16 @@ ul {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   color: #444; /* 카드 내부 텍스트 색상 */
 }
-
 .common-card h3 { /* 카드 내부 제목 */
   font-size: 1.2rem;
   color: #0a3871;
   margin-top: 0;
   margin-bottom: 0.8rem; /* 제목과 내용 사이 간격 */
 }
-
 .common-card p { /* 카드 내부 문단 */
   font-size: 1rem;
   line-height: 1.6;
 }
-
 /* 상담 유도 박스 (Call to Action) */
 .consultation-cta-box {
   background-color: #ffffff;
@@ -88,20 +79,17 @@ ul {
   margin-left: auto; /* 중앙 정렬 */
   margin-right: auto; /* 중앙 정렬 */
 }
-
 .cta-title {
   font-size: 1.5rem;
   color: #0a3871;
   margin-bottom: 0.5rem;
 }
-
 .cta-description {
   font-size: 1.1rem;
   color: #555;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
-
 .cta-button {
   display: inline-block;
   margin-top: 1rem;
@@ -113,40 +101,31 @@ ul {
   font-size: 1.1rem;
   transition: background-color 0.3s ease;
 }
-
 .cta-button:hover {
   background: #0056b3;
 }
-
 /* 유틸리티 클래스 (General Utilities) */
 .text-center {
   text-align: center;
 }
-
 .mb-2rem { /* margin-bottom: 2rem; */
   margin-bottom: 2rem;
 }
-
 .mt-3rem { /* margin-top: 3rem; */
   margin-top: 3rem;
 }
-
-
 /* ----------------------------------------------------- */
 /* 5. 개별 페이지 섹션 스타일 (Specific Page Sections) */
 /* ----------------------------------------------------- */
-
 /* 5.1 자가진단 페이지 (check.html) */
 .check-section {
   padding: 3rem 1rem;
   max-width: 800px;
   margin: 0 auto;
 }
-
 .check-form-group {
   margin-bottom: 1.5rem;
 }
-
 .check-form-group label {
   display: block;
   font-size: 1.1rem;
@@ -154,16 +133,13 @@ ul {
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
-
 .check-form-group input[type="radio"] {
   margin-right: 0.5rem;
 }
-
 .check-form-group input[type="radio"] + label {
   display: inline-block;
   font-weight: normal; /* 라디오 버튼 레이블 굵기 조정 */
 }
-
 .check-result-box {
   background-color: #e0f7fa; /* 연한 파란색 배경 */
   border: 1px solid #b2ebf2; /* 테두리 */
@@ -172,13 +148,11 @@ ul {
   margin-top: 2rem;
   text-align: center;
 }
-
 .check-result-box p {
   font-size: 1.1rem;
   color: #00796b; /* 진한 초록색 계열 */
   font-weight: bold;
 }
-
 .check-submit-button {
   display: block;
   width: 100%;
@@ -192,51 +166,43 @@ ul {
   transition: background-color 0.3s ease;
   margin-top: 2rem;
 }
-
 .check-submit-button:hover {
   background-color: #0056b3;
 }
-
 /* 5.2 신고 vs 고소 페이지 (difference.html) */
 .diff-section {
   padding: 3rem 1rem;
   max-width: 1000px; /* 전체 너비 조절 */
   margin: 0 auto;
 }
-
 .diff-intro-text { /* h1 아래 설명 문단 */
   text-align: center;
   font-size: 1.1rem;
   color: #555;
   margin-bottom: 2rem;
 }
-
 .diff-grid-container { /* 두 개의 카드 컨테이너 */
   display: grid;
   grid-template-columns: 1fr 1fr; /* 2열로 구성 */
   gap: 1.5rem;
 }
-
 .diff-card-title { /* 카드 내부 h2 */
   font-size: 1.5rem;
   color: #0a3871;
   margin-bottom: 1rem;
   text-align: center;
 }
-
 .diff-definition { /* 정의 문단 */
   font-size: 1rem;
   color: #333;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
-
 .diff-feature-list { /* 특징 리스트 */
   list-style: none;
   padding-left: 0;
   margin-top: 1rem;
 }
-
 .diff-feature-list li {
   font-size: 0.95rem;
   color: #555;
@@ -245,29 +211,24 @@ ul {
   display: flex; /* 아이콘과 텍스트 정렬 */
   align-items: flex-start;
 }
-
 .diff-feature-list li strong {
   color: #0a3871;
   margin-right: 0.5rem;
   flex-shrink: 0; /* 아이콘/제목이 줄바꿈되지 않도록 */
 }
-
 /* 5.3 자주 묻는 질문 페이지 (faq.html) */
 .faq-section { /* section 태그 스타일 대체 */
   padding: 3rem 1rem;
   max-width: 1000px; /* 적절한 최대 너비 설정 */
   margin: 0 auto;
 }
-
 /* .page-title, .page-intro 사용 */
-
 .faq-card-grid { /* FAQ 카드들을 감싸는 그리드 */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
-
 .faq-card { /* 개별 FAQ 카드 */
   background: #fff;
   color: #444;
@@ -275,93 +236,77 @@ ul {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-
 .faq-question { /* FAQ 질문 h3 */
   color: #0a3871;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
-
 .faq-answer { /* FAQ 답변 p */
   line-height: 1.6;
 }
-
 .faq-ordered-list { /* FAQ 답변 내부 ol */
   padding-left: 1.2rem;
   margin: 0;
   line-height: 1.6;
 }
-
 /* 5.4 개인회생 비용안내 페이지 (price.html) */
 .price-section {
   padding: 3rem 1rem;
   max-width: 1000px; /* 적절한 최대 너비 설정 */
   margin: 0 auto;
 }
-
 .price-title { /* h1 스타일 대체 */
   text-align: center;
   font-size: 2rem;
   color: #0a3871;
   margin-bottom: 2rem;
 }
-
 .price-card-container { /* 카드 컨테이너 */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
-
 .price-card { /* 개별 가격 카드 */
   background: #fff;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-
 .price-card h3 {
   font-size: 1.2rem;
   color: #0a3871;
   margin-top: 0;
   margin-bottom: 0.8rem;
 }
-
 .price-card p {
   color: #444;
   font-size: 1rem;
   line-height: 1.6;
   margin: 0.4rem 0;
 }
-
 .price-highlight {
   font-weight: bold;
   color: #d03a3a; /* 강조 색상 */
 }
-
 /* 5.5 개인회생 절차 안내 페이지 (procedure.html) */
 .procedure-section {
   padding: 3rem 1rem;
   max-width: 1000px; /* 적절한 최대 너비 설정 */
   margin: 0 auto;
 }
-
 /* .page-title, .page-intro 사용 */
-
 .section-divider { /* hr 스타일 대체 */
   border: 0;
   height: 1px;
   background: #ccc;
   margin: 2rem 0;
 }
-
 .procedure-heading2 { /* h2 스타일 대체 */
   font-size: 1.8rem;
   color: #0a3871;
   margin-bottom: 1.5rem;
 }
-
 /* .card-container와 .common-card는 이미 정의되어 있으므로 그대로 사용 가능 */
-
 .change-list-box { /* 변화 섹션 ul */
   background: #ffffff;
   color: #444;
@@ -374,58 +319,49 @@ ul {
   padding-left: 0;
   margin-top: 2rem; /* h2와의 간격 조정 */
 }
-
 .change-list-box li {
   margin-bottom: 0.5rem;
 }
-
 /* 5.6 개인회생/파산 제도 안내 페이지 (what-is.html) */
 .info-section-container { /* 본문 전체를 감싸는 컨테이너 */
   padding: 0 1rem 2rem;
   max-width: 1000px; /* 적절한 최대 너비 설정 */
   margin: 0 auto;
 }
-
 .info-title { /* h1 스타일 대체 */
   text-align: center;
   font-size: 2rem;
   color: #0a3871;
   margin: 2rem 0;
 }
-
 .info-card-container { /* 카드 컨테이너 */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
-
 .info-card { /* 개별 정보 카드 */
   background-color: #ffffff;
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-
 .info-card h2 {
   font-size: 1.2rem;
   color: #0a3871;
   margin-top: 0;
   margin-bottom: 0.8rem;
 }
-
 .info-card p {
   font-size: 1rem;
   color: #444;
   line-height: 1.6;
 }
 /* style.css (홈페이지 관련 스타일) */
-
 /* 5.7 홈페이지 섹션 스타일 (index.html) */
 .home-intro-section { /* 경력/비용 강조 섹션 */
   background: #f0f2f5;
   padding: 3rem 1.5rem;
 }
-
 .home-intro-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -433,64 +369,53 @@ ul {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
-
 .home-intro-card { /* 경력/비용 개별 카드 */
   background: white;
   padding: 2rem 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
-
 .home-intro-card.career { /* 경력 카드 특정 스타일 */
   border-left: 6px solid #dc3545;
 }
-
 .home-intro-card.cost { /* 비용 카드 특정 스타일 */
   border-left: 6px solid #007bff;
 }
-
 .home-intro-card h2 {
   font-size: 1.8rem;
   margin-bottom: 0.8rem;
   font-weight: 700;
   /* color는 .career, .cost 클래스에서 재정의 */
 }
-
 .home-intro-card p {
   font-size: 1.05rem;
   color: #444;
   line-height: 1.6;
 }
-
 /* 고소장 안내 섹션 */
 .home-complaint-section {
   padding: 3rem 1.5rem;
   background: #f8f9fc;
 }
-
 .home-rehabilitation-section { /* 개인회생/파산 안내 섹션 */
   padding: 3rem 1.5rem;
   background: #f8f9fc;
 }
-
 .home-section-container { /* 각 섹션 내부의 최대 너비 컨테이너 */
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .home-section-title { /* 섹션 h2 제목 */
   font-size: 1.8rem;
   color: #0a3871;
   font-weight: 700;
   margin-bottom: 2rem;
 }
-
 .home-card-link-grid { /* 링크 카드들을 감싸는 그리드 */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
 }
-
 .home-link-card { /* 섹션 내 개별 링크 카드 */
   background: white;
   padding: 1.5rem;
@@ -498,23 +423,19 @@ ul {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .home-link-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
-
 .home-link-card h3 {
   color: #222;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
-
 .home-link-card p {
   font-size: 0.95rem;
   color: #555;
 }
-
 .home-link-card .card-link { /* 카드 내 "자세히 보기" 등 링크 */
   display: inline-block;
   margin-top: 0.8rem;
@@ -522,23 +443,18 @@ ul {
   text-decoration: none;
   transition: color 0.2s ease;
 }
-
 .home-link-card .card-link.red { /* 고소장 섹션 링크 색상 */
   color: #dc3545;
 }
-
 .home-link-card .card-link.green { /* 형사합의, 자가진단 링크 색상 */
   color: #28a745;
 }
-
 .home-link-card .card-link.blue { /* 신고 vs 고소, 개인회생 제도 링크 색상 */
   color: #007bff;
 }
-
 .home-link-card .card-link.gray { /* 절차 및 비용 링크 색상 */
   color: #6c757d;
 }
-
 /* 모바일 반응형 (Home Page Specific) */
 @media (max-width: 768px) {
   .home-intro-section,
@@ -546,18 +462,15 @@ ul {
   .home-rehabilitation-section {
     padding: 2rem 1rem; /* 모바일 패딩 조정 */
   }
-
   .home-intro-card h2,
   .home-section-title {
     font-size: 1.5rem; /* 모바일 제목 크기 조정 */
   }
-
   .home-intro-card p,
   .home-link-card p {
     font-size: 0.9rem; /* 모바일 본문 텍스트 크기 조정 */
   }
 }
-
 /* ----------------------------------------------------- */
 /* 6. 모바일 반응형 (Media Queries) */
 /* ----------------------------------------------------- */
@@ -566,17 +479,14 @@ ul {
     flex-direction: column;
     align-items: flex-start;
   }
-
   nav {
     width: 100%;
     margin-top: 1rem;
   }
-
   nav ul {
     flex-direction: column;
     gap: 0.8rem;
   }
-
   nav li ul {
     position: static;
     box-shadow: none;
@@ -584,11 +494,9 @@ ul {
     padding-left: 1rem;
     background: transparent;
   }
-
   nav li ul li:hover {
     background: #f8f9fa; /* 모바일 드롭다운 호버 색상 */
   }
-
   /* 모바일에서 섹션 패딩 조정 */
   .check-section,
   .diff-section,
@@ -598,7 +506,6 @@ ul {
   .info-section-container {
     padding: 2rem 1rem; /* 모바일에서 좌우 패딩 유지하고 상하 패딩 줄임 */
   }
-
   /* 그리드 컬럼 조정 (선택 사항, minmax가 대부분 처리) */
   .card-grid,
   .diff-grid-container,
@@ -608,7 +515,6 @@ ul {
     grid-template-columns: 1fr; /* 모바일에서 1열로 표시 */
     gap: 1rem; /* 간격 줄임 */
   }
-
   .page-title,
   .price-title,
   .info-title {
@@ -616,29 +522,23 @@ ul {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
-
   .page-intro,
   .diff-intro-text {
     font-size: 1rem; /* 모바일에서 소개 텍스트 크기 줄임 */
   }
-
   .procedure-heading2 {
     font-size: 1.5rem; /* 모바일에서 서브 제목 크기 줄임 */
   }
-
   .cta-title {
     font-size: 1.3rem;
   }
-
   .cta-description {
     font-size: 1rem;
   }
-
   .cta-button {
     font-size: 1rem;
     padding: 0.7rem 1.2rem;
   }
-
   .footer-office-name,
   .footer-phone {
     font-size: 1.2rem; /* 푸터 글꼴 크기 조정 */
@@ -653,25 +553,21 @@ ul {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   font-family: 'Noto Sans KR', sans-serif;
 }
-
 .self-check-title {
   font-size: 1.8rem;
   color: #0a3871;
   margin-bottom: 1.5rem;
   text-align: center;
 }
-
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-
 .form-group label {
   font-weight: 500;
   color: #333;
 }
-
 .form-group input,
 .form-group select {
   padding: 0.6rem 1rem;
@@ -679,7 +575,6 @@ ul {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-
 .form-group button {
   padding: 0.8rem 1.2rem;
   font-size: 1.1rem;
@@ -690,11 +585,9 @@ ul {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .form-group button:hover {
   background: #0056b3;
 }
-
 .result-link {
   display: inline-block;
   margin-top: 1rem;
@@ -704,11 +597,9 @@ ul {
   border-radius: 8px;
   text-decoration: none;
 }
-
 .result-link:hover {
   background: #062a58;
 }
-
 .grid-2cols {
   display: grid;
   grid-template-columns: 1fr 1fr; /* 고정된 두 열 */
@@ -716,7 +607,6 @@ ul {
   max-width: 1100px;
   margin: 0 auto;
 }
-
 /* 표 공통 스타일 */
 table {
   width: 100%;
@@ -728,26 +618,21 @@ table {
   border-radius: 8px;
   overflow: hidden;
 }
-
 thead {
   background-color: #0a3871;
   color: white;
 }
-
 th, td {
   padding: 1rem;
   text-align: center;
   border: 1px solid #ddd;
 }
-
 th {
   font-weight: 600;
 }
-
 tr:nth-child(even) {
   background-color: #f9f9f9;
 }
-
 caption {
   caption-side: top;
   text-align: left;
@@ -756,7 +641,6 @@ caption {
   color: #0a3871;
   margin-bottom: 0.5rem;
 }
-
 .post-content img {
   max-width: 100%;
   height: auto;
@@ -765,28 +649,23 @@ caption {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
-
 /* 게시판 영역 */
 .board-section {
   padding: 2rem 1.5rem;
   background: #f8f9fa;
   border-radius: 12px;
 }
-
 .board-section h2 {
   font-size: 1.5rem;
   color: #0a3871;
   font-weight: 700;
   margin-bottom: 1rem;
 }
-
 .board-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 .board-list li {
   display: flex;
   justify-content: space-between;
@@ -794,40 +673,33 @@ caption {
   padding: 0.75rem 0;
   border-bottom: 1px solid #e5e7eb;
 }
-
 .board-list li:last-child {
   border-bottom: none;
 }
-
 .board-list a {
   color: #222;
   font-size: 1rem;
   text-decoration: none;
   transition: color 0.2s ease;
 }
-
 .board-list a:hover {
   color: #0a3871;
   text-decoration: underline;
 }
-
 .board-list .board-date {
   font-size: 0.9rem;
   color: #6b7280;
   flex-shrink: 0;
   margin-left: 1rem;
 }
-
 /* 게시판 폭을 히어로와 통일 */
 .board-section{
   max-width: 1200px;   /* ✅ hero와 동일 */
   margin: 1.2rem auto; /* 가운데 정렬 */
   padding: 1.2rem 1rem;
 }
-
 /* 행 간격도 살짝만 줄여서 컴팩트하게 */
 .board-list li{ padding: .6rem 0; }
-
 /* (선택) 행 hover 시 배경 살짝 */
 .board-list li:hover{
   background: rgba(2,16,43,.03);
@@ -839,13 +711,11 @@ caption {
     grid-template-columns: 1.38fr 0.62fr;   /* ← 왼쪽 넓게 / 오른쪽 좁게 */
     gap: .55rem;                            /* ← 칼럼 간격 더 줄임 */
   }
-
   /* 사진 박스 정렬 */
   .hero-img{
     justify-self: end;                      /* 오른쪽 끝에 맞추되… */
     position: relative;
   }
-
   /* 사진 자체를 왼쪽/위로 살짝 당겨서 '겹치는 느낌' */
   .hero-img img{
     width: min(388px, 34vw);                /* 폭 살짝 ↓ */
@@ -853,10 +723,8 @@ caption {
     /* 그림자는 조금 부드럽게 */
     filter: drop-shadow(0 12px 22px rgba(0,0,0,.16));
   }
-
   /* 텍스트 오른쪽 여백 아주 약간만 */
   .hero-text{ padding-right: .2rem; }
-
   /* 헤드라인은 살짝 더 키워도 안정적 */
   .hero-headline{
     font-size: clamp(40px, 5.7vw, 86px);
@@ -864,7 +732,6 @@ caption {
     letter-spacing: -0.02em;
   }
 }
-
 /* === Hero 사진 더 크게 + 더 붙이기 (데스크톱) === */
 @media (min-width: 1024px){
   .hero{
@@ -881,22 +748,18 @@ caption {
     line-height: 1.06;
   }
 }
-
 /* ===== HERO : 배경 이미지 오버레이 ===== */
 .hero.hero--bg{
   max-width: none;
   margin: 0;
   padding: 0;
 }
-
-
 /* 어두운 오버레이 (글자 가독성) */
 .hero--bg .hero-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
 }
-
 /* 텍스트 영역 */
 .hero--bg .hero-content {
   position: relative;
@@ -904,14 +767,12 @@ caption {
   max-width: 1200px;
   padding: 0 40px;
 }
-
 /* 서브 문구 */
 .hero--bg .hero-sub {
   font-size: 1.05rem;
   margin-bottom: 1rem;
   opacity: 0.95;
 }
-
 /* 메인 타이틀 */
 .hero--bg .hero-headline {
   font-size: clamp(40px, 5vw, 72px);
@@ -925,19 +786,16 @@ caption {
   overflow: hidden;
   height: 75vh;
   min-height: 520px;
-
   /* 기존 hero 공통 max-width/grid 영향 제거 */
   max-width: none;
   margin: 0;
   padding: 0;
   display: block;
 }
-
 /* ✅ 배경이미지는 overlay가 아니라 hero 자체 배경으로 유지 */
 .hero--bg{
   background: url('/assets/img/business (2000 x 700 px).png') center/cover no-repeat;
 }
-
 /* ✅ 오버레이는 hero 영역 안에서만 */
 .hero--bg .hero-overlay{
   position: absolute;
@@ -946,7 +804,6 @@ caption {
   background: rgba(0,0,0,.55);
   pointer-events: none;
 }
-
 /* ✅ 글씨는 오버레이 위 */
 .hero--bg .hero-content{
   position: relative;
@@ -956,18 +813,15 @@ caption {
   padding: 0 40px;
   color: #fff;
 }
-
 .hero--bg .hero-sub,
 .hero--bg .hero-sub * ,
 .hero--bg .hero-headline{
   color: #fff !important;
   text-shadow: 0 8px 24px rgba(0,0,0,.45);
 }
-
 /* =========================
    HERO VIDEO (index only)
    ========================= */
-
 /* ✅ hero-video는 "전체 폭"으로 쓰는 섹션이니까,
    기존 .hero(max-width:1200px; margin:auto;)랑 충돌 안 나게
    class를 아예 분리했어. */
@@ -975,7 +829,7 @@ caption {
   position: relative;
   width: 100%;
   min-height: 72vh;
-  height: 72vh;
+  height: 720h;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -983,7 +837,6 @@ caption {
   margin: 0;          /* 여백 제거 */
   padding: 0;         /* 여백 제거 */
 }
-
 /* 비디오가 화면을 꽉 채우도록 */
 .hero-video__media{
   position: absolute;
@@ -994,7 +847,6 @@ caption {
   object-position: center;
   z-index: 0;
 }
-
 /* 어두운 오버레이(글자 가독성) */
 .hero-video__overlay{
   position: absolute;
@@ -1008,7 +860,6 @@ caption {
   );
   z-index: 1;
 }
-
 /* 텍스트 영역: 왼쪽 정렬 + 사이트 폭 제한 */
 .hero-video__content{
   position: relative;
@@ -1018,7 +869,6 @@ caption {
   margin: 0 auto;
   padding: 0 2rem;
 }
-
 /* 서브 문구 */
 .hero-video__eyebrow{
   font-size: 1rem;
@@ -1027,7 +877,6 @@ caption {
   margin-bottom: 1rem;
 }
 .hero-video__eyebrow strong{ font-weight: 800; }
-
 /* 메인 문구 */
 .hero-video__headline{
   margin: 0;
@@ -1037,7 +886,6 @@ caption {
   font-size: clamp(42px, 5.6vw, 86px);
   text-shadow: 0 10px 26px rgba(0,0,0,.35);
 }
-
 /* 버튼 */
 .hero-video__actions{
   margin-top: 1.25rem;
@@ -1045,7 +893,6 @@ caption {
   gap: .7rem;
   flex-wrap: wrap;
 }
-
 .hero-btn{
   display: inline-flex;
   align-items: center;
@@ -1068,7 +915,6 @@ caption {
   transform: translateY(-1px);
   filter: brightness(1.05);
 }
-
 /* 모바일 최적화 */
 @media (max-width: 768px){
   .hero-video{
@@ -1094,13 +940,11 @@ caption {
     #082b52 100%
   );
 }
-
 /*
   리더스 법무사 통합 스타일시트 (최종 업데이트)
   - 헤더 GNB 메뉴 폰트 확대 (15px -> 17px)
   - 상호명 존재감 강화 및 푸터 슬림화 유지
 */
-
 /* ===== 1. 전역 변수 및 본문 기본 설정 ===== */
 :root {
   --theme-dark-bg: #1a1c1e;
@@ -1110,7 +954,6 @@ caption {
   --text-muted: rgba(255, 255, 255, 0.65);
   --body-black: #1e293b;
 }
-
 body {
   margin: 0;
   padding-top: var(--header-h);
@@ -1121,12 +964,10 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: #ffffff;
 }
-
 h1, h2, h3, h4, strong, b {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-
 /* ===== 2. 헤더 (Header): 상호명 & 메뉴 확대 ===== */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0;
@@ -1134,22 +975,18 @@ h1, h2, h3, h4, strong, b {
   background: var(--theme-dark-bg);
   border-bottom: 1px solid var(--theme-border);
 }
-
 .header-inner {
   max-width: 1200px; height: 100%; margin: 0 auto; padding: 0 20px;
   display: flex; align-items: center; justify-content: space-between;
 }
-
 .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo-img { width: 46px; height: 46px; object-fit: contain; }
-
 .logo-title { 
   color: #fff; 
   font-size: 1.4rem; /* 상호명 시원하게 확대 */
   font-weight: 800; 
   letter-spacing: -0.03em; 
 }
-
 /* ✅ GNB 메뉴 폰트 확대 및 간격 조정 */
 .gnb-list { display: flex; align-items: center; gap: 36px; list-style: none; margin: 0; padding: 0; }
 .gnb-list a { 
@@ -1159,7 +996,6 @@ h1, h2, h3, h4, strong, b {
   transition: color 0.2s ease;
 }
 .gnb-list a:hover { color: #fff; }
-
 /* 드롭다운 메뉴 폰트도 함께 보정 */
 .has-sub { position: relative; }
 .sub {
@@ -1170,7 +1006,6 @@ h1, h2, h3, h4, strong, b {
 .has-sub:hover .sub { display: block; }
 .sub a { display: block; padding: 10px 20px; font-size: 15.5px; color: var(--text-muted); }
 .sub a:hover { background: rgba(255,255,255,0.05); color: #fff; }
-
 /* ===== 3. 푸터 (Footer): 슬림 압축 버전 유지 ===== */
 .site-footer {
   background: var(--theme-dark-bg);
@@ -1178,13 +1013,11 @@ h1, h2, h3, h4, strong, b {
   padding: 30px 20px; 
   color: var(--text-muted);
 }
-
 .footer-inner { max-width: 1200px; margin: 0 auto; }
 .footer-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
 .footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .footer-logo { width: 34px; height: 34px; }
 .footer-name { color: #fff; font-size: 1.25rem; font-weight: 800; }
-
 .footer-cta { display: flex; gap: 8px; }
 .footer-phone, .footer-kakao {
   display: inline-flex; align-items: center; height: 36px; padding: 0 15px;
@@ -1192,9 +1025,7 @@ h1, h2, h3, h4, strong, b {
 }
 .footer-phone { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--theme-border); }
 .footer-kakao { background: #fff; color: #111; }
-
 .footer-divider { height: 1px; background: var(--theme-border); margin: 15px 0; }
-
 .footer-info p { 
   margin: 3px 0; 
   font-size: 0.85rem; 
@@ -1204,34 +1035,28 @@ h1, h2, h3, h4, strong, b {
 }
 .footer-info strong { color: #fff; font-weight: 600; margin-right: 4px; }
 .sep { margin: 0 8px; color: rgba(255,255,255,0.1); }
-
 .footer-bottom { margin-top: 15px; font-size: 0.75rem; font-weight: 400 !important; color: rgba(255,255,255,0.3); }
-
 /* 모바일 반응형 */
 @media (max-width: 900px) {
   .gnb { display: none; } /* 모바일 메뉴는 따로 구현 */
   .logo-title { font-size: 1.2rem; }
 }
 /* ===== 푸터 전화번호 강조 스타일 추가 ===== */
-
 /* 1. 기존 버튼 영역 숨기기 (혹시 남아있을 경우) */
 .footer-cta {
   display: none !important;
 }
-
 /* 2. 새로운 전화번호 영역 스타일 */
 .footer-contact {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .contact-label {
   font-size: 1.1rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.6);
 }
-
 .contact-number {
   font-size: 1.8rem; /* ✅ 번호를 크게 강조 */
   font-weight: 800;
@@ -1239,30 +1064,25 @@ h1, h2, h3, h4, strong, b {
   text-decoration: none;
   letter-spacing: -0.02em;
   transition: color 0.2s ease;
+  line-height: 1.15;
 }
-
 .contact-number:hover {
   color: #ffffff; /* 혹은 포인트 컬러 */
   opacity: 0.8;
 }
-
 /* 3. 푸터 슬림화 보정 (여백 줄이기) */
 .site-footer {
   padding: 30px 20px !important;
 }
-
 .footer-top {
   margin-bottom: 15px !important;
 }
-
 .footer-divider {
   margin: 15px 0 !important;
 }
-
 .footer-info p {
   margin: 3px 0 !important;
 }
-
 /* 4. 모바일 대응 */
 @media (max-width: 768px) {
   .footer-top {
@@ -1280,7 +1100,6 @@ h1, h2, h3, h4, strong, b {
   50% { color: #ffeb3b; } /* 부드러운 노란색으로 강조 */
   100% { color: #ffffff; }
 }
-
 /* 전화번호 클래스에 애니메이션 적용 */
 .contact-number {
   /* animation 이름을 colorPulse로 맞춰야 움직입니다 */
@@ -1290,7 +1109,6 @@ h1, h2, h3, h4, strong, b {
   text-decoration: none;
   display: inline-block; /* 애니메이션이 잘 먹도록 설정 */
 }
-
 /* 마우스를 올렸을 때는 깜빡임 멈춤 */
 .contact-number:hover {
   animation-play-state: paused;
@@ -1300,13 +1118,11 @@ h1, h2, h3, h4, strong, b {
 .board-wrapper {
   margin-top: 20px;
 }
-
 .custom-board-list {
   display: flex;
   flex-direction: column;
   gap: 12px; /* 항목 간 간격 */
 }
-
 .board-card {
   display: flex;
   align-items: center;
@@ -1318,13 +1134,11 @@ h1, h2, h3, h4, strong, b {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(15, 23, 42, 0.02);
 }
-
 .board-card:hover {
   border-color: var(--brand-accent);
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
-
 /* 날짜 영역 */
 .board-date {
   display: flex;
@@ -1339,15 +1153,12 @@ h1, h2, h3, h4, strong, b {
   color: var(--brand);
   transition: var(--transition);
 }
-
 .board-card:hover .board-date {
   background: var(--brand-accent);
   color: #fff;
 }
-
 .board-date .day { font-size: 1.2rem; font-weight: 800; line-height: 1; }
 .board-date .month { font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.7; }
-
 /* 콘텐츠 영역 */
 .board-content { flex: 1; }
 .board-tag { 
@@ -1364,7 +1175,6 @@ h1, h2, h3, h4, strong, b {
   font-size: 0.95rem; color: var(--text-sub); margin: 0; 
   display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
 }
-
 /* 아이콘 */
 .board-link-icon {
   width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
@@ -1372,7 +1182,6 @@ h1, h2, h3, h4, strong, b {
 }
 .board-link-icon svg { width: 24px; height: 24px; }
 .board-card:hover .board-link-icon { color: var(--brand-accent); transform: translateX(5px); }
-
 /* 반응형 모바일 */
 @media (max-width: 640px) {
   .board-card { padding: 20px; }
@@ -1382,7 +1191,6 @@ h1, h2, h3, h4, strong, b {
   .board-link-icon { display: none; }
 }
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
 :root {
   --brand: #0f172a;
   --brand-accent: #2563eb;
@@ -1393,7 +1201,6 @@ h1, h2, h3, h4, strong, b {
   --radius-md: 24px;
   --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 /* Base */
 .leaders-page {
   font-family: 'Pretendard', sans-serif;
@@ -1402,18 +1209,14 @@ h1, h2, h3, h4, strong, b {
   line-height: 1.6;
   overflow-x: hidden;
 }
-
 .leaders-container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
-
 .leaders-container--narrow { max-width: 840px; }
-
 /* Hero */
 .leaders-hero { padding: 120px 0 60px; text-align: center; }
-
 .leaders-badge { 
   font-size: 12px;
   font-weight: 700;
@@ -1425,26 +1228,22 @@ h1, h2, h3, h4, strong, b {
   margin-bottom: 20px;
   display: inline-block;
 }
-
 .leaders-title {
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 800;
   margin-bottom: 24px;
   letter-spacing: -0.03em;
 }
-
 .text-gradient {
   background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 .leaders-desc {
   font-size: 1.15rem;
   color: var(--text-sub);
   word-break: keep-all;
 }
-
 /* Guide */
 .leaders-guide-grid {
   display: grid;
@@ -1452,7 +1251,6 @@ h1, h2, h3, h4, strong, b {
   gap: 24px;
   margin-bottom: 64px;
 }
-
 .leaders-guide-card { 
   background: #fff;
   padding: 40px;
@@ -1460,20 +1258,17 @@ h1, h2, h3, h4, strong, b {
   border: 1px solid var(--border);
   transition: var(--transition);
 }
-
 .leaders-guide-card:hover {
   transform: translateY(-8px);
   border-color: var(--brand-accent);
   box-shadow: 0 20px 40px rgba(0,0,0,0.06);
 }
-
 .guide-card-head {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 20px;
 }
-
 .guide-num { 
   font-size: 1.5rem;
   font-weight: 900;
@@ -1482,23 +1277,19 @@ h1, h2, h3, h4, strong, b {
   font-family: serif;
   font-style: italic; 
 }
-
 .guide-card-title {
   font-size: 1.3rem;
   font-weight: 800;
   color: var(--brand);
   letter-spacing: -0.02em;
 }
-
 .guide-card-text {
   color: var(--text-sub);
   font-size: 1.05rem;
   line-height: 1.8;
   word-break: keep-all;
 }
-
 .guide-card-text strong { color: var(--brand-accent); }
-
 /* Insight */
 .leaders-insight {
   padding: 60px;
@@ -1509,7 +1300,6 @@ h1, h2, h3, h4, strong, b {
   overflow: hidden;
   margin-bottom: 60px;
 }
-
 .leaders-insight::after {
   content: '“';
   position: absolute;
@@ -1519,7 +1309,6 @@ h1, h2, h3, h4, strong, b {
   color: rgba(255,255,255,0.05);
   font-family: serif;
 }
-
 .leaders-insight-tag {
   color: var(--brand-accent);
   font-weight: 700;
@@ -1527,30 +1316,25 @@ h1, h2, h3, h4, strong, b {
   font-size: 13px;
   letter-spacing: 2px;
 }
-
 .leaders-insight-title {
   font-size: 1.8rem;
   margin: 15px 0;
   font-weight: 700;
 }
-
 .leaders-insight-desc {
   opacity: 0.8;
   max-width: 800px;
   font-weight: 300;
   line-height: 1.8;
 }
-
 .leaders-insight-desc strong {
   color: #fff;
   font-weight: 700;
 }
 /* ===== CTA BOX ===== */
-
 .leaders-cta {
   padding: 80px 0 120px;
 }
-
 .leaders-cta-card {
   background: #0f172a;
   border-radius: var(--radius-lg);
@@ -1562,30 +1346,25 @@ h1, h2, h3, h4, strong, b {
   color: #ffffff;
   box-shadow: 0 24px 48px rgba(15, 23, 42, 0.22);
 }
-
 .leaders-cta-badge {
   margin-bottom: 14px;
 }
-
 .leaders-cta-title {
   font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 10px;
 }
-
 .leaders-cta-desc {
   font-size: 0.98rem;
   color: rgba(226, 232, 240, 0.9);
   line-height: 1.8;
 }
-
 .leaders-cta-actions {
   display: flex;
   gap: 12px;
   flex-shrink: 0;
 }
-
 .leaders-cta-btn {
   min-width: 180px;
   height: 56px;
@@ -1597,32 +1376,27 @@ h1, h2, h3, h4, strong, b {
   text-decoration: none;
   transition: var(--transition);
 }
-
 /* 카카오 버튼 */
 .leaders-cta-btn--kakao {
   background: #fee500;
   color: #3c1e1e;
 }
-
 .leaders-cta-btn--kakao:hover {
   background: #fada00;
   transform: translateY(-4px);
   box-shadow: 0 10px 22px rgba(254, 229, 0, 0.25);
 }
-
 /* 회색 버튼 */
 .leaders-cta-btn--secondary {
   background: transparent;
   color: #e5e7eb;
   border: 1px solid rgba(148, 163, 184, 0.7);
 }
-
 .leaders-cta-btn--secondary:hover {
   background: rgba(15, 23, 42, 0.85);
   border-color: #ffffff;
   transform: translateY(-4px);
 }
-
 /* 반응형 */
 @media (max-width: 900px) {
   .leaders-cta-card {
@@ -1631,12 +1405,10 @@ h1, h2, h3, h4, strong, b {
     text-align: left;
     padding: 32px 24px;
   }
-
   .leaders-cta-actions {
     width: 100%;
     flex-direction: column;
   }
-
   .leaders-cta-btn {
     width: 100%;
   }
@@ -1645,3 +1417,636 @@ body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     system-ui, sans-serif;
 }
+/* ===============================
+   HEADER
+================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #1a1a1a;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 80px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* ===============================
+   LOGO (전체 흰색 처리)
+================================ */
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  /* 🔥 핵심: PNG가 박힌 SVG를 흰색으로 */
+  image-rendering: -webkit-optimize-contrast;
+}
+/* ===============================
+   GNB (PC)
+================================ */
+.gnb-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.gnb-list > li {
+  position: relative;
+}
+.gnb-list > li > a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 0;
+  display: inline-block;
+}
+/* SUB MENU (PC hover) */
+.sub {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background-color: #111;
+  border-radius: 12px;
+  padding: 10px 0;
+  margin-top: 12px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+}
+.sub a {
+  display: block;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.sub a:hover {
+  background-color: rgba(255,255,255,0.06);
+}
+.has-sub:hover > .sub {
+  display: block;
+}
+/* ===============================
+   MOBILE TOGGLE
+================================ */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .logo-img {
+    height: 34px;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .gnb {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .gnb.active {
+    display: block;
+  }
+  .gnb-list {
+    flex-direction: column;
+    gap: 0;
+  }
+  .gnb-list > li > a {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  /* 모바일 서브메뉴 */
+  .sub {
+    position: static;
+    display: none;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #111;
+  }
+  .has-sub.open > .sub {
+    display: block;
+  }
+  .sub a {
+    padding: 14px 28px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  /* 모바일 hover 비활성 */
+  .has-sub:hover > .sub {
+    display: none;
+  }
+}
+.leaders-main,
+.premium-hero,
+main,
+section:first-of-type {
+  margin-top: 0;
+}
+.site-header,
+.header-inner {
+  background-color: #1a1a1a;
+}
+body { padding-top: 0 !important; }
+
+.footer-logo{
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  display: block;
+
+  /* ✅ 로고 전체 흰색 */
+  image-rendering: -webkit-optimize-contrast;
+}
+/* ===== Footer Logo (가로형, 최신 버전) ===== */
+.footer-logo{
+  height: 40px;        /* ✅ 기준은 height */
+  width: auto;         /* 가로 비율 자동 */
+  max-width: 220px;    /* 너무 커지는 것 방지 */
+  object-fit: contain;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+}
+/* 서브메뉴 위치 기준 */
+.gnb-list > li.has-sub { position: relative; }
+
+/* 기본은 숨김 */
+.gnb-list > li.has-sub > .sub {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999; /* 중요: 다른 요소에 가리지 않게 */
+}
+
+/* PC: li에 hover 또는 focus-within(키보드/클릭 포커스)일 때 열기 */
+@media (min-width: 1024px) {
+  .gnb-list > li.has-sub:hover > .sub,
+  .gnb-list > li.has-sub:focus-within > .sub {
+    display: block;
+  }
+}
+
+/* 서브메뉴 위로 마우스 이동해도 hover 유지되도록(간격 문제 방지) */
+@media (min-width: 1024px) {
+  .gnb-list > li.has-sub > a { padding-bottom: 16px; }
+  .gnb-list > li.has-sub > .sub { margin-top: 0; }
+}
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.contact-label {
+  white-space: nowrap;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.contact-number {
+  white-space: nowrap;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  animation: colorPulse 2s ease-in-out infinite;
+}
+
+.contact-number--intl {
+  color: #ffeb3b;
+}
+/* =========================
+   Side Quick Links
+========================= */
+
+/* 컨테이너 */
+.side-links {
+  position: fixed;
+  right: 20px;                 /* 좌측으로 하고 싶으면 left:20px */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 공통 버튼 */
+.side-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover 효과 */
+.side-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+  opacity: 0.95;
+}
+
+/* 네이버 블로그 */
+.side-btn--blog {
+  background: #03c75a;
+}
+
+/* 유튜브 */
+.side-btn--youtube {
+  background: #ff0000;
+}
+
+
+/* =========================
+   Mobile Call Button Logic
+========================= */
+
+/* 기본: 전화 버튼 숨김 (PC) */
+.side-btn--call {
+  display: none;
+  background: #0a3871; /* 브랜드 컬러 */
+}
+
+
+}
+/* =========================
+   Mobile GNB Toggle
+========================= */
+@media (max-width: 1024px) {
+
+  /* 기본: 메뉴 숨김 */
+  .gnb { display: none; }
+
+  /* 햄버거 클릭 시 열림 */
+  .gnb.is-open { display: block; }
+
+  /* 서브메뉴 기본 숨김 */
+  .gnb .sub { display: none; }
+
+  /* 상위 클릭 시 서브 열림 */
+  .gnb li.sub-open > .sub { display: block; }
+
+  /* (선택) 모바일에서 상위 메뉴 클릭 영역 예쁘게 */
+  .gnb li.has-sub > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .gnb li.has-sub > a::after {
+    content: "▾";
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  .gnb li.sub-open > a::after {
+    content: "▴";
+  }
+
+  /* 서브 메뉴 들여쓰기/간격(필요하면) */
+  .gnb .sub {
+    padding: 8px 0 12px;
+  }
+  .gnb .sub a {
+    display: block;
+    padding: 10px 14px;
+  }
+}
+.side-links {
+  position: fixed;
+  right: 16px;
+  bottom: 20px;        /* ✅ 모바일 포함이면 bottom 기준이 더 자연스러움 */
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.side-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.side-btn--blog { background: #03c75a; }
+.side-btn--youtube { background: #ff0000; }
+.side-btn--call { background: #0a3871; }
+
+@media (max-width: 768px) {
+  .side-links{
+    top: auto !important;
+    transform: none !important;
+    bottom: 90px;
+    right: 14px;
+    z-index: 9000;
+  }
+  .site-header { z-index: 20000; }
+  .menu-toggle { z-index: 30000; position: relative; }
+}
+.hero-overlay,
+.premium-hero .hero-overlay {
+  pointer-events: none;
+}
+
+
+/* =========================
+   Mobile GNB: overlay panel (FIX)
+========================= */
+@media (max-width: 1024px) {
+
+  /* 헤더를 최상단으로 */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+  }
+  .menu-toggle{
+    position: relative;
+    z-index: 100000;
+  }
+
+  /* ✅ 기본: 메뉴는 '패널'로 숨겨둠 */
+  .gnb{
+    display: block !important;         /* display로 숨기지 말고 */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(86vw, 360px);
+    height: 100vh;
+    padding: 90px 18px 24px;           /* 헤더 높이 고려 */
+    background: rgba(10, 12, 16, 0.98);
+    backdrop-filter: blur(10px);
+
+    transform: translateX(110%);       /* 화면 밖으로 */
+    opacity: 0;
+    pointer-events: none;              /* 클릭 불가 */
+    transition: transform .25s ease, opacity .25s ease;
+
+    z-index: 99998;
+    overflow-y: auto;
+  }
+
+  /* ✅ 열렸을 때 */
+  .gnb.is-open{
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* 서브 토글 */
+  .gnb .sub{ display:none; }
+  .gnb li.sub-open > .sub{ display:block; }
+
+  /* 링크 터치영역 */
+  .gnb a{
+    display: block;
+    padding: 12px 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .gnb .sub a{
+    padding: 10px 14px;
+    opacity: .9;
+  }
+
+  /* 드롭다운 표시 */
+  .gnb li.has-sub > a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .gnb li.has-sub > a::after{
+    content:"▾";
+    opacity:.75;
+    font-size:14px;
+  }
+  .gnb li.sub-open > a::after{
+    content:"▴";
+  }
+}
+/* =========================
+   Mobile GNB Active / Hover Color
+========================= */
+@media (max-width: 1024px) {
+
+  /* 기본 링크 색 */
+  .gnb a {
+    color: #fafafa;
+    -webkit-tap-highlight-color: transparent; /* 모바일 기본 파란/흰 하이라이트 제거 */
+  }
+
+  /* 터치/클릭 중 */
+  .gnb a:hover,
+  .gnb a:active,
+  .gnb a:focus {
+    color: #f5c96b;                 /* 🔥 골드 */
+    background: rgba(245, 201, 107, 0.08); /* 살짝만 배경 */
+  }
+
+  /* 서브메뉴 링크는 조금 연하게 */
+  .gnb .sub a:hover,
+  .gnb .sub a:active,
+  .gnb .sub a:focus {
+    color: #f5c96b;
+    background: rgba(245, 201, 107, 0.06);
+  }
+}
+/* =========================
+   GNB Highlight (Clean Neon Blue)
+========================= */
+
+/* 1. 기본 상태: 불필요한 여백 제거 및 초기화 */
+#gnb .gnb-list a,
+#gnb.is-open .gnb-list a {
+  background: transparent !important;
+  color: #ffffff !important;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
+  /* padding이나 display:block을 제거하여 글자 밀림 방지 */
+}
+
+/* 2. Hover / Active / 현재 페이지 상태 */
+#gnb .gnb-list a:hover,
+#gnb .gnb-list a:active,
+#gnb .gnb-list a:focus,
+#gnb .gnb-list a[aria-current="page"],
+#gnb .gnb-list a.active,
+#gnb .gnb-list a.current,
+#gnb.is-open .gnb-list a:hover,
+#gnb.is-open .gnb-list a.active {
+  background: transparent !important; /* 배경을 써서 글자가 밀리는 것 방지 */
+  color: #74b9ff !important; /* 세련된 브라이트 블루 */
+  text-shadow: 0 0 8px rgba(0, 208, 255, 0.466); /* 은은한 네온 효과 */
+  font-weight: 600; /* 살짝 두껍게 하여 가독성 확보 */
+}
+
+/* 3. 서브 메뉴: 조금 더 연한 하늘색 포인트 */
+#gnb .sub a:hover,
+#gnb .sub a[aria-current="page"],
+#gnb .sub a.active {
+  color: rgb(116, 185, 255) !important;
+  text-shadow: 0 0 5px rgba(116, 185, 255, 0.4);
+}
+
+/* 4. (선택사항) 밑줄 포인트: 글자가 밀리지 않으면서 강조하고 싶을 때 */
+#gnb .gnb-list a.active::after,
+#gnb .gnb-list a[aria-current="page"]::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #74b9ff;
+  margin-top: 4px;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
+}
+<nav class="leaders-nav">
+  <div class="nav-container">
+    <div class="nav-links">
+      <a href="/about" class="nav-item">리더스 소개</a>
+      <a href="/criminal" class="nav-item">형사사건</a>
+      <a href="/rehabilitation" class="nav-item">개인회생·파산</a>
+      <a href="/registration" class="nav-item">등기</a>
+      <a href="/civil" class="nav-item">민사소송</a>
+      <a href="/divorce" class="nav-item">국제이혼</a>
+      <a href="/consulting" class="nav-item highlight">온라인상담</a>
+      <a href="/board" class="nav-item">법률정보</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .leaders-nav {
+    background: #111; /* 이미지와 같은 어두운 배경 */
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    /* 항목 간의 간격을 일정하게 고정 */
+    gap: 30px; 
+  }
+
+  .nav-item {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    /* 글자 수에 상관없이 시각적 중심을 맞추기 위해 최소 너비 설정 */
+    min-width: 80px; 
+    text-align: center;
+    transition: color 0.2s;
+    white-space: nowrap;
+    letter-spacing: -0.03em; /* 자간을 살짝 줄여 더 단정하게 */
+  }
+
+  /* '개인회생·파산'처럼 긴 메뉴는 너비를 유연하게 */
+  .nav-item:nth-child(3) {
+    min-width: 110px;
+  }
+
+  .nav-item:hover {
+    color: #f2c14e; /* 골드 포인트 */
+  }
+
+  /* 강조하고 싶은 메뉴 (온라인상담 등) */
+  .nav-item.highlight {
+    color: #f2c14e;
+  }
+
+  /* 모바일 대응: 메뉴가 많으므로 가로 스크롤 허용 또는 간격 축소 */
+  @media (max-width: 1024px) {
+    .nav-links {
+      gap: 15px;
+    }
+    .nav-item {
+      font-size: 14px;
+      min-width: auto;
+    }
+  }
+</style>

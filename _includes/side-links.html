@@ -1,0 +1,24 @@
+<!-- 사이드 바로가기 버튼 -->
+<div class="side-links">
+
+  <!-- PC용 -->
+  <a href="https://blog.naver.com/mae6885"
+     target="_blank"
+     class="side-btn side-btn--blog">
+    블로그
+  </a>
+
+  <a href="https://www.youtube.com/@유튜브주소"
+     target="_blank"
+     class="side-btn side-btn--youtube">
+    유튜브
+  </a>
+
+  <!-- 모바일 전화 버튼 (페이지별 분기) -->
+  {% if page.url == "/international-divorce" %}
+    <a href="tel:0312156883" class="side-btn side-btn--call">전화상담</a>
+  {% else %}
+    <a href="tel:0312256885" class="side-btn side-btn--call">전화상담</a>
+  {% endif %}
+
+</div>

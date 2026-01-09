@@ -8,20 +8,16 @@
   <meta name="description" content="{{ page.description | default: '김성태 법무사 사무소 - 수원·용인·화성 지역 개인회생·파산·고소장 상담 전문' }}">
   <meta name="author" content="김성태 법무사" />
 
-  <!-- 기본 스타일시트 연결 (필요시 외부 CSS로 분리 가능) -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-
-
-  <!-- 파비콘 -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Open Graph (SNS 공유용) -->
   <meta property="og:title" content="{{ page.title | default: '김성태 법무사 사무소' }}" />
   <meta property="og:description" content="{{ page.description | default: '수원·용인·화성 지역 법률상담 전문 법무사. 친절하고 신속한 법률서비스 제공.' }}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   <meta property="og:image" content="/og-image.jpg" />
 </head>
+
 <body>
 
   {% include header.html %}
@@ -30,43 +26,90 @@
     {{ content }}
   </main>
 
+  {% include side-links.html %}
   {% include footer.html %}
-<script>
-  (function () {
-    const header = document.getElementById('siteHeader');
-    if (!header) return;
 
-    let lastY = window.scrollY;
-    let ticking = false;
+  <!-- ✅ 헤더 스크롤 숨김/표시 -->
+  <script>
+    (function () {
+      const header = document.getElementById('siteHeader');
+      if (!header) return;
 
-    function onScroll() {
-      const y = window.scrollY;
+      let lastY = window.scrollY;
+      let ticking = false;
 
-      // 맨 위 근처에서는 항상 보이게
-      if (y < 10) {
-        header.classList.remove('header--hidden');
+      function onScroll() {
+        const y = window.scrollY;
+
+        if (y < 10) {
+          header.classList.remove('header--hidden');
+          lastY = y;
+          return;
+        }
+
+        if (y > lastY + 8) header.classList.add('header--hidden');
+        else if (y < lastY - 8) header.classList.remove('header--hidden');
+
         lastY = y;
-        return;
       }
 
-      // 아래로 스크롤 => 숨김 / 위로 스크롤 => 보임
-      if (y > lastY + 8) header.classList.add('header--hidden');
-      else if (y < lastY - 8) header.classList.remove('header--hidden');
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            onScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
 
-      lastY = y;
-    }
+  <!-- ✅ 모바일 메뉴 + 서브메뉴 토글 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("menuToggle");
+      const gnb = document.getElementById("gnb");
+      if (!btn || !gnb) return;
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          onScroll();
-          ticking = false;
+      // 전체 메뉴 열기/닫기
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = gnb.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      // 모바일에서 서브메뉴 토글
+      gnb.querySelectorAll("li.has-sub > a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (window.innerWidth > 1024) return; // PC는 링크 동작 유지
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          const li = link.parentElement;
+          li.classList.toggle("sub-open");
         });
-        ticking = true;
-      }
-    }, { passive: true });
-  })();
-</script>
+      });
+
+      // 메뉴 바깥 클릭하면 닫기
+      document.addEventListener("click", (e) => {
+        if (!gnb.classList.contains("is-open")) return;
+        if (btn.contains(e.target) || gnb.contains(e.target)) return;
+
+        gnb.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
+        gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
+      });
+
+      // 화면이 커지면 열린 서브 정리
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1024) {
+          gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

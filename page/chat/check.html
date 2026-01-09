@@ -1,0 +1,214 @@
+---
+layout: default
+title: 개인회생 정밀 자가진단 | 리더스 합동 법무사
+permalink: /check
+---
+
+<section class="leaders-page">
+  <section class="leaders-hero js-reveal">
+    <div class="leaders-container leaders-container--narrow">
+      <div class="leaders-badge-wrapper">
+        <span class="leaders-badge">PRECISION CHECK</span>
+      </div>
+      <h1 class="leaders-title">개인회생 <span class="text-gradient">정밀 자가진단</span></h1>
+      <p class="leaders-desc">
+        법원 실무 기준인 <strong>청산가치 보장의 원칙</strong>을 반영한 테스트입니다.<br>
+        실제 탕감 가능한 예상 금액을 즉시 확인해 보세요.
+      </p>
+    </div>
+  </section>
+
+  <section class="leaders-section" style="padding-top: 0;">
+    <div class="leaders-container leaders-container--narrow">
+      <div class="leaders-check-card js-reveal">
+        <div class="leaders-form-grid">
+          
+          <div class="leaders-input-group">
+            <label>총 채무액 (원금 기준)</label>
+            <div class="input-wrapper">
+              <input type="number" id="debt" placeholder="예: 8500">
+              <span class="unit">만원</span>
+            </div>
+          </div>
+
+          <div class="leaders-input-group">
+            <label>보유 재산 합계</label>
+            <div class="input-wrapper">
+              <input type="number" id="asset" placeholder="예: 3000">
+              <span class="unit">만원</span>
+            </div>
+          </div>
+
+          <div class="leaders-input-group">
+            <label>월 평균 소득 (세후)</label>
+            <div class="input-wrapper">
+              <input type="number" id="monthlyIncome" placeholder="예: 280">
+              <span class="unit">만원</span>
+            </div>
+          </div>
+
+          <div class="leaders-input-group">
+            <label>부양가족 수 (본인 제외)</label>
+            <div class="input-wrapper">
+              <input type="number" id="dependents" placeholder="예: 1">
+              <span class="unit">명</span>
+            </div>
+          </div>
+
+          <div class="leaders-input-group full-width">
+            <label>현재 직업군</label>
+            <select id="job">
+              <option value="">직업을 선택해 주세요</option>
+              <option value="직장인">직장인 (급여소득자)</option>
+              <option value="프리랜서">프리랜서 / 일용직</option>
+              <option value="자영업">자영업자 / 사업자</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="checkEligibility()" class="leaders-btn-primary">
+          분석 결과 확인하기
+        </button>
+
+        <div id="result" class="leaders-result-container"></div>
+      </div>
+
+      <p class="disclaimer-text">
+        ※ 본 진단은 2026년 생계비 기준 시뮬레이션이며, 실제 결과는 법원의 판단에 따라 달라질 수 있습니다.
+      </p>
+    </div>
+  </section>
+</section>
+
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #2563eb;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 16px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #f8fafc; line-height: 1.6; overflow-x: hidden; }
+  .leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .leaders-container--narrow { max-width: 800px; }
+
+  /* Hero Section */
+  .leaders-hero { padding: 120px 0 60px; text-align: center; }
+  .leaders-badge { 
+    font-size: 12px; font-weight: 700; color: var(--brand-accent); 
+    border: 1px solid var(--brand-accent); padding: 4px 12px; border-radius: 100px; 
+    letter-spacing: 0.1em; margin-bottom: 20px; display: inline-block;
+  }
+  .leaders-title { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.03em; }
+  .text-gradient { background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .leaders-desc { font-size: 1.15rem; color: var(--text-sub); word-break: keep-all; }
+
+  /* Form Design */
+  .leaders-check-card { 
+    background: #fff; padding: 48px; border-radius: var(--radius-lg); border: 1px solid var(--border); 
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.05); margin-bottom: 30px;
+  }
+  .leaders-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .full-width { grid-column: span 2; }
+
+  .leaders-input-group label { display: block; font-size: 14px; font-weight: 700; color: var(--brand); margin-bottom: 10px; }
+  .input-wrapper { position: relative; }
+  
+  .leaders-input-group input, .leaders-input-group select {
+    width: 100%; padding: 16px 20px; border-radius: 12px; border: 1px solid var(--border); 
+    font-size: 16px; transition: var(--transition); appearance: none;
+  }
+  .leaders-input-group input:focus { border-color: var(--brand-accent); outline: none; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+  
+  .unit { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--text-sub); font-weight: 600; font-size: 14px; pointer-events: none; }
+
+  .leaders-btn-primary { 
+    width: 100%; padding: 20px; background: var(--brand); color: #fff; border: none; 
+    border-radius: 14px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: var(--transition);
+  }
+  .leaders-btn-primary:hover { background: var(--brand-accent); transform: translateY(-3px); }
+
+  /* Result Styling */
+  .leaders-result-container { margin-top: 40px; padding-top: 40px; border-top: 2px dashed var(--border); display: none; }
+  .result-box { background: var(--brand-soft); padding: 40px; border-radius: 20px; text-align: center; border: 1px solid var(--border); }
+  .result-status { font-size: 2rem; font-weight: 900; margin-bottom: 8px; }
+  .result-msg { color: var(--text-sub); margin-bottom: 32px; word-break: keep-all; }
+  
+  .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: #fff; padding: 24px; border-radius: 16px; margin-bottom: 32px; box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+  .stat-item span { font-size: 12px; color: var(--text-sub); display: block; margin-bottom: 4px; }
+  .stat-item strong { font-size: 1.25rem; font-weight: 800; color: var(--brand); }
+  .stat-highlight { color: #dc2626 !important; }
+
+  .disclaimer-text { text-align: center; color: var(--text-sub); font-size: 13px; opacity: 0.7; margin: 20px 0 20px;}
+
+  /* Animation */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .leaders-form-grid { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
+    .leaders-check-card { padding: 32px 20px; }
+    .result-stats { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  function checkEligibility() {
+    const debt = (parseInt(document.getElementById("debt").value) || 0);
+    const asset = (parseInt(document.getElementById("asset").value) || 0);
+    const income = (parseInt(document.getElementById("monthlyIncome").value) || 0);
+    const dependents = (parseInt(document.getElementById("dependents").value) || 0);
+    
+    if(!debt || !income) { alert("총 채무액과 월 소득을 입력해주세요."); return; }
+
+    const livingCosts = [0, 143, 236, 302, 367, 430];
+    const myLivingCost = livingCosts[dependents + 1] || 500;
+    
+    let monthlyPay = income - myLivingCost;
+    if(monthlyPay < 0) monthlyPay = 0;
+
+    let status = "신청 가능";
+    let color = "#16a34a";
+    let msg = "회생 요건에 부합합니다. 법무사 검토를 통해 최대의 탕감률을 설계할 수 있습니다.";
+
+    if (debt <= asset) {
+      status = "신청 불가"; color = "#dc2626"; msg = "재산이 채무보다 많은 경우 원칙적으로 신청이 어렵습니다.";
+    } else if (monthlyPay <= 0) {
+      status = "상담 필요"; color = "#eab308"; msg = "가용 소득이 최저생계비에 미달합니다. 소득 증빙이나 부양가족 조정이 필요합니다.";
+    }
+
+    const totalRepay = monthlyPay * 36;
+    const totalCut = Math.max(0, debt - totalRepay);
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.style.display = "block";
+    resultDiv.innerHTML = `
+      <div class="result-box js-reveal is-visible">
+        <div class="result-status" style="color: ${color}">${status}</div>
+        <p class="result-msg">${msg}</p>
+        <div class="result-stats">
+          <div class="stat-item"><span>월 예상 변제금</span><strong>${monthlyPay.toLocaleString()}만원</strong></div>
+          <div class="stat-item"><span>변제 기간</span><strong>36개월</strong></div>
+          <div class="stat-item"><span>예상 탕감액</span><strong class="stat-highlight">${totalCut.toLocaleString()}만원</strong></div>
+        </div>
+        <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="leaders-btn-primary" style="display:inline-block; text-decoration:none;">상세 서류 및 절차 안내받기</a>
+      </div>
+    `;
+    
+    window.scrollTo({ top: resultDiv.offsetTop + 200, behavior: 'smooth' });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
+</script>

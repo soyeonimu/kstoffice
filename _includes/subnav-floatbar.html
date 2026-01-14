@@ -1,0 +1,19 @@
+<section class="subnav-float">
+  <div class="leaders-container">
+    <div class="subnav-float-inner">
+      <div class="subnav-float-head">
+        {% if include.badge %}<span class="sf-badge">{{ include.badge }}</span>{% endif %}
+        {% if include.title %}<span class="sf-title">{{ include.title }}</span>{% endif %}
+      </div>
+
+      <div class="subnav-float-links" aria-label="하위 메뉴">
+        {% for it in include.items %}
+          <a class="sf-link {% if it.highlight %}is-active{% endif %}"
+             href="{{ it.url | relative_url }}">
+            {{ it.title }}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

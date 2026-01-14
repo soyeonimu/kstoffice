@@ -17,13 +17,11 @@
 </section>
 
 <style>
-  /* 리더스 공통 디자인 시스템 변수 수정 */
   :root {
-    /* 배경을 밝고 투명한 회색조로 변경 */
     --cta-bg-glass: rgba(226, 232, 240, 0.82);
     --cta-accent: #2563eb;
     --cta-kakao: #fee500;
-    --cta-text-main: #0f172a; /* 글자색을 어두운 네이비로 */
+    --cta-text-main: #0f172a;
     --cta-text-sub: #64748b;
     --cta-radius: 32px;
     --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -32,20 +30,19 @@
   .unified-cta-section { padding: 80px 24px; background: transparent; }
   .container-cta { max-width: 1200px; margin: 0 auto; }
 
-  .cta-box-wrapper { 
-    background: var(--cta-bg-glass); 
-    backdrop-filter: blur(12px); /* 뒤 배경 블러 효과 */
+  .cta-box-wrapper {
+    background: var(--cta-bg-glass);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
-    border-radius: var(--cta-radius); 
-    padding: 64px 60px; 
-    border: 1px solid rgba(226, 232, 240, 0.8); /* 연한 테두리 */
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05); /* 훨씬 가벼워진 그림자 */
+
+    border-radius: var(--cta-radius);
+    padding: 64px 60px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05);
     position: relative;
     overflow: hidden;
   }
 
-  /* 은은한 포인트 원형 효과 (회색 톤에 맞게 조정) */
   .cta-box-wrapper::before {
     content: '';
     position: absolute;
@@ -57,69 +54,133 @@
     pointer-events: none;
   }
 
-  .cta-inner-content { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    gap: 48px; 
+  .cta-inner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
     position: relative;
     z-index: 1;
   }
 
-  /* 텍스트 영역 */
   .cta-text-area { flex: 1; }
-  .cta-badge { 
-    font-size: 12px; font-weight: 800; color: var(--cta-accent); 
-    letter-spacing: 0.15em; margin-bottom: 16px; 
+  .cta-badge {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--cta-accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
   }
-  .cta-title { 
-    font-size: clamp(1.6rem, 4vw, 2.2rem); 
-    font-weight: 800; color: var(--cta-text-main); /* 텍스트 진하게 */
-    margin-bottom: 14px; letter-spacing: -0.03em; 
-    word-break: keep-all;
-  }
-  .cta-desc { 
-    font-size: 1.15rem; color: var(--cta-text-sub); /* 서브 텍스트 가독성 확보 */
-    margin: 0; font-weight: 400; line-height: 1.6;
+
+  .cta-title {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: var(--cta-text-main);
+    margin-bottom: 14px;
+    letter-spacing: -0.03em;
     word-break: keep-all;
   }
 
-  /* 액션 버튼 영역 */
+  .cta-desc {
+    font-size: 1.15rem;
+    color: var(--cta-text-sub);
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
   .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
 
   .cta-btn {
-    display: flex; align-items: center; justify-content: center;
-    min-width: 180px; height: 60px; border-radius: 14px;
-    font-weight: 800; text-decoration: none; font-size: 1.05rem; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    height: 60px;
+    border-radius: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1.05rem;
     transition: var(--transition-smooth);
     will-change: transform;
   }
 
-  .cta-btn.kakao { 
-    background: var(--cta-kakao); 
-    color: #3c1e1e; 
+  .cta-btn.kakao {
+    background: var(--cta-kakao);
+    color: #3c1e1e;
     box-shadow: 0 4px 12px rgba(254, 229, 0, 0.2);
   }
-  .cta-btn.kakao:hover { 
-    background: #fada00; 
+  .cta-btn.kakao:hover {
+    background: #fada00;
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(254, 229, 0, 0.3); 
+    box-shadow: 0 10px 25px rgba(254, 229, 0, 0.3);
   }
 
-  .cta-btn.secondary { 
-    background: #ffffff; /* 버튼은 흰색으로 띄워서 대비 효과 */
-    color: var(--cta-text-main); 
+  .cta-btn.secondary {
+    background: #ffffff;
+    color: var(--cta-text-main);
     border: 1px solid rgba(15, 23, 42, 0.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
-  .cta-btn.secondary:hover { 
-    background: #ffffff; 
+  .cta-btn.secondary:hover {
+    background: #ffffff;
     border-color: var(--cta-accent);
     color: var(--cta-accent);
-    transform: translateY(-5px); 
-    box-shadow:
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+  }
+
+  /* ===== CTA 모바일 최적화 ===== */
+  @media (max-width: 768px) {
+    .unified-cta-section { padding: 48px 16px; }
+
+    .cta-box-wrapper{
+      padding: 28px 18px;
+      border-radius: 20px;
+    }
+
+    .cta-inner-content{
+      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+    }
+
+    .cta-text-area{ width: 100%; }
+    .cta-badge{ margin-bottom: 10px; }
+
+    .cta-title{
+      font-size: 1.45rem;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .cta-desc{
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .cta-action-area{
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cta-btn{
+      width: 100%;
+      min-width: 0;
+      height: 52px;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    .cta-btn:hover{
+      transform: translateY(-2px);
+    }
+  }
 
   /* 스크롤 애니메이션 (js-reveal 클래스 대응) */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 </style>
+

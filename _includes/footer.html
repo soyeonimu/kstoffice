@@ -1,53 +1,90 @@
 <footer class="site-footer">
   <div class="footer-inner">
-
-    <div class="footer-top">
-      <a class="footer-brand" href="/">
-        <img class="footer-logo" src="assets/img/logo/F_logo.svg" alt="리더스 합동 법무사 사무소 로고">
-
-        
-      </a>
-
-      <div class="footer-contact">
-
-        <div class="contact-item">
-          <span class="contact-label">형사·민사·개인회생</span>
-          <a href="tel:0312256885" class="contact-number">
-            031-225-6885
-          </a>
+    <div class="f-top">
+      <div class="f-left">
+        <img class="footer-logo" src="assets/img/logo/F_logo.svg" alt="리더스 로고">
+        <div class="f-info">
+          <p>
+            <strong>리더스 합동 법무사 사무소</strong>
+            <span class="sep">|</span> 대표 김성태 
+            <span class="sep">|</span> 사업자번호 135-28-47886
+          </p>
+          <p>주소: 경기 수원시 영통구 광교중앙로248번길 7-2, 원희캐슬 광교 A동 702호</p>
         </div>
+      </div>
 
-        <div class="contact-item contact-item--intl">
-          <span class="contact-label">국제이혼 전용</span>
-          <a href="tel:0312156883" class="contact-number contact-number--intl">
-            031-215-6883
-          </a>
+      <div class="f-right">
+        <div class="f-call-item">
+          <span class="f-call-label">형사·민사·회생</span>
+          <a href="tel:0312256885" class="f-call-num">031.225.6885</a>
         </div>
-
+        <div class="f-call-item gold-line">
+          <span class="f-call-label">24시 국제이혼</span>
+          <a href="tel:0312156883" class="f-call-num gold">031.215.6883</a>
+        </div>
       </div>
     </div>
-    <div class="footer-divider"></div>
 
-    <div class="footer-info">
-      <p>
-        <strong>상호</strong> 리더스 합동 법무사 사무소
-        <span class="sep">|</span>
-        <strong>대표</strong> 김성태
-        <span class="sep">|</span>
-        <strong>사업자등록번호</strong> 135-28-47886
-      </p>
-      <p>
-        <strong>주소</strong> 경기 수원시 영통구 광교중앙로248번길 7-2, 원희캐슬 광교 A동 702호
-      </p>
-      <p>
-        <strong>이메일</strong>
-        <a href="mailto:kstmae@naver.com" class="footer-mail">kstmae@naver.com</a>
-      </p>
+    <div class="f-bottom">
+      <div class="f-bottom-inner">
+        <span>© 2026 LEADERS Judicial Scriveners Office. All rights reserved.</span>
+        <a href="mailto:kstmae@naver.com" class="f-email">kstmae@naver.com</a>
+      </div>
     </div>
-
-    <div class="footer-bottom">
-      © 2026 <span>LEADERS Judicial Scriveners Office</span>. All rights reserved.
-    </div>
-
   </div>
 </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('menuToggle');
+  const gnb = document.getElementById('gnb');
+  const overlay = document.getElementById('navOverlay');
+
+  if (!btn || !gnb) return;
+
+  function openMenu() {
+    btn.classList.add('active');
+    gnb.classList.add('active');
+    if (overlay) overlay.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+  }
+
+  function closeMenu() {
+    btn.classList.remove('active');
+    gnb.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMenu() {
+    const isOpen = gnb.classList.contains('active');
+    isOpen ? closeMenu() : openMenu();
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  // 오버레이 클릭하면 닫기
+  if (overlay) {
+    overlay.addEventListener('click', closeMenu);
+  }
+
+  // ESC로 닫기
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // 메뉴 링크 클릭하면 닫기(원하면 유지해도 됨)
+  gnb.addEventListener('click', function (e) {
+    const a = e.target.closest('a');
+    if (!a) return;
+    // # 이거나 event.preventDefault 쓰는 메뉴는 닫지 않음(서브 여는 용도)
+    if (a.getAttribute('href') === '#' || a.getAttribute('onclick')) return;
+    closeMenu();
+  });
+});
+</script>

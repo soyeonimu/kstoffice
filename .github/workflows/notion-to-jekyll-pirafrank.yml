@@ -3,7 +3,7 @@ name: Notion to Jekyll (pirafrank)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"   # 6시간마다
+    - cron: "0 */6 * * *"   # 6시간마다 자동 실행
 
 permissions:
   contents: write
@@ -27,10 +27,68 @@ jobs:
           site-url: "https://soyeonimu.github.io/kstoffice"
           assets-dir: "assets/notion"
 
+      - name: Normalize frontmatter
+        run: |
+          python - << 'PY'
+          import os, glob, re
+
+          BOARD_DIR = "_board"
+          # 유지하고 싶은 키 리스트
+          KEEP = ["layout", "title", "date", "category", "description", "keywords"]
+
+          def process_file(path):
+              with open(path, "r", encoding="utf-8") as f:
+                  content = f.read()
+
+              # 프론트매터 추출 (파일 시작의 --- 부터 다음 --- 까지)
+              # re.DOTALL을 사용하여 줄바꿈을 포함해 매칭
+              match = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)', content, re.DOTALL)
+              if not match:
+                  return
+
+              fm_raw, body = match.groups()
+              
+              # 기존 프론트매터 파싱
+              fm = {}
+              for line in fm_raw.splitlines():
+                  if ":" in line:
+                      k, v = line.split(":", 1)
+                      # 값 세척: 양끝 공백, 따옴표, 대괄호 제거
+                      fm[k.strip()] = v.strip().strip('[]"\' ')
+
+              # 새로운 프론트매터 생성 (순서 보장)
+              new_fm = ["---"]
+              for k in KEEP:
+                  if k == "layout":
+                      # 레이아웃은 board-post로 강제 지정
+                      new_fm.append("layout: board-post")
+                  else:
+                      v = fm.get(k, "")
+                      # 의미 없는 값 제외하고 추가
+                      if v and v.lower() not in ("undefined", "null", "none"):
+                          new_fm.append(f"{k}: {v}")
+              new_fm.append("---\n")
+
+              # 최종 파일 합치기
+              new_content = "\n".join(new_fm) + body.lstrip()
+              
+              if new_content != content:
+                  with open(path, "w", encoding="utf-8") as f:
+                      f.write(new_content)
+                  print(f"Normalized: {path}")
+
+          if os.path.isdir(BOARD_DIR):
+              for path in glob.glob(os.path.join(BOARD_DIR, "*.md")):
+                  process_file(path)
+          else:
+              print("Skip: _board directory not found")
+          PY
+
       - name: Commit & Push
         run: |
           git config user.name "notion-bot"
           git config user.email "notion-bot@users.noreply.github.com"
           git add .
-          git commit -m "sync: notion -> jekyll" || echo "No changes"
+          # 변경사항이 있을 때만 커밋
+          git commit -m "sync: notion -> jekyll (normalized)" || echo "No changes to commit"
           git push

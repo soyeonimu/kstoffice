@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # pull --rebase를 위해 전체 히스토리 가져오기
 
       - name: Notion to Jekyll
         id: notion_to_jekyll
@@ -30,9 +32,10 @@ jobs:
       - name: Normalize frontmatter and filename
         run: |
           python3 -m pip install --upgrade pip pyyaml
+          # 권한 문제 해결을 위해 전체 권한 부여
+          chmod -R 777 _board
           python3 - << 'PY'
-          import os, glob, re, datetime
-          import yaml
+          import os, glob, re, datetime, yaml, shutil
 
           BOARD_DIR = "_board"
           KEEP = ["layout", "title", "date", "category", "description", "keywords"]
@@ -43,36 +46,19 @@ jobs:
               name = re.sub(r'\s+', '-', name.strip())
               name = re.sub(r'[\\/:*?"<>|]+', '', name)
               name = re.sub(r'-{2,}', '-', name)
-              return name or "untitled"
+              return name.lower() or "untitled"
 
           def normalize_date(raw):
-              if raw is None:
-                  return datetime.date.today().strftime("%Y-%m-%d")
+              if raw is None: return datetime.date.today().strftime("%Y-%m-%d")
               s = str(raw).strip()
               digits = re.sub(r'[^0-9]', '', s)[:8]
-              if len(digits) == 8:
-                  return f"{digits[:4]}-{digits[4:6]}-{digits[6:8]}"
-              if re.match(r'^\d{4}-\d{2}-\d{2}$', s):
-                  return s
+              if len(digits) == 8: return f"{digits[:4]}-{digits[4:6]}-{digits[6:8]}"
               return datetime.date.today().strftime("%Y-%m-%d")
 
           def split_frontmatter(text):
               m = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', text, re.DOTALL)
-              if not m:
-                  return None, None
+              if not m: return None, None
               return m.group(1), m.group(2)
-
-          def unique_path(dir_name, filename):
-              base, ext = os.path.splitext(filename)
-              candidate = os.path.join(dir_name, filename)
-              if not os.path.exists(candidate):
-                  return candidate
-              i = 2
-              while True:
-                  cand = os.path.join(dir_name, f"{base}-{i}{ext}")
-                  if not os.path.exists(cand):
-                      return cand
-                  i += 1
 
           def process_file(path):
               dir_name = os.path.dirname(path)
@@ -82,20 +68,13 @@ jobs:
                   content = f.read()
 
               fm_raw, body = split_frontmatter(content)
-              if fm_raw is None:
-                  return
+              if fm_raw is None: return
 
               try:
                   fm = yaml.safe_load(fm_raw) or {}
-                  if not isinstance(fm, dict):
-                      fm = {}
-              except Exception:
-                  return
+              except: return
 
-              title = fm.get("title")
-              if not title or str(title).strip() == "":
-                  title = safe_slug(base_name).replace("-", " ")
-
+              title = fm.get("title") or safe_slug(base_name).replace("-", " ")
               date = normalize_date(fm.get("date"))
 
               out = {
@@ -103,57 +82,40 @@ jobs:
                   "title": str(title).strip(),
                   "date": date,
               }
-
               for k in ["category", "description", "keywords"]:
-                  v = fm.get(k)
-                  if v is None:
-                      continue
-                  if isinstance(v, str) and v.strip() == "":
-                      continue
-                  if isinstance(v, (list, dict)) and len(v) == 0:
-                      continue
-                  out[k] = v
+                  if fm.get(k): out[k] = fm.get(k)
 
               ordered = {k: out[k] for k in KEEP if k in out}
-
-              new_fm = "---\n" + yaml.safe_dump(
-                  ordered,
-                  sort_keys=False,
-                  allow_unicode=True,
-                  default_flow_style=False
-              ).strip() + "\n---\n"
-
+              new_fm = "---\n" + yaml.safe_dump(ordered, sort_keys=False, allow_unicode=True).strip() + "\n---\n"
               new_content = new_fm + body.lstrip()
 
+              # 새 파일명 결정 (중복 방지용 고정값)
               slug = safe_slug(str(title))
               new_filename = f"{date}-{slug}.md"
-              target_path = unique_path(dir_name, new_filename)
+              target_path = os.path.join(dir_name, new_filename)
 
-              if new_content != content:
-                  with open(path, "w", encoding="utf-8") as f:
-                      f.write(new_content)
+              # 내용 저장
+              with open(path, "w", encoding="utf-8") as f:
+                  f.write(new_content)
 
+              # 파일명 변경 (동일한 파일이 이미 있다면 덮어쓰기)
               if os.path.abspath(path) != os.path.abspath(target_path):
-                  os.rename(path, target_path)
-                  print(f"Fixed: {os.path.basename(target_path)}")
+                  if os.path.exists(target_path):
+                      os.remove(target_path)
+                  shutil.move(path, target_path)
+                  print(f"Fixed: {new_filename}")
 
           if os.path.isdir(BOARD_DIR):
               for path in glob.glob(os.path.join(BOARD_DIR, "*.md")):
                   process_file(path)
           PY
 
-      # (기존 파이썬 스크립트 내부의 target_path 부분 수정 제안)
-      # 기존 파일이 있고 내용이 같다면 굳이 unique_path로 이름을 바꾸지 않도록 하는게 좋습니다.
-      
       - name: Commit & Push
         run: |
           git config user.name "notion-bot"
           git config user.email "notion-bot@users.noreply.github.com"
           git add .
           git commit -m "sync: notion -> jekyll (normalized)" || echo "No changes to commit"
-          
-          # 원격 저장소의 변경사항을 먼저 가져와 합친 후 푸시 (충돌 방지 핵심)
-          git pull --rebase origin main 
+          # 원격 변경사항을 먼저 합친 후 푸시
+          git pull --rebase origin main
           git push origin main
-          git commit -m "sync: notion -> jekyll (normalized)" || echo "No changes to commit"
-          git push

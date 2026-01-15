@@ -1,0 +1,33 @@
+name: Notion to Jekyll Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"   # 6시간마다 자동
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync Notion to Jekyll
+        uses: whatasame/notion-to-jekyll@v1.6.0
+        with:
+          notion_token: ${{ secrets.NOTION_TOKEN }}
+          notion_database_id: ${{ secrets.NOTION_DATABASE_ID }}
+          publish_property: Published
+          output_dir: _posts/notion
+
+      - name: Commit and push
+        run: |
+          git config user.name "notion-bot"
+          git config user.email "notion-bot@users.noreply.github.com"
+          git add _posts/notion
+          git commit -m "sync: notion -> jekyll" || echo "No changes"
+          git push

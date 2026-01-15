@@ -10,7 +10,7 @@ title: 게시판
       <div class="head-badge">NEWS & INSIGHTS</div>
       <h1 class="page-title">공지사항 · 법률정보</h1>
       <p class="page-desc">
-        전문적인 지식으로 일상에 힘이 되는 법률 정보를 정기적으로 안내드립니다.
+        검찰 실무 경력 20년의 전문 지식으로 일상에 힘이 되는 법률 정보를 정기적으로 안내드립니다.
       </p>
     </header>
 
@@ -36,8 +36,10 @@ title: 게시판
               {% assign n = 0 %}
               {% for p in site.board %}
                 {% assign pc = p.category %}
-                {% if pc %}{% if pc.first %}{% assign pc_text = pc | first %}{% else %}{% assign pc_text = pc %}{% endif %}
-                {% if pc_text == category %}{% assign n = n | plus: 1 %}{% endif %}{% endif %}
+                {% if pc %}
+                  {% if pc.first %}{% assign pc_text = pc | first %}{% else %}{% assign pc_text = pc %}{% endif %}
+                  {% if pc_text == category %}{% assign n = n | plus: 1 %}{% endif %}
+                {% endif %}
               {% endfor %}
               {{ n }}
             </span>
@@ -79,32 +81,53 @@ title: 게시판
         검색 결과가 없습니다.
       </div>
     </main>
+
+    {% include cta-box.html 
+       title="상담이 필요하신가요?" 
+       desc="글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 정확합니다." %}
   </div>
 </section>
 
 <style>
-  :root { --primary-blue: #0a3871; --text-main: #1e293b; --text-sub: #64748b; --border: #e2e8f0; }
+  :root {
+    --bg-soft: #f8fafc;
+    --white: #ffffff;
+    --primary-blue: #0a3871;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+  }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
   .page-head { text-align: center; margin-bottom: 50px; }
   .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
   .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
   .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto; }
   .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-  .cat-btn { text-decoration: none; background: #fff; color: var(--text-sub); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+  .cat-btn { text-decoration: none; background: var(--white); color: var(--text-sub); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
   .cat-btn:hover, .cat-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); box-shadow: 0 10px 20px rgba(10,56,113,0.1); }
+  .cat-btn .count { font-size: 0.8rem; opacity: 0.6; margin-left: 4px; }
   .search-container { max-width: 600px; margin: 0 auto 50px; }
-  .search-box { display: flex; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 4px 16px; }
-  .search-box input { flex-grow: 1; border: none; outline: none; padding: 12px; font-size: 0.95rem; }
-  .post-list-stack { display: flex; flex-direction: column; gap: 14px; }
-  .post-title-card { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 22px 35px; border-radius: 20px; text-decoration: none; border: 1px solid var(--border); transition: 0.3s; }
-  .post-title-card:hover { transform: translateX(8px); border-color: var(--primary-blue); }
-  .post-info-left { display: flex; align-items: center; gap: 20px; overflow: hidden; }
-  .post-tag { background: #eff6ff; color: var(--primary-blue); font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 6px; }
-  .post-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .post-info-right { display: flex; align-items: center; gap: 15px; }
-  .post-date { font-size: 13px; color: var(--text-sub); }
+  .search-box { display: flex; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 4px 16px; transition: 0.3s; }
+  .search-box:focus-within { border-color: var(--primary-blue); box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.05); }
+  .search-box input { flex-grow: 1; border: none; outline: none; padding: 12px; font-size: 0.95rem; font-family: inherit; }
+  .search-icon-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0.5; }
+  .post-list-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 60px; }
+  .post-title-card { display: flex; justify-content: space-between; align-items: center; background: var(--white); padding: 22px 35px; border-radius: 20px; text-decoration: none; border: 1px solid var(--border); transition: all 0.3s ease; }
+  .post-title-card:hover { transform: translateX(8px); border-color: var(--primary-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+  .post-info-left { display: flex; align-items: center; gap: 20px; flex-grow: 1; overflow: hidden; }
+  .post-tag { background: #eff6ff; color: var(--primary-blue); font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 6px; white-space: nowrap; }
+  .post-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0; letter-spacing: -0.02em; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .post-info-right { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+  .post-date { font-size: 13px; color: var(--text-sub); font-weight: 500; }
+  .arrow { font-size: 16px; color: var(--primary-blue); transition: 0.3s; opacity: 0.6; }
+  .post-title-card:hover .arrow { transform: translateX(5px); opacity: 1; }
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 850px) {
+    .post-title-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 25px; }
+    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+    .post-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  }
 </style>
 
 <script>
@@ -124,8 +147,9 @@ title: 게시판
       let count = 0;
       postItems.forEach(item => {
         const title = item.querySelector('.post-title').innerText.toLowerCase();
+        const category = item.dataset.category;
         const matchesSearch = title.includes(searchTerm);
-        const matchesCat = (activeCat === 'all' || item.dataset.category === activeCat);
+        const matchesCat = (activeCat === 'all' || category === activeCat);
         if (matchesSearch && matchesCat) { item.style.display = 'block'; count++; } 
         else { item.style.display = 'none'; }
       });

@@ -8,8 +8,20 @@
 
       <div class="subnav-float-links" aria-label="하위 메뉴">
         {% for it in include.items %}
-          <a class="sf-link {% if it.highlight %}is-active{% endif %}"
-             href="{{ it.url | relative_url }}">
+          {%- comment -%} 
+            핵심: it.highlight 조건을 제거하고, 현재 페이지 주소(URL)만 비교합니다.
+          {%- endcomment -%}
+          {% assign current_url = page.url | relative_url %}
+          {% assign item_url = it.url | relative_url %}
+          
+          {%- comment -%} 
+            주소 끝의 / 유무 차이를 없애기 위해 마지막 슬래시를 제거하고 비교합니다. 
+          {%- endcomment -%}
+          {% assign c_url = current_url | append: "/" | replace: "//", "/" %}
+          {% assign i_url = item_url | append: "/" | replace: "//", "/" %}
+
+          <a class="sf-link {% if c_url == i_url %}is-active{% endif %}"
+             href="{{ item_url }}">
             {{ it.title }}
           </a>
         {% endfor %}

@@ -563,3 +563,49 @@ body {
     padding-top: calc(80px + 92px);
   }
 }
+/* ===== 공통 Floatbar (헤더 아래로 숨기기) ===== */
+.subnav-float {
+  position: fixed;
+  /* 1. 헤더 높이에 맞춤 (너무 높으면 내리고, 낮으면 올리세요) */
+  top: 80px; 
+  left: 0;
+  right: 0;
+  /* 2. 서열을 확 낮춥니다. (헤더보다 아래로) */
+  z-index: 100; 
+  padding: 10px 0;
+}
+
+/* ===== 헤더 (검은색 바) 서열 높이기 ===== */
+/* 보통 테마의 헤더 클래스명이 site-header나 header입니다. */
+header, .site-header, .nav-container {
+  position: fixed !important; /* 혹은 sticky */
+  top: 0;
+  width: 100%;
+  /* 3. 플로팅 바(100)보다 훨씬 높은 숫자를 줍니다. */
+  z-index: 9999 !important; 
+}
+/* 1. 바깥 컨테이너: 전체 너비를 쓰고 내부 간격만 확보 */
+.subnav-float .leaders-container {
+  max-width: 1200px !important; /* 기준이 되는 전체 폭 고정 (원하시는 넓이로 조절) */
+  margin: 0 auto !important;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* 2. 내부 흰색 박스: 사이즈 들쭉날쭉 방지 */
+.subnav-float-inner {
+  width: 100%; /* 부모 너비를 가득 채움 */
+  min-height: 80px; /* 높이를 일정하게 고정 (선택 사항) */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 18px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.10);
+  padding: 14px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}

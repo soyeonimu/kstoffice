@@ -1,0 +1,176 @@
+---
+layout: default
+title: 경찰 불송치 이의신청 정밀 분석 | 리더스 법률 설계
+description: 경찰의 무혐의 결정, 검찰 수사관 20년 경력의 시선으로 수사 기록의 빈틈을 찾아 검사의 재수사 명령을 이끌어냅니다.
+permalink: /objection
+---
+
+<section class="leaders-page objection-theme">
+  {% include subnav-floatbar.html
+    badge="LEGAL GUIDE"
+    title="불송치 이의신청"
+    items=site.data.subnav.complaint
+  %}
+
+  <section class="leaders-hero js-reveal">
+    <div class="leaders-container leaders-container--narrow">
+      <div class="leaders-badge-wrapper">
+        <span class="leaders-badge">POLICE OBJECTION</span>
+      </div>
+      <h1 class="leaders-title">불송치 결정서, <br><span class="text-yellow">결과를 뒤집는 정밀 분석</span></h1>
+      <p class="leaders-desc">
+        경찰의 '증거불충분' 결론은 수사의 끝이 아닙니다.<br>
+        <strong>검찰 실무 20년의 눈</strong>으로 수사 기록 속 숨겨진 모순을 찾아 정의를 다시 세웁니다.
+      </p>
+      <div class="hero-cta-group" style="margin-top: 40px; display: flex; gap: 15px; justify-content: center;">
+        <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">수사 기록 무료 진단</a>
+        <a href="#analysis" class="btn-ghost">분석 전략 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="leaders-section">
+    <div class="leaders-container">
+      
+      <div class="leaders-info-grid js-reveal" id="analysis">
+        <article class="info-card">
+          <div class="card-number">01</div>
+          <h3 class="info-title">기록 전수 조사</h3>
+          <p class="info-text">
+            경찰의 요약된 결론이 아닌, <strong>원본 수사 기록</strong>을 확보하여 수사관의 주관적 판단이나 사실관계 왜곡이 있었는지 전수 조사합니다.
+          </p>
+        </article>
+
+        <article class="info-card highlight-yellow"> <div class="card-number">02</div>
+          <h3 class="info-title">법리 적용의 오류 적시</h3>
+          <p class="info-text">
+            수사관이 법리를 너무 소극적으로 해석했나요? <strong>최신 판례와 검찰 지침</strong>을 근거로 경찰 판단의 허점을 날카롭게 논박합니다.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="card-number">03</div>
+          <h3 class="info-title">검찰용 이의신청서</h3>
+          <p class="info-text">
+            단순한 감정 호소가 아닙니다. <strong>검사가 보완수사를 명령할 수밖에 없는</strong> 실무적 언어와 논리로 이의신청서를 구성합니다.
+          </p>
+        </article>
+      </div>
+
+      <div class="leaders-focus-box js-reveal">
+        <div class="focus-inner">
+          <span class="focus-tag">LEADERS STRATEGY</span>
+          <h2 class="focus-title">리더스의 <span class="text-gradient">이의신청 로직</span></h2>
+          <div class="focus-grid">
+            <div class="focus-card">
+              <div class="focus-icon">01</div>
+              <h4>수사 미진 포인트 발굴</h4>
+              <p>누락된 참고인 대조 심문이나 제출된 증거가 배제된 지점을 찾아내 수사의 완결성을 공격합니다.</p>
+            </div>
+            <div class="focus-card yellow-border"> <div class="focus-icon yellow-bg">02</div>
+              <h4>디지털 증거 재구성</h4>
+              <p>포렌식 결과 중 피의자에게 유리하게 편향된 해석을 바로잡아 범행의 고의성을 입증합니다.</p>
+            </div>
+            <div class="focus-card">
+              <div class="focus-icon">03</div>
+              <h4>검찰 송치 유도</h4>
+              <p>보완수사 요구를 넘어 최종적으로 검찰 송치 및 기소에 이를 수 있도록 양형 자료를 보강합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="leaders-disclaimer js-reveal">
+        ※ 경찰 불송치 이의신청은 <strong>기간의 제한은 없으나</strong>, 사건이 잊혀지기 전 신속한 대응이 기록 복원에 유리합니다.
+      </p>
+    </div>
+  </section>
+</section>
+
+{% include cta-box.html 
+   title="경찰이 닫은 사건, 리더스가 다시 엽니다"
+   desc="검찰 수사관 출신 법무사가 기록 뒤에 숨겨진 진실을 찾아드리겠습니다."
+%}
+
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #2563eb; /* 리더스 블루 */
+    --brand-soft: #f8fafc;
+    --yellow: #FFD700; /* 포인트 옐로우 */
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 20px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #ffffff; line-height: 1.6; }
+  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .leaders-container--narrow { max-width: 840px; }
+
+  /* Hero */
+  .leaders-hero { padding: 150px 0 80px; text-align: center; }
+  .leaders-badge { font-size: 11px; font-weight: 800; color: var(--brand-accent); border: 1.5px solid var(--brand-accent); padding: 4px 14px; border-radius: 100px; letter-spacing: 0.12em; display: inline-block; margin-bottom: 24px; }
+  .leaders-title { font-size: clamp(2.4rem, 6vw, 3.5rem); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.04em; color: var(--brand); }
+  .text-gradient { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .text-yellow { color: var(--brand); position: relative; display: inline-block; z-index: 1; }
+  .text-yellow::after { content: ""; position: absolute; bottom: 8px; left: 0; width: 100%; height: 12px; background: var(--yellow); z-index: -1; opacity: 0.6; }
+  .leaders-desc { font-size: 1.2rem; color: var(--text-sub); word-break: keep-all; }
+
+  /* Info Grid */
+  .leaders-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin: 80px 0; }
+  .info-card { position: relative; background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border); padding: 50px 32px 40px; transition: var(--transition); }
+  .info-card:hover { transform: translateY(-10px); border-color: var(--brand-accent); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); }
+  
+  /* 옐로우 강조 카드 */
+  .info-card.highlight-yellow { border-color: var(--yellow); background: #fffef0; }
+  .info-card.highlight-yellow .card-number { color: #b45309; opacity: 0.5; }
+
+  .card-number { position: absolute; top: 25px; left: 32px; font-size: 0.9rem; font-weight: 900; color: var(--brand-accent); opacity: 0.3; }
+  .info-title { font-size: 1.3rem; font-weight: 800; color: var(--brand); margin-bottom: 16px; letter-spacing: -0.02em; }
+  .info-text { font-size: 1.05rem; color: var(--text-sub); line-height: 1.75; }
+
+  /* Focus Box */
+  .leaders-focus-box { background: var(--brand-soft); border-radius: var(--radius-lg); padding: 80px 60px; border: 1px solid var(--border); margin-bottom: 60px; }
+  .focus-tag { font-size: 12px; font-weight: 800; color: var(--brand-accent); letter-spacing: 0.18em; margin-bottom: 16px; display: block; }
+  .focus-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 50px; color: var(--brand); }
+  .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .focus-card { background: #fff; border-radius: 24px; padding: 40px 32px; border: 1px solid #e5edf9; transition: var(--transition); }
+  
+  .focus-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--brand-accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; margin-bottom: 25px; }
+  .focus-icon.yellow-bg { background: var(--yellow); color: var(--brand); }
+  .focus-card.yellow-border { border-color: var(--yellow); }
+
+  /* Buttons */
+  .btn-prime { background: var(--brand); color: #fff; padding: 18px 36px; border-radius: 14px; font-weight: 800; text-decoration: none; transition: 0.3s; }
+  .btn-prime:hover { background: var(--brand-accent); transform: translateY(-3px); }
+  .btn-ghost { background: #fff; border: 1px solid var(--border); color: var(--brand); padding: 18px 36px; border-radius: 14px; font-weight: 800; text-decoration: none; transition: 0.3s; }
+  .btn-ghost:hover { background: #f8fafc; border-color: var(--brand); }
+
+  .leaders-disclaimer { font-size: 0.95rem; color: var(--text-sub); text-align: center; margin: 40px 0 80px; }
+
+  /* Reveal */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .leaders-info-grid, .focus-grid { grid-template-columns: 1fr; }
+    .leaders-hero { padding: 100px 0 50px; }
+    .leaders-focus-box { padding: 50px 30px; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
+</script>

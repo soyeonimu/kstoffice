@@ -32,7 +32,7 @@ jobs:
       - name: Normalize frontmatter and filename
         run: |
           python3 -m pip install --upgrade pip pyyaml
-          # 파일 소유권을 현재 실행 유저로 변경 (권한 에러 해결 핵심)
+          # 파일 소유권을 현재 실행 유저로 변경
           sudo chown -R $USER:$USER _board
           
           python3 - << 'PY'
@@ -50,11 +50,21 @@ jobs:
               return name.lower() or "untitled"
 
           def normalize_date(raw):
-              if raw is None: return datetime.date.today().strftime("%Y-%m-%d")
+              # ✅ 핵심 수정: Jekyll 정렬을 위해 시:분:초를 현재 시간으로 추가
+              now = datetime.datetime.now()
+              time_str = now.strftime(" %H:%M:%S")
+              
+              if raw is None: 
+                  return now.strftime("%Y-%m-%d") + time_str
+              
               s = str(raw).strip()
+              # 숫자만 추출 (날짜 8자리)
               digits = re.sub(r'[^0-9]', '', s)[:8]
-              if len(digits) == 8: return f"{digits[:4]}-{digits[4:6]}-{digits[6:8]}"
-              return datetime.date.today().strftime("%Y-%m-%d")
+              if len(digits) == 8: 
+                  # YYYY-MM-DD 형식에 시간을 붙임
+                  return f"{digits[:4]}-{digits[4:6]}-{digits[6:8]}" + time_str
+              
+              return now.strftime("%Y-%m-%d") + time_str
 
           def split_frontmatter(text):
               m = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', text, re.DOTALL)
@@ -71,13 +81,16 @@ jobs:
 
                   fm = yaml.safe_load(fm_raw) or {}
                   title = fm.get("title") or os.path.basename(path).replace(".md", "")
-                  date = normalize_date(fm.get("date"))
+                  
+                  # ✅ 날짜 정규화 시 시간 정보 포함
+                  date_val = normalize_date(fm.get("date"))
+                  # 파일명용 날짜 (파일명에는 시간 제외하고 YYYY-MM-DD만)
+                  file_date = date_val.split(' ')[0]
 
-                  # 게시판 전용 레이아웃 강제 지정
                   out = {
                       "layout": "board-post",
                       "title": str(title).strip(),
-                      "date": date,
+                      "date": date_val,
                   }
                   for k in ["category", "description", "keywords"]:
                       if fm.get(k): out[k] = fm.get(k)
@@ -87,19 +100,19 @@ jobs:
                   new_content = new_fm + body.lstrip()
 
                   slug = safe_slug(str(title))
-                  new_filename = f"{date}-{slug}.md"
+                  new_filename = f"{file_date}-{slug}.md"
                   target_path = os.path.join(os.path.dirname(path), new_filename)
 
                   # 파일 업데이트
                   with open(path, "w", encoding="utf-8") as f:
                       f.write(new_content)
 
-                  # 파일명 정규화 (중복 방지: 이미 있으면 삭제 후 이동)
+                  # 파일명 정규화
                   if os.path.abspath(path) != os.path.abspath(target_path):
                       if os.path.exists(target_path):
                           os.remove(target_path)
                       shutil.move(path, target_path)
-                      print(f"Fixed: {new_filename}")
+                      print(f"Fixed: {new_filename} with time {date_val}")
               except Exception as e:
                   print(f"Error processing {path}: {e}")
 
@@ -113,6 +126,6 @@ jobs:
           git config user.name "notion-bot"
           git config user.email "notion-bot@users.noreply.github.com"
           git add .
-          git commit -m "sync: notion -> jekyll (normalized)" || echo "No changes to commit"
+          git commit -m "sync: notion -> jekyll (date-time normalized)" || echo "No changes to commit"
           git pull --rebase origin main
           git push origin main

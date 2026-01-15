@@ -22,7 +22,7 @@ jobs:
           notion-token: ${{ secrets.NOTION_TOKEN }}
           notion-database-id: ${{ secrets.NOTION_DATABASE_ID }}
           publish-to-posts: "true"
-          relative-date: "0"
+          relative-date: "3650"
           site-url: "https://soyeonimu.github.io/kstoffice"
           assets-dir: "assets/notion"
 

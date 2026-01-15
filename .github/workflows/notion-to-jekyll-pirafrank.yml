@@ -1,0 +1,35 @@
+name: Notion to Jekyll (pirafrank)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"   # 6시간마다
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Notion to Jekyll
+        id: notion_to_jekyll
+        uses: pirafrank/notion-to-jekyll@v1
+        with:
+          notion-token: ${{ secrets.NOTION_TOKEN }}
+          notion-database-id: ${{ secrets.NOTION_DATABASE_ID }}
+          publish-to-posts: "true"
+          relative-date: "0"
+          site-url: "https://YOUR_GITHUB_PAGES_DOMAIN"
+          assets-dir: "assets/notion"
+
+      - name: Commit & Push
+        run: |
+          git config user.name "notion-bot"
+          git config user.email "notion-bot@users.noreply.github.com"
+          git add .
+          git commit -m "sync: notion -> jekyll" || echo "No changes"
+          git push

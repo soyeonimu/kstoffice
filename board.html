@@ -57,8 +57,11 @@ title: 게시판
 
     <main class="post-area js-reveal">
       <div id="post-list" class="post-list-stack">
-        {% assign sorted_posts = site.board | sort: "date" | reversed %}
-        {% for post in sorted_posts %}
+        {%- comment -%} 
+          ✅ 최신순 정렬 핵심: 파일 경로(날짜포함파일명)로 정렬한 후 거꾸로(reversed) 출력 
+        {%- endcomment -%}
+        {% assign sorted_posts = site.board | sort: "path" %}
+        {% for post in sorted_posts reversed %}
 
           {% assign pc = post.category %}
           {% if pc %}{% if pc.first %}{% assign post_cat = pc | first %}{% else %}{% assign post_cat = pc %}{% endif %}{% else %}{% assign post_cat = "" %}{% endif %}

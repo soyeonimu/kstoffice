@@ -14,13 +14,57 @@ title: 게시판
       </p>
     </header>
 
+    {%- comment -%}
+    ✅ 핵심 수정:
+    - post.category 가 배열일 수 있어서 slugify 전에 문자열로 정규화
+    - categories 목록도 "문자열 카테고리만" 수집
+    {%- endcomment -%}
+
+    {% assign cat_list = "" | split: "|" %}
+    {% for p in site.board %}
+      {% assign c = p.category %}
+      {% if c %}
+        {% if c.first %}
+          {% assign c_text = c | first %}
+        {% else %}
+          {% assign c_text = c %}
+        {% endif %}
+        {% assign c_text = c_text | strip %}
+        {% if c_text != "" %}
+          {% assign cat_list = cat_list | push: c_text %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% assign categories = cat_list | uniq | sort %}
+
     <nav class="category-nav js-reveal" style="margin-bottom: 30px;">
       <div class="category-wrapper">
         <a href="#" class="cat-btn active" data-filter="all">전체보기</a>
-        {% assign categories = site.board | map:"category" | compact | uniq | sort %}
+
         {% for category in categories %}
-          <a href="#" class="cat-btn" data-filter="{{ category | slugify }}">
-            {{ category }} <span class="count">{{ site.board | where:"category", category | size }}</span>
+          {% assign cat_slug = category | slugify %}
+          <a href="#" class="cat-btn" data-filter="{{ cat_slug }}">
+            {{ category }}
+            <span class="count">
+              {%- comment -%}
+              문자열 category 기준으로 count (배열 category는 first로 비교)
+              {%- endcomment -%}
+              {% assign n = 0 %}
+              {% for p in site.board %}
+                {% assign pc = p.category %}
+                {% if pc %}
+                  {% if pc.first %}
+                    {% assign pc_text = pc | first %}
+                  {% else %}
+                    {% assign pc_text = pc %}
+                  {% endif %}
+                  {% if pc_text == category %}
+                    {% assign n = n | plus: 1 %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+              {{ n }}
+            </span>
           </a>
         {% endfor %}
       </div>
@@ -36,18 +80,32 @@ title: 게시판
     <main class="post-area js-reveal">
       <div id="post-list" class="post-list-stack">
         {% for post in site.board reversed %}
-        <article class="post-item" data-category="{{ post.category | slugify }}">
-          <a href="{{ post.url }}" class="post-title-card">
-            <div class="post-info-left">
-              <span class="post-tag">{{ post.category }}</span>
-              <h2 class="post-title">{{ post.title }}</h2>
-            </div>
-            <div class="post-info-right">
-              <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-              <span class="arrow">→</span>
-            </div>
-          </a>
-        </article>
+
+          {% assign pc = post.category %}
+          {% if pc %}
+            {% if pc.first %}
+              {% assign post_cat = pc | first %}
+            {% else %}
+              {% assign post_cat = pc %}
+            {% endif %}
+          {% else %}
+            {% assign post_cat = "" %}
+          {% endif %}
+
+          <article class="post-item" data-category="{{ post_cat | slugify }}">
+            <a href="{{ post.url }}" class="post-title-card">
+              <div class="post-info-left">
+                {% if post_cat != "" %}
+                  <span class="post-tag">{{ post_cat }}</span>
+                {% endif %}
+                <h2 class="post-title">{{ post.title }}</h2>
+              </div>
+              <div class="post-info-right">
+                <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                <span class="arrow">→</span>
+              </div>
+            </a>
+          </article>
         {% endfor %}
       </div>
       <div id="no-results" style="display: none; text-align: center; padding: 80px 0; color: #64748b; font-size: 0.95rem;">

@@ -146,7 +146,40 @@ layout: default
     background: #f1f1f0;
     color: #37352f;
   }
+  /* 1. 인용구 스타일 (Blockquote) */
+.notion-content blockquote {
+  margin: 20px 0;
+  padding: 0 0 0 14px;
+  border-left: 3px solid #37352f; /* 노션 특유의 얇고 진한 왼쪽 선 */
+  color: inherit;
+  font-style: normal;
+  line-height: 1.6;
+}
 
+/* 2. 코드 블록 스타일 (선택 사항) */
+.notion-content code {
+  background: #f1f1f0;
+  color: #eb5757; /* 노션 코드 특유의 붉은색 */
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* 3. 강조 박스 (Callout) 스타일 */
+/* 마크다운에서 <div class="callout"> 내용 </div> 형태로 사용 */
+.callout {
+  display: flex;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 4px;
+  background-color: #f1f1f0; /* 연한 회색 배경 */
+  border: 1px solid transparent;
+  gap: 12px;
+}
+
+.callout-blue { background-color: #ebf5ff; }
+.callout-yellow { background-color: #fff9e6; }
   /* 모바일 최적화 */
   @media (max-width: 768px) {
     .post-detail-container { padding: 40px 16px; }

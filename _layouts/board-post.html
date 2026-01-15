@@ -7,7 +7,9 @@ layout: default
     
     <header class="notion-header">
       {% if page.category %}
-      <div class="notion-badge">{{ page.category }}</div>
+      {% assign pc = page.category %}
+      {% if pc.first %}{% assign cat_text = pc | first %}{% else %}{% assign cat_text = pc %}{% endif %}
+      <div class="notion-badge">{{ cat_text }}</div>
       {% endif %}
       <h1 class="notion-title">{{ page.title }}</h1>
       <div class="notion-meta">
@@ -32,104 +34,129 @@ layout: default
 </section>
 
 <style>
-  /* 노션 스타일 레이아웃 */
+  /* [1] 기본 레이아웃 및 폰트 */
   .post-detail-container {
     background-color: #ffffff;
-    color: #37352f; /* 노션 기본 텍스트 색상 */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #37352f;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     min-height: 100vh;
     padding: 80px 20px;
+    -webkit-font-smoothing: antialiased;
   }
 
   .notion-wrapper {
-    max-width: 720px; /* 노션 기본 폭 */
+    max-width: 720px;
     margin: 0 auto;
   }
 
-  /* 헤더 섹션 */
-  .notion-header {
-    margin-bottom: 32px;
-  }
-
+  /* [2] 헤더 스타일 */
+  .notion-header { margin-bottom: 32px; }
   .notion-badge {
     display: inline-block;
-    background: #f1f1f0;
-    color: #6b6b6b;
-    padding: 3px 8px;
-    border-radius: 3px;
+    background: #eff6ff; /* 약간의 푸른색으로 포인트 */
+    color: #0a3871;
+    padding: 4px 10px;
+    border-radius: 4px;
     font-size: 12px;
-    font-weight: 500;
-    margin-bottom: 12px;
+    font-weight: 700;
+    margin-bottom: 16px;
   }
-
   .notion-title {
-    font-size: 40px;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     font-weight: 700;
     line-height: 1.2;
-    margin: 0 0 12px 0;
-    letter-spacing: -0.01em;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
   }
+  .notion-meta { color: #818181; font-size: 14px; }
+  .notion-divider { border: none; border-bottom: 1px solid #e9e9e8; margin: 8px 0 40px; }
 
-  .notion-meta {
-    color: rgba(55, 53, 47, 0.5);
-    font-size: 14px;
-  }
-
-  .notion-divider {
-    border: none;
-    border-bottom: 1px solid #e9e9e8;
-    margin: 8px 0 32px;
-  }
-
-  /* 본문 가독성 핵심 (행간 및 자간) */
+  /* [3] 노션 마크다운 완벽 호환 스타일 (핵심) */
   .notion-content {
-    line-height: 1.6;
-    font-size: 16px;
-    word-break: break-word;
+    line-height: 1.65;
+    font-size: 16.5px;
+    color: #37352f;
   }
 
-  .notion-content p {
-    margin: 0 0 12px 0; /* 노션 특유의 좁은 문단 간격 */
-  }
+  /* 문단 간격 */
+  .notion-content p { margin: 0 0 1.2em 0; }
 
-  .notion-content h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin: 40px 0 10px 0;
+  /* 제목 스타일 (Notion 특유의 간격) */
+  .notion-content h1, .notion-content h2, .notion-content h3 {
+    color: #1a1a1a;
     line-height: 1.3;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
   }
+  .notion-content h1 { font-size: 1.85em; }
+  .notion-content h2 { font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+  .notion-content h3 { font-size: 1.25em; }
 
-  .notion-content h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 28px 0 8px 0;
-    line-height: 1.3;
-  }
+  /* 강조(Bold) */
+  .notion-content strong { font-weight: 700; color: #000; }
 
+  /* 리스트 */
+  .notion-content ul, .notion-content ol { padding-left: 1.5em; margin-bottom: 1.2em; }
+  .notion-content li { margin-bottom: 0.5em; }
+
+  /* 이미지 및 캡션 */
   .notion-content img {
     max-width: 100%;
     height: auto;
-    border-radius: 2px;
-    margin: 20px 0;
+    border-radius: 4px;
+    display: block;
+    margin: 2.5em auto;
+  }
+  .notion-content figure { margin: 2em 0; text-align: center; }
+  .notion-content figcaption {
+    font-size: 0.85em;
+    color: #787774;
+    margin-top: 0.8em;
   }
 
-  /* 리스트 스타일 */
-  .notion-content ul, .notion-content ol {
-    padding-left: 24px;
-    margin-bottom: 16px;
+  /* 노션 인용구 및 콜아웃(Blockquote 호환) */
+  .notion-content blockquote {
+    margin: 1.5em 0;
+    padding: 1.2em 1.5em;
+    background: #f1f1ef; /* 노션 기본 배경 */
+    border-left: 4px solid #37352f;
+    border-radius: 4px;
+    color: inherit;
+    font-style: normal;
+  }
+  /* 콜아웃처럼 보이게 하려면 배경색 유지, 인용구면 선 유지 */
+  .notion-content blockquote p { margin-bottom: 0; }
+
+  /* 인라인 코드 */
+  .notion-content code {
+    background: rgba(135,131,120,0.15);
+    color: #eb5757;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 85%;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
 
-  .notion-content li {
-    margin-bottom: 6px;
+  /* 수평선 */
+  .notion-content hr {
+    border: none;
+    border-bottom: 1px solid #e9e9e8;
+    margin: 3em 0;
   }
 
-  /* 푸터 및 버튼 */
-  .notion-footer {
-    margin-top: 60px;
-    padding-top: 32px;
-    border-top: 1px solid #e9e9e8;
+  /* 체크박스 */
+  .notion-content input[type="checkbox"] {
+    margin-right: 0.6em;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    accent-color: #0a3871;
   }
 
+  /* [4] 푸터 */
+  .notion-footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid #e9e9e8; }
   .notion-back-link {
     display: inline-flex;
     align-items: center;
@@ -137,104 +164,16 @@ layout: default
     color: #6b6b6b;
     text-decoration: none;
     font-size: 15px;
-    transition: background 0.2s;
-    padding: 6px 10px;
-    border-radius: 4px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.2s;
   }
+  .notion-back-link:hover { background: #f1f1f0; color: #37352f; }
 
-  .notion-back-link:hover {
-    background: #f1f1f0;
-    color: #37352f;
-  }
-  /* 1. 인용구 스타일 (Blockquote) */
-.notion-content blockquote {
-  margin: 20px 0;
-  padding: 0 0 0 14px;
-  border-left: 3px solid #37352f; /* 노션 특유의 얇고 진한 왼쪽 선 */
-  color: inherit;
-  font-style: normal;
-  line-height: 1.6;
-}
-
-/* 2. 코드 블록 스타일 (선택 사항) */
-.notion-content code {
-  background: #f1f1f0;
-  color: #eb5757; /* 노션 코드 특유의 붉은색 */
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-size: 0.9em;
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-/* 3. 강조 박스 (Callout) 스타일 */
-/* 마크다운에서 <div class="callout"> 내용 </div> 형태로 사용 */
-.callout {
-  display: flex;
-  padding: 16px;
-  margin: 16px 0;
-  border-radius: 4px;
-  background-color: #f1f1f0; /* 연한 회색 배경 */
-  border: 1px solid transparent;
-  gap: 12px;
-}
-
-.callout-blue { background-color: #ebf5ff; }
-.callout-yellow { background-color: #fff9e6; }
   /* 모바일 최적화 */
   @media (max-width: 768px) {
     .post-detail-container { padding: 40px 16px; }
-    .notion-title { font-size: 32px; }
+    .notion-title { font-size: 28px; }
+    .notion-content { font-size: 16px; }
   }
-  /* Notion Style Content 호환성 보강 */
-.post-content {
-    line-height: 1.8;
-    color: #37352f; /* 노션 기본 텍스트 색상 */
-    font-size: 1.05rem;
-}
-
-/* 노션 콜아웃(Callout) 재현 */
-.post-content blockquote {
-    margin: 1.5em 0;
-    padding: 1.2em 1.5em;
-    background: #f1f1ef; /* 노션 기본 배경색 */
-    border-left: none;
-    border-radius: 4px;
-    display: flex;
-    align-items: flex-start;
-}
-
-/* 노션 이미지 캡션 */
-.post-content figure figcaption {
-    font-size: 0.85rem;
-    color: #787774;
-    text-align: center;
-    margin-top: 0.5em;
-}
-
-/* 노션 구분선 */
-.post-content hr {
-    border: none;
-    border-bottom: 1px solid #e2e8f0;
-    margin: 2em 0;
-}
-
-/* 체크박스 스타일 */
-.post-content input[type="checkbox"] {
-    margin-right: 0.5em;
-    accent-color: var(--primary-blue);
-}
-
-/* 노션 제목 스타일 */
-.post-content h1, .post-content h2, .post-content h3 {
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    font-weight: 700;
-}
-
-.post-content img {
-    max-width: 100%;
-    border-radius: 8px;
-    display: block;
-    margin: 2em auto;
-}
 </style>

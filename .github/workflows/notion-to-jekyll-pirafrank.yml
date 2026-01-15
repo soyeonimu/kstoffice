@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # pull --rebase를 위해 전체 히스토리 가져오기
+          fetch-depth: 0
 
       - name: Notion to Jekyll
         id: notion_to_jekyll
@@ -32,8 +32,9 @@ jobs:
       - name: Normalize frontmatter and filename
         run: |
           python3 -m pip install --upgrade pip pyyaml
-          # 권한 문제 해결을 위해 전체 권한 부여
-          chmod -R 777 _board
+          # 파일 소유권을 현재 실행 유저로 변경 (권한 에러 해결 핵심)
+          sudo chown -R $USER:$USER _board
+          
           python3 - << 'PY'
           import os, glob, re, datetime, yaml, shutil
 
@@ -61,49 +62,46 @@ jobs:
               return m.group(1), m.group(2)
 
           def process_file(path):
-              dir_name = os.path.dirname(path)
-              base_name = os.path.basename(path)
-
-              with open(path, "r", encoding="utf-8") as f:
-                  content = f.read()
-
-              fm_raw, body = split_frontmatter(content)
-              if fm_raw is None: return
-
               try:
+                  with open(path, "r", encoding="utf-8") as f:
+                      content = f.read()
+
+                  fm_raw, body = split_frontmatter(content)
+                  if fm_raw is None: return
+
                   fm = yaml.safe_load(fm_raw) or {}
-              except: return
+                  title = fm.get("title") or os.path.basename(path).replace(".md", "")
+                  date = normalize_date(fm.get("date"))
 
-              title = fm.get("title") or safe_slug(base_name).replace("-", " ")
-              date = normalize_date(fm.get("date"))
+                  # 게시판 전용 레이아웃 강제 지정
+                  out = {
+                      "layout": "board-post",
+                      "title": str(title).strip(),
+                      "date": date,
+                  }
+                  for k in ["category", "description", "keywords"]:
+                      if fm.get(k): out[k] = fm.get(k)
 
-              out = {
-                  "layout": "board-post",
-                  "title": str(title).strip(),
-                  "date": date,
-              }
-              for k in ["category", "description", "keywords"]:
-                  if fm.get(k): out[k] = fm.get(k)
+                  ordered = {k: out[k] for k in KEEP if k in out}
+                  new_fm = "---\n" + yaml.safe_dump(ordered, sort_keys=False, allow_unicode=True).strip() + "\n---\n"
+                  new_content = new_fm + body.lstrip()
 
-              ordered = {k: out[k] for k in KEEP if k in out}
-              new_fm = "---\n" + yaml.safe_dump(ordered, sort_keys=False, allow_unicode=True).strip() + "\n---\n"
-              new_content = new_fm + body.lstrip()
+                  slug = safe_slug(str(title))
+                  new_filename = f"{date}-{slug}.md"
+                  target_path = os.path.join(os.path.dirname(path), new_filename)
 
-              # 새 파일명 결정 (중복 방지용 고정값)
-              slug = safe_slug(str(title))
-              new_filename = f"{date}-{slug}.md"
-              target_path = os.path.join(dir_name, new_filename)
+                  # 파일 업데이트
+                  with open(path, "w", encoding="utf-8") as f:
+                      f.write(new_content)
 
-              # 내용 저장
-              with open(path, "w", encoding="utf-8") as f:
-                  f.write(new_content)
-
-              # 파일명 변경 (동일한 파일이 이미 있다면 덮어쓰기)
-              if os.path.abspath(path) != os.path.abspath(target_path):
-                  if os.path.exists(target_path):
-                      os.remove(target_path)
-                  shutil.move(path, target_path)
-                  print(f"Fixed: {new_filename}")
+                  # 파일명 정규화 (중복 방지: 이미 있으면 삭제 후 이동)
+                  if os.path.abspath(path) != os.path.abspath(target_path):
+                      if os.path.exists(target_path):
+                          os.remove(target_path)
+                      shutil.move(path, target_path)
+                      print(f"Fixed: {new_filename}")
+              except Exception as e:
+                  print(f"Error processing {path}: {e}")
 
           if os.path.isdir(BOARD_DIR):
               for path in glob.glob(os.path.join(BOARD_DIR, "*.md")):
@@ -116,6 +114,5 @@ jobs:
           git config user.email "notion-bot@users.noreply.github.com"
           git add .
           git commit -m "sync: notion -> jekyll (normalized)" || echo "No changes to commit"
-          # 원격 변경사항을 먼저 합친 후 푸시
           git pull --rebase origin main
           git push origin main

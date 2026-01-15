@@ -23,7 +23,7 @@ jobs:
           notion-database-id: ${{ secrets.NOTION_DATABASE_ID }}
           publish-to-posts: "true"
           relative-date: "0"
-          site-url: "https://YOUR_GITHUB_PAGES_DOMAIN"
+          site-url: "https://soyeonimu.github.io/kstoffice"
           assets-dir: "assets/notion"
 
       - name: Commit & Push

@@ -1,94 +1,130 @@
-name: Notion to Jekyll (pirafrank)
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 */6 * * *"   # 6시간마다 자동 실행
-
-permissions:
-  contents: write
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Notion to Jekyll
-        id: notion_to_jekyll
-        uses: pirafrank/notion-to-jekyll@v1
-        with:
-          notion-token: ${{ secrets.NOTION_TOKEN }}
-          notion-database-id: ${{ secrets.NOTION_DATABASE_ID }}
-          publish-to-posts: "true"
-          posts-dir: "_board"
-          relative-date: "0"
-          site-url: "https://soyeonimu.github.io/kstoffice"
-          assets-dir: "assets/notion"
-
-      - name: Normalize frontmatter
+      - name: Normalize frontmatter and filename
         run: |
-          python - << 'PY'
-          import os, glob, re
+          python3 -m pip install --upgrade pip pyyaml
+          python3 - << 'PY'
+          import os, glob, re, datetime
+          import yaml
 
           BOARD_DIR = "_board"
-          # 유지하고 싶은 키 리스트
           KEEP = ["layout", "title", "date", "category", "description", "keywords"]
 
+          def safe_slug(name: str) -> str:
+              # 확장자 제거
+              name = re.sub(r'\.md$', '', name, flags=re.I)
+              # 앞쪽 날짜/구분자 제거(있으면)
+              name = re.sub(r'^\d{4}[-_]\d{2}[-_]\d{2}[-_ ]*', '', name)
+              # 공백 -> 하이픈
+              name = re.sub(r'\s+', '-', name.strip())
+              # 파일명에 위험한 문자 제거(한글은 유지)
+              name = re.sub(r'[\\/:*?"<>|]+', '', name)
+              # 연속 하이픈 정리
+              name = re.sub(r'-{2,}', '-', name)
+              return name or "untitled"
+
+          def normalize_date(raw):
+              if raw is None:
+                  return datetime.date.today().strftime("%Y-%m-%d")
+              s = str(raw).strip()
+              # 숫자만 뽑아서 8자리면 YYYY-MM-DD
+              digits = re.sub(r'[^0-9]', '', s)[:8]
+              if len(digits) == 8:
+                  return f"{digits[:4]}-{digits[4:6]}-{digits[6:8]}"
+              # 이미 YYYY-MM-DD 형태면 그대로
+              m = re.match(r'^\d{4}-\d{2}-\d{2}$', s)
+              if m:
+                  return s
+              return datetime.date.today().strftime("%Y-%m-%d")
+
+          def split_frontmatter(text):
+              m = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', text, re.DOTALL)
+              if not m:
+                  return None, None
+              return m.group(1), m.group(2)
+
+          def unique_path(dir_name, filename):
+              base, ext = os.path.splitext(filename)
+              candidate = os.path.join(dir_name, filename)
+              if not os.path.exists(candidate):
+                  return candidate
+              i = 2
+              while True:
+                  cand = os.path.join(dir_name, f"{base}-{i}{ext}")
+                  if not os.path.exists(cand):
+                      return cand
+                  i += 1
+
           def process_file(path):
+              dir_name = os.path.dirname(path)
+              base_name = os.path.basename(path)
+
               with open(path, "r", encoding="utf-8") as f:
                   content = f.read()
 
-              # 프론트매터 추출 (파일 시작의 --- 부터 다음 --- 까지)
-              # re.DOTALL을 사용하여 줄바꿈을 포함해 매칭
-              match = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)', content, re.DOTALL)
-              if not match:
+              fm_raw, body = split_frontmatter(content)
+              if fm_raw is None:
                   return
 
-              fm_raw, body = match.groups()
-              
-              # 기존 프론트매터 파싱
-              fm = {}
-              for line in fm_raw.splitlines():
-                  if ":" in line:
-                      k, v = line.split(":", 1)
-                      # 값 세척: 양끝 공백, 따옴표, 대괄호 제거
-                      fm[k.strip()] = v.strip().strip('[]"\' ')
+              try:
+                  fm = yaml.safe_load(fm_raw) or {}
+                  if not isinstance(fm, dict):
+                      fm = {}
+              except Exception:
+                  # YAML 파싱 실패하면 건드리지 않음(깨진 파일 더 망치지 않게)
+                  return
 
-              # 새로운 프론트매터 생성 (순서 보장)
-              new_fm = ["---"]
-              for k in KEEP:
-                  if k == "layout":
-                      # 레이아웃은 board-post로 강제 지정
-                      new_fm.append("layout: board-post")
-                  else:
-                      v = fm.get(k, "")
-                      # 의미 없는 값 제외하고 추가
-                      if v and v.lower() not in ("undefined", "null", "none"):
-                          new_fm.append(f"{k}: {v}")
-              new_fm.append("---\n")
+              # title 확보: 없으면 파일명에서 추출
+              title = fm.get("title")
+              if not title or str(title).strip() == "":
+                  title = safe_slug(base_name).replace("-", " ")
 
-              # 최종 파일 합치기
-              new_content = "\n".join(new_fm) + body.lstrip()
-              
+              # date 정규화
+              date = normalize_date(fm.get("date"))
+
+              # 새 front matter 구성
+              out = {}
+              out["layout"] = "board-post"
+              out["title"] = str(title).strip()
+              out["date"] = date
+
+              for k in ["category", "description", "keywords"]:
+                  v = fm.get(k)
+                  # 빈 값 제외
+                  if v is None:
+                      continue
+                  if isinstance(v, str) and v.strip() == "":
+                      continue
+                  if isinstance(v, (list, dict)) and len(v) == 0:
+                      continue
+                  out[k] = v
+
+              # front matter dump (키 순서 유지)
+              ordered = {k: out[k] for k in KEEP if k in out}
+
+              new_fm = "---\n" + yaml.safe_dump(
+                  ordered,
+                  sort_keys=False,
+                  allow_unicode=True,
+                  default_flow_style=False
+              ).strip() + "\n---\n"
+
+              new_content = new_fm + body.lstrip()
+
+              # 파일명: YYYY-MM-DD-제목.md (제목은 slug 처리)
+              slug = safe_slug(str(title))
+              new_filename = f"{date}-{slug}.md"
+              target_path = unique_path(dir_name, new_filename)
+
+              # 내용 저장
               if new_content != content:
                   with open(path, "w", encoding="utf-8") as f:
                       f.write(new_content)
-                  print(f"Normalized: {path}")
+
+              # 이름 변경(자기 자신이면 스킵)
+              if os.path.abspath(path) != os.path.abspath(target_path):
+                  os.rename(path, target_path)
+                  print(f"Fixed: {os.path.basename(target_path)}")
 
           if os.path.isdir(BOARD_DIR):
               for path in glob.glob(os.path.join(BOARD_DIR, "*.md")):
                   process_file(path)
-          else:
-              print("Skip: _board directory not found")
           PY
-
-      - name: Commit & Push
-        run: |
-          git config user.name "notion-bot"
-          git config user.email "notion-bot@users.noreply.github.com"
-          git add .
-          # 변경사항이 있을 때만 커밋
-          git commit -m "sync: notion -> jekyll (normalized)" || echo "No changes to commit"
-          git push

@@ -185,4 +185,56 @@ layout: default
     .post-detail-container { padding: 40px 16px; }
     .notion-title { font-size: 32px; }
   }
+  /* Notion Style Content 호환성 보강 */
+.post-content {
+    line-height: 1.8;
+    color: #37352f; /* 노션 기본 텍스트 색상 */
+    font-size: 1.05rem;
+}
+
+/* 노션 콜아웃(Callout) 재현 */
+.post-content blockquote {
+    margin: 1.5em 0;
+    padding: 1.2em 1.5em;
+    background: #f1f1ef; /* 노션 기본 배경색 */
+    border-left: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* 노션 이미지 캡션 */
+.post-content figure figcaption {
+    font-size: 0.85rem;
+    color: #787774;
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+/* 노션 구분선 */
+.post-content hr {
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2em 0;
+}
+
+/* 체크박스 스타일 */
+.post-content input[type="checkbox"] {
+    margin-right: 0.5em;
+    accent-color: var(--primary-blue);
+}
+
+/* 노션 제목 스타일 */
+.post-content h1, .post-content h2, .post-content h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+.post-content img {
+    max-width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin: 2em auto;
+}
 </style>

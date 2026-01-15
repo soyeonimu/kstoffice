@@ -1,3 +1,32 @@
+name: Notion to Jekyll (pirafrank)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Notion to Jekyll
+        id: notion_to_jekyll
+        uses: pirafrank/notion-to-jekyll@v1
+        with:
+          notion-token: ${{ secrets.NOTION_TOKEN }}
+          notion-database-id: ${{ secrets.NOTION_DATABASE_ID }}
+          publish-to-posts: "true"
+          posts-dir: "_board"
+          relative-date: "0"
+          site-url: "https://soyeonimu.github.io/kstoffice"
+          assets-dir: "assets/notion"
+
       - name: Normalize frontmatter and filename
         run: |
           python3 -m pip install --upgrade pip pyyaml
@@ -9,15 +38,10 @@
           KEEP = ["layout", "title", "date", "category", "description", "keywords"]
 
           def safe_slug(name: str) -> str:
-              # 확장자 제거
               name = re.sub(r'\.md$', '', name, flags=re.I)
-              # 앞쪽 날짜/구분자 제거(있으면)
               name = re.sub(r'^\d{4}[-_]\d{2}[-_]\d{2}[-_ ]*', '', name)
-              # 공백 -> 하이픈
               name = re.sub(r'\s+', '-', name.strip())
-              # 파일명에 위험한 문자 제거(한글은 유지)
               name = re.sub(r'[\\/:*?"<>|]+', '', name)
-              # 연속 하이픈 정리
               name = re.sub(r'-{2,}', '-', name)
               return name or "untitled"
 
@@ -25,13 +49,10 @@
               if raw is None:
                   return datetime.date.today().strftime("%Y-%m-%d")
               s = str(raw).strip()
-              # 숫자만 뽑아서 8자리면 YYYY-MM-DD
               digits = re.sub(r'[^0-9]', '', s)[:8]
               if len(digits) == 8:
                   return f"{digits[:4]}-{digits[4:6]}-{digits[6:8]}"
-              # 이미 YYYY-MM-DD 형태면 그대로
-              m = re.match(r'^\d{4}-\d{2}-\d{2}$', s)
-              if m:
+              if re.match(r'^\d{4}-\d{2}-\d{2}$', s):
                   return s
               return datetime.date.today().strftime("%Y-%m-%d")
 
@@ -69,26 +90,22 @@
                   if not isinstance(fm, dict):
                       fm = {}
               except Exception:
-                  # YAML 파싱 실패하면 건드리지 않음(깨진 파일 더 망치지 않게)
                   return
 
-              # title 확보: 없으면 파일명에서 추출
               title = fm.get("title")
               if not title or str(title).strip() == "":
                   title = safe_slug(base_name).replace("-", " ")
 
-              # date 정규화
               date = normalize_date(fm.get("date"))
 
-              # 새 front matter 구성
-              out = {}
-              out["layout"] = "board-post"
-              out["title"] = str(title).strip()
-              out["date"] = date
+              out = {
+                  "layout": "board-post",
+                  "title": str(title).strip(),
+                  "date": date,
+              }
 
               for k in ["category", "description", "keywords"]:
                   v = fm.get(k)
-                  # 빈 값 제외
                   if v is None:
                       continue
                   if isinstance(v, str) and v.strip() == "":
@@ -97,7 +114,6 @@
                       continue
                   out[k] = v
 
-              # front matter dump (키 순서 유지)
               ordered = {k: out[k] for k in KEEP if k in out}
 
               new_fm = "---\n" + yaml.safe_dump(
@@ -109,17 +125,14 @@
 
               new_content = new_fm + body.lstrip()
 
-              # 파일명: YYYY-MM-DD-제목.md (제목은 slug 처리)
               slug = safe_slug(str(title))
               new_filename = f"{date}-{slug}.md"
               target_path = unique_path(dir_name, new_filename)
 
-              # 내용 저장
               if new_content != content:
                   with open(path, "w", encoding="utf-8") as f:
                       f.write(new_content)
 
-              # 이름 변경(자기 자신이면 스킵)
               if os.path.abspath(path) != os.path.abspath(target_path):
                   os.rename(path, target_path)
                   print(f"Fixed: {os.path.basename(target_path)}")
@@ -128,3 +141,11 @@
               for path in glob.glob(os.path.join(BOARD_DIR, "*.md")):
                   process_file(path)
           PY
+
+      - name: Commit & Push
+        run: |
+          git config user.name "notion-bot"
+          git config user.email "notion-bot@users.noreply.github.com"
+          git add .
+          git commit -m "sync: notion -> jekyll (normalized)" || echo "No changes to commit"
+          git push

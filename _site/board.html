@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>게시판 | 리더스 합동 법무사 사무소</title>
+  <title>게시판 | 리더스 합동 법무사 사무소 | 리더스 합동 법무사 사무소</title>
   <meta name="description" content="리더스 합동 법무사 사무소 - 부동산 등기, 법인 등기, 민사법률 전문">
   
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -123,472 +123,230 @@
 
 
   <main>
-    <section class="success-cases" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
-  <div class="container">
-    
-    <header class="page-head js-reveal">
-      <div class="head-badge">NEWS & INSIGHTS</div>
-      <h1 class="page-title">공지사항 · 법률정보</h1>
-      <p class="page-desc">
-        검찰 실무 경력 20년의 전문 지식으로 일상에 힘이 되는 법률 정보를 정기적으로 안내드립니다.
-      </p>
-    </header>
+    <style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-    
-    
-    
+:root {
+  --board-dark: #121212;
+  --board-gold: #b3955e;
+  --board-gold-light: #fdfaf3;
+  --board-bg: #fcfcfc;
+  --text-h: #1a1a1a;
+  --text-p: #757575;
+  --border: #ececec;
+}
 
-    <nav class="category-nav js-reveal" style="margin-bottom: 30px;">
-      <div class="category-wrapper">
-        <a href="#" class="cat-btn active" data-filter="all">전체보기</a>
-        
-          
-          <a href="#" class="cat-btn" data-filter="개인회생">
-            개인회생
-            <span class="count">
-              
-              
-              4
-            </span>
-          </a>
-        
-          
-          <a href="#" class="cat-btn" data-filter="개인회생-개인워크아웃">
-            개인회생, 개인워크아웃
-            <span class="count">
-              
-              
-              1
-            </span>
-          </a>
-        
-          
-          <a href="#" class="cat-btn" data-filter="공지사항">
-            공지사항
-            <span class="count">
-              
-              
-              1
-            </span>
-          </a>
-        
-          
-          <a href="#" class="cat-btn" data-filter="카테고리-테스트">
-            카테고리_테스트
-            <span class="count">
-              
-              
-              1
-            </span>
-          </a>
-        
-      </div>
-    </nav>
+/* 상단 겹침 방지 공통 설정 */
+.board-layout-root {
+  min-height: 100vh;
+  background-color: var(--board-bg);
+  font-family: 'Pretendard', sans-serif;
+}
 
-    <div class="search-container js-reveal">
-      <div class="search-box">
-        <input type="text" id="board-search" placeholder="궁금하신 내용을 검색하세요">
-        <button type="button" class="search-icon-btn">🔍</button>
-      </div>
-    </div>
+/* board.html에서 사용하는 공통 스타일들 */
+.board-container { max-width: 1050px; margin: 0 auto; padding: 0 24px; }
+.board-hero { background: var(--board-dark); color: #fff; padding: 190px 0 110px; text-align: center; position: relative; overflow: hidden; }
+.board-hero::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(circle, rgba(179, 149, 94, 0.12) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
+.board-status { display: inline-flex; align-items: center; background: rgba(255,255,255,0.03); padding: 8px 22px; border-radius: 4px; margin-bottom: 30px; font-size: 13px; font-weight: 500; border: 1px solid rgba(179, 149, 94, 0.3); color: var(--board-gold); text-transform: uppercase; letter-spacing: 0.15em; }
+.status-dot { width: 6px; height: 6px; background: var(--board-gold); border-radius: 50%; margin-right: 12px; }
+.board-main-title { font-size: clamp(2.3rem, 5.5vw, 3.5rem); font-weight: 800; line-height: 1.25; margin-bottom: 25px; letter-spacing: -0.04em; }
+.gold-text { color: var(--board-gold); }
+.board-sub-text { font-size: 1.15rem; color: #999; max-width: 600px; margin: 0 auto; font-weight: 300; }
 
-    <main class="post-area js-reveal">
-      <div id="post-list" class="post-list-stack">
-        
+.board-tools { padding: 70px 0 40px; background: var(--board-bg); border-bottom: 1px solid var(--border); }
+.filter-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.filter-btn { padding: 12px 26px; border-radius: 2px; background: #fff; border: 1px solid var(--border); color: #666; font-weight: 500; font-size: 0.9rem; cursor: pointer; transition: 0.3s; }
+.filter-btn:hover, .filter-btn.active { background: var(--board-dark); color: #fff; border-color: var(--board-dark); }
+.search-bar { max-width: 550px; margin: 0 auto; position: relative; border-bottom: 2px solid var(--board-dark); padding: 5px 0; }
+.search-bar input { width: 100%; border: none; outline: none; padding: 15px 10px; font-size: 1.1rem; background: transparent; text-align: center; }
 
-          
-          
+.board-list-area { background: var(--board-bg); padding: 60px 0 140px; }
+.post-stack { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--board-dark); }
+.post-list-item { background: #fff; padding: 35px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; text-decoration: none; transition: 0.3s; }
+.post-list-item:hover { background: var(--board-gold-light); }
+.post-main { display: flex; align-items: center; gap: 30px; flex: 1; min-width: 0; }
+.post-cat { font-size: 12px; font-weight: 700; color: var(--board-gold); border: 1px solid var(--board-gold); padding: 4px 12px; border-radius: 2px; white-space: nowrap; }
+.post-title { font-size: 1.3rem; font-weight: 600; color: #222; margin: 0; }
+.post-meta { display: flex; align-items: center; gap: 25px; color: #999; font-size: 15px; }
+.post-arrow { font-size: 1.2rem; transition: 0.3s; color: var(--board-dark); }
+.post-list-item:hover .post-arrow { transform: translateX(10px); color: var(--board-gold); }
 
-          <article class="post-item" data-category="카테고리-테스트">
-            <a href="/board/2026-01-15-markdowntest/" class="post-title-card">
-              <div class="post-info-left">
-                <span class="post-tag">카테고리_테스트</span>
-                <h2 class="post-title">MarkdownTest</h2>
-              </div>
-              <div class="post-info-right">
-                <span class="post-date">2026.01.15</span>
-                <span class="arrow">→</span>
-              </div>
-            </a>
-          </article>
-        
+.js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-          
-          
-
-          <article class="post-item" data-category="개인회생">
-            <a href="/board/2025-08-12-%EC%88%98%EC%9B%90%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B2%95%EC%9B%90-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EC%9C%84%EC%9B%90%EC%9D%98-%EC%97%85%EB%AC%B4%EC%99%80-%EA%B0%81-%EB%8B%A8%EA%B3%84%EB%B3%84-%EC%A4%91%EC%A0%90%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EB%8A%94-%EC%82%AC%EC%95%88%EC%9D%80/" class="post-title-card">
-              <div class="post-info-left">
-                <span class="post-tag">개인회생</span>
-                <h2 class="post-title">수원개인회생 법원 개인회생위원의 업무와 각 단계별 중점적으로 보는 사안은?</h2>
-              </div>
-              <div class="post-info-right">
-                <span class="post-date">2025.08.12</span>
-                <span class="arrow">→</span>
-              </div>
-            </a>
-          </article>
-        
-
-          
-          
-
-          <article class="post-item" data-category="개인회생">
-            <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EC%9D%BC%EB%B0%98%ED%9A%8C%EC%83%9D%EC%9D%98-%EC%B0%A8%EC%9D%B4-%EC%9C%A0%EC%82%AC%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-title-card">
-              <div class="post-info-left">
-                <span class="post-tag">개인회생</span>
-                <h2 class="post-title">개인회생과 일반회생의 차이 - 유사절차 비교</h2>
-              </div>
-              <div class="post-info-right">
-                <span class="post-date">2025.08.01</span>
-                <span class="arrow">→</span>
-              </div>
-            </a>
-          </article>
-        
-
-          
-          
-
-          <article class="post-item" data-category="개인회생">
-            <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EA%B0%9C%EC%9D%B8%ED%8C%8C%EC%82%B0%EC%9D%98-%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-title-card">
-              <div class="post-info-left">
-                <span class="post-tag">개인회생</span>
-                <h2 class="post-title">개인회생과 개인파산의 절차 비교</h2>
-              </div>
-              <div class="post-info-right">
-                <span class="post-date">2025.08.01</span>
-                <span class="arrow">→</span>
-              </div>
-            </a>
-          </article>
-        
-
-          
-          
-
-          <article class="post-item" data-category="개인회생-개인워크아웃">
-            <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EA%B0%9C%EC%9D%B8%EC%9B%8C%ED%81%AC%EC%95%84%EC%9B%83-%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-title-card">
-              <div class="post-info-left">
-                <span class="post-tag">개인회생, 개인워크아웃</span>
-                <h2 class="post-title">개인회생과 개인워크아웃 절차 비교</h2>
-              </div>
-              <div class="post-info-right">
-                <span class="post-date">2025.08.01</span>
-                <span class="arrow">→</span>
-              </div>
-            </a>
-          </article>
-        
-
-          
-          
-
-          <article class="post-item" data-category="공지사항">
-            <a href="/board/2025-07-31-%EA%B9%80%EC%84%B1%ED%83%9C-%EB%B2%95%EB%AC%B4%EC%82%AC-%EC%82%AC%EB%AC%B4%EC%86%8C-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A6%AC%EB%89%B4%EC%96%BC-%EC%95%88%EB%82%B4-2025%EB%85%84-%EC%B5%9C%EC%8B%A0/" class="post-title-card">
-              <div class="post-info-left">
-                <span class="post-tag">공지사항</span>
-                <h2 class="post-title">김성태 법무사 사무소 홈페이지 리뉴얼 안내 (2025년 최신)</h2>
-              </div>
-              <div class="post-info-right">
-                <span class="post-date">2025.07.31</span>
-                <span class="arrow">→</span>
-              </div>
-            </a>
-          </article>
-        
-
-          
-          
-
-          <article class="post-item" data-category="개인회생">
-            <a href="/board/2025-07-31-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%8B%A0%EC%B2%AD-%EC%9E%90%EA%B2%A9-%EB%B0%8F-%EC%A0%88%EC%B0%A8-%EC%83%81%EC%84%B8-%EC%95%88%EB%82%B4/" class="post-title-card">
-              <div class="post-info-left">
-                <span class="post-tag">개인회생</span>
-                <h2 class="post-title">개인회생 신청 자격 및 절차 상세 안내</h2>
-              </div>
-              <div class="post-info-right">
-                <span class="post-date">2025.07.31</span>
-                <span class="arrow">→</span>
-              </div>
-            </a>
-          </article>
-        
-      </div>
-      <div id="no-results" style="display: none; text-align: center; padding: 80px 0; color: #64748b; font-size: 0.95rem;">
-        검색 결과가 없습니다.
-      </div>
-    </main>
-
-    <section class="unified-cta-section js-reveal">
-  <div class="container-cta">
-    <div class="cta-box-wrapper">
-      <div class="cta-inner-content">
-        <div class="cta-text-area">
-          <div class="cta-badge">DIRECT CONSULTING</div>
-          <h3 class="cta-title">상담이 필요하신가요?</h3>
-          <p class="cta-desc">글로 읽는 것보다 직접 상담하는 것이 가장 빠르고 정확합니다.</p>
-        </div>
-        <div class="cta-action-area">
-          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
-          <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  :root {
-    --cta-bg-glass: rgba(226, 232, 240, 0.82);
-    --cta-accent: #2563eb;
-    --cta-kakao: #fee500;
-    --cta-text-main: #0f172a;
-    --cta-text-sub: #64748b;
-    --cta-radius: 32px;
-    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .unified-cta-section { padding: 80px 24px; background: transparent; }
-  .container-cta { max-width: 1200px; margin: 0 auto; }
-
-  .cta-box-wrapper {
-    background: var(--cta-bg-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    border-radius: var(--cta-radius);
-    padding: 64px 60px;
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-box-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta-inner-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 48px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .cta-text-area { flex: 1; }
-  .cta-badge {
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--cta-accent);
-    letter-spacing: 0.15em;
-    margin-bottom: 16px;
-  }
-
-  .cta-title {
-    font-size: clamp(1.6rem, 4vw, 2.2rem);
-    font-weight: 800;
-    color: var(--cta-text-main);
-    margin-bottom: 14px;
-    letter-spacing: -0.03em;
-    word-break: keep-all;
-  }
-
-  .cta-desc {
-    font-size: 1.15rem;
-    color: var(--cta-text-sub);
-    margin: 0;
-    font-weight: 400;
-    line-height: 1.6;
-    word-break: keep-all;
-  }
-
-  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
-
-  .cta-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 180px;
-    height: 60px;
-    border-radius: 14px;
-    font-weight: 800;
-    text-decoration: none;
-    font-size: 1.05rem;
-    transition: var(--transition-smooth);
-    will-change: transform;
-  }
-
-  .cta-btn.kakao {
-    background: var(--cta-kakao);
-    color: #3c1e1e;
-    box-shadow: 0 4px 12px rgba(254, 229, 0, 0.2);
-  }
-  .cta-btn.kakao:hover {
-    background: #fada00;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(254, 229, 0, 0.3);
-  }
-
-  .cta-btn.secondary {
-    background: #ffffff;
-    color: var(--cta-text-main);
-    border: 1px solid rgba(15, 23, 42, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  }
-  .cta-btn.secondary:hover {
-    background: #ffffff;
-    border-color: var(--cta-accent);
-    color: var(--cta-accent);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
-  }
-
-  /* ===== CTA 모바일 최적화 ===== */
-  @media (max-width: 768px) {
-    .unified-cta-section { padding: 48px 16px; }
-
-    .cta-box-wrapper{
-      padding: 28px 18px;
-      border-radius: 20px;
-    }
-
-    .cta-inner-content{
-      flex-direction: column;
-      align-items: stretch;
-      gap: 18px;
-    }
-
-    .cta-text-area{ width: 100%; }
-    .cta-badge{ margin-bottom: 10px; }
-
-    .cta-title{
-      font-size: 1.45rem;
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-
-    .cta-desc{
-      font-size: 0.98rem;
-      line-height: 1.55;
-    }
-
-    .cta-action-area{
-      width: 100%;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cta-btn{
-      width: 100%;
-      min-width: 0;
-      height: 52px;
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-
-    .cta-btn:hover{
-      transform: translateY(-2px);
-    }
-  }
-
-  /* 스크롤 애니메이션 (js-reveal 클래스 대응) */
-  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 768px) {
+  .board-hero { padding-top: 150px; }
+  .post-list-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+  .post-meta { width: 100%; justify-content: space-between; }
+}
 </style>
 
+<div class="board-layout-root">
+  <div class="leaders-board">
+  <section class="board-hero js-reveal">
+    <div class="board-container">
+      <div class="board-status"><span class="status-dot"></span> Professional Archive</div>
+      <h1 class="board-main-title">법률의 깊이, <span class="gold-text">리더스의 시선</span></h1>
+      <p class="board-sub-text">검찰 실무 20년의 고도화된 전문성으로 일상의 법률적 난제를 정교하게 해결합니다.</p>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <section class="board-tools js-reveal">
+    <div class="board-container">
+      
+      <div class="filter-group">
+        <div class="filter-btn active" data-filter="all">ALL (7)</div>
+        
+        
+        
+        
+          <div class="filter-btn" data-filter="개인회생">개인회생</div>
+        
+          <div class="filter-btn" data-filter="개인회생, 개인워크아웃">개인회생, 개인워크아웃</div>
+        
+          <div class="filter-btn" data-filter="공지사항">공지사항</div>
+        
+          <div class="filter-btn" data-filter="카테고리_테스트">카테고리_테스트</div>
+        
+      </div>
+      <div class="search-bar">
+        <input type="text" id="board-search" placeholder="SEARCH KEYWORD">
+      </div>
+    </div>
+  </section>
 
-<style>
-  :root {
-    --bg-soft: #f8fafc;
-    --white: #ffffff;
-    --primary-blue: #0a3871;
-    --text-main: #1e293b;
-    --text-sub: #64748b;
-    --border: #e2e8f0;
-  }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-  .page-head { text-align: center; margin-bottom: 50px; }
-  .head-badge { font-size: 13px; font-weight: 800; color: var(--primary-blue); letter-spacing: 0.2em; margin-bottom: 15px; }
-  .page-title { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 900; color: var(--text-main); margin-bottom: 25px; letter-spacing: -0.03em; }
-  .page-desc { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto; }
-  .category-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-  .cat-btn { text-decoration: none; background: var(--white); color: var(--text-sub); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--border); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
-  .cat-btn:hover, .cat-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); box-shadow: 0 10px 20px rgba(10,56,113,0.1); }
-  .cat-btn .count { font-size: 0.8rem; opacity: 0.6; margin-left: 4px; }
-  .search-container { max-width: 600px; margin: 0 auto 50px; }
-  .search-box { display: flex; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 4px 16px; transition: 0.3s; }
-  .search-box:focus-within { border-color: var(--primary-blue); box-shadow: 0 0 0 4px rgba(10, 56, 113, 0.05); }
-  .search-box input { flex-grow: 1; border: none; outline: none; padding: 12px; font-size: 0.95rem; font-family: inherit; }
-  .search-icon-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0.5; }
-  .post-list-stack { display: flex; flex-direction: column; gap: 14px; margin-bottom: 60px; }
-  .post-title-card { display: flex; justify-content: space-between; align-items: center; background: var(--white); padding: 22px 35px; border-radius: 20px; text-decoration: none; border: 1px solid var(--border); transition: all 0.3s ease; }
-  .post-title-card:hover { transform: translateX(8px); border-color: var(--primary-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-  .post-info-left { display: flex; align-items: center; gap: 20px; flex-grow: 1; overflow: hidden; }
-  .post-tag { background: #eff6ff; color: var(--primary-blue); font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 6px; white-space: nowrap; }
-  .post-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0; letter-spacing: -0.02em; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .post-info-right { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
-  .post-date { font-size: 13px; color: var(--text-sub); font-weight: 500; }
-  .arrow { font-size: 16px; color: var(--primary-blue); transition: 0.3s; opacity: 0.6; }
-  .post-title-card:hover .arrow { transform: translateX(5px); opacity: 1; }
-  .js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-  @media (max-width: 850px) {
-    .post-title-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 25px; }
-    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 12px; }
-    .post-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-  }
-</style>
+  <section class="board-list-area">
+    <div class="board-container">
+      <main class="post-stack js-reveal">
+        
+        <a href="/board/2025-07-31-%EA%B9%80%EC%84%B1%ED%83%9C-%EB%B2%95%EB%AC%B4%EC%82%AC-%EC%82%AC%EB%AC%B4%EC%86%8C-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A6%AC%EB%89%B4%EC%96%BC-%EC%95%88%EB%82%B4-2025%EB%85%84-%EC%B5%9C%EC%8B%A0/" class="post-list-item" data-category="공지사항">
+          <div class="post-main">
+            <span class="post-cat">공지사항</span>
+            <h2 class="post-title">김성태 법무사 사무소 홈페이지 리뉴얼 안내 (2025년 최신)</h2>
+          </div>
+          <div class="post-meta">
+            <span>2025.07.31</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+        
+        <a href="/board/2025-07-31-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%8B%A0%EC%B2%AD-%EC%9E%90%EA%B2%A9-%EB%B0%8F-%EC%A0%88%EC%B0%A8-%EC%83%81%EC%84%B8-%EC%95%88%EB%82%B4/" class="post-list-item" data-category="개인회생">
+          <div class="post-main">
+            <span class="post-cat">개인회생</span>
+            <h2 class="post-title">개인회생 신청 자격 및 절차 상세 안내</h2>
+          </div>
+          <div class="post-meta">
+            <span>2025.07.31</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+        
+        <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EA%B0%9C%EC%9D%B8%ED%8C%8C%EC%82%B0%EC%9D%98-%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-list-item" data-category="개인회생">
+          <div class="post-main">
+            <span class="post-cat">개인회생</span>
+            <h2 class="post-title">개인회생과 개인파산의 절차 비교</h2>
+          </div>
+          <div class="post-meta">
+            <span>2025.08.01</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+        
+        <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EC%9D%BC%EB%B0%98%ED%9A%8C%EC%83%9D%EC%9D%98-%EC%B0%A8%EC%9D%B4-%EC%9C%A0%EC%82%AC%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-list-item" data-category="개인회생">
+          <div class="post-main">
+            <span class="post-cat">개인회생</span>
+            <h2 class="post-title">개인회생과 일반회생의 차이 - 유사절차 비교</h2>
+          </div>
+          <div class="post-meta">
+            <span>2025.08.01</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+        
+        <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EA%B0%9C%EC%9D%B8%EC%9B%8C%ED%81%AC%EC%95%84%EC%9B%83-%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-list-item" data-category="개인회생, 개인워크아웃">
+          <div class="post-main">
+            <span class="post-cat">개인회생, 개인워크아웃</span>
+            <h2 class="post-title">개인회생과 개인워크아웃 절차 비교</h2>
+          </div>
+          <div class="post-meta">
+            <span>2025.08.01</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+        
+        <a href="/board/2025-08-12-%EC%88%98%EC%9B%90%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B2%95%EC%9B%90-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EC%9C%84%EC%9B%90%EC%9D%98-%EC%97%85%EB%AC%B4%EC%99%80-%EA%B0%81-%EB%8B%A8%EA%B3%84%EB%B3%84-%EC%A4%91%EC%A0%90%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EB%8A%94-%EC%82%AC%EC%95%88%EC%9D%80/" class="post-list-item" data-category="개인회생">
+          <div class="post-main">
+            <span class="post-cat">개인회생</span>
+            <h2 class="post-title">수원개인회생 법원 개인회생위원의 업무와 각 단계별 중점적으로 보는 사안은?</h2>
+          </div>
+          <div class="post-meta">
+            <span>2025.08.12</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+        
+        <a href="/board/2026-01-15-markdowntest/" class="post-list-item" data-category="카테고리_테스트">
+          <div class="post-main">
+            <span class="post-cat">카테고리_테스트</span>
+            <h2 class="post-title">MarkdownTest</h2>
+          </div>
+          <div class="post-meta">
+            <span>2026.01.15</span>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+        
+        <div id="no-results" style="display:none; text-align:center; padding:100px; color:var(--text-p);">검색 결과가 없습니다.</div>
+      </main>
+    </div>
+  </section>
+</div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+document.addEventListener("DOMContentLoaded", function () {
+  // Reveal Animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
 
-    const searchInput = document.getElementById('board-search');
-    const postItems = document.querySelectorAll('.post-item');
-    const catBtns = document.querySelectorAll('.cat-btn');
+  // Search & Filter Logic
+  const searchInp = document.getElementById('board-search');
+  const cards = document.querySelectorAll('.post-list-item');
+  const btns = document.querySelectorAll('.filter-btn');
 
-    function filterPosts() {
-      const searchTerm = searchInput.value.toLowerCase();
-      const activeCat = document.querySelector('.cat-btn.active').dataset.filter;
-      let count = 0;
-      postItems.forEach(item => {
-        const title = item.querySelector('.post-title').innerText.toLowerCase();
-        const category = item.dataset.category;
-        const matchesSearch = title.includes(searchTerm);
-        const matchesCat = (activeCat === 'all' || category === activeCat);
-        if (matchesSearch && matchesCat) { item.style.display = 'block'; count++; } 
-        else { item.style.display = 'none'; }
-      });
-      document.getElementById('no-results').style.display = count === 0 ? 'block' : 'none';
-    }
-    searchInput.addEventListener('input', filterPosts);
-    catBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        catBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filterPosts();
-      });
+  function filter() {
+    const val = searchInp.value.toLowerCase().trim();
+    const activeCat = document.querySelector('.filter-btn.active').dataset.filter;
+    let count = 0;
+
+    cards.forEach(card => {
+      const title = card.querySelector('.post-title').textContent.toLowerCase();
+      const cat = card.dataset.category;
+      const mSearch = title.includes(val);
+      const mCat = (activeCat === 'all' || cat === activeCat);
+
+      if (mSearch && mCat) {
+        card.style.display = 'flex';
+        count++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    document.getElementById('no-results').style.display = count === 0 ? 'block' : 'none';
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filter();
     });
   });
+  searchInp.addEventListener('input', filter);
+});
 </script>
-
+</div>
   </main>
 
   <!-- 사이드 바로가기 버튼 -->

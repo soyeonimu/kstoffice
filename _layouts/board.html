@@ -1,52 +1,64 @@
 ---
 layout: default
 ---
-
-<section class="post-detail-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
-  <div class="container" style="max-width: 850px; margin: 0 auto; padding: 0 20px;">
-    
-    <header class="post-header js-reveal" style="text-align: center; margin-bottom: 50px;">
-      <div style="margin-bottom: 15px;">
-        <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 6px;">
-          {{ page.category }}
-        </span>
-      </div>
-      <h1 class="post-title" style="font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; color: #1e293b; margin-bottom: 20px; letter-spacing: -0.03em; line-height: 1.4;">
-        {{ page.title }}
-      </h1>
-      <div style="color: #64748b; font-size: 14px; font-weight: 500;">
-        {{ page.date | date: "%Y.%m.%d" }}
-      </div>
-    </header>
-
-    <article class="post-content js-reveal" style="background: #fff; padding: 60px 50px; border-radius: 24px; border: 1px solid #e2e8f0; line-height: 1.8; color: #334155; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
-      <div class="inner-content" style="word-break: keep-all;">
-        {{ content }}
-      </div>
-    </article>
-
-    <footer style="margin-top: 50px; text-align: center;">
-      <a href="/board" class="back-btn" style="text-decoration: none; background: #0a3871; color: #fff; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; display: inline-block; transition: 0.3s;">
-        목록으로 돌아가기
-      </a>
-    </footer>
-
-  </div>
-</section>
-
 <style>
-  .post-content img { max-width: 100%; border-radius: 12px; margin: 30px 0; }
-  .post-content h2 { font-size: 1.6rem; color: #1e293b; margin-top: 50px; margin-bottom: 20px; border-left: 4px solid #0a3871; padding-left: 15px; }
-  .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(10, 56, 113, 0.2); }
-  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --board-dark: #121212;
+  --board-gold: #b3955e;
+  --board-gold-light: #fdfaf3;
+  --board-bg: #fcfcfc;
+  --text-h: #1a1a1a;
+  --text-p: #757575;
+  --border: #ececec;
+}
+
+/* 상단 겹침 방지 공통 설정 */
+.board-layout-root {
+  min-height: 100vh;
+  background-color: var(--board-bg);
+  font-family: 'Pretendard', sans-serif;
+}
+
+/* board.html에서 사용하는 공통 스타일들 */
+.board-container { max-width: 1050px; margin: 0 auto; padding: 0 24px; }
+.board-hero { background: var(--board-dark); color: #fff; padding: 190px 0 110px; text-align: center; position: relative; overflow: hidden; }
+.board-hero::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(circle, rgba(179, 149, 94, 0.12) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
+.board-status { display: inline-flex; align-items: center; background: rgba(255,255,255,0.03); padding: 8px 22px; border-radius: 4px; margin-bottom: 30px; font-size: 13px; font-weight: 500; border: 1px solid rgba(179, 149, 94, 0.3); color: var(--board-gold); text-transform: uppercase; letter-spacing: 0.15em; }
+.status-dot { width: 6px; height: 6px; background: var(--board-gold); border-radius: 50%; margin-right: 12px; }
+.board-main-title { font-size: clamp(2.3rem, 5.5vw, 3.5rem); font-weight: 800; line-height: 1.25; margin-bottom: 25px; letter-spacing: -0.04em; }
+.gold-text { color: var(--board-gold); }
+.board-sub-text { font-size: 1.15rem; color: #999; max-width: 600px; margin: 0 auto; font-weight: 300; }
+
+.board-tools { padding: 70px 0 40px; background: var(--board-bg); border-bottom: 1px solid var(--border); }
+.filter-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.filter-btn { padding: 12px 26px; border-radius: 2px; background: #fff; border: 1px solid var(--border); color: #666; font-weight: 500; font-size: 0.9rem; cursor: pointer; transition: 0.3s; }
+.filter-btn:hover, .filter-btn.active { background: var(--board-dark); color: #fff; border-color: var(--board-dark); }
+.search-bar { max-width: 550px; margin: 0 auto; position: relative; border-bottom: 2px solid var(--board-dark); padding: 5px 0; }
+.search-bar input { width: 100%; border: none; outline: none; padding: 15px 10px; font-size: 1.1rem; background: transparent; text-align: center; }
+
+.board-list-area { background: var(--board-bg); padding: 60px 0 140px; }
+.post-stack { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--board-dark); }
+.post-list-item { background: #fff; padding: 35px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; text-decoration: none; transition: 0.3s; }
+.post-list-item:hover { background: var(--board-gold-light); }
+.post-main { display: flex; align-items: center; gap: 30px; flex: 1; min-width: 0; }
+.post-cat { font-size: 12px; font-weight: 700; color: var(--board-gold); border: 1px solid var(--board-gold); padding: 4px 12px; border-radius: 2px; white-space: nowrap; }
+.post-title { font-size: 1.3rem; font-weight: 600; color: #222; margin: 0; }
+.post-meta { display: flex; align-items: center; gap: 25px; color: #999; font-size: 15px; }
+.post-arrow { font-size: 1.2rem; transition: 0.3s; color: var(--board-dark); }
+.post-list-item:hover .post-arrow { transform: translateX(10px); color: var(--board-gold); }
+
+.js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .board-hero { padding-top: 150px; }
+  .post-list-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+  .post-meta { width: 100%; justify-content: space-between; }
+}
 </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
-  });
-</script>
+<div class="board-layout-root">
+  {{ content }}
+</div>

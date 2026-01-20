@@ -2,178 +2,241 @@
 layout: default
 ---
 
-<section class="post-detail-container">
-  <div class="notion-wrapper">
-    
-    <header class="notion-header">
+{% comment %}
+SEO helpers:
+- page.title, page.description, page.image, page.category, page.tags, page.date, page.last_modified_at
+- site.title, site.description, site.url, site.baseurl, site.logo (optional), site.og_image (optional)
+{% endcomment %}
+
+{% assign canonical_url = page.url | absolute_url %}
+{% assign og_title = page.seo_title | default: page.title %}
+{% assign og_desc = page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+{% assign og_image = page.image | default: site.og_image %}
+{% if og_image %}
+  {% assign og_image_abs = og_image | absolute_url %}
+{% endif %}
+
+<!-- ✅ SEO: canonical / Open Graph / Twitter / JSON-LD -->
+<link rel="canonical" href="{{ canonical_url }}">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ og_desc }}">
+<meta property="og:url" content="{{ canonical_url }}">
+{% if og_image_abs %}
+<meta property="og:image" content="{{ og_image_abs }}">
+{% endif %}
+
+<meta name="twitter:card" content="{% if og_image_abs %}summary_large_image{% else %}summary{% endif %}">
+<meta name="twitter:title" content="{{ og_title }}">
+<meta name="twitter:description" content="{{ og_desc }}">
+{% if og_image_abs %}
+<meta name="twitter:image" content="{{ og_image_abs }}">
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ canonical_url }}"
+  },
+  "headline": {{ page.title | jsonify }},
+  "description": {{ og_desc | jsonify }},
+  {% if og_image_abs %}
+  "image": [{{ og_image_abs | jsonify }}],
+  {% endif %}
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  {% if page.last_modified_at %}
+  "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",
+  {% else %}
+  "dateModified": "{{ page.date | date_to_xmlschema }}",
+  {% endif %}
+  "author": {
+    "@type": "Organization",
+    "name": "리더스 합동 법무사 사무소"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "리더스 합동 법무사 사무소"
+    {% if site.logo %}
+    ,"logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.logo | absolute_url }}"
+    }
+    {% endif %}
+  },
+  "articleSection": {{ page.category | default: "게시판" | jsonify }},
+  "keywords": {{ page.keywords | default: page.tags | join: ", " | jsonify }}
+}
+</script>
+
+<style>
+  /* 1. 헤더와 절대 겹치지 않게 하는 핵심 설정 */
+  .article-view-wrapper {
+    padding-top: 150px !important;
+    padding-bottom: 100px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .article-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 25px;
+    box-sizing: border-box;
+  }
+
+  /* 2. 제목 영역 레이아웃 (겹침 방지 flex) */
+  .article-header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .article-category {
+    color: #c5a47e;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  .article-title {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.4;
+    font-weight: 800;
+    color: #111;
+    margin: 0;
+    word-break: keep-all;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #999;
+    font-size: 15px;
+  }
+
+  /* 3. 구분선 및 본문 */
+  .article-divider {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 30px 0 60px;
+  }
+
+  .article-body {
+    line-height: 1.9;
+    font-size: 18px;
+    color: #333333;
+    overflow: hidden;
+  }
+
+  /* 마크다운 스타일링 */
+  .article-body h2 { font-size: 1.6em; margin: 2.5em 0 1em; color: #000; font-weight: 700; }
+  .article-body p { margin-bottom: 1.6em; }
+  .article-body img {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+    margin: 3rem auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  }
+
+  /* 4. 목록 돌아가기 버튼 */
+  .article-footer {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid #eeeeee;
+  }
+
+  .btn-go-list {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 700;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+
+  .btn-go-list:hover { color: #c5a47e; transform: translateX(-5px); }
+
+  @media (max-width: 768px) {
+    .article-view-wrapper { padding-top: 110px !important; }
+    .article-title { font-size: 1.65rem; }
+    .article-body { font-size: 16.5px; }
+  }
+  /* ✅ 제목 영역이 헤더처럼 따라다니는(sticky/fixed) 현상 강제 해제 */
+.article-header,
+.article-title {
+  position: static !important;
+  top: auto !important;
+}
+
+/* 혹시 header 태그 전역 sticky가 걸린 경우 대비 */
+.article-view-wrapper header {
+  position: static !important;
+  top: auto !important;
+}
+
+</style>
+
+<article class="article-view-wrapper" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-container">
+
+    <header class="article-header js-reveal">
       {% if page.category %}
-      {% assign pc = page.category %}
-      {% if pc.first %}{% assign cat_text = pc | first %}{% else %}{% assign cat_text = pc %}{% endif %}
-      <div class="notion-badge">{{ cat_text }}</div>
+        <span class="article-category" itemprop="articleSection">{{ page.category }}</span>
       {% endif %}
-      <h1 class="notion-title">{{ page.title }}</h1>
-      <div class="notion-meta">
-        <span class="meta-date">{{ page.date | date: "%Y년 %m월 %d일" }}</span>
+
+      <h1 class="article-title" itemprop="headline">{{ page.title }}</h1>
+
+      <div class="article-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: "%Y.%m.%d" }}
+        </time>
+        <span style="opacity: 0.3">|</span>
+
+        <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+          <span itemprop="name">리더스 합동 법무사 사무소</span>
+        </span>
       </div>
     </header>
 
-    <hr class="notion-divider">
+    <hr class="article-divider">
 
-    <article class="notion-content">
+    <div class="article-body js-reveal" itemprop="articleBody">
       {{ content }}
-    </article>
+    </div>
 
-    <footer class="notion-footer">
-      <a href="/board" class="notion-back-link">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    <footer class="article-footer">
+      <a href="/board" class="btn-go-list" aria-label="게시글 목록으로 이동">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
         목록으로 돌아가기
       </a>
     </footer>
 
   </div>
-</section>
+</article>
 
-<style>
-  /* [1] 기본 레이아웃 및 폰트 */
-  .post-detail-container {
-    background-color: #ffffff;
-    color: #37352f;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    min-height: 100vh;
-    padding: 80px 20px;
-    -webkit-font-smoothing: antialiased;
-  }
+<script>
+  // default 레이아웃의 reveal 애니메이션과 호환
+  const postObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1 });
 
-  .notion-wrapper {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  /* [2] 헤더 스타일 */
-  .notion-header { margin-bottom: 32px; }
-  .notion-badge {
-    display: inline-block;
-    background: #eff6ff; /* 약간의 푸른색으로 포인트 */
-    color: #0a3871;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-  .notion-title {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 16px 0;
-    letter-spacing: -0.02em;
-    color: #1a1a1a;
-  }
-  .notion-meta { color: #818181; font-size: 14px; }
-  .notion-divider { border: none; border-bottom: 1px solid #e9e9e8; margin: 8px 0 40px; }
-
-  /* [3] 노션 마크다운 완벽 호환 스타일 (핵심) */
-  .notion-content {
-    line-height: 1.65;
-    font-size: 16.5px;
-    color: #37352f;
-  }
-
-  /* 문단 간격 */
-  .notion-content p { margin: 0 0 1.2em 0; }
-
-  /* 제목 스타일 (Notion 특유의 간격) */
-  .notion-content h1, .notion-content h2, .notion-content h3 {
-    color: #1a1a1a;
-    line-height: 1.3;
-    margin-top: 2em;
-    margin-bottom: 0.5em;
-    font-weight: 700;
-  }
-  .notion-content h1 { font-size: 1.85em; }
-  .notion-content h2 { font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
-  .notion-content h3 { font-size: 1.25em; }
-
-  /* 강조(Bold) */
-  .notion-content strong { font-weight: 700; color: #000; }
-
-  /* 리스트 */
-  .notion-content ul, .notion-content ol { padding-left: 1.5em; margin-bottom: 1.2em; }
-  .notion-content li { margin-bottom: 0.5em; }
-
-  /* 이미지 및 캡션 */
-  .notion-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    display: block;
-    margin: 2.5em auto;
-  }
-  .notion-content figure { margin: 2em 0; text-align: center; }
-  .notion-content figcaption {
-    font-size: 0.85em;
-    color: #787774;
-    margin-top: 0.8em;
-  }
-
-  /* 노션 인용구 및 콜아웃(Blockquote 호환) */
-  .notion-content blockquote {
-    margin: 1.5em 0;
-    padding: 1.2em 1.5em;
-    background: #f1f1ef; /* 노션 기본 배경 */
-    border-left: 4px solid #37352f;
-    border-radius: 4px;
-    color: inherit;
-    font-style: normal;
-  }
-  /* 콜아웃처럼 보이게 하려면 배경색 유지, 인용구면 선 유지 */
-  .notion-content blockquote p { margin-bottom: 0; }
-
-  /* 인라인 코드 */
-  .notion-content code {
-    background: rgba(135,131,120,0.15);
-    color: #eb5757;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-size: 85%;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-
-  /* 수평선 */
-  .notion-content hr {
-    border: none;
-    border-bottom: 1px solid #e9e9e8;
-    margin: 3em 0;
-  }
-
-  /* 체크박스 */
-  .notion-content input[type="checkbox"] {
-    margin-right: 0.6em;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    accent-color: #0a3871;
-  }
-
-  /* [4] 푸터 */
-  .notion-footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid #e9e9e8; }
-  .notion-back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #6b6b6b;
-    text-decoration: none;
-    font-size: 15px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: 0.2s;
-  }
-  .notion-back-link:hover { background: #f1f1f0; color: #37352f; }
-
-  /* 모바일 최적화 */
-  @media (max-width: 768px) {
-    .post-detail-container { padding: 40px 16px; }
-    .notion-title { font-size: 28px; }
-    .notion-content { font-size: 16px; }
-  }
-</style>
+  document.querySelectorAll('.js-reveal').forEach(el => postObs.observe(el));
+</script>

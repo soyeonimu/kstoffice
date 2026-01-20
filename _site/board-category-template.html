@@ -123,145 +123,96 @@
 
 
   <main>
-    
+    <style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+:root {
+  --board-dark: #121212;
+  --board-gold: #b3955e;
+  --board-gold-light: #fdfaf3;
+  --board-bg: #fcfcfc;
+  --text-h: #1a1a1a;
+  --text-p: #757575;
+  --border: #ececec;
+}
 
-<section class="board-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
-  <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
-    
-    <header class="page-head js-reveal" style="text-align: center; margin-bottom: 40px;">
-      <div class="head-badge" style="font-size: 12px; font-weight: 800; color: #0a3871; letter-spacing: 0.15em; margin-bottom: 10px;">CATEGORY ARCHIVE</div>
-      <h1 class="page-title" style="font-size: 1.8rem; font-weight: 900; color: #1e293b; letter-spacing: -0.03em;"></h1>
-      <p class="page-desc" style="color: #64748b; font-size: 1rem; margin-top: 15px;">
-        '' 카테고리에 등록된 리더스의 전문 법률 정보를 확인하세요.
-      </p>
-    </header>
+/* 상단 겹침 방지 공통 설정 */
+.board-layout-root {
+  min-height: 100vh;
+  background-color: var(--board-bg);
+  font-family: 'Pretendard', sans-serif;
+}
 
-    <nav class="category-nav js-reveal" style="text-align: center; margin-bottom: 40px;">
-      <div class="category-wrapper" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
-        <a href="/board" class="cat-btn" style="text-decoration: none; background: #fff; color: #64748b; padding: 8px 18px; border-radius: 50px; border: 1px solid #e2e8f0; font-size: 0.9rem; font-weight: 600; transition: 0.2s;">
-          전체 게시판으로 돌아가기
-        </a>
-        <a href="#" class="cat-btn active" style="text-decoration: none; background: #0a3871; color: #fff; padding: 8px 18px; border-radius: 50px; border: 1px solid #0a3871; font-size: 0.9rem; font-weight: 600;">
-           (7)
-        </a>
-      </div>
-    </nav>
+/* board.html에서 사용하는 공통 스타일들 */
+.board-container { max-width: 1050px; margin: 0 auto; padding: 0 24px; }
+.board-hero { background: var(--board-dark); color: #fff; padding: 190px 0 110px; text-align: center; position: relative; overflow: hidden; }
+.board-hero::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(circle, rgba(179, 149, 94, 0.12) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
+.board-status { display: inline-flex; align-items: center; background: rgba(255,255,255,0.03); padding: 8px 22px; border-radius: 4px; margin-bottom: 30px; font-size: 13px; font-weight: 500; border: 1px solid rgba(179, 149, 94, 0.3); color: var(--board-gold); text-transform: uppercase; letter-spacing: 0.15em; }
+.status-dot { width: 6px; height: 6px; background: var(--board-gold); border-radius: 50%; margin-right: 12px; }
+.board-main-title { font-size: clamp(2.3rem, 5.5vw, 3.5rem); font-weight: 800; line-height: 1.25; margin-bottom: 25px; letter-spacing: -0.04em; }
+.gold-text { color: var(--board-gold); }
+.board-sub-text { font-size: 1.15rem; color: #999; max-width: 600px; margin: 0 auto; font-weight: 300; }
 
-    <main class="post-area js-reveal">
-      <div id="post-list" class="post-list-stack" style="display: flex; flex-direction: column; gap: 12px;">
-        
-        <article class="post-item">
-          <a href="/board/2025-07-31-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%8B%A0%EC%B2%AD-%EC%9E%90%EA%B2%A9-%EB%B0%8F-%EC%A0%88%EC%B0%A8-%EC%83%81%EC%84%B8-%EC%95%88%EB%82%B4/" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">개인회생</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">개인회생 신청 자격 및 절차 상세 안내</h2>
-            </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">2025.07.31</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
-            </div>
-          </a>
-        </article>
-        
-        <article class="post-item">
-          <a href="/board/2025-07-31-%EA%B9%80%EC%84%B1%ED%83%9C-%EB%B2%95%EB%AC%B4%EC%82%AC-%EC%82%AC%EB%AC%B4%EC%86%8C-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A6%AC%EB%89%B4%EC%96%BC-%EC%95%88%EB%82%B4-2025%EB%85%84-%EC%B5%9C%EC%8B%A0/" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">공지사항</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">김성태 법무사 사무소 홈페이지 리뉴얼 안내 (2025년 최신)</h2>
-            </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">2025.07.31</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
-            </div>
-          </a>
-        </article>
-        
-        <article class="post-item">
-          <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EA%B0%9C%EC%9D%B8%EC%9B%8C%ED%81%AC%EC%95%84%EC%9B%83-%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">개인회생, 개인워크아웃</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">개인회생과 개인워크아웃 절차 비교</h2>
-            </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">2025.08.01</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
-            </div>
-          </a>
-        </article>
-        
-        <article class="post-item">
-          <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EA%B0%9C%EC%9D%B8%ED%8C%8C%EC%82%B0%EC%9D%98-%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">개인회생</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">개인회생과 개인파산의 절차 비교</h2>
-            </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">2025.08.01</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
-            </div>
-          </a>
-        </article>
-        
-        <article class="post-item">
-          <a href="/board/2025-08-01-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EA%B3%BC-%EC%9D%BC%EB%B0%98%ED%9A%8C%EC%83%9D%EC%9D%98-%EC%B0%A8%EC%9D%B4-%EC%9C%A0%EC%82%AC%EC%A0%88%EC%B0%A8-%EB%B9%84%EA%B5%90/" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">개인회생</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">개인회생과 일반회생의 차이 - 유사절차 비교</h2>
-            </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">2025.08.01</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
-            </div>
-          </a>
-        </article>
-        
-        <article class="post-item">
-          <a href="/board/2025-08-12-%EC%88%98%EC%9B%90%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B2%95%EC%9B%90-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D%EC%9C%84%EC%9B%90%EC%9D%98-%EC%97%85%EB%AC%B4%EC%99%80-%EA%B0%81-%EB%8B%A8%EA%B3%84%EB%B3%84-%EC%A4%91%EC%A0%90%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EB%8A%94-%EC%82%AC%EC%95%88%EC%9D%80/" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">개인회생</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">수원개인회생 법원 개인회생위원의 업무와 각 단계별 중점적으로 보는 사안은?</h2>
-            </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">2025.08.12</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
-            </div>
-          </a>
-        </article>
-        
-        <article class="post-item">
-          <a href="/board/2026-01-15-markdowntest/" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">카테고리_테스트</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MarkdownTest</h2>
-            </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">2026.01.15</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
-            </div>
-          </a>
-        </article>
-        
-      </div>
-    </main>
+.board-tools { padding: 70px 0 40px; background: var(--board-bg); border-bottom: 1px solid var(--border); }
+.filter-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.filter-btn { padding: 12px 26px; border-radius: 2px; background: #fff; border: 1px solid var(--border); color: #666; font-weight: 500; font-size: 0.9rem; cursor: pointer; transition: 0.3s; }
+.filter-btn:hover, .filter-btn.active { background: var(--board-dark); color: #fff; border-color: var(--board-dark); }
+.search-bar { max-width: 550px; margin: 0 auto; position: relative; border-bottom: 2px solid var(--board-dark); padding: 5px 0; }
+.search-bar input { width: 100%; border: none; outline: none; padding: 15px 10px; font-size: 1.1rem; background: transparent; text-align: center; }
 
-  </div>
-</section>
+.board-list-area { background: var(--board-bg); padding: 60px 0 140px; }
+.post-stack { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--board-dark); }
+.post-list-item { background: #fff; padding: 35px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; text-decoration: none; transition: 0.3s; }
+.post-list-item:hover { background: var(--board-gold-light); }
+.post-main { display: flex; align-items: center; gap: 30px; flex: 1; min-width: 0; }
+.post-cat { font-size: 12px; font-weight: 700; color: var(--board-gold); border: 1px solid var(--board-gold); padding: 4px 12px; border-radius: 2px; white-space: nowrap; }
+.post-title { font-size: 1.3rem; font-weight: 600; color: #222; margin: 0; }
+.post-meta { display: flex; align-items: center; gap: 25px; color: #999; font-size: 15px; }
+.post-arrow { font-size: 1.2rem; transition: 0.3s; color: var(--board-dark); }
+.post-list-item:hover .post-arrow { transform: translateX(10px); color: var(--board-gold); }
 
-<style>
-  /* 호버 효과를 위해 필요한 최소한의 CSS */
-  .post-title-card:hover { border-color: #0a3871 !important; transform: translateX(8px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
-  .cat-btn:hover { background: #eef2f7 !important; color: #0a3871 !important; }
-  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-  
-  @media (max-width: 768px) {
-    .post-title-card { flex-direction: column; align-items: flex-start !important; gap: 12px; padding: 20px !important; }
-    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 10px; }
-  }
+.js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .board-hero { padding-top: 150px; }
+  .post-list-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+  .post-meta { width: 100%; justify-content: space-between; }
+}
 </style>
 
+<div class="board-layout-root">
+  <div class="leaders-board">
+  <section class="board-hero js-reveal">
+    <div class="board-container">
+      <div class="board-status">
+        <span class="status-dot"></span> 
+         Archive
+      </div>
+      <h1 class="board-main-title">
+        <span></span> <span class="gold-text">관련 정보</span>
+      </h1>
+      <p class="board-sub-text">
+        리더스 법무사 사무소의 전문 분야인 ''에 대한 최신 법률 정보를 모아보실 수 있습니다.
+      </p>
+    </div>
+  </section>
+
+  <section class="board-list-area">
+    <div class="board-container">
+      <main class="post-stack js-reveal">
+        
+      </main>
+
+      <div style="text-align: center; margin-top: 80px;" class="js-reveal">
+        <a href="/board" class="filter-btn" style="text-decoration: none; display: inline-block;">전체 게시판으로 돌아가기</a>
+      </div>
+    </div>
+  </section>
+</div>
+
 <script>
+  // 목록 페이지와 동일한 애니메이션 적용
   document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
@@ -269,7 +220,7 @@
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });
 </script>
-
+</div>
   </main>
 
   <!-- 사이드 바로가기 버튼 -->

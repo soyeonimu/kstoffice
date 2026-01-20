@@ -609,3 +609,8 @@ header, .site-header, .nav-container {
   justify-content: space-between;
   gap: 20px;
 }
+
+/* ✅ 서열 확정 */
+.site-header { z-index: 11000 !important; }  /* 헤더 */
+.gnb        { z-index: 12000 !important; }  /* 메뉴패널(최상단) */
+.nav-overlay{ z-index: 10900 !important; }  /* 오버레이(헤더보다 살짝 아래) */

@@ -1,72 +1,49 @@
 ---
-layout: default
+layout: board
 ---
 
-{% assign current_category = page.category %}
-{% assign filtered_posts = site.board | where:"category", current_category | reversed %}
-
-<section class="board-section" style="background-color: #f8fafc; min-height: 100vh; padding: 120px 0 100px;">
-  <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
-    
-    <header class="page-head js-reveal" style="text-align: center; margin-bottom: 40px;">
-      <div class="head-badge" style="font-size: 12px; font-weight: 800; color: #0a3871; letter-spacing: 0.15em; margin-bottom: 10px;">CATEGORY ARCHIVE</div>
-      <h1 class="page-title" style="font-size: 1.8rem; font-weight: 900; color: #1e293b; letter-spacing: -0.03em;">{{ current_category }}</h1>
-      <p class="page-desc" style="color: #64748b; font-size: 1rem; margin-top: 15px;">
-        '{{ current_category }}' 카테고리에 등록된 리더스의 전문 법률 정보를 확인하세요.
+<div class="leaders-board">
+  <section class="board-hero js-reveal">
+    <div class="board-container">
+      <div class="board-status">
+        <span class="status-dot"></span> 
+        {{ page.category | upcase }} Archive
+      </div>
+      <h1 class="board-main-title">
+        <span>{{ page.category }}</span> <span class="gold-text">관련 정보</span>
+      </h1>
+      <p class="board-sub-text">
+        리더스 법무사 사무소의 전문 분야인 '{{ page.category }}'에 대한 최신 법률 정보를 모아보실 수 있습니다.
       </p>
-    </header>
+    </div>
+  </section>
 
-    <nav class="category-nav js-reveal" style="text-align: center; margin-bottom: 40px;">
-      <div class="category-wrapper" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
-        <a href="/board" class="cat-btn" style="text-decoration: none; background: #fff; color: #64748b; padding: 8px 18px; border-radius: 50px; border: 1px solid #e2e8f0; font-size: 0.9rem; font-weight: 600; transition: 0.2s;">
-          전체 게시판으로 돌아가기
+  <section class="board-list-area">
+    <div class="board-container">
+      <main class="post-stack js-reveal">
+        {% for post in page.posts %}
+        <a href="{{ post.url }}" class="post-list-item">
+          <div class="post-main">
+            <span class="post-cat">{{ page.category }}</span>
+            <h2 class="post-title">{{ post.title }}</h2>
+          </div>
+          <div class="post-meta">
+            <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+            <span class="post-arrow">→</span>
+          </div>
         </a>
-        <a href="#" class="cat-btn active" style="text-decoration: none; background: #0a3871; color: #fff; padding: 8px 18px; border-radius: 50px; border: 1px solid #0a3871; font-size: 0.9rem; font-weight: 600;">
-          {{ current_category }} ({{ filtered_posts.size }})
-        </a>
-      </div>
-    </nav>
-
-    <main class="post-area js-reveal">
-      <div id="post-list" class="post-list-stack" style="display: flex; flex-direction: column; gap: 12px;">
-        {% for post in filtered_posts %}
-        <article class="post-item">
-          <a href="{{ post.url }}" class="post-title-card" style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 28px; border-radius: 16px; text-decoration: none; border: 1px solid #e2e8f0; transition: 0.2s;">
-            <div class="post-info-left" style="display: flex; align-items: center; gap: 20px; overflow: hidden;">
-              <span class="post-tag" style="background: #eff6ff; color: #0a3871; font-size: 10.5px; font-weight: 800; padding: 5px 10px; border-radius: 6px; white-space: nowrap;">{{ post.category }}</span>
-              <h2 class="post-title" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; margin: 0; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ post.title }}</h2>
-            </div>
-            <div class="post-info-right" style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-              <span class="post-date" style="font-size: 13px; color: #64748b; font-weight: 500;">{{ post.date | date: "%Y.%m.%d" }}</span>
-              <span class="arrow" style="color: #0a3871; font-size: 14px; opacity: 0.7;">→</span>
-            </div>
-          </a>
-        </article>
-        {% else %}
-        <div style="text-align: center; padding: 80px 0; color: #64748b; font-size: 0.95rem;">
-          등록된 게시물이 없습니다.
-        </div>
         {% endfor %}
+      </main>
+
+      <div style="text-align: center; margin-top: 80px;" class="js-reveal">
+        <a href="/board" class="filter-btn" style="text-decoration: none; display: inline-block;">전체 게시판으로 돌아가기</a>
       </div>
-    </main>
-
-  </div>
-</section>
-
-<style>
-  /* 호버 효과를 위해 필요한 최소한의 CSS */
-  .post-title-card:hover { border-color: #0a3871 !important; transform: translateX(8px); box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
-  .cat-btn:hover { background: #eef2f7 !important; color: #0a3871 !important; }
-  .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-  
-  @media (max-width: 768px) {
-    .post-title-card { flex-direction: column; align-items: flex-start !important; gap: 12px; padding: 20px !important; }
-    .post-info-right { width: 100%; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 10px; }
-  }
-</style>
+    </div>
+  </section>
+</div>
 
 <script>
+  // 목록 페이지와 동일한 애니메이션 적용
   document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });

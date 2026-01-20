@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사</title>
+  <title>개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사 | 리더스 합동 법무사 사무소</title>
   <meta name="description" content="개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 정리한 가이드입니다.">
-  <meta name="author" content="김성태 법무사" />
-
+  
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <meta property="og:title" content="개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사" />
-  <meta property="og:description" content="개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 정리한 가이드입니다." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://localhost:4000/what-is" />
-  <meta property="og:image" content="/og-image.jpg" />
+  
+  <style>
+    /* 하얀 화면 방지 및 기본 레이아웃 */
+    body { margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; background-color: #fff; color: #333; }
+    main { min-height: 80vh; display: block; }
+    
+    /* 헤더 숨김 방지 기본 스타일 */
+    .header--hidden { transform: translateY(-100%); transition: transform 0.3s ease; }
+    
+    /* 애니메이션 기본값 */
+    .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
 
 <body>
@@ -932,87 +936,29 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-  <!-- ✅ 헤더 스크롤 숨김/표시 -->
   <script>
-    (function () {
-      const header = document.getElementById('siteHeader');
-      if (!header) return;
-
-      let lastY = window.scrollY;
-      let ticking = false;
-
-      function onScroll() {
-        const y = window.scrollY;
-
-        if (y < 10) {
-          header.classList.remove('header--hidden');
-          lastY = y;
-          return;
-        }
-
-        if (y > lastY + 8) header.classList.add('header--hidden');
-        else if (y < lastY - 8) header.classList.remove('header--hidden');
-
-        lastY = y;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            onScroll();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-    })();
-  </script>
-
-  <!-- ✅ 모바일 메뉴 + 서브메뉴 토글 -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("menuToggle");
-      const gnb = document.getElementById("gnb");
-      if (!btn || !gnb) return;
-
-      // 전체 메뉴 열기/닫기
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = gnb.classList.toggle("is-open");
-        btn.setAttribute("aria-expanded", String(isOpen));
-      });
-
-      // 모바일에서 서브메뉴 토글
-      gnb.querySelectorAll("li.has-sub > a").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          if (window.innerWidth > 1024) return; // PC는 링크 동작 유지
-
-          e.preventDefault();
-          e.stopPropagation();
-
-          const li = link.parentElement;
-          li.classList.toggle("sub-open");
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Reveal 효과
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
         });
-      });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
 
-      // 메뉴 바깥 클릭하면 닫기
-      document.addEventListener("click", (e) => {
-        if (!gnb.classList.contains("is-open")) return;
-        if (btn.contains(e.target) || gnb.contains(e.target)) return;
-
-        gnb.classList.remove("is-open");
-        btn.setAttribute("aria-expanded", "false");
-        gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
-      });
-
-      // 화면이 커지면 열린 서브 정리
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 1024) {
-          gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
-        }
-      });
+      // 2. 헤더 스크롤 로직 (전달해주신 코드 통합)
+      const header = document.getElementById('siteHeader');
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        let currY = window.scrollY;
+        if (!header) return;
+        if (currY > lastY + 10 && currY > 100) header.classList.add('header--hidden');
+        else if (currY < lastY - 10) header.classList.remove('header--hidden');
+        lastY = currY;
+      }, { passive: true });
     });
   </script>
-
 </body>
 </html>

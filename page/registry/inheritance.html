@@ -1,16 +1,216 @@
 ---
 layout: default
-title: 상속 등기 | 리더스 합동 법무사 사무소
-description: 상속에 따른 부동산 이전 등기 및 관련 절차를 체계적으로 안내합니다.
+title: 상속등기 마스터 가이드 | 리더스 합동 법무사 사무소
+description: 협의분할·단독상속·상속재산분할까지. 상속 관계에 맞춘 등기 구조를 설계합니다.
 permalink: /registry/inheritance
 ---
-<section class="leaders-page">
-  <section class="leaders-hero">
-    <div class="leaders-container leaders-container--narrow">
-      <h1 class="leaders-title">상속 등기</h1>
-      <p class="leaders-desc">
-        상속 관계에 따른 등기 절차를 정리하고 필요한 서류 작성을 지원합니다.
-      </p>
+
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --bg: #ffffff;
+  --dark-base: #0a0f0e; /* 리더스 통합 다크 */
+  --navy: #0f2f2a;
+  --teal: #259d91; /* 리더스 통합 강조색 */
+  --teal-glow: rgba(37, 157, 145, 0.2);
+  --text-h: #1e293b;
+  --text-p: #64748b;
+  --border-light: #f1f5f9;
+}
+
+.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
+.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- HERO SECTION --- */
+.hero-canvas { 
+  background: var(--dark-base); 
+  color: #fff; 
+  padding: 160px 0 120px; 
+  text-align: center; 
+  position: relative;
+  overflow: hidden;
+}
+.hero-canvas::before {
+  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px; background: radial-gradient(circle, var(--teal-glow) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+.hero-status { 
+  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
+  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
+  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+.status-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--teal); }
+
+.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
+.glow-text { color: var(--teal); background: linear-gradient(to right, #259d91, #4ecdc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-sub-text { font-size: 1.2rem; color: #94a3b8; max-width: 720px; margin: 0 auto 48px; }
+
+.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
+.btn-prime { background: var(--teal); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--teal-glow); }
+.btn-prime:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(37, 157, 145, 0.4); }
+.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+.btn-ghost:hover { background: rgba(255,255,255,0.05); }
+
+/* --- VALUE STRIP --- */
+.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
+.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+.value-item { text-align: center; flex: 1; }
+.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+.v-value { font-size: 1.5rem; font-weight: 800; color: var(--navy); }
+.v-line { width: 1px; height: 40px; background: #e2e8f0; }
+
+/* --- BENTO SECTION (DARK) --- */
+.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
+.header-group { text-align: center; margin-bottom: 80px; }
+.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
+.h-desc { color: #64748b; font-size: 1.1rem; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.bento-item { 
+  background: #111817; padding: 50px 40px; border-radius: 30px; 
+  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.bento-item:hover { 
+  transform: translateY(-12px); border-color: var(--teal); 
+  background: #141d1b; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.bento-tag { font-size: 12px; font-weight: 800; color: var(--teal); margin-bottom: 24px; }
+.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
+.bento-item p { color: #94a3b8; font-size: 1rem; line-height: 1.7; }
+
+/* --- PRICE CARD --- */
+.section-gray { background: #f8fafc; padding: 120px 0; }
+.premium-price-card { 
+  background: #fff; border-radius: 40px; padding: 80px 60px; 
+  box-shadow: 0 40px 100px rgba(0,0,0,0.04); max-width: 900px; margin: 0 auto; 
+  border: 1px solid var(--border-light); text-align: center;
+}
+.p-badge { background: #eefdfc; color: var(--teal); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
+.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; color: var(--navy); }
+.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
+.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: var(--navy); }
+.p-list ul { list-style: none; padding: 0; }
+.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
+.p-list li::before { content: "✓"; color: var(--teal); position: absolute; left: 0; font-weight: 900; }
+
+/* --- REVEAL --- */
+.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .bento-grid, .p-list-group { grid-template-columns: 1fr; }
+  .value-grid { flex-direction: column; gap: 30px; }
+  .v-line { display: none; }
+}
+</style>
+
+<section class="leaders-premium">
+
+  <section class="hero-canvas js-reveal">
+    <div class="leaders-container">
+      <div class="hero-content">
+        <div class="hero-status"><span class="status-dot"></span> 리더스 상속 등기 전담팀</div>
+        <h1 class="hero-main-title">상속등기,<br><span class="glow-text">가족의 마음까지 설계합니다</span></h1>
+        <p class="hero-sub-text">상속은 단순한 명의 이전을 넘어 <strong>가족 간 합의와 세무적 최적성</strong>을 찾는 과정입니다. 리더스는 복잡한 상속 절차의 가장 명쾌한 기준이 됩니다.</p>
+        <div class="hero-cta-group">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">상속 관계 무료 진단</a>
+          <a href="#price" class="btn-ghost">진행 절차 안내</a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="value-strip js-reveal">
+    <div class="leaders-container">
+      <div class="value-grid">
+        <div class="value-item"><span class="v-label">핵심 가치</span><span class="v-value">원만한 협의 지원</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">전문 영역</span><span class="v-value">상속재산분할 전문</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">진행 목표</span><span class="v-value">취득세 리스크 제로</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-dark">
+    <div class="leaders-container">
+      <div class="header-group js-reveal">
+        <h2 class="h-title">상속 상황별 맞춤 솔루션</h2>
+        <p class="h-desc">상속인의 상황과 재산 구조에 가장 적합한 등기 방식을 제안합니다.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">DIVISION</div>
+          <h3>협의분할 상속등기<br>(특정인 귀속)</h3>
+          <p>상속인 전원의 합의를 바탕으로 특정 상속인에게 재산을 귀속시킵니다. 분할협의서 작성부터 날인까지 전 과정을 가이드합니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">STATUTORY</div>
+          <h3>법정지분 상속등기<br>(권리 보호)</h3>
+          <p>민법상 상속 지분대로 등기하여 각 상속인의 권리를 확정합니다. 협의가 어려운 상황에서도 신속하게 법적 지위를 보장합니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">WILL</div>
+          <h3>유증 및 사인증여<br>(유언 집행)</h3>
+          <p>고인의 유언에 따른 등기 절차입니다. 유언장의 법적 효력 검토부터 복잡한 유언 집행 대행까지 리더스가 책임집니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-gray" id="price">
+    <div class="leaders-container">
+      <div class="premium-price-card js-reveal">
+        <div class="p-badge">INHERITANCE REGISTRY SERVICE</div>
+        <h2 class="p-amount">사안별 개별 산출</h2>
+        <p class="p-info">상속인의 수와 재산 가액, 협의 난이도에 따라 투명하게 안내드립니다.</p>
+        
+        <div class="p-list-group">
+          <div class="p-list">
+            <h4>기본 서비스</h4>
+            <ul>
+              <li>가계도 및 상속 지분 정밀 검토</li>
+              <li>상속재산 분할협의서 전문 작성</li>
+              <li>관할 등기소 접수 및 결과 관리</li>
+            </ul>
+          </div>
+          <div class="p-list">
+            <h4>부대 업무 지원</h4>
+            <ul>
+              <li>상속세 및 취득세 신고 가이드</li>
+              <li>제적등본 등 복잡한 서류 분석</li>
+              <li>취득세 및 채권 업무 일괄 처리</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 60px;">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" class="btn-prime">상속등기 견적 문의하기</a>
+          <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3b8;">* 상속 전문 법무사가 1:1로 직접 상담합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include cta-box.html 
+     title="상속은 단순한 정리가 아니라 새로운 시작입니다." 
+     desc="리더스 합동 법무사 사무소가 가장 편안한 길을 안내합니다." 
+  %}
+
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+});
+</script>

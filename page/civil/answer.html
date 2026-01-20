@@ -1,16 +1,215 @@
 ---
 layout: default
-title: 답변서 작성 | 리더스 합동 법무사 사무소
-description: 피고 입장에서 제출하는 답변서 작성 및 기본 유의사항을 안내합니다.
+title: 답변서 작성 마스터 가이드 | 리더스 합동 법무사 사무소
+description: 소장 송달 후 30일 이내 제출하는 답변서. 피고의 권리를 방어하는 전략적 설계를 지원합니다.
 permalink: /civil/answer
 ---
-<section class="leaders-page">
-  <section class="leaders-hero">
-    <div class="leaders-container leaders-container--narrow">
-      <h1 class="leaders-title">답변서</h1>
-      <p class="leaders-desc">
-        소장 송달 후 제출하는 답변서 작성과 관련 절차를 안내합니다.
-      </p>
+
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --bg: #ffffff;
+  --dark-base: #120b0b; /* 민사 전용 묵직한 다크 브라운-블랙 */
+  --burgundy: #8b1d1d; /* 방어와 단호함을 상징하는 버건디 */
+  --burgundy-glow: rgba(139, 29, 29, 0.2);
+  --text-h: #1e293b;
+  --text-p: #64748b;
+  --border-light: #f1f5f9;
+}
+
+.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
+.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- HERO SECTION --- */
+.hero-canvas { 
+  background: var(--dark-base); 
+  color: #fff; 
+  padding: 160px 0 120px; 
+  text-align: center; 
+  position: relative;
+  overflow: hidden;
+}
+.hero-canvas::before {
+  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px; background: radial-gradient(circle, var(--burgundy-glow) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+.hero-status { 
+  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
+  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
+  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+.status-dot { width: 8px; height: 8px; background: var(--burgundy); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--burgundy); }
+
+.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
+.glow-text { color: var(--burgundy); background: linear-gradient(to right, #8b1d1d, #c53030); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-sub-text { font-size: 1.2rem; color: #a39494; max-width: 720px; margin: 0 auto 48px; }
+
+.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
+.btn-prime { background: var(--burgundy); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--burgundy-glow); }
+.btn-prime:hover { transform: translateY(-3px); background: #a52424; box-shadow: 0 15px 35px rgba(139, 29, 29, 0.4); }
+.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+.btn-ghost:hover { background: rgba(255,255,255,0.05); }
+
+/* --- VALUE STRIP --- */
+.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
+.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+.value-item { text-align: center; flex: 1; }
+.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+.v-value { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; }
+.v-line { width: 1px; height: 40px; background: #e2e8f0; }
+
+/* --- BENTO SECTION (DARK) --- */
+.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
+.header-group { text-align: center; margin-bottom: 80px; }
+.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
+.h-desc { color: #8e7f7f; font-size: 1.1rem; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.bento-item { 
+  background: #1c1414; padding: 50px 40px; border-radius: 30px; 
+  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.bento-item:hover { 
+  transform: translateY(-12px); border-color: var(--burgundy); 
+  background: #251a1a; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.bento-tag { font-size: 12px; font-weight: 800; color: var(--burgundy); margin-bottom: 24px; }
+.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
+.bento-item p { color: #a39494; font-size: 1rem; line-height: 1.7; }
+
+/* --- PRICE CARD --- */
+.section-gray { background: #faf8f8; padding: 120px 0; }
+.premium-price-card { 
+  background: #fff; border-radius: 40px; padding: 80px 60px; 
+  box-shadow: 0 40px 100px rgba(139, 29, 29, 0.05); max-width: 900px; margin: 0 auto; 
+  border: 1px solid var(--border-light); text-align: center;
+}
+.p-badge { background: #fff5f5; color: var(--burgundy); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
+.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; color: #1a1a1a; }
+.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
+.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
+.p-list ul { list-style: none; padding: 0; }
+.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
+.p-list li::before { content: "✓"; color: var(--burgundy); position: absolute; left: 0; font-weight: 900; }
+
+/* --- REVEAL --- */
+.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .bento-grid, .p-list-group { grid-template-columns: 1fr; }
+  .value-grid { flex-direction: column; gap: 30px; }
+  .v-line { display: none; }
+}
+</style>
+
+<section class="leaders-premium">
+
+  <section class="hero-canvas js-reveal">
+    <div class="leaders-container">
+      <div class="hero-content">
+        <div class="hero-status"><span class="status-dot"></span> 소장 송달 후 30일 이내 대응 필수</div>
+        <h1 class="hero-main-title">답변서,<br><span class="glow-text">침묵은 자백과 같습니다</span></h1>
+        <p class="hero-sub-text">소장을 받으셨다면 30일 이내에 답변서를 제출해야 합니다. 원고의 주장을 반박하고 피고의 정당한 권리를 지키기 위한 전략적 대응을 시작하세요.</p>
+        <div class="hero-cta-group">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">민사 소송 전략 상담</a>
+          <a href="#price" class="btn-ghost">작성 비용 확인</a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="value-strip js-reveal">
+    <div class="leaders-container">
+      <div class="value-grid">
+        <div class="value-item"><span class="v-label">제출 기한</span><span class="v-value">송달 후 30일</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">작성 원칙</span><span class="v-value">논리적 항변 설계</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">대응 목표</span><span class="v-value">원고 청구 기각</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-dark">
+    <div class="leaders-container">
+      <div class="header-group js-reveal">
+        <h2 class="h-title">답변서 작성 핵심 솔루션</h2>
+        <p class="h-desc">상대방의 공격을 무력화하고 사실관계를 바로잡는 전문적인 문서 작성이 필요합니다.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">REFUTATION</div>
+          <h3>원고 주장 반박<br>사실관계 재구성</h3>
+          <p>원고가 제출한 소장의 허점을 찾고, 증거에 기반한 사실관계를 재구성하여 재판부의 올바른 판단을 유도합니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">DEFENSE</div>
+          <h3>법리적 항변 설계<br>소멸시효 및 면책</h3>
+          <p>단순한 부인이 아니라 소멸시효 완성, 동시이행 항변권 등 법률적 근거가 있는 항변을 통해 승소 확률을 높입니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">EVIDENCE</div>
+          <h3>증거 자료 정리<br>입증 책임 대응</h3>
+          <p>피고의 주장을 뒷받침할 객관적 증거를 분류하고, 상대방 주장에 대한 입증 책임을 공격적으로 지적합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-gray" id="price">
+    <div class="leaders-container">
+      <div class="premium-price-card js-reveal">
+        <div class="p-badge">CIVIL ANSWER SERVICE</div>
+        <h2 class="p-amount">합리적 작성 비용</h2>
+        <p class="p-info">소송 가액과 쟁점의 복잡도에 따라 투명하게 산정된 대행료를 안내합니다.</p>
+        
+        <div class="p-list-group">
+          <div class="p-list">
+            <h4>답변서 작성 패키지</h4>
+            <ul>
+              <li>사건 기록 및 소장 정밀 분석</li>
+              <li>법리 검토 및 항변 구조 설계</li>
+              <li>최종 답변서 초안 및 완성본 작성</li>
+            </ul>
+          </div>
+          <div class="p-list">
+            <h4>부수 업무 지원</h4>
+            <ul>
+              <li>전자소송 사이트 제출 대행</li>
+              <li>증거 서류 번호 부여 및 정리</li>
+              <li>사건 진행 현황 모니터링 가이드</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 60px;">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" class="btn-prime">답변서 작성 견적 문의</a>
+          <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3a3;">* 모든 민사 서류는 법무사가 직접 내용을 검토하고 작성합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include cta-box.html 
+     title="민사 소송의 골든타임, 첫 답변서에서 결정됩니다." 
+     desc="리더스 합동 법무사 사무소가 당신의 정당한 권리를 대변하겠습니다." 
+  %}
+
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+});
+</script>

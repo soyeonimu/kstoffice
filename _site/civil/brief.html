@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>준비서면 작성 | 리더스 합동 법무사 사무소</title>
-  <meta name="description" content="민사소송 진행 중 제출되는 준비서면 작성과 절차를 안내합니다.">
-  <meta name="author" content="김성태 법무사" />
-
+  <title>준비서면 작성 마스터 가이드 | 리더스 합동 법무사 사무소 | 리더스 합동 법무사 사무소</title>
+  <meta name="description" content="민사소송의 승패를 결정짓는 핵심 서면. 논리적 입증과 법리 전개로 재판을 주도합니다.">
+  
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <meta property="og:title" content="준비서면 작성 | 리더스 합동 법무사 사무소" />
-  <meta property="og:description" content="민사소송 진행 중 제출되는 준비서면 작성과 절차를 안내합니다." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://localhost:4000/civil/brief" />
-  <meta property="og:image" content="/og-image.jpg" />
+  
+  <style>
+    /* 하얀 화면 방지 및 기본 레이아웃 */
+    body { margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; background-color: #fff; color: #333; }
+    main { min-height: 80vh; display: block; }
+    
+    /* 헤더 숨김 방지 기본 스타일 */
+    .header--hidden { transform: translateY(-100%); transition: transform 0.3s ease; }
+    
+    /* 애니메이션 기본값 */
+    .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
 
 <body>
@@ -119,17 +123,395 @@
 
 
   <main>
-    <section class="leaders-page">
-  <section class="leaders-hero">
-    <div class="leaders-container leaders-container--narrow">
-      <h1 class="leaders-title">준비서면</h1>
-      <p class="leaders-desc">
-        소송 진행 과정에서 필요한 준비서면 작성 및 제출 절차를 안내합니다.
-      </p>
+    <style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --bg: #ffffff;
+  --dark-base: #120b0b; 
+  --burgundy: #8b1d1d; 
+  --burgundy-glow: rgba(139, 29, 29, 0.2);
+  --text-h: #1e293b;
+  --text-p: #64748b;
+  --border-light: #f1f5f9;
+}
+
+.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
+.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- HERO SECTION --- */
+.hero-canvas { 
+  background: var(--dark-base); 
+  color: #fff; 
+  padding: 160px 0 120px; 
+  text-align: center; 
+  position: relative;
+  overflow: hidden;
+}
+.hero-canvas::before {
+  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px; background: radial-gradient(circle, var(--burgundy-glow) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+.hero-status { 
+  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
+  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
+  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+.status-dot { width: 8px; height: 8px; background: var(--burgundy); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--burgundy); }
+
+.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
+.glow-text { color: var(--burgundy); background: linear-gradient(to right, #8b1d1d, #c53030); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-sub-text { font-size: 1.2rem; color: #a39494; max-width: 720px; margin: 0 auto 48px; }
+
+.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
+.btn-prime { background: var(--burgundy); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--burgundy-glow); }
+.btn-prime:hover { transform: translateY(-3px); background: #a52424; box-shadow: 0 15px 35px rgba(139, 29, 29, 0.4); }
+.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+
+/* --- VALUE STRIP --- */
+.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
+.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+.value-item { text-align: center; flex: 1; }
+.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+.v-value { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; }
+.v-line { width: 1px; height: 40px; background: #e2e8f0; }
+
+/* --- BENTO SECTION (DARK) --- */
+.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
+.header-group { text-align: center; margin-bottom: 80px; }
+.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
+.h-desc { color: #8e7f7f; font-size: 1.1rem; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.bento-item { 
+  background: #1c1414; padding: 50px 40px; border-radius: 30px; 
+  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.bento-item:hover { 
+  transform: translateY(-12px); border-color: var(--burgundy); 
+  background: #251a1a; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.bento-tag { font-size: 12px; font-weight: 800; color: var(--burgundy); margin-bottom: 24px; }
+.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
+.bento-item p { color: #a39494; font-size: 1rem; line-height: 1.7; }
+
+/* --- PRICE CARD --- */
+.section-gray { background: #faf8f8; padding: 120px 0; }
+.premium-price-card { 
+  background: #fff; border-radius: 40px; padding: 80px 60px; 
+  box-shadow: 0 40px 100px rgba(139, 29, 29, 0.05); max-width: 900px; margin: 0 auto; 
+  border: 1px solid var(--border-light); text-align: center;
+}
+.p-badge { background: #fff5f5; color: var(--burgundy); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
+.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; color: #1a1a1a; }
+.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
+.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
+.p-list ul { list-style: none; padding: 0; }
+.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
+.p-list li::before { content: "✓"; color: var(--burgundy); position: absolute; left: 0; font-weight: 900; }
+
+/* --- REVEAL --- */
+.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .bento-grid, .p-list-group { grid-template-columns: 1fr; }
+  .value-grid { flex-direction: column; gap: 30px; }
+}
+</style>
+
+<section class="leaders-premium">
+
+  <section class="hero-canvas js-reveal">
+    <div class="leaders-container">
+      <div class="hero-content">
+        <div class="hero-status"><span class="status-dot"></span> 소송의 승패를 결정짓는 핵심 서면</div>
+        <h1 class="hero-main-title">준비서면,<br><span class="glow-text">재판부를 설득하는 논리의 힘</span></h1>
+        <p class="hero-sub-text">소장과 답변서 이후의 공방은 '준비서면'을 통해 완성됩니다. 상대방의 허점을 찌르고 우리 측 주장의 당위성을 법리적으로 증명해야 합니다.</p>
+        <div class="hero-cta-group">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">준비서면 작성 전략 상담</a>
+          <a href="#price" class="btn-ghost">서비스 범위 안내</a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="value-strip js-reveal">
+    <div class="leaders-container">
+      <div class="value-grid">
+        <div class="value-item"><span class="v-label">핵심 목표</span><span class="v-value">법리적 우위 확보</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">작성 방식</span><span class="v-value">증거 기반 논증</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">최종 목적</span><span class="v-value">승소 및 청구 기각</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-dark">
+    <div class="leaders-container">
+      <div class="header-group js-reveal">
+        <h2 class="h-title">준비서면 전략 솔루션</h2>
+        <p class="h-desc">변론기일 전, 서면을 통해 재판의 흐름을 우리 유리한 방향으로 끌어옵니다.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">ATTACK</div>
+          <h3>상대방 주장 파훼<br>모순점 집중 부각</h3>
+          <p>상대방이 제출한 답변서나 서면 속의 논리적 모순과 허위 주장을 날카롭게 지적하여 신빙성을 무너뜨립니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">LOGIC</div>
+          <h3>판례 중심 법리 전개<br>입증 보완 설계</h3>
+          <p>유사 사례의 대법원 판례를 인용하여 우리 주장의 법률적 근거를 탄탄히 다지고 입증 부족 부분을 완벽히 보완합니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">STRATEGY</div>
+          <h3>재판부 설득 전략<br>가독성 높은 서면</h3>
+          <p>복잡한 쟁점을 일목요연하게 정리하여 재판부가 우리 측 주장을 한눈에 이해하고 수용할 수 있도록 구성합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-gray" id="price">
+    <div class="leaders-container">
+      <div class="premium-price-card js-reveal">
+        <div class="p-badge">CIVIL BRIEF SERVICE</div>
+        <h2 class="p-amount">사안별 맞춤 비용</h2>
+        <p class="p-info">변론 차수와 쟁점의 깊이에 따라 의뢰인과 협의하여 합리적인 대행료를 제안합니다.</p>
+        
+        <div class="p-list-group">
+          <div class="p-list">
+            <h4>전략 작성 패키지</h4>
+            <ul>
+              <li>기존 제출 서면 및 증거 전수 조사</li>
+              <li>최신 판례 검색 및 법리 대입</li>
+              <li>공격·방어 포인트별 서면 구성</li>
+            </ul>
+          </div>
+          <div class="p-list">
+            <h4>추가 지원 서비스</h4>
+            <ul>
+              <li>입증방법(증거) 목록 정리 및 제출</li>
+              <li>상대방 서면 실시간 모니터링</li>
+              <li>향후 재판 절차 컨설팅</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 60px;">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" class="btn-prime">준비서면 작성 문의</a>
+          <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3a3;">* 모든 서면은 리더스 전담 법무사가 책임 작성합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="unified-cta-section js-reveal">
+  <div class="container-cta">
+    <div class="cta-box-wrapper">
+      <div class="cta-inner-content">
+        <div class="cta-text-area">
+          <div class="cta-badge">DIRECT CONSULTING</div>
+          <h3 class="cta-title">서면 하나가 판결문의 결론을 바꿉니다.</h3>
+          <p class="cta-desc">리더스 합동 법무사 사무소가 끝까지 힘이 되어 드리겠습니다.</p>
+        </div>
+        <div class="cta-action-area">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
+          <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<style>
+  :root {
+    --cta-bg-glass: rgba(226, 232, 240, 0.82);
+    --cta-accent: #2563eb;
+    --cta-kakao: #fee500;
+    --cta-text-main: #0f172a;
+    --cta-text-sub: #64748b;
+    --cta-radius: 32px;
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .unified-cta-section { padding: 80px 24px; background: transparent; }
+  .container-cta { max-width: 1200px; margin: 0 auto; }
+
+  .cta-box-wrapper {
+    background: var(--cta-bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: var(--cta-radius);
+    padding: 64px 60px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-inner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-text-area { flex: 1; }
+  .cta-badge {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--cta-accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+  }
+
+  .cta-title {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: var(--cta-text-main);
+    margin-bottom: 14px;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+
+  .cta-desc {
+    font-size: 1.15rem;
+    color: var(--cta-text-sub);
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
+
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    height: 60px;
+    border-radius: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: var(--transition-smooth);
+    will-change: transform;
+  }
+
+  .cta-btn.kakao {
+    background: var(--cta-kakao);
+    color: #3c1e1e;
+    box-shadow: 0 4px 12px rgba(254, 229, 0, 0.2);
+  }
+  .cta-btn.kakao:hover {
+    background: #fada00;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(254, 229, 0, 0.3);
+  }
+
+  .cta-btn.secondary {
+    background: #ffffff;
+    color: var(--cta-text-main);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  .cta-btn.secondary:hover {
+    background: #ffffff;
+    border-color: var(--cta-accent);
+    color: var(--cta-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+  }
+
+  /* ===== CTA 모바일 최적화 ===== */
+  @media (max-width: 768px) {
+    .unified-cta-section { padding: 48px 16px; }
+
+    .cta-box-wrapper{
+      padding: 28px 18px;
+      border-radius: 20px;
+    }
+
+    .cta-inner-content{
+      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+    }
+
+    .cta-text-area{ width: 100%; }
+    .cta-badge{ margin-bottom: 10px; }
+
+    .cta-title{
+      font-size: 1.45rem;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .cta-desc{
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .cta-action-area{
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cta-btn{
+      width: 100%;
+      min-width: 0;
+      height: 52px;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    .cta-btn:hover{
+      transform: translateY(-2px);
+    }
+  }
+
+  /* 스크롤 애니메이션 (js-reveal 클래스 대응) */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+</style>
+
+
+
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+});
+</script>
   </main>
 
   <!-- 사이드 바로가기 버튼 -->
@@ -247,87 +629,29 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-  <!-- ✅ 헤더 스크롤 숨김/표시 -->
   <script>
-    (function () {
-      const header = document.getElementById('siteHeader');
-      if (!header) return;
-
-      let lastY = window.scrollY;
-      let ticking = false;
-
-      function onScroll() {
-        const y = window.scrollY;
-
-        if (y < 10) {
-          header.classList.remove('header--hidden');
-          lastY = y;
-          return;
-        }
-
-        if (y > lastY + 8) header.classList.add('header--hidden');
-        else if (y < lastY - 8) header.classList.remove('header--hidden');
-
-        lastY = y;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            onScroll();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-    })();
-  </script>
-
-  <!-- ✅ 모바일 메뉴 + 서브메뉴 토글 -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("menuToggle");
-      const gnb = document.getElementById("gnb");
-      if (!btn || !gnb) return;
-
-      // 전체 메뉴 열기/닫기
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = gnb.classList.toggle("is-open");
-        btn.setAttribute("aria-expanded", String(isOpen));
-      });
-
-      // 모바일에서 서브메뉴 토글
-      gnb.querySelectorAll("li.has-sub > a").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          if (window.innerWidth > 1024) return; // PC는 링크 동작 유지
-
-          e.preventDefault();
-          e.stopPropagation();
-
-          const li = link.parentElement;
-          li.classList.toggle("sub-open");
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Reveal 효과
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
         });
-      });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
 
-      // 메뉴 바깥 클릭하면 닫기
-      document.addEventListener("click", (e) => {
-        if (!gnb.classList.contains("is-open")) return;
-        if (btn.contains(e.target) || gnb.contains(e.target)) return;
-
-        gnb.classList.remove("is-open");
-        btn.setAttribute("aria-expanded", "false");
-        gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
-      });
-
-      // 화면이 커지면 열린 서브 정리
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 1024) {
-          gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
-        }
-      });
+      // 2. 헤더 스크롤 로직 (전달해주신 코드 통합)
+      const header = document.getElementById('siteHeader');
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        let currY = window.scrollY;
+        if (!header) return;
+        if (currY > lastY + 10 && currY > 100) header.classList.add('header--hidden');
+        else if (currY < lastY - 10) header.classList.remove('header--hidden');
+        lastY = currY;
+      }, { passive: true });
     });
   </script>
-
 </body>
 </html>

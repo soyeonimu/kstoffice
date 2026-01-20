@@ -1,16 +1,213 @@
 ---
 layout: default
-title: 소장 작성 | 리더스 합동 법무사 사무소
-description: 민사소송 소장 작성에 필요한 기본 구성과 절차를 안내합니다.
+title: 소장 작성 마스터 가이드 | 리더스 합동 법무사 사무소
+description: 민사소송의 시작, 완벽한 소장 작성부터. 청구취지와 원인을 정밀 설계하여 승소의 초석을 다집니다.
 permalink: /civil/complaint
 ---
-<section class="leaders-page">
-  <section class="leaders-hero">
-    <div class="leaders-container leaders-container--narrow">
-      <h1 class="leaders-title">소장 작성</h1>
-      <p class="leaders-desc">
-        민사소송 제기를 위한 소장 서류 작성 및 절차를 안내합니다.
-      </p>
+
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --bg: #ffffff;
+  --dark-base: #120b0b; 
+  --burgundy: #8b1d1d; 
+  --burgundy-glow: rgba(139, 29, 29, 0.2);
+  --text-h: #1e293b;
+  --text-p: #64748b;
+  --border-light: #f1f5f9;
+}
+
+.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
+.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- HERO SECTION --- */
+.hero-canvas { 
+  background: var(--dark-base); 
+  color: #fff; 
+  padding: 160px 0 120px; 
+  text-align: center; 
+  position: relative;
+  overflow: hidden;
+}
+.hero-canvas::before {
+  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px; background: radial-gradient(circle, var(--burgundy-glow) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+.hero-status { 
+  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
+  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
+  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+.status-dot { width: 8px; height: 8px; background: var(--burgundy); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--burgundy); }
+
+.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
+.glow-text { color: var(--burgundy); background: linear-gradient(to right, #8b1d1d, #c53030); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-sub-text { font-size: 1.2rem; color: #a39494; max-width: 720px; margin: 0 auto 48px; }
+
+.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
+.btn-prime { background: var(--burgundy); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--burgundy-glow); }
+.btn-prime:hover { transform: translateY(-3px); background: #a52424; box-shadow: 0 15px 35px rgba(139, 29, 29, 0.4); }
+.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+
+/* --- VALUE STRIP --- */
+.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
+.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+.value-item { text-align: center; flex: 1; }
+.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+.v-value { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; }
+.v-line { width: 1px; height: 40px; background: #e2e8f0; }
+
+/* --- BENTO SECTION (DARK) --- */
+.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
+.header-group { text-align: center; margin-bottom: 80px; }
+.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
+.h-desc { color: #8e7f7f; font-size: 1.1rem; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.bento-item { 
+  background: #1c1414; padding: 50px 40px; border-radius: 30px; 
+  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.bento-item:hover { 
+  transform: translateY(-12px); border-color: var(--burgundy); 
+  background: #251a1a; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.bento-tag { font-size: 12px; font-weight: 800; color: var(--burgundy); margin-bottom: 24px; }
+.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
+.bento-item p { color: #a39494; font-size: 1rem; line-height: 1.7; }
+
+/* --- PRICE CARD --- */
+.section-gray { background: #faf8f8; padding: 120px 0; }
+.premium-price-card { 
+  background: #fff; border-radius: 40px; padding: 80px 60px; 
+  box-shadow: 0 40px 100px rgba(139, 29, 29, 0.05); max-width: 900px; margin: 0 auto; 
+  border: 1px solid var(--border-light); text-align: center;
+}
+.p-badge { background: #fff5f5; color: var(--burgundy); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
+.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; color: #1a1a1a; }
+.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
+.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
+.p-list ul { list-style: none; padding: 0; }
+.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
+.p-list li::before { content: "✓"; color: var(--burgundy); position: absolute; left: 0; font-weight: 900; }
+
+/* --- REVEAL --- */
+.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .bento-grid, .p-list-group { grid-template-columns: 1fr; }
+  .value-grid { flex-direction: column; gap: 30px; }
+}
+</style>
+
+<section class="leaders-premium">
+
+  <section class="hero-canvas js-reveal">
+    <div class="leaders-container">
+      <div class="hero-content">
+        <div class="hero-status"><span class="status-dot"></span> 권리 행사의 강력한 첫걸음</div>
+        <h1 class="hero-main-title">소장 작성,<br><span class="glow-text">결과를 바꾸는 정교한 설계</span></h1>
+        <p class="hero-sub-text">민사소송의 승패는 소장에 적힌 '청구취지'와 '청구원인'에서 이미 절반이 결정됩니다. 리더스는 법리적 빈틈 없는 소장으로 귀하의 승소를 준비합니다.</p>
+        <div class="hero-cta-group">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">소송 가능 여부 진단</a>
+          <a href="#price" class="btn-ghost">진행 절차 안내</a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="value-strip js-reveal">
+    <div class="leaders-container">
+      <div class="value-grid">
+        <div class="value-item"><span class="v-label">작성 기준</span><span class="v-value">법리적 무결성</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">전문 영역</span><span class="v-value">금정·부동산·손해배상</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">행정 목표</span><span class="v-value">신속한 보정 대응</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-dark">
+    <div class="leaders-container">
+      <div class="header-group js-reveal">
+        <h2 class="h-title">소장 작성 전문 솔루션</h2>
+        <p class="h-desc">단순한 사실 나열이 아닌, 재판부를 움직이는 법리적 논증을 담습니다.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">ANALYSIS</div>
+          <h3>사건 정밀 분석<br>청구 범위 확정</h3>
+          <p>의뢰인의 피해 상황을 법적으로 재해석하여, 청구할 수 있는 최대치의 권리와 범위를 명확히 확정합니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">DRAFTING</div>
+          <h3>청구취지 설계<br>집행 가능성 고려</h3>
+          <p>승소 판결 후 실제 강제집행까지 가능하도록 기술적으로 완벽한 청구취지를 작성하여 실질적 권리 구제를 돕습니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">PROVE</div>
+          <h3>요건사실 입증<br>증거 체계화</h3>
+          <p>법률이 요구하는 승소 요건(요건사실)에 맞춰 증거를 배치하고, 논리적인 인과관계를 설명하여 소송 우위를 점합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-gray" id="price">
+    <div class="leaders-container">
+      <div class="premium-price-card js-reveal">
+        <div class="p-badge">CIVIL COMPLAINT SERVICE</div>
+        <h2 class="p-amount">투명한 수수료</h2>
+        <p class="p-info">사건의 난이도와 소송 가액에 따라 합리적인 수수료 가이드를 제공합니다.</p>
+        
+        <div class="p-list-group">
+          <div class="p-list">
+            <h4>소장 작성 기본 패키지</h4>
+            <ul>
+              <li>심층 상담 및 사건 사실관계 정리</li>
+              <li>관련 법리 및 최신 판례 분석</li>
+              <li>소장 초안 작성 및 의뢰인 컨펌</li>
+            </ul>
+          </div>
+          <div class="p-list">
+            <h4>제출 및 행정 대행</h4>
+            <ul>
+              <li>전자소송 접수 및 인지·송달료 관리</li>
+              <li>주소보정 및 당사자 표시정정 대응</li>
+              <li>소송 진행 현황 알림 서비스</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 60px;">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" class="btn-prime">소장 작성 견적 문의</a>
+          <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3a3;">* 모든 소송 문건은 담당 법무사가 끝까지 책임집니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include cta-box.html 
+     title="제대로 된 소장 하나가 소송의 80%를 결정합니다." 
+     desc="리더스 합동 법무사 사무소에서 당신의 정당한 권리를 되찾으세요." 
+  %}
+
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+});
+</script>

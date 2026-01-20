@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>부동산 등기 | 리더스 합동 법무사 사무소</title>
-  <meta name="description" content="소유권이전·말소·근저당 설정 등 부동산 등기 업무를 정확하고 신속하게 처리합니다.">
-  <meta name="author" content="김성태 법무사" />
-
+  <title>부동산 등기 마스터 가이드 | 리더스 합동 법무사 사무소 | 리더스 합동 법무사 사무소</title>
+  <meta name="description" content="소유권 이전, 근저당 설정·말소까지. 반려 없는 부동산 등기 솔루션.">
+  
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <meta property="og:title" content="부동산 등기 | 리더스 합동 법무사 사무소" />
-  <meta property="og:description" content="소유권이전·말소·근저당 설정 등 부동산 등기 업무를 정확하고 신속하게 처리합니다." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://localhost:4000/registry/realestate" />
-  <meta property="og:image" content="/og-image.jpg" />
+  
+  <style>
+    /* 하얀 화면 방지 및 기본 레이아웃 */
+    body { margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; background-color: #fff; color: #333; }
+    main { min-height: 80vh; display: block; }
+    
+    /* 헤더 숨김 방지 기본 스타일 */
+    .header--hidden { transform: translateY(-100%); transition: transform 0.3s ease; }
+    
+    /* 애니메이션 기본값 */
+    .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
 
 <body>
@@ -119,17 +123,398 @@
 
 
   <main>
-    <section class="leaders-page">
-  <section class="leaders-hero">
-    <div class="leaders-container leaders-container--narrow">
-      <h1 class="leaders-title">부동산 등기</h1>
-      <p class="leaders-desc">
-        부동산 관련 등기 업무를 정확한 서류 작성과 절차 안내로 지원합니다.
-      </p>
+    <style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --bg: #ffffff;
+  --dark-base: #0a0f0e; /* 법인등기 동일 다크 */
+  --navy: #0f2f2a;
+  --teal: #259d91; /* 법인등기 동일 강조색 */
+  --teal-glow: rgba(37, 157, 145, 0.2);
+  --text-h: #1e293b;
+  --text-p: #64748b;
+  --border-light: #f1f5f9;
+}
+
+.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
+.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- HERO SECTION --- */
+.hero-canvas { 
+  background: var(--dark-base); 
+  color: #fff; 
+  padding: 160px 0 120px; 
+  text-align: center; 
+  position: relative;
+  overflow: hidden;
+}
+.hero-canvas::before {
+  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px; background: radial-gradient(circle, var(--teal-glow) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+.hero-status { 
+  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
+  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
+  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+.status-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--teal); }
+
+.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
+.glow-text { color: var(--teal); background: linear-gradient(to right, #259d91, #4ecdc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-sub-text { font-size: 1.2rem; color: #94a3b8; max-width: 720px; margin: 0 auto 48px; }
+
+.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
+.btn-prime { background: var(--teal); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--teal-glow); }
+.btn-prime:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(37, 157, 145, 0.4); }
+.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+.btn-ghost:hover { background: rgba(255,255,255,0.05); }
+
+/* --- VALUE STRIP --- */
+.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
+.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+.value-item { text-align: center; flex: 1; }
+.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+.v-value { font-size: 1.5rem; font-weight: 800; color: var(--navy); }
+.v-line { width: 1px; height: 40px; background: #e2e8f0; }
+
+/* --- BENTO SECTION (DARK) --- */
+.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
+.header-group { text-align: center; margin-bottom: 80px; }
+.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
+.h-desc { color: #64748b; font-size: 1.1rem; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.bento-item { 
+  background: #111817; padding: 50px 40px; border-radius: 30px; 
+  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.bento-item:hover { 
+  transform: translateY(-12px); border-color: var(--teal); 
+  background: #141d1b; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.bento-tag { font-size: 12px; font-weight: 800; color: var(--teal); margin-bottom: 24px; }
+.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
+.bento-item p { color: #94a3b8; font-size: 1rem; line-height: 1.7; }
+
+/* --- PRICE CARD --- */
+.section-gray { background: #f8fafc; padding: 120px 0; }
+.premium-price-card { 
+  background: #fff; border-radius: 40px; padding: 80px 60px; 
+  box-shadow: 0 40px 100px rgba(0,0,0,0.04); max-width: 900px; margin: 0 auto; 
+  border: 1px solid var(--border-light); text-align: center;
+}
+.p-badge { background: #eefdfc; color: var(--teal); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
+.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; color: var(--navy); }
+.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
+.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: var(--navy); }
+.p-list ul { list-style: none; padding: 0; }
+.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
+.p-list li::before { content: "✓"; color: var(--teal); position: absolute; left: 0; font-weight: 900; }
+
+/* --- REVEAL --- */
+.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .bento-grid, .p-list-group { grid-template-columns: 1fr; }
+  .value-grid { flex-direction: column; gap: 30px; }
+  .v-line { display: none; }
+}
+</style>
+
+<section class="leaders-premium">
+
+  <section class="hero-canvas js-reveal">
+    <div class="leaders-container">
+      <div class="hero-content">
+        <div class="hero-status"><span class="status-dot"></span> 리더스 부동산 등기 전담팀</div>
+        <h1 class="hero-main-title">부동산 등기,<br><span class="glow-text">원인부터 맞아야 끝납니다</span></h1>
+        <p class="hero-sub-text">부동산 등기는 단순 접수가 아니라 <strong>권리 변동의 법적 확정</strong>입니다. 리더스는 취득 원인에 맞는 가장 안전한 등기 구조를 설계합니다.</p>
+        <div class="hero-cta-group">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">부동산 등기 상담하기</a>
+          <a href="#price" class="btn-ghost">업무 범위 보기</a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="value-strip js-reveal">
+    <div class="leaders-container">
+      <div class="value-grid">
+        <div class="value-item"><span class="v-label">신뢰 지표</span><span class="v-value">사고율 0% 유지</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">전문 영역</span><span class="v-value">매매·증여·상속</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">진행 목표</span><span class="v-value">당일 접수 원칙</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-dark">
+    <div class="leaders-container">
+      <div class="header-group js-reveal">
+        <h2 class="h-title">부동산 등기 유형별 솔루션</h2>
+        <p class="h-desc">자산의 가치를 결정짓는 마지막 관문, 리더스가 정확히 처리합니다.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">TRANSFER</div>
+          <h3>소유권 이전 등기<br>매매·증여·상속</h3>
+          <p>부동산 취득 원인에 따라 세무 리스크와 필요 서류가 완전히 달라집니다. 취득세 신고부터 등기 완료까지 원스톱으로 지원합니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">SECURITY</div>
+          <h3>근저당 설정 및 말소<br>금융 거래 대응</h3>
+          <p>은행 대출과 연계된 등기를 실시간으로 대응합니다. 금융기관의 복잡한 요구 조건을 지연 없이 완벽히 충족시킵니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">MANAGEMENT</div>
+          <h3>표시·변경·정정 등기<br>권리 관계 최신화</h3>
+          <p>면적 정정, 주소 변경, 가등기 등 등기부상 기재 사항을 최신화하여 자산 가치에 법적 무결성을 더합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-gray" id="price">
+    <div class="leaders-container">
+      <div class="premium-price-card js-reveal">
+        <div class="p-badge">REAL ESTATE REGISTRY SERVICE</div>
+        <h2 class="p-amount">합리적 정찰제</h2>
+        <p class="p-info">부동산의 유형과 가액에 맞춰 정해진 가이드라인에 따라 견적을 안내합니다.</p>
+        
+        <div class="p-list-group">
+          <div class="p-list">
+            <h4>표준 서비스 범위</h4>
+            <ul>
+              <li>등기 원인 서류 정밀 검토</li>
+              <li>취득세 및 각종 제세공과금 산출</li>
+              <li>정부 수입인지 및 채권 매입 관리</li>
+            </ul>
+          </div>
+          <div class="p-list">
+            <h4>리더스 사후 케어</h4>
+            <ul>
+              <li>등기 완료 후 권리증 안전 배송</li>
+              <li>등기부 등본 최종 확인 서비스</li>
+              <li>추후 자산 관리 법률 가이드</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 60px;">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" class="btn-prime">지금 비용 문의하기</a>
+          <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3b8;">* 모든 등기 사건은 대표 법무사가 직접 검토합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="unified-cta-section js-reveal">
+  <div class="container-cta">
+    <div class="cta-box-wrapper">
+      <div class="cta-inner-content">
+        <div class="cta-text-area">
+          <div class="cta-badge">DIRECT CONSULTING</div>
+          <h3 class="cta-title">부동산 등기, 자산의 법적 생명력을 부여하는 일입니다.</h3>
+          <p class="cta-desc">리더스 합동 법무사 사무소가 가장 신속하고 정확하게 마칩니다.</p>
+        </div>
+        <div class="cta-action-area">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
+          <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<style>
+  :root {
+    --cta-bg-glass: rgba(226, 232, 240, 0.82);
+    --cta-accent: #2563eb;
+    --cta-kakao: #fee500;
+    --cta-text-main: #0f172a;
+    --cta-text-sub: #64748b;
+    --cta-radius: 32px;
+    --transition-smooth: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .unified-cta-section { padding: 80px 24px; background: transparent; }
+  .container-cta { max-width: 1200px; margin: 0 auto; }
+
+  .cta-box-wrapper {
+    background: var(--cta-bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: var(--cta-radius);
+    padding: 64px 60px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-inner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-text-area { flex: 1; }
+  .cta-badge {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--cta-accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+  }
+
+  .cta-title {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: var(--cta-text-main);
+    margin-bottom: 14px;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+
+  .cta-desc {
+    font-size: 1.15rem;
+    color: var(--cta-text-sub);
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
+
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    height: 60px;
+    border-radius: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: var(--transition-smooth);
+    will-change: transform;
+  }
+
+  .cta-btn.kakao {
+    background: var(--cta-kakao);
+    color: #3c1e1e;
+    box-shadow: 0 4px 12px rgba(254, 229, 0, 0.2);
+  }
+  .cta-btn.kakao:hover {
+    background: #fada00;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(254, 229, 0, 0.3);
+  }
+
+  .cta-btn.secondary {
+    background: #ffffff;
+    color: var(--cta-text-main);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  .cta-btn.secondary:hover {
+    background: #ffffff;
+    border-color: var(--cta-accent);
+    color: var(--cta-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+  }
+
+  /* ===== CTA 모바일 최적화 ===== */
+  @media (max-width: 768px) {
+    .unified-cta-section { padding: 48px 16px; }
+
+    .cta-box-wrapper{
+      padding: 28px 18px;
+      border-radius: 20px;
+    }
+
+    .cta-inner-content{
+      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+    }
+
+    .cta-text-area{ width: 100%; }
+    .cta-badge{ margin-bottom: 10px; }
+
+    .cta-title{
+      font-size: 1.45rem;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .cta-desc{
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .cta-action-area{
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cta-btn{
+      width: 100%;
+      min-width: 0;
+      height: 52px;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    .cta-btn:hover{
+      transform: translateY(-2px);
+    }
+  }
+
+  /* 스크롤 애니메이션 (js-reveal 클래스 대응) */
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+</style>
+
+
+
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+});
+</script>
   </main>
 
   <!-- 사이드 바로가기 버튼 -->
@@ -247,87 +632,29 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-  <!-- ✅ 헤더 스크롤 숨김/표시 -->
   <script>
-    (function () {
-      const header = document.getElementById('siteHeader');
-      if (!header) return;
-
-      let lastY = window.scrollY;
-      let ticking = false;
-
-      function onScroll() {
-        const y = window.scrollY;
-
-        if (y < 10) {
-          header.classList.remove('header--hidden');
-          lastY = y;
-          return;
-        }
-
-        if (y > lastY + 8) header.classList.add('header--hidden');
-        else if (y < lastY - 8) header.classList.remove('header--hidden');
-
-        lastY = y;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            onScroll();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-    })();
-  </script>
-
-  <!-- ✅ 모바일 메뉴 + 서브메뉴 토글 -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("menuToggle");
-      const gnb = document.getElementById("gnb");
-      if (!btn || !gnb) return;
-
-      // 전체 메뉴 열기/닫기
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = gnb.classList.toggle("is-open");
-        btn.setAttribute("aria-expanded", String(isOpen));
-      });
-
-      // 모바일에서 서브메뉴 토글
-      gnb.querySelectorAll("li.has-sub > a").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          if (window.innerWidth > 1024) return; // PC는 링크 동작 유지
-
-          e.preventDefault();
-          e.stopPropagation();
-
-          const li = link.parentElement;
-          li.classList.toggle("sub-open");
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Reveal 효과
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
         });
-      });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
 
-      // 메뉴 바깥 클릭하면 닫기
-      document.addEventListener("click", (e) => {
-        if (!gnb.classList.contains("is-open")) return;
-        if (btn.contains(e.target) || gnb.contains(e.target)) return;
-
-        gnb.classList.remove("is-open");
-        btn.setAttribute("aria-expanded", "false");
-        gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
-      });
-
-      // 화면이 커지면 열린 서브 정리
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 1024) {
-          gnb.querySelectorAll("li.has-sub.sub-open").forEach(li => li.classList.remove("sub-open"));
-        }
-      });
+      // 2. 헤더 스크롤 로직 (전달해주신 코드 통합)
+      const header = document.getElementById('siteHeader');
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        let currY = window.scrollY;
+        if (!header) return;
+        if (currY > lastY + 10 && currY > 100) header.classList.add('header--hidden');
+        else if (currY < lastY - 10) header.classList.remove('header--hidden');
+        lastY = currY;
+      }, { passive: true });
     });
   </script>
-
 </body>
 </html>

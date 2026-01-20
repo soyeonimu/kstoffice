@@ -1,16 +1,213 @@
 ---
 layout: default
-title: 준비서면 작성 | 리더스 합동 법무사 사무소
-description: 민사소송 진행 중 제출되는 준비서면 작성과 절차를 안내합니다.
+title: 준비서면 작성 마스터 가이드 | 리더스 합동 법무사 사무소
+description: 민사소송의 승패를 결정짓는 핵심 서면. 논리적 입증과 법리 전개로 재판을 주도합니다.
 permalink: /civil/brief
 ---
-<section class="leaders-page">
-  <section class="leaders-hero">
-    <div class="leaders-container leaders-container--narrow">
-      <h1 class="leaders-title">준비서면</h1>
-      <p class="leaders-desc">
-        소송 진행 과정에서 필요한 준비서면 작성 및 제출 절차를 안내합니다.
-      </p>
+
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --bg: #ffffff;
+  --dark-base: #120b0b; 
+  --burgundy: #8b1d1d; 
+  --burgundy-glow: rgba(139, 29, 29, 0.2);
+  --text-h: #1e293b;
+  --text-p: #64748b;
+  --border-light: #f1f5f9;
+}
+
+.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
+.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- HERO SECTION --- */
+.hero-canvas { 
+  background: var(--dark-base); 
+  color: #fff; 
+  padding: 160px 0 120px; 
+  text-align: center; 
+  position: relative;
+  overflow: hidden;
+}
+.hero-canvas::before {
+  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px; background: radial-gradient(circle, var(--burgundy-glow) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+.hero-status { 
+  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
+  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
+  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+.status-dot { width: 8px; height: 8px; background: var(--burgundy); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--burgundy); }
+
+.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
+.glow-text { color: var(--burgundy); background: linear-gradient(to right, #8b1d1d, #c53030); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-sub-text { font-size: 1.2rem; color: #a39494; max-width: 720px; margin: 0 auto 48px; }
+
+.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
+.btn-prime { background: var(--burgundy); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--burgundy-glow); }
+.btn-prime:hover { transform: translateY(-3px); background: #a52424; box-shadow: 0 15px 35px rgba(139, 29, 29, 0.4); }
+.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+
+/* --- VALUE STRIP --- */
+.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
+.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+.value-item { text-align: center; flex: 1; }
+.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+.v-value { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; }
+.v-line { width: 1px; height: 40px; background: #e2e8f0; }
+
+/* --- BENTO SECTION (DARK) --- */
+.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
+.header-group { text-align: center; margin-bottom: 80px; }
+.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
+.h-desc { color: #8e7f7f; font-size: 1.1rem; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.bento-item { 
+  background: #1c1414; padding: 50px 40px; border-radius: 30px; 
+  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+}
+.bento-item:hover { 
+  transform: translateY(-12px); border-color: var(--burgundy); 
+  background: #251a1a; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.bento-tag { font-size: 12px; font-weight: 800; color: var(--burgundy); margin-bottom: 24px; }
+.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
+.bento-item p { color: #a39494; font-size: 1rem; line-height: 1.7; }
+
+/* --- PRICE CARD --- */
+.section-gray { background: #faf8f8; padding: 120px 0; }
+.premium-price-card { 
+  background: #fff; border-radius: 40px; padding: 80px 60px; 
+  box-shadow: 0 40px 100px rgba(139, 29, 29, 0.05); max-width: 900px; margin: 0 auto; 
+  border: 1px solid var(--border-light); text-align: center;
+}
+.p-badge { background: #fff5f5; color: var(--burgundy); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
+.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; color: #1a1a1a; }
+.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
+.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
+.p-list ul { list-style: none; padding: 0; }
+.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
+.p-list li::before { content: "✓"; color: var(--burgundy); position: absolute; left: 0; font-weight: 900; }
+
+/* --- REVEAL --- */
+.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .bento-grid, .p-list-group { grid-template-columns: 1fr; }
+  .value-grid { flex-direction: column; gap: 30px; }
+}
+</style>
+
+<section class="leaders-premium">
+
+  <section class="hero-canvas js-reveal">
+    <div class="leaders-container">
+      <div class="hero-content">
+        <div class="hero-status"><span class="status-dot"></span> 소송의 승패를 결정짓는 핵심 서면</div>
+        <h1 class="hero-main-title">준비서면,<br><span class="glow-text">재판부를 설득하는 논리의 힘</span></h1>
+        <p class="hero-sub-text">소장과 답변서 이후의 공방은 '준비서면'을 통해 완성됩니다. 상대방의 허점을 찌르고 우리 측 주장의 당위성을 법리적으로 증명해야 합니다.</p>
+        <div class="hero-cta-group">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">준비서면 작성 전략 상담</a>
+          <a href="#price" class="btn-ghost">서비스 범위 안내</a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="value-strip js-reveal">
+    <div class="leaders-container">
+      <div class="value-grid">
+        <div class="value-item"><span class="v-label">핵심 목표</span><span class="v-value">법리적 우위 확보</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">작성 방식</span><span class="v-value">증거 기반 논증</span></div>
+        <div class="v-line"></div>
+        <div class="value-item"><span class="v-label">최종 목적</span><span class="v-value">승소 및 청구 기각</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-dark">
+    <div class="leaders-container">
+      <div class="header-group js-reveal">
+        <h2 class="h-title">준비서면 전략 솔루션</h2>
+        <p class="h-desc">변론기일 전, 서면을 통해 재판의 흐름을 우리 유리한 방향으로 끌어옵니다.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">ATTACK</div>
+          <h3>상대방 주장 파훼<br>모순점 집중 부각</h3>
+          <p>상대방이 제출한 답변서나 서면 속의 논리적 모순과 허위 주장을 날카롭게 지적하여 신빙성을 무너뜨립니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">LOGIC</div>
+          <h3>판례 중심 법리 전개<br>입증 보완 설계</h3>
+          <p>유사 사례의 대법원 판례를 인용하여 우리 주장의 법률적 근거를 탄탄히 다지고 입증 부족 부분을 완벽히 보완합니다.</p>
+        </div>
+        <div class="bento-item js-reveal">
+          <div class="bento-tag">STRATEGY</div>
+          <h3>재판부 설득 전략<br>가독성 높은 서면</h3>
+          <p>복잡한 쟁점을 일목요연하게 정리하여 재판부가 우리 측 주장을 한눈에 이해하고 수용할 수 있도록 구성합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-gray" id="price">
+    <div class="leaders-container">
+      <div class="premium-price-card js-reveal">
+        <div class="p-badge">CIVIL BRIEF SERVICE</div>
+        <h2 class="p-amount">사안별 맞춤 비용</h2>
+        <p class="p-info">변론 차수와 쟁점의 깊이에 따라 의뢰인과 협의하여 합리적인 대행료를 제안합니다.</p>
+        
+        <div class="p-list-group">
+          <div class="p-list">
+            <h4>전략 작성 패키지</h4>
+            <ul>
+              <li>기존 제출 서면 및 증거 전수 조사</li>
+              <li>최신 판례 검색 및 법리 대입</li>
+              <li>공격·방어 포인트별 서면 구성</li>
+            </ul>
+          </div>
+          <div class="p-list">
+            <h4>추가 지원 서비스</h4>
+            <ul>
+              <li>입증방법(증거) 목록 정리 및 제출</li>
+              <li>상대방 서면 실시간 모니터링</li>
+              <li>향후 재판 절차 컨설팅</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 60px;">
+          <a href="https://pf.kakao.com/_xmkRSG/friend" class="btn-prime">준비서면 작성 문의</a>
+          <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3a3;">* 모든 서면은 리더스 전담 법무사가 책임 작성합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include cta-box.html 
+     title="서면 하나가 판결문의 결론을 바꿉니다." 
+     desc="리더스 합동 법무사 사무소가 끝까지 힘이 되어 드리겠습니다." 
+  %}
+
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+});
+</script>

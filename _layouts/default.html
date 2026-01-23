@@ -28,7 +28,7 @@
 
   <!-- Open Graph / Kakao / Naver -->
   {% assign og_title = page.og_title | default: page.title | default: site.title %}
-  {% assign og_desc  = page.og_description | default: page.description | default: site.description | default: '리더스 합동 법무사 사무소 - 검찰 수사관 출신 실무진의 격이 다른 솔루션' %}
+  {% assign og_desc  = page.og_description | default: page.description | default: site.description | default: '리더스 합동 법무사 사무소 - 검찰 수사관 출신 법무사 사무소' %}
   {% assign og_image = page.og_image | default: '/assets/img/logo/logo.png' %}
 
   <meta property="og:type" content="website" />
@@ -36,7 +36,7 @@
   <meta property="og:title" content="{{ og_title }}" />
   <meta property="og:description" content="{{ og_desc }}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
-  <meta property="og:image" content="{{ og_image | absolute_url }}" />
+  <meta property="og:image" content="{{ page.og_image | default: '/assets/img/og/og-main.png' | absolute_url }}">
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -44,7 +44,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ og_title }}" />
   <meta name="twitter:description" content="{{ og_desc }}" />
-  <meta name="twitter:image" content="{{ og_image | absolute_url }}" />
+  <meta name="twitter:image" content="{{ page.og_image | default: '/assets/img/og/og-main.png' | absolute_url }}">
 </head>
 
 <body>

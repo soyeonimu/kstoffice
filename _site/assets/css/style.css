@@ -614,3 +614,219 @@ header, .site-header, .nav-container {
 .site-header { z-index: 11000 !important; }  /* 헤더 */
 .gnb        { z-index: 12000 !important; }  /* 메뉴패널(최상단) */
 .nav-overlay{ z-index: 10900 !important; }  /* 오버레이(헤더보다 살짝 아래) */
+/* ===== 기본(PC) ===== */
+.menu-toggle { display: none; }      /* PC에서는 햄버거 버튼 숨김 */
+.nav-overlay { display: none; }      /* PC에서는 오버레이 숨김 */
+
+/* PC에서는 메뉴를 가로로 항상 노출 */
+.gnb { display: block; }
+
+/* ===== 모바일(1024px 이하) ===== */
+@media (max-width: 1024px) {
+  .menu-toggle { display: inline-flex; }  /* 모바일에서 햄버거 버튼 보이기 */
+
+  /* 모바일에서는 메뉴를 기본 숨김 */
+  .gnb { display: none; }
+
+  /* 메뉴 열렸을 때만 보이게(스크립트에서 .is-open 붙일 예정) */
+  .gnb.is-open { display: block; }
+
+  /* 오버레이도 메뉴 열렸을 때만 */
+  .nav-overlay { display: none; }
+  .nav-overlay.is-open { display: block; }
+}
+/* =========================
+   GNB PC/모바일 표시 규칙
+   ========================= */
+
+/* PC 기본값 */
+.menu-toggle { display: none; }
+.nav-overlay { display: none; }
+
+/* PC에서는 GNB 항상 보이기 */
+.gnb { display: block; }
+
+/* 모바일 */
+@media (max-width: 1024px) {
+  /* 모바일에서는 햄버거 버튼 보이기 */
+  .menu-toggle { display: inline-flex; }
+
+  /* 모바일에서는 GNB 기본 숨김 */
+  .gnb { display: none; }
+
+  /* 버튼 클릭 시 JS가 .active 붙이면 열림 */
+  .gnb.active { display: block; }
+
+  /* 오버레이도 .active일 때만 보이게 */
+  .nav-overlay { display: none; }
+  .nav-overlay.active { display: block; }
+}
+/* 헤더 안에서 버튼이 메뉴/오버레이에 가리지 않게 */
+.site-header { position: relative; z-index: 1000; }
+
+.menu-toggle{
+  position: relative;  /* z-index 먹게 */
+  z-index: 1201;       /* gnb/overlay보다 크게 */
+}
+/* 오버레이는 버튼보다 아래 */
+.nav-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+}
+
+/* 모바일 메뉴 패널 */
+.gnb{
+  z-index: 1200;
+}
+/* 기본은 3줄 */
+.menu-toggle .bar{ transition: .25s; }
+
+/* 열렸을 때(X 모양) */
+.menu-toggle.active .bar:nth-child(1){
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2){
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3){
+  transform: translateY(-8px) rotate(-45deg);
+}
+/* ===== 모바일 메뉴 레이어 정리(강제) ===== */
+.site-header { position: relative; z-index: 2000; }
+.header-inner { position: relative; z-index: 2000; }
+
+/* 햄버거 버튼은 항상 최상단 */
+.menu-toggle{
+  position: relative;
+  z-index: 2501;
+}
+
+/* 오버레이는 버튼보다 아래 */
+.nav-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 2400;
+  display: none;
+}
+.nav-overlay.active{ display: block; }
+
+/* 모바일에서 gnb는 "패널"로만 열리게 (전체 화면 덮지 않게) */
+@media (max-width: 1024px){
+  /* gnb 기본 숨김 */
+  .gnb{ display: none; }
+
+  /* 열리면: 우측 패널 */
+  .gnb.active{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(86vw, 360px);
+    height: 100vh;
+    z-index: 2500;           /* 버튼(2501)보다 1 낮게 */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+.menu-toggle .bar{ transition: .25s; }
+.menu-toggle.active .bar:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+.menu-toggle.active .bar:nth-child(2){ opacity: 0; }
+.menu-toggle.active .bar:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+
+
+/* ===== Header layout spacing (PC) ===== */
+.header-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;                 /* 로고-메뉴 기본 간격 */
+  padding: 18px 24px;        /* 헤더 안쪽 여백(원하면 조절) */
+}
+
+.logo{
+  flex: 0 0 auto;
+  max-width: 340px;          /* 로고 영역이 메뉴를 밀어붙이지 않게 제한 */
+}
+
+.logo-link{ 
+  display: flex;
+  align-items: center;
+  white-space: nowrap;       /* 로고 줄바꿈 방지 */
+}
+
+.gnb{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* 메뉴를 오른쪽 끝으로 */
+}
+
+/* PC에서는 햄버거 숨김 */
+.menu-toggle{ display: none; }
+
+/* ===== Mobile (메뉴는 패널로, 햄버거는 보이게) ===== */
+@media (max-width: 1024px){
+  .header-inner{
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  /* 모바일에서는 햄버거 보이기 */
+  .menu-toggle{
+    display: inline-flex;
+    margin-left: auto;       /* 오른쪽 끝 */
+  }
+
+  /* 모바일에서는 gnb 기본 숨김, 열렸을 때만 */
+  .gnb{ display: none; }
+  .gnb.active{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(86vw, 360px);
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 2500;
+  }
+
+  .nav-overlay{ display: none; }
+  .nav-overlay.active{
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 2400;
+  }
+
+  /* 모바일에서는 로고 최대폭 조금 줄이기 */
+  .logo{ max-width: 220px; }
+}
+/* ===== PC GNB 줄바꿈 방지 + 간격 ===== */
+@media (min-width: 1025px){
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 36px;
+  }
+
+  .logo{ flex: 0 0 auto; }
+
+  /* gnb를 flex로 만들 필요 없음. ul이 가로로 가면 됨 */
+  .gnb{ flex: 0 0 auto; }
+
+  .gnb-list{
+    display:flex;
+    align-items:center;
+    gap: 34px;            /* 메뉴 간격 */
+    flex-wrap: nowrap;    /* ✅ 줄바꿈 금지 */
+    white-space: nowrap;  /* ✅ 텍스트 줄바꿈 금지 */
+  }
+
+  .gnb-list > li > a{
+    white-space: nowrap;  /* ✅ "개인회생·파산" 같은 것도 1줄로 */
+  }
+}

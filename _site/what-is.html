@@ -3,23 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사 | 리더스 합동 법무사 사무소</title>
-  <meta name="description" content="개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 정리한 가이드입니다.">
-  
+
+  <!-- 기본 SEO -->
+  <title>개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사</title>
+  <meta name="description" content="개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 정리한 가이드입니다." />
+  <link rel="canonical" href="http://localhost:4000/what-is" />
+
+  <!-- 스타일 -->
   <link rel="stylesheet" href="/assets/css/style.css">
-  
+
+  <!-- 공통 기본 스타일 -->
   <style>
     /* 하얀 화면 방지 및 기본 레이아웃 */
     body { margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; background-color: #fff; color: #333; }
     main { min-height: 80vh; display: block; }
-    
+
     /* 헤더 숨김 방지 기본 스타일 */
     .header--hidden { transform: translateY(-100%); transition: transform 0.3s ease; }
-    
+
     /* 애니메이션 기본값 */
     .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
     .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
   </style>
+
+  <!-- Open Graph / Kakao / Naver -->
+  
+  
+  
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="리더스 합동 법무사 사무소" />
+  <meta property="og:title" content="개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사" />
+  <meta property="og:description" content="개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 정리한 가이드입니다." />
+  <meta property="og:url" content="http://localhost:4000/what-is" />
+  <meta property="og:image" content="http://localhost:4000/assets/img/logo/logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사" />
+  <meta name="twitter:description" content="개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 정리한 가이드입니다." />
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/logo/logo.png" />
 </head>
 
 <body>
@@ -120,6 +145,7 @@
   </div>
 </header>
 <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
 
 
   <main>
@@ -848,7 +874,7 @@
   <div class="footer-inner">
     <div class="f-top">
       <div class="f-left">
-        <img class="footer-logo" src="assets/img/logo/F_logo.svg" alt="리더스 로고">
+        <img class="footer-logo" src="/assets/img/logo/F_logo.svg" alt="리더스 로고">
         <div class="f-info">
           <p>
             <strong>리더스 합동 법무사 사무소</strong>
@@ -938,24 +964,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Reveal 효과
+      // 1) Reveal 효과
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
       }, { threshold: 0.1 });
+
       document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
 
-      // 2. 헤더 스크롤 로직 (전달해주신 코드 통합)
+      // 2) 헤더 스크롤 로직
       const header = document.getElementById('siteHeader');
       let lastY = window.scrollY;
+
       window.addEventListener('scroll', () => {
-        let currY = window.scrollY;
         if (!header) return;
+
+        const currY = window.scrollY;
         if (currY > lastY + 10 && currY > 100) header.classList.add('header--hidden');
         else if (currY < lastY - 10) header.classList.remove('header--hidden');
+
         lastY = currY;
       }, { passive: true });
     });

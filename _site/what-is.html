@@ -36,7 +36,7 @@
   <meta property="og:title" content="개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사" />
   <meta property="og:description" content="개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 정리한 가이드입니다." />
   <meta property="og:url" content="http://localhost:4000/what-is" />
-  <meta property="og:image" content="http://localhost:4000/assets/img/logo/logo.png" />
+  <meta property="og:image" content="http://localhost:4000/assets/img/og/og-main.png">
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -44,7 +44,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="개인회생 · 개인파산 제도 안내 | 리더스 합동 법무사" />
   <meta name="twitter:description" content="개인회생과 개인파산 제도의 정의, 주요 차이점, 자격 조건을 한눈에 볼 수 있도록 정리한 가이드입니다." />
-  <meta name="twitter:image" content="http://localhost:4000/assets/img/logo/logo.png" />
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/og/og-main.png">
 </head>
 
 <body>
@@ -356,9 +356,20 @@
           <h3 class="cta-title">내 상황에는 회생과 파산 중 무엇이 맞을까요?</h3>
           <p class="cta-desc">간단한 소득·채무 구조만 알려주셔도 됩니다. 리더스가 현실적인 제도 선택과 이후 전략까지 함께 설계해 드립니다.</p>
         </div>
+
+        <!-- ===== ACTION AREA ===== -->
         <div class="cta-action-area">
-          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡 실시간 상담</a>
-          <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">전화 상담 예약</a>
+
+          
+            <!-- 기본 CTA (카카오톡 + 전화예약) -->
+            <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">
+              카카오톡 실시간 상담
+            </a>
+            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">
+              전화 상담 예약
+            </a>
+          
+
         </div>
       </div>
     </div>
@@ -383,7 +394,6 @@
     background: var(--cta-bg-glass);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-
     border-radius: var(--cta-radius);
     padding: 64px 60px;
     border: 1px solid rgba(226, 232, 240, 0.8);
@@ -413,6 +423,7 @@
   }
 
   .cta-text-area { flex: 1; }
+
   .cta-badge {
     font-size: 12px;
     font-weight: 800;
@@ -434,12 +445,16 @@
     font-size: 1.15rem;
     color: var(--cta-text-sub);
     margin: 0;
-    font-weight: 400;
     line-height: 1.6;
     word-break: keep-all;
   }
 
-  .cta-action-area { display: flex; gap: 14px; flex-shrink: 0; }
+  .cta-action-area {
+    display: flex;
+    gap: 14px;
+    flex-shrink: 0;
+    align-items: center;
+  }
 
   .cta-btn {
     display: flex;
@@ -452,87 +467,64 @@
     text-decoration: none;
     font-size: 1.05rem;
     transition: var(--transition-smooth);
-    will-change: transform;
   }
 
   .cta-btn.kakao {
     background: var(--cta-kakao);
     color: #3c1e1e;
-    box-shadow: 0 4px 12px rgba(254, 229, 0, 0.2);
-  }
-  .cta-btn.kakao:hover {
-    background: #fada00;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(254, 229, 0, 0.3);
   }
 
   .cta-btn.secondary {
     background: #ffffff;
     color: var(--cta-text-main);
     border: 1px solid rgba(15, 23, 42, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
-  .cta-btn.secondary:hover {
-    background: #ffffff;
-    border-color: var(--cta-accent);
+
+  /* ===== 전화번호 단독 CTA ===== */
+  .cta-phone-only {
+    text-align: right;
+  }
+
+  .cta-phone-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--cta-text-sub);
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+  }
+
+  .cta-phone-number {
+    font-size: 2.2rem;
+    font-weight: 900;
     color: var(--cta-accent);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+    text-decoration: none;
+    letter-spacing: 0.04em;
   }
 
-  /* ===== CTA 모바일 최적화 ===== */
+  /* ===== 모바일 ===== */
   @media (max-width: 768px) {
-    .unified-cta-section { padding: 48px 16px; }
-
-    .cta-box-wrapper{
-      padding: 28px 18px;
-      border-radius: 20px;
-    }
-
-    .cta-inner-content{
+    .cta-inner-content {
       flex-direction: column;
       align-items: stretch;
       gap: 18px;
     }
 
-    .cta-text-area{ width: 100%; }
-    .cta-badge{ margin-bottom: 10px; }
-
-    .cta-title{
-      font-size: 1.45rem;
-      line-height: 1.25;
-      margin-bottom: 10px;
+    .cta-action-area {
+      justify-content: center;
     }
 
-    .cta-desc{
-      font-size: 0.98rem;
-      line-height: 1.55;
+    .cta-phone-only {
+      text-align: center;
     }
 
-    .cta-action-area{
-      width: 100%;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cta-btn{
-      width: 100%;
-      min-width: 0;
-      height: 52px;
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-
-    .cta-btn:hover{
-      transform: translateY(-2px);
+    .cta-phone-number {
+      font-size: 1.9rem;
     }
   }
 
-  /* 스크롤 애니메이션 (js-reveal 클래스 대응) */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 </style>
-
 
 
 <style>
@@ -887,7 +879,7 @@
 
       <div class="f-right">
         <div class="f-call-item">
-          <span class="f-call-label">형사·민사·회생</span>
+          <span class="f-call-label">형사·민사·회생·등기</span>
           <a href="tel:0312256885" class="f-call-num">031.225.6885</a>
         </div>
         <div class="f-call-item gold-line">

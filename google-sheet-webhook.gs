@@ -34,7 +34,8 @@ function doPost(e) {
       sheet.setFrozenRows(1);
     }
 
-    const d = JSON.parse(e.postData.contents);
+    const body = e.postData ? e.postData.contents : (e.parameter ? JSON.stringify(e.parameter) : "{}");
+    const d = JSON.parse(body);
 
     sheet.appendRow([
       d.timestamp       || "",

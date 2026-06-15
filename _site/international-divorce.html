@@ -7,7 +7,7 @@
   <!-- 기본 SEO -->
   <title>국제이혼 마스터 가이드 | 리더스 합동 법무사 사무소</title>
   <meta name="description" content="멈춰버린 외국인 배우자와의 혼인관계, 120만원 정찰제로 출국·행방불명 케이스까지 완벽하게 매듭짓습니다." />
-  <link rel="canonical" href="http://localhost:4000/international-divorce" />
+  <link rel="canonical" href="http://localhost:8080/international-divorce" />
 
   <!-- 스타일 -->
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -35,8 +35,8 @@
   <meta property="og:site_name" content="리더스 합동 법무사 사무소" />
   <meta property="og:title" content="국제이혼 마스터 가이드 | 리더스 합동 법무사 사무소" />
   <meta property="og:description" content="멈춰버린 외국인 배우자와의 혼인관계, 120만원 정찰제로 출국·행방불명 케이스까지 완벽하게 매듭짓습니다." />
-  <meta property="og:url" content="http://localhost:4000/international-divorce" />
-  <meta property="og:image" content="http://localhost:4000/assets/img/og/og-main.png">
+  <meta property="og:url" content="http://localhost:8080/international-divorce" />
+  <meta property="og:image" content="http://localhost:8080/assets/img/og/og-main.png">
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -44,7 +44,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="국제이혼 마스터 가이드 | 리더스 합동 법무사 사무소" />
   <meta name="twitter:description" content="멈춰버린 외국인 배우자와의 혼인관계, 120만원 정찰제로 출국·행방불명 케이스까지 완벽하게 매듭짓습니다." />
-  <meta name="twitter:image" content="http://localhost:4000/assets/img/og/og-main.png">
+  <meta name="twitter:image" content="http://localhost:8080/assets/img/og/og-main.png">
 </head>
 
 <body>
@@ -134,6 +134,7 @@
           <ul class="sub">
             <li><a href="/chat">AI상담</a></li>
             <li><a href="/check">개인회생 자가진단</a></li>
+            <li><a href="/rehab/diagnosis">30초 진단 리포트</a></li>
           </ul>
         </li>
 
@@ -267,7 +268,7 @@
         <h1 class="hero-main-title">멈춰버린 시간,<br><span class="glow-text">가장 품격 있는 마무리</span></h1>
         <p class="hero-sub-text">연락 두절된 외국인 배우자, 복잡한 국제 송달 문제. 120만원 정찰제로 서류 준비부터 판결까지 리더스가 완벽하게 해결합니다.</p>
         <div class="hero-cta-group">
-          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">국제이혼 무료 진단</a>
+          <a href="/contact" target="_blank" class="btn-prime">국제이혼 무료 진단</a>
           <a href="#price" class="btn-ghost">정찰제 비용 확인</a>
         </div>
       </div>
@@ -376,7 +377,7 @@
           </div>
         </div>
         <div style="margin-top: 60px;">
-          <a href="https://pf.kakao.com/_xmkRSG/friend" class="btn-prime">무료 상담 하기</a>
+          <a href="/contact" class="btn-prime">무료 상담 하기</a>
           <p style="margin-top: 20px; font-size: 0.85rem; color: #8e879a;">* 인지대 및 송달료 등 실비는 별도입니다.</p>
         </div>
       </div>
@@ -581,6 +582,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- 사이드 바로가기 버튼 -->
 <div class="side-links">
+
+  <!-- 30초 진단 버튼 -->
+  <a href="/rehab/diagnosis"
+     class="side-btn side-btn--diag">
+    진단
+  </a>
 
   <!-- PC용 -->
   <a href="https://blog.naver.com/mae6885"

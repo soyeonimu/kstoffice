@@ -125,6 +125,19 @@ body {
 .side-btn--blog:hover { color: #03c75a !important; border-color: #03c75a; }
 .side-btn--youtube:hover { color: #ff0000 !important; border-color: #ff0000; }
 
+/* 진단 버튼 - 골드 강조 */
+.side-btn--diag {
+  background: linear-gradient(135deg, var(--point-gold), var(--point-gold-light));
+  color: var(--bg-dark-gray) !important;
+  border-color: var(--point-gold);
+  font-weight: 900;
+}
+.side-btn--diag:hover {
+  background: linear-gradient(135deg, var(--point-gold-light), var(--point-gold));
+  color: var(--bg-dark-gray) !important;
+  border-color: var(--point-gold);
+}
+
 /* 전화 버튼 - 골드 포인트 유지 */
 .side-btn--call {
   background: var(--point-blue);

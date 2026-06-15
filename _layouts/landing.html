@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="리더스 합동 법무사 사무소" />
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <meta property="og:image" content="{{ page.og_image | default: '/assets/img/og/og-main.png' | absolute_url }}">
+
+  <style>
+    /* ── 랜딩 전용 헤더 ── */
+    body { margin: 0; padding-top: 64px !important; font-family: 'Pretendard', -apple-system, sans-serif; background: #fff; }
+
+    .landing-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;
+      background: var(--bg-charcoal, #2d3136);
+      border-bottom: 1px solid rgba(197,160,89,0.25);
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    .landing-header-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .landing-logo img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+    .landing-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .landing-tel {
+      font-size: 14px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      letter-spacing: .3px;
+    }
+    .landing-tel:hover { color: #c5a059; }
+    .landing-cta {
+      display: inline-block;
+      padding: 9px 20px;
+      background: linear-gradient(135deg, #c5a059, #e2c28d);
+      color: #1f2225;
+      font-size: 13px;
+      font-weight: 900;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .landing-cta:hover { opacity: .88; transform: translateY(-1px); }
+    .landing-back {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .landing-back:hover { color: rgba(255,255,255,0.75); }
+
+    main { display: block; }
+
+    /* ── 랜딩 전용 푸터 (미니) ── */
+    .landing-footer {
+      background: #1f2225;
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.8;
+    }
+    .landing-footer a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: underline;
+    }
+
+    /* 애니메이션 */
+    .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- 랜딩 전용 미니 헤더 -->
+  <header class="landing-header">
+    <div class="landing-header-inner">
+      <a href="/" class="landing-logo" aria-label="리더스 합동 법무사 사무소 홈으로">
+        <img src="{{ '/assets/img/logo/F_logo.svg' | relative_url }}" alt="리더스 합동 법무사 사무소" />
+      </a>
+      <div class="landing-header-right">
+        <a href="tel:0312256885" class="landing-tel">031-225-6885</a>
+        <a href="tel:0312256885" class="landing-cta">무료 전화상담</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <!-- 랜딩 전용 미니 푸터 -->
+  <footer class="landing-footer">
+    <p>리더스 합동 법무사 사무소 · 대표 김성태 · 사업자번호 135-28-47886</p>
+    <p>경기 수원시 영통구 광교중앙로248번길 7-2, 원희캐슬 광교 A동 702호</p>
+    <p style="margin-top:8px;">
+      <a href="/privacy">개인정보처리방침</a>
+      &nbsp;|&nbsp;
+      <a href="/">← 사무소 홈으로</a>
+    </p>
+    <p style="margin-top:6px;">© 2026 LEADERS Judicial Scriveners Office. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

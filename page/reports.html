@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개인회생 30초 진단 리포트</title>
+  <meta name="description" content="채무액, 소득, 연체 여부를 바탕으로 개인회생 1차 진단 리포트를 확인해보세요." />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header, footer {
+      padding: 20px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      line-height: 1.25;
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      color: #4b5563;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #eef2ff;
+      color: #3730a3;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .progress {
+      width: 100%;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #2563eb;
+      transition: width .3s;
+    }
+
+    .question-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option-btn, .primary-btn {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      border-radius: 16px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: left;
+      transition: .2s;
+    }
+
+    .option-btn:hover {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+
+    .primary-btn {
+      text-align: center;
+      background: #2563eb;
+      color: white;
+      border: none;
+      font-weight: 800;
+      margin-top: 14px;
+    }
+
+    .primary-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .hidden { display: none; }
+
+    .loading-line {
+      margin: 14px 0;
+    }
+
+    .loading-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #4b5563;
+    }
+
+    .loading-bar {
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .loading-fill {
+      width: 0%;
+      height: 100%;
+      background: #2563eb;
+      animation: fill 1.4s forwards;
+    }
+
+    @keyframes fill {
+      to { width: 100%; }
+    }
+
+    .report-title {
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .result-status {
+      padding: 18px;
+      border-radius: 18px;
+      background: #ecfdf5;
+      color: #065f46;
+      font-weight: 800;
+      margin: 18px 0;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .summary-item {
+      padding: 14px;
+      background: #f9fafb;
+      border-radius: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .summary-item span:first-child {
+      color: #6b7280;
+    }
+
+    .locked-section {
+      position: relative;
+      margin-top: 24px;
+    }
+
+    .locked-item {
+      padding: 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      background: #fff;
+      filter: blur(3px);
+      user-select: none;
+    }
+
+    .lock-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .lock-box {
+      background: #111827;
+      color: white;
+      padding: 22px;
+      border-radius: 18px;
+      max-width: 360px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 14px;
+      font-size: 16px;
+    }
+
+    .notice {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 12px;
+    }
+
+    .checkbox {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .checkbox input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    footer a {
+      color: #6b7280;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 27px; }
+      .question-title { font-size: 21px; }
+      .card { padding: 22px; border-radius: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    법무사사무소 개인회생 1차 진단 리포트
+  </header>
+
+  <main>
+    <section id="quizSection" class="card hero">
+      <div class="badge">30초 무료 진단</div>
+      <h1>나의 개인회생 진단 리포트를 만들어보세요</h1>
+      <p>
+        현재 상황을 선택하면 개인회생 검토를 위한
+        1차 진단 리포트를 즉시 확인할 수 있습니다.
+      </p>
+
+      <div class="progress">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <div id="questionBox"></div>
+    </section>
+
+    <section id="loadingSection" class="card hidden">
+      <h2>입력하신 내용을 분석하고 있습니다</h2>
+
+      <div class="loading-line">
+        <div class="loading-label"><span>채무 규모 분석</span><span>완료</span></div>
+        <div class="loading-bar"><div class="loading-fill"></div></div>
+      </div>
+
+      <div class="loading-line">
+        <div class="loading-label"><span>소득 상태 분석</span><span>완료</span></div>
+        <div class="loading-bar"><div class="loading-fill"></div></div>
+      </div>
+
+      <div class="loading-line">
+        <div class="loading-label"><span>연체·압류 상태 검토</span><span>완료</span></div>
+        <div class="loading-bar"><div class="loading-fill"></div></div>
+      </div>
+    </section>
+
+    <section id="reportSection" class="card hidden">
+      <div class="badge">1차 진단 리포트</div>
+      <div class="report-title">개인회생 진단 리포트</div>
+      <p id="reportCode"></p>
+
+      <div class="result-status">
+        입력하신 내용을 기준으로 개인회생 검토가 필요한 상황으로 보입니다.
+      </div>
+
+      <p>
+        본 결과는 입력하신 정보만을 기준으로 한 1차 참고용 진단이며,
+        최종 가능 여부는 채권 내역, 소득자료, 재산 현황 등을 확인한 후 판단됩니다.
+      </p>
+
+      <div class="summary-list" id="summaryList"></div>
+
+      <h3>상세 진단 리포트 포함 내용</h3>
+
+      <div class="locked-section">
+        <div class="locked-item">01 예상 진행 가능성 분석</div>
+        <div class="locked-item">02 필요 서류 체크리스트</div>
+        <div class="locked-item">03 압류·추심 대응 검토</div>
+        <div class="locked-item">04 예상 진행 절차</div>
+        <div class="locked-item">05 상담 전 체크포인트</div>
+
+        <div class="lock-overlay">
+          <div class="lock-box">
+            <strong>상세 리포트가 준비되었습니다</strong>
+            <p>상세 진단 리포트를 받아보실 연락처를 남겨주세요.</p>
+            <button class="primary-btn" onclick="showLeadForm()">상세 리포트 받기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadSection" class="card hidden">
+      <div class="badge">상세 리포트 신청</div>
+      <h2>상세 진단 리포트를 받아보실 연락처를 입력해주세요</h2>
+
+      <form id="leadForm">
+        <div class="form-group">
+          <label for="name">성함 선택</label>
+          <input id="name" name="name" type="text" placeholder="예: 김OO" />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">연락처 필수</label>
+          <input id="phone" name="phone" type="tel" placeholder="예: 01012345678" required />
+        </div>
+
+        <label class="checkbox">
+          <input id="privacyAgree" type="checkbox" required />
+          <span>
+            개인정보 수집 및 이용에 동의합니다.
+            입력하신 정보는 개인회생·파산 상담 검토 및 상세 리포트 안내 목적으로만 사용됩니다.
+          </span>
+        </label>
+
+        <button type="submit" class="primary-btn">상세 리포트 신청 완료</button>
+
+        <p class="notice">
+          상담을 원하지 않으시면 추가 진행을 요청하지 않으셔도 됩니다.
+          본 진단은 법률적 확정 판단이 아닌 1차 참고용 안내입니다.
+        </p>
+      </form>
+    </section>
+
+    <section id="completeSection" class="card hidden">
+      <div class="badge">신청 완료</div>
+      <h2>상세 진단 리포트 신청이 완료되었습니다</h2>
+      <p>
+        담당자가 입력 내용을 검토한 후 연락처로 상세 리포트 안내를 드릴 수 있습니다.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 법무사사무소</p>
+    <a href="./privacy.html">개인정보처리방침</a>
+  </footer>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKxN5Vl-7kNdeQcXdgeISiYxM2Ptcn-Yk6wCepJLQB8gfhiYpGMeJnOizNOso7Cdqx7g/exec";
+
+    const questions = [
+      {
+        key: "mainConcern",
+        title: "현재 어떤 문제로 가장 힘드신가요?",
+        options: ["통장압류", "급여압류", "독촉 연락", "카드대금", "대출상환", "잘 모르겠음"]
+      },
+      {
+        key: "debtAmount",
+        title: "현재 총 채무는 어느 정도인가요?",
+        options: ["1천만원 이하", "1천만~3천만원", "3천만~5천만원", "5천만~1억원", "1억원 이상", "잘 모르겠음"]
+      },
+      {
+        key: "incomeType",
+        title: "현재 소득이 있으신가요?",
+        options: ["급여소득", "사업소득", "일용직/아르바이트", "소득 없음", "기타"]
+      },
+      {
+        key: "monthlyIncome",
+        title: "월 소득은 어느 정도인가요?",
+        options: ["100만원 미만", "100~200만원", "200~300만원", "300~500만원", "500만원 이상", "잘 모르겠음"]
+      },
+      {
+        key: "overdueStatus",
+        title: "현재 연체 중이신가요?",
+        options: ["연체 없음", "1개월 미만", "1~3개월", "3개월 이상", "잘 모르겠음"]
+      },
+      {
+        key: "assetStatus",
+        title: "현재 재산 상황은 어떤가요?",
+        options: ["자가 보유", "전세", "월세", "차량 있음", "특별한 재산 없음", "잘 모르겠음"]
+      }
+    ];
+
+    let currentQuestion = 0;
+    const answers = {};
+
+    const questionBox = document.getElementById("questionBox");
+    const progressBar = document.getElementById("progressBar");
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+      progressBar.style.width = `${(currentQuestion / questions.length) * 100}%`;
+
+      questionBox.innerHTML = `
+        <div class="question-title">${q.title}</div>
+        <div class="options">
+          ${q.options.map(option => `
+            <button class="option-btn" onclick="selectAnswer('${q.key}', '${option}')">
+              ${option}
+            </button>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function selectAnswer(key, value) {
+      answers[key] = value;
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+        renderQuestion();
+      } else {
+        progressBar.style.width = "100%";
+        showLoading();
+      }
+    }
+
+    function showLoading() {
+      document.getElementById("quizSection").classList.add("hidden");
+      document.getElementById("loadingSection").classList.remove("hidden");
+
+      setTimeout(() => {
+        document.getElementById("loadingSection").classList.add("hidden");
+        showReport();
+      }, 1800);
+    }
+
+    function makeReportCode() {
+      const now = new Date();
+      const y = String(now.getFullYear()).slice(2);
+      const m = String(now.getMonth() + 1).padStart(2, "0");
+      const d = String(now.getDate()).padStart(2, "0");
+      const random = Math.floor(1000 + Math.random() * 9000);
+      return `KR-${y}${m}${d}-${random}`;
+    }
+
+    function showReport() {
+      document.getElementById("reportSection").classList.remove("hidden");
+      document.getElementById("reportCode").innerText = `진단번호 ${makeReportCode()}`;
+
+      const summaryList = document.getElementById("summaryList");
+      summaryList.innerHTML = `
+        <div class="summary-item"><span>가장 큰 고민</span><strong>${answers.mainConcern}</strong></div>
+        <div class="summary-item"><span>채무 규모</span><strong>${answers.debtAmount}</strong></div>
+        <div class="summary-item"><span>소득 유형</span><strong>${answers.incomeType}</strong></div>
+        <div class="summary-item"><span>월 소득</span><strong>${answers.monthlyIncome}</strong></div>
+        <div class="summary-item"><span>연체 상태</span><strong>${answers.overdueStatus}</strong></div>
+        <div class="summary-item"><span>재산 상황</span><strong>${answers.assetStatus}</strong></div>
+      `;
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showLeadForm() {
+      document.getElementById("leadSection").classList.remove("hidden");
+      document.getElementById("leadSection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    document.getElementById("leadForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const phone = document.getElementById("phone").value.trim();
+      const name = document.getElementById("name").value.trim();
+      const privacyAgree = document.getElementById("privacyAgree").checked;
+
+      if (!phone || !privacyAgree) {
+        alert("연락처와 개인정보 동의는 필수입니다.");
+        return;
+      }
+
+      const payload = {
+        createdAt: new Date().toISOString(),
+        name,
+        phone,
+        ...answers
+      };
+
+      try {
+        if (GOOGLE_SCRIPT_URL.includes("여기에")) {
+          console.log("저장 데이터:", payload);
+        } else {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+        }
+
+        document.getElementById("leadSection").classList.add("hidden");
+        document.getElementById("completeSection").classList.remove("hidden");
+        document.getElementById("completeSection").scrollIntoView({ behavior: "smooth" });
+
+      } catch (error) {
+        alert("신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+        console.error(error);
+      }
+    });
+
+    renderQuestion();
+  </script>
+</body>
+</html>

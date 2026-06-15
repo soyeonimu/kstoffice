@@ -7,7 +7,7 @@
   <!-- 기본 SEO -->
   <title>법인등기 마스터 가이드 | 리더스 합동 법무사 사무소</title>
   <meta name="description" content="법인 설립, 임원변경, 본점이전, 목적변경까지. 보정·반려 없는 기준으로 법인등기를 설계합니다." />
-  <link rel="canonical" href="http://localhost:4000/registry/corporate" />
+  <link rel="canonical" href="http://localhost:8080/registry/corporate" />
 
   <!-- 스타일 -->
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -35,8 +35,8 @@
   <meta property="og:site_name" content="리더스 합동 법무사 사무소" />
   <meta property="og:title" content="법인등기 마스터 가이드 | 리더스 합동 법무사 사무소" />
   <meta property="og:description" content="법인 설립, 임원변경, 본점이전, 목적변경까지. 보정·반려 없는 기준으로 법인등기를 설계합니다." />
-  <meta property="og:url" content="http://localhost:4000/registry/corporate" />
-  <meta property="og:image" content="http://localhost:4000/assets/img/og/og-main.png">
+  <meta property="og:url" content="http://localhost:8080/registry/corporate" />
+  <meta property="og:image" content="http://localhost:8080/assets/img/og/og-main.png">
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -44,7 +44,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="법인등기 마스터 가이드 | 리더스 합동 법무사 사무소" />
   <meta name="twitter:description" content="법인 설립, 임원변경, 본점이전, 목적변경까지. 보정·반려 없는 기준으로 법인등기를 설계합니다." />
-  <meta name="twitter:image" content="http://localhost:4000/assets/img/og/og-main.png">
+  <meta name="twitter:image" content="http://localhost:8080/assets/img/og/og-main.png">
 </head>
 
 <body>
@@ -134,6 +134,7 @@
           <ul class="sub">
             <li><a href="/chat">AI상담</a></li>
             <li><a href="/check">개인회생 자가진단</a></li>
+            <li><a href="/rehab/diagnosis">30초 진단 리포트</a></li>
           </ul>
         </li>
 
@@ -281,7 +282,7 @@
         <h1 class="hero-main-title">법인등기,<br><span class="glow-text">접수보다 설계가 먼저입니다</span></h1>
         <p class="hero-sub-text">법인등기는 단순 서류 작업이 아니라 <strong>기업의 지배구조를 완성하는 법률 행위</strong>입니다. 리더스는 보정 없는 최적의 문구를 설계합니다.</p>
         <div class="hero-cta-group">
-          <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" class="btn-prime">법인등기 전략 상담하기</a>
+          <a href="/contact" target="_blank" class="btn-prime">법인등기 전략 상담하기</a>
           <a href="#price" class="btn-ghost">서비스 상세 보기</a>
         </div>
       </div>
@@ -372,7 +373,7 @@
           </div>
         </div>
         <div style="margin-top: 60px;">
-          <a href="https://pf.kakao.com/_xmkRSG/friend" class="btn-prime">지금 바로 견적 문의하기</a>
+          <a href="/contact" class="btn-prime">지금 바로 견적 문의하기</a>
         </div>
       </div>
     </div>
@@ -393,7 +394,7 @@
 
           
             <!-- 기본 CTA (카카오톡 + 전화예약) -->
-            <a href="https://pf.kakao.com/_xmkRSG/friend" target="_blank" rel="noopener" class="cta-btn kakao">
+            <a href="/contact" target="_blank" rel="noopener" class="cta-btn kakao">
               카카오톡 실시간 상담
             </a>
             <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn secondary">
@@ -579,6 +580,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- 사이드 바로가기 버튼 -->
 <div class="side-links">
+
+  <!-- 30초 진단 버튼 -->
+  <a href="/rehab/diagnosis"
+     class="side-btn side-btn--diag">
+    진단
+  </a>
 
   <!-- PC용 -->
   <a href="https://blog.naver.com/mae6885"

@@ -99,6 +99,14 @@
     /* 애니메이션 */
     .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
     .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ── 모바일 헤더 ── */
+    @media (max-width: 640px) {
+      .landing-header-inner { padding: 0 14px; }
+      .landing-tel { display: none; }
+      .landing-cta { font-size: 12px; padding: 8px 14px; border-radius: 8px; white-space: nowrap; }
+      .landing-logo img { height: 30px; }
+    }
   </style>
 </head>
 <body>
@@ -106,7 +114,7 @@
   <!-- 랜딩 전용 미니 헤더 -->
   <header class="landing-header">
     <div class="landing-header-inner">
-      <a href="/" class="landing-logo" aria-label="리더스 합동 법무사 사무소 홈으로">
+      <a href="{{ page.url }}" class="landing-logo" aria-label="페이지 상단으로" onclick="window.scrollTo({top:0,behavior:'smooth'});">
         <img src="{{ '/assets/img/logo/F_logo.svg' | relative_url }}" alt="리더스 합동 법무사 사무소" />
       </a>
       <div class="landing-header-right">

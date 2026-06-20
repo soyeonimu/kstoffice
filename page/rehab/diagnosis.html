@@ -4983,6 +4983,12 @@ permalink: /rehab/diagnosis
     if (!isOpen) { body.classList.add("open"); btn.classList.add("open"); }
   }
 
+  /* ── dataLayer 헬퍼 ── */
+  function dlPush(obj) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(obj);
+  }
+
   function startQuiz() {
     document.getElementById("heroSection").classList.add("hidden");
     allInfoSections.forEach(s => s.classList.add("hidden"));
@@ -4990,6 +4996,7 @@ permalink: /rehab/diagnosis
     window.scrollTo({ top: 0 });
     initDots();
     render();
+    dlPush({ event: "quiz_start" });
   }
 
   function initDots() {
@@ -5038,8 +5045,10 @@ permalink: /rehab/diagnosis
   function pick(key, val) {
     if (val === "기타") { showCustomInput(key); return; }
     ans[key] = val;
+    dlPush({ event: "quiz_step", step: cur + 1, question: key, answer: val });
     cur++;
     if (cur < total) { render(); return; }
+    dlPush({ event: "quiz_complete", total_steps: total });
     document.getElementById("quizSection").classList.add("hidden");
     document.getElementById("loadingSection").classList.remove("hidden");
     window.scrollTo({ top: 0 });
@@ -5374,6 +5383,9 @@ permalink: /rehab/diagnosis
       mode: "no-cors"
     }).catch(()=>{});
 
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "generate_lead", lead_source: "변제금CTA", debt_amount: ans.debtAmount || "", job: ans.job || "" });
+
     window._phoneCollected = true;
     document.getElementById("stickyCta")?.classList.remove("visible");
 
@@ -5456,6 +5468,9 @@ permalink: /rehab/diagnosis
       body: JSON.stringify({ name:"진단사용자", phone, message: JSON.stringify(ans), source:"마지막CTA" }),
       mode: "no-cors"
     }).catch(()=>{});
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "generate_lead", lead_source: "마지막CTA", debt_amount: ans.debtAmount || "", job: ans.job || "" });
 
     window._phoneCollected = true;
     document.getElementById("stickyCta")?.classList.remove("visible");
@@ -5580,6 +5595,18 @@ permalink: /rehab/diagnosis
     window.scrollTo({ top: 0, behavior: "smooth" });
     window._phoneCollected = false;
     renderFinalCta();
+
+    dlPush({ event: "result_view" });
+
+    // CTA 폼 노출 감지
+    const finalCtaObs = document.querySelector(".final-cta");
+    if (finalCtaObs) {
+      new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          dlPush({ event: "cta_view" });
+        }
+      }, { threshold: 0.5 }).observe(finalCtaObs);
+    }
 
     // 스티키 하단 CTA 바 활성화
     const stickyCta = document.getElementById("stickyCta");

@@ -5345,12 +5345,28 @@ permalink: /rehab/diagnosis
     }
   }
 
+  /* ── 번호 유효성 검사 ── */
+  function validatePhone(phone) {
+    if (!phone.match(/^01[016789]\d{7,8}$/)) {
+      alert("올바른 휴대폰 번호를 입력해주세요.\n예) 010-1234-5678");
+      return false;
+    }
+    // 동일 숫자 반복 차단 (01000000000, 01111111111 등)
+    const digits = phone.slice(3);
+    if (/^(\d)\1+$/.test(digits)) {
+      alert("올바른 휴대폰 번호를 입력해주세요.");
+      return false;
+    }
+    return true;
+  }
+
   /* ── 변제금 폼 제출 (1차 CTA) ── */
   function submitRepayForm(e) {
     e.preventDefault();
     const phone = document.getElementById("rmfPhone").value.replace(/\D/g,"");
     const agree = document.getElementById("rmfAgree").checked;
     if (!agree) { alert("개인정보 수집·이용에 동의해주세요."); return; }
+    if (!validatePhone(phone)) return;
 
     fetch("https://script.google.com/macros/s/AKfycbwAS0c4fyhQ_m2sFNKboilQeMcwd3V5WAuUakALziAFI-X7t0GgcIueFKMkMBXJTJhXDw/exec", {
       method: "POST",
@@ -5433,6 +5449,7 @@ permalink: /rehab/diagnosis
     const phone = document.getElementById("fcaPhone").value.replace(/\D/g,"");
     const agree = document.getElementById("fcaAgree").checked;
     if (!agree) { alert("개인정보 수집·이용에 동의해주세요."); return; }
+    if (!validatePhone(phone)) return;
 
     fetch("https://script.google.com/macros/s/AKfycbwAS0c4fyhQ_m2sFNKboilQeMcwd3V5WAuUakALziAFI-X7t0GgcIueFKMkMBXJTJhXDw/exec", {
       method: "POST",

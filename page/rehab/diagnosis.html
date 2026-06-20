@@ -5379,7 +5379,23 @@ permalink: /rehab/diagnosis
 
     fetch("https://script.google.com/macros/s/AKfycbwAS0c4fyhQ_m2sFNKboilQeMcwd3V5WAuUakALziAFI-X7t0GgcIueFKMkMBXJTJhXDw/exec", {
       method: "POST",
-      body: JSON.stringify({ name:"진단사용자", phone, message: JSON.stringify(ans), source:"변제금CTA" }),
+      body: JSON.stringify({
+        source: "변제금CTA",
+        phone,
+        mainConcern: ans.mainConcern || "",
+        arrears: ans.arrears || "",
+        debtAmount: ans.debtAmount || "",
+        job: ans.job || "",
+        monthlyIncome: ans.monthlyIncome || "",
+        dependents: ans.dependents || "",
+        residence: ans.residence || "",
+        hasCar: ans.hasCar || "",
+        recentLoan: ans.recentLoan || "",
+        debtReason: ans.debtReason || "",
+        insurance: ans.insurance || "",
+        seizureStatus: ans.seizureStatus || "",
+        age: ans.age || ""
+      }),
       mode: "no-cors"
     }).catch(()=>{});
 
@@ -5465,7 +5481,23 @@ permalink: /rehab/diagnosis
 
     fetch("https://script.google.com/macros/s/AKfycbwAS0c4fyhQ_m2sFNKboilQeMcwd3V5WAuUakALziAFI-X7t0GgcIueFKMkMBXJTJhXDw/exec", {
       method: "POST",
-      body: JSON.stringify({ name:"진단사용자", phone, message: JSON.stringify(ans), source:"마지막CTA" }),
+      body: JSON.stringify({
+        source: "마지막CTA",
+        phone,
+        mainConcern: ans.mainConcern || "",
+        arrears: ans.arrears || "",
+        debtAmount: ans.debtAmount || "",
+        job: ans.job || "",
+        monthlyIncome: ans.monthlyIncome || "",
+        dependents: ans.dependents || "",
+        residence: ans.residence || "",
+        hasCar: ans.hasCar || "",
+        recentLoan: ans.recentLoan || "",
+        debtReason: ans.debtReason || "",
+        insurance: ans.insurance || "",
+        seizureStatus: ans.seizureStatus || "",
+        age: ans.age || ""
+      }),
       mode: "no-cors"
     }).catch(()=>{});
 

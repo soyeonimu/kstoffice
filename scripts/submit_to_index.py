@@ -20,6 +20,7 @@ import sys
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
+from urllib.parse import urlsplit, urlunsplit
 
 import google.auth.transport.requests
 from google.oauth2 import service_account
@@ -28,6 +29,19 @@ DEFAULT_SITEMAP = "https://www.kstoffice6885.com/sitemap.xml"
 INDEXING_ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
 SCOPES = ["https://www.googleapis.com/auth/indexing"]
 NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+
+# 서치콘솔에 등록된 속성과 도메인을 일치시키기 위한 주소 정규화.
+# 사이트맵이 www 없는 주소를 내보내지만, 인증된 속성/실제 서비스 도메인은 www 이므로
+# 제출 전에 www 없는 호스트를 www 로 바꿔준다.
+PREFERRED_HOST = "www.kstoffice6885.com"
+ALT_HOSTS = {"kstoffice6885.com"}
+
+
+def normalize_host(url: str) -> str:
+    parts = urlsplit(url)
+    if parts.netloc in ALT_HOSTS:
+        parts = parts._replace(netloc=PREFERRED_HOST)
+    return urlunsplit(parts)
 
 
 def fetch_bytes(url: str) -> bytes:
@@ -85,7 +99,7 @@ def collect_urls(sitemap_url: str):
             loc = u.findtext("sm:loc", default="", namespaces=NS).strip()
             lastmod = parse_lastmod(u.findtext("sm:lastmod", default="", namespaces=NS))
             if loc:
-                results.append((loc, lastmod))
+                results.append((normalize_host(loc), lastmod))
     return results
 
 

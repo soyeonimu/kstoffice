@@ -5394,7 +5394,9 @@ permalink: /rehab/diagnosis
         debtReason: ans.debtReason || "",
         insurance: ans.insurance || "",
         seizureStatus: ans.seizureStatus || "",
-        age: ans.age || ""
+        age: ans.age || "",
+        repaymentRange: window._fullRepayment || "",
+        score: calcScore()
       }),
       mode: "no-cors"
     }).catch(()=>{});
@@ -5496,7 +5498,9 @@ permalink: /rehab/diagnosis
         debtReason: ans.debtReason || "",
         insurance: ans.insurance || "",
         seizureStatus: ans.seizureStatus || "",
-        age: ans.age || ""
+        age: ans.age || "",
+        repaymentRange: window._fullRepayment || "",
+        score: calcScore()
       }),
       mode: "no-cors"
     }).catch(()=>{});

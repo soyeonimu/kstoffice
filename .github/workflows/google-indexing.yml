@@ -1,0 +1,46 @@
+name: Google 색인 요청
+
+on:
+  # 1) 글을 push 하면 실행 (브랜치명을 모를 수 있어 main/master/gh-pages 모두 등록)
+  push:
+    branches: [main, master, gh-pages]
+  # 2) 매일 한 번 자동 실행 (push 시점에 사이트맵이 아직 갱신 안 됐을 경우 대비)
+  schedule:
+    - cron: "0 0 * * *"   # 매일 09:00 KST (UTC 00:00)
+  # 3) 깃허브 화면에서 수동 실행 가능 (최초 전체 제출 등)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "recent = 최근 변경분만 / all = 사이트맵 전체"
+        default: "recent"
+        type: choice
+        options: ["recent", "all"]
+
+# 동시에 여러 번 도는 것을 방지
+concurrency:
+  group: google-indexing
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 파이썬 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 의존성 설치
+        run: pip install --quiet google-auth
+
+      - name: 색인 요청 실행
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          SITEMAP_URL: "https://www.kstoffice6885.com/sitemap.xml"
+          SUBMIT_MODE: ${{ github.event.inputs.mode || 'recent' }}
+          RECENT_DAYS: "3"
+          MAX_URLS: "180"
+        run: python scripts/submit_to_index.py

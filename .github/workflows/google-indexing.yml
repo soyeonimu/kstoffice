@@ -34,7 +34,7 @@ jobs:
           python-version: "3.11"
 
       - name: 의존성 설치
-        run: pip install --quiet google-auth
+        run: pip install --quiet google-auth requests
 
       - name: 색인 요청 실행
         env:

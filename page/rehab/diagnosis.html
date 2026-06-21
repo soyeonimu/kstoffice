@@ -4715,6 +4715,7 @@ permalink: /rehab/diagnosis
           <span class="rpt-complete-ts" id="reportTs"></span>
         </div>
         <div class="rpt-complete-title">개인회생 가능성 분석이<br>완료되었습니다.</div>
+        <div id="regionNote" style="margin-top:14px;padding:12px 16px;background:#f6efdd;border:1px solid #d8c391;border-radius:10px;color:#1c3252;font-size:14.5px;line-height:1.55;font-weight:600;display:none;"></div>
         <div class="rpt-checklist">
           <div class="rpt-check"><span class="rpt-check-dot">✓</span>채무 규모 분석 완료</div>
           <div class="rpt-check"><span class="rpt-check-dot">✓</span>소득 정보 분석 완료</div>
@@ -4920,7 +4921,11 @@ permalink: /rehab/diagnosis
     { key:"mainConcern",  title:"현재 가장 걱정되는 문제는 무엇인가요?",
       sub:"해당되는 항목을 선택해 주세요.",
       options:["통장 압류","급여 압류","독촉 연락","카드대금 연체","대출 상환 부담","사업 실패","기타"] },
-    /* 2 연체 여부 */
+    /* 2 거주 지역 (SEO·광고·개인화 데이터 수집) */
+    { key:"region",       title:"현재 거주 지역은 어디인가요?",
+      sub:"가까운 지역을 선택해 주세요.",
+      options:["수원","용인","화성","평택","오산","안산","성남","안양","기타"] },
+    /* 3 연체 여부 */
     { key:"arrears",      title:"현재 연체 중이신가요?",
       sub:"가장 오래된 연체 기간 기준으로 선택해 주세요.",
       options:["연체 없음","1개월 미만","1~3개월","3개월 이상","잘 모르겠다"] },
@@ -5544,6 +5549,16 @@ permalink: /rehab/diagnosis
     const tsEl = document.getElementById("reportTs");
     if (tsEl) tsEl.textContent = ts;
 
+    // 거주 지역 맞춤 안내 (관할법원)
+    const rnEl = document.getElementById("regionNote");
+    if (rnEl && ans.region) {
+      const suwonCourt = ["수원","용인","화성","평택","오산","안산","성남","안양"];
+      rnEl.textContent = (suwonCourt.indexOf(ans.region) !== -1)
+        ? `${ans.region} 지역은 수원회생법원 관할로, 개인회생 신청이 가능합니다.`
+        : `거주 지역 관할 법원에서 개인회생을 신청하실 수 있습니다.`;
+      rnEl.style.display = "block";
+    }
+
     // 입력 내용 드롭다운 채우기
     fillAnsDropdown();
 
@@ -5677,6 +5692,7 @@ permalink: /rehab/diagnosis
   function fillAnsDropdown() {
     const labels = {
       mainConcern:  "주요 걱정",
+      region:       "거주 지역",
       arrears:      "연체 상태",
       debtAmount:   "총 채무액",
       job:          "직업",

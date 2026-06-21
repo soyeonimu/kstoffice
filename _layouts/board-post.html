@@ -18,6 +18,7 @@ SEO helpers:
 
 <!-- ✅ SEO: canonical / Open Graph / Twitter / JSON-LD -->
 <link rel="canonical" href="{{ canonical_url }}">
+<meta name="keywords" content="{{ page.keywords | default: site.keywords }}" />
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="{{ site.title }}">

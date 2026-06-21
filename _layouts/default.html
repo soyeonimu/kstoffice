@@ -54,11 +54,6 @@
   <meta name="twitter:title" content="{{ og_title }}" />
   <meta name="twitter:description" content="{{ og_desc }}" />
   <meta name="twitter:image" content="{{ page.og_image | default: '/assets/img/og/og-main.png' | absolute_url }}">
-
-  {% if page.layout == 'board' %}
-  <!-- 게시판 GTM 재구성 전 원본 카드 깜빡임 방지 (목록·카테고리 페이지 한정) -->
-  <style>a[href*="/board/2"]:not(.kstrp-row):not(.kstrp-card){display:none}</style>
-  {% endif %}
 </head>
 
 <body>

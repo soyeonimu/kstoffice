@@ -360,6 +360,33 @@ body {
 }
 
 /* 하단 영역 */
+.f-regions {
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 20px;
+}
+.f-regions-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+.f-regions-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 4px;
+  align-items: center;
+  font-size: 12px;
+}
+.f-regions-links a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.f-regions-links a:hover { color: #c5a059; }
+.f-regions-links span { color: rgba(255,255,255,0.2); }
+
 .f-bottom {
   padding-top: 25px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);

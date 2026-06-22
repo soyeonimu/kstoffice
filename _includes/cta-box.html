@@ -15,14 +15,14 @@
             <!-- 국제이혼 전용 : 전화번호 단일 노출 -->
             <div class="cta-phone-only">
               <span class="cta-phone-label">국제이혼 전담 직통번호</span>
-              <a href="tel:0312156883" class="cta-phone-number">031-215-6883</a>
+              <a href="tel:0312256885" class="cta-phone-number">031-225-6885</a>
             </div>
           {% else %}
-            <!-- 기본 CTA (카카오톡 + 전화예약) -->
-            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn kakao">
-              상담 예약 하기
+            <!-- 기본 CTA (네이버 예약 + 전화) -->
+            <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="cta-btn naver">
+              네이버 예약 하기
             </a>
-            <a href="tel:0312256885" target="_blank" rel="noopener" class="cta-btn secondary">
+            <a href="tel:0312256885" class="cta-btn secondary">
               전화 상담
             </a>
           {% endif %}
@@ -126,9 +126,9 @@
     transition: var(--transition-smooth);
   }
 
-  .cta-btn.kakao {
-    background: var(--cta-kakao);
-    color: #3c1e1e;
+  .cta-btn.naver {
+    background: #03C75A;
+    color: #ffffff;
   }
 
   .cta-btn.secondary {

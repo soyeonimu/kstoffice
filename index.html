@@ -12,11 +12,14 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
     <div class="hero-overlay"></div>
 
     <div class="hero-container">
-      <p class="hero-eyebrow js-reveal">수원 · 용인 · 화성 · 평택</p>
+      <p class="hero-eyebrow js-reveal">수원지방법원 관할 전 지역 상담 가능</p>
       <h1 class="hero-title js-reveal">
         리더스 합동 법무사 사무소
       </h1>
       <p class="hero-sub js-reveal">개인회생 · 개인파산 · 형사사건 · 부동산등기</p>
+      <p class="hero-area js-reveal">
+        수원 · 용인 · 화성 · 평택 · 오산 · 안성 · 안산 · 시흥 · 광명 · 안양 · 군포 · 의왕 · 과천 · 성남 · 하남 · 광주 · 여주 · 이천 · 양평
+      </p>
 
       <div class="hero-members-group js-reveal">
         {% assign members = "김성태,박인복,이현구,홍의선" | split: "," %}
@@ -79,6 +82,19 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
     </div>
   </section>
 
+  <!-- ===== 게시판 미리보기 ===== -->
+  <section class="home-board js-reveal">
+    <div class="leaders-container">
+      <div class="hb-header">
+        <h2 class="hb-title">채무상담 게시판</h2>
+        <a href="/inquiry/" class="hb-more">더보기 →</a>
+      </div>
+      <ul class="hb-list" id="homeBoardList">
+        <li class="hb-loading">불러오는 중...</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- ===== 갤러리 섹션 ===== -->
   <section class="home-gallery js-reveal">
     <div class="leaders-container">
@@ -132,9 +148,10 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
   .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.85) 100%); }
   .hero-container { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 24px; }
 
-  .hero-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 3px; color: var(--gold); margin: 0 0 20px; text-transform: uppercase; }
+  .hero-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 2px; color: var(--gold); margin: 0 0 20px; }
   .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.2; margin: 0 0 16px; color: #fff; }
-  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.55); margin: 0 0 48px; letter-spacing: 1px; }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.55); margin: 0 0 14px; letter-spacing: 1px; }
+  .hero-area { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin: 0 0 40px; line-height: 1.8; word-break: keep-all; }
 
   .hero-members-group { display: flex; justify-content: center; gap: 20px; margin-bottom: 48px; }
   .member-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
@@ -197,7 +214,24 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
     word-break: keep-all;
   }
 
-  /* --- [3] Gallery Section --- */
+  /* --- [3] Board Preview --- */
+  .home-board { padding: 80px 0; background: #f8fafc; }
+  .hb-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .hb-title { font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0; }
+  .hb-more { font-size: 0.85rem; font-weight: 600; color: #2563eb; text-decoration: none; }
+  .hb-more:hover { text-decoration: underline; }
+  .hb-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid #0f172a; }
+  .hb-item { display: flex; align-items: center; gap: 12px; padding: 14px 4px; border-bottom: 1px solid #e2e8f0; cursor: pointer; transition: background .12s; }
+  .hb-item:hover { background: #f1f5f9; }
+  .hb-date { font-size: 0.78rem; color: #94a3b8; white-space: nowrap; flex-shrink: 0; }
+  .hb-item-title { font-size: 0.92rem; color: #1e293b; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hb-status { flex-shrink: 0; padding: 3px 9px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+  .hb-st-접수완료 { background: #e0f2fe; color: #0369a1; }
+  .hb-st-검토중   { background: #fef9c3; color: #a16207; }
+  .hb-st-답변완료 { background: #dcfce7; color: #166534; }
+  .hb-loading { padding: 30px 0; text-align: center; color: #94a3b8; font-size: 0.88rem; }
+
+  /* --- [4] Gallery Section --- */
   .home-gallery { padding: 100px 0 0; background: #fff; overflow: hidden; }
   .gal-slider { overflow: hidden; margin-top: 0; padding-bottom: 100px; }
   .gal-track {
@@ -233,4 +267,28 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
     }, { threshold: 0.1 });
     document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
   });
+
+  // ===== 메인 게시판 미리보기 =====
+  (function() {
+    var GAS = "https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";
+    var el = document.getElementById('homeBoardList');
+    window._hbRender = function(data) {
+      if (!data || !data.length) {
+        el.innerHTML = '<li class="hb-loading">등록된 문의가 없습니다.</li>';
+        return;
+      }
+      el.innerHTML = data.slice(0, 10).map(function(p) {
+        var stCls = 'hb-st-' + (p.status || '접수완료');
+        var date = (p.date || '').substring(0, 10).replace(/-/g, '-');
+        return '<li class="hb-item" onclick="location.href=\'/inquiry/\'">' +
+          '<span class="hb-date">' + date + '</span>' +
+          '<span class="hb-item-title">' + (p.title || '') + '</span>' +
+          '<span class="hb-status ' + stCls + '">' + (p.status || '접수완료') + '</span>' +
+        '</li>';
+      }).join('');
+    };
+    var s = document.createElement('script');
+    s.src = GAS + '?action=list&callback=_hbRender';
+    document.head.appendChild(s);
+  })();
 </script>

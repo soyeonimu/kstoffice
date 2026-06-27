@@ -4299,6 +4299,77 @@ permalink: /rehab/diagnosis
   }
 </style>
 
+<!-- ===== 개인회생·파산 서브 네비게이션 ===== -->
+<style>
+  .rehab-subnav {
+    position: sticky;
+    top: 64px;
+    z-index: 9000;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .rehab-subnav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rehab-subnav-inner::-webkit-scrollbar { display: none; }
+  .rsn-item {
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    height: 46px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+  .rsn-item:hover { color: #0f172a; }
+  .rsn-item.active {
+    color: #2563eb;
+    border-bottom-color: #2563eb;
+    font-weight: 800;
+  }
+  .rsn-item.rsn-cta {
+    margin-left: auto;
+    color: #0f172a;
+    background: #f1f5f9;
+    border-radius: 8px;
+    border-bottom: none !important;
+    padding: 0 16px;
+    height: 34px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+  .rsn-item.rsn-cta:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .rsn-item { padding: 0 12px; font-size: 12.5px; }
+    .rsn-item.rsn-cta { display: none; }
+  }
+</style>
+
+<nav class="rehab-subnav" aria-label="개인회생·파산 메뉴">
+  <div class="rehab-subnav-inner">
+    <a class="rsn-item" data-target="sec-guide" href="#sec-guide">개인회생 안내</a>
+    <a class="rsn-item" data-target="sec-procedure" href="#sec-procedure">개인회생 절차</a>
+    <a class="rsn-item" data-target="sec-price" href="#sec-price">개인회생 비용</a>
+    <a class="rsn-item" data-target="sec-cases" href="#sec-cases">사례</a>
+    <a class="rsn-item" data-target="sec-faq" href="#sec-faq">FAQ</a>
+    <a class="rsn-item active" data-target="heroSection" href="#heroSection">✦ 진단하기</a>
+  </div>
+</nav>
+
 <div class="lp-wrap">
 
   <!-- 상단 티커 — 실시간 진단 현황 -->
@@ -4336,7 +4407,7 @@ permalink: /rehab/diagnosis
 </div>
 
   <!-- ① 히어로 (2단: 헤드라인 + 미리보기 카드) -->
-  <section id="heroSection" class="lp-hero">
+  <section id="heroSection" class="lp-hero" data-subnav="heroSection">
     <div class="hero-grid">
 
       <!-- 왼쪽: 헤드라인 -->
@@ -4464,7 +4535,7 @@ permalink: /rehab/diagnosis
   </div>
 
   <!-- ★ 섹션 1: 혹시 이런 상황이신가요? -->
-  <section class="pain-section" id="infoSections">
+  <section class="pain-section" id="sec-guide" data-subnav="sec-guide">
     <div class="info-inner">
       <div class="info-label">많은 분들이 같은 고민을 합니다</div>
       <div class="why-title" style="margin-bottom: 8px;">혹시 이런 상황이신가요?</div>
@@ -4516,7 +4587,7 @@ permalink: /rehab/diagnosis
   </section>
 
   <!-- ★ 섹션 1.5: 숫자로 검증된 실적 -->
-  <section class="stats-section">
+  <section class="stats-section" id="sec-price" data-subnav="sec-price">
     <div class="info-inner">
       <div class="why-title" style="text-align:center; margin-bottom:8px;">숫자로 검증된 리더스 법무사</div>
       <div class="stats-sub">30년 이상 현장에서 쌓은 실적, 숫자가 증명합니다</div>
@@ -4571,7 +4642,7 @@ permalink: /rehab/diagnosis
   </section>
 
   <!-- ★ 섹션 3: 대행 강조 -->
-  <section class="process-section">
+  <section class="process-section" id="sec-procedure" data-subnav="sec-procedure">
     <div class="info-inner">
       <div class="why-title">상담 한 번이면,<br>나머지는 저희가 전부 합니다</div>
       <div class="process-split">
@@ -4603,7 +4674,7 @@ permalink: /rehab/diagnosis
   </section>
 
   <!-- ★ 섹션 3.5: 사회적 증거 — 무한 티커 -->
-  <section class="social-proof-section">
+  <section class="social-proof-section" id="sec-cases" data-subnav="sec-cases">
     <div class="info-inner">
       <div class="info-label">최근 진단 사례</div>
       <div class="why-title" style="margin-bottom:6px;">비슷한 상황의 분들이 먼저 확인했습니다</div>
@@ -4634,7 +4705,7 @@ permalink: /rehab/diagnosis
   </section>
 
   <!-- ★ 섹션 4: FAQ -->
-  <section class="faq-section">
+  <section class="faq-section" id="sec-faq" data-subnav="sec-faq">
     <div class="info-inner">
       <div class="why-title">자주 묻는 질문</div>
       <div class="faq-list">
@@ -5777,5 +5848,47 @@ permalink: /rehab/diagnosis
       showReport();
     }, 2200);
   }
+
+  /* ── 서브 네비 앵커 스크롤 + 활성 표시 ── */
+  (function() {
+    const NAV_HEIGHT = 64 + 46; // 랜딩 헤더 + 서브 네비
+
+    // 앵커 클릭 시 부드러운 스크롤 (offset 보정)
+    document.querySelectorAll('.rsn-item[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').slice(1);
+        const el = document.getElementById(targetId) ||
+                   document.querySelector('[data-subnav="' + targetId + '"]');
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT - 8;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+        // 즉시 active 표시
+        document.querySelectorAll('.rsn-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // 스크롤 위치에 따라 active 자동 갱신
+    const sections = Array.from(document.querySelectorAll('[data-subnav]'));
+    const navLinks = Array.from(document.querySelectorAll('.rsn-item[data-target]'));
+
+    function updateActive() {
+      const scrollY = window.scrollY + NAV_HEIGHT + 20;
+      let current = sections[0];
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollY) current = sec;
+      });
+      if (!current) return;
+      const targetId = current.getAttribute('data-subnav') || current.id;
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('data-target') === targetId);
+      });
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+  })();
 
 </script>

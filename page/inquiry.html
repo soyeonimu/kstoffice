@@ -38,7 +38,7 @@ permalink: /inquiry/
 .iq-no-data { text-align: center; padding: 60px 0; color: #94a3b8; font-size: 0.9rem; }
 
 /* 구분 뱃지 */
-.cat-badge { display: inline-block; padding: 3px 9px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+.cat-badge { display: inline-block; padding: 3px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
 .cat-개인회생 { background: #dbeafe; color: #1d4ed8; }
 .cat-개인파산 { background: #ede9fe; color: #7c3aed; }
 .cat-형사사건 { background: #fce7f3; color: #be185d; }
@@ -165,12 +165,12 @@ permalink: /inquiry/
   <table class="iq-table">
     <thead>
       <tr>
-        <th style="width:44px">번호</th>
-        <th style="width:74px">구분</th>
+        <th style="width:40px">번호</th>
+        <th style="width:62px">구분</th>
         <th>제목</th>
-        <th style="width:64px">작성자</th>
-        <th style="width:88px">날짜</th>
-        <th style="width:72px">상태</th>
+        <th style="width:60px">작성자</th>
+        <th style="width:86px">날짜</th>
+        <th style="width:68px">상태</th>
       </tr>
     </thead>
     <tbody id="iqTableBody">
@@ -330,14 +330,16 @@ function filterTab(filter, el) {
     return;
   }
 
+  var catShort = {'개인회생':'회생','개인파산':'파산','형사사건':'형사','등기':'등기','기타':'기타'};
   var now = Date.now();
   tbody.innerHTML = rows.map(function(p, i) {
     var isNew = (now - new Date(p.date).getTime()) < 86400000 * 2;
-    var catCls = 'cat-' + (p.category || '기타');
+    var cat = p.category || '기타';
+    var catCls = 'cat-' + cat;
     var stCls = 'status-' + (p.status || '접수완료');
     return '<tr class="iq-row" onclick="openView(' + p.id + ')">' +
       '<td class="iq-num">' + p.id + '</td>' +
-      '<td><span class="cat-badge ' + catCls + '">' + (p.category||'기타') + '</span></td>' +
+      '<td><span class="cat-badge ' + catCls + '">' + (catShort[cat]||cat) + '</span></td>' +
       '<td class="td-title">' + escHtml(p.title) + (isNew ? '<span class="new-badge">NEW</span>' : '') + '</td>' +
       '<td>' + escHtml(p.authorMasked) + '</td>' +
       '<td>' + (p.date||'').substring(0,10).replace(/-/g,'.') + '</td>' +

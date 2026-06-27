@@ -11,72 +11,99 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
     </video>
     <div class="hero-overlay"></div>
 
-    <div class="hero-container">
-      <p class="hero-eyebrow js-reveal">수원지방법원 관할 전 지역 상담 가능</p>
-      <h1 class="hero-title js-reveal">
-        리더스 합동 법무사 사무소
-      </h1>
-      <p class="hero-sub js-reveal">개인회생 · 개인파산 · 형사사건 · 부동산등기</p>
-      <p class="hero-area js-reveal">
-        수원 · 용인 · 화성 · 평택 · 오산 · 안성 · 안산 · 시흥 · 광명 · 안양 · 군포 · 의왕 · 과천 · 성남 · 하남 · 광주 · 여주 · 이천 · 양평
-      </p>
-
-      <div class="hero-members-group js-reveal">
-        {% assign members = "김성태,박인복,이현구,홍의선" | split: "," %}
-        {% assign imgs = "kim,park,lee,hong_sm" | split: "," %}
-        {% for member in members %}
-        <div class="member-item">
-          <div class="img-frame">
-            <img src="{{ '/assets/img/' | append: imgs[forloop.index0] | append: '.png' | relative_url }}" alt="{{ member }} 법무사">
-          </div>
-          <span class="member-name">{{ member }}</span>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-eyebrow js-reveal">수원지방법원 관할 전 지역 · 검찰 실무 30년</p>
+        <h1 class="hero-title js-reveal">
+          채무의 무게를<br>
+          <em>우리가 함께</em> 덜어드립니다
+        </h1>
+        <p class="hero-desc js-reveal">
+          수원·용인·화성·평택을 포함한 수원지방법원 관할 전 지역<br>
+          개인회생·개인파산·형사사건 전문 리더스 합동 법무사 사무소
+        </p>
+        <div class="hero-btns js-reveal">
+          <a href="tel:0312256885" class="btn-primary">📞 &nbsp;031-225-6885</a>
+          <a href="/inquiry/" class="btn-secondary">온라인 문의</a>
         </div>
-        {% endfor %}
       </div>
+    </div>
 
-      <div class="hero-btns js-reveal">
-        <a href="tel:0312256885" class="btn-primary">무료 전화 상담</a>
-        <a href="/rehab/diagnosis" class="btn-secondary">온라인 진단 받기</a>
+    <div class="hero-stats">
+      <div class="leaders-container">
+        <div class="stat-row">
+          <div class="stat-item">
+            <strong>30<span>년+</span></strong>
+            <span>검찰 실무 경력</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat-item">
+            <strong>98<span>%</span></strong>
+            <span>면책 결정률</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat-item">
+            <strong>3,000<span>건+</span></strong>
+            <span>누적 상담</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat-item">
+            <strong>19<span>개</span></strong>
+            <span>관할 시·군</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="total-solution js-reveal">
-    <div class="leaders-container">
-      <div class="section-title-area">
-        <span class="top-label">업무 분야</span>
-        <h2>수원 개인회생부터 형사사건까지,<br><strong>사건 해결의 기준</strong>을 제시합니다</h2>
+    <div class="sol-header">
+      <div class="leaders-container">
+        <p class="sol-label">업무 분야</p>
+        <h2 class="sol-heading">수원 개인회생부터 형사사건까지,<br>사건 해결의 기준을 제시합니다</h2>
       </div>
-
-      <div class="sol-grid">
-        <a href="/what-is" class="sol-card">
-          <h3>개인회생 · 파산</h3>
-          <p>법무사 직접 밀착 관리로 기각 없는 확실한 면책 결정</p>
-          <span class="sol-more">자세히 보기 →</span>
+    </div>
+    <div class="leaders-container">
+      <div class="sol-list">
+        <a href="/what-is" class="sol-item">
+          <span class="sol-num">01</span>
+          <div class="sol-info">
+            <h3>개인회생 · 파산</h3>
+            <p>법무사 직접 밀착 관리로 기각 없는 확실한 면책 결정</p>
+          </div>
+          <span class="sol-arrow">→</span>
         </a>
-
-        <a href="/complaint" class="sol-card">
-          <h3>형사 사건</h3>
-          <p>수사 기관의 판단 기준을 꿰뚫는 치밀한 전략적 대응</p>
-          <span class="sol-more">자세히 보기 →</span>
+        <a href="/complaint" class="sol-item">
+          <span class="sol-num">02</span>
+          <div class="sol-info">
+            <h3>형사 사건</h3>
+            <p>수사 기관의 판단 기준을 꿰뚫는 치밀한 전략적 대응</p>
+          </div>
+          <span class="sol-arrow">→</span>
         </a>
-
-        <a href="/international-divorce" class="sol-card">
-          <h3>국제이혼</h3>
-          <p>소재가 불분명한 까다로운 절차, 추가금 없는 120만원 정찰제</p>
-          <span class="sol-more">자세히 보기 →</span>
+        <a href="/international-divorce" class="sol-item">
+          <span class="sol-num">03</span>
+          <div class="sol-info">
+            <h3>국제이혼</h3>
+            <p>소재가 불분명한 까다로운 절차, 추가금 없는 120만원 정찰제</p>
+          </div>
+          <span class="sol-arrow">→</span>
         </a>
-
-        <a href="/civil/complaint" class="sol-card">
-          <h3>민사 · 가사소송</h3>
-          <p>대여금, 손해배상, 상속 등 일상의 분쟁 해결</p>
-          <span class="sol-more">자세히 보기 →</span>
+        <a href="/civil/complaint" class="sol-item">
+          <span class="sol-num">04</span>
+          <div class="sol-info">
+            <h3>민사 · 가사소송</h3>
+            <p>대여금, 손해배상, 상속 등 일상의 분쟁 해결</p>
+          </div>
+          <span class="sol-arrow">→</span>
         </a>
-
-        <a href="/registry/realestate" class="sol-card">
-          <h3>부동산 · 법인 · 상속등기</h3>
-          <p>정확한 권리분석을 통한 신속한 재산권 보호</p>
-          <span class="sol-more">자세히 보기 →</span>
+        <a href="/registry/realestate" class="sol-item">
+          <span class="sol-num">05</span>
+          <div class="sol-info">
+            <h3>부동산 · 법인 · 상속등기</h3>
+            <p>정확한 권리분석을 통한 신속한 재산권 보호</p>
+          </div>
+          <span class="sol-arrow">→</span>
         </a>
       </div>
     </div>
@@ -143,65 +170,75 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
   .leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
   /* --- [1] Hero Section --- */
-  .premium-hero { position: relative; padding: 120px 0 100px; text-align: center; color: #fff; background: var(--brand); overflow: hidden; }
-  .hero-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.2; }
-  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.85) 100%); }
-  .hero-container { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 24px; }
+  .premium-hero { position: relative; display: flex; flex-direction: column; color: #fff; background: var(--brand); overflow: hidden; }
+  .hero-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.18; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.7) 100%); }
 
-  .hero-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 2px; color: var(--gold); margin: 0 0 20px; }
-  .hero-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.2; margin: 0 0 16px; color: #fff; }
-  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.55); margin: 0 0 14px; letter-spacing: 1px; }
-  .hero-area { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin: 0 0 40px; line-height: 1.8; word-break: keep-all; }
+  .hero-inner { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; min-height: 520px; }
+  .hero-content { max-width: 1200px; margin: 0 auto; padding: 80px 40px 60px; width: 100%; }
 
-  .hero-members-group { display: flex; justify-content: center; gap: 20px; margin-bottom: 48px; }
-  .member-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  .img-frame { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid rgba(242,193,78,0.5); overflow: hidden; background: #1e293b; }
-  .img-frame img { width: 100%; height: 100%; object-fit: cover; }
-  .member-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); }
+  .hero-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 2px; color: var(--gold); margin: 0 0 24px; display: flex; align-items: center; gap: 10px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
 
-  .hero-btns { display: flex; gap: 12px; justify-content: center; }
-  .btn-primary { background: var(--brand-accent); color: #fff; padding: 16px 36px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: opacity 0.2s; }
-  .btn-primary:hover { opacity: 0.88; }
-  .btn-secondary { background: transparent; color: #fff; padding: 16px 36px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: border-color 0.2s; }
-  .btn-secondary:hover { border-color: rgba(255,255,255,0.7); }
+  .hero-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.2; margin: 0 0 24px; color: #fff; letter-spacing: -1px; }
+  .hero-title em { font-style: normal; color: var(--gold); }
 
-  @media (max-width: 640px) {
-    .premium-hero { padding: 80px 0 70px; }
-    .hero-title { font-size: 1.7rem; }
-    .hero-members-group { gap: 14px; }
-    .img-frame { width: 44px; height: 44px; }
-    .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 0.9rem; }
+  .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin: 0 0 40px; word-break: keep-all; }
+
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { background: var(--brand-accent); color: #fff; padding: 15px 32px; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: #1d4ed8; }
+  .btn-secondary { background: transparent; color: #fff; padding: 15px 32px; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.25); transition: border-color 0.2s, background 0.2s; }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
+
+  /* 통계 바 */
+  .hero-stats { position: relative; z-index: 2; background: rgba(255,255,255,0.06); border-top: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+  .stat-row { display: flex; align-items: center; justify-content: center; gap: 0; }
+  .stat-item { flex: 1; text-align: center; padding: 28px 16px; display: flex; flex-direction: column; gap: 4px; }
+  .stat-item strong { font-size: 1.8rem; font-weight: 900; color: #fff; line-height: 1; }
+  .stat-item strong span { font-size: 1rem; font-weight: 700; color: var(--gold); }
+  .stat-item > span { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 500; }
+  .stat-div { width: 1px; height: 36px; background: rgba(255,255,255,0.12); flex-shrink: 0; }
+
+  @media (max-width: 768px) {
+    .hero-content { padding: 60px 20px 40px; }
+    .hero-title { font-size: 2.1rem; }
+    .stat-item strong { font-size: 1.4rem; }
+    .stat-item { padding: 20px 8px; }
+  }
+  @media (max-width: 480px) {
+    .stat-row { flex-wrap: wrap; }
+    .stat-item { flex: 0 0 50%; }
+    .stat-div { display: none; }
   }
 
   /* --- [2] Solution Section --- */
-  .total-solution { padding: 64px 0; background: #f8fafc; }
-  .section-title-area { margin-bottom: 32px; text-align: center; }
-  .top-label { color: var(--brand-accent); font-weight: 700; letter-spacing: 2px; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 10px; }
-  .section-title-area h2 { font-size: 1.7rem; font-weight: 800; color: var(--brand); line-height: 1.4; word-break: keep-all; }
+  .total-solution { background: #fff; }
+  .sol-header { background: var(--brand); padding: 56px 0 48px; }
+  .sol-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin: 0 0 14px; }
+  .sol-heading { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: #fff; line-height: 1.45; margin: 0; word-break: keep-all; }
 
-  .sol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-
-  .sol-card {
-    display: flex; flex-direction: column;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 22px 24px;
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  .sol-list { border-top: 1px solid #e2e8f0; }
+  .sol-item {
+    display: flex; align-items: center; gap: 24px;
+    padding: 26px 0;
+    border-bottom: 1px solid #e2e8f0;
+    text-decoration: none; color: inherit;
+    transition: background .15s;
   }
-  .sol-card:hover {
-    border-color: var(--brand-accent);
-    box-shadow: 0 6px 18px rgba(37,99,235,0.09);
-    transform: translateY(-3px);
-  }
-  .sol-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--brand); margin: 0 0 8px; }
-  .sol-card p { font-size: 0.875rem; color: #64748b; line-height: 1.65; flex-grow: 1; margin: 0; word-break: keep-all; }
-  .sol-more { margin-top: 16px; font-size: 12px; font-weight: 700; color: var(--brand-accent); }
+  .sol-item:hover { background: #f8fafc; padding-left: 8px; }
+  .sol-num { font-size: 1.1rem; font-weight: 900; color: #e2e8f0; width: 36px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  .sol-item:hover .sol-num { color: var(--brand-accent); }
+  .sol-info { flex: 1; }
+  .sol-info h3 { font-size: 1.05rem; font-weight: 800; color: var(--brand); margin: 0 0 4px; }
+  .sol-info p { font-size: 0.85rem; color: #64748b; margin: 0; word-break: keep-all; }
+  .sol-arrow { font-size: 1.1rem; color: #cbd5e1; flex-shrink: 0; transition: transform .2s, color .2s; }
+  .sol-item:hover .sol-arrow { color: var(--brand-accent); transform: translateX(4px); }
 
-  @media (max-width: 1024px) { .sol-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .sol-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .sol-header { padding: 40px 0 36px; }
+    .sol-item { gap: 16px; padding: 20px 0; }
+  }
 
   /* 애니메이션 */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }

@@ -78,6 +78,39 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
       </div>
     </div>
   </section>
+
+  <!-- ===== 갤러리 섹션 ===== -->
+  <section class="home-gallery js-reveal">
+    <div class="leaders-container">
+      <div class="section-title-area" style="margin-bottom:40px">
+        <span class="top-label">GALLERY</span>
+        <h2>현장에서 축적된 경험과 <strong>신뢰의 기록</strong>입니다</h2>
+      </div>
+    </div>
+    <div class="gal-slider">
+      <div class="gal-track">
+        <div class="gal-slide"><img src="/assets/img/gallery/1.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/2.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/3.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/4.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/5.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/6.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/7.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/8.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/9.jpg" alt="리더스 법무사 사무소"></div>
+        <!-- 무한 루프용 복제 -->
+        <div class="gal-slide"><img src="/assets/img/gallery/1.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/2.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/3.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/4.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/5.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/6.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/7.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/8.jpg" alt="리더스 법무사 사무소"></div>
+        <div class="gal-slide"><img src="/assets/img/gallery/9.jpg" alt="리더스 법무사 사무소"></div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <style>
@@ -162,6 +195,30 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
     line-height: 1.45;
     letter-spacing: -0.5px;
     word-break: keep-all;
+  }
+
+  /* --- [3] Gallery Section --- */
+  .home-gallery { padding: 100px 0 0; background: #fff; overflow: hidden; }
+  .gal-slider { overflow: hidden; margin-top: 0; padding-bottom: 100px; }
+  .gal-track {
+    display: flex;
+    width: calc(300px * 18);
+    animation: galScroll 40s linear infinite;
+  }
+  .gal-track:hover { animation-play-state: paused; }
+  .gal-slide { width: 300px; padding: 0 10px; flex-shrink: 0; }
+  .gal-slide img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }
+  @keyframes galScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-300px * 9)); }
+  }
+  @media (max-width: 640px) {
+    .gal-slide { width: 220px; }
+    .gal-track { width: calc(220px * 18); animation: galScrollSm 35s linear infinite; }
+    @keyframes galScrollSm {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(calc(-220px * 9)); }
+    }
   }
 
 

@@ -13,16 +13,16 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
 
     <div class="hero-inner">
       <div class="hero-content">
-        <p class="hero-eyebrow js-reveal">수원지방법원 관할 전 지역 · 검찰 실무 30년</p>
-        <h1 class="hero-title js-reveal">
+        <p class="hero-eyebrow">수원지방법원 관할 전 지역 · 검찰 실무 30년</p>
+        <h1 class="hero-title">
           채무의 무게를<br>
           <em>우리가 함께</em> 덜어드립니다
         </h1>
-        <p class="hero-desc js-reveal">
+        <p class="hero-desc">
           수원·용인·화성·평택을 포함한 수원지방법원 관할 전 지역<br>
           개인회생·개인파산·형사사건 전문 리더스 합동 법무사 사무소
         </p>
-        <div class="hero-btns js-reveal">
+        <div class="hero-btns">
           <a href="tel:0312256885" class="btn-primary">📞 &nbsp;031-225-6885</a>
           <a href="/inquiry/" class="btn-secondary">온라인 문의</a>
         </div>
@@ -170,12 +170,23 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
   .leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
   /* --- [1] Hero Section --- */
-  .premium-hero { position: relative; display: flex; flex-direction: column; color: #fff; background: var(--brand); overflow: hidden; }
-  .hero-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.18; }
-  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.7) 100%); }
+  .premium-hero { position: relative; display: flex; flex-direction: column; color: #fff; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); overflow: hidden; }
+  .hero-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,18,38,0.78) 0%, rgba(20,40,80,0.5) 100%); }
 
   .hero-inner { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; min-height: 520px; }
   .hero-content { max-width: 1200px; margin: 0 auto; padding: 80px 40px 60px; width: 100%; }
+
+  /* 히어로 콘텐츠 — 페이지 로드 시 자연스럽게 페이드인 */
+  .hero-content > * { animation: heroFadeIn 0.7s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.35s; }
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
   .hero-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 2px; color: var(--gold); margin: 0 0 24px; display: flex; align-items: center; gap: 10px; }
   .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
@@ -214,7 +225,7 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
 
   /* --- [2] Solution Section --- */
   .total-solution { background: #fff; }
-  .sol-header { background: var(--brand); padding: 56px 0 48px; }
+  .sol-header { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); padding: 56px 0 48px; }
   .sol-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin: 0 0 14px; }
   .sol-heading { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: #fff; line-height: 1.45; margin: 0; word-break: keep-all; }
 
@@ -240,8 +251,8 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
     .sol-item { gap: 16px; padding: 20px 0; }
   }
 
-  /* 애니메이션 */
-  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }
+  /* 스크롤 애니메이션 — 자연스럽게 */
+  .js-reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
   .section-title-area h2 {

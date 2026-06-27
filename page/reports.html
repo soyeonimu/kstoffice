@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>개인회생 30초 진단 리포트</title>
+  <title>수원 개인회생 30초 진단 리포트 | 리더스 합동 법무사</title>
   <meta name="description" content="채무액, 소득, 연체 여부를 바탕으로 개인회생 1차 진단 리포트를 확인해보세요." />
 
   <style>
@@ -530,6 +530,18 @@
             body: JSON.stringify(payload)
           });
         }
+
+        // GTM/GA4 + Google Ads 전환: 상담 리포트 신청 완료
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "generate_lead", form_name: "reports_lead" });
+        // 퍼널 세분화: 리포트 신청 제출 — Google Ads 전환 + GA4 (일관 파라미터)
+        window.dataLayer.push({
+          event: "report_submit",
+          page_type: "reports",
+          form_type: "report",
+          cta_name: "무료 리포트 신청",
+          button_location: "lead_form"
+        });
 
         document.getElementById("leadSection").classList.add("hidden");
         document.getElementById("completeSection").classList.remove("hidden");

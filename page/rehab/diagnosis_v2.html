@@ -1,0 +1,947 @@
+---
+layout: default
+title: 수원 개인회생 무료 진단 | 월 변제금·탕감 가능 금액 즉시 확인 | 리더스 합동 법무사
+description: 수원 개인회생 무료 진단. 예상 월 변제금·탕감 가능 금액 즉시 확인. 수원·용인·화성·평택 지역 전 검찰수사관 김성태 법무사가 직접 검토합니다.
+permalink: /rehab/diagnosis-v2/
+---
+
+<style>
+/* ═══════════════════════════════════════════
+   진단 서비스 V2 — 완전 재설계
+═══════════════════════════════════════════ */
+:root{
+  --g:#c5a059; --gl:#e2c07a; --gb:#fffbf0;
+  --brand:#0f172a; --green:#10b981; --red:#ef4444;
+  --tr:all .18s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body.dv2-active header,
+body.dv2-active footer,
+body.dv2-active .site-header,
+body.dv2-active .site-footer,
+body.dv2-active nav.main-nav{display:none!important}
+.dv2{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.dv2 .dn{display:none!important}
+
+/* ── 히어로 ── */
+#dv2Hero{
+  background:linear-gradient(155deg,#0b1525 0%,#1a2e4a 100%);
+  min-height:100dvh;display:flex;flex-direction:column;
+  justify-content:center;padding:64px 24px 80px;
+}
+.dv2-hero-wrap{max-width:720px;margin:0 auto;width:100%}
+.dv2-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 14px;background:rgba(197,160,89,.12);
+  border:1px solid rgba(197,160,89,.3);border-radius:999px;
+  font-size:12px;font-weight:700;color:var(--g);letter-spacing:.06em;
+  margin-bottom:24px;
+}
+.dv2-pulse{width:7px;height:7px;background:#10b981;border-radius:50%;
+  animation:dv2pulse 1.5s infinite}
+@keyframes dv2pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.dv2-h1{
+  font-size:clamp(1.9rem,5vw,2.9rem);font-weight:900;
+  color:#fff;line-height:1.2;margin-bottom:20px;
+  word-break:keep-all;letter-spacing:-.025em;
+}
+.dv2-h1 em{color:var(--g);font-style:normal;
+  background:linear-gradient(90deg,#c5a059,#e2c07a);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.dv2-sub{font-size:1rem;color:rgba(255,255,255,.6);
+  line-height:1.8;margin-bottom:28px;word-break:keep-all}
+.dv2-sub-list{list-style:none;margin-top:12px}
+.dv2-sub-list li{
+  display:flex;align-items:center;gap:10px;
+  padding:5px 0;font-size:.95rem;color:rgba(255,255,255,.7)
+}
+.dv2-sub-list li::before{content:'✓';color:var(--g);font-weight:900;font-size:14px;flex-shrink:0}
+.dv2-start{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:18px 36px;
+  background:linear-gradient(135deg,#b8923e,#e2c07a);
+  color:#1a0e00;font-size:16px;font-weight:900;
+  border:none;border-radius:14px;cursor:pointer;
+  font-family:inherit;letter-spacing:-.01em;
+  box-shadow:0 6px 24px rgba(197,160,89,.4);
+  transition:var(--tr);
+}
+.dv2-start:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(197,160,89,.5)}
+.dv2-start-arr{font-size:18px;transition:transform .18s}
+.dv2-start:hover .dv2-start-arr{transform:translateX(5px)}
+.dv2-trust{
+  display:flex;flex-wrap:wrap;gap:12px 20px;
+  margin-top:28px;
+}
+.dv2-trust-item{
+  display:flex;align-items:center;gap:6px;
+  font-size:12.5px;color:rgba(255,255,255,.5)
+}
+.dv2-trust-item strong{color:rgba(255,255,255,.85)}
+.dv2-stars{color:#f59e0b;letter-spacing:1px}
+
+/* 히어로 플로팅 */
+#dv2Float{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#0b1525;border-top:1px solid rgba(255,255,255,.1);
+  padding:12px 20px;display:flex;gap:10px;z-index:99;
+}
+.dv2-float-tel{
+  flex:1;padding:13px;background:rgba(255,255,255,.07);
+  color:#fff;font-size:14px;font-weight:700;border-radius:10px;
+  text-align:center;text-decoration:none;
+  border:1px solid rgba(255,255,255,.14);
+}
+.dv2-float-start{
+  flex:2;padding:13px;
+  background:linear-gradient(135deg,#b8923e,#e2c07a);
+  color:#1a0e00;font-size:14px;font-weight:900;border-radius:10px;
+  text-align:center;border:none;cursor:pointer;font-family:inherit;
+}
+
+/* ── 퀴즈 ── */
+#dv2Quiz{
+  min-height:100dvh;background:#f8fafc;
+  display:flex;flex-direction:column;
+}
+.dv2-qhdr{
+  background:#fff;border-bottom:1px solid #e2e8f0;
+  padding:13px 20px;display:flex;
+  align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:10;
+}
+.dv2-qlogo{font-size:13px;font-weight:700;color:#0f172a}
+.dv2-qbadge{
+  font-size:12px;font-weight:700;color:var(--g);
+  background:var(--gb);padding:4px 12px;border-radius:999px;
+  border:1px solid rgba(197,160,89,.3);
+}
+.dv2-qprog{height:3px;background:#e2e8f0}
+.dv2-qbar{height:100%;background:linear-gradient(90deg,#b8923e,#e2c07a);transition:width .4s ease}
+.dv2-qbody{
+  flex:1;display:flex;flex-direction:column;
+  justify-content:center;padding:32px 20px 90px;
+  max-width:600px;margin:0 auto;width:100%;
+}
+.dv2-micro{
+  display:inline-flex;align-items:flex-start;gap:7px;
+  font-size:12px;color:#64748b;background:#f1f5f9;
+  padding:8px 12px;border-radius:9px;margin-bottom:16px;
+  font-weight:600;line-height:1.5;word-break:keep-all;
+  border-left:3px solid rgba(197,160,89,.5);
+}
+.dv2-qtitle{
+  font-size:clamp(1.15rem,4vw,1.5rem);font-weight:800;
+  color:#0f172a;margin-bottom:20px;line-height:1.35;
+  word-break:keep-all;letter-spacing:-.015em;
+}
+.dv2-opts{display:flex;flex-direction:column;gap:9px}
+.dv2-opt{
+  width:100%;padding:14px 18px;
+  background:#fff;border:1.5px solid #e2e8f0;
+  border-radius:13px;font-size:15px;font-weight:600;
+  color:#334155;cursor:pointer;text-align:left;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:var(--tr);font-family:inherit;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);
+}
+.dv2-opt::after{content:'→';color:#cbd5e1;transition:var(--tr)}
+.dv2-opt:hover{
+  border-color:var(--g);background:var(--gb);
+  color:#0f172a;transform:translateX(3px);
+}
+.dv2-opt:hover::after{color:var(--g);transform:translateX(3px)}
+.dv2-custom-wrap{margin-top:10px;display:flex;gap:8px}
+.dv2-custom-inp{
+  flex:1;padding:13px 15px;border:2px solid var(--g);
+  border-radius:11px;font-size:15px;font-family:inherit;
+  outline:none;color:#0f172a;background:var(--gb);
+}
+.dv2-custom-btn{
+  padding:13px 17px;background:var(--g);color:#1a0e00;
+  border:none;border-radius:11px;font-size:14px;font-weight:900;
+  cursor:pointer;font-family:inherit;white-space:nowrap;
+}
+.dv2-qfooter{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#fff;border-top:1px solid #e2e8f0;
+  padding:11px 20px;z-index:10;
+}
+.dv2-back{
+  padding:11px 20px;background:#f1f5f9;border:none;
+  border-radius:10px;font-size:14px;font-weight:700;
+  color:#64748b;cursor:pointer;font-family:inherit;transition:var(--tr);
+}
+.dv2-back:hover{background:#e2e8f0}
+
+/* ── 로딩 ── */
+#dv2Loading{
+  min-height:100dvh;background:#0b1525;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 24px;text-align:center;
+}
+.dv2-ld-icon{width:76px;height:76px;position:relative;margin-bottom:32px}
+.dv2-ring{
+  position:absolute;border-radius:50%;
+  border:3px solid transparent;
+}
+.dv2-r1{inset:0;border-top-color:var(--g);animation:spin 1.1s linear infinite}
+.dv2-r2{inset:9px;border-right-color:rgba(197,160,89,.45);animation:spin 1.7s linear infinite reverse}
+.dv2-r3{inset:18px;border-bottom-color:rgba(197,160,89,.2);animation:spin 2.3s linear infinite}
+.dv2-rcore{position:absolute;inset:23px;background:var(--g);border-radius:50%;opacity:.9}
+@keyframes spin{to{transform:rotate(360deg)}}
+.dv2-ld-title{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:6px}
+.dv2-ld-code{font-size:12px;color:rgba(255,255,255,.3);margin-bottom:36px;letter-spacing:.1em}
+.dv2-ld-steps{width:100%;max-width:380px;display:flex;flex-direction:column;gap:9px}
+.dv2-ldt{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 15px;background:rgba(255,255,255,.03);
+  border-radius:10px;border:1px solid rgba(255,255,255,.05);
+  transition:all .35s;
+}
+.dv2-ldt.act{background:rgba(197,160,89,.1);border-color:rgba(197,160,89,.3)}
+.dv2-ldt.done{background:rgba(16,185,129,.07);border-color:rgba(16,185,129,.18)}
+.dv2-ldot{
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(255,255,255,.07);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.dv2-ldt.act .dv2-ldot{background:var(--g);animation:dv2pulse 1s infinite}
+.dv2-ldt.done .dv2-ldot{background:var(--green);color:#fff;font-size:10px;font-weight:900}
+.dv2-ldt.done .dv2-ldot::after{content:'✓'}
+.dv2-ldtxt{font-size:13px;color:rgba(255,255,255,.35);transition:color .3s;text-align:left}
+.dv2-ldt.act .dv2-ldtxt{color:rgba(255,255,255,.9)}
+.dv2-ldt.done .dv2-ldtxt{color:rgba(255,255,255,.45)}
+
+/* ── 결과 ── */
+#dv2Result{background:#f8fafc;min-height:100dvh;padding-bottom:48px}
+.dv2-rhead{
+  background:linear-gradient(135deg,#0b1525,#1a3050);
+  padding:28px 20px 32px;color:#fff;
+}
+.dv2-rhead-in{max-width:620px;margin:0 auto}
+.dv2-rcode{font-size:11px;color:rgba(255,255,255,.4);
+  letter-spacing:.12em;margin-bottom:14px}
+.dv2-rbadge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;background:rgba(16,185,129,.14);
+  border:1px solid rgba(16,185,129,.3);border-radius:999px;
+  font-size:12px;font-weight:700;color:#10b981;margin-bottom:12px;
+}
+.dv2-rtitle{font-size:1.35rem;font-weight:800}
+.dv2-rbody{max-width:620px;margin:0 auto;padding:18px 18px 0}
+
+/* 카드 공통 */
+.dv2-card{
+  background:#fff;border-radius:18px;padding:22px;
+  margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.05);
+  border:1px solid #e2e8f0;
+}
+/* 가능성 */
+.dv2-plabel{font-size:11.5px;font-weight:700;color:#64748b;
+  letter-spacing:.08em;margin-bottom:10px}
+.dv2-pbadge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px 6px 12px;border-radius:999px;
+  font-size:15px;font-weight:800;margin-bottom:7px;
+}
+.dv2-pbadge.h{background:rgba(16,185,129,.1);color:#059669;border:1px solid rgba(16,185,129,.2)}
+.dv2-pbadge.m{background:rgba(249,115,22,.1);color:#ea580c;border:1px solid rgba(249,115,22,.2)}
+.dv2-pbadge.l{background:rgba(239,68,68,.1);color:#dc2626;border:1px solid rgba(239,68,68,.2)}
+.dv2-pscore{font-size:12px;color:#94a3b8}
+/* 수치 그리드 */
+.dv2-ngrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:14px}
+.dv2-ncard{
+  background:#fff;border-radius:15px;padding:18px;
+  box-shadow:0 2px 8px rgba(0,0,0,.045);border:1px solid #e2e8f0;
+}
+.dv2-nlabel{font-size:11px;font-weight:700;color:#64748b;
+  letter-spacing:.06em;margin-bottom:7px}
+.dv2-nval{font-size:1.35rem;font-weight:900;color:#0f172a;line-height:1.15}
+.dv2-nval.gold{color:var(--g)}
+.dv2-nhint{font-size:11px;color:#94a3b8;margin-top:4px}
+.dv2-period{
+  background:#fff;border-radius:13px;padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 1px 6px rgba(0,0,0,.04);border:1px solid #e2e8f0;
+  margin-bottom:14px;
+}
+.dv2-pl{font-size:13px;color:#64748b;font-weight:600}
+.dv2-pv{font-size:15px;font-weight:800;color:#0f172a}
+/* 법무사 */
+.dv2-att{display:flex;gap:14px;align-items:flex-start}
+.dv2-aphoto{
+  width:52px;height:52px;border-radius:50%;
+  object-fit:cover;flex-shrink:0;
+  background:#e2e8f0;  /* 이미지 없을 때 */
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+}
+.dv2-aname{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:3px}
+.dv2-atitle{font-size:11.5px;color:#64748b;margin-bottom:9px}
+.dv2-aopinion{font-size:13.5px;color:#374151;line-height:1.7}
+.dv2-aopinion strong{color:#0f172a}
+/* 포인트 3가지 */
+.dv2-ptitle{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:14px}
+.dv2-pitem{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid #f1f5f9}
+.dv2-pitem:last-child{border-bottom:none;padding-bottom:0}
+.dv2-pnum{
+  width:26px;height:26px;border-radius:50%;
+  background:var(--gb);border:1.5px solid rgba(197,160,89,.35);
+  color:var(--g);font-size:12px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.dv2-ptxt{font-size:13.5px;color:#374151;line-height:1.65;font-weight:500}
+.dv2-ptxt strong{color:#0f172a;font-weight:700}
+/* 잠금 카드 */
+.dv2-lock{
+  background:linear-gradient(135deg,#0b1525,#1a2e4a);
+  border-radius:18px;padding:22px;margin-bottom:14px;
+}
+.dv2-lock-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:5px}
+.dv2-lock-sub{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:16px}
+.dv2-lock-items{display:flex;flex-direction:column;gap:0;margin-bottom:22px}
+.dv2-litem{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:rgba(255,255,255,.55);
+  padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.dv2-litem:last-child{border-bottom:none}
+.dv2-licon{color:var(--g);flex-shrink:0}
+/* 전화 CTA */
+.dv2-phone{
+  background:linear-gradient(135deg,#b8923e,#e2c07a);
+  border-radius:16px;padding:22px;
+}
+.dv2-phone-title{font-size:15px;font-weight:900;color:#1a0e00;margin-bottom:4px}
+.dv2-phone-sub{font-size:12.5px;color:rgba(26,14,0,.65);margin-bottom:14px;line-height:1.5}
+.dv2-pinput{
+  width:100%;padding:14px 15px;
+  border:2px solid rgba(26,14,0,.15);border-radius:11px;
+  font-size:16px;font-weight:700;color:#1a0e00;
+  background:rgba(255,255,255,.7);font-family:inherit;
+  outline:none;margin-bottom:9px;
+}
+.dv2-pinput:focus{border-color:#1a0e00;background:rgba(255,255,255,.92)}
+.dv2-pinput::placeholder{color:rgba(26,14,0,.3);font-weight:400}
+.dv2-pagree{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12px;color:rgba(26,14,0,.6);margin-bottom:11px;cursor:pointer;line-height:1.5;
+}
+.dv2-pagree a{color:rgba(26,14,0,.7);text-decoration:underline}
+.dv2-psub{
+  width:100%;padding:15px;background:#1a0e00;
+  color:var(--g);font-size:15px;font-weight:900;
+  border:none;border-radius:11px;cursor:pointer;font-family:inherit;
+  transition:var(--tr);
+}
+.dv2-psub:hover{background:#0f0900;transform:translateY(-1px)}
+.dv2-pnote{text-align:center;font-size:11.5px;color:rgba(26,14,0,.45);margin-top:9px}
+/* 주석 */
+.dv2-disclaimer{
+  text-align:center;font-size:11.5px;color:#94a3b8;
+  margin-top:14px;line-height:1.65;padding:0 6px;
+}
+
+/* ── 완료 ── */
+#dv2Complete{
+  min-height:100dvh;background:#0b1525;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 24px;text-align:center;
+}
+.dv2-comp-icon{font-size:52px;margin-bottom:18px}
+.dv2-comp-code{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.14em;margin-bottom:10px}
+.dv2-comp-title{font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:8px}
+.dv2-comp-sub{
+  font-size:14px;color:rgba(255,255,255,.5);
+  margin-bottom:28px;line-height:1.75;word-break:keep-all;
+}
+.dv2-comp-acts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px}
+.dv2-comp-tel{
+  display:block;padding:16px;
+  background:linear-gradient(135deg,#b8923e,#e2c07a);
+  color:#1a0e00;font-size:15px;font-weight:900;
+  border-radius:12px;text-decoration:none;
+}
+.dv2-comp-back{
+  display:block;padding:13px;
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.6);font-size:14px;font-weight:600;
+  border-radius:12px;text-decoration:none;
+  border:1px solid rgba(255,255,255,.1);
+}
+
+@media(max-width:480px){
+  .dv2-ngrid{grid-template-columns:1fr}
+  .dv2-nval{font-size:1.2rem}
+  .dv2-h1{font-size:1.75rem}
+}
+</style>
+
+<div class="dv2">
+
+<!-- ① 히어로 -->
+<section id="dv2Hero">
+  <div class="dv2-hero-wrap">
+    <div class="dv2-eyebrow">
+      <span class="dv2-pulse"></span>
+      무료 개인회생 진단 서비스
+    </div>
+    <h1 class="dv2-h1">월 변제금과 탕감 가능 금액을<br><em>무료로 진단해드립니다</em></h1>
+    <div class="dv2-sub">
+      간단한 질문에 답하면 즉시 확인할 수 있습니다.
+      <ul class="dv2-sub-list">
+        <li>예상 월 변제금 (실제 납부 금액)</li>
+        <li>예상 탕감 가능 금액 및 비율</li>
+        <li>개인회생 진행 가능성 분석</li>
+        <li>맞춤 준비서류 체크리스트</li>
+      </ul>
+    </div>
+    <button class="dv2-start" onclick="dv2Start()">
+      지금 바로 무료 진단 시작
+      <span class="dv2-start-arr">→</span>
+    </button>
+    <div class="dv2-trust">
+      <div class="dv2-trust-item">
+        <span class="dv2-stars">★★★★★</span>
+        <strong>4.9</strong>
+      </div>
+      <div class="dv2-trust-item">📋 누적 상담 <strong>1,200건+</strong></div>
+      <div class="dv2-trust-item">👤 전 검찰수사관 <strong>김성태 법무사</strong> 직접 검토</div>
+      <div class="dv2-trust-item">🔒 개인정보 암호화 처리</div>
+    </div>
+  </div>
+</section>
+
+<!-- 히어로 플로팅 CTA -->
+<div id="dv2Float">
+  <a href="tel:0312256885" class="dv2-float-tel">📞 전화 연결</a>
+  <button class="dv2-float-start" onclick="dv2Start()">무료 진단 시작 →</button>
+</div>
+
+<!-- ② 퀴즈 -->
+<section id="dv2Quiz" class="dn">
+  <div class="dv2-qhdr">
+    <span class="dv2-qlogo">리더스 합동 법무사</span>
+    <span class="dv2-qbadge" id="dv2Badge">STEP 1 / 14</span>
+  </div>
+  <div class="dv2-qprog"><div class="dv2-qbar" id="dv2Bar" style="width:0%"></div></div>
+  <div class="dv2-qbody" id="dv2QBody"></div>
+  <div class="dv2-qfooter">
+    <button class="dv2-back" id="dv2Back" onclick="dv2GoBack()" style="display:none">← 이전</button>
+  </div>
+</section>
+
+<!-- ③ 로딩 -->
+<section id="dv2Loading" class="dn">
+  <div class="dv2-ld-icon">
+    <div class="dv2-ring dv2-r1"></div>
+    <div class="dv2-ring dv2-r2"></div>
+    <div class="dv2-ring dv2-r3"></div>
+    <div class="dv2-rcore"></div>
+  </div>
+  <div class="dv2-ld-title">분석 중<span id="dv2Dots"></span></div>
+  <div class="dv2-ld-code" id="dv2LdCode"></div>
+  <div class="dv2-ld-steps" id="dv2LdSteps"></div>
+</section>
+
+<!-- ④ 결과 -->
+<section id="dv2Result" class="dn">
+  <div class="dv2-rhead">
+    <div class="dv2-rhead-in">
+      <div class="dv2-rcode" id="dv2RCode">진단번호 KR-—</div>
+      <div class="dv2-rbadge">✓ 분석 완료</div>
+      <div class="dv2-rtitle">개인회생 자가진단 결과</div>
+    </div>
+  </div>
+  <div class="dv2-rbody" id="dv2RBody"></div>
+</section>
+
+<!-- ⑤ 완료 -->
+<section id="dv2Complete" class="dn">
+  <div class="dv2-comp-icon">📄</div>
+  <div class="dv2-comp-code" id="dv2CCode"></div>
+  <h2 class="dv2-comp-title">접수가 완료되었습니다</h2>
+  <p class="dv2-comp-sub">
+    담당 법무사가 입력하신 정보를 검토하여<br>
+    곧 연락드리겠습니다.
+  </p>
+  <div class="dv2-comp-acts">
+    <a href="tel:0312256885" class="dv2-comp-tel">📞 031-225-6885 바로 연결</a>
+    <a href="/" class="dv2-comp-back">← 홈으로 돌아가기</a>
+  </div>
+</section>
+
+</div><!-- .dv2 -->
+
+<script>
+/* ═══════════════════════════════════════
+   진단 서비스 V2 — JavaScript
+═══════════════════════════════════════ */
+
+/* ── 14개 질문 ── */
+const dv2Q = [
+  { key:"mainConcern", title:"현재 가장 걱정되는 문제는 무엇인가요?",
+    micro:"가장 시급한 상황을 선택해 주세요. 진단 방향이 달라집니다.",
+    opts:["통장 압류","급여 압류","독촉·추심 연락","카드대금 연체","대출 상환 부담","사업 실패","빚이 너무 많음"] },
+  { key:"debtAmount", title:"총 채무액은 어느 정도인가요?",
+    micro:"카드·대출·사채·보증채무 등 모든 채무를 합산해 주세요.",
+    opts:["1천만원 이하","1천~3천만원","3천~5천만원","5천만원~1억원","1억원 이상"] },
+  { key:"monthlyIncome", title:"월 실수령액은 얼마인가요?",
+    micro:"세금 공제 후 실제 받는 금액 기준입니다. 사업소득은 순수익 기준.",
+    opts:["100만원 이하","100~200만원","200~300만원","300~400만원","400만원 이상"] },
+  { key:"dependents", title:"부양가족이 있으신가요?",
+    micro:"부양가족이 많을수록 생계비 공제가 늘어 월 변제금이 낮아집니다.",
+    opts:["없음","배우자만","자녀 1명","자녀 2명 이상","부모 부양","기타"] },
+  { key:"arrearsCombined", title:"현재 연체·압류 상황은 어떻게 되시나요?",
+    micro:"연체 기간과 압류 여부는 법원이 긴급도를 판단하는 핵심 요소입니다.",
+    opts:["연체 없음","1개월 미만 연체","1~3개월 연체","3개월 이상 연체","통장 압류 진행 중","급여 압류 진행 중","독촉 연락·지급명령"] },
+  { key:"residence", title:"현재 거주 형태는 무엇인가요?",
+    micro:"자가 부동산은 재산으로 산정되어 변제계획에 반영됩니다.",
+    opts:["자가","전세","월세","부모님 집","기타"] },
+  { key:"debtReason", title:"채무가 발생한 가장 큰 이유는 무엇인가요?",
+    micro:"채무 원인은 법원이 회생 가능성과 변제계획을 검토할 때 중요하게 확인합니다.",
+    opts:["생활비·의료비","사업 실패","주식 투자 손실","코인 투자 손실","도박","보증·연대보증","기타"] },
+  { key:"recentLoan", title:"최근 1년 이내 신규 대출이 있으신가요?",
+    micro:"카드론·현금서비스·대출 포함. 최근 대출은 법원의 사해행위 검토 대상이 될 수 있습니다.",
+    opts:["없음","1건","2건 이상","잘 모르겠다"] },
+  { key:"insurance", title:"해약환급금이 있는 보험을 보유하고 계신가요?",
+    micro:"종신·연금·저축성 보험의 해약환급금은 재산으로 산정됩니다.",
+    opts:["없음","있음 (소액)","있음 (고액)","잘 모르겠다"] },
+  { key:"hasCar", title:"차량을 보유하고 계신가요?",
+    micro:"본인 명의 차량은 시가 기준으로 재산에 포함됩니다.",
+    opts:["없음","국산차 1대","수입차 1대","2대 이상","사업용 차량만"] },
+  { key:"businessOwner", title:"개인사업자 등록이 있으신가요?",
+    micro:"사업자 여부에 따라 소득 증빙 방식과 준비서류가 달라집니다.",
+    opts:["해당 없음","개인사업자 (운영 중)","개인사업자 (폐업)","법인 대표"] },
+  { key:"spouseIncome", title:"배우자가 있다면 배우자의 소득은 어떻게 되나요?",
+    micro:"배우자 소득은 가구 전체 생계비 산정에 영향을 줍니다.",
+    opts:["배우자 없음","배우자 소득 없음","배우자 소득 100만원 이하","배우자 소득 100~200만원","배우자 소득 200만원 이상"] },
+  { key:"region", title:"현재 거주 지역을 알려주세요.",
+    micro:"관할 법원 및 지역 맞춤 정보 안내에 사용됩니다.",
+    opts:["수원","용인","화성","평택","오산","안산","성남","안양","기타"] },
+  { key:"age", title:"마지막으로, 연령대를 알려주세요.",
+    micro:"맞춤 사례 분석과 통계 비교에 활용됩니다.",
+    opts:["20대","30대","40대","50대","60대 이상"] }
+];
+
+const TOTAL = dv2Q.length;
+let cur = 0;
+const ans = {};
+let diagCode = "";
+let _repay = "", _score = 0;
+
+/* arrearsCombined 매핑 */
+function mapArrears(v){
+  if(v==="통장 압류 진행 중"){ans.arrears="3개월 이상";ans.seizureStatus="통장 압류"}
+  else if(v==="급여 압류 진행 중"){ans.arrears="3개월 이상";ans.seizureStatus="급여 압류"}
+  else if(v==="독촉 연락·지급명령"){ans.arrears="3개월 이상";ans.seizureStatus="독촉 진행"}
+  else if(v==="3개월 이상 연체"){ans.arrears="3개월 이상";ans.seizureStatus="없음"}
+  else if(v==="1~3개월 연체"){ans.arrears="1~3개월";ans.seizureStatus="없음"}
+  else if(v==="1개월 미만 연체"){ans.arrears="1개월 미만";ans.seizureStatus="없음"}
+  else{ans.arrears="연체 없음";ans.seizureStatus="없음"}
+}
+
+/* ── 시작 ── */
+function dv2Start(){
+  document.body.classList.add("dv2-active");
+  show("dv2Hero",false); show("dv2Float",false);
+  show("dv2Quiz",true);
+  window.scrollTo({top:0,behavior:"instant"});
+  cur=0; render();
+  dlpush({event:"dv2_start"});
+}
+
+function show(id,v){
+  const el=document.getElementById(id);
+  if(!el)return;
+  if(v)el.classList.remove("dn"); else el.classList.add("dn");
+}
+
+/* ── 렌더 ── */
+function render(){
+  const q=dv2Q[cur];
+  const pct=Math.round((cur/TOTAL)*100);
+  document.getElementById("dv2Badge").textContent=`STEP ${cur+1} / ${TOTAL}`;
+  document.getElementById("dv2Bar").style.width=pct+"%";
+  document.getElementById("dv2Back").style.display=cur===0?"none":"block";
+
+  const optsHtml=q.opts.map(o=>`
+    <button class="dv2-opt" onclick="pick('${q.key}','${o.replace(/'/g,"\\'")}')">
+      ${o}
+    </button>`).join("");
+
+  document.getElementById("dv2QBody").innerHTML=`
+    <div class="dv2-micro">${q.micro}</div>
+    <div class="dv2-qtitle">${q.title}</div>
+    <div class="dv2-opts" id="dv2Opts">${optsHtml}</div>
+    <div id="dv2CustomWrap" style="display:none" class="dv2-custom-wrap">
+      <input type="text" class="dv2-custom-inp" id="dv2CI"
+        placeholder="직접 입력해 주세요" maxlength="50"
+        onkeydown="if(event.key==='Enter')submitCustom('${q.key}')">
+      <button class="dv2-custom-btn" onclick="submitCustom('${q.key}')">확인</button>
+    </div>`;
+}
+
+function pick(key,val){
+  if(val==="기타"){showCustom(key);return}
+  ans[key]=val;
+  if(key==="arrearsCombined")mapArrears(val);
+  dlpush({event:"dv2_step",step:cur+1,question:key,answer:val});
+  cur++;
+  if(cur<TOTAL){render();window.scrollTo({top:0,behavior:"instant"});return}
+  // 완료
+  dlpush({event:"dv2_quiz_complete"});
+  show("dv2Quiz",false);
+  startLoading();
+}
+
+function showCustom(key){
+  document.getElementById("dv2CustomWrap").style.display="flex";
+  document.querySelectorAll(".dv2-opt").forEach(b=>{
+    if(b.textContent.trim()==="기타")b.style.borderColor="var(--g)";
+  });
+  setTimeout(()=>document.getElementById("dv2CI")?.focus(),60);
+}
+
+function submitCustom(key){
+  const v=(document.getElementById("dv2CI")?.value||"").trim();
+  if(!v)return;
+  ans[key]="기타("+v+")";
+  if(key==="arrearsCombined")mapArrears("기타");
+  dlpush({event:"dv2_step",step:cur+1,question:key,answer:ans[key]});
+  cur++;
+  if(cur<TOTAL){render();window.scrollTo({top:0,behavior:"instant"});return}
+  show("dv2Quiz",false); startLoading();
+}
+
+function dv2GoBack(){
+  if(cur<=0)return; cur--; render();
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ── 로딩 ── */
+const STEPS=[
+  "입력 내용을 분석하고 있습니다",
+  "채무 정보를 확인하고 있습니다",
+  "법원 심사 기준과 비교하고 있습니다",
+  "예상 월 변제금을 계산하고 있습니다",
+  "탕감 가능 금액을 산출하고 있습니다",
+  "비슷한 진행 사례를 분석하고 있습니다",
+  "맞춤 리포트를 생성하고 있습니다",
+  "분석이 완료되었습니다"
+];
+
+function startLoading(){
+  show("dv2Loading",true);
+  window.scrollTo({top:0,behavior:"instant"});
+  const n=new Date();
+  diagCode=`KR-${String(n.getFullYear()).slice(2)}${String(n.getMonth()+1).padStart(2,"0")}${String(n.getDate()).padStart(2,"0")}-${Math.floor(1000+Math.random()*9000)}`;
+  document.getElementById("dv2LdCode").textContent="진단번호 "+diagCode;
+
+  // 점 애니메이션
+  let dc=0;
+  const de=document.getElementById("dv2Dots");
+  const dt=setInterval(()=>{dc=(dc+1)%4;de.textContent=".".repeat(dc)},380);
+
+  // 스텝 렌더
+  document.getElementById("dv2LdSteps").innerHTML=
+    STEPS.map((s,i)=>`
+      <div class="dv2-ldt" id="dls${i}">
+        <div class="dv2-ldot"></div>
+        <div class="dv2-ldtxt">${s}</div>
+      </div>`).join("");
+
+  // 순차 실행 (총 ~8.8초)
+  const dl=[400,1100,1900,3000,4200,5500,6700,8000];
+  let si=0;
+  function next(){
+    if(si>0)document.getElementById("dls"+(si-1))?.classList.replace("act","done");
+    const el=document.getElementById("dls"+si);
+    if(el)el.classList.add("act");
+    si++;
+    if(si<dl.length)setTimeout(next,dl[si]-dl[si-1]);
+  }
+  setTimeout(next,dl[0]);
+
+  setTimeout(()=>{
+    clearInterval(dt);
+    show("dv2Loading",false);
+    showResult();
+  },8800);
+}
+
+/* ══ 계산 ══ */
+function calcScore(){
+  let s=45;
+  if(ans.arrears==="3개월 이상")s+=18;
+  else if(ans.arrears==="1~3개월")s+=10;
+  else if(ans.arrears==="1개월 미만")s+=4;
+  if(ans.debtAmount==="1억원 이상")s+=20;
+  else if(ans.debtAmount==="5천만원~1억원")s+=12;
+  else if(ans.debtAmount==="3천~5천만원")s+=6;
+  const inc=ans.monthlyIncome||"";
+  if(inc==="100만원 이하")s+=15;
+  else if(inc==="100~200만원")s+=7;
+  else if(inc==="400만원 이상")s-=10;
+  const dep=ans.dependents||"";
+  if(dep==="자녀 2명 이상")s-=8;
+  else if(dep==="부모 부양")s-=5;
+  else if(dep==="자녀 1명")s-=3;
+  else if(dep==="배우자만")s-=2;
+  else if(dep==="없음")s+=3;
+  if(ans.recentLoan==="2건 이상")s+=10;
+  else if(ans.recentLoan==="1건")s+=5;
+  if(ans.debtReason==="도박")s+=15;
+  else if(ans.debtReason==="코인 투자 손실")s+=8;
+  else if(ans.debtReason==="주식 투자 손실")s+=6;
+  else if(ans.debtReason==="사업 실패")s+=4;
+  if(ans.insurance==="있음 (고액)")s+=8;
+  else if(ans.insurance==="있음 (소액)")s+=3;
+  if(ans.seizureStatus==="통장 압류"||ans.seizureStatus==="급여 압류")s+=10;
+  else if(ans.seizureStatus==="독촉 진행")s+=5;
+  if(ans.hasCar==="수입차 1대")s+=8;
+  else if(ans.hasCar==="2대 이상")s+=10;
+  else if(ans.hasCar==="국산차 1대")s+=4;
+  if(ans.businessOwner==="법인 대표")s+=8;
+  else if(ans.businessOwner==="개인사업자 (운영 중)")s+=5;
+  return Math.min(98,Math.max(32,s));
+}
+
+function calcRepayment(){
+  const im={"100만원 이하":80,"100~200만원":150,"200~300만원":250,"300~400만원":350,"400만원 이상":450};
+  const lm={"없음":95,"배우자만":145,"자녀 1명":165,"자녀 2명 이상":195,"부모 부양":175,"기타":120};
+  let bonus=0;
+  const si=ans.spouseIncome||"";
+  if(si==="배우자 소득 200만원 이상")bonus=35;
+  else if(si==="배우자 소득 100~200만원")bonus=18;
+  const income=(im[ans.monthlyIncome]||200)+bonus;
+  const living=lm[ans.dependents]||100;
+  const base=Math.max(20,income-living);
+  const lo=Math.round(base*.8/10)*10;
+  const hi=Math.round(base*1.2/10)*10;
+  return `${lo}~${hi}만원`;
+}
+
+function calcReduction(){
+  const m={
+    "1천만원 이하":"최대 700만원",
+    "1천~3천만원":"최대 2,500만원",
+    "3천~5천만원":"최대 4,500만원",
+    "5천만원~1억원":"최대 9,000만원",
+    "1억원 이상":"최대 90% 탕감"
+  };
+  return m[ans.debtAmount]||"검토 필요";
+}
+
+function calcPoss(score){
+  if(score>=75)return{label:"진행 가능성 높음",icon:"🟢",cls:"h",
+    desc:"입력하신 정보 기준으로 개인회생 신청 가능성이 높습니다."};
+  if(score>=55)return{label:"추가 검토 필요",icon:"🟡",cls:"m",
+    desc:"일부 보완이 필요하지만 진행 가능성이 있습니다."};
+  return{label:"전문가 검토 필요",icon:"🔴",cls:"l",
+    desc:"복잡한 상황이 있어 전문가와 상세 상담이 필요합니다."};
+}
+
+function calcPeriod(){
+  return ans.debtAmount==="1억원 이상"?"3~5년":"3년 (36개월)";
+}
+
+function buildPoints(score){
+  const pts=[];
+  const seiz=ans.seizureStatus||"없음";
+  const arr=ans.arrears||"연체 없음";
+  // 압류 상황
+  if(seiz==="통장 압류")
+    pts.push("<strong>통장 압류 진행 중 → 즉시 신청 가능</strong>: 개인회생 신청 후 법원 개시결정 시 추가 집행이 중지됩니다. 신청 시점이 결과를 좌우합니다.");
+  else if(seiz==="급여 압류")
+    pts.push("<strong>급여 압류 → 중지 명령 신청</strong>: 회생 신청 후 급여압류 중지 명령을 받으면 정상 수령이 가능해집니다.");
+  else if(arr==="3개월 이상")
+    pts.push("<strong>장기 연체 → 법적 조치 가능성 높음</strong>: 채권자의 지급명령·압류 준비 시점입니다. 빠른 검토가 필요합니다.");
+  // 채무 원인
+  if(ans.debtReason==="도박")
+    pts.push("<strong>채무 원인(도박) 소명 자료 필수</strong>: 현재 상황 변화와 재발 방지 계획을 정리한 자료가 법원 심사에 유리하게 작용합니다.");
+  else if(ans.debtReason==="코인 투자 손실"||ans.debtReason==="주식 투자 손실")
+    pts.push(`<strong>투자 손실 경위 소명 필요</strong>: 거래 내역과 손실 경위를 정리해두면 채권자 이의에 대비할 수 있습니다.`);
+  else if(ans.debtReason==="사업 실패")
+    pts.push("<strong>사업 관련 채무 분리 정리 필요</strong>: 개인 채무와 사업 채무를 구분하고 매출 내역 자료를 준비하는 것이 중요합니다.");
+  // 재산/대출
+  if(ans.recentLoan==="2건 이상")
+    pts.push("<strong>최근 대출 2건 이상 → 사해행위 소명</strong>: 각 대출의 목적과 사용처를 미리 정리해두세요.");
+  else if(ans.hasCar==="수입차 1대"||ans.hasCar==="2대 이상")
+    pts.push(`<strong>차량 재산 산정 대상</strong>: 보유 차량의 시가를 파악하고 처분 또는 유지 여부를 검토해야 합니다.`);
+  else if(ans.insurance==="있음 (고액)")
+    pts.push("<strong>보험 해약환급금 재산 산정</strong>: 보험사에 해약환급금 확인서를 요청하여 금액을 미리 파악해 두세요.");
+  // 사업자
+  if(ans.businessOwner==="개인사업자 (운영 중)")
+    pts.push("<strong>개인사업자 소득 증빙 방식 중요</strong>: 종합소득세 신고서 또는 매출 통장 내역으로 소득을 증빙해야 합니다.");
+  // 기본 채움
+  if(pts.length===0)pts.push("<strong>소득 증빙 서류가 핵심</strong>: 급여명세서, 건강보험료 납부확인서 등 안정적 소득 증빙이 심사의 기초입니다.");
+  if(pts.length<2){
+    const dep=ans.dependents||"없음";
+    if(dep!=="없음")pts.push(`<strong>부양가족(${dep}) 생계비 공제 반영</strong>: 주민등록등본으로 부양가족을 확인하면 월 변제금이 낮아집니다.`);
+    else pts.push("<strong>서류 준비부터 시작</strong>: 신용정보 조회서·소득 증빙·채무 내역서가 기본입니다. 서류 확인 후 빠르게 진행됩니다.");
+  }
+  if(pts.length<3)pts.push("<strong>법원 제출까지 전담</strong>: 준비서류 확인, 신청서 작성, 법원 접수, 기일 대응까지 모두 대행합니다.");
+  return pts.slice(0,3);
+}
+
+function buildOpinion(score){
+  const seiz=ans.seizureStatus||"없음";
+  const arr=ans.arrears||"연체 없음";
+  if(seiz==="통장 압류"||seiz==="급여 압류")
+    return `압류가 진행 중인 상황에서는 <strong>신청 시점이 결과를 좌우합니다.</strong> 개인회생 신청 후 법원 개시결정이 나오면 추가 집행이 중지됩니다. 빠른 진행이 무엇보다 중요하며, 입력하신 정보 기준으로 즉시 검토해드리겠습니다.`;
+  if(arr==="3개월 이상")
+    return `연체 3개월이 넘어가면 채권자들이 법적 조치를 준비하는 시점입니다. <strong>지금이 개인회생을 검토하기에 가장 적합한 타이밍입니다.</strong> 입력하신 채무 규모와 소득 기준으로 예상 변제금을 확인해드리겠습니다.`;
+  if(score>=75)
+    return `입력하신 정보를 검토한 결과, <strong>개인회생 신청 가능성이 충분합니다.</strong> 소득과 채무 규모를 기반으로 예상 변제금을 산출했습니다. 정확한 금액은 실제 소득 증빙서류 확인 후 안내드릴 수 있습니다.`;
+  return `입력하신 정보 기준으로 <strong>몇 가지 추가 확인이 필요합니다.</strong> 채무 원인과 재산 현황에 따라 진행 방향이 달라질 수 있으므로, 상담을 통해 정확히 검토해드리겠습니다.`;
+}
+
+/* ── 결과 렌더 ── */
+function showResult(){
+  const score=calcScore();
+  const poss=calcPoss(score);
+  _repay=calcRepayment();
+  _score=score;
+  const reduce=calcReduction();
+  const period=calcPeriod();
+  const pts=buildPoints(score);
+  const opinion=buildOpinion(score);
+
+  document.getElementById("dv2RCode").textContent="진단번호 "+diagCode;
+  document.getElementById("dv2RBody").innerHTML=`
+    <!-- 가능성 -->
+    <div class="dv2-card">
+      <div class="dv2-plabel">개인회생 가능성</div>
+      <div class="dv2-pbadge ${poss.cls}">
+        ${poss.icon} ${poss.label}
+      </div>
+      <div class="dv2-pscore">분석 점수 ${score}점 · ${poss.desc}</div>
+    </div>
+
+    <!-- 핵심 수치 -->
+    <div class="dv2-ngrid">
+      <div class="dv2-ncard">
+        <div class="dv2-nlabel">예상 월 변제금</div>
+        <div class="dv2-nval gold">${_repay}</div>
+        <div class="dv2-nhint">소득·부양가족 기준 추정</div>
+      </div>
+      <div class="dv2-ncard">
+        <div class="dv2-nlabel">예상 탕감 가능 금액</div>
+        <div class="dv2-nval">${reduce}</div>
+        <div class="dv2-nhint">채무 규모 기준 추정</div>
+      </div>
+    </div>
+    <div class="dv2-period">
+      <span class="dv2-pl">예상 변제기간</span>
+      <span class="dv2-pv">${period}</span>
+    </div>
+
+    <!-- 법무사 의견 -->
+    <div class="dv2-card dv2-att">
+      <div class="dv2-aphoto">🧑‍⚖️</div>
+      <div>
+        <div class="dv2-aname">김성태 법무사</div>
+        <div class="dv2-atitle">전 검찰수사관 · 법무부장관 표창</div>
+        <div class="dv2-aopinion">${opinion}</div>
+      </div>
+    </div>
+
+    <!-- 중요 3가지 -->
+    <div class="dv2-card">
+      <div class="dv2-ptitle">📌 입력하신 상황에서 중요한 3가지</div>
+      ${pts.map((p,i)=>`
+        <div class="dv2-pitem">
+          <div class="dv2-pnum">${i+1}</div>
+          <div class="dv2-ptxt">${p}</div>
+        </div>`).join("")}
+    </div>
+
+    <!-- 잠금 상세 리포트 + 전화 CTA -->
+    <div class="dv2-lock">
+      <div class="dv2-lock-title">🔒 상세 분석 리포트</div>
+      <div class="dv2-lock-sub">전화번호 입력 후 무료로 확인하실 수 있습니다</div>
+      <div class="dv2-lock-items">
+        <div class="dv2-litem"><span class="dv2-licon">✓</span>법원이 중요하게 보는 사항 (입력 정보 기반)</div>
+        <div class="dv2-litem"><span class="dv2-licon">✓</span>예상 보정사항 및 주의점</div>
+        <div class="dv2-litem"><span class="dv2-licon">✓</span>맞춤 준비서류 체크리스트</div>
+        <div class="dv2-litem"><span class="dv2-licon">✓</span>진행 절차 및 예상 타임라인</div>
+        <div class="dv2-litem"><span class="dv2-licon">✓</span>유사 사례 비교 분석</div>
+      </div>
+      <div class="dv2-phone">
+        <div class="dv2-phone-title">📄 무료 PDF 결과지를 드립니다</div>
+        <div class="dv2-phone-sub">연락처를 남겨주시면 담당 법무사가 직접 검토 후 연락드립니다</div>
+        <form onsubmit="submitPhone(event)">
+          <input id="dv2PI" type="tel" class="dv2-pinput"
+            placeholder="010 - 0000 - 0000" maxlength="15" required />
+          <label class="dv2-pagree">
+            <input type="checkbox" id="dv2PA" required>
+            개인정보 수집·이용 동의 <a href="/privacy" target="_blank">(필수)</a>
+          </label>
+          <button type="submit" class="dv2-psub">📄 무료 PDF 결과지 받기 →</button>
+        </form>
+        <div class="dv2-pnote">무료 · 수임 의무 없음 · 비밀 보장</div>
+      </div>
+    </div>
+
+    <div class="dv2-disclaimer">
+      본 결과는 입력하신 정보를 기반으로 자동 산출된 추정치입니다.<br>
+      법무사 검토 후 정확한 수치와 진행 가능 여부를 확인할 수 있습니다.
+    </div>`;
+
+  show("dv2Result",true);
+  window.scrollTo({top:0,behavior:"instant"});
+
+  // 전화번호 포맷
+  setTimeout(()=>{
+    const inp=document.getElementById("dv2PI");
+    if(!inp)return;
+    inp.addEventListener("input",ev=>{
+      let v=ev.target.value.replace(/\D/g,"");
+      if(v.length>=7)v=v.slice(0,3)+"-"+v.slice(3,7)+"-"+v.slice(7,11);
+      else if(v.length>=4)v=v.slice(0,3)+"-"+v.slice(3);
+      ev.target.value=v;
+    });
+  },100);
+}
+
+/* ── 전화번호 제출 ── */
+function submitPhone(e){
+  e.preventDefault();
+  const phone=(document.getElementById("dv2PI")?.value||"").replace(/\D/g,"");
+  if(!document.getElementById("dv2PA")?.checked){alert("개인정보 수집·이용에 동의해주세요.");return}
+  if(!/^01[016789]\d{7,8}$/.test(phone)){
+    alert("올바른 휴대폰 번호를 입력해주세요.\n예) 010-1234-5678");return;
+  }
+  fetch("https://script.google.com/macros/s/AKfycbwAS0c4fyhQ_m2sFNKboilQeMcwd3V5WAuUakALziAFI-X7t0GgcIueFKMkMBXJTJhXDw/exec",{
+    method:"POST",
+    body:JSON.stringify({
+      source:"V2진단",phone,
+      mainConcern:ans.mainConcern||"",arrears:ans.arrears||"",
+      debtAmount:ans.debtAmount||"",monthlyIncome:ans.monthlyIncome||"",
+      dependents:ans.dependents||"",residence:ans.residence||"",
+      hasCar:ans.hasCar||"",recentLoan:ans.recentLoan||"",
+      debtReason:ans.debtReason||"",insurance:ans.insurance||"",
+      seizureStatus:ans.seizureStatus||"",age:ans.age||"",
+      region:ans.region||"",businessOwner:ans.businessOwner||"",
+      spouseIncome:ans.spouseIncome||"",
+      repaymentRange:_repay,score:_score,diagCode
+    }),mode:"no-cors"
+  }).catch(()=>{});
+
+  dlpush({event:"generate_lead",lead_source:"V2진단",debt_amount:ans.debtAmount||""});
+  dlpush({event:"diagnosis_submit",page_type:"diagnosis_v2",
+    form_type:"phone_cta",button_location:"result_phone_card"});
+
+  show("dv2Result",false);
+  document.getElementById("dv2CCode").textContent=diagCode;
+  show("dv2Complete",true);
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+function dlpush(o){window.dataLayer=window.dataLayer||[];window.dataLayer.push(o)}
+</script>

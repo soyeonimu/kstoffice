@@ -1,7 +1,7 @@
 ---
 layout: landing
-title: 개인회생 30초 진단 리포트 | 리더스 합동 법무사 사무소
-description: 채무액, 소득, 연체 여부를 바탕으로 개인회생 1차 진단 리포트를 즉시 확인해보세요.
+title: 수원 개인회생 30초 자가진단 | 리더스 합동 법무사
+description: 수원 개인회생 자가진단. 채무액·소득·연체 여부 입력 후 즉시 진단 리포트 확인. 수원·용인·화성·평택 지역 무료 진단.
 permalink: /rehab/diagnosis
 ---
 
@@ -5512,6 +5512,17 @@ permalink: /rehab/diagnosis
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "generate_lead", lead_source: "마지막CTA", debt_amount: ans.debtAmount || "", job: ans.job || "" });
+    // 퍼널 세분화: 진단페이지(DB 핵심) 제출 — GA4 분석용 (일관 파라미터)
+    window.dataLayer.push({
+      event: "diagnosis_submit",
+      page_type: "diagnosis",
+      form_type: "diagnosis",
+      cta_name: "무료 PDF 결과지 받기",
+      button_location: "final_cta",
+      lead_source: "마지막CTA",
+      debt_amount: ans.debtAmount || "",
+      job: ans.job || ""
+    });
 
     window._phoneCollected = true;
     document.getElementById("stickyCta")?.classList.remove("visible");

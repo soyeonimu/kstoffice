@@ -55,48 +55,34 @@
   <meta name="twitter:title" content="{{ og_title }}" />
   <meta name="twitter:description" content="{{ og_desc }}" />
   <meta name="twitter:image" content="{{ page.og_image | default: '/assets/img/og/og-main.png' | absolute_url }}">
-</head>
 
-<body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBDG4WZD"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-  {% include header.html %}
-
-  <main>
-    {{ content }}
-  </main>
-
-  {% include side-links.html %}
-  {% include footer.html %}
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1) Reveal 효과
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('is-visible');
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
-
-      // 2) 헤더 스크롤 로직
-      const header = document.getElementById('siteHeader');
-      let lastY = window.scrollY;
-
-      window.addEventListener('scroll', () => {
-        if (!header) return;
-
-        const currY = window.scrollY;
-        if (currY > lastY + 10 && currY > 100) header.classList.add('header--hidden');
-        else if (currY < lastY - 10) header.classList.remove('header--hidden');
-
-        lastY = currY;
-      }, { passive: true });
-    });
-  </script>
-</body>
-</html>
+  <!-- Schema.org LocalBusiness / LegalService — 수원 지역 SEO 핵심 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LegalService", "LocalBusiness"],
+    "name": "리더스 합동 법무사 사무소",
+    "alternateName": ["수원 법무사", "수원 개인회생 법무사", "리더스합동법무사"],
+    "description": "수원 개인회생·개인파산·고소장 전문 법무사 사무소. 전 검찰수사관 김성태 법무사 직접 검토. 수원·용인·화성·평택·오산·안산 상담 가능.",
+    "url": "https://kstoffice6885.com",
+    "telephone": "+82-31-225-6885",
+    "email": "scatterfragrance@gmail.com",
+    "image": "https://kstoffice6885.com/assets/img/og/og-main.png",
+    "logo": "https://kstoffice6885.com/assets/img/logo/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "광교중앙로 244, 301호 (법조타운사거리)",
+      "addressLocality": "수원시 영통구",
+      "addressRegion": "경기도",
+      "postalCode": "16505",
+      "addressCountry": "KR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 37.2832,
+      "longitude": 127.0447
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "d

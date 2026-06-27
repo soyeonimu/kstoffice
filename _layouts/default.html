@@ -13,76 +13,71 @@
   })(window,document,'script','dataLayer','GTM-TBDG4WZD');</script>
   <!-- End Google Tag Manager -->
 
-  <!-- 기본 SEO -->
+  <!-- SEO -->
   <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description | default: '리더스 합동 법무사 사무소 - 검찰 수사관 출신 실무진, 형사·회생·등기·민사 솔루션' }}" />
+  <meta name="description" content="{{ page.description | default: site.description | default: 'LEADERS' }}" />
   <meta name="keywords" content="{{ page.keywords | default: site.keywords }}" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
-
-  <!-- 스타일 -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
-  <!-- 공통 기본 스타일 -->
   <style>
-    /* 하얀 화면 방지 및 기본 레이아웃 */
     body { margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; background-color: #fff; color: #333; }
     main { min-height: 80vh; display: block; }
-
-    /* 헤더 숨김 방지 기본 스타일 */
     .header--hidden { transform: translateY(-100%); transition: transform 0.3s ease; }
-
-    /* 애니메이션 기본값 */
     .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
     .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
   </style>
 
-  <!-- Open Graph / Kakao / Naver -->
+  <!-- OG -->
   {% assign og_title = page.og_title | default: page.title | default: site.title %}
-  {% assign og_desc  = page.og_description | default: page.description | default: site.description | default: '리더스 합동 법무사 사무소 - 검찰 수사관 출신 법무사 사무소' %}
-  {% assign og_image = page.og_image | default: '/assets/img/logo/logo.png' %}
+  {% assign og_desc  = page.og_description | default: page.description | default: site.description | default: 'LEADERS' %}
 
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="리더스 합동 법무사 사무소" />
+  <meta property="og:site_name" content="LEADERS" />
   <meta property="og:title" content="{{ og_title }}" />
   <meta property="og:description" content="{{ og_desc }}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   <meta property="og:image" content="{{ page.og_image | default: '/assets/img/og/og-main.png' | absolute_url }}">
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ og_title }}" />
   <meta name="twitter:description" content="{{ og_desc }}" />
   <meta name="twitter:image" content="{{ page.og_image | default: '/assets/img/og/og-main.png' | absolute_url }}">
 
-  <!-- Schema.org LocalBusiness / LegalService — 수원 지역 SEO 핵심 -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["LegalService", "LocalBusiness"],
-    "name": "리더스 합동 법무사 사무소",
-    "alternateName": ["수원 법무사", "수원 개인회생 법무사", "리더스합동법무사"],
-    "description": "수원 개인회생·개인파산·고소장 전문 법무사 사무소. 전 검찰수사관 김성태 법무사 직접 검토. 수원·용인·화성·평택·오산·안산 상담 가능.",
-    "url": "https://kstoffice6885.com",
-    "telephone": "+82-31-225-6885",
-    "email": "scatterfragrance@gmail.com",
-    "image": "https://kstoffice6885.com/assets/img/og/og-main.png",
-    "logo": "https://kstoffice6885.com/assets/img/logo/logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "광교중앙로 244, 301호 (법조타운사거리)",
-      "addressLocality": "수원시 영통구",
-      "addressRegion": "경기도",
-      "postalCode": "16505",
-      "addressCountry": "KR"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 37.2832,
-      "longitude": 127.0447
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "d
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":["LegalService","LocalBusiness"],"name":"LEADERS","alternateName":["수원 법무사","수원 개인회생 법무사"],"url":"https://kstoffice6885.com","telephone":"+82-31-225-6885","address":{"@type":"PostalAddress","streetAddress":"광교중앙로 244, 301호","addressLocality":"수원시 영통구","addressRegion":"경기도","postalCode":"16505","addressCountry":"KR"},"areaServed":[{"@type":"City","name":"수원시"},{"@type":"City","name":"용인시"},{"@type":"City","name":"화성시"},{"@type":"City","name":"평택시"},{"@type":"City","name":"오산시"}]}</script>
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBDG4WZD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  {% include header.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  {% include side-links.html %}
+  {% include footer.html %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+
+      const header = document.getElementById('siteHeader');
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        if (!header) return;
+        const currY = window.scrollY;
+        if (currY > lastY + 10 && currY > 100) header.classList.add('header--hidden');
+        else if (currY < lastY - 10) header.classList.remove('header--hidden');
+        lastY = currY;
+      }, { passive: true });
+    });
+  </script>
+</body>
+</html>

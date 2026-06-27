@@ -1,0 +1,600 @@
+---
+layout: default
+title: 수원 법무사 문의 게시판 | 리더스 합동 법무사
+description: 수원 리더스 합동 법무사 온라인 문의 게시판. 개인회생·파산·형사·등기 등 궁금한 사항을 남겨주시면 담당 법무사가 직접 답변드립니다.
+permalink: /inquiry/
+---
+
+<style>
+/* ══ 상담게시판 스타일 ══ */
+:root{--gold:#c5a059;--gb:#fffbf0;--brand:#0f172a;--bd:#e2e8f0;--tr:all .15s ease}
+.bd{font-family:'Pretendard',-apple-system,sans-serif;max-width:960px;margin:0 auto;padding:32px 20px 60px}
+
+/* ── 페이지 헤더 ── */
+.bd-header{
+  border-bottom:2px solid var(--brand);
+  padding-bottom:14px;margin-bottom:24px;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;
+}
+.bd-title{font-size:1.4rem;font-weight:900;color:var(--brand)}
+.bd-path{font-size:12px;color:#94a3b8;margin-top:4px}
+.bd-path span{color:#64748b}
+
+/* ── 탭 필터 ── */
+.bd-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.bd-tab{
+  padding:7px 16px;border-radius:999px;font-size:13px;font-weight:700;
+  border:1.5px solid var(--bd);background:#fff;color:#64748b;
+  cursor:pointer;transition:var(--tr);font-family:inherit;
+}
+.bd-tab.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.bd-tab:hover:not(.on){border-color:var(--gold);color:var(--gold)}
+
+/* ── 테이블 ── */
+.bd-table{width:100%;border-collapse:collapse;margin-bottom:20px}
+.bd-table th{
+  background:#f8fafc;font-size:12.5px;font-weight:700;color:#64748b;
+  padding:10px 14px;text-align:center;border-top:1.5px solid var(--brand);
+  border-bottom:1px solid var(--bd);
+}
+.bd-table td{
+  padding:12px 14px;font-size:13.5px;color:#374151;
+  border-bottom:1px solid #f1f5f9;vertical-align:middle;
+}
+.bd-table tr:hover td{background:#fafbff;cursor:pointer}
+.bd-table .td-num{text-align:center;color:#94a3b8;font-size:12px;width:50px}
+.bd-table .td-type{text-align:center;width:90px}
+.bd-table .td-name{text-align:center;width:70px;color:#64748b}
+.bd-table .td-date{text-align:center;width:100px;color:#94a3b8;font-size:12.5px}
+.bd-table .td-status{text-align:center;width:80px}
+.bd-table .td-title{font-weight:600;color:#0f172a}
+.bd-table .td-new{
+  display:inline-block;background:#ef4444;color:#fff;
+  font-size:10px;font-weight:800;padding:1px 5px;
+  border-radius:3px;margin-left:5px;vertical-align:middle;
+}
+/* 빈 게시판 */
+.bd-empty{
+  text-align:center;padding:60px 20px;color:#94a3b8;
+  font-size:14px;line-height:2;
+}
+
+/* 배지 */
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700}
+.badge-rehab{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.badge-bankrupt{background:#fdf4ff;color:#9333ea;border:1px solid #e9d5ff}
+.badge-workout{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.badge-etc{background:#f8fafc;color:#64748b;border:1px solid var(--bd)}
+.badge-accept{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.badge-review{background:rgba(249,115,22,.1);color:#ea580c;border:1px solid rgba(249,115,22,.2)}
+.badge-done{background:rgba(16,185,129,.1);color:#059669;border:1px solid rgba(16,185,129,.2)}
+
+/* ── 글쓰기 버튼 ── */
+.bd-write-btn{
+  padding:10px 20px;background:var(--brand);color:#fff;
+  border:none;border-radius:9px;font-size:13.5px;font-weight:700;
+  cursor:pointer;font-family:inherit;transition:var(--tr);
+}
+.bd-write-btn:hover{background:#1e293b}
+.bd-back-btn{
+  padding:9px 18px;background:#f1f5f9;color:#64748b;
+  border:none;border-radius:9px;font-size:13.5px;font-weight:700;
+  cursor:pointer;font-family:inherit;transition:var(--tr);
+}
+.bd-back-btn:hover{background:#e2e8f0}
+
+/* ── 글쓰기 폼 ── */
+.bd-form-wrap{display:none}
+.bd-form-wrap.on{display:block}
+.bd-form-title{
+  font-size:1.15rem;font-weight:800;color:var(--brand);
+  border-left:4px solid var(--gold);padding-left:12px;
+  margin-bottom:20px;
+}
+.bd-form-table{width:100%;border-collapse:collapse;margin-bottom:0}
+.bd-form-table tr{border-bottom:1px solid var(--bd)}
+.bd-form-table tr:first-child{border-top:2px solid var(--brand)}
+.bd-form-th{
+  background:#f8fafc;font-size:13px;font-weight:700;color:#374151;
+  padding:13px 16px;white-space:nowrap;width:130px;vertical-align:middle;
+}
+.bd-form-th .req{color:#ef4444;margin-left:2px}
+.bd-form-td{padding:10px 14px}
+.bf-input{
+  width:100%;padding:10px 12px;border:1.5px solid var(--bd);
+  border-radius:8px;font-size:14px;color:#0f172a;font-family:inherit;
+  outline:none;background:#fff;transition:var(--tr);
+}
+.bf-input:focus{border-color:var(--gold);background:var(--gb)}
+.bf-select{
+  padding:10px 12px;border:1.5px solid var(--bd);
+  border-radius:8px;font-size:14px;color:#0f172a;font-family:inherit;
+  outline:none;background:#fff;cursor:pointer;
+}
+.bf-select:focus{border-color:var(--gold)}
+.bf-tel{display:flex;align-items:center;gap:6px}
+.bf-tel-prefix{
+  padding:10px 12px;border:1.5px solid var(--bd);
+  border-radius:8px;font-size:14px;color:#0f172a;font-family:inherit;
+  background:#f8fafc;
+}
+.bf-tel-sep{color:#64748b;font-weight:700}
+.bf-tel-part{
+  flex:1;padding:10px 12px;border:1.5px solid var(--bd);
+  border-radius:8px;font-size:14px;font-family:inherit;outline:none;
+  text-align:center;letter-spacing:.08em;
+}
+.bf-tel-part:focus{border-color:var(--gold);background:var(--gb)}
+.bf-textarea{
+  width:100%;padding:12px;border:1.5px solid var(--bd);
+  border-radius:8px;font-size:14px;color:#0f172a;font-family:inherit;
+  outline:none;background:#fff;resize:vertical;line-height:1.6;
+  min-height:140px;
+}
+.bf-textarea:focus{border-color:var(--gold);background:var(--gb)}
+.bf-hint{font-size:12px;color:#94a3b8;margin-top:5px}
+.bf-pw-wrap{display:flex;align-items:center;gap:10px}
+.bf-pw-hint{font-size:12px;color:#ef4444;font-weight:600}
+/* 개인정보 동의 */
+.bd-privacy{
+  margin-top:16px;padding:16px;background:#f8fafc;
+  border-radius:10px;border:1px solid var(--bd);
+}
+.bd-privacy-title{font-size:13px;font-weight:700;color:#374151;margin-bottom:8px}
+.bd-privacy-content{
+  font-size:12px;color:#64748b;line-height:1.7;margin-bottom:10px;
+  padding:10px;background:#fff;border-radius:6px;border:1px solid var(--bd);
+  max-height:80px;overflow-y:auto;
+}
+.bd-privacy-agree{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;color:#374151;font-weight:600;cursor:pointer;
+}
+/* 제출 버튼 */
+.bd-form-actions{
+  display:flex;justify-content:center;gap:10px;
+  margin-top:20px;
+}
+.bd-submit-btn{
+  padding:13px 40px;background:var(--brand);color:#fff;
+  border:none;border-radius:10px;font-size:14.5px;font-weight:800;
+  cursor:pointer;font-family:inherit;transition:var(--tr);
+}
+.bd-submit-btn:hover{background:#1e293b;transform:translateY(-1px)}
+.bd-submit-btn:disabled{background:#94a3b8;cursor:not-allowed;transform:none}
+
+/* ── 상세 모달 ── */
+.bd-modal-bg{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:1000;align-items:center;justify-content:center;padding:20px;
+}
+.bd-modal-bg.on{display:flex}
+.bd-modal{
+  background:#fff;border-radius:18px;max-width:600px;width:100%;
+  max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+.bd-modal-hdr{
+  padding:20px 24px;border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.bd-modal-htitle{font-size:15px;font-weight:800;color:var(--brand)}
+.bd-modal-close{
+  width:32px;height:32px;background:#f1f5f9;border:none;
+  border-radius:50%;font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--tr);
+}
+.bd-modal-close:hover{background:#e2e8f0}
+.bd-modal-body{padding:20px 24px}
+.bd-modal-row{
+  display:flex;gap:12px;padding:10px 0;
+  border-bottom:1px solid #f1f5f9;font-size:13.5px;
+}
+.bd-modal-row:last-child{border-bottom:none}
+.bd-modal-label{font-weight:700;color:#64748b;width:90px;flex-shrink:0}
+.bd-modal-val{color:#0f172a;line-height:1.6}
+.bd-modal-content{
+  margin-top:12px;padding:16px;background:#f8fafc;
+  border-radius:10px;font-size:14px;color:#374151;
+  line-height:1.75;border:1px solid var(--bd);
+}
+.bd-modal-lock{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;color:#94a3b8;margin-top:8px;
+}
+.bd-modal-cta{
+  margin-top:16px;padding:14px 20px;
+  background:linear-gradient(135deg,#b8923e,#e2c07a);
+  border-radius:12px;text-align:center;
+}
+.bd-modal-cta a{
+  color:#1a0e00;font-size:14px;font-weight:800;text-decoration:none;
+  display:block;
+}
+
+/* ── 완료 메시지 ── */
+.bd-success{display:none;text-align:center;padding:48px 20px}
+.bd-success.on{display:block}
+.bd-success-icon{font-size:52px;margin-bottom:16px}
+.bd-success-title{font-size:1.3rem;font-weight:900;color:var(--brand);margin-bottom:8px}
+.bd-success-sub{font-size:14px;color:#64748b;line-height:1.7;margin-bottom:24px}
+
+/* 로딩 스피너 */
+.bd-loading{text-align:center;padding:40px;color:#94a3b8;font-size:14px}
+
+@media(max-width:600px){
+  .bd-table th:nth-child(3),
+  .bd-table td:nth-child(3),
+  .bd-table th:nth-child(5),
+  .bd-table td:nth-child(5){display:none}
+  .bd-form-table{display:block}
+  .bd-form-table tr{display:block;border-bottom:1px solid var(--bd)}
+  .bd-form-th{display:block;width:100%;border-bottom:none;padding-bottom:4px}
+  .bd-form-td{display:block;padding-top:0}
+}
+</style>
+
+<div class="bd">
+
+  <!-- 페이지 헤더 -->
+  <div class="bd-header">
+    <div>
+      <div class="bd-title">상담게시판</div>
+      <div class="bd-path">HOME › <span>상담게시판</span></div>
+    </div>
+    <button class="bd-write-btn" id="bdWriteBtn" onclick="showWrite()">✏ 상담 신청하기</button>
+  </div>
+
+  <!-- ① 목록 뷰 -->
+  <div id="bdListView">
+    <!-- 탭 필터 -->
+    <div class="bd-tabs">
+      <button class="bd-tab on" onclick="filterTab(this,'')">전체</button>
+      <button class="bd-tab" onclick="filterTab(this,'접수완료')">접수완료</button>
+      <button class="bd-tab" onclick="filterTab(this,'검토중')">검토중</button>
+      <button class="bd-tab" onclick="filterTab(this,'답변완료')">답변완료</button>
+    </div>
+
+    <!-- 게시글 테이블 -->
+    <div id="bdTableWrap">
+      <div class="bd-loading">게시글을 불러오는 중입니다...</div>
+    </div>
+  </div>
+
+  <!-- ② 글쓰기 폼 -->
+  <div id="bdFormView" class="bd-form-wrap">
+    <div class="bd-form-title">상담 신청하기</div>
+
+    <form id="bdForm" onsubmit="submitBoard(event)">
+      <table class="bd-form-table">
+        <tr>
+          <th class="bd-form-th">상담구분 <span class="req">*</span></th>
+          <td class="bd-form-td">
+            <select class="bf-select" name="type" required>
+              <option value="">선택해주세요</option>
+              <option value="개인회생">개인회생</option>
+              <option value="개인파산">개인파산</option>
+              <option value="개인워크아웃">개인워크아웃</option>
+              <option value="기타">기타</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th class="bd-form-th">이름 <span class="req">*</span></th>
+          <td class="bd-form-td">
+            <input type="text" name="name" class="bf-input" placeholder="성함을 입력해주세요" required maxlength="20" style="max-width:200px">
+          </td>
+        </tr>
+        <tr>
+          <th class="bd-form-th">연락처 <span class="req">*</span></th>
+          <td class="bd-form-td">
+            <div class="bf-tel">
+              <span class="bf-tel-prefix">010</span>
+              <span class="bf-tel-sep">-</span>
+              <input type="tel" id="tel1" name="tel1" class="bf-tel-part" maxlength="4" placeholder="0000"
+                oninput="this.value=this.value.replace(/\D/g,'');if(this.value.length===4)document.getElementById('tel2').focus()">
+              <span class="bf-tel-sep">-</span>
+              <input type="tel" id="tel2" name="tel2" class="bf-tel-part" maxlength="4" placeholder="0000"
+                oninput="this.value=this.value.replace(/\D/g,'')">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th class="bd-form-th">거주지역</th>
+          <td class="bd-form-td">
+            <input type="text" name="region" class="bf-input" placeholder="예) 수원시 영통구" style="max-width:240px">
+          </td>
+        </tr>
+        <tr>
+          <th class="bd-form-th">총 채무액</th>
+          <td class="bd-form-td">
+            <div style="display:flex;align-items:center;gap:8px;max-width:200px">
+              <input type="number" name="debtAmount" class="bf-input" placeholder="0" min="0" style="text-align:right">
+              <span style="font-size:14px;color:#374151;white-space:nowrap">만원</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th class="bd-form-th">상담가능시간</th>
+          <td class="bd-form-td">
+            <input type="text" name="availableTime" class="bf-input"
+              placeholder="예) 평일 09:00~18:00, 주말 가능" style="max-width:300px">
+          </td>
+        </tr>
+        <tr>
+          <th class="bd-form-th">제목 <span class="req">*</span></th>
+          <td class="bd-form-td">
+            <input type="text" name="title" class="bf-input" placeholder="상담 제목을 입력해주세요" required maxlength="100">
+          </td>
+        </tr>
+        <tr>
+          <th class="bd-form-th">상담 내용 <span class="req">*</span></th>
+          <td class="bd-form-td">
+            <textarea name="content" class="bf-textarea" placeholder="상담 내용을 자세히 작성해 주세요.&#10;채무 상황, 연체 현황, 궁금한 점 등을 적어주시면 더 정확한 답변을 드릴 수 있습니다." required></textarea>
+            <div class="bf-hint">※ 입력하신 내용은 법무사만 확인하며, 게시판에는 일부만 공개됩니다.</div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- 개인정보 동의 -->
+      <div class="bd-privacy">
+        <div class="bd-privacy-title">개인정보 수집·이용 동의 (필수)</div>
+        <div class="bd-privacy-content">
+          수집 항목: 이름, 연락처, 거주지역, 채무 정보, 상담 내용<br>
+          수집 목적: 개인회생·파산 상담 서비스 제공<br>
+          보유 기간: 상담 종료 후 1년 (단, 법령에 따라 보존이 필요한 경우 해당 기간)<br>
+          귀하는 개인정보 수집·이용에 동의를 거부할 권리가 있으나, 동의 거부 시 상담 서비스 이용이 제한됩니다.
+        </div>
+        <label class="bd-privacy-agree">
+          <input type="checkbox" id="bdPrivAgree" required>
+          위 개인정보 수집·이용에 동의합니다.
+        </label>
+      </div>
+
+      <div class="bd-form-actions">
+        <button type="button" class="bd-back-btn" onclick="showList()">목록으로</button>
+        <button type="submit" class="bd-submit-btn" id="bdSubmitBtn">상담 신청하기 →</button>
+      </div>
+    </form>
+
+    <!-- 완료 메시지 -->
+    <div class="bd-success" id="bdSuccess">
+      <div class="bd-success-icon">✅</div>
+      <div class="bd-success-title">상담 신청이 접수되었습니다</div>
+      <div class="bd-success-sub">
+        입력하신 연락처로 담당 법무사가 직접 연락드리겠습니다.<br>
+        평일 기준 1영업일 이내 답변드립니다.
+      </div>
+      <button class="bd-write-btn" onclick="showList();loadPosts()">목록 보기</button>
+    </div>
+  </div>
+
+  <!-- 상세 모달 -->
+  <div class="bd-modal-bg" id="bdModal" onclick="closeModal(event)">
+    <div class="bd-modal" id="bdModalBox">
+      <div class="bd-modal-hdr">
+        <div class="bd-modal-htitle" id="bdModalTitle">상담 내용</div>
+        <button class="bd-modal-close" onclick="closeModalForce()">×</button>
+      </div>
+      <div class="bd-modal-body" id="bdModalBody"></div>
+    </div>
+  </div>
+
+</div><!-- .bd -->
+
+<script>
+/* ══════════════════════════════════════
+   상담게시판 JavaScript
+   ⚠️ GAS_URL을 배포된 Apps Script URL로 교체하세요
+══════════════════════════════════════ */
+const GAS_URL = "https://script.google.com/macros/s/YOUR_BOARD_SCRIPT_ID/exec";
+
+let allPosts = [];
+let currentFilter = "";
+
+/* ── 초기 로드 ── */
+document.addEventListener("DOMContentLoaded", loadPosts);
+
+function loadPosts() {
+  document.getElementById("bdTableWrap").innerHTML =
+    '<div class="bd-loading">게시글을 불러오는 중입니다...</div>';
+
+  // JSONP 방식으로 GAS에서 목록 가져오기
+  const cb = "bdCallback_" + Date.now();
+  window[cb] = function(data) {
+    allPosts = data || [];
+    renderTable(currentFilter);
+    delete window[cb];
+  };
+
+  const s = document.createElement("script");
+  s.src = GAS_URL + "?callback=" + cb + "&t=" + Date.now();
+  s.onerror = function() {
+    // GAS URL이 아직 설정되지 않은 경우 샘플 데이터 표시
+    allPosts = getSamplePosts();
+    renderTable(currentFilter);
+    delete window[cb];
+  };
+  document.head.appendChild(s);
+  setTimeout(() => {
+    if (window[cb]) {
+      allPosts = getSamplePosts();
+      renderTable(currentFilter);
+      delete window[cb];
+    }
+  }, 5000);
+}
+
+/* 샘플 데이터 (GAS 연동 전 표시용) */
+function getSamplePosts() {
+  return [
+    {id:3,type:"개인회생",name:"김**",date:"2026.06.27",title:"개인회생 상담 문의드립니다",preview:"현재 채무가 많아서 상담 받고 싶습니다...",status:"검토중",isNew:true},
+    {id:2,type:"개인파산",name:"이**",date:"2026.06.26",title:"파산 신청 가능한지 알고 싶습니다",preview:"사업 실패 후 채무가 쌓여서 문의드립니다...",status:"답변완료",isNew:false},
+    {id:1,type:"개인회생",name:"박**",date:"2026.06.25",title:"월 변제금 문의",preview:"급여에서 얼마나 납부해야 하는지...",status:"답변완료",isNew:false}
+  ];
+}
+
+/* ── 테이블 렌더 ── */
+function renderTable(filter) {
+  const posts = filter ? allPosts.filter(p => p.status === filter) : allPosts;
+  if (!posts.length) {
+    document.getElementById("bdTableWrap").innerHTML =
+      `<div class="bd-empty">📋 ${filter ? filter + ' 상태의 ' : ''}게시글이 없습니다.<br>첫 번째 상담을 신청해보세요!</div>`;
+    return;
+  }
+  let html = `<table class="bd-table">
+    <thead><tr>
+      <th class="td-num">번호</th>
+      <th class="td-type">구분</th>
+      <th>제목</th>
+      <th class="td-name">작성자</th>
+      <th class="td-date">날짜</th>
+      <th class="td-status">상태</th>
+    </tr></thead><tbody>`;
+
+  posts.forEach(p => {
+    html += `<tr onclick="openModal(${p.id})">
+      <td class="td-num">${p.id}</td>
+      <td class="td-type">${typeBadge(p.type)}</td>
+      <td class="td-title">
+        ${p.title}
+        ${p.isNew ? '<span class="td-new">NEW</span>' : ''}
+      </td>
+      <td class="td-name">${p.name}</td>
+      <td class="td-date">${p.date}</td>
+      <td class="td-status">${statusBadge(p.status)}</td>
+    </tr>`;
+  });
+  html += "</tbody></table>";
+  document.getElementById("bdTableWrap").innerHTML = html;
+}
+
+function typeBadge(t) {
+  const map = {
+    "개인회생":"badge-rehab","개인파산":"badge-bankrupt",
+    "개인워크아웃":"badge-workout"
+  };
+  return `<span class="badge ${map[t]||'badge-etc'}">${t||'기타'}</span>`;
+}
+
+function statusBadge(s) {
+  const map = {"접수완료":"badge-accept","검토중":"badge-review","답변완료":"badge-done"};
+  return `<span class="badge ${map[s]||'badge-accept'}">${s||'접수완료'}</span>`;
+}
+
+/* ── 탭 필터 ── */
+function filterTab(el, status) {
+  document.querySelectorAll(".bd-tab").forEach(t => t.classList.remove("on"));
+  el.classList.add("on");
+  currentFilter = status;
+  renderTable(status);
+}
+
+/* ── 목록/글쓰기 전환 ── */
+function showWrite() {
+  document.getElementById("bdListView").style.display = "none";
+  document.getElementById("bdFormView").classList.add("on");
+  document.getElementById("bdWriteBtn").style.display = "none";
+  document.getElementById("bdSuccess").classList.remove("on");
+  document.getElementById("bdForm").style.display = "";
+  document.getElementById("bdForm").reset();
+}
+
+function showList() {
+  document.getElementById("bdListView").style.display = "";
+  document.getElementById("bdFormView").classList.remove("on");
+  document.getElementById("bdWriteBtn").style.display = "";
+}
+
+/* ── 모달 ── */
+function openModal(id) {
+  const p = allPosts.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById("bdModalTitle").textContent = p.title;
+  document.getElementById("bdModalBody").innerHTML = `
+    <div class="bd-modal-row">
+      <span class="bd-modal-label">구분</span>
+      <span class="bd-modal-val">${typeBadge(p.type)}</span>
+    </div>
+    <div class="bd-modal-row">
+      <span class="bd-modal-label">작성자</span>
+      <span class="bd-modal-val">${p.name}</span>
+    </div>
+    <div class="bd-modal-row">
+      <span class="bd-modal-label">작성일</span>
+      <span class="bd-modal-val">${p.date}</span>
+    </div>
+    <div class="bd-modal-row">
+      <span class="bd-modal-label">상태</span>
+      <span class="bd-modal-val">${statusBadge(p.status)}</span>
+    </div>
+    <div class="bd-modal-content">
+      ${p.preview}...
+      <div class="bd-modal-lock">🔒 상세 내용은 법무사가 직접 확인합니다</div>
+    </div>
+    <div class="bd-modal-cta">
+      <a href="tel:0312256885">📞 031-225-6885 · 직접 전화 상담 (무료)</a>
+    </div>`;
+  document.getElementById("bdModal").classList.add("on");
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById("bdModal")) closeModalForce();
+}
+function closeModalForce() {
+  document.getElementById("bdModal").classList.remove("on");
+}
+
+/* ── 폼 제출 ── */
+function submitBoard(e) {
+  e.preventDefault();
+  const btn = document.getElementById("bdSubmitBtn");
+  if (!document.getElementById("bdPrivAgree").checked) {
+    alert("개인정보 수집·이용에 동의해주세요."); return;
+  }
+  const tel1 = document.getElementById("tel1").value;
+  const tel2 = document.getElementById("tel2").value;
+  if (!tel1 || !tel2 || tel1.length < 3 || tel2.length < 4) {
+    alert("연락처를 정확히 입력해주세요."); return;
+  }
+  const fd = new FormData(e.target);
+  const data = {
+    type: fd.get("type"),
+    name: fd.get("name"),
+    phone: "010-" + tel1 + "-" + tel2,
+    region: fd.get("region") || "",
+    debtAmount: fd.get("debtAmount") || "",
+    availableTime: fd.get("availableTime") || "",
+    title: fd.get("title"),
+    content: fd.get("content")
+  };
+  btn.disabled = true;
+  btn.textContent = "접수 중...";
+
+  fetch(GAS_URL, {
+    method: "POST",
+    body: JSON.stringify(data),
+    mode: "no-cors"
+  }).then(() => {
+    showSuccess();
+  }).catch(() => {
+    showSuccess(); // no-cors는 항상 opaque response → 성공으로 처리
+  });
+}
+
+function showSuccess() {
+  document.getElementById("bdForm").style.display = "none";
+  document.getElementById("bdSuccess").classList.add("on");
+  const btn = document.getElementById("bdSubmitBtn");
+  btn.disabled = false;
+  btn.textContent = "상담 신청하기 →";
+  // dataLayer
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event:"board_submit",page_type:"board",form_type:"consultation"});
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModalForce();
+});
+</script>

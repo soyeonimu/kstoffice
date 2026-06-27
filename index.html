@@ -49,43 +49,40 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
   <section class="total-solution js-reveal">
     <div class="leaders-container">
       <div class="section-title-area">
-        <span class="top-label">Our Specialized Solutions</span>
-        <h2>수원 개인회생부터 형사사건까지,<strong>사건 해결의 기준</strong>을 제시합니다</h2>
+        <span class="top-label">업무 분야</span>
+        <h2>수원 개인회생부터 형사사건까지,<br><strong>사건 해결의 기준</strong>을 제시합니다</h2>
       </div>
 
-      <div class="sol-grid-refined">
-        <div class="sol-card-premium">
-          <span class="tag-gold">변호사 대비 합리적 선임료 정책</span>
+      <div class="sol-grid">
+        <a href="/what-is" class="sol-card">
           <h3>개인회생 · 파산</h3>
-          <p>법무사 직접 밀착 관리로<br>기각 없는 확실한 면책 결정</p>
-          <a href="/what-is" class="sol-link-gold">개인회생 안내 ➔</a>
-        </div>
+          <p>법무사 직접 밀착 관리로 기각 없는 확실한 면책 결정</p>
+          <span class="sol-more">자세히 보기 →</span>
+        </a>
 
-        <div class="sol-card-premium flat">
-          <span class="tag-gold">수사관 20년 실무 노하우</span>
+        <a href="/complaint" class="sol-card">
           <h3>형사 사건</h3>
-          <p>수사 기관의 판단 기준을<br>꿰뚫는 치밀한 전략적 대응</p>
-          <a href="/complaint" class="sol-link-gold">고소장 작성 전략 ➔</a>
-        </div>
+          <p>수사 기관의 판단 기준을 꿰뚫는 치밀한 전략적 대응</p>
+          <span class="sol-more">자세히 보기 →</span>
+        </a>
 
-        <div class="sol-card-premium flat">
-          <span class="tag-gold">연락두절, 가출, 이혼</span>
+        <a href="/international-divorce" class="sol-card">
           <h3>국제이혼</h3>
-          <p>소재가 불분명한 까다로운 절차,<br><strong>추가금 없는 120만원</strong> 정찰제</p>
-          <a href="/international-divorce" class="sol-link-gold">비용 상세안내 ➔</a>
-        </div>
+          <p>소재가 불분명한 까다로운 절차, 추가금 없는 120만원 정찰제</p>
+          <span class="sol-more">자세히 보기 →</span>
+        </a>
 
-        <div class="sol-card-premium flat">
+        <a href="/civil/complaint" class="sol-card">
           <h3>민사 · 가사소송</h3>
           <p>대여금, 손해배상, 상속 등 일상의 분쟁 해결</p>
-          <a href="/civil/complaint" class="sol-link-gold">민사 솔루션 ➔</a>
-        </div>
+          <span class="sol-more">자세히 보기 →</span>
+        </a>
 
-        <div class="sol-card-premium flat">
-          <h3>부동산 · 법인· 상속등기</h3>
+        <a href="/registry/realestate" class="sol-card">
+          <h3>부동산 · 법인 · 상속등기</h3>
           <p>정확한 권리분석을 통한 신속한 재산권 보호</p>
-          <a href="/registry/realestate" class="sol-link-gold">등기 서비스 ➔</a>
-        </div>
+          <span class="sol-more">자세히 보기 →</span>
+        </a>
       </div>
     </div>
   </section>
@@ -131,39 +128,35 @@ description: 수원 개인회생·개인파산 전문 리더스 합동 법무사
   .btn-primary { background: var(--brand-accent); color: #fff; padding: 20px 45px; border-radius: 12px; font-weight: 800; text-decoration: none; transition: var(--transition); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); }
   .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; padding: 20px 45px; border-radius: 12px; font-weight: 800; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(5px); }
 
-  /* --- [2] Solution Section (흰색 배경 + 네이비 카드) --- */
-  .total-solution { padding: 120px 0; background: #fff; }
-  .section-title-area { margin-bottom: 60px; text-align: center; }
-  .top-label { color: var(--brand-accent); font-weight: 800; letter-spacing: 2px; font-size: 13px; display: block; margin-bottom: 15px; }
-  .section-title-area h2 { font-size: 2.8rem; font-weight: 800; color: var(--brand); }
+  /* --- [2] Solution Section --- */
+  .total-solution { padding: 100px 0; background: #f8fafc; }
+  .section-title-area { margin-bottom: 56px; text-align: center; }
+  .top-label { color: var(--brand-accent); font-weight: 700; letter-spacing: 2px; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 14px; }
+  .section-title-area h2 { font-size: 2.2rem; font-weight: 800; color: var(--brand); line-height: 1.45; word-break: keep-all; }
 
-  .sol-grid-refined { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
-  
-  .sol-card-premium { 
-    grid-column: span 2; 
-    background: var(--brand); /* 네이비 카드 */
-    padding: 50px 35px; 
-    border-radius: 28px; 
-    color: #fff;
-    transition: var(--transition);
-    display: flex; flex-direction: column; text-align: left;
+  .sol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  .sol-card {
+    display: flex; flex-direction: column;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 36px 32px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
-  .sol-card-premium.flat { grid-column: span 3; padding: 40px 35px; min-height: 200px; }
-  .sol-card-premium.highlight { background: #1e293b; border: 1px solid rgba(242,193,78,0.3); }
+  .sol-card:hover {
+    border-color: var(--brand-accent);
+    box-shadow: 0 8px 24px rgba(37,99,235,0.10);
+    transform: translateY(-4px);
+  }
+  .sol-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--brand); margin: 0 0 12px; }
+  .sol-card p { font-size: 0.95rem; color: #64748b; line-height: 1.75; flex-grow: 1; margin: 0; word-break: keep-all; }
+  .sol-more { margin-top: 24px; font-size: 13px; font-weight: 700; color: var(--brand-accent); }
 
-  /* 호버 시 골드 테두리 */
-  .sol-card-premium:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(15,23,42,0.3); border-color: var(--gold); }
-
-  /* 태그 디자인 */
-  .tag-gold { font-size: 11px; font-weight: 900; color: var(--brand); background: var(--gold); padding: 5px 12px; border-radius: 5px; display: inline-block; margin-bottom: 20px; width: fit-content; }
-  .tag-blue-bold { font-size: 11px; font-weight: 900; color: #fff; background: var(--brand-accent); padding: 5px 12px; border-radius: 5px; display: inline-block; margin-bottom: 20px; width: fit-content; }
-  
-  .sol-card-premium h3 { font-size: 1.7rem; font-weight: 800; margin-bottom: 15px; color: #fff; }
-  .sol-card-premium p { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.6; word-break: keep-all; flex-grow: 1; }
-  .sol-card-premium p strong { color: var(--gold); }
-  
-  .sol-link-gold { margin-top: 25px; text-decoration: none; color: var(--gold); font-weight: 700; font-size: 14px; transition: 0.3s; border-bottom: 1px solid rgba(242,193,78,0.3); width: fit-content; padding-bottom: 2px; }
-  .sol-link-gold:hover { border-color: var(--gold); padding-left: 5px; }
+  @media (max-width: 1024px) { .sol-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .sol-grid { grid-template-columns: 1fr; } }
 
   /* 애니메이션 */
   .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }

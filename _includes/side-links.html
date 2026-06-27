@@ -1,19 +1,6 @@
 <!-- 사이드 바로가기 플로팅 버튼 (리뉴얼: 아이콘 + 컬러 + 호버 확장) -->
 <div class="lds-fab" aria-label="빠른 상담 바로가기">
 
-  <!-- 30초 진단 (Primary CTA: 골드 + 펄스) -->
-  <a href="/rehab/diagnosis"
-     class="lds-fab__btn is-primary"
-     style="--c:#c5a059; --c2:#e6c98b; --txt:#1a1a1a;"
-     aria-label="30초 무료 자가진단">
-    <span class="lds-fab__ic" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-      </svg>
-    </span>
-    <span class="lds-fab__lbl">30초<br>진단</span>
-  </a>
-
   <!-- 전화 상담 (tel → phone_click 전환) -->
   <a href="tel:0312256885"
      class="lds-fab__btn"
@@ -138,20 +125,6 @@
     transform: translateX(0);
   }
 
-  /* Primary(진단): 항상 살짝 펼쳐서 시선 유도 + 펄스 */
-  .lds-fab__btn.is-primary{
-    width: 150px;
-    box-shadow: 0 8px 22px rgba(197,160,89,.42);
-    animation: ldsFabPulse 2.4s ease-in-out infinite;
-  }
-  .lds-fab__btn.is-primary .lds-fab__lbl{ opacity: 1; transform: translateX(0); }
-  .lds-fab__btn.is-primary:hover{ width: 150px; }
-
-  @keyframes ldsFabPulse{
-    0%,100%{ box-shadow: 0 8px 22px rgba(197,160,89,.42); }
-    50%{ box-shadow: 0 8px 30px rgba(197,160,89,.75); }
-  }
-
   /* color-mix 미지원 브라우저 폴백 */
   @supports not (background: color-mix(in srgb, red, blue)){
     .lds-fab__btn:hover{ box-shadow: 0 12px 26px rgba(15,23,42,.30); }
@@ -163,8 +136,6 @@
     .lds-fab__btn{ width: 50px; height: 50px; border-radius: 15px; }
     .lds-fab__ic{ width: 50px; height: 50px; }
     .lds-fab__ic svg{ width: 22px; height: 22px; }
-    .lds-fab__btn.is-primary{ width: 50px; animation: none; }
-    .lds-fab__btn.is-primary .lds-fab__lbl{ opacity: 0; }
     .lds-fab__btn:hover{ width: 50px; }
     .lds-fab__lbl{ display: none; }
   }

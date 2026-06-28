@@ -21,6 +21,7 @@ permalink: /rehab/diagnosis
   .lp-wrap {
     font-family: 'Pretendard', -apple-system, sans-serif;
     background: var(--page-bg);
+    padding-top: 64px; /* body padding 0 보정: 티커(36)+서브네비(44)=80px 자연위치 → 144px 시작 */
   }
 
   /* ════════════════════════════
@@ -418,6 +419,9 @@ permalink: /rehab/diagnosis
     align-items: stretch;
     margin-bottom: 0;
     flex-shrink: 0;
+    position: sticky;
+    top: 64px;
+    z-index: 9500;
   }
   .ht-label {
     flex-shrink: 0;
@@ -2134,10 +2138,12 @@ permalink: /rehab/diagnosis
 
   /* ════ 섹션 3: 대행 강조 ════ */
   .process-section {
-    background: var(--page-bg);
+    background: #0d1628;
     padding: 60px 0;
     border-bottom: 1px solid rgba(197,160,89,0.12);
   }
+  .process-section .why-title { color: #fff; }
+  .process-section .info-label { color: rgba(255,255,255,0.5) !important; }
   .process-split {
     display: grid;
     grid-template-columns: 1fr auto 1.6fr;
@@ -4301,10 +4307,10 @@ permalink: /rehab/diagnosis
 <style>
   .rehab-subnav {
     position: sticky;
-    top: 64px;
+    top: 100px; /* 64px 헤더 + 36px 티커 */
     z-index: 9000;
-    background: #f8fafc;
-    border-bottom: 2px solid #e2e8f0;
+    background: #131c2e;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .rehab-subnav-inner {
     max-width: 1120px;
@@ -4321,55 +4327,45 @@ permalink: /rehab/diagnosis
     display: flex;
     align-items: center;
     padding: 0 18px;
-    height: 46px;
+    height: 44px;
     font-size: 13px;
     font-weight: 600;
-    color: #64748b;
+    color: rgba(255,255,255,0.45);
     text-decoration: none;
     white-space: nowrap;
     border-bottom: 2px solid transparent;
     transition: color 0.15s, border-color 0.15s;
     cursor: pointer;
   }
-  .rsn-item:hover { color: #0f172a; }
+  .rsn-item:hover { color: rgba(255,255,255,0.85); }
   .rsn-item.active {
-    color: #2563eb;
-    border-bottom-color: #2563eb;
+    color: #c5a059;
+    border-bottom-color: #c5a059;
     font-weight: 800;
   }
+  /* 진단하기 CTA 버튼 */
   .rsn-item.rsn-cta {
     margin-left: auto;
-    color: #0f172a;
-    background: #f1f5f9;
+    background: linear-gradient(135deg, #c5a059, #e2c28d);
+    color: #0f172a !important;
+    font-weight: 900 !important;
     border-radius: 8px;
+    padding: 0 16px !important;
     border-bottom: none !important;
-    padding: 0 16px;
-    height: 34px;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    font-size: 12px;
+    height: 30px;
+    font-size: 12.5px;
+    white-space: nowrap;
+    transition: opacity 0.2s, transform 0.2s;
   }
-  .rsn-item.rsn-cta:hover { background: #e2e8f0; }
+  .rsn-item.rsn-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+  /* 앵커 클릭 시 sticky 요소 아래에 맞게 오프셋 */
+  [id] { scroll-margin-top: 148px; }
   @media (max-width: 640px) {
     .rsn-item { padding: 0 12px; font-size: 12.5px; }
-    .rsn-item.rsn-cta { display: none; }
   }
 </style>
 
-<nav class="rehab-subnav" aria-label="개인회생·파산 메뉴">
-  <div class="rehab-subnav-inner">
-    <a class="rsn-item" href="#sec-guide">개인회생 안내</a>
-    <a class="rsn-item" href="#sec-procedure">개인회생 절차</a>
-    <a class="rsn-item" href="#sec-price">개인회생 비용</a>
-    <a class="rsn-item" href="#sec-cases">사례</a>
-    <a class="rsn-item" href="#sec-faq">FAQ</a>
-    <a class="rsn-item active" href="#heroSection">✦ 진단하기</a>
-  </div>
-</nav>
-
-<div class="lp-wrap">
-
-  <!-- 상단 티커 — 실시간 진단 현황 -->
+<!-- ══ 티커 (lp-wrap 바깥 — overflow:hidden 영향 없음) ══ -->
 <div id="globalTicker" class="hero-ticker">
   <div class="ht-label">진단 현황</div>
   <div class="ht-track-wrap">
@@ -4402,6 +4398,20 @@ permalink: /rehab/diagnosis
     </div>
   </div>
 </div>
+
+<!-- ══ 서브네비 (lp-wrap 바깥 — sticky 뷰포트 기준 적용) ══ -->
+<nav class="rehab-subnav" aria-label="개인회생·파산 메뉴">
+  <div class="rehab-subnav-inner">
+    <a class="rsn-item" href="#sec-guide">개인회생 안내</a>
+    <a class="rsn-item" href="#sec-procedure">개인회생 절차</a>
+    <a class="rsn-item" href="#sec-price">개인회생 비용</a>
+    <a class="rsn-item" href="#sec-cases">사례</a>
+    <a class="rsn-item" href="#sec-faq">FAQ</a>
+    <a class="rsn-item rsn-cta" href="#heroSection" onclick="event.preventDefault(); if(typeof startQuiz==='function') startQuiz();">개인회생 진단하기 →</a>
+  </div>
+</nav>
+
+<div class="lp-wrap">
 
   <!-- ① 히어로 (2단: 헤드라인 + 미리보기 카드) -->
   <section id="heroSection" class="lp-hero" data-subnav="heroSection">
@@ -5148,10 +5158,24 @@ permalink: /rehab/diagnosis
     window.dataLayer.push(obj);
   }
 
+  function hideFunnelNav() {
+    const ticker = document.getElementById("globalTicker");
+    const subnav = document.querySelector(".rehab-subnav");
+    if (ticker) ticker.style.display = "none";
+    if (subnav) subnav.style.display = "none";
+  }
+  function showFunnelNav() {
+    const ticker = document.getElementById("globalTicker");
+    const subnav = document.querySelector(".rehab-subnav");
+    if (ticker) ticker.style.display = "";
+    if (subnav) subnav.style.display = "";
+  }
+
   function startQuiz() {
     document.getElementById("heroSection").classList.add("hidden");
     allInfoSections.forEach(s => s.classList.add("hidden"));
     document.getElementById("quizSection").classList.remove("hidden");
+    hideFunnelNav();
     window.scrollTo({ top: 0 });
     initDots();
     render();
@@ -5193,6 +5217,7 @@ permalink: /rehab/diagnosis
       document.getElementById("quizSection").classList.add("hidden");
       document.getElementById("heroSection").classList.remove("hidden");
       allInfoSections.forEach(s => s.classList.remove("hidden"));
+      showFunnelNav();
       cur = 0;
       return;
     }

@@ -5848,41 +5848,14 @@ permalink: /rehab/diagnosis
   /* ── 마지막 CTA 렌더 ── */
   function renderFinalCta() {
     const el = document.getElementById("finalCtaContent");
-    if (!el) return;
-    if (window._phoneCollected) {
-      el.innerHTML = `
-        <div class="fca-collected">✓ 접수 완료 — 아래에서 상세 결과를 확인하세요</div>
-        <a href="tel:0312256885" class="dash-tel-btn" style="margin-top:10px;display:block;text-align:center;">법무사 직접 연결 →</a>
-      `;
-    } else {
-      el.innerHTML = `
-        <div class="fca-wrap">
-          <div class="fca-headline">무료 PDF 결과지를 드립니다<br><span style="font-size:0.85em;opacity:0.8;">연락처를 남겨주시면 자가진단 결과를 즉시 발송합니다</span></div>
-          <form onsubmit="submitFinalCta(event)">
-            <input id="fcaPhone" type="tel" placeholder="010 - 0000 - 0000" maxlength="15" required
-              style="width:100%;padding:14px;border:1px solid rgba(255,255,255,0.15);border-radius:10px;
-                     background:rgba(255,255,255,0.07);color:#fff;font-size:15px;font-weight:700;
-                     margin-bottom:10px;box-sizing:border-box;" />
-            <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:12px;cursor:pointer;">
-              <input id="fcaAgree" type="checkbox" required />
-              <span>개인정보 수집·이용 동의 <a href="/privacy" target="_blank" style="color:rgba(197,160,89,0.7);text-decoration:underline;">(필수)</a></span>
-            </label>
-            <button type="submit" class="btn-gold" style="width:100%;padding:15px;font-size:15px;">📄 무료 PDF 결과지 받기 →</button>
-          </form>
-          <div class="fca-bottom-note">무료 · 수임 의무 없음 · 비밀 보장</div>
-        </div>
-      `;
-      setTimeout(() => {
-        const inp = document.getElementById("fcaPhone");
-        if (!inp) return;
-        inp.addEventListener("input", ev => {
-          let v = ev.target.value.replace(/\D/g,"");
-          if (v.length >= 7) v = v.slice(0,3)+"-"+v.slice(3,7)+"-"+v.slice(7,11);
-          else if (v.length >= 4) v = v.slice(0,3)+"-"+v.slice(3);
-          ev.target.value = v;
-        });
-      }, 50);
-    }
+    if (!el || !window._phoneCollected) return;
+    el.innerHTML = `
+      <div style="text-align:center;padding:20px 0 8px;">
+        <div style="color:#4ade80;font-size:18px;font-weight:900;margin-bottom:8px;">✓ 접수 완료</div>
+        <div style="color:rgba(255,255,255,.6);font-size:14px;margin-bottom:16px;">법무사가 확인 후 연락드립니다</div>
+        <a href="tel:0312256885" class="dash-tel-btn" style="display:inline-block;width:100%;text-align:center;box-sizing:border-box;">📞 031-225-6885 직접 연결 →</a>
+      </div>
+    `;
   }
 
   /* ── 결과 인라인 폼 전화번호 자동 포맷 ── */

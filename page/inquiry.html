@@ -109,6 +109,10 @@ permalink: /inquiry/
 .iq-editor:focus { border-color: #2563eb; }
 .iq-privacy-note { font-size: 0.78rem; color: #94a3b8; margin-top: 12px; line-height: 1.6; }
 .iq-privacy-note b { color: #475569; }
+.iq-agree-row { display: flex; align-items: center; gap: 10px; margin-top: 16px; padding: 12px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; }
+.iq-agree-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: #2563eb; cursor: pointer; flex-shrink: 0; }
+.iq-agree-row label { font-size: 0.95rem; color: #1e293b; font-weight: 600; cursor: pointer; line-height: 1.5; }
+.iq-agree-row label a { color: #2563eb; text-decoration: underline; }
 .btn-submit {
   width: 100%; margin-top: 20px;
   background: #0f172a; color: #fff;
@@ -282,10 +286,10 @@ permalink: /inquiry/
           <div class="iq-editor" id="f-content" contenteditable="true" data-placeholder="궁금하신 내용을 자유롭게 작성해 주세요.&#10;예) 채무 상황, 직업, 압류 여부, 고소 내용 등"></div>
         </div>
       </div>
-      <p class="iq-privacy-note">
-        <b>개인정보 안내:</b> 입력하신 이름·전화번호·채무액은 상담 목적으로만 사용되며, 제3자에게 제공되지 않습니다.
-        게시판에는 이름 일부만 표시됩니다. 내용 확인 시 비밀번호가 필요합니다.
-      </p>
+      <div class="iq-agree-row">
+        <input type="checkbox" id="f-agree" checked>
+        <label for="f-agree">개인정보 수집·이용 동의 (필수) &nbsp;·&nbsp; <a href="https://www.kstoffice6885.com/privacy" target="_blank">[보기]</a></label>
+      </div>
       <button class="btn-submit" id="submitBtn" onclick="submitInquiry()">문의 등록하기</button>
     </div>
     <div class="iq-success" id="writeSuccess" style="display:none">
@@ -501,6 +505,10 @@ function submitInquiry() {
   var title = document.getElementById('f-title').value.trim();
   var body  = document.getElementById('f-content').innerText.trim();
 
+  if (!document.getElementById('f-agree').checked) {
+    alert('개인정보 수집·이용에 동의해 주세요.');
+    return;
+  }
   if (!cat || !name || !phone || !pw || !title || !body) {
     alert('필수 항목(구분·이름·전화번호·비밀번호·제목·내용)을 모두 입력해 주세요.');
     return;

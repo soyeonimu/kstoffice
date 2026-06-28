@@ -134,54 +134,14 @@ permalink: /rehab/diagnosis
   .btn-start:hover .btn-start-arrow { transform: translateX(4px); }
 
   /* ════ 히어로 우측: 화이트 리포트 카드 ════ */
-  .preview-card {
-    background: #ffffff;
-    border-radius: 24px;
-    padding: 0;
-    box-shadow:
-      0 40px 100px rgba(0,0,0,0.55),
-      0 0 0 1px rgba(197,160,89,0.25),
-      0 0 60px rgba(197,160,89,0.12);
-    overflow: hidden;
-    position: relative;
-    animation: floatCard 4s ease-in-out infinite;
-  }
   @keyframes floatCard {
     0%,100% { transform: translateY(0px); }
     50%      { transform: translateY(-10px); }
   }
 
   /* 카드 상단 컬러 헤더 */
-  .preview-card-top {
-    background: linear-gradient(90deg, #111827 0%, #1f2937 100%);
-    padding: 18px 24px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(197,160,89,0.2);
-  }
-  .preview-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: var(--gold);
-    color: var(--brand);
-    font-size: 10px;
-    font-weight: 900;
-    padding: 4px 11px;
-    border-radius: 999px;
-    letter-spacing: .4px;
-  }
-  .preview-code {
-    font-size: 8px;
-    color: rgba(255,255,255,0.2);
-    font-weight: 500;
-    letter-spacing: 0.8px;
-  }
 
   /* 카드 본문 */
-  .preview-card-body { padding: 22px 24px 24px; }
-
   /* 페르소나 태그 */
   .sample-persona {
     display: inline-flex;
@@ -264,8 +224,6 @@ permalink: /rehab/diagnosis
   }
 
   /* 구분선 */
-  .preview-divider { height: 1px; background: #e2e8f0; margin: 14px 0; }
-
   /* 아코디언 */
   .acc-header {
     font-size: 10px;
@@ -335,32 +293,11 @@ permalink: /rehab/diagnosis
   .btn-sample-cta:hover { background: #1e3a5f; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15,23,42,0.3); }
 
   /* 체크항목·잠금 (구형 — 결과 페이지용으로 남김) */
-  .preview-checks { display: grid; gap: 7px; margin-bottom: 0; }
-  .preview-check {
-    display: flex; align-items: center; gap: 9px;
-    padding: 9px 12px;
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 8px;
-    font-size: 12px; font-weight: 600; color: #166534;
-  }
-  .preview-check-icon {
-    width: 18px; height: 18px;
-    background: #22c55e;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: 900; color: #fff;
-    flex-shrink: 0;
-  }
 
   /* 구형 스타일 (안 쓰이지만 남겨둠) */
-  .preview-locked-title { display:none; }
-  .preview-locked-items { display:none; }
   .pli-left,.pli-text,.pli-examples,.pli-bar,.pli-count,.pli-lock { display:none; }
   .prd-row,.prd-label,.prd-value,.prd-bars,.prd-redact { display:none; }
   .sample-payment,.sp-label,.sp-bar { display:none; }
-  .preview-lock-row { display:none; }
-
   /* 임시 unused */
   .sp-amount,.sp-unit { display:none; }
     margin-bottom: 4px;
@@ -488,22 +425,6 @@ permalink: /rehab/diagnosis
   .bc-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
   .bc-title { font-size: 13px; font-weight: 900; color: #0f172a; margin-bottom: 4px; }
   .bc-desc  { font-size: 11px; color: #64748b; line-height: 1.6; word-break: keep-all; }
-  .preview-lock-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 14px;
-    padding: 12px;
-    background: linear-gradient(135deg, rgba(197,160,89,0.15), rgba(197,160,89,0.08));
-    border: 1px solid rgba(197,160,89,0.35);
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--gold-light);
-    cursor: pointer;
-    transition: background .2s;
-  }
   .preview-lock-row:hover { background: rgba(197,160,89,0.22); }
 
   /* ════════════════════════════
@@ -1511,9 +1432,6 @@ permalink: /rehab/diagnosis
   .rs-value { transition: color .3s; }
 
   /* ══ 히어로 프리뷰 카드 float ══ */
-  .preview-card {
-    animation: floatCard 5s ease-in-out infinite;
-  }
   @keyframes floatCard {
     0%, 100% { transform: translateY(0); }
     50%       { transform: translateY(-8px); }
@@ -1819,50 +1737,7 @@ permalink: /rehab/diagnosis
 
   /* ════ ✓/⚠ 해석 리스트 ════ */
   /* ══ 현재 상태 분석 아코디언 ══ */
-  .interp-list { display: grid; gap: 8px; }
-  .interp-item { border-radius: 11px; overflow: hidden; }
-  .interp-item.ok   { border: 1px solid #bbf7d0; }
-  .interp-item.warn { border: 1px solid #fde68a; }
 
-  .interp-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 14px;
-    cursor: pointer;
-    user-select: none;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1.5;
-    transition: background .15s;
-  }
-  .interp-item.ok   .interp-header { background: #f0fdf4; color: #166534; }
-  .interp-item.warn .interp-header { background: #fffbeb; color: #92400e; }
-  .interp-item.ok   .interp-header:hover { background: #dcfce7; }
-  .interp-item.warn .interp-header:hover { background: #fef3c7; }
-
-  .interp-icon  { font-size: 14px; flex-shrink: 0; }
-  .interp-text  { flex: 1; }
-  .interp-chevron {
-    font-size: 13px;
-    flex-shrink: 0;
-    color: currentColor;
-    opacity: 0.5;
-    transition: transform .2s;
-  }
-  .interp-header.open .interp-chevron { transform: rotate(90deg); }
-
-  .interp-detail {
-    display: none;
-    padding: 12px 14px 14px 38px;
-    font-size: 13px;
-    line-height: 1.85;
-    word-break: keep-all;
-    border-top: 1px dashed;
-  }
-  .interp-detail.open { display: block; }
-  .interp-item.ok   .interp-detail { color: #14532d; border-color: #bbf7d0; background: #f0fdf4; }
-  .interp-item.warn .interp-detail { color: #78350f; border-color: #fde68a; background: #fffbeb; }
 
   /* 다크 배경(diag-block) 안 interp */
   .diag-block .interp-item.interp-item--ok   { border-color: rgba(74,222,128,0.25); }
@@ -1893,35 +1768,9 @@ permalink: /rehab/diagnosis
   }
 
   /* interp 하단 CTA */
-  .interp-cta {
-    padding: 16px 16px 4px;
-  }
-  .interp-cta-btn {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    color: var(--brand);
-    font-size: 14px;
-    font-weight: 900;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: var(--tr);
-    box-shadow: 0 4px 16px rgba(197,160,89,0.3);
-  }
   .interp-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(197,160,89,0.45); }
 
   /* interp 섹션 헤더 (diag-block 안) */
-  .diag-interp-head {
-    padding: 14px 22px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .diag-interp-list { padding: 14px 16px 16px; }
-
   /* ════ 공통 섹션 레이아웃 ════ */
   .info-inner {
     max-width: 1080px;
@@ -2551,54 +2400,6 @@ permalink: /rehab/diagnosis
     border-top: 1px solid rgba(197,160,89,0.15);
     padding: 22px 24px 20px;
   }
-  .atb-inner { text-align: center; }
-  .atb-headline {
-    font-size: 15px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.45;
-    margin-bottom: 14px;
-  }
-  .atb-headline em {
-    font-style: normal;
-    color: var(--gold, #c5a059);
-  }
-  .atb-stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-  }
-  .atb-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-  }
-  .atb-num {
-    font-size: 13px;
-    font-weight: 900;
-    color: var(--gold, #c5a059);
-  }
-  .atb-lbl {
-    font-size: 10px;
-    color: rgba(255,255,255,0.4);
-    white-space: nowrap;
-  }
-  .atb-dot {
-    color: rgba(197,160,89,0.3);
-    font-size: 18px;
-    line-height: 1;
-    padding-bottom: 10px;
-  }
-  .atb-quote {
-    font-size: 11.5px;
-    color: rgba(255,255,255,0.4);
-    line-height: 1.75;
-    word-break: keep-all;
-  }
 
   /* ════ 권위 신뢰 독립 블록 ════ */
   .auth-trust-standalone {
@@ -2678,37 +2479,6 @@ permalink: /rehab/diagnosis
   }
 
   /* ════ dash-gate 2버튼 레이아웃 ════ */
-  .dash-gate-note {
-    font-size: 12px;
-    color: #64748b;
-    text-align: center;
-    margin: 0 0 10px;
-    line-height: 1.6;
-  }
-  .dash-gate-row {
-    display: flex;
-    gap: 8px;
-  }
-  .dash-gate-btn { flex: 1; }
-  .dash-tel-btn-sm {
-    flex: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 14px;
-    background: #f1f5f9;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    color: #475569;
-    font-size: 12px;
-    font-weight: 700;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .dash-tel-btn-sm:hover { background: #e2e8f0; }
-
   /* ════ 주요 사항 카드 ════ */
   .check-card {
     background: #fff;
@@ -2901,136 +2671,13 @@ permalink: /rehab/diagnosis
   }
 
   /* ════ 핵심 분석 결과 카드 (다크 대시보드 스타일) ════ */
-  .dash-card {
-    background: #0f172a;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(197,160,89,0.22);
-  }
-  .dash-head {
-    padding: 16px 22px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .dash-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-  .dash-badge {
-    font-size: 10px;
-    font-weight: 700;
-    background: rgba(197,160,89,0.12);
-    color: #c5a059;
-    border: 1px solid rgba(197,160,89,0.28);
-    border-radius: 999px;
-    padding: 3px 10px;
-  }
-  .dash-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .dash-cell {
-    padding: 20px 22px;
-    border-right: 1px solid rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    transition: background 0.3s;
-  }
-  .dash-cell:nth-child(2n) { border-right: none; }
-  .dash-cell:nth-child(3), .dash-cell:nth-child(4) { border-bottom: none; }
-  .dash-key {
-    font-size: 10px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.38);
-    letter-spacing: .05em;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-  .dash-val {
-    font-size: 22px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.1;
-    word-break: keep-all;
-  }
-  .dash-val.dash-gold { color: #c5a059; }
-  .dash-val.dash-locked {
-    filter: blur(7px);
-    user-select: none;
-    pointer-events: none;
-  }
-  .dash-val.dash-revealed {
-    animation: dashReveal 0.4s cubic-bezier(0.22,1,0.36,1) both;
-  }
   @keyframes dashReveal {
     from { opacity: 0; transform: translateY(6px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .dash-val-unit {
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.4);
-    margin-left: 2px;
-  }
-  .dash-gate {
-    padding: 16px 22px 12px;
-    border-top: 1px solid rgba(197,160,89,0.1);
-  }
-  .dash-gate-btn {
-    width: 100%;
-    padding: 13px;
-    background: rgba(197,160,89,0.12);
-    border: 1.5px solid rgba(197,160,89,0.4);
-    border-radius: 12px;
-    color: #c5a059;
-    font-size: 14px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.22s;
-    letter-spacing: -.2px;
-    font-family: 'Pretendard', -apple-system, sans-serif;
-  }
   .dash-gate-btn:hover { background: rgba(197,160,89,0.22); transform: translateY(-1px); }
-  .dash-footer {
-    padding: 18px 22px 20px;
-    border-top: 1px solid rgba(197,160,89,0.1);
-    text-align: center;
-  }
-  .dash-footer-note {
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 12px;
-    line-height: 1.6;
-    word-break: keep-all;
-  }
-  .dash-tel-btn {
-    display: block;
-    width: 100%;
-    padding: 13px;
-    background: linear-gradient(135deg, #c5a059, #e2c28d);
-    border-radius: 12px;
-    color: #0f172a;
-    font-size: 14px;
-    font-weight: 900;
-    text-decoration: none;
-    text-align: center;
-    margin-bottom: 12px;
-    transition: opacity 0.2s;
-  }
-  .dash-tel-btn:hover { opacity: .88; }
-  .dash-reassure {
-    font-size: 11px;
-    color: rgba(255,255,255,0.25);
-  }
 
   /* ════ 변제금 범위 확인 버튼 / 미니폼 ════ */
-  .repay-gate {
-    padding: 14px 20px 4px;
-  }
   .btn-repay-range {
     width: 100%;
     padding: 13px 16px;
@@ -3048,11 +2695,6 @@ permalink: /rehab/diagnosis
     background: rgba(197,160,89,0.22);
     transform: translateY(-1px);
   }
-  .repay-mini-form {
-    padding: 18px 20px 16px;
-    border-top: 1px solid rgba(197,160,89,0.12);
-    animation: fadeSlideIn 0.3s ease both;
-  }
   @keyframes fadeSlideIn {
     from { opacity: 0; transform: translateY(-8px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -3069,30 +2711,7 @@ permalink: /rehab/diagnosis
     font-style: normal;
     color: #c5a059;
   }
-  .repay-mini-form input[type="tel"] {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 14px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(197,160,89,0.3);
-    border-radius: 8px;
-    color: #fff;
-    font-size: 15px;
-    margin-bottom: 10px;
-    outline: none;
-    font-family: 'Pretendard', -apple-system, sans-serif;
-  }
   .repay-mini-form input[type="tel"]::placeholder { color: rgba(255,255,255,0.3); }
-  .repay-mini-form input[type="tel"]:focus { border-color: #c5a059; }
-  .rmf-check {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-  }
   .rmf-check input { accent-color: #c5a059; width: 15px; height: 15px; flex-shrink: 0; }
   .rmf-note {
     font-size: 11px;
@@ -3102,19 +2721,7 @@ permalink: /rehab/diagnosis
     line-height: 1.7;
   }
   /* 잠금 해제 후 변제금 범위 표시 */
-  .repay-unlocked {
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(197,160,89,0.08);
-    border-top: 1px solid rgba(197,160,89,0.2);
-  }
-  .repay-unlocked-icon { font-size: 22px; }
-  .repay-unlocked-body {}
   .repay-unlocked-label { font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 3px; }
-  .repay-unlocked-value { font-size: 22px; font-weight: 900; color: #c5a059; }
-  .repay-unlocked-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; }
 
   /* 잠금 해제 게이트 */
   .unlock-gate {
@@ -3233,57 +2840,6 @@ permalink: /rehab/diagnosis
   }
 
   /* ══ 블록 1: 다크 통합 카드 ══ */
-  .diag-block {
-    background: #0f172a;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(197,160,89,0.22);
-  }
-  .diag-top {
-    padding: 28px 24px 22px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .diag-top h2 {
-    font-size: 1.35rem;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.3;
-    word-break: keep-all;
-    margin: 0;
-  }
-  .diag-top .result-desc {
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.7;
-    white-space: pre-line;
-    margin: 12px 0 0;
-    word-break: keep-all;
-  }
-  .diag-top .result-code {
-    font-size: 10px;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: .5px;
-    margin-top: 10px;
-  }
-  .diag-stats {
-    padding: 16px 24px 18px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .diag-stats-label {
-    font-size: 10px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .diag-dash-head {
-    padding: 14px 22px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 
   /* ── 리포트 미리보기 ── */
   .report-preview {
@@ -3402,6 +2958,7 @@ permalink: /rehab/diagnosis
     padding: 0 !important;
     overflow: visible !important;
   }
+  .lp-hero.hidden { display: none !important; }
   .lp-hero::before {
     background: radial-gradient(ellipse at 15% 45%, rgba(197,160,89,0.09) 0%, transparent 55%) !important;
     inset: 0; width: 100%; height: 100%;
@@ -3797,173 +3354,13 @@ permalink: /rehab/diagnosis
   /* ══════════════════════════════════════
      히어로 우측 카드 — 월 변제금 재설계
   ══════════════════════════════════════ */
-  .pc-persona {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #64748b;
-    background: #f1f5f9;
-    border-radius: 6px;
-    padding: 5px 10px;
-    margin-bottom: 12px;
-  }
-  .pc-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 13px;
-    background: #fffbeb;
-    border: 1.5px solid #fbbf24;
-    border-radius: 10px;
-    margin-bottom: 14px;
-    font-size: 12px;
-    font-weight: 900;
-    color: #92400e;
-  }
 
   /* 월 변제금 히어로 블록 */
   /* Before → After 핵심 블록 */
-  .pc-ba-block {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    margin-bottom: 12px;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
-  }
-  .pc-ba-side {
-    flex: 1;
-    padding: 18px 12px 16px;
-    text-align: center;
-  }
-  .pc-ba-side.before {
-    background: #fef2f2;
-  }
-  .pc-ba-side.after {
-    background: linear-gradient(145deg, #111827 0%, #1e3a5f 100%);
-  }
-  .pc-ba-tag {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .4px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .pc-ba-side.before .pc-ba-tag { color: #ef4444; }
-  .pc-ba-side.after  .pc-ba-tag { color: var(--gold); opacity: .85; }
-  .pc-ba-amount {
-    font-size: 38px;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -1.5px;
-  }
-  .pc-ba-side.before .pc-ba-amount {
-    color: #b91c1c;
-    text-decoration: line-through;
-    text-decoration-color: rgba(239,68,68,0.5);
-    text-decoration-thickness: 3px;
-  }
-  .pc-ba-side.after .pc-ba-amount { color: #fff; }
-  .pc-ba-amount span {
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0;
-  }
-  .pc-ba-side.before .pc-ba-amount span { color: #dc2626; }
-  .pc-ba-side.after  .pc-ba-amount span { color: rgba(255,255,255,0.55); }
-  .pc-ba-arrow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 6px;
-    background: #fff;
-    gap: 4px;
-    z-index: 1;
-  }
-  .pc-ba-arrow-line {
-    font-size: 18px;
-    color: var(--gold);
-    font-weight: 900;
-    line-height: 1;
-  }
-  .pc-ba-arrow-line::after { content: '→'; }
-  .pc-ba-arrow-label {
-    font-size: 8px;
-    color: #94a3b8;
-    font-weight: 700;
-    white-space: nowrap;
-    letter-spacing: .3px;
-  }
 
   /* 절감 배너 */
-  .pc-save-banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 13px 16px;
-    background: linear-gradient(90deg, #ecfdf5 0%, #d1fae5 100%);
-    border: 1.5px solid #6ee7b7;
-    border-radius: 12px;
-    margin-bottom: 14px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #065f46;
-  }
-  .pc-save-banner strong {
-    font-size: 20px;
-    font-weight: 900;
-    color: #047857;
-  }
-  .pc-save-icon { font-size: 18px; }
-
   /* 보조 스탯 */
-  .pc-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-  .pc-stat {
-    padding: 9px 8px 7px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    text-align: center;
-  }
-  .pc-stat-label {
-    font-size: 9px;
-    color: #94a3b8;
-    font-weight: 700;
-    margin-bottom: 3px;
-    text-transform: uppercase;
-    letter-spacing: .3px;
-  }
-  .pc-stat-val {
-    font-size: 16px;
-    font-weight: 900;
-    color: #1e293b;
-    line-height: 1;
-  }
-  .pc-stat-unit { font-size: 10px; font-weight: 700; color: #64748b; }
-  .pc-stat--highlight {
-    background: linear-gradient(135deg, #fff8ec 0%, #fffdf5 100%);
-    border-color: rgba(197,160,89,0.4);
-  }
   .pc-stat--highlight .pc-stat-label { color: rgba(197,160,89,0.8); }
-  .pc-stat--highlight .pc-stat-val   { color: #92400e; }
-  .pc-stat--highlight .pc-stat-unit  { color: #a16207; }
-  .pc-trust-note {
-    font-size: 10px;
-    color: #94a3b8;
-    text-align: center;
-    margin-bottom: 10px;
-    letter-spacing: .2px;
-  }
 
   /* 티커 — 실시간 바 */
   .hero-ticker {
@@ -4000,81 +3397,6 @@ permalink: /rehab/diagnosis
     padding: 0 24px;
   }
   /* ── 티커 래퍼 ── */
-  .sp-ticker {
-    position: relative;
-    overflow: hidden;
-    padding: 4px 0 24px;
-  }
-  .sp-ticker::before,
-  .sp-ticker::after {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 80px;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .sp-ticker::before { left: 0;  background: linear-gradient(to right, var(--page-bg, #f0f4ff), transparent); }
-  .sp-ticker::after  { right: 0; background: linear-gradient(to left,  var(--page-bg, #f0f4ff), transparent); }
-  .sp-ticker-track {
-    display: flex;
-    gap: 14px;
-    width: max-content;
-    animation: spScroll 28s linear infinite;
-  }
-  .sp-ticker-track:hover { animation-play-state: paused; }
-  @keyframes spScroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .sp-card {
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 240px;
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(15,23,42,0.05);
-  }
-  .sp-stage {
-    font-size: 11px;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    width: fit-content;
-  }
-  .sp-stage::before {
-    content: '';
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .sp-stage--red    { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; }
-  .sp-stage--red::before    { background: #dc2626; }
-  .sp-stage--orange { background: #fff7ed; color: #ea580c; border: 1px solid #fdba74; }
-  .sp-stage--orange::before { background: #ea580c; }
-  .sp-stage--yellow { background: #fefce8; color: #d97706; border: 1px solid #fde047; }
-  .sp-stage--yellow::before { background: #d97706; }
-  .sp-stage--green  { background: #f0fdf4; color: #16a34a; border: 1px solid #86efac; }
-  .sp-stage--green::before  { background: #16a34a; }
-  .sp-info { flex: 1; }
-  .sp-profile { font-size: 12px; font-weight: 800; color: #0f172a; margin-bottom: 3px; }
-  .sp-detail  { font-size: 11px; color: #64748b; }
-  .sp-result {
-    font-size: 12px;
-    color: #475569;
-    padding-top: 8px;
-    border-top: 1px solid #e2e8f0;
-  }
-  .sp-result strong { color: var(--gold); font-size: 14px; }
-  .sp-cta-row { text-align: center; }
-  .sp-cta-row .btn-gold { display: inline-flex; width: auto; padding: 13px 36px; }
 
   /* ════════════════════════════
      결과 설득 블록
@@ -4400,12 +3722,6 @@ permalink: /rehab/diagnosis
     }
     .hero-right { order: 2; }
     .hero-report-checklist { grid-template-columns: 1fr !important; gap: 6px !important; }
-    .preview-card {
-      order: 3;
-      animation: none !important;
-      width: 100%;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.22), 0 0 0 1px rgba(197,160,89,0.2) !important;
-    }
 
     /* ② 히어로 텍스트 */
     .hero-eyebrow { font-size: 10px; padding: 5px 12px; margin-bottom: 16px; }
@@ -4425,18 +3741,6 @@ permalink: /rehab/diagnosis
     }
 
     /* ④ 프리뷰 카드 */
-    .preview-card-body { padding: 14px 14px 16px !important; }
-    .preview-card-top  { padding: 14px 16px !important; }
-    .pc-persona      { font-size: 10px; margin-bottom: 10px; }
-    .pc-ba-amount    { font-size: 30px !important; }
-    .pc-ba-side      { padding: 14px 8px 12px !important; }
-    .pc-save-banner  { font-size: 12px !important; padding: 10px 12px !important; }
-    .pc-save-banner strong { font-size: 17px !important; }
-    .pc-stats        { gap: 6px; margin-bottom: 10px; }
-    .pc-stat         { padding: 7px 6px; }
-    .pc-stat-val     { font-size: 13px; }
-    .pc-stat-label   { font-size: 8px; }
-    .btn-sample-cta { font-size: 13px; padding: 12px; }
     .acc-list, .acc-header { display: none; }
 
     /* ⑤ 섹션 공통 */
@@ -4504,8 +3808,6 @@ permalink: /rehab/diagnosis
     .unlock-gate { padding: 18px 16px !important; }
     .unlocked-cta { padding: 16px 16px 20px !important; }
     .card-label { font-size: 11px !important; margin-bottom: 12px !important; }
-    .interp-header { font-size: 13px !important; padding: 11px 13px !important; }
-    .interp-detail { padding: 10px 12px 12px 34px !important; font-size: 12px !important; }
     .result-desc { font-size: 13px !important; }
 
     /* ⑫ 설득·잠금 블록 */
@@ -4582,8 +3884,6 @@ permalink: /rehab/diagnosis
     .sp-card      { width: 190px !important; }
     .pub-grid { grid-template-columns: repeat(3,1fr) !important; }
     .pub-value { font-size: 13px !important; }
-    .pc-stats { gap: 5px !important; }
-    .pc-stat-val { font-size: 12px !important; }
     .why-item   { font-size: 13px !important; }
     .process-step { padding: 14px 16px !important; }
     .sp-cards { grid-template-columns: 1fr !important; }
@@ -4598,6 +3898,42 @@ permalink: /rehab/diagnosis
     .auth-stat-num { font-size: 26px !important; }
     .auth-cta-btn { width: 100% !important; font-size: 14px !important; padding: 15px 20px !important; }
     .auth-quote { font-size: 13px !important; }
+  }
+
+  /* ===== Micro-interactions ===== */
+  .h-cta:active,
+  .sh-cta-btn:active,
+  .btc-btn:active { transform: scale(0.97) !important; box-shadow: none !important; }
+  .q-opt { transition: background .15s, transform .1s, box-shadow .15s; }
+  .q-opt:hover  { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(15,23,42,.08); }
+  .q-opt:active { transform: scale(0.98); }
+  .faq-btn { transition: background .15s, color .15s; }
+  .faq-btn:hover { background: rgba(197,160,89,.06); color: #c5a059; }
+  .rsn-item:not(.rsn-cta):hover { color: #e2c28d; }
+
+  /* ===== prefers-reduced-motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .cases-track { transition: none !important; }
+  }
+
+  /* ===== 섹션 간격 + 모바일 whitespace ===== */
+  @media (max-width: 768px) {
+    .benefit-section  { padding: 44px 0 48px; }
+    .cases-section    { padding: 44px 0 48px; }
+    .process-section  { padding: 44px 0; }
+    .attorney-section { padding: 44px 0; }
+    .faq-section      { padding: 44px 0 52px; }
+    .stats-section    { padding: 44px 0 52px; }
+    .bnf-grid { gap: 12px; }
+    .case-card { padding: 20px 18px; }
+    .case-result-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .h-checks { gap: 8px; }
+    .h-check { font-size: 14px; }
   }
 
   /* ===== 3-card benefit section ===== */
@@ -4658,65 +3994,185 @@ permalink: /rehab/diagnosis
   .btc-note { margin-top: 14px; font-size: 13px; color: rgba(255,255,255,.3); }
 </style>
 
-<!-- ===== 개인회생·파산 서브 네비게이션 ===== -->
 <style>
-  .rehab-subnav {
-    position: sticky;
-    top: 100px; /* 64px 헤더 + 36px 티커 */
-    z-index: 9000;
-    background: #131c2e;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+  /* 서브네비 비활성화 */
+  .rehab-subnav { display: none !important; }
+  /* 스크롤 오프셋: 헤더(64) + 티커(36) */
+  [id] { scroll-margin-top: 104px; }
+
+  /* ===== 좌측 플로팅 버튼 ===== */
+  .lds-fab-left {
+    position: fixed;
+    left: 18px;
+    bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
   }
-  .rehab-subnav-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 20px;
+  .lds-fab-left .lds-fab__btn {
+    position: relative;
     display: flex;
     align-items: center;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .rehab-subnav-inner::-webkit-scrollbar { display: none; }
-  .rsn-item {
-    display: flex;
-    align-items: center;
-    padding: 0 18px;
-    height: 44px;
-    font-size: 13px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.45);
+    justify-content: flex-start;
+    height: 58px;
+    width: 58px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--c), var(--c2));
+    color: var(--txt);
     text-decoration: none;
-    white-space: nowrap;
-    border-bottom: 2px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(15,23,42,0.18);
+    transition: width .32s cubic-bezier(.22,1,.36,1), box-shadow .25s, transform .2s;
+    -webkit-tap-highlight-color: transparent;
+    border: none;
     cursor: pointer;
   }
-  .rsn-item:hover { color: rgba(255,255,255,0.85); }
-  .rsn-item.active {
-    color: #c5a059;
-    border-bottom-color: #c5a059;
-    font-weight: 800;
+  .lds-fab-left .lds-fab__ic {
+    position: absolute;
+    left: 0; top: 0;
+    width: 58px; height: 58px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
-  /* 진단하기 CTA 버튼 */
-  .rsn-item.rsn-cta {
-    margin-left: auto;
-    background: linear-gradient(135deg, #c5a059, #e2c28d);
-    color: #0f172a !important;
-    font-weight: 900 !important;
-    border-radius: 8px;
-    padding: 0 16px !important;
-    border-bottom: none !important;
-    height: 30px;
+  .lds-fab-left .lds-fab__ic svg { width: 25px; height: 25px; }
+  .lds-fab-left .lds-fab__lbl {
     font-size: 12.5px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-align: left;
     white-space: nowrap;
-    transition: opacity 0.2s, transform 0.2s;
+    padding-left: 64px;
+    padding-right: 16px;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity .25s, transform .25s;
   }
-  .rsn-item.rsn-cta:hover { opacity: 0.88; transform: translateY(-1px); }
-  /* 앵커 클릭 시 sticky 요소 아래에 맞게 오프셋 */
-  [id] { scroll-margin-top: 148px; }
+  .lds-fab-left .lds-fab__btn:hover,
+  .lds-fab-left .lds-fab__btn:focus-visible {
+    width: 162px;
+    box-shadow: 0 12px 26px rgba(15,23,42,.30);
+    transform: translateY(-2px);
+  }
+  .lds-fab-left .lds-fab__btn:hover .lds-fab__lbl,
+  .lds-fab-left .lds-fab__btn:focus-visible .lds-fab__lbl {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  @media (max-width: 768px) {
+    .lds-fab-left { left: 12px; bottom: 80px; gap: 10px; }
+    .lds-fab-left .lds-fab__btn { width: 50px; height: 50px; border-radius: 15px; }
+    .lds-fab-left .lds-fab__ic { width: 50px; height: 50px; }
+    .lds-fab-left .lds-fab__ic svg { width: 22px; height: 22px; }
+    .lds-fab-left .lds-fab__btn:hover { width: 50px; }
+    .lds-fab-left .lds-fab__lbl { display: none; }
+  }
+
+  /* ===== 하단 리드 수집 바 ===== */
+  .lead-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 998;
+    background: rgba(10,15,28,0.97);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(197,160,89,0.3);
+    padding: 10px 20px;
+  }
+  .lead-bar.lbhide { display: none !important; }
+  .lead-bar-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lead-bar-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #c5a059;
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+  .lead-bar input[type=text],
+  .lead-bar input[type=tel] {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .lead-bar input:focus { border-color: rgba(197,160,89,.55); }
+  .lead-bar input::placeholder { color: rgba(255,255,255,0.35); }
+  .lead-bar-submit {
+    background: linear-gradient(135deg,#c5a059,#e2c28d);
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 14px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform .15s;
+  }
+  .lead-bar-submit:hover { transform: translateY(-1px); }
+  .lead-bar-agree {
+    font-size: 11px;
+    color: rgba(255,255,255,0.28);
+    white-space: nowrap;
+  }
   @media (max-width: 640px) {
-    .rsn-item { padding: 0 12px; font-size: 12.5px; }
+    .lead-bar { display: none !important; } /* 모바일: float-cta가 대체 */
+  }
+</style>
+
+<!-- ★ 결과 인라인 CTA 스타일 -->
+<style>
+  .rpt-inline-cta {
+    background: linear-gradient(135deg,#0c1a2e,#0f2235);
+    border: 1.5px solid rgba(197,160,89,.35);
+    border-radius: 18px;
+    padding: 28px 24px;
+    margin: 24px 0 8px;
+    text-align: center;
+  }
+  .rpt-inline-cta.ric-done { display: none !important; }
+  .ric-lock { font-size: 26px; margin-bottom: 10px; }
+  .ric-title { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 18px; line-height: 1.55; }
+  .ric-title strong { color: #c5a059; }
+  .ric-form { display: flex; gap: 8px; margin-bottom: 10px; }
+  .ric-form input[type=tel] {
+    flex: 1; min-width: 0;
+    padding: 13px 16px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.07);
+    color: #fff; font-size: 15px; font-weight: 700;
+    outline: none; transition: border-color .2s;
+  }
+  .ric-form input[type=tel]::placeholder { color: rgba(255,255,255,.35); font-weight: 400; }
+  .ric-form input[type=tel]:focus { border-color: rgba(197,160,89,.55); }
+  .ric-form button {
+    background: linear-gradient(135deg,#c5a059,#e2c28d);
+    color: #0f172a; font-weight: 900; font-size: 14px;
+    padding: 0 22px; border: none; border-radius: 10px; cursor: pointer;
+    white-space: nowrap; transition: transform .15s;
+  }
+  .ric-form button:hover { transform: translateY(-1px); }
+  .ric-agree {
+    display: flex; align-items: center; gap: 6px; justify-content: center;
+    font-size: 12px; color: rgba(255,255,255,.45); cursor: pointer; margin-bottom: 10px;
+  }
+  .ric-note { font-size: 11.5px; color: rgba(255,255,255,.3); }
+  @media (max-width: 480px) {
+    .ric-form { flex-direction: column; }
+    .ric-form button { padding: 13px; }
   }
 </style>
 
@@ -4755,16 +4211,6 @@ permalink: /rehab/diagnosis
 </div>
 
 <!-- ══ 서브네비 (lp-wrap 바깥 — sticky 뷰포트 기준 적용) ══ -->
-<nav class="rehab-subnav" aria-label="개인회생·파산 메뉴">
-  <div class="rehab-subnav-inner">
-    <a class="rsn-item" href="#sec-guide">개인회생 안내</a>
-    <a class="rsn-item" href="#sec-procedure">개인회생 절차</a>
-    <a class="rsn-item" href="#sec-price">개인회생 비용</a>
-    <a class="rsn-item" href="#sec-cases">사례</a>
-    <a class="rsn-item" href="#sec-faq">FAQ</a>
-    <a class="rsn-item rsn-cta" href="#heroSection" onclick="event.preventDefault(); if(typeof startQuiz==='function') startQuiz();">개인회생 진단하기 →</a>
-  </div>
-</nav>
 
 <div class="lp-wrap">
 
@@ -5162,6 +4608,16 @@ permalink: /rehab/diagnosis
     </div>
   </section>
 
+  <!-- ★ 하단 단일 CTA -->
+  <section class="bottom-cta-section">
+    <div class="info-inner" style="max-width:640px; margin:0 auto; padding:0 24px;">
+      <div class="btc-title">내 채무, 얼마까지 줄일 수 있는지<br>30초만 확인해보세요</div>
+      <div class="btc-sub">무료 · 수임 의무 없음 · 즉시 결과 확인</div>
+      <button class="btc-btn" onclick="startQuiz();">30초 무료 진단 시작하기 →</button>
+      <div class="btc-note">📞 전화 상담 031-225-6885</div>
+    </div>
+  </section>
+
   <!-- ★ 개인회생 비용 안내 (하단) -->
   <section class="stats-section" id="sec-price" data-subnav="sec-price">
     <div class="info-inner">
@@ -5374,6 +4830,21 @@ permalink: /rehab/diagnosis
 
       </div>
 
+      <!-- ③-b 인라인 전화번호 수집 (rpt-reports 직후) -->
+      <div class="rpt-inline-cta" id="rptInlineCta">
+        <div class="ric-lock">🔓</div>
+        <div class="ric-title">전화번호를 남기시면<br><strong>블러 처리된 결과를 즉시 확인</strong>할 수 있습니다</div>
+        <form class="ric-form" onsubmit="submitRptInline(event)">
+          <input id="ricPhone" type="tel" placeholder="010 - 0000 - 0000" maxlength="15" required autocomplete="tel">
+          <button type="submit" id="ricBtn">📄 결과 확인하기 →</button>
+        </form>
+        <label class="ric-agree">
+          <input id="ricAgree" type="checkbox" required>
+          <span>개인정보 수집·이용 동의 (필수) · <a href="/privacy" target="_blank" style="color:rgba(197,160,89,.7);">보기</a></span>
+        </label>
+        <div class="ric-note">무료 · 수임 의무 없음 · 즉시 확인</div>
+      </div>
+
       <!-- ④ 전화번호 CTA -->
       <div class="final-cta">
         <div id="finalCtaContent"></div>
@@ -5418,6 +4889,58 @@ permalink: /rehab/diagnosis
   <!-- ⑥ 완료 (하위 호환) -->
   <section id="completeSection" class="hidden"></section>
 
+</div>
+
+<!-- ⑤ 좌측 플로팅 버튼 -->
+<div class="lds-fab-left" id="leftFab">
+
+  <button class="lds-fab__btn" style="--c:#c5a059;--c2:#e2c28d;--txt:#0f172a;" onclick="startQuiz()" aria-label="30초 무료 진단">
+    <span class="lds-fab__ic" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+      </svg>
+    </span>
+    <span class="lds-fab__lbl">개인회생<br>진단하기</span>
+  </button>
+
+  <a href="tel:0312256885" class="lds-fab__btn" style="--c:#2563eb;--c2:#3b82f6;--txt:#fff;" aria-label="전화 상담 031-225-6885">
+    <span class="lds-fab__ic" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+    </span>
+    <span class="lds-fab__lbl">전화<br>상담</span>
+  </a>
+
+  <a href="https://pf.kakao.com/_xmkRSG/chat" target="_blank" rel="noopener" class="lds-fab__btn" style="--c:#fee500;--c2:#ffe600;--txt:#3a1d1d;" aria-label="카카오톡 상담">
+    <span class="lds-fab__ic" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 3C6.5 3 2 6.58 2 11c0 2.83 1.93 5.31 4.84 6.72-.21.74-.77 2.79-.88 3.22-.14.54.2.53.42.39.17-.11 2.71-1.84 3.81-2.59.58.08 1.18.13 1.81.13 5.5 0 10-3.58 10-8S17.5 3 12 3z"/>
+      </svg>
+    </span>
+    <span class="lds-fab__lbl">카카오톡<br>상담</span>
+  </a>
+
+  <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="lds-fab__btn" style="--c:#03c75a;--c2:#06d96a;--txt:#fff;" aria-label="네이버 예약">
+    <span class="lds-fab__ic" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/>
+      </svg>
+    </span>
+    <span class="lds-fab__lbl">네이버<br>예약</span>
+  </a>
+
+</div>
+
+<!-- ⑥ 하단 리드 수집 바 -->
+<div class="lead-bar" id="leadBar">
+  <div class="lead-bar-inner">
+    <span class="lead-bar-title">무료 상담</span>
+    <input type="text" id="lbName" placeholder="이름" maxlength="20" autocomplete="name">
+    <input type="tel" id="lbPhone" placeholder="연락처 010-0000-0000" maxlength="13" autocomplete="tel">
+    <button class="lead-bar-submit" id="lbSubmit" onclick="submitLeadBar()">상담 신청 →</button>
+    <span class="lead-bar-agree">개인정보 수집 동의</span>
+  </div>
 </div>
 
 <!-- ④ 모바일 플로팅 CTA (전화 + 진단) -->
@@ -5505,7 +5028,7 @@ permalink: /rehab/diagnosis
   const total = questions.length;
 
   const infoSections = document.getElementById("infoSections");
-  const allInfoSections = document.querySelectorAll(".info-section, .why-section, .process-section, .faq-section, .social-proof-section, .scroll-hook, .report-claim, .authority-section, .attorney-section, .pain-section, .stats-section, .benefit-section, .cases-section");
+  const allInfoSections = document.querySelectorAll(".info-section, .why-section, .process-section, .faq-section, .social-proof-section, .scroll-hook, .report-claim, .authority-section, .attorney-section, .pain-section, .stats-section, .benefit-section, .cases-section, .bottom-cta-section");
 
   // ===== Cases Slider =====
   var casesIdx = 0;
@@ -5521,6 +5044,29 @@ permalink: /rehab/diagnosis
       d.classList.toggle('active', i === casesIdx);
     });
   }
+
+  /* ===== 사례 슬라이더 ===== */
+  (function() {
+    var cur = 0;
+    var total = 3;
+    function updateSlider() {
+      var track = document.getElementById('casesTrack');
+      if (!track) return;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      var dots = document.querySelectorAll('.cases-dot');
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === cur);
+      });
+    }
+    window.slideCases = function(dir) {
+      cur = (cur + dir + total) % total;
+      updateSlider();
+    };
+    window.goCase = function(idx) {
+      cur = idx;
+      updateSlider();
+    };
+  })();
 
   function toggleFaq(btn) {
     const body = btn.nextElementSibling;
@@ -5538,15 +5084,15 @@ permalink: /rehab/diagnosis
 
   function hideFunnelNav() {
     const ticker = document.getElementById("globalTicker");
-    const subnav = document.querySelector(".rehab-subnav");
     if (ticker) ticker.style.display = "none";
-    if (subnav) subnav.style.display = "none";
+    document.getElementById("leadBar")?.classList.add("lbhide");
+    document.getElementById("leftFab")?.classList.add("lbhide");
   }
   function showFunnelNav() {
     const ticker = document.getElementById("globalTicker");
-    const subnav = document.querySelector(".rehab-subnav");
     if (ticker) ticker.style.display = "";
-    if (subnav) subnav.style.display = "";
+    document.getElementById("leadBar")?.classList.remove("lbhide");
+    document.getElementById("leftFab")?.classList.remove("lbhide");
   }
 
   function startQuiz() {
@@ -5558,6 +5104,38 @@ permalink: /rehab/diagnosis
     initDots();
     render();
     dlPush({ event: "quiz_start" });
+  }
+
+  /* ── 하단 리드 수집 폼 제출 ── */
+  const LEAD_GAS_URL = "https://script.google.com/macros/s/AKfycbwAS0c4fyhQ_m2sFNKboilQeMcwd3V5WAuUakALziAFI-X7t0GgcIueFKMkMBXJTJhXDw/exec";
+  function submitLeadBar() {
+    const name  = (document.getElementById("lbName")?.value  || "").trim();
+    const phone = (document.getElementById("lbPhone")?.value || "").replace(/\D/g,"");
+    if (!name)  { alert("이름을 입력해주세요."); document.getElementById("lbName")?.focus(); return; }
+    if (!phone.match(/^01[016789]\d{7,8}$/)) {
+      alert("올바른 연락처를 입력해주세요.\n예) 010-1234-5678");
+      document.getElementById("lbPhone")?.focus(); return;
+    }
+    const btn = document.getElementById("lbSubmit");
+    if (btn) { btn.textContent = "전송 중…"; btn.disabled = true; }
+    fetch(LEAD_GAS_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ source: "하단리드폼", name, phone })
+    })
+    .then(() => {
+      if (btn) { btn.textContent = "✓ 신청 완료!"; }
+      document.getElementById("lbName").value = "";
+      document.getElementById("lbPhone").value = "";
+      dlPush({ event: "lead_submit", method: "하단폼", name, phone });
+      setTimeout(() => {
+        if (btn) { btn.textContent = "상담 신청 →"; btn.disabled = false; }
+      }, 3000);
+    })
+    .catch(() => {
+      if (btn) { btn.textContent = "상담 신청 →"; btn.disabled = false; }
+      alert("전송 오류. 031-225-6885로 연락 주세요.");
+    });
   }
 
   function initDots() {
@@ -5861,8 +5439,6 @@ permalink: /rehab/diagnosis
     const hi     = Math.round(base * 1.18 / 10) * 10;
     return `${lo}~${hi}만원`;
   }
-
-  /* ── 예상 변제기간 ── */
   function calcPeriod() {
     if (ans.debtAmount === "1억원 이상") return "최대 5년";
     return "3~5년";
@@ -5946,3 +5522,483 @@ permalink: /rehab/diagnosis
         phone,
         mainConcern: ans.mainConcern || "",
         arrears: ans.arrears || "",
+        debtAmount: ans.debtAmount || "",
+        job: ans.job || "",
+        monthlyIncome: ans.monthlyIncome || "",
+        dependents: ans.dependents || "",
+        residence: ans.residence || "",
+        hasCar: ans.hasCar || "",
+        recentLoan: ans.recentLoan || "",
+        debtReason: ans.debtReason || "",
+        insurance: ans.insurance || "",
+        seizureStatus: ans.seizureStatus || "",
+        age: ans.age || "",
+        repaymentRange: window._fullRepayment || "",
+        score: calcScore()
+      }),
+      mode: "no-cors"
+    }).catch(()=>{});
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "generate_lead", lead_source: "변제금CTA", debt_amount: ans.debtAmount || "", job: ans.job || "" });
+
+    window._phoneCollected = true;
+    document.getElementById("stickyCta")?.classList.remove("visible");
+
+    // 마스킹 해제
+    const elR2 = document.getElementById("lockedRepayment");
+    if (elR2) {
+      elR2.textContent = window._fullRepayment || calcRepayment();
+      elR2.classList.add("rpc-revealed");
+      const c = elR2.closest(".rpc-cell");
+      if (c) c.classList.remove("rpc-cell--masked");
+    }
+    const elD2 = document.getElementById("lockedReduction");
+    if (elD2) {
+      elD2.textContent = window._fullReduction || calcReduction();
+      elD2.classList.add("rpc-revealed");
+      const c = elD2.closest(".rpc-cell");
+      if (c) c.classList.remove("rpc-cell--masked");
+    }
+
+    // 상세 블록 표시
+    const db = document.getElementById("detailBlock");
+    if (db) {
+      db.style.display = "block";
+      setTimeout(() => db.scrollIntoView({ behavior: "smooth", block: "start" }), 400);
+    }
+
+    renderFinalCta();
+  }
+
+  /* ── 마지막 CTA 렌더 ── */
+  function renderFinalCta() {
+    const el = document.getElementById("finalCtaContent");
+    if (!el) return;
+    if (window._phoneCollected) {
+      el.innerHTML = `
+        <div class="fca-collected">✓ 접수 완료 — 아래에서 상세 결과를 확인하세요</div>
+        <a href="tel:0312256885" class="dash-tel-btn" style="margin-top:10px;display:block;text-align:center;">법무사 직접 연결 →</a>
+      `;
+    } else {
+      el.innerHTML = `
+        <div class="fca-wrap">
+          <div class="fca-headline">무료 PDF 결과지를 드립니다<br><span style="font-size:0.85em;opacity:0.8;">연락처를 남겨주시면 자가진단 결과를 즉시 발송합니다</span></div>
+          <form onsubmit="submitFinalCta(event)">
+            <input id="fcaPhone" type="tel" placeholder="010 - 0000 - 0000" maxlength="15" required
+              style="width:100%;padding:14px;border:1px solid rgba(255,255,255,0.15);border-radius:10px;
+                     background:rgba(255,255,255,0.07);color:#fff;font-size:15px;font-weight:700;
+                     margin-bottom:10px;box-sizing:border-box;" />
+            <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:12px;cursor:pointer;">
+              <input id="fcaAgree" type="checkbox" required />
+              <span>개인정보 수집·이용 동의 <a href="/privacy" target="_blank" style="color:rgba(197,160,89,0.7);text-decoration:underline;">(필수)</a></span>
+            </label>
+            <button type="submit" class="btn-gold" style="width:100%;padding:15px;font-size:15px;">📄 무료 PDF 결과지 받기 →</button>
+          </form>
+          <div class="fca-bottom-note">무료 · 수임 의무 없음 · 비밀 보장</div>
+        </div>
+      `;
+      setTimeout(() => {
+        const inp = document.getElementById("fcaPhone");
+        if (!inp) return;
+        inp.addEventListener("input", ev => {
+          let v = ev.target.value.replace(/\D/g,"");
+          if (v.length >= 7) v = v.slice(0,3)+"-"+v.slice(3,7)+"-"+v.slice(7,11);
+          else if (v.length >= 4) v = v.slice(0,3)+"-"+v.slice(3);
+          ev.target.value = v;
+        });
+      }, 50);
+    }
+  }
+
+  /* ── 결과 인라인 폼 전화번호 자동 포맷 ── */
+  (function() {
+    function fmtRic() {
+      const inp = document.getElementById("ricPhone");
+      if (!inp) return;
+      inp.addEventListener("input", ev => {
+        let v = ev.target.value.replace(/\D/g,"");
+        if (v.length >= 7) v = v.slice(0,3)+"-"+v.slice(3,7)+"-"+v.slice(7,11);
+        else if (v.length >= 4) v = v.slice(0,3)+"-"+v.slice(3);
+        ev.target.value = v;
+      });
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fmtRic);
+    else fmtRic();
+  })();
+
+  /* ── 결과 인라인 폼 제출 ── */
+  function submitRptInline(e) {
+    e.preventDefault();
+    const phone = (document.getElementById("ricPhone")?.value || "").replace(/\D/g,"");
+    const agree = document.getElementById("ricAgree")?.checked;
+    if (!agree) { alert("개인정보 수집·이용에 동의해주세요."); return; }
+    if (!validatePhone(phone)) return;
+
+    const btn = document.getElementById("ricBtn");
+    if (btn) { btn.textContent = "전송 중…"; btn.disabled = true; }
+
+    fetch(LEAD_GAS_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source: "결과인라인CTA",
+        phone,
+        mainConcern: ans.mainConcern || "",
+        arrears: ans.arrears || "",
+        debtAmount: ans.debtAmount || "",
+        job: ans.job || "",
+        monthlyIncome: ans.monthlyIncome || "",
+        score: typeof calcScore === "function" ? calcScore() : ""
+      })
+    }).catch(()=>{});
+
+    dlPush({ event: "lead_submit", method: "결과인라인CTA", phone });
+
+    /* 결과 공개 */
+    window._phoneCollected = true;
+    document.getElementById("stickyCta")?.classList.remove("visible");
+    const elR = document.getElementById("lockedRepayment");
+    if (elR) { elR.textContent = window._fullRepayment || calcRepayment(); elR.classList.add("rmv-revealed"); }
+    const elD = document.getElementById("lockedReduction");
+    if (elD) { elD.textContent = window._fullReduction || calcReduction(); elD.classList.add("rmv-revealed"); }
+    document.querySelectorAll(".rprt-blur").forEach(el => { el.classList.remove("rprt-blur"); el.classList.add("rprt-revealed"); });
+    document.querySelectorAll(".rprt-lock-note").forEach(el => el.classList.add("hidden"));
+
+    /* 인라인 폼 → 성공 메시지 */
+    const cta = document.getElementById("rptInlineCta");
+    if (cta) {
+      cta.innerHTML = `<div style="color:#c5a059;font-size:18px;font-weight:900;padding:10px 0;">✓ 접수 완료</div>
+        <div style="color:rgba(255,255,255,.6);font-size:14px;margin-top:6px;">법무사가 확인 후 연락드립니다 · 031-225-6885</div>`;
+    }
+    renderFinalCta();
+  }
+
+  /* ── 마지막 CTA 제출 ── */
+  function submitFinalCta(e) {
+    e.preventDefault();
+    const phone = document.getElementById("fcaPhone").value.replace(/\D/g,"");
+    const agree = document.getElementById("fcaAgree").checked;
+    if (!agree) { alert("개인정보 수집·이용에 동의해주세요."); return; }
+    if (!validatePhone(phone)) return;
+
+    fetch("https://script.google.com/macros/s/AKfycbwAS0c4fyhQ_m2sFNKboilQeMcwd3V5WAuUakALziAFI-X7t0GgcIueFKMkMBXJTJhXDw/exec", {
+      method: "POST",
+      body: JSON.stringify({
+        source: "마지막CTA",
+        phone,
+        mainConcern: ans.mainConcern || "",
+        arrears: ans.arrears || "",
+        debtAmount: ans.debtAmount || "",
+        job: ans.job || "",
+        monthlyIncome: ans.monthlyIncome || "",
+        dependents: ans.dependents || "",
+        residence: ans.residence || "",
+        hasCar: ans.hasCar || "",
+        recentLoan: ans.recentLoan || "",
+        debtReason: ans.debtReason || "",
+        insurance: ans.insurance || "",
+        seizureStatus: ans.seizureStatus || "",
+        age: ans.age || "",
+        repaymentRange: window._fullRepayment || "",
+        score: calcScore()
+      }),
+      mode: "no-cors"
+    }).catch(()=>{});
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "generate_lead", lead_source: "마지막CTA", debt_amount: ans.debtAmount || "", job: ans.job || "" });
+    // 퍼널 세분화: 진단페이지(DB 핵심) 제출 — GA4 분석용 (일관 파라미터)
+    window.dataLayer.push({
+      event: "diagnosis_submit",
+      page_type: "diagnosis",
+      form_type: "diagnosis",
+      cta_name: "무료 PDF 결과지 받기",
+      button_location: "final_cta",
+      lead_source: "마지막CTA",
+      debt_amount: ans.debtAmount || "",
+      job: ans.job || ""
+    });
+
+    window._phoneCollected = true;
+    document.getElementById("stickyCta")?.classList.remove("visible");
+
+    // ① 메인 수치 마스킹 해제 + 애니메이션
+    const elR = document.getElementById("lockedRepayment");
+    if (elR) { elR.textContent = window._fullRepayment || calcRepayment(); elR.classList.add("rmv-revealed"); }
+    const elD = document.getElementById("lockedReduction");
+    if (elD) { elD.textContent = window._fullReduction || calcReduction(); elD.classList.add("rmv-revealed"); }
+
+    // ② 상세 리포트 블러 전체 해제
+    document.querySelectorAll(".rprt-blur").forEach(el => {
+      el.classList.remove("rprt-blur");
+      el.classList.add("rprt-revealed");
+    });
+    document.querySelectorAll(".rprt-lock-note").forEach(el => el.classList.add("hidden"));
+
+    // ③ 리포트 섹션으로 스크롤
+    setTimeout(() => {
+      const rptReports = document.querySelector(".rpt-reports");
+      if (rptReports) rptReports.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 350);
+
+    renderFinalCta();
+  }
+
+  /* ── 메인: 결과 표시 ── */
+  function showReport() {
+    const score = calcScore();
+    const stage = calcStage(score);
+
+    // 타임스탬프
+    const now = new Date();
+    const ts = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+    const tsEl = document.getElementById("reportTs");
+    if (tsEl) tsEl.textContent = ts;
+
+    // 거주 지역 맞춤 안내 (관할법원)
+    const rnEl = document.getElementById("regionNote");
+    if (rnEl && ans.region) {
+      const suwonCourt = ["수원","용인","화성","평택","오산","안산","성남","안양"];
+      rnEl.textContent = (suwonCourt.indexOf(ans.region) !== -1)
+        ? `${ans.region} 지역은 수원회생법원 관할로, 개인회생 신청이 가능합니다.`
+        : `거주 지역 관할 법원에서 개인회생을 신청하실 수 있습니다.`;
+      rnEl.style.display = "block";
+    }
+
+    // 입력 내용 드롭다운 채우기
+    fillAnsDropdown();
+
+    // 전체 값 저장 (언락 시 사용)
+    window._fullRepayment = calcRepayment();
+    window._fullReduction = calcReduction();
+
+    // 진행 가능성 (공개, rms-val)
+    const poss = calcPossibility();
+    const pPoss = document.getElementById("pubPossibility");
+    if (pPoss) { pPoss.textContent = poss.text; pPoss.className = "rms-val " + poss.cls; }
+
+    // 예상 변제기간 (공개)
+    const pPeriod = document.getElementById("pubPeriod");
+    if (pPeriod) pPeriod.textContent = calcPeriod();
+
+    // 월 변제금 · 탕감 금액: 첫 자리만 공개, 나머지 마스킹
+    const lr = document.getElementById("lockedRepayment");
+    if (lr) lr.textContent = maskResult(window._fullRepayment);
+    const lrd = document.getElementById("lockedReduction");
+    if (lrd) lrd.textContent = maskResult(window._fullReduction);
+
+    // ── 아코디언 리포트 콘텐츠 채우기 ──
+
+    // 01. 변제금 산정 분석
+    const s1 = document.getElementById("rprtSteps1");
+    if (s1) s1.innerHTML = rprtStepsHtml([
+      `월 소득 반영 완료 (${ans.monthlyIncome || "입력값 기준"})`,
+      `부양가족 기준 적용 완료`,
+      `생계비 공제 기준 적용`,
+      `개인회생 가이드라인 기준 변제금 산정 완료`
+    ]);
+    const rRepay = document.getElementById("rprtRepay");
+    if (rRepay) rRepay.textContent = `예상 범위 ${window._fullRepayment} (월 변제금 · 36~60개월 기준)`;
+
+    // 02. 탕감 가능 금액 분석
+    const s2 = document.getElementById("rprtSteps2");
+    if (s2) s2.innerHTML = rprtStepsHtml([
+      `총 채무 분석 완료 (${ans.debtAmount || "입력값 기준"})`,
+      `원금 · 이자 구조 분석 완료`,
+      `개인회생 기준 탕감 범위 산정 완료`
+    ]);
+    const rReduce = document.getElementById("rprtReduce");
+    if (rReduce) rReduce.textContent = `${window._fullReduction} 탕감 가능 (채무 원금 기준 추산치)`;
+
+    // 03. 압류 대응 가능성 분석 (일반화 — 특정 압류 유형 명시 안 함)
+    const hasSeizure = ans.seizureStatus && ans.seizureStatus !== "없음";
+    const s3 = document.getElementById("rprtSteps3");
+    if (s3) s3.innerHTML = rprtStepsHtml([
+      `압류 진행 현황 분석 완료`,
+      `중지명령 신청 가능 여부 검토 완료`,
+      `금지명령 신청 가능 여부 검토 완료`
+    ]);
+    const rSeizure = document.getElementById("rprtSeizure");
+    if (rSeizure) rSeizure.textContent = hasSeizure
+      ? `현재 진행 중인 압류에 대해 중지명령 즉시 신청 가능. 개시결정 후 자동 중지 처리되며, 금지명령 추가 신청 권장.`
+      : `현재 진행 중인 압류 없음. 개인회생 신청 시 예방적 금지명령 동시 신청 가능.`;
+
+    // 04. 제출 서류 체크리스트
+    const docCount = calcDocCount();
+    const s4 = document.getElementById("rprtSteps4");
+    if (s4) s4.innerHTML = rprtStepsHtml([
+      `소득 관련 서류 — ${ans.job === "직장인" ? "재직증명서 · 급여명세서 외 확인" : "소득금액증명원 외 확인"}`,
+      `채무 관련 서류 — 채권자 목록 · 대출약정서 외 확인`,
+      `재산 관련 서류 — 부동산 · 금융재산 현황 확인 완료`
+    ]);
+    const rDocs = document.getElementById("rprtDocs");
+    if (rDocs) {
+      const docLines = ans.job === "직장인"
+        ? `재직증명서 / 급여명세서 3개월 / 건강보험납부확인서 / 신용정보조회서 / 채권자 목록 / 부채 증명서류 외 ${docCount - 6}건`
+        : `사업자등록증 / 소득금액증명원 / 부가가치세 신고서 / 신용정보조회서 / 채권자 목록 외 ${docCount - 5}건`;
+      rDocs.textContent = docLines;
+    }
+
+    // 섹션 전환
+    const hero = document.getElementById("heroSection");
+    const quiz = document.getElementById("quizSection");
+    const loading = document.getElementById("loadingSection");
+    const report = document.getElementById("reportSection");
+    if (hero) hero.classList.add("hidden");
+    if (quiz) quiz.classList.add("hidden");
+    if (loading) loading.classList.add("hidden");
+    if (report) report.classList.remove("hidden");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    window._phoneCollected = false;
+    renderFinalCta();
+
+    dlPush({ event: "result_view" });
+
+    // CTA 폼 노출 감지
+    const finalCtaObs = document.querySelector(".final-cta");
+    if (finalCtaObs) {
+      new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          dlPush({ event: "cta_view" });
+        }
+      }, { threshold: 0.5 }).observe(finalCtaObs);
+    }
+
+    // 스티키 하단 CTA 바 활성화
+    const stickyCta = document.getElementById("stickyCta");
+    if (stickyCta) {
+      setTimeout(() => stickyCta.classList.add("visible"), 900);
+      const finalCtaEl = document.querySelector(".final-cta");
+      if (finalCtaEl) {
+        new IntersectionObserver((entries) => {
+          if (window._phoneCollected) { stickyCta.classList.remove("visible"); return; }
+          stickyCta.classList.toggle("visible", !entries[0].isIntersecting);
+        }, { threshold: 0.4 }).observe(finalCtaEl);
+      }
+    }
+  }
+
+  /* ── 아코디언 토글 ── */
+  function toggleRprt(hdr) {
+    const body = hdr.nextElementSibling;
+    const isOpen = body.classList.contains("rprt-body--open");
+    body.classList.toggle("rprt-body--open", !isOpen);
+    hdr.classList.toggle("rprt-open", !isOpen);
+  }
+
+  /* ── 입력 내용 드롭다운 토글 ── */
+  function toggleAnsDropdown(hdr) {
+    const body = hdr.nextElementSibling;
+    const open = body.classList.toggle("rpt-ans-open");
+    hdr.classList.toggle("rpt-ans-open", open);
+  }
+
+  /* ── 입력 내용 채우기 ── */
+  function fillAnsDropdown() {
+    const labels = {
+      mainConcern:  "주요 걱정",
+      region:       "거주 지역",
+      arrears:      "연체 상태",
+      debtAmount:   "총 채무액",
+      job:          "직업",
+      monthlyIncome:"월 소득",
+      dependents:   "부양가족",
+      residence:    "거주 형태",
+      hasCar:       "차량 보유",
+      recentLoan:   "최근 대출",
+      debtReason:   "채무 원인",
+      insurance:    "보험 여부",
+      seizureStatus:"압류·추심",
+      age:          "연령대"
+    };
+    const body = document.getElementById("rptAnsBody");
+    const cntEl = document.getElementById("rptAnsCnt");
+    if (!body) return;
+    const rows = Object.entries(labels)
+      .filter(([k]) => ans[k])
+      .map(([k, label]) =>
+        `<div class="rpt-ans-row"><span class="rpt-ans-key">${label}</span><span class="rpt-ans-val">${ans[k]}</span></div>`
+      ).join("");
+    body.innerHTML = rows;
+    const cnt = Object.keys(labels).filter(k => ans[k]).length;
+    if (cntEl) cntEl.textContent = cnt + "개 항목";
+  }
+
+  /* ── 리포트 단계 HTML 생성 ── */
+  function rprtStepsHtml(steps) {
+    return steps.map(s => `
+      <div class="rprt-step">
+        <span class="rprt-step-dot">✓</span>${s}
+      </div>`).join("");
+  }
+
+  /* ── 제출 서류 수 계산 ── */
+  function calcDocCount() {
+    let n = 8;
+    if (ans.job === "자영업자") n += 3;
+    if (ans.seizureStatus && ans.seizureStatus !== "없음") n += 2;
+    if (ans.dependents && ans.dependents !== "없음" && ans.dependents !== "정보 없음") n += 1;
+    return n;
+  }
+
+  /* ── 결과 CTA 스크롤 ── */
+  function scrollToFinalCta() {
+    const el = document.querySelector(".final-cta");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  /* ── 상태 분석 토글 ── */
+  function toggleInterp(header) {
+    const detail = header.nextElementSibling;
+    const isOpen = detail.classList.contains("open");
+    document.querySelectorAll(".interp-detail").forEach(d => d.classList.remove("open"));
+    document.querySelectorAll(".interp-header").forEach(h => h.classList.remove("open"));
+    if (!isOpen) {
+      detail.classList.add("open");
+      header.classList.add("open");
+    }
+  }
+
+  /* ── 진단 퀴즈 제출 → 로딩 → 결과 ── */
+  function submitQuiz() {
+    const quizSection = document.getElementById("quizSection");
+    const loadingSection = document.getElementById("loadingSection");
+    if (quizSection) quizSection.classList.add("hidden");
+    if (loadingSection) loadingSection.classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      if (loadingSection) loadingSection.classList.add("hidden");
+      showReport();
+    }, 2200);
+  }
+
+  /* ── 서브 네비 앵커 스크롤 + active 추적 ── */
+  (function() {
+    const NAV_HEIGHT = 64 + 46;
+    document.querySelectorAll('.rsn-item[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT - 8, behavior: 'smooth' });
+        document.querySelectorAll('.rsn-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    const sections = Array.from(document.querySelectorAll('[data-subnav]'));
+    const links = Array.from(document.querySelectorAll('.rsn-item[href^="#"]'));
+    function update() {
+      const y = window.scrollY + NAV_HEIGHT + 20;
+      let cur = sections[0];
+      sections.forEach(s => { if (s.offsetTop <= y) cur = s; });
+      if (!cur) return;
+      const id = cur.id || cur.getAttribute('data-subnav');
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+
+</script>

@@ -505,6 +505,7 @@
     var iqpPosts = [];
     var iqpFilter_ = '전체';
     var iqpLoaded = false;
+    var iqpCurrentId = null;
 
     function iqpOpen() {
       document.getElementById('iqpOverlay').classList.add('open');
@@ -579,24 +580,14 @@
     function iqpView(id) {
       var p = iqpPosts.find(function(x){ return x.id == id; });
       if (!p) return;
+      iqpCurrentId = id;
 
       var catMap = {개인회생:'iqp-cat-개인회생',개인파산:'iqp-cat-개인파산',형사사건:'iqp-cat-형사사건',등기:'iqp-cat-등기',기타:'iqp-cat-기타'};
       var stMap  = {접수완료:'iqp-status-접수완료',검토중:'iqp-status-검토중',답변완료:'iqp-status-답변완료'};
       var cat = p.category||'기타', st = p.status||'접수완료';
       var dateStr = (p.date||'').substring(0,10).replace(/-/g,'.');
 
-      var ansHtml = '';
-      if (p.answer) {
-        ansHtml = '<div class="iqp-answer-box">'
-          + '<div class="iqp-answer-label">✓ 법무사 답변</div>'
-          + '<div class="iqp-answer-text">' + iqpEsc(p.answer) + '</div>'
-          + '</div>';
-      }
-
-      var contentHtml = (p.isLocked || p.locked)
-        ? '<div class="iqp-detail-locked">🔒 비밀글입니다</div>'
-        : '<div class="iqp-detail-content">' + iqpEsc(p.body||p.content||'내용 없음') + '</div>';
-
+      // 비밀번호 입력 화면 표시
       document.getElementById('iqpDetailBody').innerHTML =
         '<div class="iqp-detail-title">' + iqpEsc(p.title) + '</div>'
         + '<div class="iqp-detail-meta">'
@@ -605,12 +596,61 @@
         + '<span style="font-size:12px;color:rgba(255,255,255,.35);">' + iqpEsc(p.authorMasked||'익명') + ' · ' + dateStr + '</span>'
         + '</div>'
         + '<div class="iqp-detail-divider"></div>'
-        + contentHtml
-        + ansHtml;
+        + '<div style="text-align:center;padding:30px 0 10px;">'
+        + '<div style="font-size:28px;margin-bottom:14px;">🔒</div>'
+        + '<div style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:20px;">작성 시 설정한 비밀번호를 입력해 주세요</div>'
+        + '<div style="display:flex;gap:8px;max-width:280px;margin:0 auto;">'
+        + '<input type="password" id="iqpPwInput" placeholder="비밀번호" maxlength="20"'
+        + ' style="flex:1;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:14px;outline:none;"'
+        + ' onkeydown="if(event.key===\'Enter\')iqpCheckPw()">'
+        + '<button onclick="iqpCheckPw()" style="padding:0 16px;background:linear-gradient(135deg,#c5a059,#e2c28d);color:#0f172a;font-weight:900;font-size:13px;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;">확인</button>'
+        + '</div>'
+        + '<div id="iqpPwError" style="display:none;color:#f87171;font-size:12px;margin-top:10px;">비밀번호가 올바르지 않습니다.</div>'
+        + '</div>';
 
       document.getElementById('iqpList').style.display = 'none';
       document.getElementById('iqpTabs').style.display = 'none';
       document.getElementById('iqpDetail').classList.add('active');
+
+      setTimeout(function(){ var el=document.getElementById('iqpPwInput'); if(el) el.focus(); }, 150);
+    }
+
+    function iqpCheckPw() {
+      var pw = document.getElementById('iqpPwInput').value;
+      if (!pw) return;
+      document.getElementById('iqpPwError').style.display = 'none';
+      var s = document.createElement('script');
+      s.src = IQP_GAS + '?action=view&id=' + iqpCurrentId + '&pw=' + encodeURIComponent(pw) + '&callback=iqpOnViewResult';
+      document.head.appendChild(s);
+    }
+
+    function iqpOnViewResult(data) {
+      if (data.error) {
+        var errEl = document.getElementById('iqpPwError');
+        if (errEl) errEl.style.display = '';
+        return;
+      }
+      var catMap = {개인회생:'iqp-cat-개인회생',개인파산:'iqp-cat-개인파산',형사사건:'iqp-cat-형사사건',등기:'iqp-cat-등기',기타:'iqp-cat-기타'};
+      var stMap  = {접수완료:'iqp-status-접수완료',검토중:'iqp-status-검토중',답변완료:'iqp-status-답변완료'};
+      var cat = data.category||'기타', st = data.status||'접수완료';
+
+      var ansHtml = '';
+      if (data.answer) {
+        ansHtml = '<div class="iqp-answer-box">'
+          + '<div class="iqp-answer-label">✓ 법무사 답변</div>'
+          + '<div class="iqp-answer-text">' + iqpEsc(data.answer) + '</div>'
+          + '</div>';
+      }
+
+      document.getElementById('iqpDetailBody').innerHTML =
+        '<div class="iqp-detail-title">' + iqpEsc(data.title) + '</div>'
+        + '<div class="iqp-detail-meta">'
+        + '<span class="iqp-cat ' + (catMap[cat]||'iqp-cat-기타') + '">' + cat + '</span>'
+        + '<span class="iqp-status ' + (stMap[st]||'iqp-status-접수완료') + '">' + st + '</span>'
+        + '</div>'
+        + '<div class="iqp-detail-divider"></div>'
+        + '<div class="iqp-detail-content">' + iqpEsc(data.content||'').replace(/\n/g,'<br>') + '</div>'
+        + ansHtml;
     }
 
     function iqpShowList() {

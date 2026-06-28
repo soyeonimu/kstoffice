@@ -26,13 +26,11 @@
 
   <style>
     /* ── 랜딩 전용 헤더 ── */
-    body { margin: 0; padding-top: 64px !important; font-family: 'Pretendard', -apple-system, sans-serif; background: #fff; }
+    body { margin: 0; padding-top: 0 !important; font-family: 'Pretendard', -apple-system, sans-serif; background: #fff; }
 
     .landing-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 10000;
       background: var(--bg-charcoal, #2d3136);
       border-bottom: 1px solid rgba(197,160,89,0.25);
@@ -41,69 +39,57 @@
       align-items: center;
     }
     .landing-header-inner {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      width: 100%; max-width: 1200px;
+      margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .landing-logo img {
-      height: 38px;
-      width: auto;
-      display: block;
-    }
-    .landing-header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .landing-logo img { height: 38px; width: auto; display: block; }
+    .landing-header-right { display: flex; align-items: center; gap: 12px; }
     .landing-tel {
-      font-size: 14px;
-      font-weight: 800;
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      letter-spacing: .3px;
+      font-size: 14px; font-weight: 800;
+      color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: .3px;
     }
     .landing-tel:hover { color: #c5a059; }
-    .landing-cta {
-      display: inline-block;
-      padding: 9px 20px;
-      background: linear-gradient(135deg, #c5a059, #e2c28d);
-      color: #1f2225;
-      font-size: 13px;
-      font-weight: 900;
-      border-radius: 10px;
+
+    /* 문의게시판 버튼 */
+    .landing-board-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      font-size: 13px; font-weight: 700;
+      border-radius: 8px; cursor: pointer;
+      transition: all .2s; white-space: nowrap;
       text-decoration: none;
-      transition: all .25s;
+    }
+    .landing-board-btn:hover {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border-color: rgba(255,255,255,0.3);
+    }
+    .landing-board-btn .lbb-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 2px rgba(74,222,128,0.3);
+    }
+
+    .landing-cta {
+      display: inline-block; padding: 9px 20px;
+      background: linear-gradient(135deg, #c5a059, #e2c28d);
+      color: #1f2225; font-size: 13px; font-weight: 900;
+      border-radius: 10px; text-decoration: none; transition: all .25s;
     }
     .landing-cta:hover { opacity: .88; transform: translateY(-1px); }
-    .landing-back {
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .landing-back:hover { color: rgba(255,255,255,0.75); }
 
     main { display: block; }
 
     /* ── 랜딩 전용 푸터 (미니) ── */
     .landing-footer {
-      background: #1f2225;
-      padding: 24px;
-      text-align: center;
-      font-size: 12px;
-      color: rgba(255,255,255,0.35);
-      line-height: 1.8;
+      background: #1f2225; padding: 24px; text-align: center;
+      font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.8;
     }
-    .landing-footer a {
-      color: rgba(255,255,255,0.45);
-      text-decoration: underline;
-    }
+    .landing-footer a { color: rgba(255,255,255,0.45); text-decoration: underline; }
 
     /* 애니메이션 */
     .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
@@ -115,7 +101,249 @@
       .landing-tel { display: none; }
       .landing-cta { font-size: 12px; padding: 8px 14px; border-radius: 8px; white-space: nowrap; }
       .landing-logo img { height: 30px; }
+      .landing-board-btn span.lbb-text { display: none; }
+      .landing-board-btn { padding: 8px 10px; }
     }
+
+    /* ══════════════════════════════
+       문의게시판 슬라이드 패널
+    ══════════════════════════════ */
+    .iqp-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
+      z-index: 19999;
+    }
+    .iqp-overlay.open { display: block; }
+
+    .iqp-panel {
+      position: fixed; top: 0; right: -520px; bottom: 0;
+      width: 100%; max-width: 500px;
+      background: #0f172a;
+      border-left: 1px solid rgba(197,160,89,0.2);
+      z-index: 20000;
+      display: flex; flex-direction: column;
+      transition: right .35s cubic-bezier(.22,1,.36,1);
+      overflow: hidden;
+    }
+    .iqp-panel.open { right: 0; }
+
+    /* 패널 헤더 */
+    .iqp-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: #0c1424;
+      flex-shrink: 0;
+    }
+    .iqp-head-left { display: flex; align-items: center; gap: 10px; }
+    .iqp-head-title {
+      font-size: 16px; font-weight: 900; color: #fff; letter-spacing: -0.02em;
+    }
+    .iqp-head-cnt {
+      font-size: 11px; font-weight: 700; color: #c5a059;
+      background: rgba(197,160,89,0.12); border: 1px solid rgba(197,160,89,0.2);
+      border-radius: 20px; padding: 2px 8px;
+    }
+    .iqp-head-right { display: flex; align-items: center; gap: 8px; }
+    .iqp-write-btn {
+      padding: 7px 14px;
+      background: linear-gradient(135deg,#c5a059,#e2c28d);
+      color: #0f172a; font-size: 12px; font-weight: 900;
+      border-radius: 8px; text-decoration: none; white-space: nowrap;
+    }
+    .iqp-close {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255,255,255,0.07); border: none;
+      color: rgba(255,255,255,0.6); font-size: 18px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .iqp-close:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+    /* 필터 탭 */
+    .iqp-tabs {
+      display: flex; gap: 6px; padding: 12px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: #0c1424; flex-shrink: 0; overflow-x: auto;
+    }
+    .iqp-tab {
+      padding: 5px 14px; border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: transparent; color: rgba(255,255,255,0.5);
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      white-space: nowrap; transition: all .15s;
+    }
+    .iqp-tab.active {
+      background: rgba(197,160,89,0.15);
+      border-color: rgba(197,160,89,0.4);
+      color: #e2c28d;
+    }
+
+    /* 목록 */
+    .iqp-list { flex: 1; overflow-y: auto; padding: 8px 0; }
+    .iqp-list::-webkit-scrollbar { width: 4px; }
+    .iqp-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+    .iqp-item {
+      padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer; transition: background .15s;
+    }
+    .iqp-item:hover { background: rgba(255,255,255,0.04); }
+    .iqp-item-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .iqp-item-title {
+      font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.88);
+      flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+    .iqp-item-meta {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 11.5px; color: rgba(255,255,255,0.35);
+    }
+    .iqp-new {
+      font-size: 10px; font-weight: 800; color: #fff;
+      background: #ef4444; border-radius: 4px; padding: 1px 5px;
+      flex-shrink: 0;
+    }
+
+    /* 카테고리 배지 */
+    .iqp-cat {
+      font-size: 11px; font-weight: 700; border-radius: 6px;
+      padding: 2px 8px; flex-shrink: 0;
+    }
+    .iqp-cat-개인회생 { background:rgba(59,130,246,0.15); color:#60a5fa; }
+    .iqp-cat-개인파산 { background:rgba(167,139,250,0.15); color:#a78bfa; }
+    .iqp-cat-형사사건 { background:rgba(251,113,133,0.15); color:#fb7185; }
+    .iqp-cat-등기     { background:rgba(52,211,153,0.15); color:#34d399; }
+    .iqp-cat-기타     { background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.4); }
+
+    /* 상태 배지 */
+    .iqp-status {
+      font-size: 10.5px; font-weight: 700; border-radius: 20px;
+      padding: 2px 8px; flex-shrink: 0;
+    }
+    .iqp-status-접수완료 { background:rgba(14,165,233,0.15); color:#38bdf8; }
+    .iqp-status-검토중   { background:rgba(234,179,8,0.15); color:#fbbf24; }
+    .iqp-status-답변완료 { background:rgba(34,197,94,0.15); color:#4ade80; }
+
+    /* 로딩 / 빈 상태 */
+    .iqp-empty {
+      text-align: center; padding: 60px 20px;
+      color: rgba(255,255,255,0.3); font-size: 14px; line-height: 1.8;
+    }
+    .iqp-spinner {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 3px solid rgba(197,160,89,0.2);
+      border-top-color: #c5a059;
+      animation: iqp-spin .8s linear infinite;
+      margin: 60px auto 16px;
+    }
+    @keyframes iqp-spin { to { transform: rotate(360deg); } }
+
+    /* 상세 뷰 */
+    .iqp-detail { display: none; flex-direction: column; height: 100%; }
+    .iqp-detail.active { display: flex; }
+    .iqp-detail-head {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: #0c1424; flex-shrink: 0;
+    }
+    .iqp-back-btn {
+      background: rgba(255,255,255,0.07); border: none;
+      color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 700;
+      padding: 6px 12px; border-radius: 8px; cursor: pointer;
+    }
+    .iqp-back-btn:hover { background: rgba(255,255,255,0.12); }
+    .iqp-detail-body { flex: 1; overflow-y: auto; padding: 20px; }
+    .iqp-detail-title {
+      font-size: 17px; font-weight: 900; color: #fff;
+      letter-spacing: -0.02em; margin-bottom: 14px; line-height: 1.4;
+    }
+    .iqp-detail-meta {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
+    }
+    .iqp-detail-divider {
+      height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 18px;
+    }
+    .iqp-detail-content {
+      font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.7);
+      white-space: pre-wrap; word-break: break-word;
+    }
+    .iqp-detail-locked {
+      text-align: center; padding: 30px 0;
+      color: rgba(255,255,255,0.3); font-size: 13px;
+    }
+    .iqp-answer-box {
+      margin-top: 24px; padding: 16px;
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 12px;
+    }
+    .iqp-answer-label {
+      font-size: 12px; font-weight: 700; color: #4ade80;
+      letter-spacing: .5px; margin-bottom: 10px;
+    }
+    .iqp-answer-text {
+      font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.75);
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 520px) {
+      .iqp-panel { max-width: 100%; }
+    }
+
+    /* ── 작성 뷰 ── */
+    .iqp-write { display: none; flex-direction: column; height: 100%; }
+    .iqp-write.active { display: flex; }
+    .iqp-write-body {
+      flex: 1; overflow-y: auto; padding: 20px;
+    }
+    .iqp-write-body::-webkit-scrollbar { width: 4px; }
+    .iqp-write-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+    .iqpw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .iqpw-field { display: flex; flex-direction: column; gap: 6px; }
+    .iqpw-full { grid-column: 1 / -1; }
+    .iqpw-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55); }
+    .iqpw-req { color: #f87171; }
+    .iqpw-input {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 11px 13px;
+      color: #fff; font-size: 13.5px; font-family: inherit;
+      outline: none; transition: border-color .2s;
+      width: 100%; box-sizing: border-box;
+    }
+    .iqpw-input:focus { border-color: rgba(197,160,89,0.5); }
+    .iqpw-input option { background: #1e293b; color: #fff; }
+    .iqpw-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+    .iqpw-agree-row {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12.5px; color: rgba(255,255,255,0.5);
+      margin-bottom: 16px; cursor: pointer;
+    }
+    .iqpw-agree-row input { accent-color: #c5a059; width: 15px; height: 15px; }
+    .iqpw-submit-btn {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, #c5a059, #e2c28d);
+      color: #0f172a; font-size: 15px; font-weight: 900;
+      border: none; border-radius: 12px; cursor: pointer;
+      transition: opacity .2s; letter-spacing: -0.01em;
+    }
+    .iqpw-submit-btn:hover { opacity: .88; }
+    .iqpw-submit-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .iqpw-note { text-align: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 12px; }
+    .iqpw-success {
+      text-align: center; padding: 60px 20px;
+    }
+    .iqpw-success-ic { font-size: 48px; margin-bottom: 16px; }
+    .iqpw-success-title { font-size: 20px; font-weight: 900; color: #4ade80; margin-bottom: 8px; }
+    .iqpw-success-sub { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
+    .iqpw-back-list-btn {
+      padding: 12px 28px; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 10px;
+      color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 700; cursor: pointer;
+    }
+    @media (max-width: 400px) { .iqpw-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -132,10 +360,116 @@
       </a>
       <div class="landing-header-right">
         <a href="tel:0312256885" class="landing-tel">031-225-6885</a>
+        <button class="landing-board-btn" onclick="iqpOpen()" aria-label="문의게시판 열기">
+          <span class="lbb-dot"></span>
+          <span class="lbb-text">문의게시판</span>
+        </button>
         <a href="tel:0312256885" class="landing-cta">무료 전화상담</a>
       </div>
     </div>
   </header>
+
+  <!-- ══ 문의게시판 패널 ══ -->
+  <div class="iqp-overlay" id="iqpOverlay" onclick="iqpClose()"></div>
+
+  <div class="iqp-panel" id="iqpPanel">
+    <!-- 패널 헤더 -->
+    <div class="iqp-head">
+      <div class="iqp-head-left">
+        <span class="iqp-head-title">상담 게시판</span>
+        <span class="iqp-head-cnt" id="iqpCnt">로딩 중</span>
+      </div>
+      <div class="iqp-head-right">
+        <button class="iqp-write-btn" onclick="iqpShowWrite()" style="border:none;cursor:pointer;">✏️ 글 작성</button>
+        <button class="iqp-close" onclick="iqpClose()">✕</button>
+      </div>
+    </div>
+
+    <!-- 필터 탭 -->
+    <div class="iqp-tabs" id="iqpTabs">
+      <button class="iqp-tab active" onclick="iqpFilter('전체',this)">전체</button>
+      <button class="iqp-tab" onclick="iqpFilter('접수완료',this)">접수완료</button>
+      <button class="iqp-tab" onclick="iqpFilter('검토중',this)">검토중</button>
+      <button class="iqp-tab" onclick="iqpFilter('답변완료',this)">답변완료</button>
+    </div>
+
+    <!-- 목록 뷰 -->
+    <div class="iqp-list" id="iqpList">
+      <div class="iqp-spinner"></div>
+      <div style="text-align:center;color:rgba(255,255,255,0.3);font-size:13px;padding-bottom:20px;">문의 불러오는 중…</div>
+    </div>
+
+    <!-- 작성 뷰 -->
+    <div class="iqp-write" id="iqpWrite">
+      <div class="iqp-detail-head">
+        <button class="iqp-back-btn" onclick="iqpShowList()">← 목록</button>
+        <span style="font-size:13px;color:rgba(255,255,255,0.4);">상담 문의 작성</span>
+      </div>
+      <div class="iqp-write-body" id="iqpWriteBody">
+        <div class="iqpw-grid">
+          <div class="iqpw-field">
+            <label class="iqpw-label">상담 구분 <span class="iqpw-req">*</span></label>
+            <select class="iqpw-input" id="iqpw-cat">
+              <option value="">선택하세요</option>
+              <option>개인회생</option><option>개인파산</option>
+              <option>형사사건</option><option>등기</option><option>기타</option>
+            </select>
+          </div>
+          <div class="iqpw-field">
+            <label class="iqpw-label">이름 <span class="iqpw-req">*</span></label>
+            <input class="iqpw-input" id="iqpw-name" type="text" placeholder="홍길동" maxlength="10">
+          </div>
+          <div class="iqpw-field">
+            <label class="iqpw-label">전화번호 <span class="iqpw-req">*</span></label>
+            <input class="iqpw-input" id="iqpw-phone" type="tel" placeholder="010-0000-0000" maxlength="13">
+          </div>
+          <div class="iqpw-field">
+            <label class="iqpw-label">총 채무액</label>
+            <select class="iqpw-input" id="iqpw-debt">
+              <option value="">선택하세요</option>
+              <option>1천만원 미만</option><option>1천~3천만원</option>
+              <option>3천~5천만원</option><option>5천만~1억원</option><option>1억원 이상</option>
+            </select>
+          </div>
+          <div class="iqpw-field">
+            <label class="iqpw-label">상담 가능 시간</label>
+            <select class="iqpw-input" id="iqpw-time">
+              <option value="">선택하세요</option>
+              <option>평일 오전 (9~12시)</option><option>평일 오후 (12~18시)</option>
+              <option>평일 저녁 (18~21시)</option><option>토요일 오전</option><option>시간 무관</option>
+            </select>
+          </div>
+          <div class="iqpw-field">
+            <label class="iqpw-label">비밀번호 <span class="iqpw-req">*</span></label>
+            <input class="iqpw-input" id="iqpw-pw" type="password" placeholder="글 조회 시 사용" maxlength="20">
+          </div>
+          <div class="iqpw-field iqpw-full">
+            <label class="iqpw-label">제목 <span class="iqpw-req">*</span></label>
+            <input class="iqpw-input" id="iqpw-title" type="text" placeholder="문의 제목을 입력하세요" maxlength="100">
+          </div>
+          <div class="iqpw-field iqpw-full">
+            <label class="iqpw-label">내용 <span class="iqpw-req">*</span></label>
+            <textarea class="iqpw-input iqpw-textarea" id="iqpw-content" placeholder="궁금하신 내용을 자유롭게 작성해 주세요.&#10;&#10;예) 채무 규모, 직업, 현재 상황 등을 적어주시면 더 정확한 답변을 드릴 수 있습니다." rows="6"></textarea>
+          </div>
+        </div>
+        <label class="iqpw-agree-row">
+          <input type="checkbox" id="iqpw-agree">
+          <span>개인정보 수집·이용에 동의합니다 <span class="iqpw-req">*</span></span>
+        </label>
+        <button class="iqpw-submit-btn" id="iqpwSubmitBtn" onclick="iqpSubmitWrite()">📨 문의글 등록하기</button>
+        <div class="iqpw-note">무료 · 수임 의무 없음 · 비밀 보장 · 24시간 내 답변</div>
+      </div>
+    </div>
+
+    <!-- 상세 뷰 -->
+    <div class="iqp-detail" id="iqpDetail">
+      <div class="iqp-detail-head">
+        <button class="iqp-back-btn" onclick="iqpShowList()">← 목록</button>
+        <span style="font-size:13px;color:rgba(255,255,255,0.4);">상세보기</span>
+      </div>
+      <div class="iqp-detail-body" id="iqpDetailBody"></div>
+    </div>
+  </div>
 
   <main>
     {{ content }}
@@ -154,6 +488,7 @@
   </footer>
 
   <script>
+    // ── IntersectionObserver ──
     document.addEventListener('DOMContentLoaded', () => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -161,6 +496,219 @@
         });
       }, { threshold: 0.1 });
       document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+    });
+
+    // ══════════════════════════════
+    //  문의게시판 패널
+    // ══════════════════════════════
+    var IQP_GAS = "https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";
+    var iqpPosts = [];
+    var iqpFilter_ = '전체';
+    var iqpLoaded = false;
+
+    function iqpOpen() {
+      document.getElementById('iqpOverlay').classList.add('open');
+      document.getElementById('iqpPanel').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (!iqpLoaded) iqpLoad();
+    }
+
+    function iqpClose() {
+      document.getElementById('iqpOverlay').classList.remove('open');
+      document.getElementById('iqpPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function iqpLoad() {
+      var s = document.createElement('script');
+      s.src = IQP_GAS + '?action=list&callback=iqpRender';
+      s.onerror = function() {
+        document.getElementById('iqpList').innerHTML =
+          '<div class="iqp-empty">데이터를 불러오지 못했습니다.<br><a href="/inquiry/" style="color:#c5a059;">게시판 페이지로 이동 →</a></div>';
+      };
+      document.head.appendChild(s);
+    }
+
+    function iqpRender(data) {
+      iqpLoaded = true;
+      iqpPosts = data || [];
+      document.getElementById('iqpCnt').textContent = iqpPosts.length + '건';
+      iqpDrawList();
+    }
+
+    function iqpFilter(f, el) {
+      iqpFilter_ = f;
+      document.querySelectorAll('.iqp-tab').forEach(t => t.classList.remove('active'));
+      if (el) el.classList.add('active');
+      iqpDrawList();
+    }
+
+    function iqpDrawList() {
+      var rows = iqpFilter_ === '전체' ? iqpPosts
+        : iqpPosts.filter(p => p.status === iqpFilter_);
+      var list = document.getElementById('iqpList');
+
+      if (!rows.length) {
+        list.innerHTML = '<div class="iqp-empty">해당 문의가 없습니다.</div>';
+        return;
+      }
+
+      var now = Date.now();
+      var catMap = {개인회생:'iqp-cat-개인회생',개인파산:'iqp-cat-개인파산',형사사건:'iqp-cat-형사사건',등기:'iqp-cat-등기',기타:'iqp-cat-기타'};
+      var stMap  = {접수완료:'iqp-status-접수완료',검토중:'iqp-status-검토중',답변완료:'iqp-status-답변완료'};
+
+      list.innerHTML = rows.map(function(p) {
+        var isNew = (now - new Date(p.date).getTime()) < 86400000 * 2;
+        var cat = p.category || '기타';
+        var st  = p.status  || '접수완료';
+        var dateStr = (p.date||'').substring(0,10).replace(/-/g,'.');
+        return '<div class="iqp-item" onclick="iqpView(' + p.id + ')">'
+          + '<div class="iqp-item-top">'
+          + '<span class="iqp-cat ' + (catMap[cat]||'iqp-cat-기타') + '">' + cat + '</span>'
+          + '<span class="iqp-item-title">' + iqpEsc(p.title) + '</span>'
+          + (isNew ? '<span class="iqp-new">NEW</span>' : '')
+          + '</div>'
+          + '<div class="iqp-item-meta">'
+          + '<span>' + iqpEsc(p.authorMasked||'익명') + '</span>'
+          + '<span>' + dateStr + '</span>'
+          + '<span class="iqp-status ' + (stMap[st]||'iqp-status-접수완료') + '">' + st + '</span>'
+          + '</div></div>';
+      }).join('');
+    }
+
+    function iqpView(id) {
+      var p = iqpPosts.find(function(x){ return x.id == id; });
+      if (!p) return;
+
+      var catMap = {개인회생:'iqp-cat-개인회생',개인파산:'iqp-cat-개인파산',형사사건:'iqp-cat-형사사건',등기:'iqp-cat-등기',기타:'iqp-cat-기타'};
+      var stMap  = {접수완료:'iqp-status-접수완료',검토중:'iqp-status-검토중',답변완료:'iqp-status-답변완료'};
+      var cat = p.category||'기타', st = p.status||'접수완료';
+      var dateStr = (p.date||'').substring(0,10).replace(/-/g,'.');
+
+      var ansHtml = '';
+      if (p.answer) {
+        ansHtml = '<div class="iqp-answer-box">'
+          + '<div class="iqp-answer-label">✓ 법무사 답변</div>'
+          + '<div class="iqp-answer-text">' + iqpEsc(p.answer) + '</div>'
+          + '</div>';
+      }
+
+      var contentHtml = (p.isLocked || p.locked)
+        ? '<div class="iqp-detail-locked">🔒 비밀글입니다</div>'
+        : '<div class="iqp-detail-content">' + iqpEsc(p.body||p.content||'내용 없음') + '</div>';
+
+      document.getElementById('iqpDetailBody').innerHTML =
+        '<div class="iqp-detail-title">' + iqpEsc(p.title) + '</div>'
+        + '<div class="iqp-detail-meta">'
+        + '<span class="iqp-cat ' + (catMap[cat]||'iqp-cat-기타') + '">' + cat + '</span>'
+        + '<span class="iqp-status ' + (stMap[st]||'iqp-status-접수완료') + '">' + st + '</span>'
+        + '<span style="font-size:12px;color:rgba(255,255,255,.35);">' + iqpEsc(p.authorMasked||'익명') + ' · ' + dateStr + '</span>'
+        + '</div>'
+        + '<div class="iqp-detail-divider"></div>'
+        + contentHtml
+        + ansHtml;
+
+      document.getElementById('iqpList').style.display = 'none';
+      document.getElementById('iqpTabs').style.display = 'none';
+      document.getElementById('iqpDetail').classList.add('active');
+    }
+
+    function iqpShowList() {
+      document.getElementById('iqpList').style.display = '';
+      document.getElementById('iqpTabs').style.display = '';
+      document.getElementById('iqpDetail').classList.remove('active');
+      document.getElementById('iqpWrite').classList.remove('active');
+    }
+
+    function iqpEsc(s) {
+      return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    // ── 작성 뷰 ──
+    function iqpShowWrite() {
+      document.getElementById('iqpList').style.display = 'none';
+      document.getElementById('iqpTabs').style.display = 'none';
+      document.getElementById('iqpDetail').classList.remove('active');
+      document.getElementById('iqpWrite').classList.add('active');
+      // 전화번호 자동 포맷
+      var ph = document.getElementById('iqpw-phone');
+      if (ph && !ph._fmtBound) {
+        ph._fmtBound = true;
+        ph.addEventListener('input', function(e) {
+          var v = e.target.value.replace(/\D/g,'');
+          if (v.length >= 7) v = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7,11);
+          else if (v.length >= 4) v = v.slice(0,3)+'-'+v.slice(3);
+          e.target.value = v;
+        });
+      }
+    }
+
+    function iqpSubmitWrite() {
+      var cat   = document.getElementById('iqpw-cat').value;
+      var name  = document.getElementById('iqpw-name').value.trim();
+      var phone = document.getElementById('iqpw-phone').value.trim();
+      var debt  = document.getElementById('iqpw-debt').value;
+      var time  = document.getElementById('iqpw-time').value;
+      var pw    = document.getElementById('iqpw-pw').value;
+      var title = document.getElementById('iqpw-title').value.trim();
+      var body  = document.getElementById('iqpw-content').value.trim();
+      var agree = document.getElementById('iqpw-agree').checked;
+
+      if (!cat || !name || !phone || !pw || !title || !body) {
+        alert('필수 항목(구분·이름·전화번호·비밀번호·제목·내용)을 모두 입력해 주세요.');
+        return;
+      }
+      if (phone.replace(/[^0-9]/g,'').length < 10) {
+        alert('올바른 전화번호를 입력해 주세요.');
+        return;
+      }
+      if (!agree) {
+        alert('개인정보 수집·이용에 동의해 주세요.');
+        return;
+      }
+
+      var btn = document.getElementById('iqpwSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = '등록 중…';
+
+      fetch(IQP_GAS, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action:'write', category:cat, name:name, phone:phone,
+          debt:debt, time:time, password:pw, title:title, content:body })
+      }).then(function() {
+        iqpWriteSuccess();
+      }).catch(function() {
+        iqpWriteSuccess(); // no-cors는 항상 opaque → 성공으로 처리
+      });
+    }
+
+    function iqpWriteSuccess() {
+      document.getElementById('iqpWriteBody').innerHTML =
+        '<div class="iqpw-success">'
+        + '<div class="iqpw-success-ic">✅</div>'
+        + '<div class="iqpw-success-title">문의가 등록되었습니다</div>'
+        + '<div class="iqpw-success-sub">법무사가 직접 검토 후<br>24시간 내 연락드립니다</div>'
+        + '<button class="iqpw-back-list-btn" onclick="iqpResetAndList()">← 목록으로 돌아가기</button>'
+        + '</div>';
+      iqpLoaded = false; // 목록 새로 로드
+    }
+
+    function iqpResetAndList() {
+      // 폼 초기화 후 목록으로
+      document.getElementById('iqpWrite').classList.remove('active');
+      document.getElementById('iqpList').style.display = '';
+      document.getElementById('iqpTabs').style.display = '';
+      document.getElementById('iqpList').innerHTML =
+        '<div class="iqp-spinner"></div>'
+        + '<div style="text-align:center;color:rgba(255,255,255,0.3);font-size:13px;padding-bottom:20px;">업데이트 중…</div>';
+      iqpLoad(); // 새 글 포함해서 다시 로드
+    }
+
+    // ESC 키로 패널 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') iqpClose();
     });
   </script>
 </body>

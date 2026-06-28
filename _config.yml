@@ -16,4 +16,16 @@ include:
 collections:
   board:
     output: true
- 
+    permalink: /board/:name/
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+simple_jekyll_search:
+  json: true
+  url: "/search.json"
+  collections:
+    board:
+      output: true
+      limit: 1000

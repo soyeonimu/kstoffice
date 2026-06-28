@@ -3231,57 +3231,57 @@ permalink: /rehab/diagnosis
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    align-items: end;
   }
   .atty3-card {
     background: #0f1e35;
     border: 1px solid rgba(197,160,89,0.18);
     border-radius: 18px;
-    padding: 0 20px 24px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: left;
-    position: relative;
     transition: border-color .2s, transform .2s;
-    overflow: visible;
   }
   .atty3-card:hover { border-color: rgba(197,160,89,0.45); transform: translateY(-4px); }
   .atty3-photo-wrap {
     width: 100%;
-    margin-bottom: -4px;
-    margin-top: -60px;
+    height: 240px;
+    overflow: hidden;
+    background: #162035;
     display: flex;
+    align-items: flex-end;
     justify-content: center;
-    pointer-events: none;
   }
   .atty3-photo {
-    width: 85%;
-    max-width: 220px;
-    height: auto;
+    height: 230px;
+    width: auto;
+    max-width: 100%;
     object-fit: contain;
     object-position: bottom center;
-    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 -4px 16px rgba(0,0,0,0.4));
+  }
+  .atty3-body {
+    padding: 20px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
   .atty3-divider {
     width: 100%;
     height: 1px;
     background: rgba(197,160,89,0.2);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .atty3-name {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 900;
     color: #fff;
     letter-spacing: -0.03em;
     margin-bottom: 14px;
-    width: 100%;
   }
-  .atty3-name em { color: #c5a059; font-style: normal; font-size: 13px; font-weight: 700; margin-left: 6px; vertical-align: middle; }
   .atty3-career {
     list-style: none;
-    padding: 0; margin: 0 0 14px;
-    width: 100%;
+    padding: 0; margin: 0 0 16px;
+    flex: 1;
   }
   .atty3-career li {
     font-size: 12.5px;
@@ -3291,26 +3291,25 @@ permalink: /rehab/diagnosis
     border-bottom: 1px solid rgba(255,255,255,0.04);
     line-height: 1.4;
   }
-  .atty3-career li.highlight { color: rgba(255,255,255,0.85); font-weight: 700; }
+  .atty3-career li.highlight { color: rgba(255,255,255,0.88); font-weight: 700; }
   .atty3-career li:last-child { border-bottom: none; }
   .atty3-career li::before {
-    content: '';
-    position: absolute; left: 2px; top: 12px;
+    content: ''; position: absolute; left: 2px; top: 12px;
     width: 5px; height: 5px; border-radius: 50%;
-    background: rgba(197,160,89,0.5);
+    background: rgba(197,160,89,0.4);
   }
   .atty3-career li.highlight::before { background: #c5a059; }
   .atty3-award {
     font-size: 12px; font-weight: 800; color: #e2c28d;
     background: rgba(197,160,89,0.1);
     border: 1px solid rgba(197,160,89,0.25);
-    border-radius: 8px; padding: 5px 14px;
-    width: 100%; box-sizing: border-box; text-align: center;
+    border-radius: 8px; padding: 6px 14px;
+    text-align: center;
   }
   .atty3-award.hidden { visibility: hidden; }
   @media (max-width: 768px) {
-    .atty3-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
-    .atty3-photo-wrap { margin-top: -40px; }
+    .atty3-grid { grid-template-columns: 1fr; }
+    .atty3-photo-wrap { height: 200px; }
   }
 
     .attorney-section {
@@ -4664,17 +4663,19 @@ permalink: /rehab/diagnosis
           <div class="atty3-photo-wrap">
             <img src="/assets/img/kim.png" alt="김성태 법무사" class="atty3-photo">
           </div>
-          <div class="atty3-divider"></div>
-          <div class="atty3-name">법무사 김성태</div>
-          <ul class="atty3-career">
-            <li class="highlight">현) 대표 법무사</li>
-            <li class="highlight">현) 경기도 전세사기 피해 상담위원</li>
-            <li>전) 수원지방검찰청 강력부</li>
-            <li>전) 수원지방검찰청 여주지청 특수부</li>
-            <li>전) 수원지방검찰청 형사부</li>
-            <li>1992년 검찰 입직 / 2010년 퇴직</li>
-          </ul>
-          <div class="atty3-award">🏅 법무부장관 표창</div>
+          <div class="atty3-body">
+            <div class="atty3-divider"></div>
+            <div class="atty3-name">법무사 김성태</div>
+            <ul class="atty3-career">
+              <li class="highlight">현) 대표 법무사</li>
+              <li class="highlight">현) 경기도 전세사기 피해 상담위원</li>
+              <li>전) 수원지방검찰청 강력부</li>
+              <li>전) 수원지방검찰청 여주지청 특수부</li>
+              <li>전) 수원지방검찰청 형사부</li>
+              <li>1992년 검찰 입직 / 2010년 퇴직</li>
+            </ul>
+            <div class="atty3-award">🏅 법무부장관 표창</div>
+          </div>
         </div>
 
         <!-- 박인복 -->
@@ -4682,17 +4683,19 @@ permalink: /rehab/diagnosis
           <div class="atty3-photo-wrap">
             <img src="/assets/img/park.png" alt="박인복 법무사" class="atty3-photo">
           </div>
-          <div class="atty3-divider"></div>
-          <div class="atty3-name">법무사 박인복</div>
-          <ul class="atty3-career">
-            <li class="highlight">현) 대표 법무사</li>
-            <li>전) 피해자지원 담당관</li>
-            <li>전) 수원지방검찰청 공안부</li>
-            <li>전) 수원지방검찰청 조사과</li>
-            <li>전) 수원지방검찰청 수사과</li>
-            <li>1992년 검찰 입직 / 2025년 사무관 퇴직</li>
-          </ul>
-          <div class="atty3-award hidden">—</div>
+          <div class="atty3-body">
+            <div class="atty3-divider"></div>
+            <div class="atty3-name">법무사 박인복</div>
+            <ul class="atty3-career">
+              <li class="highlight">현) 대표 법무사</li>
+              <li>전) 피해자지원 담당관</li>
+              <li>전) 수원지방검찰청 공안부</li>
+              <li>전) 수원지방검찰청 조사과</li>
+              <li>전) 수원지방검찰청 수사과</li>
+              <li>1992년 검찰 입직 / 2025년 사무관 퇴직</li>
+            </ul>
+            <div class="atty3-award hidden">—</div>
+          </div>
         </div>
 
         <!-- 이현구 -->
@@ -4700,17 +4703,19 @@ permalink: /rehab/diagnosis
           <div class="atty3-photo-wrap">
             <img src="/assets/img/lee.png" alt="이현구 법무사" class="atty3-photo">
           </div>
-          <div class="atty3-divider"></div>
-          <div class="atty3-name">법무사 이현구</div>
-          <ul class="atty3-career">
-            <li class="highlight">현) 대표 법무사</li>
-            <li class="highlight">현) 수원지방검찰청 형사조정위원</li>
-            <li>전) 수원지방검찰청 형사부</li>
-            <li>전) 동부지방검찰청 형사부</li>
-            <li>전) 수원지방검찰청 검사장 비서관</li>
-            <li>1992년 검찰 입직 / 2024년 퇴직</li>
-          </ul>
-          <div class="atty3-award">🏅 국민포장 수상</div>
+          <div class="atty3-body">
+            <div class="atty3-divider"></div>
+            <div class="atty3-name">법무사 이현구</div>
+            <ul class="atty3-career">
+              <li class="highlight">현) 대표 법무사</li>
+              <li class="highlight">현) 수원지방검찰청 형사조정위원</li>
+              <li>전) 수원지방검찰청 형사부</li>
+              <li>전) 동부지방검찰청 형사부</li>
+              <li>전) 수원지방검찰청 검사장 비서관</li>
+              <li>1992년 검찰 입직 / 2024년 퇴직</li>
+            </ul>
+            <div class="atty3-award">🏅 국민포장 수상</div>
+          </div>
         </div>
 
       </div>

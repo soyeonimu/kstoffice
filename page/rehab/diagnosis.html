@@ -5694,7 +5694,7 @@ permalink: /rehab/diagnosis
     if (btn) { btn.textContent = "전송 중…"; btn.disabled = true; }
     fetch(LEAD_GAS_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      mode: "no-cors",
       body: JSON.stringify({ source: "하단리드폼", name, phone })
     })
     .then(() => {
@@ -6187,7 +6187,7 @@ permalink: /rehab/diagnosis
 
     fetch(LEAD_GAS_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      mode: "no-cors",
       body: JSON.stringify({
         source: "결과인라인CTA",
         phone,

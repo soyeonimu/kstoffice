@@ -144,6 +144,42 @@ permalink: /inquiry/
   .iq-form-grid { grid-template-columns: 1fr; }
   .iq-table th:nth-child(4), .iq-table td:nth-child(4) { display: none; }
 }
+
+  /* ── 페이지네이션 ── */
+  #iqPagination { padding: 16px 0 4px; }
+  .iq-pager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .pg-btn {
+    min-width: 34px;
+    height: 34px;
+    border: 1.5px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.04);
+    color: rgba(255,255,255,.55);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+    padding: 0 6px;
+  }
+  .pg-btn:hover:not(:disabled) {
+    background: rgba(197,160,89,.15);
+    border-color: rgba(197,160,89,.4);
+    color: #e2c28d;
+  }
+  .pg-btn.pg-active {
+    background: #c5a059;
+    border-color: #c5a059;
+    color: #0f172a;
+    font-weight: 900;
+  }
+  .pg-btn:disabled { opacity: .3; cursor: default; }
+  .pg-arrow { font-size: 16px; }
 </style>
 
 <div class="iq-wrap">
@@ -177,6 +213,7 @@ permalink: /inquiry/
       <tr><td colspan="6" class="iq-no-data">불러오는 중...</td></tr>
     </tbody>
   </table>
+<div id="iqPagination"></div>
 </div>
 
 <!-- ===== 글쓰기 모달 ===== -->
@@ -297,8 +334,11 @@ permalink: /inquiry/
 var GAS_URL = "https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";
 
 var allPosts = [];
+var filteredPosts = [];
 var currentFilter = '전체';
 var currentViewId = null;
+var currentPage = 1;
+var PAGE_SIZE = 10;
 
 // ===== 목록 로드 =====
 function loadList() {
@@ -319,33 +359,64 @@ function renderList(data) {
 
 function filterTab(filter, el) {
   currentFilter = filter;
+  currentPage = 1;
   document.querySelectorAll('.iq-tab').forEach(t => t.classList.remove('active'));
   if (el) el.classList.add('active');
+  filteredPosts = filter === '전체' ? allPosts : allPosts.filter(p => p.status === filter);
+  renderPage();
+}
 
-  var rows = filter === '전체' ? allPosts : allPosts.filter(p => p.status === filter);
+function renderPage() {
   var tbody = document.getElementById('iqTableBody');
-
-  if (!rows.length) {
+  if (!filteredPosts.length) {
     tbody.innerHTML = '<tr><td colspan="6" class="iq-no-data">해당 문의가 없습니다.</td></tr>';
+    renderPagination(0);
     return;
   }
-
+  var start = (currentPage - 1) * PAGE_SIZE;
+  var page = filteredPosts.slice(start, start + PAGE_SIZE);
   var catShort = {'개인회생':'회생','개인파산':'파산','형사사건':'형사','등기':'등기','기타':'기타'};
   var now = Date.now();
-  tbody.innerHTML = rows.map(function(p, i) {
+  tbody.innerHTML = page.map(function(p) {
     var isNew = (now - new Date(p.date).getTime()) < 86400000 * 2;
     var cat = p.category || '기타';
-    var catCls = 'cat-' + cat;
-    var stCls = 'status-' + (p.status || '접수완료');
     return '<tr class="iq-row" onclick="openView(' + p.id + ')">' +
       '<td class="iq-num">' + p.id + '</td>' +
-      '<td><span class="cat-badge ' + catCls + '">' + (catShort[cat]||cat) + '</span></td>' +
+      '<td><span class="cat-badge cat-' + cat + '">' + (catShort[cat]||cat) + '</span></td>' +
       '<td class="td-title">' + escHtml(p.title) + (isNew ? '<span class="new-badge">NEW</span>' : '') + '</td>' +
       '<td>' + escHtml(p.authorMasked) + '</td>' +
       '<td>' + (p.date||'').substring(0,10).replace(/-/g,'.') + '</td>' +
-      '<td><span class="status-badge ' + stCls + '">' + (p.status||'접수완료') + '</span></td>' +
+      '<td><span class="status-badge status-' + (p.status||'접수완료') + '">' + (p.status||'접수완료') + '</span></td>' +
     '</tr>';
   }).join('');
+  renderPagination(filteredPosts.length);
+}
+
+function goPage(n) {
+  var total = Math.ceil(filteredPosts.length / PAGE_SIZE);
+  if (n < 1 || n > total) return;
+  currentPage = n;
+  renderPage();
+  window.scrollTo({top: document.getElementById('iqTableBody').closest('table').offsetTop - 80, behavior:'smooth'});
+}
+
+function renderPagination(total) {
+  var el = document.getElementById('iqPagination');
+  if (!el) return;
+  var pages = Math.ceil(total / PAGE_SIZE);
+  if (pages <= 1) { el.innerHTML = ''; return; }
+  var html = '<div class="iq-pager">';
+  html += '<button class="pg-btn pg-arrow" onclick="goPage(' + (currentPage-1) + ')" ' + (currentPage===1?'disabled':'') + '>‹</button>';
+  // 최대 7개 페이지 번호 표시 (앞뒤 생략)
+  var start = Math.max(1, currentPage - 3);
+  var end = Math.min(pages, start + 6);
+  start = Math.max(1, end - 6);
+  for (var i = start; i <= end; i++) {
+    html += '<button class="pg-btn' + (i===currentPage?' pg-active':'') + '" onclick="goPage(' + i + ')">' + i + '</button>';
+  }
+  html += '<button class="pg-btn pg-arrow" onclick="goPage(' + (currentPage+1) + ')" ' + (currentPage===pages?'disabled':'') + '>›</button>';
+  html += '</div>';
+  el.innerHTML = html;
 }
 
 // ===== 글 보기 =====

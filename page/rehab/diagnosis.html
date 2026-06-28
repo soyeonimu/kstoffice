@@ -4407,65 +4407,91 @@ permalink: /rehab/diagnosis
   <!-- ★ 사례 3개 슬라이더 -->
   <section class="cases-section" id="sec-cases" data-subnav="sec-cases">
     <div class="info-inner">
-      <div class="info-label">실제 진단 사례</div>
-      <div class="why-title" style="margin-bottom:6px;">비슷한 상황이신가요?</div>
-      <div class="sp-note">※ 실제 진단 정보를 기반으로 재구성한 사례입니다. 개인 식별 정보는 포함되지 않습니다.</div>
-      <div class="cases-slider-wrap">
-        <div class="cases-track-outer">
-          <div class="cases-track" id="casesTrack">
-            <div class="case-card">
-              <div class="case-badge case-badge--red">긴급 대응</div>
-              <div class="case-profile">40대 · 직장인 · 부양가족 2명</div>
-              <div class="case-situation">"통장에 압류 문자가 왔어요.<br>내일 당장 월급이 막힐 것 같아서…"</div>
-              <div class="case-divider"></div>
-              <div class="case-result-label">진단 결과</div>
-              <div class="case-result-grid">
-                <div><span>채무</span><strong>7,800만원</strong></div>
-                <div><span>월 변제금</span><strong class="case-gold">43만원</strong></div>
-                <div><span>탕감 예상</span><strong class="case-green">6,720만원</strong></div>
-                <div><span>기간</span><strong>36개월</strong></div>
+      <div class="sc2-split">
+
+        <!-- 왼쪽: 실제 사례 슬라이더 -->
+        <div class="sc2-left">
+          <div class="info-label">실제 진단 사례</div>
+          <div class="why-title" style="margin-bottom:6px;">비슷한 상황이신가요?</div>
+          <div class="sp-note">※ 실제 진단 정보를 기반으로 재구성한 사례입니다. 개인 식별 정보는 포함되지 않습니다.</div>
+          <div class="cases-slider-wrap">
+            <div class="cases-track-outer">
+              <div class="cases-track" id="casesTrack">
+                <div class="case-card">
+                  <div class="case-badge case-badge--red">긴급 대응</div>
+                  <div class="case-profile">40대 · 직장인 · 부양가족 2명</div>
+                  <div class="case-situation">"통장에 압류 문자가 왔어요.<br>내일 당장 월급이 막힐 것 같아서…"</div>
+                  <div class="case-divider"></div>
+                  <div class="case-result-label">진단 결과</div>
+                  <div class="case-result-grid">
+                    <div><span>채무</span><strong>7,800만원</strong></div>
+                    <div><span>월 변제금</span><strong class="case-gold">43만원</strong></div>
+                    <div><span>탕감 예상</span><strong class="case-green">6,720만원</strong></div>
+                    <div><span>기간</span><strong>36개월</strong></div>
+                  </div>
+                </div>
+                <div class="case-card">
+                  <div class="case-badge case-badge--orange">집중 검토</div>
+                  <div class="case-profile">30대 · 자영업자 · 배우자 있음</div>
+                  <div class="case-situation">"이자만 갚다가 원금이 그대로예요.<br>폐업 후에도 신청이 되는지…"</div>
+                  <div class="case-divider"></div>
+                  <div class="case-result-label">진단 결과</div>
+                  <div class="case-result-grid">
+                    <div><span>채무</span><strong>4,500만원</strong></div>
+                    <div><span>월 변제금</span><strong class="case-gold">28만원</strong></div>
+                    <div><span>탕감 예상</span><strong class="case-green">3,780만원</strong></div>
+                    <div><span>기간</span><strong>48개월</strong></div>
+                  </div>
+                </div>
+                <div class="case-card">
+                  <div class="case-badge case-badge--red">긴급 대응</div>
+                  <div class="case-profile">50대 · 주부 · 부양가족 3명</div>
+                  <div class="case-situation">"1억이 넘는데 진짜 줄어들 수 있나요?<br>가족한테는 알리고 싶지 않아서…"</div>
+                  <div class="case-divider"></div>
+                  <div class="case-result-label">진단 결과</div>
+                  <div class="case-result-grid">
+                    <div><span>채무</span><strong>1억 200만원</strong></div>
+                    <div><span>월 변제금</span><strong class="case-gold">35만원</strong></div>
+                    <div><span>탕감 예상</span><strong class="case-green">9,100만원</strong></div>
+                    <div><span>기간</span><strong>36개월</strong></div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="case-card">
-              <div class="case-badge case-badge--orange">집중 검토</div>
-              <div class="case-profile">30대 · 자영업자 · 배우자 있음</div>
-              <div class="case-situation">"이자만 갚다가 원금이 그대로예요.<br>폐업 후에도 신청이 되는지…"</div>
-              <div class="case-divider"></div>
-              <div class="case-result-label">진단 결과</div>
-              <div class="case-result-grid">
-                <div><span>채무</span><strong>4,500만원</strong></div>
-                <div><span>월 변제금</span><strong class="case-gold">28만원</strong></div>
-                <div><span>탕감 예상</span><strong class="case-green">3,780만원</strong></div>
-                <div><span>기간</span><strong>48개월</strong></div>
+            <div class="cases-nav">
+              <button class="cases-prev" onclick="slideCases(-1)" aria-label="이전">‹</button>
+              <div class="cases-dots" id="casesDots">
+                <span class="cases-dot active" onclick="goCase(0)"></span>
+                <span class="cases-dot" onclick="goCase(1)"></span>
+                <span class="cases-dot" onclick="goCase(2)"></span>
               </div>
-            </div>
-            <div class="case-card">
-              <div class="case-badge case-badge--red">긴급 대응</div>
-              <div class="case-profile">50대 · 주부 · 부양가족 3명</div>
-              <div class="case-situation">"1억이 넘는데 진짜 줄어들 수 있나요?<br>가족한테는 알리고 싶지 않아서…"</div>
-              <div class="case-divider"></div>
-              <div class="case-result-label">진단 결과</div>
-              <div class="case-result-grid">
-                <div><span>채무</span><strong>1억 200만원</strong></div>
-                <div><span>월 변제금</span><strong class="case-gold">35만원</strong></div>
-                <div><span>탕감 예상</span><strong class="case-green">9,100만원</strong></div>
-                <div><span>기간</span><strong>36개월</strong></div>
-              </div>
+              <button class="cases-next" onclick="slideCases(1)" aria-label="다음">›</button>
             </div>
           </div>
         </div>
-        <div class="cases-nav">
-          <button class="cases-prev" onclick="slideCases(-1)" aria-label="이전">‹</button>
-          <div class="cases-dots" id="casesDots">
-            <span class="cases-dot active" onclick="goCase(0)"></span>
-            <span class="cases-dot" onclick="goCase(1)"></span>
-            <span class="cases-dot" onclick="goCase(2)"></span>
+
+        <!-- 오른쪽: 상담 게시판 -->
+        <div class="sc2-right">
+          <div class="sc2-board-head">
+            <div>
+              <div class="info-label" style="margin-bottom:4px;">상담 게시판</div>
+              <div class="sc2-board-title">최근 문의 현황</div>
+            </div>
+            <span class="sc2-board-cnt" id="sc2Cnt">—</span>
           </div>
-          <button class="cases-next" onclick="slideCases(1)" aria-label="다음">›</button>
+          <div class="sc2-list" id="sc2List">
+            <div class="sc2-loading">
+              <div class="sc2-spinner"></div>
+              불러오는 중…
+            </div>
+          </div>
+          <button class="sc2-write-btn" onclick="sc2OpenWrite()">✏️ 문의글 남기기 →</button>
         </div>
+
       </div>
     </div>
   </section>
+
 
   <!-- ★ 섹션 3: 개인회생 절차 -->
   <section class="process-section" id="sec-procedure" data-subnav="sec-procedure">
@@ -4984,7 +5010,135 @@ permalink: /rehab/diagnosis
 .r2-inquiry-arrow {
   font-size: 20px; color: rgba(99,179,237,0.6); flex-shrink: 0;
 }
-  </style>
+  
+  /* ── 사례 + 게시판 2열 레이아웃 ── */
+  .sc2-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .sc2-right {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .sc2-board-head {
+    padding: 20px 20px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sc2-board-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  .sc2-board-cnt {
+    font-size: 11px;
+    font-weight: 700;
+    color: #c5a059;
+    background: rgba(197,160,89,0.1);
+    border: 1px solid rgba(197,160,89,0.2);
+    border-radius: 20px;
+    padding: 2px 10px;
+  }
+  .sc2-list { flex: 1; }
+  .sc2-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .sc2-item:last-child { border-bottom: none; }
+  .sc2-item:hover { background: rgba(255,255,255,0.04); }
+  .sc2-item-body { flex: 1; min-width: 0; }
+  .sc2-item-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    letter-spacing: -0.01em;
+  }
+  .sc2-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+  }
+  .sc2-status {
+    font-size: 10.5px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 1px 7px;
+  }
+  .sc2-status-접수완료 { background:rgba(14,165,233,0.15); color:#38bdf8; }
+  .sc2-status-검토중   { background:rgba(234,179,8,0.15); color:#fbbf24; }
+  .sc2-status-답변완료 { background:rgba(34,197,94,0.15); color:#4ade80; }
+  .sc2-cat {
+    font-size: 10.5px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 1px 7px;
+    flex-shrink: 0;
+  }
+  .sc2-cat-개인회생 { background:rgba(59,130,246,0.15); color:#60a5fa; }
+  .sc2-cat-개인파산 { background:rgba(167,139,250,0.15); color:#a78bfa; }
+  .sc2-cat-형사사건 { background:rgba(251,113,133,0.15); color:#fb7185; }
+  .sc2-cat-등기     { background:rgba(52,211,153,0.15); color:#34d399; }
+  .sc2-cat-기타     { background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.4); }
+  .sc2-write-btn {
+    display: block;
+    margin: 14px 20px 18px;
+    padding: 12px;
+    background: linear-gradient(135deg, rgba(197,160,89,0.12), rgba(197,160,89,0.06));
+    border: 1px solid rgba(197,160,89,0.25);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #e2c28d;
+    cursor: pointer;
+    transition: background .2s, border-color .2s;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .sc2-write-btn:hover {
+    background: rgba(197,160,89,0.18);
+    border-color: rgba(197,160,89,0.4);
+  }
+  .sc2-loading {
+    padding: 40px 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+  }
+  .sc2-spinner {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 2px solid rgba(197,160,89,0.2);
+    border-top-color: #c5a059;
+    animation: iqp-spin .8s linear infinite;
+    margin: 0 auto 10px;
+  }
+  /* 섹션 전체 wider */
+  #sec-cases .info-inner { max-width: 1100px; }
+  @media (max-width: 768px) {
+    .sc2-split { grid-template-columns: 1fr; gap: 20px; }
+    #sec-cases .info-inner { max-width: 720px; }
+  }
+</style>
   <!-- ④ 결과 -->
   <section id="reportSection" class="lp-result hidden">
     <div class="r2-wrap">
@@ -6337,3 +6491,83 @@ permalink: /rehab/diagnosis
   })();
 
 </script>
+  // ── sec-cases 우측 게시판 ──
+  var SC2_GAS = "https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";
+  var sc2Posts = [];
+  var sc2Loaded = false;
+
+  function sc2Load() {
+    var s = document.createElement('script');
+    s.src = SC2_GAS + '?action=list&callback=sc2Render';
+    s.onerror = function() {
+      var el = document.getElementById('sc2List');
+      if (el) el.innerHTML = '<div class="sc2-loading">불러올 수 없습니다</div>';
+    };
+    document.head.appendChild(s);
+    setTimeout(function(){
+      if(!sc2Loaded){
+        var el=document.getElementById('sc2List');
+        if(el) el.innerHTML='<div class="sc2-loading" style="cursor:pointer;" onclick="sc2Load()">불러오기 실패 — 클릭해서 재시도</div>';
+      }
+    }, 8000);
+  }
+
+  window.sc2Render = function(data) {
+    sc2Loaded = true;
+    sc2Posts = (data || []).slice(0, 8);
+    var cntEl = document.getElementById('sc2Cnt');
+    if (cntEl) cntEl.textContent = (data||[]).length + '건';
+    var list = document.getElementById('sc2List');
+    if (!list) return;
+    if (!sc2Posts.length) {
+      list.innerHTML = '<div class="sc2-loading">등록된 문의가 없습니다</div>';
+      return;
+    }
+    var catCls = {개인회생:'sc2-cat-개인회생',개인파산:'sc2-cat-개인파산',형사사건:'sc2-cat-형사사건',등기:'sc2-cat-등기',기타:'sc2-cat-기타'};
+    var stCls  = {접수완료:'sc2-status-접수완료',검토중:'sc2-status-검토중',답변완료:'sc2-status-답변완료'};
+    list.innerHTML = sc2Posts.map(function(p) {
+      var cat = p.category||'기타', st = p.status||'접수완료';
+      var date = (p.date||'').substring(0,10).replace(/-/g,'.');
+      var esc = function(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+      return '<div class="sc2-item" onclick="sc2View('+p.id+')">'
+        + '<div class="sc2-item-body">'
+        + '<div class="sc2-item-title">'+esc(p.title)+'</div>'
+        + '<div class="sc2-item-meta">'
+        + '<span class="sc2-cat '+(catCls[cat]||'sc2-cat-기타')+'">'+cat+'</span>'
+        + '<span class="sc2-status '+(stCls[st]||'sc2-status-접수완료')+'">'+st+'</span>'
+        + '<span>'+date+'</span>'
+        + '</div></div>'
+        + '<span style="color:rgba(255,255,255,0.2);font-size:16px;">›</span>'
+        + '</div>';
+    }).join('');
+  }
+
+  function sc2View(id) {
+    // 패널 열고 해당 게시글 보기
+    if (typeof iqpOpen === 'function') {
+      iqpOpen();
+      // 패널 데이터 로드 후 뷰 전환
+      var tryView = function(tries) {
+        if (iqpPosts && iqpPosts.length) {
+          iqpView(id);
+        } else if (tries > 0) {
+          setTimeout(function(){ tryView(tries-1); }, 300);
+        }
+      };
+      setTimeout(function(){ tryView(10); }, 200);
+    }
+  }
+
+  function sc2OpenWrite() {
+    if (typeof iqpOpen === 'function') {
+      iqpOpen();
+      setTimeout(function(){ if(typeof iqpShowWrite==='function') iqpShowWrite(); }, 100);
+    }
+  }
+
+  // 페이지 로드 시 자동 로드
+  document.addEventListener('DOMContentLoaded', function() {
+    sc2Load();
+  });
+
+

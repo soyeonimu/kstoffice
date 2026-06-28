@@ -4174,6 +4174,35 @@ permalink: /rehab/diagnosis
     .ric-form { flex-direction: column; }
     .ric-form button { padding: 13px; }
   }
+
+  /* ===== 관할법원 지역 안내 배지 ===== */
+  .region-note {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+    padding: 13px 16px;
+    background: rgba(197,160,89,0.07);
+    border-left: 3px solid #c5a059;
+    border-radius: 0 12px 12px 0;
+  }
+  .rn-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .rn-body { display: flex; flex-direction: column; gap: 3px; }
+  .rn-main {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #e2c28d;
+    letter-spacing: -0.01em;
+  }
+  .rn-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
 </style>
 
 <!-- ══ 티커 (lp-wrap 바깥 — overflow:hidden 영향 없음) ══ -->
@@ -4687,150 +4716,398 @@ permalink: /rehab/diagnosis
     </div>
   </section>
 
+
+  <style id="r2-styles">
+
+/* ══════════════════════════════════════════
+   결과 섹션 v2 — 완전 리디자인
+══════════════════════════════════════════ */
+.r2-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+.r2-header {
+  background: linear-gradient(145deg, #0c1826 0%, #0f2035 60%, #0a1520 100%);
+  border: 1px solid rgba(197,160,89,0.2);
+  border-radius: 20px;
+  padding: 28px 24px 20px;
+  margin-bottom: 16px;
+}
+.r2-header-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.r2-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.3);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #4ade80;
+  letter-spacing: .5px;
+  margin-bottom: 10px;
+}
+.r2-badge-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+  animation: r2-pulse 2s infinite;
+}
+@keyframes r2-pulse {
+  0%,100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
+  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.1); }
+}
+.r2-header-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.3;
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+.r2-header-ts {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 10px;
+}
+.r2-score {
+  position: relative;
+  width: 82px; height: 82px;
+  flex-shrink: 0;
+}
+.r2-score-ring { width: 82px; height: 82px; }
+.r2-score-center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.r2-score-val { font-size: 18px; font-weight: 900; color: #e2c28d; line-height: 1; }
+.r2-score-lbl { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.r2-checks-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.r2-check-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12.5px; color: rgba(255,255,255,0.6);
+}
+.r2-check-ic {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.35);
+  color: #4ade80; font-size: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.r2-metrics { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.r2-metric-row--pub {
+  display: flex; align-items: stretch;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 16px; overflow: hidden;
+}
+.r2-metric-pub { flex: 1; padding: 20px 20px 18px; text-align: center; }
+.r2-metric-divider { width: 1px; background: rgba(255,255,255,0.09); margin: 12px 0; }
+.r2-metric-pub-label {
+  font-size: 11.5px; font-weight: 700; color: rgba(255,255,255,0.4);
+  letter-spacing: .6px; text-transform: uppercase; margin-bottom: 8px;
+}
+.r2-metric-pub-val { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -0.02em; }
+.r2-metric-pub-val--gold { color: #e2c28d; }
+.r2-metric-locked-wrap {
+  background: linear-gradient(135deg, #0c1826, #0f2035);
+  border: 1.5px solid rgba(197,160,89,0.3);
+  border-radius: 18px; overflow: hidden;
+  cursor: pointer; transition: border-color .25s, transform .2s;
+}
+.r2-metric-locked-wrap:hover { border-color: rgba(197,160,89,0.6); transform: translateY(-1px); }
+.r2-metric-lock-banner {
+  background: linear-gradient(135deg, rgba(197,160,89,0.15), rgba(197,160,89,0.08));
+  border-bottom: 1px solid rgba(197,160,89,0.2);
+  padding: 10px 18px; display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 700; color: #e2c28d;
+}
+.r2-lock-arrow { margin-left: auto; font-size: 14px; animation: r2-bounce 1.5s infinite; }
+@keyframes r2-bounce {
+  0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); }
+}
+.r2-metric-locked-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.r2-metric-locked { padding: 22px 20px; text-align: center; position: relative; }
+.r2-metric-locked + .r2-metric-locked::before {
+  content: ''; position: absolute; left: 0; top: 16px; bottom: 16px;
+  width: 1px; background: rgba(197,160,89,0.15);
+}
+.r2-metric-locked-label {
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4);
+  letter-spacing: .5px; text-transform: uppercase; margin-bottom: 10px;
+}
+.r2-metric-locked-val {
+  font-size: 26px; font-weight: 900;
+  color: rgba(255,255,255,0.15); filter: blur(6px);
+  user-select: none; letter-spacing: -0.02em; margin-bottom: 6px;
+  transition: filter .4s, color .4s;
+}
+.r2-metric-locked-val.rmv-revealed { filter: none; color: #e2c28d; }
+.r2-metric-locked-sub { font-size: 11px; color: rgba(255,255,255,0.3); }
+.r2-ans-wrap { margin-bottom: 16px; }
+.r2-reports {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; overflow: hidden; margin-bottom: 16px;
+}
+.r2-reports-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.r2-reports-title { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.7); letter-spacing: -0.01em; }
+.r2-reports-count {
+  font-size: 11px; font-weight: 700; color: #c5a059;
+  background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.2);
+  border-radius: 100px; padding: 3px 10px;
+}
+.r2-rprt { border-bottom: 1px solid rgba(255,255,255,0.06); }
+.r2-rprt:last-child { border-bottom: none; }
+.r2-rprt-hdr {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 20px; cursor: pointer; transition: background .2s;
+}
+.r2-rprt-hdr:hover { background: rgba(255,255,255,0.03); }
+.r2-rprt-hdr-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+.r2-rprt-num {
+  font-size: 11px; font-weight: 900; color: #c5a059; letter-spacing: 1px;
+  background: rgba(197,160,89,0.1); border-radius: 6px; padding: 3px 8px; flex-shrink: 0;
+}
+.r2-rprt-name { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: -0.01em; }
+.r2-rprt-tag {
+  font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05); border-radius: 6px; padding: 2px 8px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.r2-rprt-body { padding: 4px 20px 20px; display: none; }
+.r2-rprt-body.rprt-body--open { display: block; }
+.r2-rprt-result {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 14px; background: rgba(197,160,89,0.06);
+  border: 1px solid rgba(197,160,89,0.15); border-radius: 10px;
+  padding: 13px 16px; cursor: pointer; transition: background .2s;
+}
+.r2-rprt-result:hover { background: rgba(197,160,89,0.1); }
+.r2-rprt-result-label {
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.4);
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.r2-rprt-result-val { font-size: 15px; font-weight: 800; color: #e2c28d; }
+.r2-attorney {
+  display: flex; align-items: center; gap: 18px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 20px; margin-bottom: 16px;
+}
+.r2-attorney-photo {
+  width: 68px; height: 68px; border-radius: 50%; object-fit: cover;
+  border: 2px solid rgba(197,160,89,0.3); flex-shrink: 0;
+}
+.r2-attorney-label {
+  font-size: 11px; font-weight: 700; color: #c5a059;
+  letter-spacing: .8px; text-transform: uppercase; margin-bottom: 4px;
+}
+.r2-attorney-name { font-size: 17px; font-weight: 900; color: #fff; margin-bottom: 3px; }
+.r2-attorney-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
+.r2-attorney-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.r2-attorney-badges span {
+  font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px; padding: 3px 8px;
+}
+@media (max-width: 480px) {
+  .r2-header { padding: 20px 16px 16px; }
+  .r2-header-title { font-size: 18px; }
+  .r2-score { width: 68px; height: 68px; }
+  .r2-score-ring { width: 68px; height: 68px; }
+  .r2-score-val { font-size: 15px; }
+  .r2-checks-row { grid-template-columns: 1fr; gap: 6px; }
+  .r2-metric-pub-val { font-size: 18px; }
+  .r2-metric-locked-val { font-size: 20px; }
+  .r2-rprt-tag { display: none; }
+}
+
+
+  /* 새 결과 아코디언 chevron 회전 */
+  .r2-rprt-hdr.rprt-open .rprt-chevron { transform: rotate(180deg); }
+  .r2-rprt-hdr .rprt-chevron { transition: transform .3s ease; display: inline-block; }
+  </style>
   <!-- ④ 결과 -->
   <section id="reportSection" class="lp-result hidden">
-    <div class="result-inner">
+    <div class="r2-wrap">
 
-      <!-- ① 분석 완료 배너 -->
-      <div class="rpt-complete">
-        <div class="rpt-complete-top">
-          <span class="rpt-complete-chip">분석 완료</span>
-          <span class="rpt-complete-ts" id="reportTs"></span>
-        </div>
-        <div class="rpt-complete-title">개인회생 가능성 분석이<br>완료되었습니다.</div>
-        <div id="regionNote" style="margin-top:14px;padding:12px 16px;background:#f6efdd;border:1px solid #d8c391;border-radius:10px;color:#1c3252;font-size:14.5px;line-height:1.55;font-weight:600;display:none;"></div>
-        <div class="rpt-checklist">
-          <div class="rpt-check"><span class="rpt-check-dot">✓</span>채무 규모 분석 완료</div>
-          <div class="rpt-check"><span class="rpt-check-dot">✓</span>소득 정보 분석 완료</div>
-          <div class="rpt-check"><span class="rpt-check-dot">✓</span>압류 진행 여부 분석 완료</div>
-          <div class="rpt-check"><span class="rpt-check-dot">✓</span>변제 수행 가능성 분석 완료</div>
-        </div>
-        <!-- 입력 내용 확인 드롭다운 -->
-        <div class="rpt-ans-wrap">
-          <div class="rpt-ans-hdr" onclick="toggleAnsDropdown(this)">
-            <div class="rpt-ans-hdr-left">
-              <span>입력 내용 확인</span>
-              <span class="rpt-ans-cnt" id="rptAnsCnt"></span>
+      <!-- HEADER -->
+      <div class="r2-header">
+        <div class="r2-header-inner">
+          <div class="r2-header-left">
+            <div class="r2-header-badge">
+              <span class="r2-badge-dot"></span>
+              <span>분석 완료</span>
             </div>
-            <span class="rpt-ans-chevron"></span>
+            <h2 class="r2-header-title">개인회생 가능성<br>분석 결과</h2>
+            <div class="r2-header-ts" id="reportTs"></div>
+            <div id="regionNote" class="region-note" style="display:none;"></div>
           </div>
-          <div class="rpt-ans-body" id="rptAnsBody"></div>
+          <div class="r2-header-right">
+            <div class="r2-score">
+              <svg class="r2-score-ring" viewBox="0 0 82 82" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="41" cy="41" r="35" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+                <circle cx="41" cy="41" r="35" fill="none" stroke="#c5a059" stroke-width="6"
+                  stroke-dasharray="219.9" stroke-dashoffset="55"
+                  stroke-linecap="round" transform="rotate(-90 41 41)"/>
+              </svg>
+              <div class="r2-score-center">
+                <span class="r2-score-val" id="r2ScoreDisplay">—</span>
+                <span class="r2-score-lbl">가능성</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="r2-checks-row">
+          <div class="r2-check-item"><span class="r2-check-ic">✓</span>채무 규모 분석 완료</div>
+          <div class="r2-check-item"><span class="r2-check-ic">✓</span>소득 정보 분석 완료</div>
+          <div class="r2-check-item"><span class="r2-check-ic">✓</span>압류 진행 여부 분석 완료</div>
+          <div class="r2-check-item"><span class="r2-check-ic">✓</span>변제 수행 가능성 분석 완료</div>
         </div>
       </div>
 
-      <!-- ② 핵심 수치 메인 강조 블록 (탭 → CTA 이동) -->
-      <div class="rpt-main-block rpt-clickblock" onclick="scrollToFinalCta()" role="button" aria-label="정확한 결과 확인하기">
-        <div class="rpt-main-vals">
-          <div class="rmv-primary">
-            <div class="rmv-key">예상 월 변제금</div>
-            <div class="rmv-val" id="lockedRepayment">—</div>
-            <div class="rmv-hint">입력 후 정확한 금액 확인</div>
+      <!-- KEY METRICS -->
+      <div class="r2-metrics">
+        <div class="r2-metric-row r2-metric-row--pub">
+          <div class="r2-metric-pub">
+            <div class="r2-metric-pub-label">예상 변제기간</div>
+            <div class="r2-metric-pub-val" id="pubPeriod">—</div>
           </div>
-          <div class="rmv-primary">
-            <div class="rmv-key">예상 탕감 가능 금액</div>
-            <div class="rmv-val" id="lockedReduction">—</div>
-            <div class="rmv-hint">입력 후 정확한 금액 확인</div>
-          </div>
-        </div>
-        <div class="rpt-main-secondary">
-          <div class="rms-item">
-            <span class="rms-key">예상 변제기간</span>
-            <span class="rms-val" id="pubPeriod">—</span>
-          </div>
-          <div class="rms-item">
-            <span class="rms-key">진행 가능성</span>
-            <span class="rms-val" id="pubPossibility">—</span>
-          </div>
-        </div>
-        <div class="rpt-main-note">🔒 전화번호 입력 후 정확한 수치 즉시 확인 · 탭하여 이동 ↓</div>
-      </div>
-      <!-- ③ 상세 분석 리포트 (아코디언 4건 + 블러) -->
-      <div class="rpt-reports">
-        <div class="rpt-reports-top">
-          <div class="rpt-reports-big-title">상세 분석 리포트 4건 생성 완료</div>
-          <div class="rpt-reports-tags">
-            <span class="rprt-tag">변제금 산정</span>
-            <span class="rprt-tag">탕감 가능 금액</span>
-            <span class="rprt-tag">압류 대응</span>
-            <span class="rprt-tag">서류 체크리스트</span>
+          <div class="r2-metric-divider"></div>
+          <div class="r2-metric-pub">
+            <div class="r2-metric-pub-label">진행 가능성</div>
+            <div class="r2-metric-pub-val r2-metric-pub-val--gold" id="pubPossibility">—</div>
           </div>
         </div>
 
-        <!-- 01. 변제금 산정 분석 -->
-        <div class="rprt-item">
-          <div class="rprt-hdr rprt-open" onclick="toggleRprt(this)">
-            <div class="rprt-left">
-              <span class="rprt-num">01</span>
-              <span class="rprt-name">변제금 산정 분석</span>
-            </div>
-            <span class="rprt-chevron"></span>
+        <div class="r2-metric-locked-wrap" onclick="scrollToFinalCta()" role="button">
+          <div class="r2-metric-lock-banner">
+            <span>🔒</span>
+            <span>전화번호 입력 후 정확한 금액 즉시 확인</span>
+            <span class="r2-lock-arrow">↓</span>
           </div>
-          <div class="rprt-body rprt-body--open">
+          <div class="r2-metric-locked-grid">
+            <div class="r2-metric-locked">
+              <div class="r2-metric-locked-label">예상 월 변제금</div>
+              <div class="r2-metric-locked-val" id="lockedRepayment">—</div>
+              <div class="r2-metric-locked-sub">월 납입액</div>
+            </div>
+            <div class="r2-metric-locked">
+              <div class="r2-metric-locked-label">탕감 가능 금액</div>
+              <div class="r2-metric-locked-val" id="lockedReduction">—</div>
+              <div class="r2-metric-locked-sub">탕감 예상액</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 입력 내용 확인 -->
+      <div class="rpt-ans-wrap r2-ans-wrap">
+        <div class="rpt-ans-hdr" onclick="toggleAnsDropdown(this)">
+          <div class="rpt-ans-hdr-left">
+            <span>입력 내용 확인</span>
+            <span class="rpt-ans-cnt" id="rptAnsCnt"></span>
+          </div>
+          <span class="rpt-ans-chevron"></span>
+        </div>
+        <div class="rpt-ans-body" id="rptAnsBody"></div>
+      </div>
+
+      <!-- 상세 분석 리포트 -->
+      <div class="r2-reports">
+        <div class="r2-reports-header">
+          <span class="r2-reports-title">상세 분석 리포트</span>
+          <span class="r2-reports-count">4건 생성 완료</span>
+        </div>
+
+        <div class="r2-rprt">
+          <div class="r2-rprt-hdr rprt-open" onclick="toggleRprt(this)">
+            <div class="r2-rprt-hdr-left">
+              <span class="r2-rprt-num">01</span>
+              <span class="r2-rprt-name">변제금 산정 분석</span>
+            </div>
+            <span class="r2-rprt-tag">변제금</span>
+            <span class="rprt-chevron r2-rprt-chevron"></span>
+          </div>
+          <div class="r2-rprt-body rprt-body--open">
             <div class="rprt-steps" id="rprtSteps1"></div>
-            <div class="rprt-result rprt-result--cta" onclick="scrollToFinalCta()" role="button">
-              <div class="rprt-result-lbl">산정 결과</div>
-              <div class="rprt-result-val rprt-blur" id="rprtRepay">—</div>
+            <div class="r2-rprt-result" onclick="scrollToFinalCta()" role="button">
+              <span class="r2-rprt-result-label">산정 결과</span>
+              <span class="rprt-blur r2-rprt-result-val" id="rprtRepay">—</span>
             </div>
           </div>
         </div>
 
-        <!-- 02. 탕감 가능 금액 분석 -->
-        <div class="rprt-item">
-          <div class="rprt-hdr rprt-open" onclick="toggleRprt(this)">
-            <div class="rprt-left">
-              <span class="rprt-num">02</span>
-              <span class="rprt-name">탕감 가능 금액 분석</span>
+        <div class="r2-rprt">
+          <div class="r2-rprt-hdr rprt-open" onclick="toggleRprt(this)">
+            <div class="r2-rprt-hdr-left">
+              <span class="r2-rprt-num">02</span>
+              <span class="r2-rprt-name">탕감 가능 금액 분석</span>
             </div>
-            <span class="rprt-chevron"></span>
+            <span class="r2-rprt-tag">탕감액</span>
+            <span class="rprt-chevron r2-rprt-chevron"></span>
           </div>
-          <div class="rprt-body rprt-body--open">
+          <div class="r2-rprt-body rprt-body--open">
             <div class="rprt-steps" id="rprtSteps2"></div>
-            <div class="rprt-result rprt-result--cta" onclick="scrollToFinalCta()" role="button">
-              <div class="rprt-result-lbl">산정 결과</div>
-              <div class="rprt-result-val rprt-blur" id="rprtReduce">—</div>
+            <div class="r2-rprt-result" onclick="scrollToFinalCta()" role="button">
+              <span class="r2-rprt-result-label">산정 결과</span>
+              <span class="rprt-blur r2-rprt-result-val" id="rprtReduce">—</span>
             </div>
           </div>
         </div>
 
-        <!-- 03. 압류 대응 가능성 분석 -->
-        <div class="rprt-item">
-          <div class="rprt-hdr rprt-open" onclick="toggleRprt(this)">
-            <div class="rprt-left">
-              <span class="rprt-num">03</span>
-              <span class="rprt-name">압류 대응 가능성 분석</span>
+        <div class="r2-rprt">
+          <div class="r2-rprt-hdr rprt-open" onclick="toggleRprt(this)">
+            <div class="r2-rprt-hdr-left">
+              <span class="r2-rprt-num">03</span>
+              <span class="r2-rprt-name">압류 대응 가능성 분석</span>
             </div>
-            <span class="rprt-chevron"></span>
+            <span class="r2-rprt-tag">압류대응</span>
+            <span class="rprt-chevron r2-rprt-chevron"></span>
           </div>
-          <div class="rprt-body rprt-body--open">
+          <div class="r2-rprt-body rprt-body--open">
             <div class="rprt-steps" id="rprtSteps3"></div>
-            <div class="rprt-result rprt-result--cta" onclick="scrollToFinalCta()" role="button">
-              <div class="rprt-result-lbl">분석 결과</div>
-              <div class="rprt-result-val rprt-blur" id="rprtSeizure">—</div>
+            <div class="r2-rprt-result" onclick="scrollToFinalCta()" role="button">
+              <span class="r2-rprt-result-label">분석 결과</span>
+              <span class="rprt-blur r2-rprt-result-val" id="rprtSeizure">—</span>
             </div>
           </div>
         </div>
 
-        <!-- 04. 제출 서류 체크리스트 -->
-        <div class="rprt-item">
-          <div class="rprt-hdr rprt-open" onclick="toggleRprt(this)">
-            <div class="rprt-left">
-              <span class="rprt-num">04</span>
-              <span class="rprt-name">제출 서류 체크리스트</span>
+        <div class="r2-rprt">
+          <div class="r2-rprt-hdr rprt-open" onclick="toggleRprt(this)">
+            <div class="r2-rprt-hdr-left">
+              <span class="r2-rprt-num">04</span>
+              <span class="r2-rprt-name">제출 서류 체크리스트</span>
             </div>
-            <span class="rprt-chevron"></span>
+            <span class="r2-rprt-tag">서류</span>
+            <span class="rprt-chevron r2-rprt-chevron"></span>
           </div>
-          <div class="rprt-body rprt-body--open">
+          <div class="r2-rprt-body rprt-body--open">
             <div class="rprt-steps" id="rprtSteps4"></div>
-            <div class="rprt-result rprt-result--cta" onclick="scrollToFinalCta()" role="button">
-              <div class="rprt-result-lbl">상세 서류 목록</div>
-              <div class="rprt-result-val rprt-blur" id="rprtDocs">—</div>
+            <div class="r2-rprt-result" onclick="scrollToFinalCta()" role="button">
+              <span class="r2-rprt-result-label">상세 서류 목록</span>
+              <span class="rprt-blur r2-rprt-result-val" id="rprtDocs">—</span>
             </div>
           </div>
         </div>
-
       </div>
 
-      <!-- ③-b 인라인 전화번호 수집 (rpt-reports 직후) -->
+      <!-- 인라인 전화번호 수집 -->
       <div class="rpt-inline-cta" id="rptInlineCta">
         <div class="ric-lock">🔓</div>
         <div class="ric-title">전화번호를 남기시면<br><strong>블러 처리된 결과를 즉시 확인</strong>할 수 있습니다</div>
@@ -4845,38 +5122,35 @@ permalink: /rehab/diagnosis
         <div class="ric-note">무료 · 수임 의무 없음 · 즉시 확인</div>
       </div>
 
-      <!-- ④ 전화번호 CTA -->
+      <!-- FINAL CTA -->
       <div class="final-cta">
         <div id="finalCtaContent"></div>
       </div>
 
-      <!-- ⑤ 담당 법무사 소개 (compact) -->
-      <div class="auth-trust-standalone">
-        <div class="ats-inner">
-          <div class="ats-photo-wrap">
-            <img src="/assets/img/kim.png" alt="김성태 법무사" class="ats-photo" />
-          </div>
-          <div class="ats-content">
-            <div class="ats-label">진단 검토 담당</div>
-            <div class="ats-headline">김성태 법무사<br><em>전 검찰수사관 · 법무부장관 표창</em></div>
-            <div class="ats-badges">
-              <span class="ats-badge-item">전 검찰수사관</span>
-              <span class="ats-badge-item">수원지검 강력부</span>
-              <span class="ats-badge-item">여주지청 특수·형사부</span>
-              <span class="ats-badge-item">법무부장관 표창</span>
-              <span class="ats-badge-item">전세사기 피해상담위원</span>
-            </div>
+      <!-- 담당 법무사 -->
+      <div class="r2-attorney">
+        <img src="/assets/img/kim.png" alt="김성태 법무사" class="r2-attorney-photo">
+        <div class="r2-attorney-info">
+          <div class="r2-attorney-label">진단 검토 담당</div>
+          <div class="r2-attorney-name">김성태 법무사</div>
+          <div class="r2-attorney-sub">전 검찰수사관 · 법무부장관 표창</div>
+          <div class="r2-attorney-badges">
+            <span>전 검찰수사관</span>
+            <span>수원지검 강력부</span>
+            <span>여주지청 특수·형사부</span>
+            <span>법무부장관 표창</span>
+            <span>전세사기 피해상담위원</span>
           </div>
         </div>
       </div>
 
-      <!-- 자동 분석 안내 (최하단) -->
       <div class="rpt-auto-note">
         현재 결과는 자동 분석 결과입니다. 법무사 검토 후 정확한 변제금 및 탕감 가능 금액을 확인할 수 있습니다.
       </div>
 
     </div>
   </section>
+
 
   <!-- 고정 하단 CTA 바 -->
   <div class="sticky-cta-bar" id="stickyCta">
@@ -5760,10 +6034,19 @@ permalink: /rehab/diagnosis
     const rnEl = document.getElementById("regionNote");
     if (rnEl && ans.region) {
       const suwonCourt = ["수원","용인","화성","평택","오산","안산","성남","안양"];
-      rnEl.textContent = (suwonCourt.indexOf(ans.region) !== -1)
-        ? `${ans.region} 지역은 수원회생법원 관할로, 개인회생 신청이 가능합니다.`
-        : `거주 지역 관할 법원에서 개인회생을 신청하실 수 있습니다.`;
-      rnEl.style.display = "block";
+      const isSuwon = suwonCourt.indexOf(ans.region) !== -1;
+      rnEl.innerHTML = isSuwon
+        ? `<span class="rn-icon">🏛️</span>
+           <div class="rn-body">
+             <span class="rn-main">${ans.region} → 수원회생법원 관할 확인</span>
+             <span class="rn-sub">저희 사무소(수원 소재)에서 직접 접수·진행 가능합니다</span>
+           </div>`
+        : `<span class="rn-icon">📍</span>
+           <div class="rn-body">
+             <span class="rn-main">거주 지역 관할 법원에서 신청 가능</span>
+             <span class="rn-sub">담당 법무사가 절차 전반을 안내해 드립니다</span>
+           </div>`;
+      rnEl.style.display = "flex";
     }
 
     // 입력 내용 드롭다운 채우기
@@ -5999,6 +6282,21 @@ permalink: /rehab/diagnosis
     }
     window.addEventListener('scroll', update, { passive: true });
     update();
+  })();
+
+
+  // r2 score ring 동기화
+  (function() {
+    function syncRing() {
+      const src = document.getElementById("pubPossibility");
+      const tgt = document.getElementById("r2ScoreDisplay");
+      if (!src || !tgt) return;
+      const obs = new MutationObserver(() => { tgt.textContent = src.textContent; });
+      obs.observe(src, { childList: true, characterData: true, subtree: true });
+      tgt.textContent = src.textContent;
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", syncRing);
+    else syncRing();
   })();
 
 </script>

@@ -3201,6 +3201,9 @@ permalink: /rehab/diagnosis
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.8);
   }
   .h-bar-saving strong { font-size: 22px; font-weight: 900; color: #34d399; }
   .h-bar-saving span { font-size: 12px; color: rgba(255,255,255,0.45); }
@@ -4767,12 +4770,12 @@ permalink: /rehab/diagnosis
   50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.1); }
 }
 .r2-header-title {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 900;
   color: #fff;
-  line-height: 1.3;
-  margin: 0 0 6px;
-  letter-spacing: -0.02em;
+  line-height: 1.28;
+  margin: 0 0 8px;
+  letter-spacing: -0.03em;
 }
 .r2-header-ts {
   font-size: 12px;
@@ -4790,14 +4793,14 @@ permalink: /rehab/diagnosis
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
 }
-.r2-score-val { font-size: 18px; font-weight: 900; color: #e2c28d; line-height: 1; }
+.r2-score-val { font-size: 14px; font-weight: 900; color: #e2c28d; line-height: 1; letter-spacing: -0.03em; word-break: keep-all; text-align: center; }
 .r2-score-lbl { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
 .r2-checks-row {
   display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
 }
 .r2-check-item {
   display: flex; align-items: center; gap: 7px;
-  font-size: 12.5px; color: rgba(255,255,255,0.6);
+  font-size: 13px; color: rgba(255,255,255,0.7);
 }
 .r2-check-ic {
   width: 18px; height: 18px; border-radius: 50%;
@@ -4815,10 +4818,10 @@ permalink: /rehab/diagnosis
 .r2-metric-pub { flex: 1; padding: 20px 20px 18px; text-align: center; }
 .r2-metric-divider { width: 1px; background: rgba(255,255,255,0.09); margin: 12px 0; }
 .r2-metric-pub-label {
-  font-size: 11.5px; font-weight: 700; color: rgba(255,255,255,0.4);
-  letter-spacing: .6px; text-transform: uppercase; margin-bottom: 8px;
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5);
+  letter-spacing: .4px; margin-bottom: 10px;
 }
-.r2-metric-pub-val { font-size: 18px; font-weight: 900; color: #fff; letter-spacing: -0.02em; word-break: keep-all; line-height: 1.25; }
+.r2-metric-pub-val { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: -0.02em; word-break: keep-all; line-height: 1.25; }
 .r2-metric-pub-val--gold { color: #e2c28d; }
 .r2-metric-locked-wrap {
   background: linear-gradient(135deg, #0c1826, #0f2035);
@@ -4830,8 +4833,8 @@ permalink: /rehab/diagnosis
 .r2-metric-lock-banner {
   background: linear-gradient(135deg, rgba(197,160,89,0.15), rgba(197,160,89,0.08));
   border-bottom: 1px solid rgba(197,160,89,0.2);
-  padding: 10px 18px; display: flex; align-items: center; gap: 8px;
-  font-size: 12.5px; font-weight: 700; color: #e2c28d;
+  padding: 12px 18px; display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 800; color: #e2c28d;
 }
 .r2-lock-arrow { margin-left: auto; font-size: 14px; animation: r2-bounce 1.5s infinite; }
 @keyframes r2-bounce {
@@ -4848,9 +4851,9 @@ permalink: /rehab/diagnosis
   letter-spacing: .5px; text-transform: uppercase; margin-bottom: 10px;
 }
 .r2-metric-locked-val {
-  font-size: 26px; font-weight: 900;
-  color: rgba(255,255,255,0.15); filter: blur(6px);
-  user-select: none; letter-spacing: -0.02em; margin-bottom: 6px;
+  font-size: 32px; font-weight: 900;
+  color: rgba(255,255,255,0.15); filter: blur(8px);
+  user-select: none; letter-spacing: -0.03em; margin-bottom: 6px;
   transition: filter .4s, color .4s;
 }
 .r2-metric-locked-val.rmv-revealed { filter: none; color: #e2c28d; }
@@ -4883,7 +4886,7 @@ permalink: /rehab/diagnosis
   font-size: 11px; font-weight: 900; color: #c5a059; letter-spacing: 1px;
   background: rgba(197,160,89,0.1); border-radius: 6px; padding: 3px 8px; flex-shrink: 0;
 }
-.r2-rprt-name { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: -0.01em; }
+.r2-rprt-name { font-size: 15px; font-weight: 800; color: rgba(255,255,255,0.9); letter-spacing: -0.02em; }
 .r2-rprt-tag {
   font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3);
   background: rgba(255,255,255,0.05); border-radius: 6px; padding: 2px 8px;
@@ -4940,6 +4943,47 @@ permalink: /rehab/diagnosis
   /* 새 결과 아코디언 chevron 회전 */
   .r2-rprt-hdr.rprt-open .rprt-chevron { transform: rotate(180deg); }
   .r2-rprt-hdr .rprt-chevron { transition: transform .3s ease; display: inline-block; }
+
+/* ── 문의글 유도 블록 ── */
+.r2-inquiry-cta {
+  background: linear-gradient(135deg, #0c1e38 0%, #0f2a4a 100%);
+  border: 1.5px solid rgba(99,179,237,0.25);
+  border-radius: 18px;
+  padding: 24px 22px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  transition: border-color .25s, transform .2s;
+}
+.r2-inquiry-cta:hover {
+  border-color: rgba(99,179,237,0.55);
+  transform: translateY(-1px);
+}
+.r2-inquiry-ic {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: rgba(99,179,237,0.12);
+  border: 1px solid rgba(99,179,237,0.25);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.r2-inquiry-body { flex: 1; min-width: 0; }
+.r2-inquiry-label {
+  font-size: 11px; font-weight: 700; color: #63b3ed;
+  letter-spacing: .8px; text-transform: uppercase; margin-bottom: 5px;
+}
+.r2-inquiry-title {
+  font-size: 16px; font-weight: 900; color: #fff;
+  letter-spacing: -0.02em; margin-bottom: 5px;
+}
+.r2-inquiry-sub {
+  font-size: 12.5px; color: rgba(255,255,255,0.5); line-height: 1.5;
+}
+.r2-inquiry-arrow {
+  font-size: 20px; color: rgba(99,179,237,0.6); flex-shrink: 0;
+}
   </style>
   <!-- ④ 결과 -->
   <section id="reportSection" class="lp-result hidden">
@@ -4955,6 +4999,7 @@ permalink: /rehab/diagnosis
             </div>
             <h2 class="r2-header-title">개인회생 가능성<br>분석 결과</h2>
             <div class="r2-header-ts" id="reportTs"></div>
+    updateInquiryLink();
             <div id="regionNote" class="region-note" style="display:none;"></div>
           </div>
           <div class="r2-header-right">
@@ -5993,6 +6038,20 @@ permalink: /rehab/diagnosis
   }
 
   /* ── 메인: 결과 표시 ── */
+
+  // 문의글 링크에 진단 결과 파라미터 자동 추가
+  function updateInquiryLink() {
+    const link = document.getElementById("inquiryCta");
+    if (!link || !ans) return;
+    const params = new URLSearchParams({
+      source: "diagnosis",
+      cat: "개인회생",
+      debt: ans.debtAmount || "",
+      concern: ans.mainConcern || ""
+    });
+    link.href = "/inquiry/?" + params.toString();
+  }
+
   function showReport() {
     const score = calcScore();
     const stage = calcStage(score);
@@ -6258,15 +6317,20 @@ permalink: /rehab/diagnosis
   })();
 
 
-  // r2 score ring 동기화
+  // r2 score ring 동기화 (마지막 단어만)
   (function() {
+    function getShort(txt) {
+      if (!txt || txt === "—") return "—";
+      const parts = txt.trim().split(/\s+/);
+      return parts[parts.length - 1]; // "높음" / "보통" / "낮음"
+    }
     function syncRing() {
       const src = document.getElementById("pubPossibility");
       const tgt = document.getElementById("r2ScoreDisplay");
       if (!src || !tgt) return;
-      const obs = new MutationObserver(() => { tgt.textContent = src.textContent; });
+      const obs = new MutationObserver(() => { tgt.textContent = getShort(src.textContent); });
       obs.observe(src, { childList: true, characterData: true, subtree: true });
-      tgt.textContent = src.textContent;
+      tgt.textContent = getShort(src.textContent);
     }
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", syncRing);
     else syncRing();

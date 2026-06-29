@@ -36,6 +36,9 @@ SEO helpers:
 <meta name="twitter:image" content="{{ og_image_abs }}">
 {% endif %}
 
+<!-- Breadcrumb: 홈 > 게시판 > 글 -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"{{ '/' | absolute_url }}"},{"@type":"ListItem","position":2,"name":"게시판","item":"{{ '/board/' | absolute_url }}"},{"@type":"ListItem","position":3,"name":{{ page.title | jsonify }},"item":"{{ canonical_url }}"}]}</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

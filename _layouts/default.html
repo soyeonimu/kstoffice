@@ -46,7 +46,15 @@
   <meta name="twitter:image" content="{{ page.og_image | default: '/assets/img/og/og-main.png' | absolute_url }}">
 
   <!-- Schema.org LocalBusiness -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":["LegalService","LocalBusiness"],"name":"LEADERS","alternateName":["수원 법무사","수원 개인회생 법무사"],"url":"https://kstoffice6885.com","telephone":"+82-31-225-6885","address":{"@type":"PostalAddress","streetAddress":"광교중앙로 244, 301호","addressLocality":"수원시 영통구","addressRegion":"경기도","postalCode":"16505","addressCountry":"KR"},"areaServed":[{"@type":"City","name":"수원시"},{"@type":"City","name":"용인시"},{"@type":"City","name":"화성시"},{"@type":"City","name":"평택시"},{"@type":"City","name":"오산시"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":["LegalService","LocalBusiness"],"name":"LEADERS","alternateName":["수원 법무사","수원 개인회생 법무사"],"url":"https://www.kstoffice6885.com","telephone":"+82-31-225-6885","address":{"@type":"PostalAddress","streetAddress":"광교중앙로 244, 301호","addressLocality":"수원시 영통구","addressRegion":"경기도","postalCode":"16505","addressCountry":"KR"},"areaServed":[{"@type":"City","name":"수원시"},{"@type":"City","name":"용인시"},{"@type":"City","name":"화성시"},{"@type":"City","name":"평택시"},{"@type":"City","name":"오산시"}]}</script>
+
+  <!-- Schema.org: WebSite(홈) / BreadcrumbList(하위 페이지) -->
+  {% if page.url == '/' %}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"리더스 합동 법무사 사무소","alternateName":["수원 개인회생 법무사","리더스 법무사","리더스합동법무사"],"url":"{{ '/' | absolute_url }}"}</script>
+  {% elsif page.layout != 'board-post' %}
+  {% assign crumb_name = page.title | split: '|' | first | strip %}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"{{ '/' | absolute_url }}"},{"@type":"ListItem","position":2,"name":{{ crumb_name | jsonify }},"item":"{{ page.url | absolute_url }}"}]}</script>
+  {% endif %}
 </head>
 
 <body>

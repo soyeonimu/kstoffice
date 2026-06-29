@@ -4051,8 +4051,8 @@ permalink: /rehab/diagnosis
   .cases-section .info-label { color: rgba(255,255,255,.5); }
   .cases-section .why-title { color: #fff; }
   .cases-section .sp-note { color: rgba(255,255,255,.3); font-size: 12px; margin: 8px 0 24px; }
-  .cases-slider-wrap { position: relative; }
-  .cases-track-outer { overflow: hidden; border-radius: 20px; }
+  .cases-slider-wrap { position: relative; min-width: 0; }
+  .cases-track-outer { overflow: hidden; border-radius: 20px; min-width: 0; }
   .cases-track { display: flex; transition: transform .42s cubic-bezier(.22,1,.36,1); }
   .case-card { min-width: 100%; background: rgba(255,255,255,.04); border: 1px solid rgba(197,160,89,.2); border-radius: 20px; padding: 28px 26px; box-sizing: border-box; }
   .case-badge { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .5px; border-radius: 99px; padding: 4px 12px; margin-bottom: 14px; }
@@ -5115,10 +5115,11 @@ permalink: /rehab/diagnosis
   /* ── 사례 + 게시판 2열 레이아웃 ── */
   .sc2-split {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
     gap: 32px;
     align-items: stretch;
   }
+  .sc2-left, .sc2-right { min-width: 0; }
   .sc2-right {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
@@ -5236,7 +5237,7 @@ permalink: /rehab/diagnosis
   /* 섹션 전체 wider */
   #sec-cases .info-inner { max-width: 1100px; }
   @media (max-width: 768px) {
-    .sc2-split { grid-template-columns: 1fr; gap: 20px; }
+    .sc2-split { grid-template-columns: minmax(0,1fr); gap: 20px; }
     #sec-cases .info-inner { max-width: 720px; }
     .sc2-board-head { padding: 16px 14px 12px; }
     .sc2-board-head .sc2-board-title { font-size: 14px; }

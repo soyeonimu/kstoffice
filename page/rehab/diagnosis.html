@@ -565,34 +565,51 @@ permalink: /rehab/diagnosis
     <div class="db-label">담당 법무사 3인</div>
     <div class="db-title">법원 절차, 처음<br><em>준비가 가장 중요합니다</em></div>
     <style>
-      .trust-team{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px;}
-      .trust-mem{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:18px 10px;}
-      .trust-mem img{width:78px;height:78px;border-radius:50%;object-fit:cover;object-position:top center;background:#16273f;}
-      .trust-mem b{font-size:16px;font-weight:800;}
-      .trust-mem span{font-size:12.5px;opacity:.75;}
-      @media(max-width:560px){ .trust-team{gap:8px;} .trust-mem{padding:14px 6px;} .trust-mem img{width:58px;height:58px;} .trust-mem b{font-size:14px;} .trust-mem span{font-size:11px;} }
+      .tr2-team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:620px;margin:6px auto 28px;}
+      .tr2-mem{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;background:#fff;border:1px solid var(--border,#e8ecf1);border-radius:16px;padding:22px 12px;box-shadow:0 8px 24px rgba(15,23,42,.06);}
+      .tr2-mem img{width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:top center;background:#16273f;}
+      .tr2-mem .nm{font-size:17px;font-weight:800;color:var(--navy,#0f172a);}
+      .tr2-mem .ro{font-size:12.5px;color:var(--gray,#64748b);margin-top:-3px;}
+      .tr2-stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy,#0f172a);border-radius:16px;overflow:hidden;max-width:760px;margin:0 auto 24px;}
+      .tr2-stat{padding:22px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.08);}
+      .tr2-stat:last-child{border-right:none;}
+      .tr2-stat .n{font-size:1.85rem;font-weight:900;color:#fff;line-height:1;}
+      .tr2-stat .n em{font-size:.95rem;font-style:normal;color:var(--orange,#fb923c);margin-left:2px;}
+      .tr2-stat .l{margin-top:8px;font-size:12.5px;color:rgba(255,255,255,.72);}
+      .tr2-points{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px;margin:0 auto 22px;}
+      .tr2-point{font-size:13px;font-weight:600;color:var(--navy,#1e293b);background:#f1f5f9;border-radius:999px;padding:9px 16px;}
+      .tr2-quote{text-align:center;font-size:15px;font-style:italic;color:#475569;max-width:640px;margin:0 auto;line-height:1.7;padding:0 12px;}
+      @media(max-width:640px){
+        .tr2-team{gap:9px;}
+        .tr2-mem{padding:16px 6px;border-radius:13px;}
+        .tr2-mem img{width:62px;height:62px;}
+        .tr2-mem .nm{font-size:14px;}
+        .tr2-mem .ro{font-size:11px;}
+        .tr2-stats{grid-template-columns:repeat(2,1fr);}
+        .tr2-stat{border-bottom:1px solid rgba(255,255,255,.08);}
+        .tr2-stat:nth-child(2){border-right:none;}
+        .tr2-stat .n{font-size:1.5rem;}
+        .tr2-point{font-size:12px;padding:8px 13px;}
+        .tr2-quote{font-size:13.5px;}
+      }
     </style>
-    <div class="trust-grid">
-      <div>
-        <div class="trust-team">
-          <div class="trust-mem"><img src="{{ '/assets/img/kim.png' | relative_url }}" alt="법무사 김성태"><b>김성태</b><span>대표 법무사</span></div>
-          <div class="trust-mem"><img src="{{ '/assets/img/park.png' | relative_url }}" alt="법무사 박인복"><b>박인복</b><span>대표 법무사</span></div>
-          <div class="trust-mem"><img src="{{ '/assets/img/lee.png' | relative_url }}" alt="법무사 이현구"><b>이현구</b><span>대표 법무사</span></div>
-        </div>
-        <div class="trust-career">
-          <div class="trust-item"><div class="trust-ic">🔍</div><div><strong>수원지검 실무 출신 3인</strong><span>강력부·특수부·형사부 등 검찰 30년 경력 · 1992년 동기 입직</span></div></div>
-          <div class="trust-item"><div class="trust-ic">📋</div><div><strong>법무사 16년 실무</strong><span>개인회생·파산 서류를 처음부터 끝까지 직접 준비</span></div></div>
-          <div class="trust-item"><div class="trust-ic">⚖️</div><div><strong>수원회생법원 관할</strong><span>수원·용인·화성·평택 등 19개 시·군 전담</span></div></div>
-        </div>
-        <div class="trust-quote">"검찰 30년과 법무사 16년의 실무로, 여러분의 상황을 법원이 납득하도록 처음부터 정확하게 준비하겠습니다."</div>
-      </div>
-      <div class="trust-stats">
-        <div class="trust-stat"><div class="trust-stat-n"><span class="count-num" data-target="30">0</span><em>년</em></div><div class="trust-stat-l">검찰청 근무</div></div>
-        <div class="trust-stat"><div class="trust-stat-n"><span class="count-num" data-target="16">0</span><em>년</em></div><div class="trust-stat-l">법무사 실무</div></div>
-        <div class="trust-stat"><div class="trust-stat-n">무료</div><div class="trust-stat-l">초기 상담</div></div>
-        <div class="trust-stat"><div class="trust-stat-n">0</div><div class="trust-stat-l">수임 의무</div></div>
-      </div>
+    <div class="tr2-team">
+      <div class="tr2-mem"><img src="{{ '/assets/img/kim.png' | relative_url }}" alt="법무사 김성태"><span class="nm">김성태</span><span class="ro">대표 법무사</span></div>
+      <div class="tr2-mem"><img src="{{ '/assets/img/park.png' | relative_url }}" alt="법무사 박인복"><span class="nm">박인복</span><span class="ro">대표 법무사</span></div>
+      <div class="tr2-mem"><img src="{{ '/assets/img/lee.png' | relative_url }}" alt="법무사 이현구"><span class="nm">이현구</span><span class="ro">대표 법무사</span></div>
     </div>
+    <div class="tr2-stats">
+      <div class="tr2-stat"><div class="n"><span class="count-num" data-target="30">0</span><em>년</em></div><div class="l">검찰청 근무</div></div>
+      <div class="tr2-stat"><div class="n"><span class="count-num" data-target="16">0</span><em>년</em></div><div class="l">법무사 실무</div></div>
+      <div class="tr2-stat"><div class="n">무료</div><div class="l">초기 상담</div></div>
+      <div class="tr2-stat"><div class="n">0</div><div class="l">수임 의무</div></div>
+    </div>
+    <div class="tr2-points">
+      <span class="tr2-point">🔍 강력부·특수부·형사부 등 검찰 실무</span>
+      <span class="tr2-point">📋 개인회생·파산 서류 직접 준비</span>
+      <span class="tr2-point">⚖️ 수원회생법원 관할 19개 시·군</span>
+    </div>
+    <div class="tr2-quote">"검찰 30년과 법무사 16년의 실무로, 여러분의 상황을 법원이 납득하도록 처음부터 정확하게 준비하겠습니다."</div>
     <div style="text-align:center;margin-top:36px;"><button class="db-cta-btn" onclick="scrollToForm()">무료 상담 신청하기 →</button></div>
   </div>
 </section>

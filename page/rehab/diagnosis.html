@@ -233,6 +233,8 @@ permalink: /rehab/diagnosis
 .float-bar-collapsed-msg .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.6);animation:pulseOrange 1.5s infinite;}
 .float-bar-collapsed-right{display:flex;align-items:center;gap:16px;}
 .float-bar-open-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:13px;font-weight:800;border-radius:8px;padding:8px 18px;cursor:pointer;font-family:inherit;}
+.float-bar-kakao-link{color:#fff;font-size:12px;font-weight:800;text-decoration:none;background:#FEE500;color:#3C1E1E;padding:7px 12px;border-radius:8px;}
+.float-bar-kakao-link:hover{background:#ffdd00;}
 .float-bar-tel-link{color:#fff;font-size:14px;font-weight:800;text-decoration:none;opacity:.8;}
 .float-bar-panel{display:none;background:var(--navy);border-top:2px solid var(--orange);padding:20px 24px;box-shadow:0 -8px 32px rgba(0,0,0,.3);position:relative;}
 .float-bar-panel.open{display:block;animation:slideUp .3s ease both;}
@@ -255,6 +257,8 @@ permalink: /rehab/diagnosis
 .notif-text strong{font-weight:800;color:var(--navy);}
 .notif-text span{display:block;font-size:11.5px;color:var(--gray);margin-top:3px;}
 .notif-close{position:absolute;top:8px;right:10px;background:none;border:none;color:#94a3b8;font-size:16px;cursor:pointer;line-height:1;padding:0;}
+.notif-action-btn{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:800;color:#fff;background:var(--orange);padding:5px 12px;border-radius:99px;text-decoration:none;cursor:pointer;border:none;font-family:inherit;}
+.notif-action-btn:hover{background:var(--orange2);}
 
 /* ════ 모바일 우선 ════ */
 @media(max-width:768px){
@@ -372,8 +376,8 @@ permalink: /rehab/diagnosis
   .float-panel-submit{width:100%;margin-top:4px;}
   .float-panel-title{font-size:14px;}
 
-  /* FOMO 알림 - 모바일 숨김 (공간 부족) */
-  .notif-widget{display:none;}
+  /* FOMO 알림 - 모바일은 상단에 표시 */
+  .notif-widget{bottom:auto;top:68px;left:12px;right:12px;max-width:none;}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
 </style>
@@ -658,8 +662,12 @@ permalink: /rehab/diagnosis
 
 <div class="notif-widget" id="notifWidget">
   <div class="notif-card" id="notifCard">
-    <div class="notif-av">🔔</div>
-    <div class="notif-text"><strong id="notifName"></strong><span id="notifMsg"></span></div>
+    <div class="notif-av" id="notifAv">🔔</div>
+    <div class="notif-text">
+      <strong id="notifName"></strong>
+      <span id="notifMsg"></span>
+      <a id="notifAction" href="#" class="notif-action-btn" style="display:none"></a>
+    </div>
     <button class="notif-close" onclick="closeNotif()">×</button>
   </div>
 </div>
@@ -682,6 +690,7 @@ permalink: /rehab/diagnosis
     <div class="float-bar-collapsed-right">
       <div class="float-bar-open-btn">신청하기 ↑</div>
       <a href="tel:0312256885" class="float-bar-tel-link" onclick="event.stopPropagation()">📞 전화</a>
+      <a href="#" id="floatKakaoBtn" class="float-bar-kakao-link" onclick="event.stopPropagation();openKakao(event)">💬 카카오</a>
     </div>
   </div>
 </div>
@@ -744,7 +753,53 @@ function submitFloatForm(e){
 function animateCount(el){var target=parseInt(el.dataset.target),dur=1600,step=Math.ceil(target/(dur/20)),cur=0,t=setInterval(function(){cur=Math.min(cur+step,target);el.textContent=cur.toLocaleString();if(cur>=target)clearInterval(t)},20)}
 (function(){var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');en.target.querySelectorAll('.count-num').forEach(animateCount);io.unobserve(en.target)}})},{threshold:0.12});document.querySelectorAll('.anim-up').forEach(function(el){io.observe(el)});var sb=document.querySelector('.stats-bar');if(sb){var sbIO=new IntersectionObserver(function(entries){if(entries[0].isIntersecting){sb.querySelectorAll('.count-num').forEach(animateCount);sbIO.disconnect()}},{threshold:0.3});sbIO.observe(sb)}})();
 (function(){var entries=[{user:'수원 4*님',situation:'<span class="highlight">통장압류</span> 걱정으로 1차 확인 요청',time:'방금 전',isNew:true},{user:'화성 3*님',situation:'<span class="highlight">급여압류</span> 전 대응 방법 문의',time:'3분 전',isNew:false},{user:'용인 5*님',situation:'최근대출 포함 <span class="highlight">채무 6천만원</span> 상담',time:'8분 전',isNew:false},{user:'수원 4*님',situation:'<span class="highlight">월 변제금</span> 얼마나 나올지 확인',time:'14분 전',isNew:false},{user:'평택 3*님',situation:'<span class="highlight">독촉 전화</span> 중단 방법 문의',time:'21분 전',isNew:false},{user:'오산 4*님',situation:'계좌압류 후 <span class="highlight">대응 방법</span> 상담',time:'28분 전',isNew:false}];var feed=document.getElementById('boardFeed');if(!feed)return;entries.forEach(function(e){var row=document.createElement('div');row.className='board-feed-row';row.innerHTML='<div class="board-feed-user">'+e.user+(e.isNew?'<span class="board-new-badge">NEW</span>':'')+'</div><div class="board-feed-situation">'+e.situation+'</div><div class="board-feed-time">'+e.time+'</div>';feed.appendChild(row)});var newE=[{user:'수원 3*님',situation:'<span class="highlight">통장압류</span> 진행 상황 확인',time:'방금 전'},{user:'화성 4*님',situation:'<span class="highlight">급여압류 걱정</span>으로 상담 신청',time:'방금 전'},{user:'용인 3*님',situation:'최근 <span class="highlight">카드론</span> 포함 상담',time:'방금 전'}];var ni=0;setInterval(function(){var e=newE[ni%newE.length];ni++;var firstRow=feed.querySelector('.board-feed-row');var row=document.createElement('div');row.className='board-feed-row';row.style.background='rgba(249,115,22,.06)';row.innerHTML='<div class="board-feed-user">'+e.user+'<span class="board-new-badge">NEW</span></div><div class="board-feed-situation">'+e.situation+'</div><div class="board-feed-time">'+e.time+'</div>';feed.insertBefore(row,firstRow);setTimeout(function(){row.style.background=''},3000);var rows=feed.querySelectorAll('.board-feed-row');if(rows.length>7)rows[rows.length-1].remove()},18000)})();
-(function(){var notifs=[{name:'수원 40대님이',msg:'방금 상담을 신청했습니다'},{name:'화성 30대님이',msg:'통장압류 걱정으로 문의하셨습니다'},{name:'용인 50대님이',msg:'월 변제금 확인을 요청했습니다'},{name:'평택 40대님이',msg:'급여압류 전 상담을 남겼습니다'}];var idx=0;function showNotif(){var n=notifs[idx%notifs.length];idx++;var card=document.getElementById('notifCard');document.getElementById('notifName').textContent=n.name;document.getElementById('notifMsg').textContent=n.msg;card.classList.remove('hide');card.classList.add('show');setTimeout(function(){card.classList.add('hide');setTimeout(function(){card.classList.remove('show','hide')},500)},5000)}setTimeout(showNotif,8000);setInterval(showNotif,25000)})();
+(function(){var KAKAO_URL='https://pf.kakao.com/_xxxxx/chat';/* ★ 실제 카카오채널 URL로 교체 */
+function openKakao(e){if(e)e.preventDefault();if(KAKAO_URL&&KAKAO_URL.indexOf('xxxxx')===-1){window.open(KAKAO_URL,'_blank');}else{alert('카카오채널 URL을 설정해 주세요.');}}
+.openKakao=openKakao;
+var notifs=[
+  {av:'🔔',name:'수원 40대님이',msg:'방금 상담을 신청했습니다',action:null},
+  {av:'📋',name:'문의글을 남겨보세요',msg:'게시판에 남기시면 순서대로 답변드립니다',action:{text:'게시판 바로가기 →',href:'#sec-board',fn:null}},
+  {av:'🔔',name:'화성 30대님이',msg:'통장압류 걱정으로 문의하셨습니다',action:null},
+  {av:'💬',name:'카카오톡으로 문의하기',msg:'카카오채널로 빠르게 연결됩니다',action:{text:'카카오톡 문의 →',href:'#',fn:'kakao'}},
+  {av:'🔔',name:'용인 50대님이',msg:'월 변제금 확인을 요청했습니다',action:null},
+  {av:'⭐',name:'이 페이지를 저장해 두세요',msg:'나중에 다시 찾기 편하게 즐겨찾기 추가',action:{text:'즐겨찾기 추가 ★',href:'#',fn:'bookmark'}},
+  {av:'🔔',name:'평택 40대님이',msg:'급여압류 전 상담을 남겼습니다',action:null},
+  {av:'💬',name:'24시간 카카오 상담 가능',msg:'언제든 카카오채널로 먼저 물어보세요',action:{text:'카카오톡으로 문의 →',href:'#',fn:'kakao'}}
+];
+var nidx=0;
+function showNotif(){
+  var n=notifs[nidx%notifs.length];nidx++;
+  var card=document.getElementById('notifCard');
+  var avEl=document.getElementById('notifAv');
+  if(avEl)avEl.textContent=n.av;
+  document.getElementById('notifName').textContent=n.name;
+  document.getElementById('notifMsg').textContent=n.msg;
+  var actEl=document.getElementById('notifAction');
+  if(actEl){
+    if(n.action){
+      actEl.textContent=n.action.text;
+      actEl.setAttribute('data-fn',n.action.fn||'');
+      actEl.href=(n.action.fn==='bookmark'||n.action.fn==='kakao')?'#':n.action.href||'#';
+      actEl.onclick=function(e){
+        var fn=actEl.getAttribute('data-fn');
+        if(fn==='bookmark'){e.preventDefault();tryBookmark();}
+        else if(fn==='kakao'){e.preventDefault();openKakao();}
+        else{e.preventDefault();var s=document.getElementById('sec-board');if(s)s.scrollIntoView({behavior:'smooth'});}
+      };
+      actEl.style.display='inline-block';
+    }else{actEl.style.display='none';}
+  }
+  card.classList.remove('hide');card.classList.add('show');
+  setTimeout(function(){card.classList.add('hide');setTimeout(function(){card.classList.remove('show','hide');},500);},6000);
+}
+function tryBookmark(){
+  try{
+    if(window.sidebar&&window.sidebar.addPanel){window.sidebar.addPanel(document.title,window.location.href,'');}
+    else if(window.external&&('AddFavorite' in window.external)){window.external.AddFavorite(window.location.href,document.title);}
+    else{alert('Ctrl+D (Mac: Cmd+D)를 눌러 즐겨찾기에 추가하세요 :)');}
+  }catch(ex){alert('Ctrl+D (Mac: Cmd+D)를 눌러 즐겨찾기에 추가하세요');}
+}
+setTimeout(showNotif,8000);setInterval(showNotif,25000);})();
 function closeNotif(){var card=document.getElementById('notifCard');card.classList.add('hide');setTimeout(function(){card.classList.remove('show','hide')},500)}
 (function(){var el=document.getElementById('todayCount');if(el)el.textContent=Math.floor(Math.random()*12)+14})();
 </script>

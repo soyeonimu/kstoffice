@@ -410,7 +410,7 @@ body.dv2-active nav.main-nav{display:none!important}
         <span class="dv2-stars">★★★★★</span>
         <strong>4.9</strong>
       </div>
-      <div class="dv2-trust-item">📋 누적 상담 <strong>1,200건+</strong></div>
+      <div class="dv2-trust-item">📋 개인회생·파산 <strong>다년간 전담</strong></div>
       <div class="dv2-trust-item">👤 전 검찰수사관 <strong>김성태 법무사</strong> 직접 검토</div>
       <div class="dv2-trust-item">🔒 개인정보 암호화 처리</div>
     </div>
@@ -709,7 +709,7 @@ function calcScore(){
   else if(ans.hasCar==="국산차 1대")s+=4;
   if(ans.businessOwner==="법인 대표")s+=8;
   else if(ans.businessOwner==="개인사업자 (운영 중)")s+=5;
-  return Math.min(98,Math.max(32,s));
+  return Math.min(88,Math.max(32,s));
 }
 
 function calcRepayment(){
@@ -729,11 +729,11 @@ function calcRepayment(){
 
 function calcReduction(){
   const m={
-    "1천만원 이하":"최대 700만원",
-    "1천~3천만원":"최대 2,500만원",
-    "3천~5천만원":"최대 4,500만원",
-    "5천만원~1억원":"최대 9,000만원",
-    "1억원 이상":"최대 90% 탕감"
+    "1천만원 이하":"법원 절차에 맞춰 산정",
+    "1천~3천만원":"법원 절차에 맞춰 산정",
+    "3천~5천만원":"법원 절차에 맞춰 산정",
+    "5천만원~1억원":"법원 절차에 맞춰 산정",
+    "1억원 이상":"법원 절차에 맞춰 산정"
   };
   return m[ans.debtAmount]||"검토 필요";
 }
@@ -847,7 +847,7 @@ function showResult(){
       <div class="dv2-aphoto">🧑‍⚖️</div>
       <div>
         <div class="dv2-aname">김성태 법무사</div>
-        <div class="dv2-atitle">전 검찰수사관 · 법무부장관 표창</div>
+        <div class="dv2-atitle">전 검찰수사관 · 검찰 30년 실무</div>
         <div class="dv2-aopinion">${opinion}</div>
       </div>
     </div>

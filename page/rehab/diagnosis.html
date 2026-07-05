@@ -714,7 +714,7 @@ permalink: /rehab/diagnosis
 <script>
 function toggleFaq(btn){var body=btn.nextElementSibling,isOpen=body.classList.contains('open');document.querySelectorAll('.faq-body').forEach(function(b){b.classList.remove('open')});document.querySelectorAll('.faq-btn').forEach(function(b){b.classList.remove('open')});if(!isOpen){body.classList.add('open');btn.classList.add('open')}}
 function scrollToForm(){var el=document.getElementById('formCard');if(!el)return;window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-90,behavior:'smooth'});setTimeout(function(){var i=el.querySelector('input');if(i)i.focus()},650)}
-var FORM_ENDPOINT='https://script.google.com/macros/s/AKfycbxLHMOghQElDBtKbbMGKFWTYqEQYfIPsUpM2QQUSuDAYDShAu2xqlbOkzpEBtehiPx-Qg/exec';
+var FORM_ENDPOINT='https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec';
 function submitLead(e){
   e.preventDefault();
   var btn=document.querySelector('.db-submit');
@@ -725,7 +725,8 @@ function submitLead(e){
     phone:form.phone.value,
     concern:form.concern.value,
     debt:form.debt?form.debt.value:'',
-    formType:'main'
+    formType:'main',
+    source:'진단_상담신청'
   });
   if(FORM_ENDPOINT){
     fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',body:params})
@@ -743,7 +744,8 @@ function submitFloatForm(e){
     name:e.target.fname.value,
     phone:e.target.fphone.value,
     concern:'플로팅폼 신청',
-    formType:'float'
+    formType:'float',
+    source:'진단_플로팅'
   });
   if(FORM_ENDPOINT){
     fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',body:params}).catch(function(){});

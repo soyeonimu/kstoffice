@@ -93,6 +93,9 @@ permalink: /contact
 .form-submit:disabled { opacity: 0.7; cursor: default; }
 .form-note { text-align: center; font-size: 12.5px; color: #64748b; margin-top: 14px; line-height: 1.5; }
 .form-success { display: none; text-align: center; color: var(--gold-accent); font-weight: 700; font-size: 15px; margin-top: 14px; }
+.cf-agree { display: flex; align-items: flex-start; gap: 8px; margin-top: 14px; font-size: 13px; line-height: 1.5; color: var(--text-muted); cursor: pointer; }
+.cf-agree input { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; accent-color: var(--gold-accent); cursor: pointer; }
+.cf-agree a { color: var(--gold-accent); text-decoration: underline; }
 
 /* --- 오시는 길 --- */
 .location-section { padding: 40px 0 100px; text-align: center; }
@@ -225,7 +228,11 @@ permalink: /contact
         <label for="cf-concern">문의 내용</label>
         <textarea id="cf-concern" name="concern" placeholder="어떤 도움이 필요하신지 간단히 적어주세요"></textarea>
       </div>
-      <button type="submit" class="form-submit">상담 신청하기</button>
+      <label class="cf-agree">
+        <input type="checkbox" id="cf-agree" required>
+        <span>개인정보 수집·이용 동의 (필수) <a href="/privacy" target="_blank" rel="noopener">[보기]</a></span>
+      </label>
+      <button type="submit" class="form-submit">무료 상담 신청</button>
       <p class="form-note">법무사 업무 범위(서류 작성 대리) 내에서 안내드리며, 개별 사건의 결과를 보장하지 않습니다.</p>
       <p class="form-success">✅ 상담 신청이 접수되었습니다. 곧 연락드리겠습니다.</p>
     </form>
@@ -236,7 +243,7 @@ permalink: /contact
     <h2 class="section-heading">오시는 길</h2>
     <div class="location-card" style="margin-top:24px;">
       <p class="loc-name">리더스 합동 법무사 사무소</p>
-      <p class="loc-addr">수원시 영통구 광교중앙로248번길 7-2, A동 702호 (광교법조타운)</p>
+      <p class="loc-addr">수원시 영통구 광교중앙로248번길 7-2, A동 702호</p>
       <a href="/team/location" class="location-link">📍 지도·약도 보기</a>
     </div>
   </section>
@@ -248,6 +255,11 @@ permalink: /contact
   function ldsContactSubmit(e) {
     e.preventDefault();
     var form = e.target;
+    var agree = document.getElementById('cf-agree');
+    if (agree && !agree.checked) {
+      alert('개인정보 수집·이용에 동의해 주세요.');
+      return;
+    }
     var btn = form.querySelector('.form-submit');
     var GAS = "https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";
     btn.textContent = '신청 중...';

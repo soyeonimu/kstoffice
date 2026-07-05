@@ -76,6 +76,10 @@
       <form class="lds-sd__form-body" onsubmit="ldsSdSubmit(event)" autocomplete="off">
         <input type="text" name="name" placeholder="이름" required class="lds-sd__input">
         <input type="tel" name="phone" placeholder="연락처 (010-0000-0000)" required class="lds-sd__input">
+        <label class="lds-sd__agree">
+          <input type="checkbox" name="agree" required>
+          <span>개인정보 수집·이용 동의 (필수) <a href="/privacy" target="_blank" rel="noopener">[보기]</a></span>
+        </label>
         <button type="submit" class="lds-sd__submit">신청</button>
         <p class="lds-sd__success" style="display:none">✅ 신청 완료! 곧 연락드리겠습니다.</p>
       </form>
@@ -280,6 +284,17 @@
   }
   .lds-sd__input::placeholder{ color: rgba(255, 255, 255, 0.55); }
   .lds-sd__input:focus{ outline: none; border-color: #c5a059; }
+  .lds-sd__agree{
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+  }
+  .lds-sd__agree input{ margin-top: 1px; accent-color: #c5a059; flex-shrink: 0; cursor: pointer; }
+  .lds-sd__agree a{ color: #e2c28d; text-decoration: underline; }
   .lds-sd__submit{
     height: 44px;
     border: none;
@@ -362,6 +377,10 @@
   function ldsSdSubmit(e) {
     e.preventDefault();
     var form = e.target;
+    if (form.agree && !form.agree.checked) {
+      alert('개인정보 수집·이용에 동의해 주세요.');
+      return;
+    }
     var btn = form.querySelector('.lds-sd__submit');
     var GAS = "https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";
     btn.textContent = '신청 중...';

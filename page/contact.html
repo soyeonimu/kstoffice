@@ -52,12 +52,74 @@ permalink: /contact
 
 .office-info-footer { text-align: center; color: var(--text-muted); font-size: 14px; margin-top: 60px; border-top: 1px solid var(--border-subtle); padding-top: 30px; }
 
+/* --- 연락 채널 버튼 묶음 --- */
+.channel-section { padding: 0 0 20px; }
+.section-heading { text-align: center; font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; margin-bottom: 10px; letter-spacing: -0.02em; }
+.section-sub { text-align: center; color: var(--text-muted); font-size: 15px; margin-bottom: 32px; }
+.channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.channel-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  min-height: 96px; padding: 20px 12px; border-radius: 16px; text-decoration: none;
+  background: var(--card-bg); border: 1px solid var(--border-subtle); color: var(--text-pure);
+  font-weight: 700; font-size: 15px; transition: 0.25s; text-align: center;
+}
+.channel-btn:hover { border-color: var(--gold-accent); transform: translateY(-3px); }
+.channel-btn .ch-ic { font-size: 26px; line-height: 1; }
+.channel-btn .ch-sub { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.channel-btn.is-kakao { background: #fee500; color: #191600; border-color: #fee500; }
+.channel-btn.is-naver { background: #03c75a; color: #fff; border-color: #03c75a; }
+.channel-btn.is-kakao .ch-sub, .channel-btn.is-naver .ch-sub { color: rgba(0,0,0,0.55); }
+.channel-btn.is-naver .ch-sub { color: rgba(255,255,255,0.8); }
+
+/* --- 간단 상담신청 폼 --- */
+.form-section { padding: 50px 0 20px; }
+.contact-form { max-width: 560px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 36px 28px; }
+.contact-form .field { margin-bottom: 16px; }
+.contact-form label { display: block; font-size: 14px; font-weight: 700; color: #e2e8f0; margin-bottom: 8px; }
+.contact-form input, .contact-form textarea {
+  width: 100%; box-sizing: border-box; padding: 14px 16px; border-radius: 12px;
+  border: 1px solid var(--border-subtle); background: #0a111e; color: #fff;
+  font-size: 16px; font-family: inherit;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #64748b; }
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--gold-accent); }
+.contact-form textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+.form-submit {
+  width: 100%; min-height: 52px; margin-top: 8px; border: none; border-radius: 12px;
+  background: linear-gradient(135deg, #c5a059, #e2c28d); color: #0f172a;
+  font-size: 17px; font-weight: 800; cursor: pointer; transition: 0.2s;
+}
+.form-submit:hover { filter: brightness(1.05); }
+.form-submit:disabled { opacity: 0.7; cursor: default; }
+.form-note { text-align: center; font-size: 12.5px; color: #64748b; margin-top: 14px; line-height: 1.5; }
+.form-success { display: none; text-align: center; color: var(--gold-accent); font-weight: 700; font-size: 15px; margin-top: 14px; }
+
+/* --- 오시는 길 --- */
+.location-section { padding: 40px 0 100px; text-align: center; }
+.location-card { max-width: 560px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 32px 24px; }
+.location-card .loc-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.location-card .loc-addr { color: #e2e8f0; font-size: 15px; margin-bottom: 20px; }
+.location-link {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 26px;
+  border-radius: 12px; background: transparent; border: 1px solid var(--gold-accent);
+  color: var(--gold-accent); text-decoration: none; font-weight: 700; font-size: 15px; transition: 0.2s;
+}
+.location-link:hover { background: var(--gold-accent); color: #0a111e; }
+
 @media (max-width: 768px) {
   .connect-grid { grid-template-columns: 1fr; gap: 16px; }
   .number-grid { flex-direction: column; gap: 20px; }
   .num-line { display: none; }
   .simple-hero { padding: 80px 0 30px; }
   .number-card { padding: 32px 20px; }
+  .channel-grid { grid-template-columns: 1fr; gap: 12px; }
+  .channel-btn { flex-direction: row; min-height: 60px; justify-content: flex-start; gap: 14px; padding: 16px 20px; }
+  .channel-btn .ch-body { text-align: left; }
+  .connect-section { padding: 40px 0 0; }
+  .contact-form { padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .l-container { padding: 0 18px; }
 }
 </style>
 
@@ -101,11 +163,108 @@ permalink: /contact
 
     </div>
 
-    <!-- 주소 안내 -->
-    <div class="office-info-footer">
-      <p style="margin-bottom: 6px; color: #fff; font-size: 16px;"><strong>리더스 합동 법무사 사무소</strong></p>
-      <p>수원시 영통구 광교중앙로248번길 7-2, A동 702호 (광교법조타운)</p>
+  </section>
+
+  <!-- 연락 채널 버튼 묶음 -->
+  <section class="channel-section l-container">
+    <h2 class="section-heading">편하신 방법으로 <span style="color:var(--gold-accent)">상담</span>하세요</h2>
+    <p class="section-sub">전화·카카오톡·네이버 예약 어디로 연락 주셔도 김성태 법무사가 직접 확인합니다.</p>
+    <div class="channel-grid">
+
+      <a href="tel:010-4710-6885" class="channel-btn">
+        <span class="ch-ic" aria-hidden="true">📱</span>
+        <span class="ch-body"><span>법무사 직통</span><br><span class="ch-sub">010-4710-6885</span></span>
+      </a>
+
+      <a href="tel:031-225-6885" class="channel-btn">
+        <span class="ch-ic" aria-hidden="true">☎️</span>
+        <span class="ch-body"><span>대표 전화</span><br><span class="ch-sub">031-225-6885</span></span>
+      </a>
+
+      <!-- 카카오톡 채널 상담 -->
+      <a href="https://pf.kakao.com/_xmkRSG/chat" target="_blank" rel="noopener" class="channel-btn is-kakao">
+        <span class="ch-ic" aria-hidden="true">💬</span>
+        <span class="ch-body"><span>카카오톡 상담</span><br><span class="ch-sub">1:1 채팅 문의</span></span>
+      </a>
+
+      <!-- 네이버 예약 -->
+      <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="channel-btn is-naver">
+        <span class="ch-ic" aria-hidden="true">📅</span>
+        <span class="ch-body"><span>네이버 예약</span><br><span class="ch-sub">방문 상담 예약</span></span>
+      </a>
+
+      <!-- 상담게시판 -->
+      <a href="/inquiry/" class="channel-btn">
+        <span class="ch-ic" aria-hidden="true">✍️</span>
+        <span class="ch-body"><span>상담게시판</span><br><span class="ch-sub">온라인 문의 남기기</span></span>
+      </a>
+
+      <!-- 개인회생 진단 -->
+      <a href="/rehab/diagnosis" class="channel-btn">
+        <span class="ch-ic" aria-hidden="true">⚖️</span>
+        <span class="ch-body"><span>개인회생 진단</span><br><span class="ch-sub">1분 자가진단</span></span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 간단 상담신청 폼 -->
+  <section class="form-section l-container">
+    <h2 class="section-heading">간편 <span style="color:var(--gold-accent)">상담 신청</span></h2>
+    <p class="section-sub">이름과 연락처를 남겨주시면 확인 후 직접 연락드립니다.</p>
+    <form class="contact-form" id="ldsContactForm" onsubmit="ldsContactSubmit(event)" autocomplete="off">
+      <div class="field">
+        <label for="cf-name">이름</label>
+        <input type="text" id="cf-name" name="name" placeholder="성함을 입력해 주세요" required>
+      </div>
+      <div class="field">
+        <label for="cf-phone">연락처</label>
+        <input type="tel" id="cf-phone" name="phone" placeholder="010-0000-0000" required>
+      </div>
+      <div class="field">
+        <label for="cf-concern">문의 내용</label>
+        <textarea id="cf-concern" name="concern" placeholder="어떤 도움이 필요하신지 간단히 적어주세요"></textarea>
+      </div>
+      <button type="submit" class="form-submit">상담 신청하기</button>
+      <p class="form-note">법무사 업무 범위(서류 작성 대리) 내에서 안내드리며, 개별 사건의 결과를 보장하지 않습니다.</p>
+      <p class="form-success">✅ 상담 신청이 접수되었습니다. 곧 연락드리겠습니다.</p>
+    </form>
+  </section>
+
+  <!-- 오시는 길 -->
+  <section class="location-section l-container">
+    <h2 class="section-heading">오시는 길</h2>
+    <div class="location-card" style="margin-top:24px;">
+      <p class="loc-name">리더스 합동 법무사 사무소</p>
+      <p class="loc-addr">수원시 영통구 광교중앙로248번길 7-2, A동 702호 (광교법조타운)</p>
+      <a href="/team/location" class="location-link">📍 지도·약도 보기</a>
     </div>
   </section>
 
 </section>
+
+<!-- ===== 간편 상담신청 폼 전송 (GAS, 일반 상담 엔드포인트) ===== -->
+<script>
+  function ldsContactSubmit(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector('.form-submit');
+    var GAS = "https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";
+    btn.textContent = '신청 중...';
+    btn.disabled = true;
+    var params = new URLSearchParams({
+      name: form.name ? form.name.value : '',
+      phone: form.phone ? form.phone.value : '',
+      concern: form.concern && form.concern.value ? form.concern.value : '연락처 페이지 상담',
+      formType: 'contact',
+      source: '연락처_상담신청'
+    });
+    var done = function () {
+      btn.textContent = '신청 완료 ✓';
+      var el = form.querySelector('.form-success');
+      if (el) el.style.display = 'block';
+      form.querySelectorAll('input,textarea,button').forEach(function (f) { f.disabled = true; });
+    };
+    fetch(GAS, { method: 'POST', mode: 'no-cors', body: params }).then(done).catch(done);
+  }
+</script>

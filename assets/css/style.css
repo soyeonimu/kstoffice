@@ -28,6 +28,13 @@ body {
   padding-top: var(--header-h);
 }
 
+/* 모바일 가로 오버플로우 안전망 + 미디어 반응형 기본값 */
+html { overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; }
+@media (max-width: 768px) {
+  body { overflow-x: hidden; }
+}
+
 /* 2. 헤더 (Header) */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0;
@@ -843,6 +850,9 @@ header, .site-header, .nav-container {
     width: min(86vw, 360px);
     height: 100vh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: calc(var(--header-h, 85px) + 16px) 20px 40px;
+    box-sizing: border-box;
     z-index: 2500;
   }
 
@@ -883,4 +893,51 @@ header, .site-header, .nav-container {
   .gnb-list > li > a{
     white-space: nowrap;  /* ✅ "개인회생·파산" 같은 것도 1줄로 */
   }
+}
+
+/* =====================================================
+   전역 모바일 최적화 (오버플로우 제거 · 터치 · 표 스크롤)
+   데스크톱 스타일은 건드리지 않음 (미디어쿼리 내부에서만 조정)
+   ===================================================== */
+
+/* 본문 콘텐츠 안의 표는 모바일에서 가로 스크롤 (마크다운 게시글 대응) */
+@media (max-width: 768px) {
+  .article-body table,
+  .page-main table,
+  .board-container table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .article-body table th,
+  .article-body table td { white-space: nowrap; }
+}
+
+/* 사이드바 사이드콘설트 위젯: 모바일 정상 폭 (그리드 밖에서도 넘침 방지) */
+@media (max-width: 980px) {
+  .side-consult,
+  .side-recent { max-width: 100%; box-sizing: border-box; }
+}
+
+/* 태블릿/모바일: 헤더 로고·패딩 정리 (≤768) */
+@media (max-width: 768px) {
+  .header-inner { padding: 12px 14px; gap: 10px; }
+  .logo-img { height: 40px; }
+  /* 푸터 지역 링크가 좁은 화면에서도 줄바꿈되게 (이미 wrap 이지만 확실히) */
+  .f-regions-links { flex-wrap: wrap; }
+  .f-bottom-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
+/* 소형 모바일 (≤480) 미세 조정 — 본문 최소 15px 유지 */
+@media (max-width: 480px) {
+  .header-inner { padding: 10px 12px; }
+  .logo-img { height: 36px; }
+  .logo { max-width: 180px; }
+  .site-footer { padding-top: 48px; }
+  .footer-inner { padding: 0 16px; }
+  .f-call-num, .f-call-num.gold { font-size: 1.6rem; }
+  /* 좌측 세로바(형사 페이지) 상단 가로형일 때 좌우 패딩 축소 */
+  .subnav-float { padding: 10px 12px 0; }
 }

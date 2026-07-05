@@ -256,24 +256,124 @@ permalink: /rehab/diagnosis
 .notif-text span{display:block;font-size:11.5px;color:var(--gray);margin-top:3px;}
 .notif-close{position:absolute;top:8px;right:10px;background:none;border:none;color:#94a3b8;font-size:16px;cursor:pointer;line-height:1;padding:0;}
 
+/* ════ 모바일 우선 ════ */
 @media(max-width:768px){
-  .lp-wrap{padding-bottom:58px;}
-  .db-hero-inner{grid-template-columns:1fr;padding:32px 16px 36px;gap:24px;}
-  .db-hero-h1{font-size:1.8rem;}
-  .pain-grid,.review-grid,.case-img-grid{grid-template-columns:1fr;}
-  .trust-grid{grid-template-columns:1fr;}
-  .cost-grid{grid-template-columns:1fr;}
-  .stats-bar-grid{grid-template-columns:repeat(2,1fr);}
-  .stat-item{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);}
-  .checklist-grid{grid-template-columns:1fr;}
-  .board-feed-header,.board-feed-row{grid-template-columns:1.5fr 2fr 1fr;}
-  .final-cta-btns{flex-direction:column;align-items:center;}
-  .final-btn-primary,.final-btn-tel{width:100%;max-width:300px;text-align:center;justify-content:center;}
-  .float-panel-row{grid-template-columns:1fr;}
-  .float-panel-submit{width:100%;}
-  .notif-widget{bottom:62px;}
+  /* 기본 */
+  .lp-wrap{padding-top:56px;padding-bottom:72px;}
   .db-inner{padding-left:16px;padding-right:16px;}
-  .pain-section,.case-img-section,.checklist-section,.board-section,.review-section,.trust-section,.cost-section,.objection-section,.faq-section,.final-cta-section{padding:52px 0;}
+
+  /* 히어로 - 폼을 상단으로 */
+  .db-hero{padding:20px 0 28px;}
+  .db-hero-inner{grid-template-columns:1fr;padding:20px 16px 24px;gap:16px;}
+  .db-form-card{order:-1;} /* 폼 먼저 */
+  .db-hero-badge{font-size:10.5px;padding:5px 12px;margin-bottom:14px;}
+  .db-hero-h1{font-size:1.55rem;line-height:1.25;margin-bottom:12px;}
+  .db-hero-subtext{font-size:13.5px;margin-bottom:14px;line-height:1.7;}
+  .db-hero-subtext br{display:none;}
+  .db-hero-checks{gap:8px;margin-bottom:14px;}
+  .db-hero-check{font-size:13px;}
+  .db-hero-tel{padding:12px 14px;}
+  .db-hero-tel a{font-size:16px;}
+
+  /* 폼 */
+  .db-form-card{padding:18px 16px;}
+  .db-form-today{font-size:11px;padding:6px 10px;}
+  .db-form-title{font-size:16px;}
+  .db-form-desc{font-size:12px;margin-bottom:12px;}
+  .db-field{margin-bottom:8px;}
+  .db-field input,.db-field select{padding:10px 12px;font-size:14px;}
+  .db-submit{font-size:15px;padding:15px 0;}
+
+  /* 섹션 공통 */
+  .pain-section,.case-img-section,.checklist-section,.board-section,
+  .review-section,.trust-section,.cost-section,.objection-section,
+  .faq-section,.final-cta-section{padding:40px 0;}
+  .db-title{font-size:1.5rem;line-height:1.25;}
+  .db-sub{font-size:13.5px;}
+
+  /* 라이브 티커 */
+  .live-ticker-label{font-size:10px;padding:0 12px;}
+  .live-ticker-track{padding-left:90px;}
+  .live-ticker-item{font-size:12px;padding:0 20px;}
+
+  /* 통계 바 */
+  .stats-bar{padding:20px 0;}
+  .stats-bar-grid{grid-template-columns:repeat(2,1fr);}
+  .stat-item{padding:14px 8px;border-right:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.06);}
+  .stat-item:nth-child(2){border-right:none;}
+  .stat-item:nth-child(3),.stat-item:nth-child(4){border-bottom:none;}
+  .stat-num{font-size:1.7rem;}
+  .stat-label{font-size:11px;}
+
+  /* 페인포인트 */
+  .pain-grid{grid-template-columns:1fr;gap:10px;}
+  .pain-card{padding:20px 16px;border-radius:14px;}
+  .pain-icon{font-size:24px;margin-bottom:8px;}
+  .pain-title{font-size:16px;margin-bottom:8px;}
+  .pain-body{font-size:13px;}
+
+  /* 개시결정 이미지 */
+  .case-img-grid{grid-template-columns:1fr;gap:12px;}
+  .case-img-card img,.case-img-placeholder{height:160px;}
+  .case-img-info{padding:12px 14px;}
+  .case-img-title{font-size:13px;}
+  .case-img-desc{font-size:11.5px;}
+
+  /* 체크리스트 */
+  .checklist-grid{grid-template-columns:1fr;}
+  .checklist-item{padding:12px 14px;font-size:13.5px;}
+  .checklist-note{font-size:13px;}
+
+  /* 상담게시판 */
+  .board-feed-header{display:none;}
+  .board-feed-row{grid-template-columns:1fr auto;gap:8px;padding:12px 14px;}
+  .board-feed-situation{display:none;}
+  .board-feed-user{font-size:12.5px;}
+  .board-feed-time{font-size:11px;}
+  .board-cta-row{flex-direction:column;gap:10px;padding:14px;}
+  .board-cta-btn{width:100%;text-align:center;padding:12px 0;}
+
+  /* 후기 */
+  .review-grid{grid-template-columns:1fr;gap:10px;}
+  .review-card{padding:18px 16px;}
+  .review-body{font-size:12.5px;}
+
+  /* 법무사 */
+  .trust-grid{grid-template-columns:1fr;}
+  .trust-name{font-size:1.8rem;}
+  .trust-stats{margin-top:16px;grid-template-columns:repeat(2,1fr);}
+  .trust-stat{padding:16px 12px;}
+  .trust-stat-n{font-size:1.5rem;}
+
+  /* 비용 */
+  .cost-grid{grid-template-columns:1fr;gap:8px;}
+  .cost-amount{font-size:1.5rem;}
+
+  /* 반박제거 */
+  .objection-q{font-size:14.5px;}
+  .objection-a{font-size:13px;}
+
+  /* FAQ */
+  .faq-btn{font-size:14px;padding:15px 0;}
+
+  /* 마지막 CTA */
+  .final-prepare{gap:8px;}
+  .final-prepare-item{font-size:12.5px;padding:7px 14px;}
+  .final-cta-btns{flex-direction:column;align-items:stretch;gap:10px;padding:0 8px;}
+  .final-btn-primary{font-size:15px;padding:17px 0;border-radius:12px;}
+  .final-btn-tel{font-size:15px;padding:15px 0;border-radius:12px;justify-content:center;}
+
+  /* 플로팅 바 - 모바일은 항상 표시 */
+  .float-bar{transform:translateY(0)!important;}
+  .float-bar-collapsed{height:56px;padding:0 16px;}
+  .float-bar-collapsed-msg{font-size:13px;}
+  .float-bar-open-btn{font-size:12px;padding:7px 14px;}
+  .float-panel-row{grid-template-columns:1fr;}
+  .float-panel-submit{width:100%;margin-top:4px;}
+  .float-panel-title{font-size:14px;}
+
+  /* FOMO 알림 - 모바일 숨김 (공간 부족) */
+  .notif-widget{display:none;}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
 </style>
@@ -627,7 +727,20 @@ function submitFloatForm(e){
   var c=document.getElementById('todayCount');if(c)c.textContent=parseInt(c.textContent)+1;
   setTimeout(function(){toggleFloatPanel(false);setTimeout(function(){btn.textContent='무료 상담 신청';btn.disabled=false},3000)},900);
 }
-(function(){var bar=document.getElementById('floatBar');if(!bar)return;var shown=false;window.addEventListener('scroll',function(){if(!shown&&window.scrollY>400){shown=true;bar.style.transform='translateY(0)'}},{passive:true})})();
+(function(){
+  var bar=document.getElementById('floatBar');
+  if(!bar)return;
+  // 모바일: 즉시 표시
+  if(window.innerWidth<=768){
+    bar.style.transform='translateY(0)';
+    return;
+  }
+  // 데스크탑: 스크롤 400px 후 표시
+  var shown=false;
+  window.addEventListener('scroll',function(){
+    if(!shown&&window.scrollY>400){shown=true;bar.style.transform='translateY(0)';}
+  },{passive:true});
+})();
 function animateCount(el){var target=parseInt(el.dataset.target),dur=1600,step=Math.ceil(target/(dur/20)),cur=0,t=setInterval(function(){cur=Math.min(cur+step,target);el.textContent=cur.toLocaleString();if(cur>=target)clearInterval(t)},20)}
 (function(){var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');en.target.querySelectorAll('.count-num').forEach(animateCount);io.unobserve(en.target)}})},{threshold:0.12});document.querySelectorAll('.anim-up').forEach(function(el){io.observe(el)});var sb=document.querySelector('.stats-bar');if(sb){var sbIO=new IntersectionObserver(function(entries){if(entries[0].isIntersecting){sb.querySelectorAll('.count-num').forEach(animateCount);sbIO.disconnect()}},{threshold:0.3});sbIO.observe(sb)}})();
 (function(){var entries=[{user:'수원 4*님',situation:'<span class="highlight">통장압류</span> 걱정으로 1차 확인 요청',time:'방금 전',isNew:true},{user:'화성 3*님',situation:'<span class="highlight">급여압류</span> 전 대응 방법 문의',time:'3분 전',isNew:false},{user:'용인 5*님',situation:'최근대출 포함 <span class="highlight">채무 6천만원</span> 상담',time:'8분 전',isNew:false},{user:'수원 4*님',situation:'<span class="highlight">월 변제금</span> 얼마나 나올지 확인',time:'14분 전',isNew:false},{user:'평택 3*님',situation:'<span class="highlight">독촉 전화</span> 중단 방법 문의',time:'21분 전',isNew:false},{user:'오산 4*님',situation:'계좌압류 후 <span class="highlight">대응 방법</span> 상담',time:'28분 전',isNew:false}];var feed=document.getElementById('boardFeed');if(!feed)return;entries.forEach(function(e){var row=document.createElement('div');row.className='board-feed-row';row.innerHTML='<div class="board-feed-user">'+e.user+(e.isNew?'<span class="board-new-badge">NEW</span>':'')+'</div><div class="board-feed-situation">'+e.situation+'</div><div class="board-feed-time">'+e.time+'</div>';feed.appendChild(row)});var newE=[{user:'수원 3*님',situation:'<span class="highlight">통장압류</span> 진행 상황 확인',time:'방금 전'},{user:'화성 4*님',situation:'<span class="highlight">급여압류 걱정</span>으로 상담 신청',time:'방금 전'},{user:'용인 3*님',situation:'최근 <span class="highlight">카드론</span> 포함 상담',time:'방금 전'}];var ni=0;setInterval(function(){var e=newE[ni%newE.length];ni++;var firstRow=feed.querySelector('.board-feed-row');var row=document.createElement('div');row.className='board-feed-row';row.style.background='rgba(249,115,22,.06)';row.innerHTML='<div class="board-feed-user">'+e.user+'<span class="board-new-badge">NEW</span></div><div class="board-feed-situation">'+e.situation+'</div><div class="board-feed-time">'+e.time+'</div>';feed.insertBefore(row,firstRow);setTimeout(function(){row.style.background=''},3000);var rows=feed.querySelectorAll('.board-feed-row');if(rows.length>7)rows[rows.length-1].remove()},18000)})();

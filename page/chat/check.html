@@ -14,7 +14,7 @@ permalink: /check
       <h1 class="leaders-title">개인회생 <span class="text-gradient">정밀 자가진단</span></h1>
       <p class="leaders-desc">
         법원 실무 기준인 <strong>청산가치 보장의 원칙</strong>을 반영한 테스트입니다.<br>
-        실제 탕감 가능한 예상 금액을 즉시 확인해 보세요.
+        예상 회생 가능성을 확인해 보세요.
       </p>
     </div>
   </section>
@@ -177,7 +177,7 @@ permalink: /check
 
     let status = "신청 가능";
     let color = "#16a34a";
-    let msg = "회생 요건에 부합합니다. 법무사 검토를 통해 최대의 탕감률을 설계할 수 있습니다.";
+    let msg = "회생 요건에 부합합니다. 법무사가 회생 요건을 검토해 드립니다.";
 
     if (debt <= asset) {
       status = "신청 불가"; color = "#dc2626"; msg = "재산이 채무보다 많은 경우 원칙적으로 신청이 어렵습니다.";
@@ -197,7 +197,7 @@ permalink: /check
         <div class="result-stats">
           <div class="stat-item"><span>월 예상 변제금</span><strong>${monthlyPay.toLocaleString()}만원</strong></div>
           <div class="stat-item"><span>변제 기간</span><strong>36개월</strong></div>
-          <div class="stat-item"><span>예상 탕감액</span><strong class="stat-highlight">${totalCut.toLocaleString()}만원</strong></div>
+          <div class="stat-item"><span>예상 조정 금액</span><strong class="stat-highlight">${totalCut.toLocaleString()}만원</strong></div>
         </div>
         <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="leaders-btn-primary" style="display:inline-block; text-decoration:none;">상세 서류 및 절차 안내받기</a>
       </div>

@@ -589,7 +589,7 @@ permalink: /rehab/diagnosis
 <script>
 function toggleFaq(btn){var body=btn.nextElementSibling,isOpen=body.classList.contains('open');document.querySelectorAll('.faq-body').forEach(function(b){b.classList.remove('open')});document.querySelectorAll('.faq-btn').forEach(function(b){b.classList.remove('open')});if(!isOpen){body.classList.add('open');btn.classList.add('open')}}
 function scrollToForm(){var el=document.getElementById('formCard');if(!el)return;window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-90,behavior:'smooth'});setTimeout(function(){var i=el.querySelector('input');if(i)i.focus()},650)}
-var FORM_ENDPOINT=''; // GAS 배포 URL 입력
+var FORM_ENDPOINT='https://script.google.com/macros/s/AKfycbxLHMOghQElDBtKbbMGKFWTYqEQYfIPsUpM2QQUSuDAYDShAu2xqlbOkzpEBtehiPx-Qg/exec';
 function submitLead(e){
   e.preventDefault();
   var btn=document.querySelector('.db-submit');

@@ -55,6 +55,19 @@
   {% assign crumb_name = page.title | split: '|' | first | strip %}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"{{ '/' | absolute_url }}"},{"@type":"ListItem","position":2,"name":{{ crumb_name | jsonify }},"item":"{{ page.url | absolute_url }}"}]}</script>
   {% endif %}
+
+  <!-- Naver 전환추적 공통 스크립트 -->
+  <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+  <script type="text/javascript">
+  if (!wcs_add) var wcs_add={};
+  wcs_add["wa"] = "s_2ae8887f01b0";
+  if (!_nasa) var _nasa={};
+  if(window.wcs){
+    wcs.inflow();
+    wcs_do();
+  }
+  </script>
+  <!-- End Naver 전환추적 공통 스크립트 -->
 </head>
 
 <body>

@@ -937,6 +937,15 @@ function submitPhone(e){
   dlpush({event:"diagnosis_submit",page_type:"diagnosis_v2",
     form_type:"phone_cta",button_location:"result_phone_card"});
 
+  // Naver 전환추적: 진단 전화번호 신청완료 (lead)
+  try {
+    if (window.wcs) {
+      if (typeof wcs_add === 'undefined') { window.wcs_add = {}; }
+      wcs_add["wa"] = "s_2ae8887f01b0";
+      wcs.trans({ type: "lead" });
+    }
+  } catch (e) {}
+
   show("dv2Result",false);
   document.getElementById("dv2CCode").textContent=diagCode;
   show("dv2Complete",true);

@@ -545,6 +545,14 @@ function submitInquiry() {
 function showSuccess() {
   document.getElementById('writeForm').style.display = 'none';
   document.getElementById('writeSuccess').style.display = '';
+  // Naver 전환추적: 상담 신청완료 (lead)
+  try {
+    if (window.wcs) {
+      if (typeof wcs_add === 'undefined') { window.wcs_add = {}; }
+      wcs_add["wa"] = "s_2ae8887f01b0";
+      wcs.trans({ type: "lead" });
+    }
+  } catch (e) {}
 }
 
 // ===== 유틸 =====

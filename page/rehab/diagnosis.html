@@ -6135,6 +6135,8 @@ permalink: /rehab/diagnosis
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "generate_lead", lead_source: "변제금CTA", debt_amount: ans.debtAmount || "", job: ans.job || "" });
+    // Naver 전환추적: 신청완료 (lead) — 세션당 1회
+    try { if (window.wcs && !window._nvLeadSent) { if (typeof wcs_add==='undefined'){window.wcs_add={};} wcs_add["wa"]="s_2ae8887f01b0"; wcs.trans({type:"lead"}); window._nvLeadSent=true; } } catch(e){}
 
     window._phoneCollected = true;
     document.getElementById("stickyCta")?.classList.remove("visible");
@@ -6275,6 +6277,8 @@ permalink: /rehab/diagnosis
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "generate_lead", lead_source: "마지막CTA", debt_amount: ans.debtAmount || "", job: ans.job || "" });
+    // Naver 전환추적: 신청완료 (lead) — 세션당 1회
+    try { if (window.wcs && !window._nvLeadSent) { if (typeof wcs_add==='undefined'){window.wcs_add={};} wcs_add["wa"]="s_2ae8887f01b0"; wcs.trans({type:"lead"}); window._nvLeadSent=true; } } catch(e){}
     // 퍼널 세분화: 진단페이지(DB 핵심) 제출 — GA4 분석용 (일관 파라미터)
     window.dataLayer.push({
       event: "diagnosis_submit",

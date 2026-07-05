@@ -46,25 +46,30 @@
         <li class="has-sub has-groups">
           <a href="/services" aria-haspopup="true">업무분야</a>
           <ul class="sub sub--groups" aria-label="업무분야 하위 메뉴">
-            <li class="sub-group-label" aria-hidden="true">형사사건</li>
-            <li><a href="/complaint">고소장 작성</a></li>
-            <li><a href="/criminal/statement">의견서</a></li>
-            <li><a href="/criminal/objection">불송치 이의신청</a></li>
-            <li><a href="/dui">음주운전</a></li>
-
-            <li class="sub-group-label" aria-hidden="true">등기</li>
-            <li><a href="/registry/realestate">부동산 등기</a></li>
-            <li><a href="/registry/corporate">법인 등기</a></li>
-            <li><a href="/registry/inheritance">상속 등기</a></li>
-
-            <li class="sub-group-label" aria-hidden="true">민사소송</li>
-            <li><a href="/civil/complaint">소장</a></li>
-            <li><a href="/civil/brief">준비서면</a></li>
-            <li><a href="/civil/answer">답변서</a></li>
-            <li><a href="/civil/payment-order">지급명령</a></li>
-
-            <li class="sub-group-label" aria-hidden="true">국제이혼</li>
-            <li><a href="/international-divorce">국제이혼</a></li>
+            <li class="sub-col">
+              <span class="sub-group-label" aria-hidden="true">형사사건</span>
+              <a href="/complaint">고소장 작성</a>
+              <a href="/criminal/statement">의견서</a>
+              <a href="/criminal/objection">불송치 이의신청</a>
+              <a href="/dui">음주운전</a>
+            </li>
+            <li class="sub-col">
+              <span class="sub-group-label" aria-hidden="true">등기</span>
+              <a href="/registry/realestate">부동산 등기</a>
+              <a href="/registry/corporate">법인 등기</a>
+              <a href="/registry/inheritance">상속 등기</a>
+            </li>
+            <li class="sub-col">
+              <span class="sub-group-label" aria-hidden="true">민사소송</span>
+              <a href="/civil/complaint">소장</a>
+              <a href="/civil/brief">준비서면</a>
+              <a href="/civil/answer">답변서</a>
+              <a href="/civil/payment-order">지급명령</a>
+            </li>
+            <li class="sub-col">
+              <span class="sub-group-label" aria-hidden="true">국제이혼</span>
+              <a href="/international-divorce">국제이혼</a>
+            </li>
           </ul>
         </li>
 
@@ -110,6 +115,7 @@
   .sub--groups { min-width: 200px; text-align: left; }
   .sub--groups a { text-align: left; }
   .sub-group-label {
+    display: block;
     padding: 8px 20px 4px;
     color: var(--point-gold);
     font-size: 12px;
@@ -119,7 +125,16 @@
     opacity: .85;
     cursor: default;
   }
-  .sub-group-label + li a { padding-top: 6px; }
+
+  /* PC: 업무분야 4그룹 가로 메가메뉴 */
+  @media (min-width: 1025px) {
+    .sub--groups { left: 0; transform: none; gap: 0; padding: 16px 10px; min-width: 0; }
+    .has-sub:hover > .sub--groups { display: flex; }
+    .sub--groups .sub-col { display: flex; flex-direction: column; min-width: 150px; padding: 0 16px; }
+    .sub--groups .sub-col + .sub-col { border-left: 1px solid rgba(255,255,255,.10); }
+    .sub--groups .sub-group-label { padding: 2px 8px 8px; margin-bottom: 4px; border-bottom: 1px solid rgba(197,160,89,.25); white-space: nowrap; }
+    .sub--groups a { padding: 7px 8px; white-space: nowrap; }
+  }
 
   /* 모바일에서도 라벨이 자연스럽게 보이도록 */
   @media (max-width: 900px) {

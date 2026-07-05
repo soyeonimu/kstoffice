@@ -1,99 +1,18 @@
 ---
-layout: board
-title: 게시판 | 리더스 합동 법무사 사무소
+layout: null
+permalink: /board.html
+sitemap: false
 ---
-
-<div class="leaders-board">
-  <section class="board-hero js-reveal">
-    <div class="board-container">
-      <div class="board-status"><span class="status-dot"></span> Professional Archive</div>
-      <h1 class="board-main-title">법률의 깊이, <span class="gold-text">리더스의 시선</span></h1>
-      <p class="board-sub-text">검찰 실무 20년의 고도화된 전문성으로 일상의 법률적 난제를 정교하게 해결합니다.</p>
-    </div>
-  </section>
-
-  <section class="board-tools js-reveal">
-    <div class="board-container">
-      {% assign all_posts = site.board | sort: "date" | reversed %}
-      <div class="filter-group">
-        <div class="filter-btn active" data-filter="all">ALL ({{ all_posts.size }})</div>
-        {% assign cat_array = "" | split: "|" %}
-        {% for p in all_posts %}
-          {% assign c = p.category | first | default: p.category %}{% if c != "" %}{% assign cat_array = cat_array | push: c %}{% endif %}
-        {% endfor %}
-        {% assign categories = cat_array | uniq | sort %}
-        {% for cat in categories %}
-          <div class="filter-btn" data-filter="{{ cat }}">{{ cat | upcase }}</div>
-        {% endfor %}
-      </div>
-      <div class="search-bar">
-        <input type="text" id="board-search" placeholder="SEARCH KEYWORD">
-      </div>
-    </div>
-  </section>
-
-  <section class="board-list-area">
-    <div class="board-container">
-      <main class="post-stack js-reveal">
-        {% for post in all_posts %}
-        <a href="{{ post.url }}" class="post-list-item" data-category="{{ post.category | first | default: post.category }}">
-          <div class="post-main">
-            <span class="post-cat">{{ post.category | first | default: post.category }}</span>
-            <h2 class="post-title">{{ post.title }}</h2>
-          </div>
-          <div class="post-meta">
-            <span>{{ post.date | date: "%Y.%m.%d" }}</span>
-            <span class="post-arrow">→</span>
-          </div>
-        </a>
-        {% endfor %}
-        <div id="no-results" style="display:none; text-align:center; padding:100px; color:var(--text-p);">검색 결과가 없습니다.</div>
-      </main>
-    </div>
-  </section>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  // Reveal Animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
-
-  // Search & Filter Logic
-  const searchInp = document.getElementById('board-search');
-  const cards = document.querySelectorAll('.post-list-item');
-  const btns = document.querySelectorAll('.filter-btn');
-
-  function filter() {
-    const val = searchInp.value.toLowerCase().trim();
-    const activeCat = document.querySelector('.filter-btn.active').dataset.filter;
-    let count = 0;
-
-    cards.forEach(card => {
-      const title = card.querySelector('.post-title').textContent.toLowerCase();
-      const cat = card.dataset.category;
-      const mSearch = title.includes(val);
-      const mCat = (activeCat === 'all' || cat === activeCat);
-
-      if (mSearch && mCat) {
-        card.style.display = 'flex';
-        count++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-    document.getElementById('no-results').style.display = count === 0 ? 'block' : 'none';
-  }
-
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      filter();
-    });
-  });
-  searchInp.addEventListener('input', filter);
-});
-</script>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>게시판 이동</title>
+<link rel="canonical" href="/board/">
+<meta http-equiv="refresh" content="0; url=/board/">
+<script>location.replace("/board/");</script>
+</head>
+<body>
+<p>게시판으로 이동합니다. 이동되지 않으면 <a href="/board/">여기</a>를 눌러주세요.</p>
+</body>
+</html>

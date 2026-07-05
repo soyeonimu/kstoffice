@@ -452,20 +452,7 @@ permalink: /rehab/diagnosis
 
 <div class="live-ticker">
   <div class="live-ticker-label"><span></span>LIVE</div>
-  <div class="live-ticker-track">
-    <div class="live-ticker-item">수원 40대 <span class="dot">·</span> 통장압류 걱정으로 상담 신청</div>
-    <div class="live-ticker-item">화성 30대 <span class="dot">·</span> 급여압류 전 확인 상담</div>
-    <div class="live-ticker-item">용인 50대 <span class="dot">·</span> 최근대출 포함 채무 상담</div>
-    <div class="live-ticker-item">수원 40대 <span class="dot">·</span> 월 변제금 확인 상담</div>
-    <div class="live-ticker-item">평택 30대 <span class="dot">·</span> 독촉 전화 중단 방법 상담</div>
-    <div class="live-ticker-item">오산 40대 <span class="dot">·</span> 계좌압류 후 대응 상담</div>
-    <div class="live-ticker-item">수원 40대 <span class="dot">·</span> 통장압류 걱정으로 상담 신청</div>
-    <div class="live-ticker-item">화성 30대 <span class="dot">·</span> 급여압류 전 확인 상담</div>
-    <div class="live-ticker-item">용인 50대 <span class="dot">·</span> 최근대출 포함 채무 상담</div>
-    <div class="live-ticker-item">수원 40대 <span class="dot">·</span> 월 변제금 확인 상담</div>
-    <div class="live-ticker-item">평택 30대 <span class="dot">·</span> 독촉 전화 중단 방법 상담</div>
-    <div class="live-ticker-item">오산 40대 <span class="dot">·</span> 계좌압류 후 대응 상담</div>
-  </div>
+  <div class="live-ticker-track" id="liveTickerTrack"></div>
 </div>
 
 <section class="stats-bar">
@@ -549,13 +536,13 @@ permalink: /rehab/diagnosis
 
 <section class="board-section anim-up" id="sec-board">
   <div class="db-inner">
-    <div class="board-live-label"><span></span>실시간 상담 현황</div>
-    <div class="db-title" style="color:#fff;">지금 이 순간도<br><em style="color:var(--orange);">다른 분들이 상담을 남기고 있습니다</em></div>
+    <div class="board-live-label"><span></span>상담 문의 게시판</div>
+    <div class="db-title" style="color:#fff;">실제로 남겨주신<br><em style="color:var(--orange);">최근 상담 문의입니다</em></div>
     <div class="board-feed" id="boardFeed">
       <div class="board-feed-header"><div>신청자</div><div>상담 내용</div><div>시간</div></div>
     </div>
     <div class="board-cta-row">
-      <div class="board-cta-text">나도 상담을 남기면 순서대로 연락드립니다</div>
+      <div class="board-cta-text">나도 상담을 남기면 순서대로 연락드립니다 · <a href="/inquiry/" style="color:var(--orange);font-weight:700;text-decoration:none;">상담 게시판 바로가기 →</a></div>
       <button class="board-cta-btn" onclick="scrollToForm()">✏️ 나도 상담 신청하기</button>
     </div>
   </div>
@@ -752,20 +739,63 @@ function submitFloatForm(e){
 })();
 function animateCount(el){var target=parseInt(el.dataset.target),dur=1600,step=Math.ceil(target/(dur/20)),cur=0,t=setInterval(function(){cur=Math.min(cur+step,target);el.textContent=cur.toLocaleString();if(cur>=target)clearInterval(t)},20)}
 (function(){var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');en.target.querySelectorAll('.count-num').forEach(animateCount);io.unobserve(en.target)}})},{threshold:0.12});document.querySelectorAll('.anim-up').forEach(function(el){io.observe(el)});var sb=document.querySelector('.stats-bar');if(sb){var sbIO=new IntersectionObserver(function(entries){if(entries[0].isIntersecting){sb.querySelectorAll('.count-num').forEach(animateCount);sbIO.disconnect()}},{threshold:0.3});sbIO.observe(sb)}})();
-(function(){var entries=[{user:'수원 4*님',situation:'<span class="highlight">통장압류</span> 걱정으로 1차 확인 요청',time:'방금 전',isNew:true},{user:'화성 3*님',situation:'<span class="highlight">급여압류</span> 전 대응 방법 문의',time:'3분 전',isNew:false},{user:'용인 5*님',situation:'최근대출 포함 <span class="highlight">채무 6천만원</span> 상담',time:'8분 전',isNew:false},{user:'수원 4*님',situation:'<span class="highlight">월 변제금</span> 얼마나 나올지 확인',time:'14분 전',isNew:false},{user:'평택 3*님',situation:'<span class="highlight">독촉 전화</span> 중단 방법 문의',time:'21분 전',isNew:false},{user:'오산 4*님',situation:'계좌압류 후 <span class="highlight">대응 방법</span> 상담',time:'28분 전',isNew:false}];var feed=document.getElementById('boardFeed');if(!feed)return;entries.forEach(function(e){var row=document.createElement('div');row.className='board-feed-row';row.innerHTML='<div class="board-feed-user">'+e.user+(e.isNew?'<span class="board-new-badge">NEW</span>':'')+'</div><div class="board-feed-situation">'+e.situation+'</div><div class="board-feed-time">'+e.time+'</div>';feed.appendChild(row)});var newE=[{user:'수원 3*님',situation:'<span class="highlight">통장압류</span> 진행 상황 확인',time:'방금 전'},{user:'화성 4*님',situation:'<span class="highlight">급여압류 걱정</span>으로 상담 신청',time:'방금 전'},{user:'용인 3*님',situation:'최근 <span class="highlight">카드론</span> 포함 상담',time:'방금 전'}];var ni=0;setInterval(function(){var e=newE[ni%newE.length];ni++;var firstRow=feed.querySelector('.board-feed-row');var row=document.createElement('div');row.className='board-feed-row';row.style.background='rgba(249,115,22,.06)';row.innerHTML='<div class="board-feed-user">'+e.user+'<span class="board-new-badge">NEW</span></div><div class="board-feed-situation">'+e.situation+'</div><div class="board-feed-time">'+e.time+'</div>';feed.insertBefore(row,firstRow);setTimeout(function(){row.style.background=''},3000);var rows=feed.querySelectorAll('.board-feed-row');if(rows.length>7)rows[rows.length-1].remove()},18000)})();
+(function(){var GAS="https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";var feed=document.getElementById('boardFeed');if(!feed)return;function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}window._dgFeedRender=function(data){var rows=feed.querySelectorAll('.board-feed-row');rows.forEach(function(r){r.remove();});if(!data||!data.length){var empty=document.createElement('div');empty.className='board-feed-row';empty.innerHTML='<div class="board-feed-situation" style="grid-column:1/-1;text-align:center;">아직 등록된 상담 문의가 없습니다. 첫 상담을 남겨보세요.</div>';feed.appendChild(empty);return;}data.slice(0,7).forEach(function(p){var who=p.name||p.region||p.category||'상담';var time=p.date||p.status||'';var row=document.createElement('div');row.className='board-feed-row';row.innerHTML='<div class="board-feed-user">'+esc(who)+'</div><div class="board-feed-situation">'+esc(p.title||'')+'</div><div class="board-feed-time">'+esc(time)+'</div>';feed.appendChild(row);});};var s=document.createElement('script');s.src=GAS+'?action=list&callback=_dgFeedRender';document.head.appendChild(s);})();
 (function(){var KAKAO_URL='https://pf.kakao.com/_xxxxx/chat';/* ★ 실제 카카오채널 URL로 교체 */
 function openKakao(e){if(e)e.preventDefault();if(KAKAO_URL&&KAKAO_URL.indexOf('xxxxx')===-1){window.open(KAKAO_URL,'_blank');}else{alert('카카오채널 URL을 설정해 주세요.');}}
 window.openKakao=openKakao;
-var notifs=[
-  {av:'🔔',name:'수원 40대님이',msg:'방금 상담을 신청했습니다',action:null},
+function _lfEsc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+// 데이터 없을 때 쓰는 fallback (상담 '제목'만 · 가짜 이름/지역 없음)
+var LF_FALLBACK_TITLES=["통장압류 대응 상담","개인회생 비용 문의","급여압류 걱정 상담","월 변제금 확인 문의","채권추심 중단 상담","개인회생 자격 상담"];
+// 이름/지역 마스킹
+function _lfMask(v){v=String(v==null?'':v).trim();if(!v)return '';if(v.length<=1)return v+'*';return v.charAt(0)+'*'.repeat(Math.max(1,v.length-1));}
+// 실데이터 항목 → "[지역/이름 · ]제목" (마퀴/토스트 공용)
+function _lfLabel(p){var title=String(p.title||'').trim();var who=_lfMask(p.name)||String(p.region||'').trim();return who?(who+' · '+title):title;}
+// 데이터 없을 때 안내(홍보성) 항목은 유지
+var LF_PROMO_NOTIFS=[
   {av:'📋',name:'문의글을 남겨보세요',msg:'게시판에 남기시면 순서대로 답변드립니다',action:{text:'게시판 바로가기 →',href:'#sec-board',fn:null}},
-  {av:'🔔',name:'화성 30대님이',msg:'통장압류 걱정으로 문의하셨습니다',action:null},
   {av:'💬',name:'카카오톡으로 문의하기',msg:'카카오채널로 빠르게 연결됩니다',action:{text:'카카오톡 문의 →',href:'#',fn:'kakao'}},
-  {av:'🔔',name:'용인 50대님이',msg:'월 변제금 확인을 요청했습니다',action:null},
-  {av:'⭐',name:'이 페이지를 저장해 두세요',msg:'나중에 다시 찾기 편하게 즐겨찾기 추가',action:{text:'즐겨찾기 추가 ★',href:'#',fn:'bookmark'}},
-  {av:'🔔',name:'평택 40대님이',msg:'급여압류 전 상담을 남겼습니다',action:null},
-  {av:'💬',name:'24시간 카카오 상담 가능',msg:'언제든 카카오채널로 먼저 물어보세요',action:{text:'카카오톡으로 문의 →',href:'#',fn:'kakao'}}
+  {av:'⭐',name:'이 페이지를 저장해 두세요',msg:'나중에 다시 찾기 편하게 즐겨찾기 추가',action:{text:'즐겨찾기 추가 ★',href:'#',fn:'bookmark'}}
 ];
+// 실데이터로 채워지는 상담 토스트 배열 (초기값 = fallback 제목)
+var LF_CONSULT_NOTIFS=LF_FALLBACK_TITLES.map(function(t){return {av:'🔔',name:'',msg:t,action:null};});
+// 상담 토스트 + 홍보 토스트를 교차 배치
+function _lfBuildNotifs(){
+  var out=[];var maxLen=Math.max(LF_CONSULT_NOTIFS.length,1);
+  for(var i=0;i<maxLen;i++){
+    out.push(LF_CONSULT_NOTIFS[i%LF_CONSULT_NOTIFS.length]);
+    if(i<LF_PROMO_NOTIFS.length)out.push(LF_PROMO_NOTIFS[i]);
+  }
+  return out;
+}
+var notifs=_lfBuildNotifs();
+// 마퀴 렌더 (목록 2배 복제)
+function _lfRenderTicker(labels){
+  var track=document.getElementById('liveTickerTrack');if(!track)return;
+  var list=(labels&&labels.length)?labels:LF_FALLBACK_TITLES;
+  var doubled=list.concat(list);
+  track.innerHTML=doubled.map(function(t){return '<div class="live-ticker-item">'+_lfEsc(t)+'</div>';}).join('');
+}
+// 실데이터 수신 시 마퀴·토스트 갱신 (JSONP 콜백)
+window._lfListRender=function(data){
+  if(data&&data.length){
+    var items=data.slice(0,12);
+    // 마퀴: 지역/이름(마스킹)·제목
+    _lfRenderTicker(items.map(_lfLabel));
+    // 토스트: 시간 있으면 "제목 · N분 전 상담 문의", 없으면 제목만
+    LF_CONSULT_NOTIFS=items.map(function(p){
+      var label=_lfLabel(p);var when=String(p.date||'').trim();
+      return {av:'🔔',name:'',msg:when?(label+' · '+when+' 상담 문의'):label,action:null};
+    });
+  }else{
+    // 빈 목록 → fallback 제목만 (숨기지 않음)
+    _lfRenderTicker(LF_FALLBACK_TITLES);
+    LF_CONSULT_NOTIFS=LF_FALLBACK_TITLES.map(function(t){return {av:'🔔',name:'',msg:t,action:null};});
+  }
+  notifs=_lfBuildNotifs();
+};
+// 초기 렌더(로드 실패/지연 대비) + JSONP 호출
+_lfRenderTicker(LF_FALLBACK_TITLES);
+(function(){var GAS="https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";var s=document.createElement('script');s.src=GAS+'?action=list&callback=_lfListRender';document.head.appendChild(s);})();
 var nidx=0;
 function showNotif(){
   var n=notifs[nidx%notifs.length];nidx++;

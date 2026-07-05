@@ -1,156 +1,301 @@
-<!-- 사이드 바로가기 플로팅 버튼 (리뉴얼: 아이콘 + 컬러 + 호버 확장) -->
-<div class="lds-fab" aria-label="빠른 상담 바로가기">
+<!-- 플로팅 상담 스피드다이얼 (원형 FAB + 위로 펼침) -->
+<div class="lds-sd" id="ldsSd" aria-label="빠른 상담 바로가기">
 
-  <!-- 개인회생 진단하기 -->
-  <a href="/rehab/diagnosis"
-     class="lds-fab__btn"
-     style="--c:#c5a059; --c2:#e2c28d; --txt:#0f172a;"
-     aria-label="개인회생 자가진단 30초">
-    <span class="lds-fab__ic" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-      </svg>
-    </span>
-    <span class="lds-fab__lbl">개인회생<br>진단하기</span>
-  </a>
+  <!-- 펼쳐지는 액션 항목들 (아래에서 위로) -->
+  <div class="lds-sd__actions" id="ldsSdActions">
 
-  <!-- 전화 상담 (tel → phone_click 전환) -->
-  <a href="tel:0312256885"
-     class="lds-fab__btn"
-     style="--c:#2563eb; --c2:#3b82f6; --txt:#fff;"
-     aria-label="전화 상담 031-225-6885">
-    <span class="lds-fab__ic" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
-      </svg>
-    </span>
-    <span class="lds-fab__lbl">전화<br>상담</span>
-  </a>
+    <!-- 상담신청 (미니 폼 팝업 열기) -->
+    <button type="button"
+            class="lds-sd__item"
+            style="--c:#c5a059; --c2:#e2c28d; --txt:#0f172a;"
+            aria-label="상담신청"
+            onclick="ldsSdOpenForm()">
+      <span class="lds-sd__lbl">상담신청</span>
+      <span class="lds-sd__ic" aria-hidden="true">✍️</span>
+    </button>
 
-  <!-- 네이버 예약 (naver.me → reservation_click 전환) -->
-  <a href="https://naver.me/xwmIDcba"
-     target="_blank" rel="noopener"
-     class="lds-fab__btn"
-     style="--c:#03c75a; --c2:#06d96a; --txt:#fff;"
-     aria-label="네이버 예약하기">
-    <span class="lds-fab__ic" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/>
-      </svg>
-    </span>
-    <span class="lds-fab__lbl">네이버<br>예약</span>
-  </a>
+    <!-- 카카오톡 상담 -->
+    <a href="https://pf.kakao.com/_xmkRSG/chat"
+       target="_blank" rel="noopener"
+       class="lds-sd__item"
+       style="--c:#f3dd8e; --c2:#f7e6ab; --txt:#6b4e12;"
+       aria-label="카카오톡 상담"
+       onclick="ldsKakaoChat()">
+      <span class="lds-sd__lbl">카카오톡 상담</span>
+      <span class="lds-sd__ic" aria-hidden="true">💬</span>
+    </a>
 
-  <!-- 카카오톡 1:1 상담 (채널 채팅 직접 연결) -->
-  <a href="https://pf.kakao.com/_xmkRSG/chat"
-     id="lds-kakao-chat"
-     target="_blank" rel="noopener"
-     class="lds-fab__btn"
-     style="--c:#fee500; --c2:#ffe600; --txt:#3a1d1d;"
-     aria-label="카카오톡 상담"
-     onclick="ldsKakaoChat()">
-    <span class="lds-fab__ic" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 3C6.5 3 2 6.58 2 11c0 2.83 1.93 5.31 4.84 6.72-.21.74-.77 2.79-.88 3.22-.14.54.2.53.42.39.17-.11 2.71-1.84 3.81-2.59.58.08 1.18.13 1.81.13 5.5 0 10-3.58 10-8S17.5 3 12 3z"/>
-      </svg>
-    </span>
-    <span class="lds-fab__lbl">카카오톡<br>상담</span>
-  </a>
+    <!-- 네이버 예약 -->
+    <a href="https://naver.me/xwmIDcba"
+       target="_blank" rel="noopener"
+       class="lds-sd__item"
+       style="--c:#03c75a; --c2:#06d96a; --txt:#fff;"
+       aria-label="네이버 예약">
+      <span class="lds-sd__lbl">네이버 예약</span>
+      <span class="lds-sd__ic" aria-hidden="true">📅</span>
+    </a>
 
-  <!-- 블로그 -->
-  <a href="https://blog.naver.com/mae6885"
-     target="_blank" rel="noopener"
-     class="lds-fab__btn"
-     style="--c:#2db400; --c2:#37c40a; --txt:#fff;"
-     aria-label="네이버 블로그">
-    <span class="lds-fab__ic" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>
-      </svg>
-    </span>
-    <span class="lds-fab__lbl">블로그</span>
-  </a>
+    <!-- 전화 상담 -->
+    <a href="tel:0312256885"
+       class="lds-sd__item"
+       style="--c:#2563eb; --c2:#3b82f6; --txt:#fff;"
+       aria-label="전화 상담 031-225-6885">
+      <span class="lds-sd__lbl">전화 상담</span>
+      <span class="lds-sd__ic" aria-hidden="true">📞</span>
+    </a>
+
+    <!-- 개인회생 진단 -->
+    <a href="/rehab/diagnosis"
+       class="lds-sd__item"
+       style="--c:#0f172a; --c2:#1e293b; --txt:#e2c28d;"
+       aria-label="개인회생 진단">
+      <span class="lds-sd__lbl">개인회생 진단</span>
+      <span class="lds-sd__ic" aria-hidden="true">⚖️</span>
+    </a>
+
+  </div>
+
+  <!-- 메인 FAB 버튼 (평소엔 이것만 노출) -->
+  <button type="button"
+          class="lds-sd__fab"
+          id="ldsSdFab"
+          aria-expanded="false"
+          aria-controls="ldsSdActions"
+          aria-label="상담 메뉴 열기"
+          onclick="ldsSdToggle()">
+    <span class="lds-sd__fab-open" aria-hidden="true">💬</span>
+    <span class="lds-sd__fab-close" aria-hidden="true">✕</span>
+  </button>
+
+  <!-- 상담신청 미니 폼 팝업 -->
+  <div class="lds-sd__form" id="ldsSdForm" aria-hidden="true" role="dialog" aria-label="상담신청">
+    <div class="lds-sd__form-card">
+      <button type="button" class="lds-sd__form-x" aria-label="닫기" onclick="ldsSdCloseForm()">✕</button>
+      <p class="lds-sd__form-title">✍️ 상담신청</p>
+      <p class="lds-sd__form-desc">이름과 연락처를 남겨주세요. 곧 연락드리겠습니다.</p>
+      <form class="lds-sd__form-body" onsubmit="ldsSdSubmit(event)" autocomplete="off">
+        <input type="text" name="name" placeholder="이름" required class="lds-sd__input">
+        <input type="tel" name="phone" placeholder="연락처 (010-0000-0000)" required class="lds-sd__input">
+        <button type="submit" class="lds-sd__submit">신청</button>
+        <p class="lds-sd__success" style="display:none">✅ 신청 완료! 곧 연락드리겠습니다.</p>
+      </form>
+    </div>
+  </div>
 
 </div>
 
 <style>
-  .lds-fab{
+  .lds-sd{
     position: fixed;
-    right: 18px;
-    bottom: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    right: 20px;
+    bottom: 26px;
     z-index: 9999;
   }
 
-  /* 기본 버튼: 라운드 사각 + 컬러 + 그림자, 호버 시 라벨이 왼쪽으로 확장 */
-  .lds-fab__btn{
+  /* ===== 메인 FAB ===== */
+  .lds-sd__fab{
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    height: 58px;
-    width: 58px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, var(--c), var(--c2));
-    color: var(--txt);
-    text-decoration: none;
-    overflow: hidden;
-    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
-    transition: width .32s cubic-bezier(.22,1,.36,1), box-shadow .25s ease, transform .2s ease;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: linear-gradient(135deg, #c5a059, #e2c28d);
+    color: #0f172a;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.28);
+    transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
     -webkit-tap-highlight-color: transparent;
   }
-
-  /* 아이콘 칩: 항상 우측 고정 */
-  .lds-fab__ic{
-    position: absolute;
-    right: 0; top: 0;
-    width: 58px; height: 58px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .lds-fab__ic svg{ width: 25px; height: 25px; }
-
-  /* 라벨: 평소엔 아이콘 뒤에 숨고, 호버하면 슬라이드 인 */
-  .lds-fab__lbl{
-    font-size: 12.5px;
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    text-align: left;
-    white-space: nowrap;
-    padding-left: 16px;
-    padding-right: 64px;
-    opacity: 0;
-    transform: translateX(8px);
-    transition: opacity .25s ease, transform .25s ease;
-  }
-
-  .lds-fab__btn:hover,
-  .lds-fab__btn:focus-visible{
-    width: 162px;
-    box-shadow: 0 12px 26px color-mix(in srgb, var(--c) 45%, transparent);
+  .lds-sd__fab:hover{
     transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(197, 160, 89, 0.45);
   }
-  .lds-fab__btn:hover .lds-fab__lbl,
-  .lds-fab__btn:focus-visible .lds-fab__lbl{
+  .lds-sd__fab-open,
+  .lds-sd__fab-close{
+    position: absolute;
+    font-size: 26px;
+    line-height: 1;
+    transition: opacity .22s ease, transform .28s ease;
+  }
+  .lds-sd__fab-close{
+    opacity: 0;
+    transform: rotate(-90deg) scale(.6);
+    font-size: 24px;
+    color: #0f172a;
+  }
+  .lds-sd.is-open .lds-sd__fab{
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #e2c28d;
+  }
+  .lds-sd.is-open .lds-sd__fab-open{
+    opacity: 0;
+    transform: rotate(90deg) scale(.6);
+  }
+  .lds-sd.is-open .lds-sd__fab-close{
     opacity: 1;
-    transform: translateX(0);
+    transform: rotate(0) scale(1);
   }
 
-  /* color-mix 미지원 브라우저 폴백 */
-  @supports not (background: color-mix(in srgb, red, blue)){
-    .lds-fab__btn:hover{ box-shadow: 0 12px 26px rgba(15,23,42,.30); }
+  /* ===== 펼침 항목 컨테이너 ===== */
+  .lds-sd__actions{
+    position: absolute;
+    right: 6px;
+    bottom: 72px;
+    display: flex;
+    flex-direction: column-reverse; /* 아래(FAB 근처)부터 위로 쌓임 */
+    align-items: flex-end;
+    gap: 12px;
+    pointer-events: none;
+  }
+  .lds-sd.is-open .lds-sd__actions{
+    pointer-events: auto;
   }
 
-  /* 모바일: 크기 축소, 라벨 숨김(아이콘만) */
+  /* ===== 개별 액션 항목 ===== */
+  .lds-sd__item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(14px) scale(.85);
+    transition: opacity .25s ease, transform .3s cubic-bezier(.22,1,.36,1);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .lds-sd.is-open .lds-sd__item{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  /* 순차 펼침 (아래 항목부터 먼저) */
+  .lds-sd.is-open .lds-sd__item:nth-child(1){ transition-delay: .16s; }
+  .lds-sd.is-open .lds-sd__item:nth-child(2){ transition-delay: .12s; }
+  .lds-sd.is-open .lds-sd__item:nth-child(3){ transition-delay: .08s; }
+  .lds-sd.is-open .lds-sd__item:nth-child(4){ transition-delay: .04s; }
+  .lds-sd.is-open .lds-sd__item:nth-child(5){ transition-delay: 0s; }
+
+  .lds-sd__lbl{
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    color: #0f172a;
+    background: #fff;
+    padding: 7px 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+  }
+  .lds-sd__ic{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--c), var(--c2));
+    color: var(--txt);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.22);
+  }
+
+  /* ===== 상담신청 미니 폼 팝업 ===== */
+  .lds-sd__form{
+    position: absolute;
+    right: 0;
+    bottom: 74px;
+    width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(.96);
+    transform-origin: bottom right;
+    transition: opacity .22s ease, transform .26s cubic-bezier(.22,1,.36,1), visibility .22s;
+  }
+  .lds-sd.is-form-open .lds-sd__form{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  .lds-sd__form-card{
+    position: relative;
+    background: #0f172a;
+    border-radius: 16px;
+    padding: 18px 16px 16px;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.42);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+  }
+  .lds-sd__form-x{
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 26px; height: 26px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: #e2c28d;
+    font-size: 13px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .lds-sd__form-title{
+    margin: 0 0 6px;
+    color: #e2c28d;
+    font-weight: 800;
+    font-size: 15px;
+  }
+  .lds-sd__form-desc{
+    margin: 0 0 12px;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .lds-sd__form-body{ display: flex; flex-direction: column; gap: 8px; }
+  .lds-sd__input{
+    height: 42px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .lds-sd__input::placeholder{ color: rgba(255, 255, 255, 0.55); }
+  .lds-sd__input:focus{ outline: none; border-color: #c5a059; }
+  .lds-sd__submit{
+    height: 44px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #c5a059, #e2c28d);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .lds-sd__submit:disabled{ opacity: 0.7; cursor: default; }
+  .lds-sd__success{
+    margin: 4px 0 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #e2c28d;
+  }
+
+  /* ===== 모바일: 컴팩트 ===== */
   @media (max-width: 768px){
-    .lds-fab{ right: 12px; bottom: 18px; gap: 10px; }
-    .lds-fab__btn{ width: 50px; height: 50px; border-radius: 15px; }
-    .lds-fab__ic{ width: 50px; height: 50px; }
-    .lds-fab__ic svg{ width: 22px; height: 22px; }
-    .lds-fab__btn:hover{ width: 50px; }
-    .lds-fab__lbl{ display: none; }
+    .lds-sd{ right: 14px; bottom: 18px; }
+    .lds-sd__fab{ width: 54px; height: 54px; }
+    .lds-sd__fab-open{ font-size: 23px; }
+    .lds-sd__fab-close{ font-size: 21px; }
+    .lds-sd__actions{ bottom: 64px; gap: 10px; }
+    .lds-sd__ic{ width: 42px; height: 42px; flex-basis: 42px; font-size: 18px; }
+    .lds-sd__lbl{ font-size: 12px; padding: 6px 10px; }
+    .lds-sd__form{ width: 220px; bottom: 66px; }
   }
 </style>
 
@@ -166,4 +311,80 @@
       button_location: "floating"
     });
   }
+</script>
+
+<!-- ===== 스피드다이얼 토글 + 상담신청 폼(GAS 전송) ===== -->
+<script>
+  function ldsSdToggle() {
+    var sd = document.getElementById('ldsSd');
+    var fab = document.getElementById('ldsSdFab');
+    if (!sd) return;
+    var open = sd.classList.toggle('is-open');
+    if (fab) {
+      fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+      fab.setAttribute('aria-label', open ? '상담 메뉴 닫기' : '상담 메뉴 열기');
+    }
+    if (!open) ldsSdCloseForm();
+  }
+
+  function ldsSdOpenForm() {
+    var sd = document.getElementById('ldsSd');
+    var form = document.getElementById('ldsSdForm');
+    if (!sd) return;
+    sd.classList.add('is-form-open');
+    if (form) {
+      form.setAttribute('aria-hidden', 'false');
+      var first = form.querySelector('input[name="name"]');
+      if (first) { try { first.focus(); } catch (e) {} }
+    }
+  }
+
+  function ldsSdCloseForm() {
+    var sd = document.getElementById('ldsSd');
+    var form = document.getElementById('ldsSdForm');
+    if (!sd) return;
+    sd.classList.remove('is-form-open');
+    if (form) form.setAttribute('aria-hidden', 'true');
+  }
+
+  function ldsSdSubmit(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector('.lds-sd__submit');
+    var GAS = "https://script.google.com/macros/s/AKfycbzcn7XTJ9gvTVgmS4vXcgP6e90CJsDzz-WCkUgKvbR6hDiCYi8HUxAQrBg-XE-R0tSx/exec";
+    btn.textContent = '신청 중...';
+    btn.disabled = true;
+    var params = new URLSearchParams({
+      name: form.name ? form.name.value : '',
+      phone: form.phone ? form.phone.value : '',
+      concern: '플로팅 상담',
+      formType: 'floating',
+      source: '플로팅_상담신청'
+    });
+    var done = function () {
+      btn.textContent = '신청 완료 ✓';
+      var el = form.querySelector('.lds-sd__success');
+      if (el) el.style.display = 'block';
+      form.querySelectorAll('input,button').forEach(function (f) { f.disabled = true; });
+    };
+    fetch(GAS, { method: 'POST', mode: 'no-cors', body: params }).then(done).catch(done);
+  }
+
+  /* 바깥 클릭 시 닫기 */
+  document.addEventListener('click', function (evt) {
+    var sd = document.getElementById('ldsSd');
+    if (!sd) return;
+    if (sd.contains(evt.target)) return;
+    if (sd.classList.contains('is-open') || sd.classList.contains('is-form-open')) {
+      sd.classList.remove('is-open');
+      sd.classList.remove('is-form-open');
+      var fab = document.getElementById('ldsSdFab');
+      var form = document.getElementById('ldsSdForm');
+      if (fab) {
+        fab.setAttribute('aria-expanded', 'false');
+        fab.setAttribute('aria-label', '상담 메뉴 열기');
+      }
+      if (form) form.setAttribute('aria-hidden', 'true');
+    }
+  });
 </script>

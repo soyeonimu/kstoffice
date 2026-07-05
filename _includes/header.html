@@ -29,25 +29,8 @@
     <!-- GNB -->
     <nav class="gnb" id="gnb" aria-label="주요 메뉴">
       <ul class="gnb-list">
-        <li class="has-sub">
-          <a href="/team">리더스 소개</a>
-          <ul class="sub">
-            <li><a href="/team">구성원 소개</a></li>
-            <li><a href="/services">업무분야</a></li>
-            <li><a href="/location">오시는 길</a></li>
-          </ul>
-        </li>
-
-        <li class="has-sub">
-          <a href="/complaint">형사사건</a>
-          <ul class="sub">
-            <li><a href="/complaint">고소장 작성</a></li>
-            <li><a href="/criminal/statement">의견서</a></li>
-            <li><a href="/criminal/objection">불송치 이의신청</a></li>
-          </ul>
-        </li>
-
-        <li class="has-sub">
+        <!-- 개인회생·파산 (강조·최상위 앞) -->
+        <li class="has-sub is-emphasis">
           <a href="/what-is">개인회생·파산</a>
           <ul class="sub">
             <li><a href="/what-is">개인회생 안내</a></li>
@@ -58,27 +41,33 @@
             <li><a href="/rehab/diagnosis">진단하기</a></li>
           </ul>
         </li>
-        <li class="has-sub">
-          <a href="/registry/realestate" onclick="event.preventDefault();">등기</a>
-          <ul class="sub">
+
+        <!-- 업무분야 (형사·등기·민사·국제이혼 통합) -->
+        <li class="has-sub has-groups">
+          <a href="/services" aria-haspopup="true">업무분야</a>
+          <ul class="sub sub--groups" aria-label="업무분야 하위 메뉴">
+            <li class="sub-group-label" aria-hidden="true">형사사건</li>
+            <li><a href="/complaint">고소장 작성</a></li>
+            <li><a href="/criminal/statement">의견서</a></li>
+            <li><a href="/criminal/objection">불송치 이의신청</a></li>
+
+            <li class="sub-group-label" aria-hidden="true">등기</li>
             <li><a href="/registry/realestate">부동산 등기</a></li>
             <li><a href="/registry/corporate">법인 등기</a></li>
             <li><a href="/registry/inheritance">상속 등기</a></li>
-          </ul>
-        </li>
-        
-        <li class="has-sub">
-          <a href="/civil/complaint" onclick="event.preventDefault();">민사소송</a>
-          <ul class="sub">
+
+            <li class="sub-group-label" aria-hidden="true">민사소송</li>
             <li><a href="/civil/complaint">소장</a></li>
             <li><a href="/civil/brief">준비서면</a></li>
             <li><a href="/civil/answer">답변서</a></li>
             <li><a href="/civil/payment-order">지급명령</a></li>
+
+            <li class="sub-group-label" aria-hidden="true">국제이혼</li>
+            <li><a href="/international-divorce">국제이혼</a></li>
           </ul>
         </li>
-        <li>
-          <a href="/international-divorce">국제이혼</a>
-        </li>
+
+        <!-- 상담게시판 -->
         <li class="has-sub">
           <a href="/inquiry/">상담게시판</a>
           <ul class="sub">
@@ -86,9 +75,64 @@
             <li><a href="/board">법률정보</a></li>
           </ul>
         </li>
+
+        <!-- 리더스 소개 -->
+        <li class="has-sub">
+          <a href="/team">리더스 소개</a>
+          <ul class="sub">
+            <li><a href="/team">구성원 소개</a></li>
+            <li><a href="/services">업무분야</a></li>
+            <li><a href="/location">오시는 길</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
+
+    <!-- 개인회생·파산 진단 CTA -->
+    <a href="/rehab/diagnosis" class="header-cta">📋 개인회생 진단</a>
   </div>
 </header>
 <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
+<!-- 헤더 메뉴 개편: 개인회생 강조 + 업무분야 통합 드롭다운 (기존 .has-sub/.sub 패턴 재사용) -->
+<style>
+  /* 개인회생·파산 최상위 강조 */
+  .gnb-list > li.is-emphasis > a {
+    color: var(--point-gold);
+    font-weight: 800;
+  }
+  .gnb-list > li.is-emphasis > a:hover {
+    color: var(--point-gold-light);
+  }
+
+  /* 업무분야 통합 드롭다운: 소그룹 라벨 */
+  .sub--groups { min-width: 200px; text-align: left; }
+  .sub--groups a { text-align: left; }
+  .sub-group-label {
+    padding: 8px 20px 4px;
+    color: var(--point-gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: none;
+    opacity: .85;
+    cursor: default;
+  }
+  .sub-group-label + li a { padding-top: 6px; }
+
+  /* 모바일에서도 라벨이 자연스럽게 보이도록 */
+  @media (max-width: 900px) {
+    .sub--groups { min-width: 100%; }
+    .sub-group-label { padding: 10px 25px 4px; }
+  }
+
+  /* 개인회생·파산 진단 CTA 버튼 (헤더 우측) */
+  .header-cta{
+    display:inline-flex; align-items:center; gap:6px; margin-left:16px;
+    background:var(--point-gold); color:#0f172a; font-weight:800; font-size:0.92rem;
+    padding:9px 18px; border-radius:999px; text-decoration:none; white-space:nowrap;
+    box-shadow:0 4px 12px rgba(197,160,89,.28); transition:.2s;
+  }
+  .header-cta:hover{ background:var(--point-gold-light, #e2c28d); transform:translateY(-1px); }
+  @media (max-width: 900px){ .header-cta{ display:none; } }
+</style>

@@ -1,69 +1,215 @@
 ---
-layout: default
+layout: board
 title: 수원 법무사 법률정보 | 리더스 합동 법무사
 description: 수원 리더스 합동 법무사가 직접 작성한 개인회생·파산·형사·등기 법률정보 게시판입니다.
 permalink: /board/
 keywords: 수원 개인회생 정보, 수원 법무사 법률정보, 개인회생 절차, 개인파산 안내
 ---
 
+<div class="leaders-board">
+  <section class="board-hero js-reveal">
+    <div class="board-container">
+      <div class="board-hero-inner">
+        <div class="board-hero-text">
+          <div class="board-status"><span class="status-dot"></span> Professional Archive</div>
+          <h1 class="board-main-title">법률의 깊이, <span class="gold-text">리더스의 시선</span></h1>
+          <p class="board-sub-text">검찰 실무 20년의 전문성으로 일상의 법률적 난제를 정교하게 해결합니다.</p>
+        </div>
+        <a href="/inquiry/" class="board-hero-inquiry">
+          <span class="bhi-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </span>
+          <span class="bhi-txt"><b>상담 게시판</b><small>궁금한 점을 직접 남겨보세요 →</small></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="board-tools js-reveal">
+    <div class="board-container">
+      {% assign all_posts = site.board | sort: "date" | reverse %}
+      <div class="filter-group">
+        <div class="filter-btn active" data-filter="all">ALL ({{ all_posts.size }})</div>
+        {% assign cat_array = "" | split: "|" %}
+        {% for p in all_posts %}
+          {% assign c = p.category | first | default: p.category %}{% if c != "" %}{% assign cat_array = cat_array | push: c %}{% endif %}
+        {% endfor %}
+        {% assign categories = cat_array | uniq | sort %}
+        {% for cat in categories %}
+          <div class="filter-btn" data-filter="{{ cat }}">{{ cat | upcase }}</div>
+        {% endfor %}
+      </div>
+      <div class="search-bar">
+        <input type="text" id="board-search" placeholder="SEARCH KEYWORD">
+      </div>
+    </div>
+  </section>
+
+  <section class="board-list-area">
+    <div class="board-container">
+      <main class="post-grid js-reveal" id="post-grid">
+        {% for post in all_posts %}
+        {% assign thumb = post.image | default: '/assets/img/og/og-main.png' %}
+        <a href="{{ post.url }}" class="post-card" data-category="{{ post.category | first | default: post.category }}">
+          <span class="post-card-thumb" style="background-image:url('{{ thumb | relative_url }}')"></span>
+          <span class="post-card-body">
+            <span class="post-card-cat">{{ post.category | first | default: post.category }}</span>
+            <span class="post-card-title">{{ post.title }}</span>
+            <span class="post-card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+          </span>
+        </a>
+        {% endfor %}
+      </main>
+      <div id="no-results" style="display:none; text-align:center; padding:80px 0; color:var(--text-p);">검색 결과가 없습니다.</div>
+      <nav class="board-pagination" id="board-pagination" aria-label="페이지 이동"></nav>
+    </div>
+  </section>
+</div>
+
 <style>
-  .board-wrap { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
-  .board-title { font-size: 2rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
-  .board-sub { color: #64748b; font-size: 0.95rem; margin-bottom: 40px; }
-  .board-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid #0f172a; }
-  .board-item { border-bottom: 1px solid #e2e8f0; }
-  .board-item a {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 8px;
-    text-decoration: none; color: #1e293b;
-    transition: background 0.15s;
-    gap: 16px;
+  /* ===== 슬림 히어로 ===== */
+  .board-hero { padding: 120px 0 44px !important; }
+  .board-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; text-align: left; flex-wrap: wrap; }
+  .board-hero-text { flex: 1; min-width: 260px; }
+  .board-hero .board-status { margin-bottom: 16px; }
+  .board-hero .board-main-title { font-size: clamp(1.7rem, 3.6vw, 2.4rem); margin-bottom: 12px; }
+  .board-hero .board-sub-text { font-size: 1rem; margin: 0; }
+  .board-hero-inquiry {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: rgba(179, 149, 94, 0.12); border: 1px solid rgba(179, 149, 94, 0.45);
+    border-radius: 14px; padding: 16px 22px; text-decoration: none; flex-shrink: 0;
+    transition: 0.3s;
   }
-  .board-item a:hover { background: #f8fafc; }
-  .board-item-title { font-size: 1rem; font-weight: 600; flex: 1; line-height: 1.5; word-break: keep-all; }
-  .board-item-date { font-size: 0.85rem; color: #94a3b8; white-space: nowrap; }
-  .board-empty { padding: 60px 0; text-align: center; color: #94a3b8; }
-  .board-inquiry-banner {
-    margin-top: 48px; padding: 28px 32px;
-    background: #f1f5f9; border-radius: 16px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  .board-hero-inquiry:hover { background: var(--board-gold); border-color: var(--board-gold); transform: translateY(-2px); }
+  .bhi-ic { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--board-gold); color: #121212; flex-shrink: 0; }
+  .board-hero-inquiry:hover .bhi-ic { background: #121212; color: var(--board-gold); }
+  .bhi-ic svg { width: 22px; height: 22px; }
+  .bhi-txt { display: flex; flex-direction: column; line-height: 1.3; }
+  .bhi-txt b { color: #fff; font-size: 1rem; font-weight: 700; }
+  .bhi-txt small { color: var(--board-gold); font-size: 0.8rem; }
+  .board-hero-inquiry:hover .bhi-txt b,
+  .board-hero-inquiry:hover .bhi-txt small { color: #121212; }
+
+  /* ===== 카드 그리드 ===== */
+  .post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; border-top: none; }
+  .post-card {
+    display: flex; flex-direction: column; background: #fff;
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    text-decoration: none; transition: 0.25s; box-shadow: 0 4px 18px rgba(0,0,0,.04);
   }
-  .board-inquiry-banner p { margin: 0; font-size: 0.95rem; color: #475569; }
-  .board-inquiry-banner strong { color: #0f172a; display: block; font-size: 1.05rem; margin-bottom: 4px; }
-  .btn-inquiry {
-    background: #0f172a; color: #fff;
-    padding: 12px 24px; border-radius: 10px;
-    text-decoration: none; font-size: 0.9rem; font-weight: 700;
-    white-space: nowrap; transition: background 0.2s;
+  .post-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.1); border-color: var(--board-gold); }
+  .post-card-thumb { width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; background-color: #16273f; }
+  .post-card-body { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 22px; }
+  .post-card-cat { align-self: flex-start; font-size: 12px; font-weight: 700; color: var(--board-gold); border: 1px solid var(--board-gold); padding: 4px 12px; border-radius: 2px; }
+  .post-card-title {
+    font-size: 1.08rem; font-weight: 700; color: #222; line-height: 1.45; word-break: keep-all;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .btn-inquiry:hover { background: #2563eb; }
+  .post-card-date { color: #999; font-size: 14px; }
+
+  /* ===== 페이지네이션 ===== */
+  .board-pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 56px; flex-wrap: wrap; }
+  .board-pagination button {
+    min-width: 42px; height: 42px; padding: 0 12px; border: 1px solid var(--border);
+    background: #fff; color: #555; font-weight: 600; font-size: 0.95rem; border-radius: 6px;
+    cursor: pointer; transition: 0.25s;
+  }
+  .board-pagination button:hover:not(:disabled) { border-color: var(--board-dark); color: var(--board-dark); }
+  .board-pagination button.active { background: var(--board-dark); color: #fff; border-color: var(--board-dark); }
+  .board-pagination button:disabled { opacity: 0.35; cursor: default; }
+
+  @media (max-width: 980px) {
+    .post-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .board-hero { padding-top: 100px !important; }
+    .board-hero-inner { flex-direction: column; align-items: stretch; }
+    .board-hero-inquiry { justify-content: center; }
+    .post-grid { grid-template-columns: 1fr; }
+  }
 </style>
 
-<div class="board-wrap">
-  <h1 class="board-title">법률정보</h1>
-  <p class="board-sub">담당 법무사가 직접 작성한 개인회생·파산·형사·등기 실무 정보입니다.</p>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Reveal Animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
 
-  <ul class="board-list">
-    {% assign posts = site.board | sort: 'date' | reverse %}
-    {% if posts.size > 0 %}
-      {% for post in posts %}
-      <li class="board-item">
-        <a href="{{ post.url }}">
-          <span class="board-item-title">{{ post.title }}</span>
-          <span class="board-item-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-        </a>
-      </li>
-      {% endfor %}
-    {% else %}
-      <li class="board-empty">게시글이 없습니다.</li>
-    {% endif %}
-  </ul>
+  // Search & Filter + Client Pagination
+  const searchInp = document.getElementById('board-search');
+  const cards = Array.from(document.querySelectorAll('.post-card'));
+  const btns = document.querySelectorAll('.filter-btn');
+  const pager = document.getElementById('board-pagination');
+  const noResults = document.getElementById('no-results');
+  const PER_PAGE = 12;
+  let currentPage = 1;
+  let matched = cards.slice();
 
-  <div class="board-inquiry-banner">
-    <div>
-      <strong>직접 문의하고 싶으신가요?</strong>
-      <p>온라인 문의 게시판에 남겨주시면 담당 법무사가 직접 검토 후 연락드립니다.</p>
-    </div>
-    <a href="/inquiry/" class="btn-inquiry">문의 남기기 →</a>
-  </div>
-</div>
+  function computeMatched() {
+    const val = searchInp.value.toLowerCase().trim();
+    const activeCat = document.querySelector('.filter-btn.active').dataset.filter;
+    matched = cards.filter(card => {
+      const title = card.querySelector('.post-card-title').textContent.toLowerCase();
+      const cat = card.dataset.category;
+      const mSearch = title.includes(val);
+      const mCat = (activeCat === 'all' || cat === activeCat);
+      return mSearch && mCat;
+    });
+  }
+
+  function render() {
+    cards.forEach(c => c.style.display = 'none');
+
+    const totalPages = Math.max(1, Math.ceil(matched.length / PER_PAGE));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const start = (currentPage - 1) * PER_PAGE;
+    matched.slice(start, start + PER_PAGE).forEach(c => c.style.display = 'flex');
+
+    noResults.style.display = matched.length === 0 ? 'block' : 'none';
+
+    renderPager(totalPages);
+  }
+
+  function renderPager(totalPages) {
+    pager.innerHTML = '';
+    if (matched.length === 0 || totalPages <= 1) return;
+
+    const makeBtn = (label, page, opts = {}) => {
+      const b = document.createElement('button');
+      b.textContent = label;
+      if (opts.active) b.classList.add('active');
+      if (opts.disabled) b.disabled = true;
+      if (opts.ariaLabel) b.setAttribute('aria-label', opts.ariaLabel);
+      if (!opts.disabled) b.addEventListener('click', () => { currentPage = page; render(); window.scrollTo({ top: document.querySelector('.board-list-area').offsetTop - 80, behavior: 'smooth' }); });
+      return b;
+    };
+
+    pager.appendChild(makeBtn('‹', currentPage - 1, { disabled: currentPage === 1, ariaLabel: '이전 페이지' }));
+    for (let i = 1; i <= totalPages; i++) {
+      pager.appendChild(makeBtn(String(i), i, { active: i === currentPage }));
+    }
+    pager.appendChild(makeBtn('›', currentPage + 1, { disabled: currentPage === totalPages, ariaLabel: '다음 페이지' }));
+  }
+
+  function applyFilter() {
+    computeMatched();
+    currentPage = 1;
+    render();
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter();
+    });
+  });
+  searchInp.addEventListener('input', applyFilter);
+
+  computeMatched();
+  render();
+});
+</script>

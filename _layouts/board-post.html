@@ -90,11 +90,19 @@ SEO helpers:
   }
 
   .article-container {
-    max-width: 850px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 0 25px;
     box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 48px;
+    align-items: start;
   }
+  .article-main { max-width: 850px; min-width: 0; width: 100%; }
+
+  /* ===== 우측 사이드바 (위젯 CSS는 side-consult.html 인클루드에) ===== */
+  .post-side { position: sticky; top: 110px; display: flex; flex-direction: column; gap: 24px; }
 
   /* 2. 제목 영역 레이아웃 (겹침 방지 flex) */
   .article-header {
@@ -175,6 +183,12 @@ SEO helpers:
 
   .btn-go-list:hover { color: #c5a47e; transform: translateX(-5px); }
 
+  @media (max-width: 980px) {
+    .article-container { grid-template-columns: 1fr; gap: 40px; max-width: 850px; }
+    .article-main { max-width: 100%; }
+    .post-side { position: static; top: auto; }
+  }
+
   @media (max-width: 768px) {
     .article-view-wrapper { padding-top: 110px !important; }
     .article-title { font-size: 1.65rem; }
@@ -197,6 +211,7 @@ SEO helpers:
 
 <article class="article-view-wrapper" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-container">
+    <div class="article-main">
 
     <header class="article-header js-reveal">
       {% if page.category %}
@@ -267,6 +282,12 @@ SEO helpers:
         목록으로 돌아가기
       </a>
     </footer>
+
+    </div><!-- /.article-main -->
+
+    <aside class="post-side" aria-label="상담 및 최근 글">
+      {% include side-consult.html %}
+    </aside>
 
   </div>
 </article>

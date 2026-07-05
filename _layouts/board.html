@@ -23,7 +23,7 @@ layout: default
 
 /* board.html에서 사용하는 공통 스타일들 */
 .board-container { max-width: 1050px; margin: 0 auto; padding: 0 24px; }
-.board-hero { background: var(--board-dark); color: #fff; padding: 190px 0 110px; text-align: center; position: relative; overflow: hidden; }
+.board-hero { background: var(--board-dark); color: #fff; padding: 120px 0 44px; text-align: center; position: relative; overflow: hidden; }
 .board-hero::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(circle, rgba(179, 149, 94, 0.12) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
 .board-status { display: inline-flex; align-items: center; background: rgba(255,255,255,0.03); padding: 8px 22px; border-radius: 4px; margin-bottom: 30px; font-size: 13px; font-weight: 500; border: 1px solid rgba(179, 149, 94, 0.3); color: var(--board-gold); text-transform: uppercase; letter-spacing: 0.15em; }
 .status-dot { width: 6px; height: 6px; background: var(--board-gold); border-radius: 50%; margin-right: 12px; }
@@ -31,7 +31,7 @@ layout: default
 .gold-text { color: var(--board-gold); }
 .board-sub-text { font-size: 1.15rem; color: #999; max-width: 600px; margin: 0 auto; font-weight: 300; }
 
-.board-tools { padding: 70px 0 40px; background: var(--board-bg); border-bottom: 1px solid var(--border); }
+.board-tools { padding: 48px 0 36px; background: var(--board-bg); border-bottom: 1px solid var(--border); }
 .filter-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
 .filter-btn { padding: 12px 26px; border-radius: 2px; background: #fff; border: 1px solid var(--border); color: #666; font-weight: 500; font-size: 0.9rem; cursor: pointer; transition: 0.3s; }
 .filter-btn:hover, .filter-btn.active { background: var(--board-dark); color: #fff; border-color: var(--board-dark); }
@@ -53,7 +53,7 @@ layout: default
 .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 768px) {
-  .board-hero { padding-top: 150px; }
+  .board-hero { padding-top: 100px; }
   .post-list-item { flex-direction: column; align-items: flex-start; gap: 15px; }
   .post-meta { width: 100%; justify-content: space-between; }
 }

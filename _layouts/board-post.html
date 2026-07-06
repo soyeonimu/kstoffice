@@ -261,7 +261,7 @@ SEO helpers:
       <div class="related-grid">
         {% for p in related limit: 3 %}
         <a class="related-card" href="{{ p.url | relative_url }}">
-          <span class="related-thumb" style="background-image:url('{{ p.image | default: '/assets/img/og/og-main.png' | relative_url }}')"></span>
+          <span class="related-thumb" style="background-image:url('{% include board-thumb.html p=p %}')"></span>
           <span class="related-info">
             {% if p.category %}<span class="related-cat">{{ p.category }}</span>{% endif %}
             <span class="related-name">{{ p.title }}</span>

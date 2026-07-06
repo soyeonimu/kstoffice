@@ -182,7 +182,7 @@ keywords: 수원 개인회생, 수원 개인파산, 수원 법무사, 개인회�
       <div class="hl-grid">
         {% for p in bposts limit: 4 %}
         <a class="hl-card" href="{{ p.url | relative_url }}">
-          <div class="hl-thumb" style="background-image:url('{{ p.image | default: '/assets/img/og/og-main.png' | relative_url }}')"></div>
+          <div class="hl-thumb" style="background-image:url('{% include board-thumb.html p=p %}')"></div>
           <div class="hl-body">
             {% if p.category %}<span class="hl-badge">{{ p.category }}</span>{% endif %}
             <h3 class="hl-card-title">{{ p.title }}</h3>

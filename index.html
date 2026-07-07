@@ -527,6 +527,8 @@ var MAIN_GAS='https://script.google.com/macros/s/AKfycbxLHMOghQElDBtKbbMGKFWTYqE
 function submitMainForm(e,type){
   e.preventDefault();
   var form=e.target;
+  var consent=form.querySelector('.hlf-consent input[type="checkbox"]');
+  if(consent && !consent.checked){ alert('개인정보 수집·이용에 동의해 주세요.'); return; }
   var isMiddle=type==='middle';
   var successId=isMiddle?'mainMiddleSuccess':'mainBottomSuccess';
   var btn=form.querySelector('button[type="submit"]');

@@ -16,7 +16,7 @@
   .side-btn.rehab { background: linear-gradient(135deg, #c5a059, #e2c28d); color: #0f172a; }
   .side-btn.phone { background: linear-gradient(135deg, #2563eb, #3b82f6); color: #fff; }
   .side-btn.naver { background: linear-gradient(135deg, #03c75a, #06d96a); color: #fff; }
-  .side-btn.kakao { background: linear-gradient(135deg, #f3dd8e, #f7e6ab); color: #6b4e12; }
+  .side-btn.kakao { background: #FEE500; color: #3C1E1E; }
   .side-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,.15); }
   .side-inquiry-link {
     display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -65,7 +65,7 @@
   <p class="side-recent-title">최근 글</p>
   {% for p in recent limit: 5 %}
   <a class="side-recent-item" href="{{ p.url | relative_url }}">
-    <span class="side-recent-thumb" style="background-image:url('{{ p.image | default: '/assets/img/og/og-main.png' | relative_url }}')"></span>
+    <span class="side-recent-thumb" style="background-image:url('{% include board-thumb.html p=p %}')"></span>
     <span class="side-recent-name">{{ p.title }}</span>
   </a>
   {% endfor %}

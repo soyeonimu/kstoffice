@@ -6,7 +6,7 @@ complaint:
   - title: "절차"
     url: "/process"
     desc: "접수부터 송치까지"
-  - title: "성공사례"
+  - title: "작성 사례"
     url: "/cases-complaint"
     desc: "실제 진행 사례"
   - title: "FAQ"

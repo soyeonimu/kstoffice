@@ -28,6 +28,13 @@ body {
   padding-top: var(--header-h);
 }
 
+/* 모바일 가로 오버플로우 안전망 + 미디어 반응형 기본값 */
+html { overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; }
+@media (max-width: 768px) {
+  body { overflow-x: hidden; }
+}
+
 /* 2. 헤더 (Header) */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0;
@@ -499,29 +506,44 @@ body {
 }
 
 
-/* ===== 공통 Floatbar (헤더 아래 고정) ===== */
+/* ===== 하위 메뉴 좌측 세로 스티키 바 (형사/고소 6개 페이지 전용) ===== */
+/* .subnav-floatbar.html include는 이 6개 페이지에서만 사용됨.
+   기존 상단 가로바 → 좌측 세로 고정바로 전환. is-active 로직은 include에서 유지. */
 .subnav-float{
   position: fixed;
-  top: var(--header-h, 85px);
-  left: 0;
-  right: 0;
-  z-index: 10050;
-  padding: 10px 0;
+  left: 24px;
+  top: calc(var(--header-h, 85px) + 24px);
+  z-index: 100;          /* 헤더(11000)보다 낮게 유지 */
+  width: 220px;
+  max-height: calc(100vh - var(--header-h, 85px) - 48px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0;
+}
+
+/* 내부 컨테이너의 중앙정렬/최대폭 제거 → 세로바 폭에 맞춤 */
+.subnav-float .leaders-container{
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .subnav-float-inner{
-  background: rgba(255,255,255,0.92);
+  width: 100%;
+  min-height: 0;
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(226,232,240,0.9);
   border-radius: 18px;
   box-shadow: 0 14px 30px rgba(15,23,42,0.10);
-  padding: 14px 14px;
+  padding: 16px 16px;
 
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
+  flex-direction: column;      /* 세로 스택 */
+  align-items: stretch;
+  gap: 12px;
 }
 
 .subnav-float-head{
@@ -529,7 +551,9 @@ body {
   flex-direction:column;
   gap:2px;
   flex:0 0 auto;
-  min-width:160px;
+  min-width:0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(226,232,240,0.9);
 }
 .sf-badge{
   font-size:11px;
@@ -546,108 +570,107 @@ body {
 
 .subnav-float-links{
   display:flex;
-  flex-wrap:wrap;
+  flex-direction: column;      /* 세로 스택 */
+  flex-wrap: nowrap;
   gap:8px;
-  justify-content:flex-end;
-  flex:1 1 auto;
+  align-items: stretch;
 }
 
 .sf-link{
-  display:inline-flex;
+  display:flex;
   align-items:center;
-  height:36px;
-  padding:0 12px;
-  border-radius:999px;
+  min-height:38px;
+  padding:8px 12px;
+  border-radius:12px;
   border:1px solid rgba(226,232,240,1);
   background:#fff;
   text-decoration:none;
   font-weight:800;
   font-size:13px;
+  line-height:1.3;
   color: var(--text-main, #1e293b);
   transition:.2s;
-  white-space:nowrap;
+  white-space:normal;          /* 세로바에선 줄바꿈 허용 */
 }
 .sf-link:hover{
   border-color: rgba(37,99,235,0.45);
   box-shadow: 0 10px 18px rgba(37,99,235,0.12);
-  transform: translateY(-1px);
+  transform: translateX(2px);
 }
 .sf-link.is-active{
   background: var(--brand, #0f172a);
   color:#fff;
+  border-color: var(--brand, #0f172a);
 }
 
-/* 모바일: 가로 스크롤 */
-@media (max-width: 768px){
+/* ===== 좌측 세로바만큼 본문 좌측 여백 확보 (6개 페이지 한정) ===== */
+/* .has-subnav-left 는 이 6개 페이지의 .leaders-page 래퍼에만 부여됨 */
+@media (min-width: 981px){
+  .has-subnav-left .leaders-container{
+    padding-left: 44px;   /* 세로바(220px+left24px) 영역과 본문 겹침 방지 */
+  }
+  /* 넓은 화면: 중앙정렬 컨테이너 우측으로 살짝 밀어 세로바 공간 확보 */
+  .has-subnav-left{
+    padding-left: 268px;  /* left(24) + width(220) + gap(24) */
+    box-sizing: border-box;
+  }
+  .has-subnav-left .leaders-container{
+    margin-left: 0;
+    margin-right: auto;
+  }
+  /* 3단(좌 서브내비 + 우 상담위젯): 컨테이너 풀폭 → 우측 위젯을 오른쪽 끝으로 + 본문 확장 */
+  .page-with-side:has(.has-subnav-left){ max-width: none; padding: 0 32px; }
+}
+
+/* ===== 모바일/태블릿(≤980px): 세로바를 상단 가로 접이형으로 ===== */
+@media (max-width: 980px){
+  .has-subnav-left{
+    padding-left: 0;
+  }
+  .subnav-float{
+    position: static;
+    left: auto;
+    top: auto;
+    width: auto;
+    max-height: none;
+    overflow: visible;
+    padding: 10px 16px 0;
+  }
   .subnav-float-inner{
-    flex-direction:column;
-    align-items:stretch;
-    gap:10px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .subnav-float-head{
+    border-bottom: none;
+    padding-bottom: 0;
+    flex: 0 0 auto;
   }
   .subnav-float-links{
-    flex-wrap:nowrap;
-    overflow-x:auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    justify-content:flex-start;
-    padding-bottom:2px;
+    align-items: center;
+    flex: 1 1 100%;
+    padding-bottom: 2px;
   }
-}
-
-/* ===== Floatbar가 있는 페이지에서만 본문 밀기 ===== */
-/* include가 들어간 페이지는 body에 class를 하나 추가해주자 */
-.has-floatbar .leaders-hero{
-  padding-top: calc(120px + 72px);
-}
-@media (max-width: 768px){
-  .has-floatbar .leaders-hero{
-    padding-top: calc(80px + 92px);
+  .sf-link{
+    white-space: nowrap;
+    border-radius: 999px;
+    min-height: 36px;
+    padding: 0 12px;
   }
-}
-/* ===== 공통 Floatbar (헤더 아래로 숨기기) ===== */
-.subnav-float {
-  position: fixed;
-  /* 1. 헤더 높이에 맞춤 (너무 높으면 내리고, 낮으면 올리세요) */
-  top: 80px; 
-  left: 0;
-  right: 0;
-  /* 2. 서열을 확 낮춥니다. (헤더보다 아래로) */
-  z-index: 100; 
-  padding: 10px 0;
+  .sf-link:hover{ transform: none; }
 }
 
 /* ===== 헤더 (검은색 바) 서열 높이기 ===== */
-/* 보통 테마의 헤더 클래스명이 site-header나 header입니다. */
 header, .site-header, .nav-container {
-  position: fixed !important; /* 혹은 sticky */
+  position: fixed !important;
   top: 0;
   width: 100%;
-  /* 3. 플로팅 바(100)보다 훨씬 높은 숫자를 줍니다. */
-  z-index: 9999 !important; 
-}
-/* 1. 바깥 컨테이너: 전체 너비를 쓰고 내부 간격만 확보 */
-.subnav-float .leaders-container {
-  max-width: 1200px !important; /* 기준이 되는 전체 폭 고정 (원하시는 넓이로 조절) */
-  margin: 0 auto !important;
-  padding: 0 20px;
-  width: 100%;
-}
-
-/* 2. 내부 흰색 박스: 사이즈 들쭉날쭉 방지 */
-.subnav-float-inner {
-  width: 100%; /* 부모 너비를 가득 채움 */
-  min-height: 80px; /* 높이를 일정하게 고정 (선택 사항) */
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  border-radius: 18px;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.10);
-  padding: 14px 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  z-index: 9999 !important;
 }
 
 /* ✅ 서열 확정 */
@@ -829,6 +852,9 @@ header, .site-header, .nav-container {
     width: min(86vw, 360px);
     height: 100vh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: calc(var(--header-h, 85px) + 16px) 20px 40px;
+    box-sizing: border-box;
     z-index: 2500;
   }
 
@@ -869,4 +895,51 @@ header, .site-header, .nav-container {
   .gnb-list > li > a{
     white-space: nowrap;  /* ✅ "개인회생·파산" 같은 것도 1줄로 */
   }
+}
+
+/* =====================================================
+   전역 모바일 최적화 (오버플로우 제거 · 터치 · 표 스크롤)
+   데스크톱 스타일은 건드리지 않음 (미디어쿼리 내부에서만 조정)
+   ===================================================== */
+
+/* 본문 콘텐츠 안의 표는 모바일에서 가로 스크롤 (마크다운 게시글 대응) */
+@media (max-width: 768px) {
+  .article-body table,
+  .page-main table,
+  .board-container table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .article-body table th,
+  .article-body table td { white-space: nowrap; }
+}
+
+/* 사이드바 사이드콘설트 위젯: 모바일 정상 폭 (그리드 밖에서도 넘침 방지) */
+@media (max-width: 980px) {
+  .side-consult,
+  .side-recent { max-width: 100%; box-sizing: border-box; }
+}
+
+/* 태블릿/모바일: 헤더 로고·패딩 정리 (≤768) */
+@media (max-width: 768px) {
+  .header-inner { padding: 12px 14px; gap: 10px; }
+  .logo-img { height: 40px; }
+  /* 푸터 지역 링크가 좁은 화면에서도 줄바꿈되게 (이미 wrap 이지만 확실히) */
+  .f-regions-links { flex-wrap: wrap; }
+  .f-bottom-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
+/* 소형 모바일 (≤480) 미세 조정 — 본문 최소 15px 유지 */
+@media (max-width: 480px) {
+  .header-inner { padding: 10px 12px; }
+  .logo-img { height: 36px; }
+  .logo { max-width: 180px; }
+  .site-footer { padding-top: 48px; }
+  .footer-inner { padding: 0 16px; }
+  .f-call-num, .f-call-num.gold { font-size: 1.6rem; }
+  /* 좌측 세로바(형사 페이지) 상단 가로형일 때 좌우 패딩 축소 */
+  .subnav-float { padding: 10px 12px 0; }
 }

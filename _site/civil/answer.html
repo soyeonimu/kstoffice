@@ -242,230 +242,259 @@
   <main>
     
       <div class="page-with-side">
-        <div class="page-main"><style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        <div class="page-main"><section class="leaders-page has-subnav-left">
 
-:root {
-  --bg: #ffffff;
-  --dark-base: #120b0b; /* 민사 전용 묵직한 다크 브라운-블랙 */
-  --burgundy: #8b1d1d; /* 방어와 단호함을 상징하는 버건디 */
-  --burgundy-glow: rgba(139, 29, 29, 0.2);
-  --text-h: #1e293b;
-  --text-p: #64748b;
-  --border-light: #f1f5f9;
-}
-
-.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
-.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-/* --- HERO SECTION --- */
-.hero-canvas { 
-  background: var(--dark-base); 
-  color: #fff; 
-  padding: 160px 0 120px; 
-  text-align: center; 
-  position: relative;
-  overflow: hidden;
-}
-.hero-canvas::before {
-  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
-  width: 600px; height: 400px; background: radial-gradient(circle, var(--burgundy-glow) 0%, transparent 70%);
-  filter: blur(80px); pointer-events: none;
-}
-.hero-status { 
-  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
-  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
-  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
-}
-.status-dot { width: 8px; height: 8px; background: var(--burgundy); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--burgundy); }
-
-.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
-.glow-text { color: var(--burgundy); background: linear-gradient(to right, #8b1d1d, #c53030); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-sub-text { font-size: 1.2rem; color: #a39494; max-width: 720px; margin: 0 auto 48px; }
-
-.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
-.btn-prime { background: var(--burgundy); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--burgundy-glow); }
-.btn-prime:hover { transform: translateY(-3px); background: #a52424; box-shadow: 0 15px 35px rgba(139, 29, 29, 0.4); }
-.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-.btn-ghost:hover { background: rgba(255,255,255,0.05); }
-
-/* --- VALUE STRIP --- */
-.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
-.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
-.value-item { text-align: center; flex: 1; }
-.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
-.v-value { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; }
-.v-line { width: 1px; height: 40px; background: #e2e8f0; }
-
-/* --- BENTO SECTION (DARK) --- */
-.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
-.header-group { text-align: center; margin-bottom: 80px; }
-.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
-.h-desc { color: #8e7f7f; font-size: 1.1rem; }
-
-.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.bento-item { 
-  background: #1c1414; padding: 50px 40px; border-radius: 30px; 
-  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
-}
-.bento-item:hover { 
-  transform: translateY(-12px); border-color: var(--burgundy); 
-  background: #251a1a; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-.bento-tag { font-size: 12px; font-weight: 800; color: var(--burgundy); margin-bottom: 24px; }
-.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
-.bento-item p { color: #a39494; font-size: 1rem; line-height: 1.7; }
-
-/* --- PRICE CARD --- */
-.section-gray { background: #faf8f8; padding: 120px 0; }
-.premium-price-card { 
-  background: #fff; border-radius: 40px; padding: 80px 60px; 
-  box-shadow: 0 40px 100px rgba(139, 29, 29, 0.05); max-width: 900px; margin: 0 auto; 
-  border: 1px solid var(--border-light); text-align: center;
-}
-.p-badge { background: #fff5f5; color: var(--burgundy); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
-.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; color: #1a1a1a; }
-.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
-.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
-.p-list ul { list-style: none; padding: 0; }
-.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
-.p-list li::before { content: "✓"; color: var(--burgundy); position: absolute; left: 0; font-weight: 900; }
-
-/* --- REVEAL --- */
-.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 1024px) {
-  .bento-grid, .p-list-group { grid-template-columns: 1fr; }
-  .value-grid { flex-direction: column; gap: 30px; }
-  .v-line { display: none; }
-}
-@media (max-width: 768px) {
-  .leaders-premium { overflow-x: hidden; }
-  .hero-canvas { padding: 110px 0 70px; }
-  .hero-canvas::before { width: 100%; max-width: 400px; }
-  .hero-sub-text { font-size: 1.05rem; }
-  .hero-cta-group { flex-wrap: wrap; gap: 12px; }
-  .btn-prime, .btn-ghost { padding: 16px 28px; }
-  .section-dark, .section-gray { padding: 70px 0; }
-  .header-group { margin-bottom: 48px; }
-  .h-title { font-size: 1.9rem; }
-  .bento-item { padding: 36px 28px; }
-  .bento-item h3 { font-size: 1.4rem; }
-  .premium-price-card { padding: 48px 26px; border-radius: 28px; }
-  .p-amount { font-size: 2.6rem; }
-}
-@media (max-width: 480px) {
-  .hero-cta-group .btn-prime, .hero-cta-group .btn-ghost { width: 100%; text-align: center; }
-}
-</style>
-
-<section class="leaders-premium">
-
-  <section class="hero-canvas js-reveal">
+  <!-- ① 고민 : 상황 공감 (광고·경력 없이) -->
+  <section class="leaders-hero js-reveal">
     <div class="leaders-container">
-      <div class="hero-content">
-        <div class="hero-status"><span class="status-dot"></span> 소장 송달 후 30일 이내 대응 필수</div>
-        <h1 class="hero-main-title">답변서,<br><span class="glow-text">침묵은 자백과 같습니다</span></h1>
-        <p class="hero-sub-text">소장을 받으셨다면 30일 이내에 답변서를 제출해야 합니다. 원고의 주장을 반박하고 피고의 정당한 권리를 지키기 위한 전략적 대응을 시작하세요.</p>
-        <div class="hero-cta-group">
-          <a href="tel:0312256885" class="btn-prime">민사 소송 전화 상담</a>
-          <a href="#price" class="btn-ghost">작성 비용 확인</a>
+      <span class="hero-eyebrow">민사 답변서</span>
+      <h1 class="leaders-title">소장을 받았는데<br>30일 안에 답변서를 어떻게 써야 할지 <span class="text-gradient">막막하신가요?</span></h1>
+      <p class="leaders-desc">
+        “법원에서 소장이 왔는데, 대체 뭘 어떻게 써서 내야 하지?”<br>
+        “그냥 억울하다고만 쓰면 되는 건가?”<br>
+        답변서는 <strong>제출 기한과 담아야 할 내용이 정해져 있는</strong> 법원 서류입니다. 아래에서 차근히 정리해 드릴게요.
+      </p>
+    </div>
+  </section>
+
+  <!-- ② 설명 : 답변서란 (정보·가치 먼저) -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="section-lead">
+        <h2 class="section-lead-title">답변서, 무엇을 언제까지 내야 할까요?</h2>
+        <p class="section-lead-desc">가장 중요한 건 ‘제출 기한’과 ‘담아야 할 내용’입니다. 한눈에 확인해 보세요.</p>
+      </div>
+
+      <div class="leaders-table-card js-reveal">
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>답변서를 낸 경우</th>
+                <th class="highlight">기한 내 미제출한 경우</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="label">제출 기한</td>
+                <td>소장 송달 후 <strong>30일 이내</strong></td>
+                <td class="highlight-cell">기한 도과 시 <strong>불이익</strong></td>
+              </tr>
+              <tr>
+                <td class="label">재판 진행</td>
+                <td>원고 주장에 대한 <strong>인부·항변</strong> 반영</td>
+                <td class="highlight-cell">피고 입장 <strong>제출 기회 상실</strong></td>
+              </tr>
+              <tr>
+                <td class="label">가장 큰 위험</td>
+                <td>변론기일에서 다툴 수 있음</td>
+                <td class="highlight-cell"><strong>무변론판결</strong> 선고 가능</td>
+              </tr>
+              <tr>
+                <td class="label">결과</td>
+                <td>사실관계·법리를 <strong>다툴 여지</strong></td>
+                <td class="highlight-cell">원고 청구 <strong>그대로 인정</strong> 위험</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
+
+      <div class="section-lead" style="margin-top:8px;">
+        <h2 class="section-lead-title">답변서에 반드시 담겨야 할 3가지</h2>
+        <p class="section-lead-desc">형식만 갖춘 답변서가 아니라, 아래 요소가 논리적으로 연결되어야 합니다.</p>
+      </div>
+
+      <div class="leaders-detail-grid">
+        <article class="detail-card js-reveal">
+          <div class="card-icon">1</div>
+          <h3 class="card-title">청구취지에 대한 인부</h3>
+          <p class="card-text">
+            원고의 청구를 <strong>인정할지 부인할지</strong>부터 밝혀야 합니다. 다툴 부분과 인정할 부분을 명확히 구분해야 재판의 쟁점이 정리됩니다.
+          </p>
+        </article>
+
+        <article class="detail-card js-reveal">
+          <div class="card-icon">2</div>
+          <h3 class="card-title">사실관계 항변</h3>
+          <p class="card-text">
+            단순히 “억울하다”가 아니라 <strong>소멸시효 완성·동시이행 항변</strong> 등 법률적 근거가 있는 항변으로 원고 주장을 반박해야 합니다.
+          </p>
+        </article>
+
+        <article class="detail-card js-reveal">
+          <div class="card-icon">3</div>
+          <h3 class="card-title">증거의 정리</h3>
+          <p class="card-text">
+            주장을 뒷받침할 <strong>객관적 증거</strong>를 정리하고 번호를 부여해, 상대방 주장에 대한 입증 책임까지 짚어야 설득력이 생깁니다.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <div class="value-strip js-reveal">
+  <!-- ③ 왜 법무사에게 : 설득 + 경력 (가치 다음에) -->
+  <section class="why-section js-reveal">
     <div class="leaders-container">
-      <div class="value-grid">
-        <div class="value-item"><span class="v-label">제출 기한</span><span class="v-value">송달 후 30일</span></div>
-        <div class="v-line"></div>
-        <div class="value-item"><span class="v-label">작성 원칙</span><span class="v-value">논리적 항변 설계</span></div>
-        <div class="v-line"></div>
-        <div class="value-item"><span class="v-label">대응 목표</span><span class="v-value">원고 청구 기각</span></div>
-      </div>
-    </div>
-  </div>
-
-  <section class="section-dark">
-    <div class="leaders-container">
-      <div class="header-group js-reveal">
-        <h2 class="h-title">답변서 작성 핵심 솔루션</h2>
-        <p class="h-desc">상대방의 공격을 무력화하고 사실관계를 바로잡는 전문적인 문서 작성이 필요합니다.</p>
+      <div class="why-head">
+        <span class="why-eyebrow">왜 법무사에게 맡길까</span>
+        <h2 class="why-title">기한을 넘기면 크게 불리해집니다<br>그래서 ‘서류 실무’가 중요합니다</h2>
+        <p class="why-sub">
+          답변서는 30일이라는 <strong>정해진 기한</strong> 안에, 정해진 형식과 항변을 갖춰 제출해야 하는 법원 서류입니다.
+          기한을 넘기거나 내용이 비면 <strong>무변론판결</strong>로 원고 주장이 그대로 인정될 수 있습니다.
+          리더스는 <strong>법원 서류 실무 16년</strong>의 경험으로, 대행 직원이 아니라 대표 법무사가 직접 검토해 작성합니다.
+        </p>
       </div>
 
-      <div class="bento-grid">
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">REFUTATION</div>
-          <h3>원고 주장 반박<br>사실관계 재구성</h3>
-          <p>원고가 제출한 소장의 허점을 찾고, 증거에 기반한 사실관계를 재구성하여 재판부의 올바른 판단을 유도합니다.</p>
-        </div>
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">DEFENSE</div>
-          <h3>법리적 항변 설계<br>소멸시효 및 면책</h3>
-          <p>단순한 부인이 아니라 소멸시효 완성, 동시이행 항변권 등 법률적 근거가 있는 항변을 통해 승소 확률을 높입니다.</p>
-        </div>
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">EVIDENCE</div>
-          <h3>증거 자료 정리<br>입증 책임 대응</h3>
-          <p>피고의 주장을 뒷받침할 객관적 증거를 분류하고, 상대방 주장에 대한 입증 책임을 공격적으로 지적합니다.</p>
+      <div class="why-stats">
+        <div class="why-stat"><strong>30<em>년</em></strong><span>검찰 실무</span></div>
+        <div class="why-stat"><strong>16<em>년</em></strong><span>법무사 실무</span></div>
+        <div class="why-stat"><strong>3<em>인</em></strong><span>수원지검 출신</span></div>
+        <div class="why-stat"><strong>직접</strong><span>대표 검토</span></div>
+      </div>
+
+      <div class="leaders-insight js-reveal">
+        <div class="leaders-insight-content">
+          <span class="leaders-insight-tag">전문가의 INSIGHT</span>
+          <h2 class="leaders-insight-title">“첫 답변서 한 장이, 이후 재판의 방향을 정합니다.”</h2>
+          <p class="leaders-insight-desc">재판부가 사건을 처음 이해하는 자료가 바로 답변서입니다. 기한 안에 인부·항변·증거가 <strong>논리적으로 연결된 서류</strong>를 제출하는 것이, 피고의 정당한 입장이 제대로 읽히게 하는 시작입니다.</p>
         </div>
       </div>
+
+      <p class="scope-note">
+        ※ 리더스 합동 법무사 사무소는 <strong>답변서·준비서면 등 법원 제출 서류의 작성</strong>을 지원합니다.
+        법무사는 소송대리인이 아니며 변론·사건 대리는 수행하지 않습니다. 개별 사건의 결과(판결)는 법원의 판단에 따라 달라져 보장할 수 없습니다.
+      </p>
     </div>
   </section>
 
-  <section class="section-gray" id="price">
+  <!-- ④ 상담 유도 CTA (설득 다음에) -->
+  <section class="leaders-consult-cta">
     <div class="leaders-container">
-      <div class="premium-price-card js-reveal">
-        <div class="p-badge">CIVIL ANSWER SERVICE</div>
-        <h2 class="p-amount">합리적 작성 비용</h2>
-        <p class="p-info">소송 가액과 쟁점의 복잡도에 따라 투명하게 산정된 대행료를 안내합니다.</p>
-        
-        <div class="p-list-group">
-          <div class="p-list">
-            <h4>답변서 작성 패키지</h4>
-            <ul>
-              <li>사건 기록 및 소장 정밀 분석</li>
-              <li>법리 검토 및 항변 구조 설계</li>
-              <li>최종 답변서 초안 및 완성본 작성</li>
-            </ul>
-          </div>
-          <div class="p-list">
-            <h4>부수 업무 지원</h4>
-            <ul>
-              <li>전자소송 사이트 제출 대행</li>
-              <li>증거 서류 번호 부여 및 정리</li>
-              <li>사건 진행 현황 모니터링 가이드</li>
-            </ul>
-          </div>
+      <div class="consult-cta-box">
+        <span class="cta-eyebrow">무료 상담</span>
+        <h2 class="consult-cta-title">30일 안에, 무엇부터 준비할지 30분이면 정리됩니다</h2>
+        <p class="consult-cta-desc">소장을 받은 상황을 말씀해 주시면, 법원 서류 실무 16년의 법무사가 직접 검토해 무엇부터 준비할지 알려드립니다. 상담만으로 바로 수임하실 필요는 없습니다.</p>
+        <div class="cta-btn-row">
+          <a href="tel:0312256885" class="consult-cta-btn consult-cta-btn--tel">📞 031-225-6885</a>
+          <a href="/inquiry/" class="consult-cta-btn">무료 상담 신청 →</a>
         </div>
-        <div style="margin-top: 60px;">
-          <a href="/inquiry/" class="btn-prime">답변서 작성 견적 문의</a>
-          <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3a3;">* 모든 민사 서류는 법무사가 직접 내용을 검토하고 작성합니다.</p>
-        </div>
+        <p class="cta-reassure">무료 · 수임 의무 없음 · 수원지방법원 관할 직접 대응</p>
       </div>
     </div>
   </section>
-
-  
-
-
 </section>
 
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #c5a059;
+    --brand-accent-d: #a9863f;
+    --brand-soft: #f7f1e4;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 20px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #fff; line-height: 1.6; overflow-x: hidden; }
+  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .leaders-container--narrow { max-width: 860px; }
+  /* 3단(좌 서브내비 + 우 상담위젯): 컨테이너 풀폭 → 우측 위젯 오른쪽 끝 + 본문 확장 (전역 style.css에도 있음) */
+
+  /* ① 고민 히어로 */
+  .leaders-hero { padding: 104px 0 40px; text-align: center; }
+  .hero-eyebrow { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent-d); margin-bottom: 16px; }
+  .leaders-title { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 850; margin-bottom: 22px; letter-spacing: -0.03em; line-height: 1.3; word-break: keep-all; }
+  .text-gradient { background: linear-gradient(135deg, #c5a059 0%, #a9863f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .leaders-desc { font-size: 1.12rem; color: var(--text-sub); word-break: keep-all; max-width: 760px; margin: 0 auto; line-height: 1.85; }
+
+  /* ② 설명 */
+  .leaders-section { padding: 40px 0 30px; }
+  .section-lead { text-align: center; max-width: 720px; margin: 0 auto 32px; }
+  .section-lead-title { font-size: clamp(1.4rem, 3.4vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; word-break: keep-all; margin: 0 0 12px; }
+  .section-lead-desc { font-size: 1rem; color: var(--text-sub); word-break: keep-all; margin: 0; }
+
+  .leaders-table-card { background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.04); overflow: hidden; margin-bottom: 48px; }
+  .table-responsive { overflow-x: auto; }
+  .comparison-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+  .comparison-table th { padding: 22px; background: #fcfcfc; font-weight: 800; font-size: 1.05rem; border-bottom: 2px solid #f1f5f9; }
+  .comparison-table th.highlight { background: var(--brand-soft); color: var(--brand-accent-d); }
+  .comparison-table td { padding: 18px 22px; border-bottom: 1px solid #f1f5f9; font-size: 1rem; color: var(--text-sub); }
+  .comparison-table td.label { background: #fcfcfc; color: var(--text-main); font-weight: 700; text-align: center; width: 20%; }
+  .comparison-table td.highlight-cell { background: rgba(197,160,89,.05); color: var(--text-main); }
+  .comparison-table tr:last-child td { border-bottom: none; }
+
+  .leaders-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 20px; }
+  .detail-card { background: #fff; padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--border); transition: var(--transition); }
+  .detail-card:hover { transform: translateY(-6px); border-color: var(--brand-accent); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+  .card-icon { width: 34px; height: 34px; background: var(--brand-soft); color: var(--brand-accent-d); display: flex; align-items: center; justify-content: center; border-radius: 9px; font-weight: 900; margin-bottom: 18px; }
+  .card-title { font-size: 1.22rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+  .card-text { color: var(--text-sub); font-size: 1rem; line-height: 1.75; word-break: keep-all; }
+
+  /* ③ 왜 법무사 (설득) */
+  .why-section { padding: 30px 0 60px; }
+  .why-head { text-align: center; max-width: 780px; margin: 0 auto 32px; }
+  .why-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent-d); }
+  .why-title { font-size: clamp(1.45rem, 3.4vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 10px 0 16px; word-break: keep-all; line-height: 1.35; }
+  .why-sub { font-size: 1.04rem; color: var(--text-sub); line-height: 1.8; word-break: keep-all; margin: 0; }
+  .why-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 820px; margin: 0 auto 40px; background: #0f172a; border-radius: var(--radius-md); overflow: hidden; padding: 6px; }
+  .why-stat { text-align: center; padding: 26px 10px; }
+  .why-stat strong { display: block; font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+  .why-stat strong em { font-size: 1rem; font-style: normal; color: var(--brand-accent); margin-left: 2px; }
+  .why-stat span { display: block; margin-top: 8px; font-size: 12.5px; color: rgba(255,255,255,.7); }
+
+  .leaders-insight { padding: 56px; background: var(--brand); border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; margin-bottom: 30px; }
+  .leaders-insight::after { content: '“'; position: absolute; right: 40px; bottom: -20px; font-size: 15rem; color: rgba(255,255,255,0.05); font-family: serif; }
+  .leaders-insight-tag { color: var(--brand-accent); font-weight: 800; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; }
+  .leaders-insight-title { font-size: clamp(1.35rem, 3vw, 1.8rem); margin: 14px 0; font-weight: 800; word-break: keep-all; }
+  .leaders-insight-desc { opacity: .88; max-width: 660px; font-weight: 300; line-height: 1.85; word-break: keep-all; }
+
+  .scope-note { font-size: 0.88rem; color: #94a3b8; line-height: 1.7; word-break: keep-all; background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin: 0; }
+
+  /* ④ CTA */
+  .leaders-consult-cta { padding: 40px 0 90px; }
+  .consult-cta-box { width: 100%; box-sizing: border-box; background: linear-gradient(135deg, #0f172a, #16233b); border-radius: 32px; padding: 60px 40px; text-align: center; }
+  .cta-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent); margin-bottom: 12px; }
+  .consult-cta-title { color: #fff; font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 16px; word-break: keep-all; }
+  .consult-cta-desc { color: #94a3b8; font-size: 1.02rem; line-height: 1.7; margin: 0 auto 30px; max-width: 620px; word-break: keep-all; }
+  .cta-btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 16px; }
+  .consult-cta-btn { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #c5a059, #e2c28d); color: #1a1207; font-weight: 800; font-size: 1.05rem; padding: 16px 40px; border-radius: 100px; text-decoration: none; transition: var(--transition); }
+  .consult-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(197,160,89,.4); }
+  .consult-cta-btn--tel { background: rgba(255,255,255,.08); color: #fff; border: 1.5px solid rgba(255,255,255,.25); }
+  .consult-cta-btn--tel:hover { background: rgba(255,255,255,.14); box-shadow: none; }
+  .cta-reassure { color: #64748b; font-size: 0.88rem; margin: 0; }
+
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) { .leaders-detail-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .leaders-hero { padding: 80px 0 30px; }
+    .why-stats { grid-template-columns: repeat(2, 1fr); }
+    .why-stat strong { font-size: 1.7rem; }
+    .detail-card { padding: 26px 22px; }
+    .leaders-insight { padding: 36px 22px; }
+    .consult-cta-box { padding: 48px 22px; }
+    .consult-cta-btn { width: 100%; }
+    .comparison-table td.label { width: 30%; }
+  }
+</style>
+
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
-});
-</script></div>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
+</script>
+</div>
         <aside class="page-side" aria-label="상담 및 최근 글"><style>
   /* ===== 상담 위젯 + 최근 글 (재사용 컴포넌트) ===== */
   .side-consult {

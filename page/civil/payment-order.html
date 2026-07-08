@@ -1,232 +1,264 @@
 ---
 layout: default
 sidebar: true
-title: 수원 지급명령 신청 가이드 | 리더스 합동 법무사 사무소
-description: 수원 지급명령 신청 법무사. 수원지방법원 지급명령 신청 전문. 소송보다 빠른 채권 회수, 저렴한 비용으로 확정판결 효력을 얻으세요.
+title: 수원 지급명령 신청 가이드 | 신청서, 왜 법무사에게 맡길까 | 리더스 합동 법무사
+description: 수원 지급명령 신청 법무사. 소송보다 빠르고 저렴한 지급명령의 장점·절차·이의신청 시 본안 이행·필요서류를 정리했습니다. 신청서 작성 대리는 법무사에게.
 permalink: /civil/payment-order
 ---
 
-<style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+<section class="leaders-page">
 
-:root {
-  --bg: #ffffff;
-  --dark-base: #120b0b; 
-  --burgundy: #8b1d1d; 
-  --burgundy-glow: rgba(139, 29, 29, 0.2);
-  --text-h: #1e293b;
-  --text-p: #64748b;
-  --border-light: #f1f5f9;
-}
-
-.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
-.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-/* --- HERO SECTION --- */
-.hero-canvas { 
-  background: var(--dark-base); 
-  color: #fff; 
-  padding: 160px 0 120px; 
-  text-align: center; 
-  position: relative;
-  overflow: hidden;
-}
-.hero-canvas::before {
-  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
-  width: 600px; height: 400px; background: radial-gradient(circle, var(--burgundy-glow) 0%, transparent 70%);
-  filter: blur(80px); pointer-events: none;
-}
-.hero-status { 
-  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
-  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
-  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
-}
-.status-dot { width: 8px; height: 8px; background: var(--burgundy); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--burgundy); }
-
-.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
-.glow-text { color: var(--burgundy); background: linear-gradient(to right, #8b1d1d, #c53030); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-sub-text { font-size: 1.2rem; color: #a39494; max-width: 720px; margin: 0 auto 48px; }
-
-.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
-.btn-prime { background: var(--burgundy); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--burgundy-glow); }
-.btn-prime:hover { transform: translateY(-3px); background: #a52424; box-shadow: 0 15px 35px rgba(139, 29, 29, 0.4); }
-.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-
-/* --- VALUE STRIP --- */
-.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
-.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
-.value-item { text-align: center; flex: 1; }
-.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
-.v-value { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; }
-.v-line { width: 1px; height: 40px; background: #e2e8f0; }
-
-/* --- BENTO SECTION (DARK) --- */
-.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
-.header-group { text-align: center; margin-bottom: 80px; }
-.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
-.h-desc { color: #8e7f7f; font-size: 1.1rem; }
-
-.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.bento-item { 
-  background: #1c1414; padding: 50px 40px; border-radius: 30px; 
-  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
-}
-.bento-item:hover { 
-  transform: translateY(-12px); border-color: var(--burgundy); 
-  background: #251a1a; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-.bento-tag { font-size: 12px; font-weight: 800; color: var(--burgundy); margin-bottom: 24px; }
-.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
-.bento-item p { color: #a39494; font-size: 1rem; line-height: 1.7; }
-
-/* --- PRICE CARD --- */
-.section-gray { background: #faf8f8; padding: 120px 0; }
-.premium-price-card { 
-  background: #fff; border-radius: 40px; padding: 80px 60px; 
-  box-shadow: 0 40px 100px rgba(139, 29, 29, 0.05); max-width: 900px; margin: 0 auto; 
-  border: 1px solid var(--border-light); text-align: center;
-}
-.p-badge { background: #fff5f5; color: var(--burgundy); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
-.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; color: #1a1a1a; }
-.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
-.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: #1a1a1a; }
-.p-list ul { list-style: none; padding: 0; }
-.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
-.p-list li::before { content: "✓"; color: var(--burgundy); position: absolute; left: 0; font-weight: 900; }
-
-/* --- REVEAL --- */
-.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 1024px) {
-  .bento-grid, .p-list-group { grid-template-columns: 1fr; }
-  .value-grid { flex-direction: column; gap: 30px; }
-}
-@media (max-width: 768px) {
-  .leaders-premium { overflow-x: hidden; }
-  .hero-canvas { padding: 110px 0 70px; }
-  .hero-canvas::before { width: 100%; max-width: 400px; }
-  .hero-sub-text { font-size: 1.05rem; }
-  .hero-cta-group { flex-wrap: wrap; gap: 12px; }
-  .btn-prime, .btn-ghost { padding: 16px 28px; }
-  .section-dark, .section-gray { padding: 70px 0; }
-  .header-group { margin-bottom: 48px; }
-  .h-title { font-size: 1.9rem; }
-  .bento-item { padding: 36px 28px; }
-  .bento-item h3 { font-size: 1.4rem; }
-  .premium-price-card { padding: 48px 26px; border-radius: 28px; }
-  .p-amount { font-size: 2.6rem; }
-}
-@media (max-width: 480px) {
-  .hero-cta-group .btn-prime, .hero-cta-group .btn-ghost { width: 100%; text-align: center; }
-}
-</style>
-
-<section class="leaders-premium">
-
-  <section class="hero-canvas js-reveal">
+  <!-- ① 고민 : 상황 공감 (광고·경력 없이) -->
+  <section class="leaders-hero js-reveal">
     <div class="leaders-container">
-      <div class="hero-content">
-        <div class="hero-status"><span class="status-dot"></span> 신속한 집행권원 확보의 지름길</div>
-        <h1 class="hero-main-title">지급명령,<br><span class="glow-text">소송보다 빠르고 저렴하게</span></h1>
-        <p class="hero-sub-text">빌려준 돈, 물품 대금, 공사 대금 등 분쟁의 소지가 적은 채권이라면 지급명령이 정답입니다. 법원에 출석하지 않고도 확정판결과 동일한 효력을 얻으세요.</p>
-        <div class="hero-cta-group">
-          <a href="/inquiry/" target="_blank" class="btn-prime">지급명령 가능 여부 확인</a>
-          <a href="#price" class="btn-ghost">신청 절차 보기</a>
+      <span class="hero-eyebrow">지급명령 신청</span>
+      <h1 class="leaders-title">빌려준 돈, 빠르게 받아내고 싶은데<br><span class="text-gradient">신청서를 어떻게 써야 할지 막막하신가요?</span></h1>
+      <p class="leaders-desc">
+        “소송까지 가긴 부담스러운데, 그냥 두자니 답답하고…”<br>
+        “지급명령이 좋다는데, 서류를 어디서부터 써야 하지?”<br>
+        분쟁의 소지가 적은 채권이라면, 소송보다 <strong>빠르고 저렴한 길</strong>이 있습니다. 아래에서 차근히 정리해 드릴게요.
+      </p>
+    </div>
+  </section>
+
+  <!-- ② 설명 : 지급명령이란·소송과 비교 (정보·가치 먼저) -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="section-lead">
+        <h2 class="section-lead-title">지급명령, 소송과 무엇이 다를까요?</h2>
+        <p class="section-lead-desc">법정에 나가지 않고 서류 심사만으로 확정판결과 같은 효력을 얻는 간이 절차입니다. 한눈에 비교해 보세요.</p>
+      </div>
+
+      <div class="leaders-table-card js-reveal">
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>일반 민사소송</th>
+                <th class="highlight">지급명령 (독촉절차)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="label">법원 출석</td>
+                <td>변론기일 출석 필요</td>
+                <td class="highlight-cell"><strong>출석 불필요</strong> · 서류 심사만으로 진행</td>
+              </tr>
+              <tr>
+                <td class="label">인지대</td>
+                <td>소가에 따른 정상 인지대</td>
+                <td class="highlight-cell">소송 인지대의 <strong>약 1/10 수준</strong></td>
+              </tr>
+              <tr>
+                <td class="label">소요 기간</td>
+                <td>수개월 이상 소요되는 경우가 많음</td>
+                <td class="highlight-cell">이의 없으면 <strong>비교적 신속</strong>하게 확정</td>
+              </tr>
+              <tr>
+                <td class="label">확정 효력</td>
+                <td>확정판결</td>
+                <td class="highlight-cell">확정 시 <strong>확정판결과 동일한 효력</strong> · 강제집행 가능</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
+
+      <div class="leaders-detail-grid">
+        <article class="detail-card js-reveal">
+          <div class="card-icon">1</div>
+          <h3 class="card-title">신청 → 발령 → 송달</h3>
+          <p class="card-text">
+            채권자가 법원에 <strong>지급명령 신청서</strong>를 제출하면, 법원은 서류 심사 후 지급명령을 발령하고 상대방(채무자)에게 <strong>송달</strong>합니다. 별도의 변론기일은 열리지 않습니다.
+          </p>
+        </article>
+
+        <article class="detail-card js-reveal">
+          <div class="card-icon">2</div>
+          <h3 class="card-title">이의 없으면 확정, 이의 있으면 본안 이행</h3>
+          <p class="card-text">
+            채무자가 송달받고 <strong>2주 이내 이의신청</strong>이 없으면 그대로 확정됩니다. 이의가 들어오면 사건은 <strong>정식 민사소송(본안)으로 이행</strong>되어 재판으로 다투게 됩니다.
+          </p>
+        </article>
+      </div>
+
+      <div class="leaders-detail-grid">
+        <article class="detail-card js-reveal">
+          <div class="card-icon">✓</div>
+          <h3 class="card-title">이런 채권에 적합합니다</h3>
+          <p class="card-text">
+            빌려준 돈, 물품 대금, 공사 대금, 임대료처럼 <strong>다툼의 소지가 적고 증빙이 명확한 금전 채권</strong>이라면 지급명령이 효율적입니다. 상대방이 이의할 가능성이 낮은 사안에 특히 유리합니다.
+          </p>
+        </article>
+
+        <article class="detail-card js-reveal">
+          <div class="card-icon">!</div>
+          <h3 class="card-title">필요서류·확인사항</h3>
+          <p class="card-text">
+            차용증·거래명세·계좌이체 내역 등 <strong>채권을 증명할 자료</strong>와 상대방의 <strong>인적사항·주소</strong>가 필요합니다. 주소나 주민등록번호를 모르는 경우에는 별도 확인 절차가 필요할 수 있습니다.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <div class="value-strip js-reveal">
+  <!-- ③ 왜 법무사에게 : 설득 + 경력 (가치 다음에) -->
+  <section class="why-section js-reveal">
     <div class="leaders-container">
-      <div class="value-grid">
-        <div class="value-item"><span class="v-label">평균 기간</span><span class="v-value">약 1~2개월 내외</span></div>
-        <div class="v-line"></div>
-        <div class="value-item"><span class="v-label">비용 절감</span><span class="v-value">소송 인지대의 1/10</span></div>
-        <div class="v-line"></div>
-        <div class="value-item"><span class="v-label">법적 효력</span><span class="v-value">강제집행 가능</span></div>
-      </div>
-    </div>
-  </div>
-
-  <section class="section-dark">
-    <div class="leaders-container">
-      <div class="header-group js-reveal">
-        <h2 class="h-title">지급명령 핵심 장점</h2>
-        <p class="h-desc">상대방의 이의신청이 없을 것으로 예상된다면 가장 효율적인 채권 회수 수단입니다.</p>
+      <div class="why-head">
+        <span class="why-eyebrow">왜 법무사에게 맡길까</span>
+        <h2 class="why-title">지급명령은 ‘내는 것’보다<br>‘정확히 쓰는 것’이 결과를 가릅니다</h2>
+        <p class="why-sub">
+          청구금액·이자·청구원인이 어긋나거나 증빙 정리가 부실하면 <strong>보정·각하로 시간이 지연</strong>되고, 이의로 본안까지 가면 부담이 커집니다.
+          리더스는 청구금액과 증빙을 정확히 맞춰 신청서를 작성하는 일을 <strong>법원 서류 실무 16년</strong>의 경험으로 다룹니다. 대행 직원이 아니라 대표 법무사가 봅니다.
+        </p>
       </div>
 
-      <div class="bento-grid">
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">SPEED</div>
-          <h3>신속한 절차 진행<br>법원 출석 불필요</h3>
-          <p>변론기일이 열리지 않아 법원에 직접 출석할 필요가 없습니다. 서류 심사만으로 명령이 내려져 소송보다 훨씬 빠르게 종결됩니다.</p>
-        </div>
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">ECONOMY</div>
-          <h3>경제적인 소송 비용<br>낮은 문턱</h3>
-          <p>정식 민사소송 대비 인지대가 10분의 1 수준으로 매우 저렴합니다. 소액 채권 회수에 가장 최적화된 법적 절차입니다.</p>
-        </div>
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">EXECUTION</div>
-          <h3>확정 시 즉시 집행<br>채권 압류 가능</h3>
-          <p>상대방이 명령을 받고 2주 이내에 이의신청을 하지 않으면 즉시 확정되며, 이를 근거로 통장 압류 등 강제집행이 가능합니다.</p>
+      <div class="why-stats">
+        <div class="why-stat"><strong>30<em>년</em></strong><span>실무 경력</span></div>
+        <div class="why-stat"><strong>16<em>년</em></strong><span>법원 서류 실무</span></div>
+        <div class="why-stat"><strong>3<em>인</em></strong><span>법무사 직접 검토</span></div>
+        <div class="why-stat"><strong>직접</strong><span>대표 작성</span></div>
+      </div>
+
+      <div class="leaders-insight js-reveal">
+        <div class="leaders-insight-content">
+          <span class="leaders-insight-tag">전문가의 INSIGHT</span>
+          <h2 class="leaders-insight-title">“청구금액과 증빙이 정확해야, 절차가 빨라집니다.”</h2>
+          <p class="leaders-insight-desc">지급명령은 서류 심사로 결정되는 절차입니다. 청구원인과 금액, 증빙을 <strong>법원이 읽기 쉬운 형태</strong>로 정리해 두면 보정 없이 발령까지 매끄럽게 이어집니다. 리더스가 그 서류를 준비합니다.</p>
         </div>
       </div>
+
+      <p class="scope-note">
+        ※ 리더스 합동 법무사 사무소는 <strong>지급명령신청서 등 법원 제출 서류의 작성 대리</strong>를 지원합니다.
+        소송 대리·법정 변론은 수행하지 않으며, 상대방의 이의·자력 등에 따라 실제 <strong>채권 회수나 결과는 보장할 수 없습니다.</strong>
+      </p>
     </div>
   </section>
 
-  <section class="section-gray" id="price">
+  <!-- ④ 상담 유도 CTA (설득 다음에) -->
+  <section class="leaders-consult-cta">
     <div class="leaders-container">
-      <div class="premium-price-card js-reveal">
-        <div class="p-badge">PAYMENT ORDER SERVICE</div>
-        <h2 class="p-amount">합리적인 비용</h2>
-        <p class="p-info">채권 금액에 상관없이 투명한 작성 대행료로 신속하게 신청해 드립니다.</p>
-        
-        <div class="p-list-group">
-          <div class="p-list">
-            <h4>신청 대행 패키지</h4>
-            <ul>
-              <li>채권 관계 및 증거 자료 검토</li>
-              <li>지급명령 신청서 전문 작성</li>
-              <li>전자소송 시스템 즉시 접수</li>
-            </ul>
-          </div>
-          <div class="p-list">
-            <h4>사후 관리 서비스</h4>
-            <ul>
-              <li>상대방 송달 현황 실시간 추적</li>
-              <li>주소보정 및 재송달 신청 대행</li>
-              <li>확정 증명서 발급 및 향후 가이드</li>
-            </ul>
-          </div>
+      <div class="consult-cta-box">
+        <span class="cta-eyebrow">무료 상담</span>
+        <h2 class="consult-cta-title">지급명령이 맞을지, 서류부터 어떻게 준비할지 — 30분이면 정리됩니다</h2>
+        <p class="consult-cta-desc">지금 채권 상황과 증빙을 말씀해 주시면, 법무사가 직접 검토해 무엇부터 준비할지 알려드립니다. 상담만으로 바로 수임하실 필요는 없습니다.</p>
+        <div class="cta-btn-row">
+          <a href="tel:0312256885" class="consult-cta-btn consult-cta-btn--tel">📞 031-225-6885</a>
+          <a href="/inquiry/" class="consult-cta-btn">무료 상담 신청 →</a>
         </div>
-        <div style="margin-top: 60px;">
-          <a href="/inquiry/" class="btn-prime">지급명령 신청 문의</a>
-          <p style="margin-top: 20px; font-size: 0.85rem; color: #94a3a3;">* 상대방의 주소나 주민등록번호를 모르는 경우 별도 상담이 필요합니다.</p>
-        </div>
+        <p class="cta-reassure">무료 · 수임 의무 없음 · 수원지방법원 관할 직접 대응</p>
       </div>
     </div>
   </section>
-
-  {% include cta-box.html 
-     title="미뤄둔 채권 회수, 지금 시작하면 결과가 달라집니다." 
-     desc="리더스 합동 법무사 사무소가 빠르고 정확한 집행권원 확보를 돕겠습니다." 
-  %}
-
 </section>
 
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #c5a059;
+    --brand-accent-d: #a9863f;
+    --brand-soft: #f7f1e4;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 20px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #fff; line-height: 1.6; overflow-x: hidden; }
+  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .leaders-container--narrow { max-width: 860px; }
+  /* 3단(좌 서브내비 + 우 상담위젯): 컨테이너 풀폭 → 우측 위젯 오른쪽 끝 + 본문 확장 (전역 style.css에도 있음) */
+
+  /* ① 고민 히어로 */
+  .leaders-hero { padding: 104px 0 40px; text-align: center; }
+  .hero-eyebrow { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent-d); margin-bottom: 16px; }
+  .leaders-title { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 850; margin-bottom: 22px; letter-spacing: -0.03em; line-height: 1.3; word-break: keep-all; }
+  .text-gradient { background: linear-gradient(135deg, #c5a059 0%, #a9863f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .leaders-desc { font-size: 1.12rem; color: var(--text-sub); word-break: keep-all; max-width: 760px; margin: 0 auto; line-height: 1.85; }
+
+  /* ② 설명 */
+  .leaders-section { padding: 40px 0 30px; }
+  .section-lead { text-align: center; max-width: 720px; margin: 0 auto 32px; }
+  .section-lead-title { font-size: clamp(1.4rem, 3.4vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; word-break: keep-all; margin: 0 0 12px; }
+  .section-lead-desc { font-size: 1rem; color: var(--text-sub); word-break: keep-all; margin: 0; }
+
+  .leaders-table-card { background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.04); overflow: hidden; margin-bottom: 48px; }
+  .table-responsive { overflow-x: auto; }
+  .comparison-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+  .comparison-table th { padding: 22px; background: #fcfcfc; font-weight: 800; font-size: 1.05rem; border-bottom: 2px solid #f1f5f9; }
+  .comparison-table th.highlight { background: var(--brand-soft); color: var(--brand-accent-d); }
+  .comparison-table td { padding: 18px 22px; border-bottom: 1px solid #f1f5f9; font-size: 1rem; color: var(--text-sub); }
+  .comparison-table td.label { background: #fcfcfc; color: var(--text-main); font-weight: 700; text-align: center; width: 20%; }
+  .comparison-table td.highlight-cell { background: rgba(197,160,89,.05); color: var(--text-main); }
+  .comparison-table tr:last-child td { border-bottom: none; }
+
+  .leaders-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 20px; }
+  .detail-card { background: #fff; padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--border); transition: var(--transition); }
+  .detail-card:hover { transform: translateY(-6px); border-color: var(--brand-accent); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+  .card-icon { width: 34px; height: 34px; background: var(--brand-soft); color: var(--brand-accent-d); display: flex; align-items: center; justify-content: center; border-radius: 9px; font-weight: 900; margin-bottom: 18px; }
+  .card-title { font-size: 1.22rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+  .card-text { color: var(--text-sub); font-size: 1rem; line-height: 1.75; word-break: keep-all; }
+
+  /* ③ 왜 법무사 (설득) */
+  .why-section { padding: 30px 0 60px; }
+  .why-head { text-align: center; max-width: 780px; margin: 0 auto 32px; }
+  .why-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent-d); }
+  .why-title { font-size: clamp(1.45rem, 3.4vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 10px 0 16px; word-break: keep-all; line-height: 1.35; }
+  .why-sub { font-size: 1.04rem; color: var(--text-sub); line-height: 1.8; word-break: keep-all; margin: 0; }
+  .why-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 820px; margin: 0 auto 40px; background: #0f172a; border-radius: var(--radius-md); overflow: hidden; padding: 6px; }
+  .why-stat { text-align: center; padding: 26px 10px; }
+  .why-stat strong { display: block; font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+  .why-stat strong em { font-size: 1rem; font-style: normal; color: var(--brand-accent); margin-left: 2px; }
+  .why-stat span { display: block; margin-top: 8px; font-size: 12.5px; color: rgba(255,255,255,.7); }
+
+  .leaders-insight { padding: 56px; background: var(--brand); border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; margin-bottom: 30px; }
+  .leaders-insight::after { content: '“'; position: absolute; right: 40px; bottom: -20px; font-size: 15rem; color: rgba(255,255,255,0.05); font-family: serif; }
+  .leaders-insight-tag { color: var(--brand-accent); font-weight: 800; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; }
+  .leaders-insight-title { font-size: clamp(1.35rem, 3vw, 1.8rem); margin: 14px 0; font-weight: 800; word-break: keep-all; }
+  .leaders-insight-desc { opacity: .88; max-width: 660px; font-weight: 300; line-height: 1.85; word-break: keep-all; }
+
+  .scope-note { font-size: 0.88rem; color: #94a3b8; line-height: 1.7; word-break: keep-all; background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin: 0; }
+
+  /* ④ CTA */
+  .leaders-consult-cta { padding: 40px 0 90px; }
+  .consult-cta-box { width: 100%; box-sizing: border-box; background: linear-gradient(135deg, #0f172a, #16233b); border-radius: 32px; padding: 60px 40px; text-align: center; }
+  .cta-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent); margin-bottom: 12px; }
+  .consult-cta-title { color: #fff; font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 16px; word-break: keep-all; }
+  .consult-cta-desc { color: #94a3b8; font-size: 1.02rem; line-height: 1.7; margin: 0 auto 30px; max-width: 620px; word-break: keep-all; }
+  .cta-btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 16px; }
+  .consult-cta-btn { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #c5a059, #e2c28d); color: #1a1207; font-weight: 800; font-size: 1.05rem; padding: 16px 40px; border-radius: 100px; text-decoration: none; transition: var(--transition); }
+  .consult-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(197,160,89,.4); }
+  .consult-cta-btn--tel { background: rgba(255,255,255,.08); color: #fff; border: 1.5px solid rgba(255,255,255,.25); }
+  .consult-cta-btn--tel:hover { background: rgba(255,255,255,.14); box-shadow: none; }
+  .cta-reassure { color: #64748b; font-size: 0.88rem; margin: 0; }
+
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) { .leaders-detail-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .leaders-hero { padding: 80px 0 30px; }
+    .why-stats { grid-template-columns: repeat(2, 1fr); }
+    .why-stat strong { font-size: 1.7rem; }
+    .detail-card { padding: 26px 22px; }
+    .leaders-insight { padding: 36px 22px; }
+    .consult-cta-box { padding: 48px 22px; }
+    .consult-cta-btn { width: 100%; }
+    .comparison-table td.label { width: 30%; }
+  }
+</style>
+
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
-});
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
 </script>

@@ -2,273 +2,251 @@
 layout: default
 sidebar: true
 title: 수원 법인등기 안내 | 리더스 합동 법무사 사무소
-description: 수원 법인등기 법무사. 수원지역 법인 설립·임원변경·본점이전·목적변경 전문. 보정·반려 없는 법인등기 서비스.
+description: 수원 법인등기 법무사. 법인 설립·임원변경·목적/상호변경·본점이전·자본금변경 등기. 변경 후 2주 기한·과태료 주의, 16년 실무의 대표 법무사가 직접 처리합니다.
 permalink: /registry/corporate
 ---
 
-<style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+<section class="leaders-page">
 
-:root {
-  --bg: #ffffff;
-  --dark-base: #0a0f0e; /* 더 깊이감 있는 다크 */
-  --navy: #0f2f2a;
-  --teal: #259d91; /* 업그레이드된 강조색 */
-  --teal-glow: rgba(37, 157, 145, 0.2);
-  --text-h: #1e293b;
-  --text-p: #64748b;
-  --border-light: #f1f5f9;
-  --glass: rgba(255, 255, 255, 0.03);
-}
-
-.leaders-premium { font-family: 'Pretendard', sans-serif; color: var(--text-h); line-height: 1.7; word-break: keep-all; }
-.leaders-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-/* --- HERO SECTION --- */
-.hero-canvas { 
-  background: var(--dark-base); 
-  color: #fff; 
-  padding: 160px 0 120px; 
-  text-align: center; 
-  position: relative;
-  overflow: hidden;
-}
-/* 배경 은은한 그라데이션 광 효과 */
-.hero-canvas::before {
-  content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
-  width: 600px; height: 400px; background: radial-gradient(circle, var(--teal-glow) 0%, transparent 70%);
-  filter: blur(80px); pointer-events: none;
-}
-.hero-status { 
-  display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); 
-  padding: 8px 20px; border-radius: 100px; margin-bottom: 32px; 
-  font-size: 14px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
-}
-.status-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--teal); }
-
-.hero-main-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 850; line-height: 1.15; margin-bottom: 28px; letter-spacing: -0.03em; }
-.glow-text { color: var(--teal); background: linear-gradient(to right, #259d91, #4ecdc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-sub-text { font-size: 1.2rem; color: #94a3b8; max-width: 720px; margin: 0 auto 48px; font-weight: 400; }
-
-.hero-cta-group { display: flex; gap: 16px; justify-content: center; }
-.btn-prime { background: var(--teal); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 30px var(--teal-glow); }
-.btn-prime:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(37, 157, 145, 0.4); }
-.btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-.btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); }
-
-/* --- VALUE STRIP --- */
-.value-strip { background: #fff; padding: 50px 0; border-bottom: 1px solid var(--border-light); }
-.value-grid { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
-.value-item { text-align: center; flex: 1; }
-.v-label { font-size: 13px; color: var(--text-p); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
-.v-value { font-size: 1.5rem; font-weight: 800; color: var(--navy); }
-.v-line { width: 1px; height: 40px; background: #e2e8f0; }
-
-/* --- BENTO SECTION (DARK) --- */
-.section-dark { background: var(--dark-base); padding: 120px 0; color: #fff; }
-.header-group { text-align: center; margin-bottom: 80px; }
-.h-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
-.h-desc { color: #64748b; font-size: 1.1rem; }
-
-.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.bento-item { 
-  background: #111817; padding: 50px 40px; border-radius: 30px; 
-  border: 1px solid rgba(255,255,255,0.03); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
-  position: relative; overflow: hidden;
-}
-.bento-item:hover { 
-  transform: translateY(-12px); border-color: var(--teal); 
-  background: #141d1b; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-.bento-tag { font-size: 12px; font-weight: 800; color: var(--teal); margin-bottom: 24px; letter-spacing: 0.05em; }
-.bento-item h3 { font-size: 1.6rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
-.bento-item p { color: #94a3b8; font-size: 1rem; line-height: 1.6; }
-.bento-footer { margin-top: 32px; font-size: 13px; color: #475569; font-weight: 500; }
-
-/* --- STRATEGY SECTION --- */
-.section-white { background: #fff; padding: 120px 0; }
-.strategy-box { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: flex-start; }
-.str-title { font-size: 2.8rem; font-weight: 850; line-height: 1.2; margin-bottom: 32px; letter-spacing: -0.02em; }
-.text-blue { color: var(--teal); }
-.str-desc { font-size: 1.15rem; color: var(--text-p); }
-
-.str-right { display: flex; flex-direction: column; gap: 20px; }
-.str-card { 
-  background: #f8fafc; padding: 32px; border-radius: 20px; 
-  border: 1px solid var(--border-light); transition: 0.3s;
-}
-.str-card:hover { border-color: var(--teal); background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.str-card h4 { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: var(--navy); }
-.str-card p { font-size: 1rem; color: var(--text-p); }
-
-/* --- PRICE CARD --- */
-.section-gray { background: #f8fafc; padding: 120px 0; }
-.premium-price-card { 
-  background: #fff; border-radius: 40px; padding: 80px 60px; 
-  box-shadow: 0 40px 100px rgba(0,0,0,0.04); max-width: 900px; margin: 0 auto; 
-  border: 1px solid var(--border-light);
-}
-.p-badge { background: #eefdfc; color: var(--teal); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 24px; display: inline-block; }
-.p-amount { font-size: 3.5rem; font-weight: 900; margin-bottom: 16px; letter-spacing: -0.02em; }
-.p-list-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 48px; }
-.p-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: var(--navy); }
-.p-list ul { list-style: none; padding: 0; }
-.p-list li { font-size: 0.95rem; color: var(--text-p); margin-bottom: 12px; position: relative; padding-left: 24px; }
-.p-list li::before { content: "✓"; color: var(--teal); position: absolute; left: 0; font-weight: 900; }
-
-/* --- REVEAL --- */
-.js-reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-/* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
-  .bento-grid, .strategy-box, .p-list-group { grid-template-columns: 1fr; }
-  .value-grid { flex-direction: column; gap: 30px; }
-  .v-line { display: none; }
-  .hero-cta-group { flex-direction: column; padding: 0 40px; }
-}
-@media (max-width: 768px) {
-  .leaders-premium { overflow-x: hidden; }
-  .hero-canvas { padding: 110px 0 70px; }
-  .hero-canvas::before { width: 100%; max-width: 400px; }
-  .hero-sub-text { font-size: 1.05rem; }
-  .btn-prime, .btn-ghost { padding: 16px 28px; text-align: center; }
-  .section-dark, .section-white, .section-gray { padding: 70px 0; }
-  .header-group { margin-bottom: 48px; }
-  .h-title { font-size: 1.9rem; }
-  .str-title { font-size: 2rem; }
-  .bento-item { padding: 36px 28px; }
-  .bento-item h3 { font-size: 1.4rem; }
-  .premium-price-card { padding: 48px 26px; border-radius: 28px; }
-  .p-amount { font-size: 2.6rem; }
-}
-</style>
-
-<section class="leaders-premium">
-
-  <section class="hero-canvas js-reveal">
+  <!-- ① 고민 : 상황 공감 (광고·경력 없이) -->
+  <section class="leaders-hero js-reveal">
     <div class="leaders-container">
-      <div class="hero-content">
-        <div class="hero-status"><span class="status-dot"></span> 2026 리더스 법인등기 실무 기준</div>
-        <h1 class="hero-main-title">법인등기,<br><span class="glow-text">접수보다 설계가 먼저입니다</span></h1>
-        <p class="hero-sub-text">법인등기는 단순 서류 작업이 아니라 <strong>기업의 지배구조를 완성하는 법률 행위</strong>입니다. 리더스는 보정 없는 최적의 문구를 설계합니다.</p>
-        <div class="hero-cta-group">
-          <a href="/inquiry/" target="_blank" class="btn-prime">법인등기 전략 상담하기</a>
-          <a href="#price" class="btn-ghost">서비스 상세 보기</a>
+      <span class="hero-eyebrow">법인등기 안내</span>
+      <h1 class="leaders-title">법인 설립·임원변경 등기,<br>셀프로 가능한지 <span class="text-gradient">막막하신가요?</span></h1>
+      <p class="leaders-desc">
+        “대표이사가 바뀌었는데, 등기를 언제까지 해야 하지?”<br>
+        “자본금을 늘리려면 뭐부터 준비해야 하나?”<br>
+        법인등기는 종류마다 <strong>필요한 서류와 기한, 결의 절차</strong>가 다릅니다. 아래에서 유형별로 차근히 정리해 드릴게요.
+      </p>
+    </div>
+  </section>
+
+  <!-- ② 설명 : 법인등기 유형별 (정보·가치 먼저) -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="section-lead">
+        <h2 class="section-lead-title">법인등기, 유형마다 서류와 기한이 다릅니다</h2>
+        <p class="section-lead-desc">대부분의 변경등기는 <strong>변경일로부터 2주 이내</strong>가 원칙이며, 기한을 넘기면 과태료가 부과될 수 있습니다. 한눈에 정리해 보세요.</p>
+      </div>
+
+      <div class="leaders-table-card js-reveal">
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>등기 유형</th>
+                <th>주요 필요 서류</th>
+                <th class="highlight">신청 기한 · 주의</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="label">법인 설립</td>
+                <td>정관, 주주(발기인) 명부, 잔고증명, 취임승낙서 등</td>
+                <td class="highlight-cell">설립 절차 완료 후 <strong>등기 시 법인 성립</strong></td>
+              </tr>
+              <tr>
+                <td class="label">임원 변경</td>
+                <td>주주총회·이사회 의사록, 취임·사임 관련 서류, 인감증명 등</td>
+                <td class="highlight-cell">변경일로부터 <strong>2주 이내</strong> · 지연 시 과태료</td>
+              </tr>
+              <tr>
+                <td class="label">목적·상호 변경</td>
+                <td>주주총회 의사록(정관 변경), 변경된 정관 등</td>
+                <td class="highlight-cell">변경 결의 후 <strong>2주 이내</strong></td>
+              </tr>
+              <tr>
+                <td class="label">본점 이전</td>
+                <td>이사회·주주총회 의사록, 신 본점 소재지 관련 서류 등</td>
+                <td class="highlight-cell">이전일로부터 <strong>2주 이내</strong> · 관할 외 이전 주의</td>
+              </tr>
+              <tr>
+                <td class="label">자본금 변경</td>
+                <td>주주총회 의사록, 신주발행·감자 관련 서류, 잔고증명 등</td>
+                <td class="highlight-cell">효력 발생 후 <strong>2주 이내</strong> · 절차 요건 확인</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
+
+      <div class="leaders-detail-grid">
+        <article class="detail-card js-reveal">
+          <div class="card-icon">!</div>
+          <h3 class="card-title">기한을 넘기면 ‘과태료’가 나옵니다</h3>
+          <p class="card-text">
+            변경등기는 대부분 <strong>변경일로부터 2주 이내</strong>가 원칙입니다. 등기를 미루면 대표이사 등에게 <strong>과태료</strong>가 부과될 수 있어, 결의가 있었다면 서둘러 처리하는 편이 안전합니다.
+          </p>
+        </article>
+
+        <article class="detail-card js-reveal">
+          <div class="card-icon">✓</div>
+          <h3 class="card-title">‘의사록·정관’이 절차와 맞아야 합니다</h3>
+          <p class="card-text">
+            같은 임원변경이라도 <strong>결의 요건과 서류 구성</strong>이 정확해야 등기가 수리됩니다. 의사록·정관이 절차와 어긋나면 보정·반려로 이어져, 초기 서류 정리가 중요합니다.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <div class="value-strip js-reveal">
+  <!-- ③ 왜 법무사에게 : 설득 + 경력 (가치 다음에) -->
+  <section class="why-section js-reveal">
     <div class="leaders-container">
-      <div class="value-grid">
-        <div class="value-item"><span class="v-label">핵심 지표</span><span class="v-value">반려율 0% 목표</span></div>
-        <div class="v-line"></div>
-        <div class="value-item"><span class="v-label">전문 분야</span><span class="v-value">IT·스타트업 전담</span></div>
-        <div class="v-line"></div>
-        <div class="value-item"><span class="v-label">진행 속도</span><span class="v-value">최단기 완료 지향</span></div>
-      </div>
-    </div>
-  </div>
-
-  <section class="section-dark">
-    <div class="leaders-container">
-      <div class="header-group js-reveal">
-        <h2 class="h-title">고난도 법인등기 솔루션</h2>
-        <p class="h-desc">문구 하나로 사업의 방향이 바뀔 수 있습니다. 리더스가 책임집니다.</p>
+      <div class="why-head">
+        <span class="why-eyebrow">왜 법무사에게 맡길까</span>
+        <h2 class="why-title">법인등기는<br>법무사의 ‘고유 업무’입니다</h2>
+        <p class="why-sub">
+          법인 설립·변경 등기신청의 대리는 <strong>법무사의 고유 업무</strong>로 정해져 있습니다.
+          서류 한 줄, 결의 요건 하나가 어긋나면 보정·반려로 시간이 늘어나고 <strong>기한을 넘겨 과태료</strong>로 이어지기도 합니다.
+          리더스는 그 서류를 <strong>16년 실무의 대표 법무사가 직접</strong> 검토합니다. 대행 직원이 아니라 대표가 봅니다.
+        </p>
       </div>
 
-      <div class="bento-grid">
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">ESTABLISHMENT</div>
-          <h3>법인 설립 등기<br>및 정관 구조 설계</h3>
-          <p>초기 자본금 설정부터 주식 발행 한도, 정관의 특약 사항까지 기업의 확장성을 고려하여 설계합니다.</p>
-          <div class="bento-footer">#정관최적화 #신규설립</div>
-        </div>
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">GOVERNANCE</div>
-          <h3>임원 변경·사임·중임<br>지배구조 관리</h3>
-          <p>복잡한 주주총회 및 이사회 결의 요건을 꼼꼼히 검토하여 경영권 분쟁 소지가 없는 깨끗한 등기를 준비합니다.</p>
-          <div class="bento-footer">#경영권보호 #임원관리</div>
-        </div>
-        <div class="bento-item js-reveal">
-          <div class="bento-tag">EXPANSION</div>
-          <h3>본점 이전 및 목적 변경<br>사업 확장 대응</h3>
-          <p>관할 외 이전 시 세금 문제와 목적 추가에 따른 관련 법령 저촉 여부를 사전에 점검합니다.</p>
-          <div class="bento-footer">#관할이전 #목적추가</div>
+      <div class="why-stats">
+        <div class="why-stat"><strong>30<em>년</em></strong><span>검찰 실무</span></div>
+        <div class="why-stat"><strong>16<em>년</em></strong><span>법무사 실무</span></div>
+        <div class="why-stat"><strong>3<em>인</em></strong><span>수원지검 출신</span></div>
+        <div class="why-stat"><strong>직접</strong><span>대표 검토</span></div>
+      </div>
+
+      <div class="leaders-insight js-reveal">
+        <div class="leaders-insight-content">
+          <span class="leaders-insight-tag">전문가의 INSIGHT</span>
+          <h2 class="leaders-insight-title">“등기는 결의가 있었던 그날부터 시계가 돌아갑니다.”</h2>
+          <p class="leaders-insight-desc">임원변경·목적변경 결의를 마쳤다면 원칙적으로 2주 이내에 등기해야 합니다. 리더스가 <strong>필요 서류와 기한</strong>을 먼저 짚어, 오류와 과태료를 예방하며 정확하게 마무리합니다.</p>
         </div>
       </div>
+
+      <p class="scope-note">
+        ※ 리더스 합동 법무사 사무소는 <strong>법인 설립·변경 등기신청서 등 서류 작성 및 등기신청 대리</strong>를 지원합니다.
+        신청 기한·과태료·필요 서류는 사안에 따라 달라질 수 있으며, 세무·회계 등 별도 전문 영역은 해당 전문가와 함께 확인하시기를 권해 드립니다.
+      </p>
     </div>
   </section>
 
-  <section class="section-white js-reveal">
+  <!-- ④ 상담 유도 CTA (설득 다음에) -->
+  <section class="leaders-consult-cta">
     <div class="leaders-container">
-      <div class="strategy-box">
-        <div class="str-left">
-          <h2 class="str-title">왜 기업들은<br><span class="text-blue">리더스를 선택하는가?</span></h2>
-          <p class="str-desc">법인등기 반려는 서류 미비보다 '법리적 표현 오류'에서 비롯되는 경우가 많습니다. 리더스는 등기소의 최신 실무 기준을 지속적으로 반영합니다.</p>
+      <div class="consult-cta-box">
+        <span class="cta-eyebrow">무료 상담</span>
+        <h2 class="consult-cta-title">어떤 서류가, 언제까지 필요한지 — 먼저 정리해 드립니다</h2>
+        <p class="consult-cta-desc">지금 상황을 말씀해 주시면, 대표 법무사가 직접 필요한 서류와 기한을 알려드립니다. 상담만으로 바로 진행하실 필요는 없습니다.</p>
+        <div class="cta-btn-row">
+          <a href="tel:0312256885" class="consult-cta-btn consult-cta-btn--tel">📞 031-225-6885</a>
+          <a href="/inquiry/" class="consult-cta-btn">무료 상담 신청 →</a>
         </div>
-        <div class="str-right">
-          <div class="str-card"><h4>01. 사전 시뮬레이션</h4><p>등기 접수 전, 예상되는 모든 보정 사유를 시뮬레이션하여 제거합니다.</p></div>
-          <div class="str-card"><h4>02. 정관 정밀 커스터마이징</h4><p>표준 정관이 아닌, 귀사의 비즈니스에 최적화된 문구를 삽입합니다.</p></div>
-          <div class="str-card"><h4>03. 전담 매니저 매칭</h4><p>사건 접수부터 완료 가이드까지 1:1 전담 피드백을 제공합니다.</p></div>
-        </div>
+        <p class="cta-reassure">무료 · 진행 의무 없음 · 수원 지역 법인등기 직접 대응</p>
       </div>
     </div>
   </section>
-
-  <section class="section-gray" id="price">
-    <div class="leaders-container">
-      <div class="premium-price-card js-reveal">
-        <div class="p-badge">PREMIUM CORPORATE SERVICE</div>
-        <h2 class="p-amount">사안별 정찰제</h2>
-        <p class="p-info">기업의 규모와 등기 난이도에 따라 투명하게 산정된 견적서를 발송해 드립니다.</p>
-        
-        <div class="p-list-group">
-          <div class="p-list">
-            <h4>포함 서비스</h4>
-            <ul>
-              <li>법률 구조 사전 컨설팅</li>
-              <li>의사록 및 서류 일체 작성</li>
-              <li>등기소 실시간 모니터링</li>
-            </ul>
-          </div>
-          <div class="p-list">
-            <h4>사후 관리</h4>
-            <ul>
-              <li>등기 완료 가이드 제공</li>
-              <li>차기 정기등기 알림 서비스</li>
-              <li>제세공과금 신고 대행 안내</li>
-            </ul>
-          </div>
-        </div>
-        <div style="margin-top: 60px;">
-          <a href="/inquiry/" class="btn-prime">지금 바로 견적 문의하기</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {% include cta-box.html 
-     title="법인등기, 접수 전에 이미 성공해야 합니다." 
-     desc="리더스 합동 법무사 사무소가 정확하게 마무리해 드립니다."
-  %}
-
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        // 한 번 보이면 감시 해제 (성능 최적화)
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
-});
+  :root {
+    --brand: #0f172a;
+    --brand-accent: #c5a059;
+    --brand-accent-d: #a9863f;
+    --brand-soft: #f7f1e4;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --radius-lg: 32px;
+    --radius-md: 20px;
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #fff; line-height: 1.6; overflow-x: hidden; }
+  .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .leaders-container--narrow { max-width: 860px; }
+  /* 3단(좌 서브내비 + 우 상담위젯): 컨테이너 풀폭 → 우측 위젯 오른쪽 끝 + 본문 확장 (전역 style.css에도 있음) */
+
+  /* ① 고민 히어로 */
+  .leaders-hero { padding: 104px 0 40px; text-align: center; }
+  .hero-eyebrow { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent-d); margin-bottom: 16px; }
+  .leaders-title { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 850; margin-bottom: 22px; letter-spacing: -0.03em; line-height: 1.3; word-break: keep-all; }
+  .text-gradient { background: linear-gradient(135deg, #c5a059 0%, #a9863f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .leaders-desc { font-size: 1.12rem; color: var(--text-sub); word-break: keep-all; max-width: 760px; margin: 0 auto; line-height: 1.85; }
+
+  /* ② 설명 */
+  .leaders-section { padding: 40px 0 30px; }
+  .section-lead { text-align: center; max-width: 720px; margin: 0 auto 32px; }
+  .section-lead-title { font-size: clamp(1.4rem, 3.4vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; word-break: keep-all; margin: 0 0 12px; }
+  .section-lead-desc { font-size: 1rem; color: var(--text-sub); word-break: keep-all; margin: 0; }
+
+  .leaders-table-card { background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.04); overflow: hidden; margin-bottom: 48px; }
+  .table-responsive { overflow-x: auto; }
+  .comparison-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+  .comparison-table th { padding: 22px; background: #fcfcfc; font-weight: 800; font-size: 1.05rem; border-bottom: 2px solid #f1f5f9; }
+  .comparison-table th.highlight { background: var(--brand-soft); color: var(--brand-accent-d); }
+  .comparison-table td { padding: 18px 22px; border-bottom: 1px solid #f1f5f9; font-size: 1rem; color: var(--text-sub); }
+  .comparison-table td.label { background: #fcfcfc; color: var(--text-main); font-weight: 700; text-align: center; width: 20%; }
+  .comparison-table td.highlight-cell { background: rgba(197,160,89,.05); color: var(--text-main); }
+  .comparison-table tr:last-child td { border-bottom: none; }
+
+  .leaders-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 20px; }
+  .detail-card { background: #fff; padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--border); transition: var(--transition); }
+  .detail-card:hover { transform: translateY(-6px); border-color: var(--brand-accent); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+  .card-icon { width: 34px; height: 34px; background: var(--brand-soft); color: var(--brand-accent-d); display: flex; align-items: center; justify-content: center; border-radius: 9px; font-weight: 900; margin-bottom: 18px; }
+  .card-title { font-size: 1.22rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+  .card-text { color: var(--text-sub); font-size: 1rem; line-height: 1.75; word-break: keep-all; }
+
+  /* ③ 왜 법무사 (설득) */
+  .why-section { padding: 30px 0 60px; }
+  .why-head { text-align: center; max-width: 780px; margin: 0 auto 32px; }
+  .why-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent-d); }
+  .why-title { font-size: clamp(1.45rem, 3.4vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 10px 0 16px; word-break: keep-all; line-height: 1.35; }
+  .why-sub { font-size: 1.04rem; color: var(--text-sub); line-height: 1.8; word-break: keep-all; margin: 0; }
+  .why-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 820px; margin: 0 auto 40px; background: #0f172a; border-radius: var(--radius-md); overflow: hidden; padding: 6px; }
+  .why-stat { text-align: center; padding: 26px 10px; }
+  .why-stat strong { display: block; font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+  .why-stat strong em { font-size: 1rem; font-style: normal; color: var(--brand-accent); margin-left: 2px; }
+  .why-stat span { display: block; margin-top: 8px; font-size: 12.5px; color: rgba(255,255,255,.7); }
+
+  .leaders-insight { padding: 56px; background: var(--brand); border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; margin-bottom: 30px; }
+  .leaders-insight::after { content: '“'; position: absolute; right: 40px; bottom: -20px; font-size: 15rem; color: rgba(255,255,255,0.05); font-family: serif; }
+  .leaders-insight-tag { color: var(--brand-accent); font-weight: 800; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; }
+  .leaders-insight-title { font-size: clamp(1.35rem, 3vw, 1.8rem); margin: 14px 0; font-weight: 800; word-break: keep-all; }
+  .leaders-insight-desc { opacity: .88; max-width: 660px; font-weight: 300; line-height: 1.85; word-break: keep-all; }
+
+  .scope-note { font-size: 0.88rem; color: #94a3b8; line-height: 1.7; word-break: keep-all; background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin: 0; }
+
+  /* ④ CTA */
+  .leaders-consult-cta { padding: 40px 0 90px; }
+  .consult-cta-box { width: 100%; box-sizing: border-box; background: linear-gradient(135deg, #0f172a, #16233b); border-radius: 32px; padding: 60px 40px; text-align: center; }
+  .cta-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--brand-accent); margin-bottom: 12px; }
+  .consult-cta-title { color: #fff; font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 16px; word-break: keep-all; }
+  .consult-cta-desc { color: #94a3b8; font-size: 1.02rem; line-height: 1.7; margin: 0 auto 30px; max-width: 620px; word-break: keep-all; }
+  .cta-btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 16px; }
+  .consult-cta-btn { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #c5a059, #e2c28d); color: #1a1207; font-weight: 800; font-size: 1.05rem; padding: 16px 40px; border-radius: 100px; text-decoration: none; transition: var(--transition); }
+  .consult-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(197,160,89,.4); }
+  .consult-cta-btn--tel { background: rgba(255,255,255,.08); color: #fff; border: 1.5px solid rgba(255,255,255,.25); }
+  .consult-cta-btn--tel:hover { background: rgba(255,255,255,.14); box-shadow: none; }
+  .cta-reassure { color: #64748b; font-size: 0.88rem; margin: 0; }
+
+  .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) { .leaders-detail-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .leaders-hero { padding: 80px 0 30px; }
+    .why-stats { grid-template-columns: repeat(2, 1fr); }
+    .why-stat strong { font-size: 1.7rem; }
+    .detail-card { padding: 26px 22px; }
+    .leaders-insight { padding: 36px 22px; }
+    .consult-cta-box { padding: 48px 22px; }
+    .consult-cta-btn { width: 100%; }
+    .comparison-table td.label { width: 30%; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+  });
 </script>

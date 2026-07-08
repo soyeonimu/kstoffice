@@ -162,6 +162,8 @@ permalink: /difference
   .leaders-page { font-family: 'Pretendard', sans-serif; color: var(--text-main); background: #fff; line-height: 1.6; overflow-x: hidden; }
   .leaders-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
   .leaders-container--narrow { max-width: 860px; }
+  /* 좌측 서브내비+우측 위젯 3단: 컨테이너 풀폭으로 열어 우측 사이드바를 오른쪽 끝으로 + 본문 확장 */
+  .page-with-side:has(.has-subnav-left) { max-width: none; padding: 0 32px; }
 
   /* HERO */
   .leaders-hero { padding: 108px 0 56px; text-align: center; }

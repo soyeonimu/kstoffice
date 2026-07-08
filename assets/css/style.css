@@ -618,6 +618,8 @@ img, video { max-width: 100%; height: auto; }
     margin-left: 0;
     margin-right: auto;
   }
+  /* 3단(좌 서브내비 + 우 상담위젯): 컨테이너 풀폭 → 우측 위젯을 오른쪽 끝으로 + 본문 확장 */
+  .page-with-side:has(.has-subnav-left){ max-width: none; padding: 0 32px; }
 }
 
 /* ===== 모바일/태블릿(≤980px): 세로바를 상단 가로 접이형으로 ===== */

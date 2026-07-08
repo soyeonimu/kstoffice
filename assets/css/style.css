@@ -943,3 +943,24 @@ header, .site-header, .nav-container {
   /* 좌측 세로바(형사 페이지) 상단 가로형일 때 좌우 패딩 축소 */
   .subnav-float { padding: 10px 12px 0; }
 }
+
+/* ===== 리뉴얼 페이지(leaders-*) 모바일 최적화 — 인라인 스타일보다 우선(.leaders-page 2-class) ===== */
+@media (max-width: 640px) {
+  .leaders-page .leaders-container { padding: 0 15px; }
+  .leaders-page .leaders-hero { padding-top: 74px; padding-bottom: 22px; }
+  .leaders-page .leaders-section { padding: 24px 0 16px; }
+  .leaders-page .why-section { padding: 16px 0 36px; }
+  .leaders-page .leaders-consult-cta { padding: 24px 0 56px; }
+  .leaders-page .why-head,
+  .leaders-page .section-lead { margin-bottom: 20px; }
+  /* 표: 화면 밖으로 넘쳐 우측이 잘리던 것 → 화면 안에서 줄바꿈 */
+  .leaders-page .comparison-table { min-width: 0; width: 100%; }
+  .leaders-page .comparison-table th,
+  .leaders-page .comparison-table td { padding: 11px 9px; font-size: 0.84rem; line-height: 1.45; word-break: keep-all; }
+  .leaders-page .comparison-table th { font-size: 0.9rem; padding-top: 13px; padding-bottom: 13px; }
+  .leaders-page .comparison-table td.label { width: 30%; font-size: 0.82rem; }
+  /* 카드·박스 여백 축소 */
+  .leaders-page .detail-card { padding: 22px 18px; }
+  .leaders-page .leaders-insight { padding: 30px 20px; }
+  .leaders-page .consult-cta-box { padding: 38px 18px; }
+}

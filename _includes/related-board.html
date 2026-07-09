@@ -1,0 +1,38 @@
+{%- comment -%}
+관련 법률정보 블록: include.cats(콤마 구분)와 게시글 category가 겹치는 글을 본문에서 링크.
+색인된 서비스 페이지 → 주제 맞는 게시글로 내부링크(링크 힘 전달). 매칭 없으면 최신글로 대체.
+사용법: {% include related-board.html cats="개인회생,개인파산" %}
+{%- endcomment -%}
+{%- assign _cats = include.cats | split: "," -%}
+{%- assign _all = site.board | sort: "date" | reverse -%}
+{%- assign _matched = "" | split: "," -%}
+{%- comment -%} 카테고리 우선순위대로 최대 3개까지 채움(첫 cat이 가장 구체적) {%- endcomment -%}
+{%- for cat in _cats -%}
+  {%- for p in _all -%}
+    {%- assign _pc = p.category | first | default: p.category -%}
+    {%- if _pc == cat and _matched.size < 3 -%}{%- assign _matched = _matched | push: p -%}{%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- if _matched.size == 0 -%}{%- assign _matched = _all -%}{%- endif -%}
+{%- if _matched.size >= 1 -%}
+<section class="related-legal">
+  <div class="leaders-container">
+    <div class="related-legal-head">
+      <span class="related-legal-eyebrow">관련 법률정보</span>
+      <h2 class="related-legal-title">이 주제, 더 자세히 알아보기</h2>
+    </div>
+    <div class="related-legal-grid">
+      {%- for p in _matched limit: 3 -%}
+      <a class="related-legal-card" href="{{ p.url | relative_url }}">
+        <span class="related-legal-thumb" style="background-image:url('{% include board-thumb.html p=p %}')"></span>
+        <span class="related-legal-body">
+          {%- assign _c = p.category | first | default: p.category -%}
+          {%- if _c %}<span class="related-legal-cat">{{ _c }}</span>{% endif -%}
+          <span class="related-legal-name">{{ p.title }}</span>
+        </span>
+      </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}

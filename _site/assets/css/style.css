@@ -960,7 +960,17 @@ header, .site-header, .nav-container {
   .leaders-page .comparison-table th { font-size: 0.9rem; padding-top: 13px; padding-bottom: 13px; }
   .leaders-page .comparison-table td.label { width: 30%; font-size: 0.82rem; }
   /* 카드·박스 여백 축소 */
-  .leaders-page .detail-card { padding: 22px 18px; }
-  .leaders-page .leaders-insight { padding: 30px 20px; }
-  .leaders-page .consult-cta-box { padding: 38px 18px; }
+  .leaders-page .detail-card { padding: 20px 16px; }
+  .leaders-page .leaders-insight { padding: 24px 18px; }
+  .leaders-page .consult-cta-box { padding: 28px 18px; }
+}
+
+/* ===== 카드 남발 느낌 완화 — 그림자·간격·CTA박스 패딩 경량화(전역) ===== */
+.leaders-page .leaders-table-card { box-shadow: 0 6px 16px rgba(0,0,0,0.035); }
+.leaders-page .detail-card { box-shadow: none; }
+.leaders-page .leaders-detail-grid { gap: 16px; }
+.leaders-page .consult-cta-box { padding: 46px 32px; }
+@media (max-width: 640px) {
+  .leaders-page .consult-cta-box { padding: 28px 18px; }
+  .leaders-page .leaders-detail-grid { gap: 12px; }
 }

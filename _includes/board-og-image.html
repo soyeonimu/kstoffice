@@ -1,0 +1,13 @@
+{%- comment -%}
+게시글 og:image / JSON-LD image용 절대 URL 출력.
+우선순위: front matter image: → 본문 첫 이미지(src) → 기본 og 이미지.
+이미 절대 URL(http…)이면 그대로, 아니면 absolute_url 적용.
+사용법: {% include board-og-image.html p=post %}
+{%- endcomment -%}
+{%- assign _t = include.p.image -%}
+{%- unless _t -%}
+  {%- assign _parts = include.p.content | split: 'src="' -%}
+  {%- if _parts.size > 1 -%}{%- assign _t = _parts[1] | split: '"' | first -%}{%- endif -%}
+{%- endunless -%}
+{%- unless _t -%}{%- assign _t = '/assets/img/og/og-main.png' -%}{%- endunless -%}
+{%- if _t contains '://' -%}{{- _t -}}{%- else -%}{{- _t | absolute_url -}}{%- endif -%}

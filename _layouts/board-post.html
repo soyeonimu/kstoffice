@@ -11,10 +11,8 @@ SEO helpers:
 {% assign canonical_url = page.url | absolute_url %}
 {% assign og_title = page.seo_title | default: page.title %}
 {% assign og_desc = page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 %}
-{% assign og_image = page.image | default: site.og_image %}
-{% if og_image %}
-  {% assign og_image_abs = og_image | absolute_url %}
-{% endif %}
+{% capture og_image_abs %}{% include board-og-image.html p=page %}{% endcapture %}
+{% assign og_image_abs = og_image_abs | strip %}
 
 <!-- ✅ SEO 메타(title/description/canonical/OG/Twitter/robots)는 default 레이아웃 <head>에서 생성됨.
      여기서는 검색엔진이 본문에서도 읽을 수 있는 JSON-LD(구조화 데이터)만 출력한다. -->

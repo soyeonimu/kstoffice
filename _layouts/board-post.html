@@ -16,25 +16,8 @@ SEO helpers:
   {% assign og_image_abs = og_image | absolute_url %}
 {% endif %}
 
-<!-- ✅ SEO: canonical / Open Graph / Twitter / JSON-LD -->
-<link rel="canonical" href="{{ canonical_url }}">
-<meta name="keywords" content="{{ page.keywords | default: site.keywords }}" />
-
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="{{ site.title }}">
-<meta property="og:title" content="{{ og_title }}">
-<meta property="og:description" content="{{ og_desc }}">
-<meta property="og:url" content="{{ canonical_url }}">
-{% if og_image_abs %}
-<meta property="og:image" content="{{ og_image_abs }}">
-{% endif %}
-
-<meta name="twitter:card" content="{% if og_image_abs %}summary_large_image{% else %}summary{% endif %}">
-<meta name="twitter:title" content="{{ og_title }}">
-<meta name="twitter:description" content="{{ og_desc }}">
-{% if og_image_abs %}
-<meta name="twitter:image" content="{{ og_image_abs }}">
-{% endif %}
+<!-- ✅ SEO 메타(title/description/canonical/OG/Twitter/robots)는 default 레이아웃 <head>에서 생성됨.
+     여기서는 검색엔진이 본문에서도 읽을 수 있는 JSON-LD(구조화 데이터)만 출력한다. -->
 
 <!-- Breadcrumb: 홈 > 게시판 > 글 -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"{{ '/' | absolute_url }}"},{"@type":"ListItem","position":2,"name":"게시판","item":"{{ '/board/' | absolute_url }}"},{"@type":"ListItem","position":3,"name":{{ page.title | jsonify }},"item":"{{ canonical_url }}"}]}</script>

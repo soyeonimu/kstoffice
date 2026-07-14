@@ -33,7 +33,7 @@
       top: 0; left: 0; right: 0;
       z-index: 10000;
       background: var(--bg-charcoal, #2d3136);
-      border-bottom: 1px solid rgba(197,160,89,0.25);
+      border-bottom: 1px solid rgba(37,99,235,0.25);
       height: 64px;
       display: flex;
       align-items: center;
@@ -49,7 +49,7 @@
       font-size: 14px; font-weight: 800;
       color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: .3px;
     }
-    .landing-tel:hover { color: #c5a059; }
+    .landing-tel:hover { color: #2563eb; }
 
     /* 문의게시판 버튼 */
     .landing-board-btn {
@@ -76,7 +76,7 @@
 
     .landing-cta {
       display: inline-block; padding: 9px 20px;
-      background: linear-gradient(135deg, #c5a059, #e2c28d);
+      background: linear-gradient(135deg, #2563eb, #4f83f5);
       color: #1f2225; font-size: 13px; font-weight: 900;
       border-radius: 10px; text-decoration: none; transition: all .25s;
     }
@@ -119,7 +119,7 @@
       position: fixed; top: 0; right: -520px; bottom: 0;
       width: 100%; max-width: 500px;
       background: #0f172a;
-      border-left: 1px solid rgba(197,160,89,0.2);
+      border-left: 1px solid rgba(37,99,235,0.2);
       z-index: 20000;
       display: flex; flex-direction: column;
       transition: right .35s cubic-bezier(.22,1,.36,1);
@@ -140,15 +140,15 @@
       font-size: 16px; font-weight: 900; color: #fff; letter-spacing: -0.02em;
     }
     .iqp-head-cnt {
-      font-size: 11px; font-weight: 700; color: #c5a059;
-      background: rgba(197,160,89,0.12); border: 1px solid rgba(197,160,89,0.2);
+      font-size: 11px; font-weight: 700; color: #2563eb;
+      background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.2);
       border-radius: 20px; padding: 2px 8px;
     }
     .iqp-head-right { display: flex; align-items: center; gap: 8px; }
     .iqp-write-btn {
       padding: 7px 14px;
-      background: linear-gradient(135deg,#c5a059,#e2c28d);
-      color: #0f172a; font-size: 12px; font-weight: 900;
+      background: linear-gradient(135deg,#2563eb,#4f83f5);
+      color: #ffffff; font-size: 12px; font-weight: 900;
       border-radius: 8px; text-decoration: none; white-space: nowrap;
     }
     .iqp-close {
@@ -174,9 +174,9 @@
       white-space: nowrap; transition: all .15s;
     }
     .iqp-tab.active {
-      background: rgba(197,160,89,0.15);
-      border-color: rgba(197,160,89,0.4);
-      color: #e2c28d;
+      background: rgba(37,99,235,0.15);
+      border-color: rgba(37,99,235,0.4);
+      color: #4f83f5;
     }
 
     /* 목록 */
@@ -232,8 +232,8 @@
     }
     .iqp-spinner {
       width: 32px; height: 32px; border-radius: 50%;
-      border: 3px solid rgba(197,160,89,0.2);
-      border-top-color: #c5a059;
+      border: 3px solid rgba(37,99,235,0.2);
+      border-top-color: #2563eb;
       animation: iqp-spin .8s linear infinite;
       margin: 60px auto 16px;
     }
@@ -313,7 +313,7 @@
       outline: none; transition: border-color .2s;
       width: 100%; box-sizing: border-box;
     }
-    .iqpw-input:focus { border-color: rgba(197,160,89,0.5); }
+    .iqpw-input:focus { border-color: rgba(37,99,235,0.5); }
     .iqpw-input option { background: #1e293b; color: #fff; }
     .iqpw-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
     .iqpw-agree-row {
@@ -321,11 +321,11 @@
       font-size: 12.5px; color: rgba(255,255,255,0.5);
       margin-bottom: 16px; cursor: pointer;
     }
-    .iqpw-agree-row input { accent-color: #c5a059; width: 15px; height: 15px; }
+    .iqpw-agree-row input { accent-color: #2563eb; width: 15px; height: 15px; }
     .iqpw-submit-btn {
       width: 100%; padding: 15px;
-      background: linear-gradient(135deg, #c5a059, #e2c28d);
-      color: #0f172a; font-size: 15px; font-weight: 900;
+      background: linear-gradient(135deg, #2563eb, #4f83f5);
+      color: #ffffff; font-size: 15px; font-weight: 900;
       border: none; border-radius: 12px; cursor: pointer;
       transition: opacity .2s; letter-spacing: -0.01em;
     }
@@ -486,7 +486,7 @@
 
   <main>
     <style>
-:root{--orange:#f97316;--orange2:#ea580c;--navy:#0f172a;--navy2:#1e293b;--white:#ffffff;--light:#f8fafc;--gray:#64748b;--border:#e2e8f0;--gold:#c5a059;}
+:root{--orange:#f97316;--orange2:#ea580c;--navy:#0f172a;--navy2:#1e293b;--white:#ffffff;--light:#f8fafc;--gray:#64748b;--border:#e2e8f0;--gold:#2563eb;}
 .lp-wrap{font-family:'Pretendard',-apple-system,sans-serif;overflow-x:hidden;padding-top:60px;}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -1395,7 +1395,7 @@ function closeNotif(){var card=document.getElementById('notifCard');card.classLi
       s.src = IQP_GAS + '?action=list&callback=iqpRender';
       s.onerror = function() {
         document.getElementById('iqpList').innerHTML =
-          '<div class="iqp-empty">데이터를 불러오지 못했습니다.<br><a href="/inquiry/" style="color:#c5a059;">게시판 페이지로 이동 →</a></div>';
+          '<div class="iqp-empty">데이터를 불러오지 못했습니다.<br><a href="/inquiry/" style="color:#2563eb;">게시판 페이지로 이동 →</a></div>';
       };
       document.head.appendChild(s);
     }
@@ -1473,7 +1473,7 @@ function closeNotif(){var card=document.getElementById('notifCard');card.classLi
         + '<input type="password" id="iqpPwInput" placeholder="비밀번호" maxlength="20"'
         + ' style="flex:1;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:14px;outline:none;"'
         + ' onkeydown="if(event.key===\'Enter\')iqpCheckPw()">'
-        + '<button onclick="iqpCheckPw()" style="padding:0 16px;background:linear-gradient(135deg,#c5a059,#e2c28d);color:#0f172a;font-weight:900;font-size:13px;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;">확인</button>'
+        + '<button onclick="iqpCheckPw()" style="padding:0 16px;background:linear-gradient(135deg,#2563eb,#4f83f5);color:#ffffff;font-weight:900;font-size:13px;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;">확인</button>'
         + '</div>'
         + '<div id="iqpPwError" style="display:none;color:#f87171;font-size:12px;margin-top:10px;">비밀번호가 올바르지 않습니다.</div>'
         + '</div>';

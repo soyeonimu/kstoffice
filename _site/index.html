@@ -671,16 +671,21 @@
   /* ─── [5] GALLERY ─── */
   .home-gallery { padding: 56px 0 0; background: #f8fafc; overflow: hidden; }
   .home-gallery .sec-header { margin-bottom: 28px; }
-  /* 좌우 끝을 살짝 페이드 → '옆으로 계속 이어진다'는 스크롤 힌트(affordance) */
-  .gal-slider { overflow: hidden; padding-bottom: 44px;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
-  .gal-track { display: flex; width: calc(190px * 18); animation: galScroll 40s linear infinite; }
+  /* 좌우 끝을 살짝 페이드 → '옆으로 계속 이어진다'는 스크롤 힌트(affordance)
+     ※ 마스크(mask-image)는 움직이는 마퀴 위에서 매 프레임 재래스터화되어 스크롤 버벅임을 유발 →
+        값싼 그라데이션 오버레이(::before/::after)로 대체 */
+  .gal-slider { position: relative; overflow: hidden; padding-bottom: 44px; }
+  .gal-slider::before, .gal-slider::after { content: ""; position: absolute; top: 0; bottom: 0; width: 6%; z-index: 2; pointer-events: none; }
+  .gal-slider::before { left: 0; background: linear-gradient(90deg, #f8fafc, rgba(248,250,252,0)); }
+  .gal-slider::after { right: 0; background: linear-gradient(270deg, #f8fafc, rgba(248,250,252,0)); }
+  /* will-change+translateZ로 트랙을 GPU 합성 레이어로 승격 → 스크롤 중 메인스레드 리페인트 제거 */
+  .gal-track { display: flex; width: calc(190px * 18); animation: galScroll 40s linear infinite; will-change: transform; transform: translateZ(0); backface-visibility: hidden; }
   .gal-track:hover { animation-play-state: paused; }
   .gal-slide { width: 190px; padding: 0 8px; flex-shrink: 0; }
   .gal-slide img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }
   /* 트랙(9장×2 복제)의 정확히 절반만큼 이동해야 이음매 없이 무한 반복 */
-  @keyframes galScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes galScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .gal-track { animation: none; } }
 
   /* ─── [6] BOARD ─── */
   .home-board { padding: 44px 0; background: #fff; }

@@ -101,7 +101,12 @@
     </nav>
 
     <!-- 개인회생·파산 진단 CTA -->
-    <a href="/rehab/diagnosis" class="header-cta">📋 개인회생 진단</a>
+    <a href="/rehab/diagnosis" class="header-cta">
+      <svg class="header-cta-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.4" fill="none" aria-hidden="true">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      개인회생 진단
+    </a>
   </div>
 </header>
 <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
@@ -150,7 +155,7 @@
   }
 
   /* 모바일에서도 라벨이 자연스럽게 보이도록 */
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     .sub--groups { min-width: 100%; }
     .sub-group-label { padding: 10px 25px 4px; }
   }
@@ -163,5 +168,7 @@
     box-shadow:0 4px 12px rgba(226,194,141,.28); transition:.2s;
   }
   .header-cta:hover{ background:var(--point-gold-light, #F2E3C9); transform:translateY(-1px); }
-  @media (max-width: 900px){ .header-cta{ display:none; } }
+  .header-cta-icon{ flex:0 0 auto; }
+  /* 태블릿·모바일(≤1024px)에서는 햄버거 노출 시점과 동일하게 CTA 숨김 → 진단은 메뉴 내 '진단하기'로 접근 */
+  @media (max-width: 1024px){ .header-cta{ display:none; } }
 </style>

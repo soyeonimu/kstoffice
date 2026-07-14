@@ -882,7 +882,8 @@ header, .site-header, .nav-container {
   .logo{ flex: 0 0 auto; }
 
   /* gnb를 flex로 만들 필요 없음. ul이 가로로 가면 됨 */
-  .gnb{ flex: 0 0 auto; }
+  /* margin-left:auto → GNB를 우측으로 밀어 CTA와 한 그룹처럼 정렬(로고만 좌측 고정) */
+  .gnb{ flex: 0 0 auto; margin-left: auto; }
 
   .gnb-list{
     display:flex;

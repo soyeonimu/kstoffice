@@ -183,7 +183,12 @@
     </nav>
 
     <!-- 개인회생·파산 진단 CTA -->
-    <a href="/rehab/diagnosis" class="header-cta">📋 개인회생 진단</a>
+    <a href="/rehab/diagnosis" class="header-cta">
+      <svg class="header-cta-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.4" fill="none" aria-hidden="true">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      개인회생 진단
+    </a>
   </div>
 </header>
 <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
@@ -232,7 +237,7 @@
   }
 
   /* 모바일에서도 라벨이 자연스럽게 보이도록 */
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     .sub--groups { min-width: 100%; }
     .sub-group-label { padding: 10px 25px 4px; }
   }
@@ -245,7 +250,9 @@
     box-shadow:0 4px 12px rgba(226,194,141,.28); transition:.2s;
   }
   .header-cta:hover{ background:var(--point-gold-light, #F2E3C9); transform:translateY(-1px); }
-  @media (max-width: 900px){ .header-cta{ display:none; } }
+  .header-cta-icon{ flex:0 0 auto; }
+  /* 태블릿·모바일(≤1024px)에서는 햄버거 노출 시점과 동일하게 CTA 숨김 → 진단은 메뉴 내 '진단하기'로 접근 */
+  @media (max-width: 1024px){ .header-cta{ display:none; } }
 </style>
 
 
@@ -403,7 +410,7 @@
 
 <style>
   :root{
-    --brand:#0f172a; --brand-accent:#2563eb;
+    --brand:#0f172a; --brand-accent:#E2C28D;
     --text-main:#0f172a; --text-sub:#64748b;
     --bg-soft:#f8fafc; --border:#e2e8f0;
     --transition: all .4s cubic-bezier(.22,1,.36,1);
@@ -423,7 +430,7 @@
   .leaders-title{ font-size:clamp(2rem,5vw,2.9rem); font-weight:900; margin:16px 0 18px; letter-spacing:-.02em; }
   .leaders-desc{ font-size:1.05rem; color:var(--text-sub); margin:0 auto; }
   .leaders-desc strong{ color:var(--text-main); font-weight:800; }
-  .text-gradient{ background:linear-gradient(135deg,#0f172a 0%,#2563eb 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .text-gradient { background: none; color: #0f172a; -webkit-text-fill-color: #0f172a; text-decoration: underline; text-decoration-color: #E2C28D; text-decoration-thickness: 0.14em; text-underline-offset: 0.15em; text-decoration-skip-ink: none; }
 
   /* Section head */
   .section-head{ margin-bottom:26px; }
@@ -446,7 +453,7 @@
   .expert-v-card--dark .expert-label{ color:#fff; }
   .expert-v-card--dark .expert-history li{ color:rgba(255,255,255,.55); }
   .expert-v-card--dark .expert-history li strong{ color:#fff; font-weight:700; }
-  .expert-v-card--dark .award{ color:#facc15 !important; font-weight:800; margin-top:10px; }
+  .expert-v-card--dark .award{ color:#E2C28D !important; font-weight:800; margin-top:10px; }
   .expert-v-card--dark:hover{ transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,.22); }
 
   /* Staff row */
@@ -462,7 +469,7 @@
   .staff-text-content .expert-history li{ color:#94a3b8; }
   .staff-text-content .expert-history li strong{ color:#0f172a; font-weight:900; }
   .staff-text-content .expert-history li.highlight{
-    color:#facc15; font-weight:900; font-size:1.25rem;
+    color:#E2C28D; font-weight:900; font-size:1.25rem;
     margin-top:14px; padding-left:0;
   }
   .staff-text-content .expert-history li.highlight::before{ display:none; }
@@ -477,7 +484,7 @@
   .staff-wide-row--white .expert-history li.highlight{ color:var(--brand-accent) !important; } /* 강조 */
   /* "형사 · 민사 실무 경력 20년"만 노란색 */
   .staff-wide-row--white .expert-history li.highlight{
-    color:#facc15 !important;
+    color:#E2C28D !important;
   }
 
   /* Gallery */

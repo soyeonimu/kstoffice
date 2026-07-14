@@ -182,7 +182,12 @@
     </nav>
 
     <!-- 개인회생·파산 진단 CTA -->
-    <a href="/rehab/diagnosis" class="header-cta">📋 개인회생 진단</a>
+    <a href="/rehab/diagnosis" class="header-cta">
+      <svg class="header-cta-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.4" fill="none" aria-hidden="true">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      개인회생 진단
+    </a>
   </div>
 </header>
 <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
@@ -231,7 +236,7 @@
   }
 
   /* 모바일에서도 라벨이 자연스럽게 보이도록 */
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     .sub--groups { min-width: 100%; }
     .sub-group-label { padding: 10px 25px 4px; }
   }
@@ -244,7 +249,9 @@
     box-shadow:0 4px 12px rgba(226,194,141,.28); transition:.2s;
   }
   .header-cta:hover{ background:var(--point-gold-light, #F2E3C9); transform:translateY(-1px); }
-  @media (max-width: 900px){ .header-cta{ display:none; } }
+  .header-cta-icon{ flex:0 0 auto; }
+  /* 태블릿·모바일(≤1024px)에서는 햄버거 노출 시점과 동일하게 CTA 숨김 → 진단은 메뉴 내 '진단하기'로 접근 */
+  @media (max-width: 1024px){ .header-cta{ display:none; } }
 </style>
 
 
@@ -275,7 +282,12 @@
             </h1>
             <p class="hero-desc">개인회생·파산·형사·등기, 꼭 필요한 서류를<br>처음부터 끝까지 정확하게 준비합니다.</p>
             <div class="hero-btns">
-              <a href="tel:0312256885" class="btn-primary">031-225-6885</a>
+              <a href="tel:0312256885" class="btn-primary">
+                <svg class="btn-icon" viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" stroke-width="2.2" fill="none" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                031-225-6885
+              </a>
               <a href="#mainDbForm" class="btn-secondary">무료 상담 신청</a>
             </div>
           </div>
@@ -516,15 +528,6 @@
           </div>
         </a>
         
-        <a class="hl-card" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B9%84%EC%9A%A9-%ED%95%AD%EB%AA%A9%EB%B3%84-%EA%B5%AC%EC%84%B1%EA%B3%BC-%EB%B6%84%EB%82%A9-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/">
-          <div class="hl-thumb" style="background-image:url('/assets/img/board/yong2-thumbnail.png')"></div>
-          <div class="hl-body">
-            <span class="hl-badge">개인회생</span>
-            <h3 class="hl-card-title">용인 개인회생 비용, 항목별 구성과 분납 (수원회생법원 관할)</h3>
-            <span class="hl-date">2026.07.12</span>
-          </div>
-        </a>
-        
       </div>
       <div class="hl-cta">
         <a href="/board/" class="hl-all-btn">게시판 전체보기 →</a>
@@ -578,12 +581,13 @@
   .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
   .h-chip { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: var(--gold); border: 1px solid rgba(242,196,78,0.35); border-radius: 999px; padding: 4px 12px; }
 
-  .hero-title { font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 900; line-height: 1.18; margin: 0 0 20px; color: #fff; letter-spacing: -1.5px; word-break: keep-all; }
+  .hero-title { font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 900; line-height: 1.18; margin: 0 0 20px; color: #fff; letter-spacing: -0.03em; word-break: keep-all; }
   .hero-desc { font-size: 0.97rem; color: rgba(255,255,255,0.6); line-height: 1.9; margin: 0 0 36px; word-break: keep-all; }
   .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary { background: var(--brand-accent); color: #1a1207; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: background 0.2s; }
-  .btn-primary:hover { background: #1d4ed8; }
-  .btn-secondary { background: transparent; color: #fff; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.25); transition: border-color 0.2s, background 0.2s; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--brand-accent); color: #1a1207; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--brand-accent-d, #C9A24E); }
+  .btn-primary .btn-icon { flex: 0 0 auto; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #fff; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.25); transition: border-color 0.2s, background 0.2s; }
   .btn-secondary:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
 
   /* 오른쪽 팀 사진 */
@@ -594,7 +598,7 @@
   .hv-info { padding: 10px 12px; }
   .hv-name { display: block; font-size: 0.9rem; font-weight: 800; color: #fff; }
   .hv-role { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 2px; }
-  .hv-label { font-size: 11px; color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0.5px; }
+  .hv-label { font-size: 12.5px; color: rgba(255,255,255,0.55); text-align: center; letter-spacing: 0.2px; margin-top: 16px; margin-bottom: 4px; }
 
   /* 통계 바 */
   .hero-stats { position: relative; z-index: 2; background: rgba(255,255,255,0.05); border-top: 1px solid rgba(255,255,255,0.1); }
@@ -639,7 +643,7 @@
   .team-career { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
   .team-career li { font-size: 0.78rem; color: #475569; line-height: 1.5; padding-left: 10px; position: relative; }
   .team-career li::before { content: '·'; position: absolute; left: 0; color: #94a3b8; }
-  .team-award { color: #1d4ed8 !important; font-weight: 700; }
+  .team-award { color: #C9A24E !important; font-weight: 700; }
 
   .team-cta { text-align: center; margin-top: 44px; }
   .team-more-btn { display: inline-block; padding: 13px 28px; border: 1.5px solid #0f172a; border-radius: 8px; font-size: 0.9rem; font-weight: 700; color: #0f172a; text-decoration: none; transition: background 0.2s, color 0.2s; }
@@ -696,7 +700,7 @@
   .hl-header { text-align: center; margin-bottom: 32px; }
   .hl-header .top-label { display: inline-block; margin-bottom: 8px; }
   .hl-title { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 800; color: #0f172a; margin: 0; }
-  .hl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .hl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .hl-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s, border-color .2s; }
   .hl-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(15,23,42,.12); border-color: var(--brand-accent); }
   .hl-thumb { width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; background-color: #e2e8f0; }

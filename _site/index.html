@@ -678,8 +678,8 @@
   .gal-slider::before, .gal-slider::after { content: ""; position: absolute; top: 0; bottom: 0; width: 6%; z-index: 2; pointer-events: none; }
   .gal-slider::before { left: 0; background: linear-gradient(90deg, #f8fafc, rgba(248,250,252,0)); }
   .gal-slider::after { right: 0; background: linear-gradient(270deg, #f8fafc, rgba(248,250,252,0)); }
-  /* will-change+translateZ로 트랙을 GPU 합성 레이어로 승격 → 스크롤 중 메인스레드 리페인트 제거 */
-  .gal-track { display: flex; width: calc(190px * 18); animation: galScroll 40s linear infinite; will-change: transform; transform: translateZ(0); backface-visibility: hidden; }
+  /* 화면에 보일 때만 애니메이션(JS가 .is-offscreen 토글) — 상시 will-change는 오히려 레이어를 계속 잡아 전체를 무겁게 함 */
+  .gal-track { display: flex; width: calc(190px * 18); animation: galScroll 40s linear infinite; }
   .gal-track:hover { animation-play-state: paused; }
   .gal-slide { width: 190px; padding: 0 8px; flex-shrink: 0; }
   .gal-slide img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }

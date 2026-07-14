@@ -876,8 +876,10 @@ header, .site-header, .nav-container {
   .header-inner{
     display:flex;
     align-items:center;
-    justify-content: space-between;
-    gap: 36px;
+    /* space-between 제거: 로고·메뉴·CTA 사이 남는 폭이 균등 분배되며 메뉴~CTA 사이에 거대한 빈 공간이 생기던 원인.
+       flex-start + .gnb margin-left:auto 로 [로고 ———— 메뉴 CTA] 형태로 우측에 콤팩트하게 모음 */
+    justify-content: flex-start;
+    gap: 0;
   }
 
   .logo{ flex: 0 0 auto; }

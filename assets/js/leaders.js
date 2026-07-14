@@ -10,6 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* 상담 위젯: fixed로 항상 따라다니되, 푸터가 화면에 올라오면 숨겨 푸터를 가리지 않음 */
+  const side = document.querySelector('.page-side');
+  const footer = document.querySelector('.site-footer');
+  if (side && footer && 'IntersectionObserver' in window) {
+    const fo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => side.classList.toggle('is-hidden', e.isIntersecting));
+    }, { rootMargin: '0px 0px -45% 0px' }); // 푸터가 뷰포트 상단 55% 안으로 들어오면 숨김
+    fo.observe(footer);
+  }
+
   /* 갤러리 마퀴: 화면에 보일 때만 애니메이션 → 스크롤 지나치면 정지(상시 GPU 작업 제거) */
   const tracks = document.querySelectorAll('.gal-track, .sq-track');
   if (tracks.length) {

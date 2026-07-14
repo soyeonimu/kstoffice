@@ -891,7 +891,7 @@ header, .site-header, .nav-container {
   .gnb-list{
     display:flex;
     align-items:center;
-    gap: 34px;            /* 메뉴 간격 */
+    gap: 24px;            /* 메뉴 간격(메뉴 5개 + 통합 라벨 대응해 축소) */
     flex-wrap: nowrap;    /* ✅ 줄바꿈 금지 */
     white-space: nowrap;  /* ✅ 텍스트 줄바꿈 금지 */
   }

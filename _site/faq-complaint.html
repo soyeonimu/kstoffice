@@ -128,8 +128,8 @@
 
     <!-- GNB --><nav class="gnb" id="gnb" aria-label="주요 메뉴">
       <ul class="gnb-list">
-        <!-- 개인회생·파산 (강조·최상위 앞) -->
-        <li class="has-sub is-emphasis">
+        <!-- 개인회생·파산 (최상위 앞) -->
+        <li class="has-sub">
           <a href="/what-is">개인회생·파산</a>
           <ul class="sub">
             <li><a href="/what-is">개인회생 안내</a></li>
@@ -141,17 +141,21 @@
           </ul>
         </li>
 
-        <!-- 업무분야 (형사·등기·민사·국제이혼 통합) -->
-        <li class="has-sub has-groups is-active">
-          <a href="/services" aria-haspopup="true">민사·형사·등기</a>
-          <ul class="sub sub--groups" aria-label="민사·형사·등기 하위 메뉴">
-            <li class="sub-col">
-              <span class="sub-group-label" aria-hidden="true">형사사건</span>
-              <a href="/complaint">고소장 작성</a>
-              <a href="/criminal/statement">의견서</a>
-              <a href="/criminal/objection">불송치 이의신청</a>
-              <a href="/dui">음주운전</a>
-            </li>
+        <!-- 형사사건 (단독) -->
+        <li class="has-sub is-active">
+          <a href="/complaint">형사사건</a>
+          <ul class="sub">
+            <li><a href="/complaint">고소장 작성</a></li>
+            <li><a href="/criminal/statement">의견서</a></li>
+            <li><a href="/criminal/objection">불송치 이의신청</a></li>
+            <li><a href="/dui">음주운전</a></li>
+          </ul>
+        </li>
+
+        <!-- 등기·민사·국제이혼 (통합 드롭다운) -->
+        <li class="has-sub has-groups">
+          <a href="/services" aria-haspopup="true">등기·민사·국제이혼</a>
+          <ul class="sub sub--groups" aria-label="등기·민사·국제이혼 하위 메뉴">
             <li class="sub-col">
               <span class="sub-group-label" aria-hidden="true">등기</span>
               <a href="/registry/realestate">부동산 등기</a>
@@ -205,14 +209,7 @@
 
 <!-- 헤더 메뉴 개편: 개인회생 강조 + 업무분야 통합 드롭다운 (기존 .has-sub/.sub 패턴 재사용) -->
 <style>
-  /* 개인회생·파산 최상위 강조 */
-  .gnb-list > li.is-emphasis > a {
-    color: var(--point-gold);
-    font-weight: 800;
-  }
-  .gnb-list > li.is-emphasis > a:hover {
-    color: var(--point-gold-light);
-  }
+  /* GNB 텍스트는 전부 흰색 통일(개인회생·파산 골드 강조 제거) → 골드 강조는 우측 CTA 버튼만 담당 */
 
   /* 현재 페이지 섹션 활성 표시(밑줄 바) */
   .gnb-list > li.is-active > a { position: relative; }

@@ -10,18 +10,22 @@
     display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px;
     width: 100%; box-sizing: border-box;
     padding: 13px 16px; border-radius: 12px; font-weight: 700; font-size: 0.95rem;
-    text-decoration: none; margin-bottom: 10px; transition: 0.25s; border: 1px solid transparent;
+    text-decoration: none; margin-bottom: 10px; transition: 0.25s;
+    background: #fff; color: #334155; border: 1px solid #e5e7eb;
   }
   .side-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-  .side-btn.rehab { background: linear-gradient(135deg, #2563eb, #4f83f5); color: #ffffff; }
-  .side-btn.phone { background: linear-gradient(135deg, #2563eb, #3b82f6); color: #fff; }
-  .side-btn.naver { background: linear-gradient(135deg, #03c75a, #06d96a); color: #fff; }
-  .side-btn.kakao { background: #FEE500; color: #3C1E1E; }
-  .side-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,.15); }
+  .side-btn:hover { transform: translateY(-2px); border-color: #D4B26F; background: #F9F6F0; box-shadow: 0 6px 16px rgba(15,23,42,.08); }
+  /* 메인 CTA(자가진단)만 브랜드 네이비로 강조 */
+  .side-btn.rehab { background: #0f172a; color: #fff; border-color: #0f172a; }
+  .side-btn.rehab:hover { background: #B89453; border-color: #B89453; color: #fff; }
+  /* 채널은 흰 버튼 + 아이콘 색으로만 구분 */
+  .side-btn.phone svg { color: #0f172a; }
+  .side-btn.naver svg { color: #03c75a; }
+  .side-btn.kakao svg { color: #3C1E1E; }
   .side-inquiry-link {
     display: flex; align-items: center; justify-content: center; gap: 6px;
     margin-top: 14px; padding-top: 14px; border-top: 1px dashed #e2e8f0;
-    font-size: 0.92rem; font-weight: 700; color: #2563eb; text-decoration: none; transition: 0.2s;
+    font-size: 0.92rem; font-weight: 700; color: #D4B26F; text-decoration: none; transition: 0.2s;
   }
   .side-inquiry-link:hover { color: #8a6f3e; }
 
@@ -34,7 +38,7 @@
     font-size: 0.88rem; font-weight: 600; color: #334155; line-height: 1.4; word-break: keep-all;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .side-recent-item:hover .side-recent-name { color: #2563eb; }
+  .side-recent-item:hover .side-recent-name { color: #D4B26F; }
 </style>
 
 <div class="side-consult">

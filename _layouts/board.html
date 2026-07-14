@@ -6,8 +6,8 @@ layout: default
 
 :root {
   --board-dark: #121212;
-  --board-gold: #2563eb;
-  --board-gold-light: #eff6ff;
+  --board-gold: #D4B26F;
+  --board-gold-light: #F9F6F0;
   --board-bg: #fcfcfc;
   --text-h: #1a1a1a;
   --text-p: #757575;
@@ -24,8 +24,8 @@ layout: default
 /* board.html에서 사용하는 공통 스타일들 */
 .board-container { max-width: 1050px; margin: 0 auto; padding: 0 24px; }
 .board-hero { background: var(--board-dark); color: #fff; padding: 120px 0 44px; text-align: center; position: relative; overflow: hidden; }
-.board-hero::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(circle, rgba(37,99,235, 0.12) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
-.board-status { display: inline-flex; align-items: center; background: rgba(255,255,255,0.03); padding: 8px 22px; border-radius: 4px; margin-bottom: 30px; font-size: 13px; font-weight: 500; border: 1px solid rgba(37,99,235, 0.3); color: var(--board-gold); text-transform: uppercase; letter-spacing: 0.15em; }
+.board-hero::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(circle, rgba(179, 149, 94, 0.12) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
+.board-status { display: inline-flex; align-items: center; background: rgba(255,255,255,0.03); padding: 8px 22px; border-radius: 4px; margin-bottom: 30px; font-size: 13px; font-weight: 500; border: 1px solid rgba(179, 149, 94, 0.3); color: var(--board-gold); text-transform: uppercase; letter-spacing: 0.15em; }
 .status-dot { width: 6px; height: 6px; background: var(--board-gold); border-radius: 50%; margin-right: 12px; }
 .board-main-title { font-size: clamp(2.3rem, 5.5vw, 3.5rem); font-weight: 800; line-height: 1.25; margin-bottom: 25px; letter-spacing: -0.04em; }
 .gold-text { color: var(--board-gold); }

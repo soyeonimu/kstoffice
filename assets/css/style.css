@@ -6,8 +6,8 @@
   --bg-charcoal: #2d3136;    /* 세련된 쥐색 (헤더/푸터용) */
   --bg-dark-gray: #1f2225;   /* 더 깊은 쥐색 */
   --point-blue: #0a3871;     /* 리더스 로고 블루 */
-  --point-gold: #2563eb;     /* 포인트 골드 */
-  --point-gold-light: #4f83f5;
+  --point-gold: #D4B26F;     /* 포인트 골드 */
+  --point-gold-light: #E4CE9A;
   --header-h: 85px;
   --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -40,7 +40,7 @@ img, video { max-width: 100%; height: auto; }
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--header-h);
   background: var(--bg-charcoal);
-  border-bottom: 1px solid rgba(37,99,235, 0.2);
+  border-bottom: 1px solid rgba(212,178,111, 0.2);
   z-index: 10000;
   display: flex; align-items: center;
 }
@@ -79,7 +79,7 @@ img, video { max-width: 100%; height: auto; }
 }
 .has-sub:hover > .sub { display: block; }
 .sub a { display: block; padding: 10px 20px; color: #cbd5e1; font-size: 15px; text-align: center; }
-.sub a:hover { background: rgba(37,99,235, 0.1); color: var(--point-gold); }
+.sub a:hover { background: rgba(212,178,111, 0.1); color: var(--point-gold); }
 
 /* 3. 사이드 퀵 메뉴 (사이드바) */
 /* 3. 사이드 퀵 메뉴 (개선형 프리미엄 스타일) */
@@ -105,7 +105,7 @@ img, video { max-width: 100%; height: auto; }
   font-weight: 700;
   color: #fff !important;
   background: var(--bg-charcoal); /* 기본 배경을 챠콜로 통일 */
-  border: 1px solid rgba(37,99,235, 0.3); /* 은은한 골드 테두리 */
+  border: 1px solid rgba(212,178,111, 0.3); /* 은은한 골드 테두리 */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
@@ -124,7 +124,7 @@ img, video { max-width: 100%; height: auto; }
 .side-btn:hover {
   transform: translateY(-5px);
   border-color: var(--point-gold);
-  box-shadow: 0 8px 20px rgba(37,99,235, 0.2);
+  box-shadow: 0 8px 20px rgba(212,178,111, 0.2);
   background: var(--bg-dark-gray);
 }
 
@@ -249,12 +249,12 @@ img, video { max-width: 100%; height: auto; }
   text-align: right;
 }
 .c-group { display: flex; flex-direction: column; gap: 8px; }
-.c-label { font-size: 13px; font-weight: 700; color: #2563eb; letter-spacing: 0.05em; }
+.c-label { font-size: 13px; font-weight: 700; color: #D4B26F; letter-spacing: 0.05em; }
 .c-num { font-size: 2.2rem; font-weight: 800; line-height: 1; transition: 0.3s; }
-.c-num:hover { color: #2563eb; }
+.c-num:hover { color: #D4B26F; }
 
 /* 국제이혼 전용 색상 */
-.gold-accent .c-num { color: #4f83f5; }
+.gold-accent .c-num { color: #E4CE9A; }
 
 /* 구분선 및 하단 정보 */
 .f-line { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 40px; }
@@ -300,9 +300,9 @@ img, video { max-width: 100%; height: auto; }
 
 /* 오른쪽 번호 영역 (군더더기 제거) */
 .f-right { display: flex; gap: 40px; text-align: right; }
-.f-call small { display: block; font-size: 11px; color: #2563eb; margin-bottom: 4px; font-weight: 700; }
+.f-call small { display: block; font-size: 11px; color: #D4B26F; margin-bottom: 4px; font-weight: 700; }
 .f-call strong { display: block; font-size: 1.6rem; color: #fff; font-weight: 800; }
-.f-call.gold strong { color: #4f83f5; }
+.f-call.gold strong { color: #E4CE9A; }
 
 /* 하단 카피라이트 */
 .f-bottom {
@@ -359,11 +359,11 @@ img, video { max-width: 100%; height: auto; }
 
 /* 국제이혼 강조 포인트 */
 .f-call-num.gold {
-  color: #4f83f5 !important;
+  color: #E4CE9A !important;
   text-decoration: underline !important; /* 미세한 강조 */
   text-underline-offset: 6px;
   text-decoration-thickness: 2px !important;
-  text-decoration-color: rgba(37,99,235, 0.3) !important;
+  text-decoration-color: rgba(226, 194, 141, 0.3) !important;
 }
 
 /* 하단 영역 */
@@ -391,7 +391,7 @@ img, video { max-width: 100%; height: auto; }
   text-decoration: none;
   transition: color 0.2s;
 }
-.f-regions-links a:hover { color: #2563eb; }
+.f-regions-links a:hover { color: #D4B26F; }
 .f-regions-links span { color: rgba(255,255,255,0.2); }
 
 .f-bottom {
@@ -559,7 +559,7 @@ img, video { max-width: 100%; height: auto; }
   font-size:11px;
   font-weight:900;
   letter-spacing:.14em;
-  color: var(--brand-accent, #2563eb);
+  color: var(--brand-accent, #D4B26F);
 }
 .sf-title{
   font-size:15px;

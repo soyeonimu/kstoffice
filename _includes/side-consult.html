@@ -77,7 +77,7 @@
 {% if recent.size >= 1 %}
 <div class="side-recent">
   <p class="side-recent-title">최근 글</p>
-  {% for p in recent limit: 6 %}
+  {% for p in recent limit: 3 %}
   <a class="side-recent-item" href="{{ p.url | relative_url }}">
     {%- assign _c = p.category | first | default: p.category -%}
     {% if _c %}<span class="side-recent-cat">{{ _c }}</span>{% endif %}

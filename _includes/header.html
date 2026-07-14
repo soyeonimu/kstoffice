@@ -27,10 +27,17 @@
     </button>
 
     <!-- GNB -->
+    {%- assign _u = page.url -%}
+    {%- assign _nav = '' -%}
+    {%- if _u contains '/rehab/' or _u == '/what-is' or _u == '/procedure' or _u == '/price' or _u == '/cases' or _u == '/faq' -%}{%- assign _nav = 'rehab' -%}
+    {%- elsif _u == '/services' or _u == '/complaint' or _u == '/difference' or _u == '/cases-complaint' or _u == '/faq-complaint' or _u == '/process' or _u == '/settlement' or _u == '/dui' or _u contains '/criminal/' or _u contains '/civil/' or _u contains '/registry/' or _u contains 'international-divorce' or _u == '/suwon-beopmusa' -%}{%- assign _nav = 'services' -%}
+    {%- elsif _u == '/team' or _u == '/team/' or _u == '/location' -%}{%- assign _nav = 'team' -%}
+    {%- elsif _u contains '/board' or _u contains '/inquiry' -%}{%- assign _nav = 'board' -%}
+    {%- endif -%}
     <nav class="gnb" id="gnb" aria-label="주요 메뉴">
       <ul class="gnb-list">
         <!-- 개인회생·파산 (강조·최상위 앞) -->
-        <li class="has-sub is-emphasis">
+        <li class="has-sub is-emphasis{% if _nav == 'rehab' %} is-active{% endif %}">
           <a href="/what-is">개인회생·파산</a>
           <ul class="sub">
             <li><a href="/what-is">개인회생 안내</a></li>
@@ -43,7 +50,7 @@
         </li>
 
         <!-- 업무분야 (형사·등기·민사·국제이혼 통합) -->
-        <li class="has-sub has-groups">
+        <li class="has-sub has-groups{% if _nav == 'services' %} is-active{% endif %}">
           <a href="/services" aria-haspopup="true">업무분야</a>
           <ul class="sub sub--groups" aria-label="업무분야 하위 메뉴">
             <li class="sub-col">
@@ -74,7 +81,7 @@
         </li>
 
         <!-- 리더스 소개 -->
-        <li class="has-sub">
+        <li class="has-sub{% if _nav == 'team' %} is-active{% endif %}">
           <a href="/team">리더스 소개</a>
           <ul class="sub">
             <li><a href="/team">구성원 소개</a></li>
@@ -83,7 +90,7 @@
         </li>
 
         <!-- 상담게시판 -->
-        <li class="has-sub">
+        <li class="has-sub{% if _nav == 'board' %} is-active{% endif %}">
           <a href="/inquiry/">상담게시판</a>
           <ul class="sub">
             <li><a href="/inquiry/">상담 게시판</a></li>
@@ -108,6 +115,13 @@
   }
   .gnb-list > li.is-emphasis > a:hover {
     color: var(--point-gold-light);
+  }
+
+  /* 현재 페이지 섹션 활성 표시(밑줄 바) */
+  .gnb-list > li.is-active > a { position: relative; }
+  .gnb-list > li.is-active > a::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -7px; height: 2.5px;
+    background: var(--point-gold); border-radius: 2px;
   }
 
   /* 업무분야 통합 드롭다운: 소그룹 라벨 */

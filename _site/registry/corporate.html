@@ -17,7 +17,7 @@
   <title>수원 법인등기 안내 | 리더스 합동 법무사 사무소</title>
   <meta name="description" content="수원 법인등기 법무사. 법인 설립·임원변경·목적/상호변경·본점이전·자본금변경 등기. 변경 후 2주 기한·과태료 주의, 16년 실무의 대표 법무사가 직접 처리합니다." />
   <meta name="keywords" content="수원 법무사, 수원 개인회생, 수원 개인파산, 수원 고소장, 수원 채무조정, 수원 등기 법무사, 수원 부동산등기, 수원 상속등기, 수원 법인등기, 수원 지급명령, 수원지방법원 개인회생, 수원 통장압류 대응, 수원 급여압류 해제, 용인 개인회생, 화성 개인회생, 평택 개인회생, 오산 개인회생, 안산 개인회생, 성남 개인회생, 경기도 개인회생, 개인회생 변제금, 개인회생 신청, 개인파산 면책, 리더스합동법무사, 광교 법무사, 영통 법무사" />
-  <link rel="canonical" href="http://localhost:8080/registry/corporate" />
+  <link rel="canonical" href="https://www.kstoffice6885.com/registry/corporate" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/leaders.css">
@@ -52,14 +52,14 @@
   <meta property="og:site_name" content="리더스 합동 법무사 사무소" />
   <meta property="og:title" content="수원 법인등기 안내 | 리더스 합동 법무사 사무소" />
   <meta property="og:description" content="수원 법인등기 법무사. 법인 설립·임원변경·목적/상호변경·본점이전·자본금변경 등기. 변경 후 2주 기한·과태료 주의, 16년 실무의 대표 법무사가 직접 처리합니다." />
-  <meta property="og:url" content="http://localhost:8080/registry/corporate" />
-  <meta property="og:image" content="http://localhost:8080/assets/img/og/og-main.png">
+  <meta property="og:url" content="https://www.kstoffice6885.com/registry/corporate" />
+  <meta property="og:image" content="https://www.kstoffice6885.com/assets/img/og/og-main.png">
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="수원 법인등기 안내 | 리더스 합동 법무사 사무소" />
   <meta name="twitter:description" content="수원 법인등기 법무사. 법인 설립·임원변경·목적/상호변경·본점이전·자본금변경 등기. 변경 후 2주 기한·과태료 주의, 16년 실무의 대표 법무사가 직접 처리합니다." />
-  <meta name="twitter:image" content="http://localhost:8080/assets/img/og/og-main.png">
+  <meta name="twitter:image" content="https://www.kstoffice6885.com/assets/img/og/og-main.png">
   
 
   <!-- Schema.org LocalBusiness -->
@@ -68,7 +68,7 @@
   <!-- Schema.org: WebSite(홈) / BreadcrumbList(하위 페이지) -->
   
   
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"http://localhost:8080/"},{"@type":"ListItem","position":2,"name":"수원 법인등기 안내","item":"http://localhost:8080/registry/corporate"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://www.kstoffice6885.com/"},{"@type":"ListItem","position":2,"name":"수원 법인등기 안내","item":"https://www.kstoffice6885.com/registry/corporate"}]}</script>
   
 
   <!-- Naver 전환추적 공통 스크립트 -->
@@ -116,8 +116,7 @@
       <span class="bar"></span>
     </button>
 
-    <!-- GNB -->
-    <nav class="gnb" id="gnb" aria-label="주요 메뉴">
+    <!-- GNB --><nav class="gnb" id="gnb" aria-label="주요 메뉴">
       <ul class="gnb-list">
         <!-- 개인회생·파산 (강조·최상위 앞) -->
         <li class="has-sub is-emphasis">
@@ -133,7 +132,7 @@
         </li>
 
         <!-- 업무분야 (형사·등기·민사·국제이혼 통합) -->
-        <li class="has-sub has-groups">
+        <li class="has-sub has-groups is-active">
           <a href="/services" aria-haspopup="true">업무분야</a>
           <ul class="sub sub--groups" aria-label="업무분야 하위 메뉴">
             <li class="sub-col">
@@ -198,6 +197,13 @@
   }
   .gnb-list > li.is-emphasis > a:hover {
     color: var(--point-gold-light);
+  }
+
+  /* 현재 페이지 섹션 활성 표시(밑줄 바) */
+  .gnb-list > li.is-active > a { position: relative; }
+  .gnb-list > li.is-active > a::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -7px; height: 2.5px;
+    background: var(--point-gold); border-radius: 2px;
   }
 
   /* 업무분야 통합 드롭다운: 소그룹 라벨 */
@@ -461,10 +467,9 @@
   /* 메인 CTA(자가진단)만 브랜드 네이비로 강조 */
   .side-btn.rehab { background: #0f172a; color: #fff; border-color: #0f172a; }
   .side-btn.rehab:hover { background: #B89453; border-color: #B89453; color: #fff; }
-  /* 채널은 흰 버튼 + 아이콘 색으로만 구분 */
-  .side-btn.phone svg { color: #0f172a; }
-  .side-btn.naver svg { color: #03c75a; }
-  .side-btn.kakao svg { color: #3C1E1E; }
+  /* 아이콘은 차콜 톤으로 통일 (메인 CTA만 흰색) */
+  .side-btn svg { color: #64748b; }
+  .side-btn.rehab svg { color: #fff; }
   .side-inquiry-link {
     display: flex; align-items: center; justify-content: center; gap: 6px;
     margin-top: 14px; padding-top: 14px; border-top: 1px dashed #e2e8f0;
@@ -473,25 +478,21 @@
   .side-inquiry-link:hover { color: #8a6f3e; }
 
   .side-recent { background: #fff; border: 1px solid #ececec; border-radius: 16px; padding: 22px 20px; }
-  .side-recent-title { font-size: 1rem; font-weight: 800; color: #0f172a; margin: 0 0 16px; }
-  .side-recent-item { display: flex; gap: 12px; align-items: center; text-decoration: none; padding: 8px 0; border-top: 1px solid #f1f5f9; }
-  .side-recent-item:first-of-type { border-top: none; padding-top: 0; }
-  .side-recent-thumb { width: 62px; height: 46px; flex-shrink: 0; border-radius: 8px; background-size: cover; background-position: center; background-color: #16273f; }
+  .side-recent-title { font-size: 1rem; font-weight: 800; color: #0f172a; margin: 0 0 8px; }
+  .side-recent-item { display: block; text-decoration: none; padding: 11px 0; border-top: 1px solid #f1f5f9; }
+  .side-recent-item:first-of-type { border-top: none; }
+  .side-recent-cat { display: inline-block; font-size: 10.5px; font-weight: 800; color: #B89453; letter-spacing: 0.03em; margin-bottom: 4px; }
   .side-recent-name {
-    font-size: 0.88rem; font-weight: 600; color: #334155; line-height: 1.4; word-break: keep-all;
+    display: block; font-size: 0.9rem; font-weight: 600; color: #334155; line-height: 1.45; word-break: keep-all;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .side-recent-item:hover .side-recent-name { color: #D4B26F; }
-</style>
-
-<div class="side-consult">
+  .side-recent-item:hover .side-recent-name { color: #B89453; }
+</style><div class="side-consult">
   <p class="side-consult-head">상담이 필요하신가요?</p>
-  <p class="side-consult-sub">복잡한 채무·법률 문제, 베테랑 법무사가 직접 명쾌한 해결책을 드립니다.</p>
-  <a href="/rehab/diagnosis" class="side-btn rehab">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-    개인회생 자가진단
-  </a>
-  <a href="tel:0312256885" class="side-btn phone">
+  <p class="side-consult-sub">복잡한 채무·법률 문제, 베테랑 법무사가 직접 명쾌한 해결책을 드립니다.</p><a href="/inquiry/" class="side-btn rehab">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    온라인 상담 신청
+  </a><a href="tel:0312256885" class="side-btn phone">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     전화 상담 031-225-6885
   </a>
@@ -503,7 +504,7 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.58 2 11c0 2.83 1.93 5.31 4.84 6.72-.21.74-.77 2.79-.88 3.22-.14.54.2.53.42.39.17-.11 2.71-1.84 3.81-2.59.58.08 1.18.13 1.81.13 5.5 0 10-3.58 10-8S17.5 3 12 3z"/></svg>
     카카오톡 1:1 상담
   </a>
-  <a href="/inquiry/" class="side-inquiry-link">상담 게시판 바로가기 →</a>
+  <a href="/board" class="side-inquiry-link">법률정보 게시판 바로가기 →</a>
 </div>
 
 
@@ -511,29 +512,28 @@
 <div class="side-recent">
   <p class="side-recent-title">최근 글</p>
   
-  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%96%B4%EB%8A%90-%EB%B2%95%EC%9B%90%EC%97%90-%EC%8B%A0%EC%B2%AD%ED%95%98%EB%82%98%EC%9A%94-%EA%B4%80%ED%95%A0%EA%B3%BC-%EC%83%81%EB%8B%B4-%EC%A4%80%EB%B9%84-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90/">
-    <span class="side-recent-thumb" style="background-image:url('/assets/img/board/yong5-thumbnail.png')"></span>
+  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%96%B4%EB%8A%90-%EB%B2%95%EC%9B%90%EC%97%90-%EC%8B%A0%EC%B2%AD%ED%95%98%EB%82%98%EC%9A%94-%EA%B4%80%ED%95%A0%EA%B3%BC-%EC%83%81%EB%8B%B4-%EC%A4%80%EB%B9%84-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90/"><span class="side-recent-cat">개인회생</span>
     <span class="side-recent-name">용인 개인회생, 어느 법원에 신청하나요? 관할과 상담 준비 (수원회생법원)</span>
   </a>
   
-  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%A0%88%EC%B0%A8-%EC%8B%A0%EC%B2%AD%EB%B6%80%ED%84%B0-%EC%9D%B8%EA%B0%80-%EB%A9%B4%EC%B1%85%EA%B9%8C%EC%A7%80-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/">
-    <span class="side-recent-thumb" style="background-image:url('/assets/img/board/yong3-thumbnail.png')"></span>
+  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%A0%88%EC%B0%A8-%EC%8B%A0%EC%B2%AD%EB%B6%80%ED%84%B0-%EC%9D%B8%EA%B0%80-%EB%A9%B4%EC%B1%85%EA%B9%8C%EC%A7%80-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/"><span class="side-recent-cat">개인회생</span>
     <span class="side-recent-name">용인 개인회생 절차, 신청부터 인가·면책까지 (수원회생법원 관할)</span>
   </a>
   
-  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%8B%A0%EC%B2%AD-%EC%9E%90%EA%B2%A9-%EB%82%98%EB%8F%84-%EB%90%A0%EA%B9%8C%EC%9A%94-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/">
-    <span class="side-recent-thumb" style="background-image:url('/assets/img/board/yong1-thumbnail.png')"></span>
+  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EC%8B%A0%EC%B2%AD-%EC%9E%90%EA%B2%A9-%EB%82%98%EB%8F%84-%EB%90%A0%EA%B9%8C%EC%9A%94-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/"><span class="side-recent-cat">개인회생</span>
     <span class="side-recent-name">용인 개인회생 신청 자격, 나도 될까요? (수원회생법원 관할)</span>
   </a>
   
-  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B9%84%EC%9A%A9-%ED%95%AD%EB%AA%A9%EB%B3%84-%EA%B5%AC%EC%84%B1%EA%B3%BC-%EB%B6%84%EB%82%A9-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/">
-    <span class="side-recent-thumb" style="background-image:url('/assets/img/board/yong2-thumbnail.png')"></span>
+  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-%EB%B9%84%EC%9A%A9-%ED%95%AD%EB%AA%A9%EB%B3%84-%EA%B5%AC%EC%84%B1%EA%B3%BC-%EB%B6%84%EB%82%A9-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/"><span class="side-recent-cat">개인회생</span>
     <span class="side-recent-name">용인 개인회생 비용, 항목별 구성과 분납 (수원회생법원 관할)</span>
   </a>
   
-  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-vs-%EA%B0%9C%EC%9D%B8%ED%8C%8C%EC%82%B0-%EC%96%B4%EB%8A%90-%EA%B2%83%EC%9D%B4-%EB%A7%9E%EC%9D%84%EA%B9%8C%EC%9A%94-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/">
-    <span class="side-recent-thumb" style="background-image:url('/assets/img/board/yong4-thumbnail.png')"></span>
+  <a class="side-recent-item" href="/board/2026-07-12-%EC%9A%A9%EC%9D%B8-%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D-vs-%EA%B0%9C%EC%9D%B8%ED%8C%8C%EC%82%B0-%EC%96%B4%EB%8A%90-%EA%B2%83%EC%9D%B4-%EB%A7%9E%EC%9D%84%EA%B9%8C%EC%9A%94-%EC%88%98%EC%9B%90%ED%9A%8C%EC%83%9D%EB%B2%95%EC%9B%90-%EA%B4%80%ED%95%A0/"><span class="side-recent-cat">개인회생</span>
     <span class="side-recent-name">용인 개인회생 vs 개인파산, 어느 것이 맞을까요? (수원회생법원 관할)</span>
+  </a>
+  
+  <a class="side-recent-item" href="/board/2026-07-11-%EC%9E%90%EB%85%80-%EC%9E%88%EB%8A%94-%EA%B5%AD%EC%A0%9C%EC%9D%B4%ED%98%BC-%EC%B9%9C%EA%B6%8C-%EC%96%91%EC%9C%A1-%EC%84%9C%EB%A5%98%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%A4%80%EB%B9%84%ED%95%98%EB%82%98-%EC%88%98%EC%9B%90/"><span class="side-recent-cat">국제이혼</span>
+    <span class="side-recent-name">자녀 있는 국제이혼 — 친권·양육 서류는 어떻게 준비하나 (수원)</span>
   </a>
   
 </div>

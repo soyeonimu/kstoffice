@@ -43,7 +43,7 @@
 .table-responsive { overflow-x: auto; }
 .comparison-table { width: 100%; border-collapse: collapse; min-width: 640px; }
 .comparison-table th { padding: 22px; background: #fcfcfc; font-weight: 800; font-size: 1.05rem; border-bottom: 2px solid #f1f5f9; }
-.comparison-table th.highlight { background: var(--brand-soft); color: var(--brand-accent-d); }
+.comparison-table th.highlight { background: var(--brand-soft); color: #0f172a; }
 .comparison-table td { padding: 18px 22px; border-bottom: 1px solid #f1f5f9; font-size: 1rem; color: var(--text-sub); }
 .comparison-table td.label { background: #fcfcfc; color: var(--text-main); font-weight: 700; text-align: center; width: 20%; }
 .comparison-table td.highlight-cell { background: rgba(212,178,111,.05); color: var(--text-main); }

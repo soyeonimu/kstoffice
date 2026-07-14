@@ -161,32 +161,6 @@ permalink: /services
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section class="leaders-section bg-soft">
-    <div class="leaders-container">
-      <div class="section-head text-center js-reveal">
-        <div class="leaders-badge-wrapper" style="margin-bottom: 12px;">
-          <span class="leaders-badge">GALLERY</span>
-        </div>
-        <h2 class="section-title">리더스 갤러리</h2>
-        <p class="section-desc">현장에서 축적된 경험과 신뢰의 기록입니다.</p>
-      </div>
-
-      <div class="sq-slider js-reveal">
-        <div class="sq-track">
-          <div class="sq-slide"><img src="/assets/img/gallery/1.jpg" alt="리더스 활동"></div>
-          <div class="sq-slide"><img src="/assets/img/gallery/2.jpg" alt="리더스 활동"></div>
-          <div class="sq-slide"><img src="/assets/img/gallery/3.jpg" alt="리더스 활동"></div>
-          <div class="sq-slide"><img src="/assets/img/gallery/4.jpg" alt="리더스 활동"></div>
-          <div class="sq-slide"><img src="/assets/img/gallery/5.jpg" alt="리더스 활동"></div>
-          <div class="sq-slide"><img src="/assets/img/gallery/6.jpg" alt="리더스 활동"></div>
-          <div class="sq-slide"><img src="/assets/img/gallery/7.jpg" alt="리더스 활동"></div>
-          <div class="sq-slide"><img src="/assets/img/gallery/8.jpg" alt="리더스 활동"></div>
-          <div class="sq-slide"><img src="/assets/img/gallery/9.jpg" alt="리더스 활동"></div>
-        </div>
-      </div>
-    </div>
-  </section>
 </section>
 
 {% include cta-box.html 
@@ -232,12 +206,6 @@ permalink: /services
   .service-text { font-size: 0.88rem; color: var(--text-sub); line-height: 1.55; margin: 0; word-break: keep-all; }
   .service-card:hover { border-color: var(--brand-accent); transform: translateY(-7px); box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08); }
 
-  /* Gallery */
-  .sq-slider { overflow: hidden; width: 100%; }
-  .sq-track { display: flex; width: calc(340px * 12); animation: scrollSQ 45s linear infinite; }
-  .sq-slide { width: 340px; padding: 0 12px; flex-shrink: 0; }
-  .sq-slide img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; }
-  @keyframes scrollSQ { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-340px * 6)); } }
 
   /* Reveal */
   .js-reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease; }

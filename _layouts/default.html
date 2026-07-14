@@ -20,7 +20,6 @@
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/leaders.css' | relative_url }}">
 
   <style>
     body { margin: 0; padding-top: var(--header-h, 85px); font-family: 'Pretendard', -apple-system, sans-serif; background-color: #fff; color: #333; }
@@ -30,14 +29,15 @@
     .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
     /* 옵트인 사이드바 (page.sidebar == true 인 콘텐츠 페이지) */
+    /* 개인회생·파산 페이지처럼 양쪽 벽에 붙는 풀블리드 레이아웃으로 통일 */
     .page-with-side {
-      max-width: 1260px; margin: 0 auto; padding: 0 24px; box-sizing: border-box;
+      max-width: none; margin: 0; padding: 0 32px; box-sizing: border-box;
       display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 56px; align-items: start;
     }
     .page-main { min-width: 0; }
     .page-side { position: sticky; top: 110px; display: flex; flex-direction: column; gap: 24px; }
     @media (max-width: 980px) {
-      .page-with-side { grid-template-columns: 1fr; gap: 40px; }
+      .page-with-side { grid-template-columns: 1fr; gap: 40px; padding: 0 16px; }
       .page-side { position: static; top: auto; }
     }
   </style>

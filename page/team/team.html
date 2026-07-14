@@ -146,6 +146,16 @@ permalink: /team
           <div class="sq-slide"><img src="/assets/img/gallery/7.jpg" alt="리더스 활동 사진"></div>
           <div class="sq-slide"><img src="/assets/img/gallery/8.jpg" alt="리더스 활동 사진"></div>
           <div class="sq-slide"><img src="/assets/img/gallery/9.jpg" alt="리더스 활동 사진"></div>
+          <!-- 끊김 없는 무한 루프용 복제본 -->
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/1.jpg" alt=""></div>
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/2.jpg" alt=""></div>
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/3.jpg" alt=""></div>
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/4.jpg" alt=""></div>
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/5.jpg" alt=""></div>
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/6.jpg" alt=""></div>
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/7.jpg" alt=""></div>
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/8.jpg" alt=""></div>
+          <div class="sq-slide" aria-hidden="true"><img src="/assets/img/gallery/9.jpg" alt=""></div>
         </div>
       </div>
     </div>
@@ -238,10 +248,13 @@ permalink: /team
 
   /* Gallery */
   .sq-slider{ overflow:hidden; width:100%; }
-  .sq-track{ display:flex; width:calc(340px * 12); animation:scrollSQ 45s linear infinite; }
+  .sq-track{ display:flex; width:calc(340px * 18); animation:scrollSQ 72s linear infinite; }
+  .sq-slider:hover .sq-track{ animation-play-state:paused; }
   .sq-slide{ width:340px; padding:0 12px; flex-shrink:0; }
   .sq-slide img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:16px; }
-  @keyframes scrollSQ{ 0%{ transform:translateX(0);} 100%{ transform:translateX(calc(-340px * 6)); } }
+  /* 9장 원본 뒤에 9장 복제 -> 정확히 절반(9장)만 이동하면 끊김 없이 무한 반복 */
+  @keyframes scrollSQ{ from{ transform:translateX(0);} to{ transform:translateX(calc(-340px * 9)); } }
+  @media (prefers-reduced-motion: reduce){ .sq-track{ animation:none; } }
 
   /* Reveal */
   .js-reveal{ opacity:0; transform:translateY(20px); transition:.8s ease; }

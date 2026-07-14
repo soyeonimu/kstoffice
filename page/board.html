@@ -14,32 +14,37 @@ keywords: 수원 개인회생 정보, 수원 법무사 법률정보, 개인회�
     <span class="board-eyebrow">LEGAL ARCHIVE</span>
     <h1 class="board-page-title">법률정보 게시판</h1>
     <p class="board-page-sub">개인회생·파산·형사·등기 등 리더스가 직접 작성한 법률 정보입니다.</p>
+    <div class="board-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="board-search" placeholder="궁금한 주제를 검색하세요 (예: 개인회생 비용, 고소장, 국제이혼)">
+    </div>
   </div>
 
-  <div class="board-tools">
-    <div class="filter-group">
-      <div class="filter-btn active" data-filter="all">ALL ({{ all_posts.size }})</div>
-      {% assign cat_array = "" | split: "|" %}
-      {% for p in all_posts %}
-        {% assign c = p.category | first | default: p.category %}{% if c != "" %}{% assign cat_array = cat_array | push: c %}{% endif %}
-      {% endfor %}
-      {% assign categories = cat_array | uniq | sort %}
-      {% for cat in categories %}
-        <div class="filter-btn" data-filter="{{ cat }}">{{ cat | upcase }}</div>
-      {% endfor %}
-    </div>
-    <div class="search-bar">
-      <input type="text" id="board-search" placeholder="검색어를 입력하세요">
-    </div>
+  <div class="board-tabs" role="tablist">
+    <button class="tab active" data-filter="all">전체 <em>{{ all_posts.size }}</em></button>
+    <button class="tab" data-filter="개인회생·파산">개인회생·파산</button>
+    <button class="tab" data-filter="형사">형사</button>
+    <button class="tab" data-filter="민사">민사</button>
+    <button class="tab" data-filter="등기·상속">등기·상속</button>
+    <button class="tab" data-filter="국제이혼">국제이혼</button>
   </div>
 
   <div class="board-list-area">
     <main class="post-grid" id="post-grid">
       {% for post in all_posts %}
-      <a href="{{ post.url }}" class="post-card js-reveal" data-category="{{ post.category | first | default: post.category }}">
-        <span class="post-card-thumb" style="background-image:url('{% include board-thumb.html p=post %}')"></span>
+      {%- assign c = post.category | first | default: post.category -%}
+      {%- assign g = '기타' -%}
+      {%- if c contains '개인회생' or c contains '파산' or c contains '워크아웃' -%}{%- assign g = '개인회생·파산' -%}
+      {%- elsif c contains '형사' or c contains '음주' -%}{%- assign g = '형사' -%}
+      {%- elsif c contains '국제이혼' -%}{%- assign g = '국제이혼' -%}
+      {%- elsif c contains '등기' or c contains '상속' or c contains '부동산' -%}{%- assign g = '등기·상속' -%}
+      {%- elsif c contains '민사' -%}{%- assign g = '민사' -%}
+      {%- endif -%}
+      <a href="{{ post.url }}" class="post-card js-reveal" data-group="{{ g }}">
+        <span class="post-card-thumb" style="background-image:url('{% include board-thumb.html p=post %}')">
+          {% if c %}<span class="post-card-cat">{{ c }}</span>{% endif %}
+        </span>
         <span class="post-card-body">
-          <span class="post-card-cat">{{ post.category | first | default: post.category }}</span>
           <span class="post-card-title">{{ post.title }}</span>
           <span class="post-card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
         </span>
@@ -56,28 +61,30 @@ keywords: 수원 개인회생 정보, 수원 법무사 법률정보, 개인회�
 
   .leaders-board { font-family: 'Pretendard', sans-serif; }
 
-  /* ===== 슬림 헤드(히어로 대체) ===== */
-  .board-head { padding: 8px 0 22px; border-bottom: 1px solid var(--board-border); margin-bottom: 26px; }
+  /* ===== 헤드 + 와이드 검색 ===== */
+  .board-head { padding: 8px 0 22px; border-bottom: 1px solid var(--board-border); margin-bottom: 22px; }
   .board-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--board-gold-d); margin-bottom: 8px; }
   .board-page-title { font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; color: #1a1a1a; }
-  .board-page-sub { font-size: 1rem; color: #6b7280; margin: 0; word-break: keep-all; }
+  .board-page-sub { font-size: 1rem; color: #6b7280; margin: 0 0 20px; word-break: keep-all; }
+  .board-search { position: relative; display: flex; align-items: center; }
+  .board-search svg { position: absolute; left: 18px; width: 19px; height: 19px; color: #9aa0a6; pointer-events: none; }
+  .board-search input { width: 100%; border: 1px solid var(--board-border); border-radius: 12px; outline: none; padding: 15px 18px 15px 46px; font-size: 1rem; background: #fff; transition: 0.2s; font-family: inherit; }
+  .board-search input:focus { border-color: var(--board-gold-d); box-shadow: 0 0 0 3px rgba(226,194,141,.18); }
 
-  /* ===== 필터 + 검색 ===== */
-  .board-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 26px; }
-  .filter-group { display: flex; flex-wrap: wrap; gap: 8px; }
-  .filter-btn { padding: 9px 18px; border-radius: 100px; background: #fff; border: 1px solid var(--board-border); color: #555; font-weight: 600; font-size: 0.86rem; cursor: pointer; transition: 0.25s; }
-  .filter-btn:hover, .filter-btn.active { background: var(--board-dark); color: #fff; border-color: var(--board-dark); }
-  .search-bar { position: relative; flex: 1; min-width: 200px; max-width: 300px; margin-left: auto; }
-  .search-bar input { width: 100%; border: 1px solid var(--board-border); border-radius: 100px; outline: none; padding: 10px 18px; font-size: 0.92rem; background: #fff; transition: 0.25s; }
-  .search-bar input:focus { border-color: var(--board-gold); box-shadow: 0 0 0 3px rgba(226,194,141,.12); }
+  /* ===== 그룹 탭 ===== */
+  .board-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 26px; }
+  .tab { padding: 8px 16px; border-radius: 100px; background: #f4f5f7; border: 1px solid transparent; color: #6b7280; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: 0.2s; font-family: inherit; }
+  .tab em { font-style: normal; opacity: .6; font-size: 0.8em; margin-left: 2px; }
+  .tab:hover { background: #e8eaee; color: #16273f; }
+  .tab.active { background: var(--board-dark); color: #fff; }
 
-  /* ===== 카드 그리드(콘텐츠 폭에 맞춰 자동 배치) ===== */
+  /* ===== 카드 그리드 ===== */
   .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 22px; }
   .post-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--board-border); border-radius: 14px; overflow: hidden; text-decoration: none; transition: 0.25s; box-shadow: 0 4px 16px rgba(0,0,0,.04); }
   .post-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.09); border-color: var(--board-gold); }
-  .post-card-thumb { width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; background-color: #16273f; }
+  .post-card-thumb { position: relative; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; background-color: #16273f; }
+  .post-card-cat { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 700; color: #fff; background: rgba(15,23,42,.82); backdrop-filter: blur(2px); padding: 4px 11px; border-radius: 100px; }
   .post-card-body { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px 20px; }
-  .post-card-cat { align-self: flex-start; font-size: 11.5px; font-weight: 700; color: var(--board-gold-d); border: 1px solid var(--board-gold); padding: 3px 11px; border-radius: 100px; }
   .post-card-title { font-size: 1.02rem; font-weight: 700; color: #222; line-height: 1.45; word-break: keep-all; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .post-card-date { color: #9aa0a6; font-size: 13.5px; }
 
@@ -92,7 +99,6 @@ keywords: 수원 개인회생 정보, 수원 법무사 법률정보, 개인회�
     .post-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
     .post-card-body { padding: 12px 13px 16px; }
     .post-card-title { font-size: 0.92rem; }
-    .search-bar { max-width: none; margin-left: 0; }
   }
 </style>
 
@@ -100,7 +106,7 @@ keywords: 수원 개인회생 정보, 수원 법무사 법률정보, 개인회�
 document.addEventListener("DOMContentLoaded", function () {
   const searchInp = document.getElementById('board-search');
   const cards = Array.from(document.querySelectorAll('.post-card'));
-  const btns = document.querySelectorAll('.filter-btn');
+  const btns = document.querySelectorAll('.tab');
   const pager = document.getElementById('board-pagination');
   const noResults = document.getElementById('no-results');
   const PER_PAGE = 12;
@@ -109,13 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function computeMatched() {
     const val = searchInp.value.toLowerCase().trim();
-    const activeCat = document.querySelector('.filter-btn.active').dataset.filter;
+    const activeGroup = document.querySelector('.tab.active').dataset.filter;
     matched = cards.filter(card => {
       const title = card.querySelector('.post-card-title').textContent.toLowerCase();
-      const cat = card.dataset.category;
+      const g = card.dataset.group;
       const mSearch = title.includes(val);
-      const mCat = (activeCat === 'all' || cat === activeCat);
-      return mSearch && mCat;
+      const mGroup = (activeGroup === 'all' || g === activeGroup);
+      return mSearch && mGroup;
     });
   }
 

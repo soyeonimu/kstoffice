@@ -72,6 +72,8 @@
 </div>
 
 {% assign recent = site.board | where_exp: "p", "p.url != page.url" | sort: "date" | reverse %}
+{% comment %} 게시판 목록 페이지에선 최근 글이 좌측 그리드와 중복 → 숨김 {% endcomment %}
+{% unless page.url == '/board/' %}
 {% if recent.size >= 1 %}
 <div class="side-recent">
   <p class="side-recent-title">최근 글</p>
@@ -84,3 +86,4 @@
   {% endfor %}
 </div>
 {% endif %}
+{% endunless %}

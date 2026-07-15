@@ -21,6 +21,7 @@ collections:
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-redirect-from
 
 simple_jekyll_search:
   json: true

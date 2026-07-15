@@ -4,6 +4,7 @@ gem "jekyll", "~> 3.10.0" # 이 줄을 추가하여 GitHub Pages의 Jekyll 버�
 gem "jekyll-archives"
 gem "jekyll-sitemap"
 gem "jekyll-feed"
+gem "jekyll-redirect-from"
 gem "github-pages", group: :jekyll_plugins
 
 gem "tzinfo-data", "~> 1.2026"

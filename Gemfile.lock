@@ -288,6 +288,7 @@ DEPENDENCIES
   jekyll (~> 3.10.0)
   jekyll-archives
   jekyll-feed
+  jekyll-redirect-from
   jekyll-sitemap
   tzinfo-data (~> 1.2026)
 

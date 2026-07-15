@@ -31,15 +31,38 @@ jobs:
 
       - name: Normalize frontmatter and filename
         run: |
-          python3 -m pip install --upgrade pip pyyaml
+          python3 -m pip install --upgrade pip pyyaml unidecode
           # 파일 소유권을 현재 실행 유저로 변경
           sudo chown -R $USER:$USER _board
           
           python3 - << 'PY'
           import os, glob, re, datetime, yaml, shutil
+          try:
+              from unidecode import unidecode
+          except Exception:
+              def unidecode(s): return s
 
           BOARD_DIR = "_board"
-          KEEP = ["layout", "title", "date", "category", "description", "keywords"]
+          # ✅ permalink/redirect_from 를 KEEP 에 추가해야 재작성 시 살아남는다
+          KEEP = ["permalink", "redirect_from", "layout", "title", "date", "category", "description", "keywords"]
+
+          # ✅ 제목 -> 영문 URL 슬러그 매핑 (한글 제목 파일명을 URL로 쓰면 인코딩·길이·404 문제)
+          SLUGMAP = {}
+          try:
+              with open("_data/board_slugs.yml", encoding="utf-8") as f:
+                  SLUGMAP = {str(k).strip(): str(v).strip() for k, v in (yaml.safe_load(f) or {}).items()}
+          except Exception as e:
+              print("slugmap load fail:", e)
+
+          def eng_slug(title):
+              t = str(title).strip()
+              if t in SLUGMAP:
+                  return SLUGMAP[t]
+              # fallback: 로마자화(unidecode) -> ascii 슬러그
+              s = unidecode(t).lower()
+              s = re.sub(r"[^a-z0-9]+", "-", s)
+              s = re.sub(r"-{2,}", "-", s).strip("-")
+              return s or "post"
 
           def safe_slug(name: str) -> str:
               name = re.sub(r'\.md$', '', name, flags=re.I)
@@ -49,21 +72,28 @@ jobs:
               name = re.sub(r'-{2,}', '-', name)
               return name.lower() or "untitled"
 
+          def old_urls(title, file_date):
+              # 옛 한글 URL(파일명 기반) + 네이버 정규화 변형 -> redirect_from 으로 301 복구
+              ks = safe_slug(str(title))
+              base = "%s-%s" % (file_date, ks)
+              n = re.sub(r"[,'()’‘]", "", base)
+              n = re.sub(r"[·—–]", "-", n)
+              n = re.sub(r"-{2,}", "-", n).strip("-")
+              urls = ["/board/%s/" % base]
+              if n != base:
+                  urls.append("/board/%s/" % n)
+              return urls
+
           def normalize_date(raw):
-              # ✅ 핵심 수정: Jekyll 정렬을 위해 시:분:초를 현재 시간으로 추가
+              # Jekyll 정렬을 위해 시:분:초를 현재 시간으로 추가
               now = datetime.datetime.now()
               time_str = now.strftime(" %H:%M:%S")
-              
-              if raw is None: 
+              if raw is None:
                   return now.strftime("%Y-%m-%d") + time_str
-              
               s = str(raw).strip()
-              # 숫자만 추출 (날짜 8자리)
               digits = re.sub(r'[^0-9]', '', s)[:8]
-              if len(digits) == 8: 
-                  # YYYY-MM-DD 형식에 시간을 붙임
+              if len(digits) == 8:
                   return f"{digits[:4]}-{digits[4:6]}-{digits[6:8]}" + time_str
-              
               return now.strftime("%Y-%m-%d") + time_str
 
           def split_frontmatter(text):
@@ -81,13 +111,22 @@ jobs:
 
                   fm = yaml.safe_load(fm_raw) or {}
                   title = fm.get("title") or os.path.basename(path).replace(".md", "")
-                  
-                  # ✅ 날짜 정규화 시 시간 정보 포함
+
                   date_val = normalize_date(fm.get("date"))
-                  # 파일명용 날짜 (파일명에는 시간 제외하고 YYYY-MM-DD만)
                   file_date = date_val.split(' ')[0]
 
+                  # ✅ 영문 permalink + 옛 URL redirect_from(기존 것 보존 + 자동 추가)
+                  slug = eng_slug(title)
+                  red = []
+                  exist = fm.get("redirect_from")
+                  if isinstance(exist, list): red.extend([str(x) for x in exist])
+                  elif isinstance(exist, str): red.append(exist)
+                  for u in old_urls(title, file_date):
+                      if u not in red: red.append(u)
+
                   out = {
+                      "permalink": "/board/%s/" % slug,
+                      "redirect_from": red,
                       "layout": "board-post",
                       "title": str(title).strip(),
                       "date": date_val,
@@ -99,20 +138,19 @@ jobs:
                   new_fm = "---\n" + yaml.safe_dump(ordered, sort_keys=False, allow_unicode=True).strip() + "\n---\n"
                   new_content = new_fm + body.lstrip()
 
-                  slug = safe_slug(str(title))
-                  new_filename = f"{file_date}-{slug}.md"
+                  # 파일명은 관리용(한글 유지 OK) — URL은 위 permalink 가 결정
+                  fslug = safe_slug(str(title))
+                  new_filename = f"{file_date}-{fslug}.md"
                   target_path = os.path.join(os.path.dirname(path), new_filename)
 
-                  # 파일 업데이트
                   with open(path, "w", encoding="utf-8") as f:
                       f.write(new_content)
 
-                  # 파일명 정규화
                   if os.path.abspath(path) != os.path.abspath(target_path):
                       if os.path.exists(target_path):
                           os.remove(target_path)
                       shutil.move(path, target_path)
-                      print(f"Fixed: {new_filename} with time {date_val}")
+                  print(f"OK: {new_filename} -> {out['permalink']}")
               except Exception as e:
                   print(f"Error processing {path}: {e}")
 

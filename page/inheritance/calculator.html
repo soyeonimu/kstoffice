@@ -1,0 +1,287 @@
+---
+layout: default
+sidebar: true
+title: 법정상속분 계산기 | 상속인·상속 비율 자동 계산 - 리더스 합동 법무사
+description: 배우자·자녀·부모·형제자매만 선택하면 민법상 법정상속분(상속 비율)과 각자 받는 금액을 바로 계산해 드립니다. 상속인 순위와 배우자 5할 가산까지 자동 반영하는 무료 상속분 계산기입니다.
+keywords: 법정상속분 계산기, 상속분 계산, 상속 비율, 상속인 순위, 배우자 상속분, 상속 지분 계산, 수원 상속 법무사
+permalink: /inheritance/calculator
+---
+
+<section class="leaders-page has-subnav-left">
+  {% include subnav-floatbar.html badge="상속 업무" title="상속 서류 안내" items=site.data.subnav.inheritance %}
+
+  <!-- ① Hero -->
+  <section class="leaders-hero js-reveal">
+    <div class="leaders-container">
+      <span class="hero-eyebrow">법정상속분 계산기</span>
+      <h1 class="leaders-title">누가, <span class="text-gradient">얼마씩</span> 받을까요?</h1>
+      <p class="leaders-desc">
+        상속인만 선택하면 <strong>민법상 법정상속분</strong>과 각자 받는 <strong>비율·금액</strong>을 바로 계산해 드립니다.<br>
+        배우자 <strong>5할 가산</strong>, 상속인 순위까지 자동으로 반영됩니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ② 계산기 -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="lsc-card js-reveal">
+        <div class="lsc-grid">
+          <!-- 입력 -->
+          <div class="lsc-inputs">
+            <div class="lsc-field">
+              <label class="lsc-label">배우자</label>
+              <div class="lsc-toggle" id="lsc-spouse">
+                <button type="button" data-v="1" class="on">있음</button>
+                <button type="button" data-v="0">없음</button>
+              </div>
+            </div>
+
+            <div class="lsc-field">
+              <label class="lsc-label">자녀 수 <span class="lsc-hint">(손자녀 등 직계비속 포함)</span></label>
+              <div class="lsc-stepper" data-target="children">
+                <button type="button" data-d="-1">−</button>
+                <input id="lsc-children" type="number" min="0" max="20" value="2" inputmode="numeric">
+                <button type="button" data-d="1">+</button>
+              </div>
+            </div>
+
+            <div class="lsc-field lsc-when-nochild" hidden>
+              <label class="lsc-label">부모 생존 수 <span class="lsc-hint">(자녀가 없을 때만)</span></label>
+              <div class="lsc-stepper" data-target="parents">
+                <button type="button" data-d="-1">−</button>
+                <input id="lsc-parents" type="number" min="0" max="2" value="0" inputmode="numeric">
+                <button type="button" data-d="1">+</button>
+              </div>
+            </div>
+
+            <div class="lsc-field lsc-when-sibling" hidden>
+              <label class="lsc-label">형제자매 수 <span class="lsc-hint">(자녀·부모가 없고 배우자도 없을 때)</span></label>
+              <div class="lsc-stepper" data-target="siblings">
+                <button type="button" data-d="-1">−</button>
+                <input id="lsc-siblings" type="number" min="0" max="20" value="0" inputmode="numeric">
+                <button type="button" data-d="1">+</button>
+              </div>
+            </div>
+
+            <div class="lsc-field">
+              <label class="lsc-label">상속재산 총액 <span class="lsc-hint">(선택 · 단위: 만원)</span></label>
+              <div class="lsc-money">
+                <input id="lsc-estate" type="number" min="0" step="100" placeholder="예: 30000" inputmode="numeric">
+                <span>만원</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 결과 -->
+          <div class="lsc-result" id="lsc-result">
+            <div class="lsc-result-head">
+              <span class="lsc-badge">상속인 <b id="lsc-count">3</b>명</span>
+              <span class="lsc-ratio" id="lsc-ratioline">2 : 2 : 3</span>
+            </div>
+            <div class="lsc-bar" id="lsc-bar"></div>
+            <ul class="lsc-list" id="lsc-list"></ul>
+            <p class="lsc-none" id="lsc-none" hidden>선택하신 조건으로는 <b>상속인이 없습니다.</b> 상속인을 선택해 주세요.</p>
+          </div>
+        </div>
+
+        <p class="lsc-disclaimer">
+          ※ 본 계산기는 <strong>민법상 법정상속분</strong> 기준의 참고용입니다.
+          유류분·기여분·특별수익, 대습상속, 상속포기·한정승인 등 개별 사정에 따라 실제 지분은 달라질 수 있습니다.
+          정확한 판단은 상담을 받아보시길 권합니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 규칙 설명 -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="section-lead">
+        <h2 class="section-lead-title">법정상속분, 이렇게 정해집니다</h2>
+        <p class="section-lead-desc">상속인의 <strong>순위</strong>가 먼저, 같은 순위 안에서는 <strong>같은 비율</strong>, 배우자만 <strong>5할</strong>을 더 받습니다.</p>
+      </div>
+
+      <div class="leaders-table-card js-reveal">
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr><th>순위</th><th>상속인</th><th class="highlight">비고</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="label">1순위</td><td>직계비속 (자녀·손자녀)</td><td class="highlight-cell">배우자와 <strong>공동상속</strong></td></tr>
+              <tr><td class="label">2순위</td><td>직계존속 (부모·조부모)</td><td class="highlight-cell">1순위가 없을 때, 배우자와 공동상속</td></tr>
+              <tr><td class="label">3순위</td><td>형제자매</td><td class="highlight-cell">배우자가 있으면 상속 못 받음</td></tr>
+              <tr><td class="label">배우자</td><td>항상 상속인</td><td class="highlight-cell">1·2순위와 함께, 없으면 단독 / <strong>5할 가산</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="lsc-example js-reveal">
+        <div class="lsc-ex">
+          <span class="lsc-ex-q">자녀 2명 + 배우자</span>
+          <span class="lsc-ex-a">자녀 2 : 자녀 2 : 배우자 3 → <b>2 : 2 : 3</b></span>
+        </div>
+        <div class="lsc-ex">
+          <span class="lsc-ex-q">자녀 없이 부모 2명 + 배우자</span>
+          <span class="lsc-ex-a">부 2 : 모 2 : 배우자 3 → <b>2 : 2 : 3</b></span>
+        </div>
+        <div class="lsc-ex">
+          <span class="lsc-ex-q">자녀·부모 없이 배우자만</span>
+          <span class="lsc-ex-a">배우자 <b>단독 (100%)</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ CTA -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="lsc-cta js-reveal">
+        <h2>내 상황은 계산기보다 복잡한가요?</h2>
+        <p>상속포기·한정승인, 유류분, 이미 돌아가신 상속인(대습상속) 등이 얽히면 지분이 달라집니다.<br>사건마다 다르니, 서류 준비 전에 한 번 정리받아 보세요.</p>
+        <div class="lsc-cta-btns">
+          <a href="/inquiry" class="lsc-btn lsc-btn-primary">상담 문의하기</a>
+          <a href="tel:031-225-6885" class="lsc-btn lsc-btn-ghost">☎ 031-225-6885</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<style>
+  .lsc-card{background:#fff;border:1px solid #e6ecf5;border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(15,43,91,.06)}
+  .lsc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:820px){.lsc-grid{grid-template-columns:1fr}}
+  .lsc-field{margin-bottom:20px}
+  .lsc-label{display:block;font-weight:700;color:#0F2B5B;margin-bottom:10px;font-size:15px}
+  .lsc-hint{font-weight:500;color:#8091ad;font-size:13px}
+  .lsc-toggle{display:flex;gap:8px}
+  .lsc-toggle button{flex:1;padding:12px;border:1.5px solid #d7e0ee;background:#fff;border-radius:12px;font-weight:700;color:#5b6b85;cursor:pointer;font-size:15px;transition:.15s}
+  .lsc-toggle button.on{background:#0F2B5B;border-color:#0F2B5B;color:#fff}
+  .lsc-stepper,.lsc-money{display:flex;align-items:center;gap:8px}
+  .lsc-stepper button{width:46px;height:46px;border:1.5px solid #d7e0ee;background:#f7faff;border-radius:12px;font-size:22px;font-weight:700;color:#0F2B5B;cursor:pointer;line-height:1}
+  .lsc-stepper input,.lsc-money input{flex:1;height:46px;border:1.5px solid #d7e0ee;border-radius:12px;text-align:center;font-size:18px;font-weight:700;color:#0F2B5B;width:100%}
+  .lsc-money input{text-align:right;padding-right:12px}
+  .lsc-money span{font-weight:700;color:#5b6b85}
+  .lsc-result{background:linear-gradient(160deg,#0F2B5B,#12294F);border-radius:16px;padding:24px;color:#fff;display:flex;flex-direction:column}
+  .lsc-result-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .lsc-badge{background:rgba(255,255,255,.12);padding:7px 14px;border-radius:999px;font-size:14px;font-weight:700}
+  .lsc-badge b{color:#7FB0FF}
+  .lsc-ratio{font-size:22px;font-weight:900;letter-spacing:.02em}
+  .lsc-bar{display:flex;height:16px;border-radius:8px;overflow:hidden;margin-bottom:18px;background:rgba(255,255,255,.08)}
+  .lsc-bar>span{height:100%}
+  .lsc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+  .lsc-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(255,255,255,.06);border-radius:10px;padding:12px 14px}
+  .lsc-li-name{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px}
+  .lsc-dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+  .lsc-li-val{text-align:right}
+  .lsc-li-frac{font-weight:900;font-size:17px}
+  .lsc-li-amt{display:block;font-size:13px;color:#B9CBEA;margin-top:2px}
+  .lsc-none{color:#FFB4C1;font-weight:600;margin-top:10px}
+  .lsc-disclaimer{margin:20px 2px 0;font-size:13px;color:#7c8aa3;line-height:1.6}
+  .lsc-example{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:820px){.lsc-example{grid-template-columns:1fr}}
+  .lsc-ex{background:#f4f7fb;border:1px solid #e6ecf5;border-radius:14px;padding:16px 18px}
+  .lsc-ex-q{display:block;font-weight:700;color:#0F2B5B;font-size:15px;margin-bottom:6px}
+  .lsc-ex-a{font-size:14px;color:#5b6b85}
+  .lsc-ex-a b{color:#E4002B}
+  .lsc-cta{background:linear-gradient(160deg,#0F2B5B,#12294F);border-radius:20px;padding:38px;text-align:center;color:#fff}
+  .lsc-cta h2{font-size:26px;font-weight:800;margin:0 0 12px}
+  .lsc-cta p{color:#C4D3EE;line-height:1.6;margin:0 0 24px}
+  .lsc-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .lsc-btn{padding:14px 28px;border-radius:12px;font-weight:800;text-decoration:none;font-size:16px}
+  .lsc-btn-primary{background:#E4002B;color:#fff}
+  .lsc-btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+</style>
+
+<script>
+(function(){
+  var COLORS=['#4C8DFF','#22B07D','#E4002B','#F5A623','#9B6BFF','#00B8C4','#FF6B9D','#7ED957'];
+  function gcd(a,b){return b?gcd(b,a%b):a;}
+  function el(id){return document.getElementById(id);}
+  var state={spouse:1,children:2,parents:0,siblings:0,estate:null};
+
+  function compute(){
+    var heirs=[];
+    if(state.children>0){
+      for(var i=1;i<=state.children;i++) heirs.push({name:'자녀'+(state.children>1?' '+i:''),u:2});
+      if(state.spouse) heirs.push({name:'배우자',u:3});
+    } else if(state.parents>0){
+      var pl=['부','모'];
+      for(var j=0;j<state.parents;j++) heirs.push({name:'부모'+(state.parents>1?' '+pl[j]:''),u:2});
+      if(state.spouse) heirs.push({name:'배우자',u:3});
+    } else if(state.spouse){
+      heirs.push({name:'배우자',u:2});
+    } else if(state.siblings>0){
+      for(var k=1;k<=state.siblings;k++) heirs.push({name:'형제자매'+(state.siblings>1?' '+k:''),u:2});
+    }
+    return heirs;
+  }
+
+  function render(){
+    var heirs=compute();
+    var total=heirs.reduce(function(s,h){return s+h.u;},0);
+    var list=el('lsc-list'),bar=el('lsc-bar');
+    list.innerHTML='';bar.innerHTML='';
+    el('lsc-count').textContent=heirs.length;
+    if(!heirs.length){
+      el('lsc-none').hidden=false;el('lsc-ratioline').textContent='—';
+      return;
+    }
+    el('lsc-none').hidden=true;
+    el('lsc-ratioline').textContent=heirs.map(function(h){return h.u;}).join(' : ');
+    heirs.forEach(function(h,idx){
+      var c=COLORS[idx%COLORS.length];
+      var pct=h.u/total*100;
+      var g=gcd(h.u,total);
+      var frac=(h.u/g)+'/'+(total/g);
+      // bar
+      var seg=document.createElement('span');seg.style.width=pct+'%';seg.style.background=c;bar.appendChild(seg);
+      // list item
+      var li=document.createElement('li');
+      var amt='';
+      if(state.estate&&state.estate>0){
+        var man=Math.round(state.estate*h.u/total);
+        amt='<span class="lsc-li-amt">'+man.toLocaleString()+' 만원</span>';
+      }
+      li.innerHTML='<span class="lsc-li-name"><span class="lsc-dot" style="background:'+c+'"></span>'+h.name+'</span>'+
+        '<span class="lsc-li-val"><span class="lsc-li-frac">'+frac+'</span> <span style="color:#B9CBEA;font-size:13px">('+pct.toFixed(1)+'%)</span>'+amt+'</span>';
+      list.appendChild(li);
+    });
+  }
+
+  function toggleFields(){
+    document.querySelector('.lsc-when-nochild').hidden = !(state.children===0);
+    document.querySelector('.lsc-when-sibling').hidden = !(state.children===0 && state.parents===0 && state.spouse===0);
+  }
+
+  // spouse toggle
+  el('lsc-spouse').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    state.spouse=parseInt(b.dataset.v,10);
+    [].forEach.call(this.children,function(x){x.classList.toggle('on',x===b);});
+    toggleFields();render();
+  });
+  // steppers
+  [].forEach.call(document.querySelectorAll('.lsc-stepper'),function(st){
+    var key=st.dataset.target, input=st.querySelector('input');
+    st.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-d]');if(!b)return;
+      var v=Math.max(parseInt(input.min,10), Math.min(parseInt(input.max,10), (parseInt(input.value,10)||0)+parseInt(b.dataset.d,10)));
+      input.value=v;state[key]=v;toggleFields();render();
+    });
+    input.addEventListener('input',function(){
+      var v=Math.max(parseInt(input.min,10)||0, Math.min(parseInt(input.max,10)||99, parseInt(input.value,10)||0));
+      state[key]=v;toggleFields();render();
+    });
+  });
+  // estate
+  el('lsc-estate').addEventListener('input',function(){
+    state.estate=parseInt(this.value,10)||null;render();
+  });
+
+  toggleFields();render();
+})();
+</script>

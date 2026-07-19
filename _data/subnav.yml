@@ -59,6 +59,9 @@ registry:
     desc: "설립·임원변경"
 
 inheritance:
+  - title: "상속분 계산기"
+    url: "/inheritance/calculator"
+    desc: "누가 얼마씩 받나"
   - title: "상속 등기"
     url: "/registry/inheritance"
     desc: "협의분할·상속"

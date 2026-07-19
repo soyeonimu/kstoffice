@@ -396,20 +396,10 @@ img, video { max-width: 100%; height: auto; }
 .f-regions-links a:hover { color: #E2C28D; }
 .f-regions-links span { color: rgba(255,255,255,0.2); }
 
-/* 분야별 지역 링크(고소장/음주운전/등기/민사/국제이혼 × 8지역) */
-.f-regions-sub { gap: 4px 12px; margin-top: 8px; }
-.f-regions-sub .f-region-cat {
-  flex: 0 0 58px;
-  color: rgba(255,255,255,0.32);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-.f-regions-sub a { position: relative; padding-right: 12px; }
-.f-regions-sub a:not(:last-child)::after {
-  content: '·';
-  position: absolute; right: 3px;
-  color: rgba(255,255,255,0.2);
-}
+/* 상담 가능 지역: 대표 지역 텍스트 + 전체보기 링크 */
+.f-regions-txt { color: rgba(255,255,255,0.4); }
+.f-regions-more { color: #E2C28D !important; font-weight: 700; margin-left: 4px; white-space: nowrap; }
+.f-regions-more:hover { text-decoration: underline; }
 
 .f-bottom {
   padding-top: 25px;

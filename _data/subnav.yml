@@ -61,6 +61,17 @@ registry:
     url: "/registry/corporate"
     desc: "설립·임원변경"
 
+inheritance:
+  - title: "한정승인"
+    url: "/inheritance/limited-acceptance"
+    desc: "상속채무 한정 책임"
+  - title: "상속포기"
+    url: "/inheritance/renunciation"
+    desc: "상속 전부 포기"
+  - title: "상속 등기"
+    url: "/registry/inheritance"
+    desc: "협의분할·상속"
+
 rehab:
   - title: "개인회생이란"
     url: "/what-is"

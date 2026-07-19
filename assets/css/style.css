@@ -50,13 +50,13 @@ img, video { max-width: 100%; height: auto; }
   width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px;
   display: flex; justify-content: space-between; align-items: center;
 }
-.logo-img { height: 48px; width: auto; }
+.logo-img { height: 42px; width: auto; }
 
 /* GNB 메뉴 */
-.gnb-list { display: flex; gap: 40px; align-items: center; }
+.gnb-list { display: flex; gap: 26px; align-items: center; }
 .gnb-list > li > a {
   color: #ffffff;
-  font-size: 17px; font-weight: 700;
+  font-size: 16px; font-weight: 700;
   padding: 10px 0 25px 0; /* 서브메뉴 간격 */
   position: relative;
   display: block;

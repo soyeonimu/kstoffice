@@ -63,7 +63,7 @@
           aria-controls="ldsSdActions"
           aria-label="상담 메뉴 닫기"
           onclick="ldsSdToggle()">
-    <span class="lds-sd__fab-open" aria-hidden="true">상담</span>
+    <span class="lds-sd__fab-open" aria-hidden="true">빠른<br>상담</span>
     <span class="lds-sd__fab-close" aria-hidden="true">✕</span>
   </button>
 
@@ -107,22 +107,22 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    background: linear-gradient(135deg, #E2C28D, #d3ac6f);
-    color: #0f172a;
-    box-shadow: 0 10px 24px rgba(201, 162, 78, 0.42);
+    background: linear-gradient(135deg, #FF8A00, #F76B00);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(247, 107, 0, 0.45);
     transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
     -webkit-tap-highlight-color: transparent;
     animation: ldsFabPulse 2.2s ease-out infinite;
   }
   @keyframes ldsFabPulse{
-    0%   { box-shadow: 0 10px 24px rgba(201,162,78,.42), 0 0 0 0 rgba(201,162,78,.5); }
-    70%  { box-shadow: 0 10px 24px rgba(201,162,78,.42), 0 0 0 15px rgba(201,162,78,0); }
-    100% { box-shadow: 0 10px 24px rgba(201,162,78,.42), 0 0 0 0 rgba(201,162,78,0); }
+    0%   { box-shadow: 0 10px 24px rgba(247,107,0,.42), 0 0 0 0 rgba(247,107,0,.5); }
+    70%  { box-shadow: 0 10px 24px rgba(247,107,0,.42), 0 0 0 15px rgba(247,107,0,0); }
+    100% { box-shadow: 0 10px 24px rgba(247,107,0,.42), 0 0 0 0 rgba(247,107,0,0); }
   }
   @media (prefers-reduced-motion: reduce){ .lds-sd__fab{ animation: none; } }
   .lds-sd__fab:hover{
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(201, 162, 78, 0.5);
+    box-shadow: 0 14px 30px rgba(247, 107, 0, 0.5);
   }
   .lds-sd__fab-open,
   .lds-sd__fab-close{
@@ -132,9 +132,11 @@
     transition: opacity .22s ease, transform .28s ease;
   }
   .lds-sd__fab-open{
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 800;
-    letter-spacing: .04em;
+    letter-spacing: .01em;
+    line-height: 1.08;
+    text-align: center;
   }
   .lds-sd__fab-close{
     opacity: 0;
@@ -317,7 +319,7 @@
   @media (max-width: 768px){
     .lds-sd{ right: 14px; bottom: 18px; }
     .lds-sd__fab{ width: 54px; height: 54px; }
-    .lds-sd__fab-open{ font-size: 23px; }
+    .lds-sd__fab-open{ font-size: 13px; }
     .lds-sd__fab-close{ font-size: 21px; }
     .lds-sd__actions{ bottom: 64px; gap: 10px; }
     .lds-sd__ic{ width: 42px; height: 42px; flex-basis: 42px; font-size: 18px; }

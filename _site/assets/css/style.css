@@ -47,13 +47,14 @@ img, video { max-width: 100%; height: auto; }
   display: flex; align-items: center;
 }
 .header-inner {
-  width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 20px;
   display: flex; justify-content: space-between; align-items: center;
+  gap: 20px;
 }
-.logo-img { height: 42px; width: auto; }
+.logo-img { height: 40px; width: auto; }
 
 /* GNB 메뉴 */
-.gnb-list { display: flex; gap: 26px; align-items: center; }
+.gnb-list { display: flex; gap: 22px; align-items: center; }
 .gnb-list > li > a {
   color: #ffffff;
   font-size: 16px; font-weight: 700;

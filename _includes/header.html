@@ -31,7 +31,8 @@
     {%- assign _nav = '' -%}
     {%- if _u contains '/rehab/' or _u == '/what-is' or _u == '/procedure' or _u == '/price' or _u == '/cases' or _u == '/faq' -%}{%- assign _nav = 'rehab' -%}
     {%- elsif _u == '/complaint' or _u == '/difference' or _u == '/cases-complaint' or _u == '/faq-complaint' or _u == '/process' or _u == '/settlement' or _u == '/dui' or _u contains '/criminal/' -%}{%- assign _nav = 'criminal' -%}
-    {%- elsif _u == '/services' or _u contains '/civil/' or _u contains '/registry/' or _u contains '/inheritance/' or _u contains 'international-divorce' or _u == '/suwon-beopmusa' -%}{%- assign _nav = 'services' -%}
+    {%- elsif _u == '/services' or _u contains '/registry/' or _u contains '/inheritance/' -%}{%- assign _nav = 'regsan' -%}
+    {%- elsif _u contains '/civil/' or _u contains 'international-divorce' or _u == '/suwon-beopmusa' -%}{%- assign _nav = 'civ' -%}
     {%- elsif _u == '/team' or _u == '/team/' or _u == '/location' -%}{%- assign _nav = 'team' -%}
     {%- elsif _u contains '/board' or _u contains '/inquiry' -%}{%- assign _nav = 'board' -%}
     {%- endif -%}
@@ -62,9 +63,10 @@
         </li>
 
         <!-- 등기·민사·국제이혼 (통합 드롭다운) -->
-        <li class="has-sub has-groups{% if _nav == 'services' %} is-active{% endif %}">
-          <a href="/services" aria-haspopup="true">등기·상속·민사</a>
-          <ul class="sub sub--groups" aria-label="등기·상속·민사·국제이혼 하위 메뉴">
+        <!-- 등기·상속 -->
+        <li class="has-sub has-groups{% if _nav == 'regsan' %} is-active{% endif %}">
+          <a href="/services" aria-haspopup="true">등기·상속</a>
+          <ul class="sub sub--groups" aria-label="등기·상속 하위 메뉴">
             <li class="sub-col">
               <span class="sub-group-label" aria-hidden="true">등기</span>
               <a href="/registry/realestate">부동산 등기</a>
@@ -76,6 +78,13 @@
               <a href="/inheritance/renunciation">상속포기</a>
               <a href="/inheritance/limited-acceptance">한정승인</a>
             </li>
+          </ul>
+        </li>
+
+        <!-- 민사·국제이혼 -->
+        <li class="has-sub has-groups{% if _nav == 'civ' %} is-active{% endif %}">
+          <a href="/international-divorce" aria-haspopup="true">민사·국제이혼</a>
+          <ul class="sub sub--groups" aria-label="민사·국제이혼 하위 메뉴">
             <li class="sub-col">
               <span class="sub-group-label" aria-hidden="true">민사소송</span>
               <a href="/civil/complaint">소장</a>

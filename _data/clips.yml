@@ -1,0 +1,14 @@
+# 네이버 클립 목록 — /clips/ 페이지에 자동 노출됩니다.
+#
+# 새 클립 추가법:
+#  1) 네이버 클립에서 '공유 → 퍼가기(iframe)' 코드를 복사
+#  2) src 안의 seedMediaId= 뒤 값만 아래 seedMediaId 에 붙여넣기
+#  3) title / desc / category / date 를 채우면 끝 (title·desc는 검색 노출되는 텍스트라 꼭 채우세요)
+#
+# category 예시: 개인회생 · 고소장 · 음주운전 · 상속 · 국제이혼 · 민사 · 사무소
+
+- title: "리더스 합동 법무사 클립"
+  desc: "수원 리더스 합동 법무사 사무소 영상입니다."   # ← 실제 영상 내용으로 바꿔주세요
+  category: "사무소"
+  seedMediaId: "471EA236C0E3824166AFBB9EAD3D6B3A7A4A"
+  date: 2026-07-20

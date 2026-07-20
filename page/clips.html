@@ -1,0 +1,93 @@
+---
+layout: default
+title: 리더스 법률 영상 | 개인회생·고소장·상속 짧게 보기 - 리더스 합동 법무사
+description: 수원 리더스 합동 법무사 사무소가 개인회생·고소장·상속·국제이혼 등 실무에서 자주 받는 질문을 짧은 영상으로 정리했습니다. 검찰 출신 법무사 3인이 직접 안내합니다.
+permalink: /clips/
+keywords: 수원 법무사 영상, 개인회생 영상, 고소장 영상, 상속 영상, 리더스 합동 법무사, 네이버 클립
+---
+
+<div class="clips-page">
+  <div class="leaders-container">
+
+    <div class="clips-head">
+      <span class="clips-eyebrow">LEGAL CLIPS</span>
+      <h1 class="clips-title">짧게 보는 법률 이야기</h1>
+      <p class="clips-sub">
+        개인회생·고소장·상속·국제이혼 등 상담에서 자주 나오는 질문을<br>
+        검찰 출신 법무사가 짧은 영상으로 정리했습니다.
+      </p>
+    </div>
+
+    {% assign clips = site.data.clips | sort: "date" | reverse %}
+
+    {% if clips and clips.size > 0 %}
+      <div class="clips-grid">
+        {% for c in clips %}
+        <article class="clip-card">
+          <div class="clip-frame">
+            <iframe
+              src="https://m.naver.com/shorts/oembed/?seedMediaId={{ c.seedMediaId }}&mediaType=SHORT_FORM&serviceType=NTV"
+              title="{{ c.title | escape }}"
+              loading="lazy"
+              frameborder="0"
+              allow="autoplay; clipboard-write; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <div class="clip-body">
+            {% if c.category %}<span class="clip-cat">{{ c.category }}</span>{% endif %}
+            <h2 class="clip-title">{{ c.title }}</h2>
+            {% if c.desc %}<p class="clip-desc">{{ c.desc }}</p>{% endif %}
+            {% if c.date %}<span class="clip-date">{{ c.date | date: "%Y.%m.%d" }}</span>{% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="clips-empty">준비 중입니다. 곧 영상으로 찾아뵙겠습니다.</p>
+    {% endif %}
+
+    <!-- 상담 CTA -->
+    <section class="clips-cta">
+      <h2>영상만으로 판단하기 어려우신가요?</h2>
+      <p>사건마다 사정이 달라, 실제 상황은 직접 확인해 드리는 게 정확합니다.<br>검찰 출신 법무사가 무엇부터 준비할지 정리해 드립니다. 상담만으로 수임 의무는 없습니다.</p>
+      <div class="clips-cta-btns">
+        <a href="tel:0312256885" class="clips-btn clips-btn--tel">📞 031-225-6885</a>
+        <a href="/inquiry/" class="clips-btn">무료 상담 신청 →</a>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<style>
+  .clips-page { padding: 56px 0 72px; background: #f8fafc; }
+  .clips-head { text-align: center; margin-bottom: 38px; }
+  .clips-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: #C9A24E; margin-bottom: 12px; }
+  .clips-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; color: #16273f; margin: 0 0 12px; word-break: keep-all; }
+  .clips-sub { color: #64748b; font-size: 1rem; line-height: 1.7; margin: 0; word-break: keep-all; }
+
+  .clips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 26px; }
+  .clip-card { background: #fff; border: 1px solid #e6e8ec; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.04); transition: .25s; }
+  .clip-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,.09); }
+  /* 세로 쇼츠 9:16 비율 유지 */
+  .clip-frame { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #16273f; }
+  .clip-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .clip-body { padding: 16px 18px 20px; }
+  .clip-cat { display: inline-block; font-size: 11px; font-weight: 700; color: #16273f; background: #eef2f7; border-radius: 100px; padding: 4px 11px; margin-bottom: 9px; }
+  .clip-title { font-size: 1.02rem; font-weight: 800; color: #0f172a; margin: 0 0 6px; line-height: 1.45; word-break: keep-all; }
+  .clip-desc { font-size: .92rem; color: #64748b; line-height: 1.6; margin: 0 0 8px; word-break: keep-all; }
+  .clip-date { font-size: .82rem; color: #94a3b8; }
+  .clips-empty { text-align: center; color: #94a3b8; padding: 60px 0; }
+
+  .clips-cta { margin-top: 48px; background: linear-gradient(160deg, #16273f, #12294F); border-radius: 20px; padding: 40px 28px; text-align: center; color: #fff; }
+  .clips-cta h2 { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; margin: 0 0 12px; word-break: keep-all; }
+  .clips-cta p { color: #C4D3EE; line-height: 1.7; margin: 0 0 22px; word-break: keep-all; }
+  .clips-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .clips-btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 100px; font-weight: 800; text-decoration: none; font-size: 1rem; background: linear-gradient(135deg, #E2C28D, #F2E3C9); color: #1a1207; }
+  .clips-btn--tel { background: rgba(255,255,255,.1); color: #fff; border: 1.5px solid rgba(255,255,255,.3); }
+
+  @media (max-width: 640px) {
+    .clips-grid { grid-template-columns: 1fr; gap: 20px; }
+    .clips-btn { width: 100%; }
+  }
+</style>

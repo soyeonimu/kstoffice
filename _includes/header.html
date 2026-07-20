@@ -119,7 +119,7 @@
 
         <!-- 상담게시판 -->
         <li class="has-sub{% if _nav == 'board' %} is-active{% endif %}">
-          <a href="/inquiry/">상담게시판</a>
+          <a href="/inquiry/">상담·법률정보</a>
           <ul class="sub">
             <li><a href="/inquiry/">상담 게시판</a></li>
             <li><a href="/board">법률노트</a></li>
@@ -156,7 +156,7 @@
   /* 현재 페이지 섹션 활성 표시(밑줄 바) */
   .gnb-list > li.is-active > a { position: relative; }
   .gnb-list > li.is-active > a::after {
-    content: ''; position: absolute; left: 0; right: 0; bottom: -7px; height: 2.5px;
+    content: ''; position: absolute; left: 0; right: 0; bottom: 12px; height: 2.5px;
     background: var(--point-gold); border-radius: 2px;
   }
 

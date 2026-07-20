@@ -439,12 +439,12 @@ img, video { max-width: 100%; height: auto; }
   /* 2. 모바일 GNB 설정 (오른쪽에서 나타남) */
   .gnb {
     position: fixed;
-    top: 0;
+    top: var(--header-h, 85px);   /* 헤더 아래에서 시작 */
     right: -100%; /* 처음엔 화면 밖 */
     width: 280px;
-    height: 100vh;
+    height: calc(100vh - var(--header-h, 85px));
     background: var(--bg-charcoal);
-    padding: 100px 20px 40px;
+    padding: 14px 20px 40px;
     transition: var(--transition);
     box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     z-index: 10000;
@@ -854,13 +854,13 @@ header, .site-header, .nav-container {
   .gnb.active{
     display: block;
     position: fixed;
-    top: 0;
+    top: var(--header-h, 85px);              /* 헤더 아래에서 시작 → 상단 빈 공간 제거 */
     right: 0;
     width: min(86vw, 360px);
-    height: 100vh;
+    height: calc(100vh - var(--header-h, 85px));
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding: calc(var(--header-h, 85px) + 16px) 20px 40px;
+    padding: 14px 20px 40px;
     box-sizing: border-box;
     z-index: 2500;
   }

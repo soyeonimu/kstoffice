@@ -1,0 +1,306 @@
+---
+layout: default
+sidebar: true
+title: 개인회생 자가진단 | 1분 7문항 무료 자가진단 - 리더스 합동 법무사
+description: 소득·채무·압류·재산 7가지 문항에 답하면 개인회생·개인파산 가능성을 참고용으로 확인해 드립니다. 수원 개인회생 자가진단, 리더스 합동 법무사. 결과는 참고용이며 실제 진행은 법원과 회생위원의 판단으로 정해집니다.
+keywords: 수원 개인회생 자가진단, 개인회생 자가진단, 개인회생 가능성, 개인파산 자가진단, 개인회생 자격 확인, 수원 개인회생 법무사
+permalink: /rehab/self-check/
+---
+
+<section class="leaders-page has-subnav-left">
+  {% include subnav-floatbar.html badge="개인회생·파산" title="개인회생 안내" items=site.data.subnav.rehab %}
+
+  <!-- ① Hero -->
+  <section class="leaders-hero js-reveal">
+    <div class="leaders-container">
+      <span class="hero-eyebrow">개인회생 자가진단</span>
+      <h1 class="leaders-title">1분 개인회생 <span class="text-gradient">자가진단</span> — 내 상황, 가능성부터 확인하세요</h1>
+      <p class="leaders-desc">
+        소득·채무·압류·재산에 관한 <strong>7가지 문항</strong>에 답하면,<br>
+        지금 상황이 <strong>개인회생·개인파산 중 어느 쪽을 검토해볼 상황</strong>인지 참고용으로 정리해 드립니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ② 자가진단 퀴즈 -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="lsc-card js-reveal">
+
+        <!-- 진행 상태 -->
+        <div class="qz-progress">
+          <div class="qz-progress-bar"><span id="qz-bar"></span></div>
+          <span class="qz-progress-text"><b id="qz-count">0</b> / 7 문항 답변</span>
+        </div>
+
+        <div class="qz-list" id="qz-list">
+          <!-- Q1 -->
+          <div class="qz-q" data-key="income">
+            <div class="qz-q-head"><span class="qz-num">1</span><span class="qz-q-title">정기적인 소득이 있나요?</span></div>
+            <div class="qz-opts">
+              <button type="button" data-v="yes">있음</button>
+              <button type="button" data-v="no">없거나 불규칙</button>
+            </div>
+          </div>
+          <!-- Q2 -->
+          <div class="qz-q" data-key="repay">
+            <div class="qz-q-head"><span class="qz-num">2</span><span class="qz-q-title">소득에서 생활비를 빼고 매달 갚을 여력이 있나요?</span></div>
+            <div class="qz-opts">
+              <button type="button" data-v="able">있다</button>
+              <button type="button" data-v="tight">빠듯하다</button>
+              <button type="button" data-v="none">거의 없다</button>
+            </div>
+          </div>
+          <!-- Q3 -->
+          <div class="qz-q" data-key="debt">
+            <div class="qz-q-head"><span class="qz-num">3</span><span class="qz-q-title">무담보 채무(카드·대출 등) 규모는?</span></div>
+            <div class="qz-opts">
+              <button type="button" data-v="a">5천만원 이하</button>
+              <button type="button" data-v="b">5천만~2억</button>
+              <button type="button" data-v="c">2억~10억</button>
+              <button type="button" data-v="d">10억 초과</button>
+            </div>
+          </div>
+          <!-- Q4 -->
+          <div class="qz-q" data-key="seizure">
+            <div class="qz-q-head"><span class="qz-num">4</span><span class="qz-q-title">지금 통장·급여 압류가 있나요?</span></div>
+            <div class="qz-opts">
+              <button type="button" data-v="yes">있음</button>
+              <button type="button" data-v="no">없음</button>
+            </div>
+          </div>
+          <!-- Q5 -->
+          <div class="qz-q" data-key="asset">
+            <div class="qz-q-head"><span class="qz-num">5</span><span class="qz-q-title">집·차·전세보증금 등 재산이 있나요?</span></div>
+            <div class="qz-opts">
+              <button type="button" data-v="low">거의 없음</button>
+              <button type="button" data-v="mid">어느 정도</button>
+              <button type="button" data-v="high">많음</button>
+            </div>
+          </div>
+          <!-- Q6 -->
+          <div class="qz-q" data-key="recent">
+            <div class="qz-q-head"><span class="qz-num">6</span><span class="qz-q-title">최근 1년 내 대출·카드사용이 크게 늘었나요?</span></div>
+            <div class="qz-opts">
+              <button type="button" data-v="yes">예</button>
+              <button type="button" data-v="no">아니오</button>
+            </div>
+          </div>
+          <!-- Q7 -->
+          <div class="qz-q" data-key="history">
+            <div class="qz-q-head"><span class="qz-num">7</span><span class="qz-q-title">과거 개인회생·파산을 받은 적 있나요?</span></div>
+            <div class="qz-opts">
+              <button type="button" data-v="no">없음</button>
+              <button type="button" data-v="yes">있음</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 결과 -->
+        <div class="qz-result" id="qz-result">
+          <div class="qz-result-empty" id="qz-empty">
+            <span class="qz-empty-ic">📝</span>
+            <p>7개 문항에 모두 답하면 <b>여기에 참고 결과</b>가 나타납니다.</p>
+          </div>
+          <div class="qz-result-body" id="qz-body" hidden>
+            <span class="qz-result-badge">참고 결과</span>
+            <h3 class="qz-result-title" id="qz-title">—</h3>
+            <ul class="qz-notes" id="qz-notes"></ul>
+            <p class="qz-result-caution">이 진단은 <strong>참고용</strong>입니다. 실제 진행 여부·월 변제금·인가 여부는 <strong>법원과 회생위원의 판단</strong>으로 정해지며 사안마다 다릅니다.</p>
+            <div class="qz-result-cta">
+              <a href="/inquiry" class="lsc-btn lsc-btn-primary">내 상황 상담받기</a>
+              <a href="tel:031-225-6885" class="lsc-btn lsc-btn-ghost">☎ 031-225-6885</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="lsc-disclaimer">
+          ※ 본 자가진단은 입력하신 답변만을 단순 분류한 <strong>참고용 안내</strong>입니다.
+          소득 인정 범위·청산가치 산정·추가 소명 필요 여부·특별한 사정 등에 따라 결과는 달라질 수 있으며,
+          실제 개인회생·개인파산의 진행과 인가는 <strong>법원과 회생위원의 판단</strong>으로 정해집니다.
+          정확한 확인은 상담을 받아보시길 권합니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 진단 항목 설명 -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="section-lead">
+        <h2 class="section-lead-title">자가진단은 이런 기준으로 봅니다</h2>
+        <p class="section-lead-desc">개인회생은 채무 규모 하나만 보는 게 아닙니다. <strong>소득·상환 여력·채무 규모·압류·재산</strong>을 함께 봐야 방향이 잡힙니다.</p>
+      </div>
+
+      <div class="leaders-table-card js-reveal">
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr><th>항목</th><th>왜 보나요</th><th class="highlight">방향에 미치는 영향</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="label">정기 소득</td><td>매달 갚아나갈 재원이 되는지</td><td class="highlight-cell">소득이 없거나 불규칙하면 <strong>개인파산</strong> 쪽을 함께 검토</td></tr>
+              <tr><td class="label">상환 여력</td><td>생활비를 빼고 남는 여력</td><td class="highlight-cell">여력이 거의 없으면 진행 방향을 별도 검토</td></tr>
+              <tr><td class="label">무담보 채무</td><td>개인회생에는 한도 기준이 있음</td><td class="highlight-cell">규모가 매우 크면 <strong>한도 초과</strong> 여부 확인 필요</td></tr>
+              <tr><td class="label">압류 여부</td><td>진행 시 신청 순서에 영향</td><td class="highlight-cell">압류가 있으면 <strong>준비 순서</strong>가 중요</td></tr>
+              <tr><td class="label">보유 재산</td><td>청산가치 산정에 반영</td><td class="highlight-cell">재산이 많으면 변제금이 올라갈 수 있음</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ CTA -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="lsc-cta js-reveal">
+        <h2>진단 결과가 애매하신가요?</h2>
+        <p>소득 인정·청산가치·추가 소명 필요 여부는 사건마다 다릅니다. 통장·급여 압류가 있다면 신청 순서도 달라집니다.<br>검찰 출신 법무사가 직접 상황을 정리하고 <strong>서류 작성을 지원</strong>해 드립니다. 상담만으로 수임 의무는 없습니다.</p>
+        <div class="lsc-cta-btns">
+          <a href="/inquiry" class="lsc-btn lsc-btn-primary">상담 문의하기</a>
+          <a href="tel:031-225-6885" class="lsc-btn lsc-btn-ghost">☎ 031-225-6885</a>
+        </div>
+        <p class="lsc-cta-note">※ 리더스 합동 법무사는 개인회생·파산의 <strong>서류 작성 대리</strong>를 지원합니다. 변론·소송대리는 변호사의 업무입니다.</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<style>
+  .lsc-card{background:#fff;border:1px solid #e6ecf5;border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(15,43,91,.06)}
+  /* 진행 상태 */
+  .qz-progress{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .qz-progress-bar{flex:1;height:8px;background:#e9eef6;border-radius:999px;overflow:hidden}
+  .qz-progress-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#0F2B5B,#3a5fa8);border-radius:999px;transition:width .3s}
+  .qz-progress-text{font-size:14px;font-weight:700;color:#5b6b85;white-space:nowrap}
+  .qz-progress-text b{color:#0F2B5B}
+  /* 문항 */
+  .qz-list{display:flex;flex-direction:column;gap:18px}
+  .qz-q{background:#f7faff;border:1px solid #e6ecf5;border-radius:16px;padding:18px 18px 16px}
+  .qz-q.answered{border-color:#c9d8f0;background:#fbfdff}
+  .qz-q-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+  .qz-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:#0F2B5B;color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;line-height:1}
+  .qz-q-title{font-size:16px;font-weight:700;color:#0F2B5B;line-height:1.4;padding-top:2px}
+  .qz-opts{display:flex;flex-wrap:wrap;gap:8px}
+  .qz-opts button{flex:1 1 auto;min-width:110px;padding:12px 14px;border:1.5px solid #d7e0ee;background:#fff;border-radius:12px;font-weight:700;color:#5b6b85;cursor:pointer;font-size:15px;transition:.15s}
+  .qz-opts button:hover{border-color:#0F2B5B;color:#0F2B5B}
+  .qz-opts button.on{background:#0F2B5B;border-color:#0F2B5B;color:#fff}
+  /* 결과 */
+  .qz-result{margin-top:24px;background:linear-gradient(160deg,#0F2B5B,#12294F);border-radius:16px;padding:26px 24px;color:#fff}
+  .qz-result-empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:14px 0}
+  .qz-empty-ic{font-size:32px}
+  .qz-result-empty p{margin:0;color:#B9CBEA;font-size:15px;line-height:1.6}
+  .qz-result-empty b{color:#7FB0FF}
+  .qz-result-badge{display:inline-block;background:rgba(255,255,255,.12);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:800;color:#7FB0FF;margin-bottom:14px}
+  .qz-result-title{font-size:22px;font-weight:900;line-height:1.4;margin:0 0 16px;letter-spacing:.01em}
+  .qz-notes{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:10px}
+  .qz-notes li{background:rgba(255,255,255,.07);border-radius:10px;padding:13px 15px;font-size:14.5px;color:#D6E2F5;line-height:1.6}
+  .qz-notes li.warn{background:rgba(228,0,43,.16);color:#FFD3DB;font-weight:600}
+  .qz-result-caution{font-size:13px;color:#B9CBEA;line-height:1.65;margin:0 0 20px}
+  .qz-result-cta{display:flex;gap:12px;flex-wrap:wrap}
+  /* 공통 */
+  .lsc-disclaimer{margin:20px 2px 0;font-size:13px;color:#7c8aa3;line-height:1.6}
+  .lsc-btn{padding:14px 28px;border-radius:12px;font-weight:800;text-decoration:none;font-size:16px}
+  .lsc-btn-primary{background:#E4002B;color:#fff}
+  .lsc-btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+  .lsc-cta{background:linear-gradient(160deg,#0F2B5B,#12294F);border-radius:20px;padding:38px;text-align:center;color:#fff}
+  .lsc-cta h2{font-size:26px;font-weight:800;margin:0 0 12px}
+  .lsc-cta p{color:#C4D3EE;line-height:1.6;margin:0 0 24px}
+  .lsc-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .lsc-cta-note{font-size:12.5px;color:#8ea3c6;margin:22px 0 0;line-height:1.6}
+  @media(max-width:560px){
+    .lsc-card{padding:20px 16px}
+    .qz-opts button{min-width:calc(50% - 4px);font-size:14px}
+    .qz-result-cta .lsc-btn{flex:1 1 100%;text-align:center}
+    .qz-result-title{font-size:19px}
+  }
+</style>
+
+<script>
+(function(){
+  var answers={};
+  var TOTAL=7;
+
+  function evaluate(){
+    var a=answers;
+    var title='';
+    var notes=[];
+
+    // ── 결과 제목 (우선순위 분기) ──
+    if(a.debt==='d'){
+      title='채무 규모가 개인회생 한도를 넘을 수 있어 별도 검토가 필요해요';
+    } else if(a.income==='no' && a.repay==='none'){
+      title='개인회생보다 개인파산을 검토해볼 상황일 수 있어요';
+    } else if(a.income==='yes' && (a.repay==='able' || a.repay==='tight') &&
+              (a.debt==='a' || a.debt==='b' || a.debt==='c')){
+      title='개인회생을 진행해볼 수 있는 상황으로 보여요';
+    } else {
+      title='상황을 개별적으로 검토해봐야 하는 유형으로 보여요';
+    }
+
+    // ── 주의 문구 (해당되는 것 모두) ──
+    if(a.seizure==='yes'){
+      notes.push({t:'⚠ 통장·급여 압류가 있으면 신청 순서가 중요합니다 — 빠른 상담을 권합니다', warn:true});
+    }
+    if(a.income==='no'){
+      notes.push({t:'소득이 없거나 불규칙하면 개인회생 진행이 어려울 수 있어, 개인파산을 함께 검토해보는 것이 좋습니다'});
+    }
+    if(a.debt==='d'){
+      notes.push({t:'무담보 채무가 매우 커서 개인회생 한도를 넘는지 별도 확인이 필요합니다'});
+    }
+    if(a.asset==='high'){
+      notes.push({t:'보유 재산(청산가치)에 따라 변제금이 올라갈 수 있어 검토가 필요해요'});
+    }
+    if(a.recent==='yes' || a.history==='yes'){
+      notes.push({t:'추가 소명이 필요할 수 있어, 서류 준비를 꼼꼼히 해야 해요'});
+    }
+    if(notes.length===0){
+      notes.push({t:'큰 걸림돌은 눈에 띄지 않지만, 정확한 방향은 소득·재산 자료를 함께 확인해봐야 합니다'});
+    }
+
+    return {title:title, notes:notes};
+  }
+
+  function render(){
+    var count=Object.keys(answers).length;
+    document.getElementById('qz-count').textContent=count;
+    document.getElementById('qz-bar').style.width=(count/TOTAL*100)+'%';
+
+    var empty=document.getElementById('qz-empty');
+    var body=document.getElementById('qz-body');
+    if(count<TOTAL){
+      empty.hidden=false;
+      body.hidden=true;
+      return;
+    }
+    empty.hidden=true;
+    body.hidden=false;
+
+    var r=evaluate();
+    document.getElementById('qz-title').textContent=r.title;
+    var ul=document.getElementById('qz-notes');
+    ul.innerHTML='';
+    r.notes.forEach(function(n){
+      var li=document.createElement('li');
+      if(n.warn) li.className='warn';
+      li.textContent=n.t;
+      ul.appendChild(li);
+    });
+  }
+
+  [].forEach.call(document.querySelectorAll('.qz-q'),function(q){
+    var key=q.getAttribute('data-key');
+    q.querySelector('.qz-opts').addEventListener('click',function(e){
+      var b=e.target.closest('button[data-v]');
+      if(!b) return;
+      answers[key]=b.getAttribute('data-v');
+      [].forEach.call(this.children,function(x){x.classList.toggle('on',x===b);});
+      q.classList.add('answered');
+      render();
+    });
+  });
+
+  render();
+})();
+</script>

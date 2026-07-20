@@ -143,6 +143,15 @@ permalink: /international-divorce
     </div>
   </section>
 
+  <!-- 관련 상담·정보 위젯 (게시판 필터뷰) -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="section-lead"><h2 class="section-lead-title">관련 상담·정보</h2></div>
+      {% include board-cards.html group="국제이혼" limit=4 %}
+      <p style="text-align:center;margin-top:20px"><a href="/board/divorce/">국제이혼 게시판 더보기 →</a></p>
+    </div>
+  </section>
+
   <!-- ④ 상담 유도 CTA (설득 다음에) -->
   {% include related-board.html cats="민사" %}
   <section class="leaders-consult-cta">

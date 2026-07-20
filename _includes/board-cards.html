@@ -1,0 +1,50 @@
+{%- comment -%}
+분야별 게시판 카드 렌더러. 단일 site.board 컬렉션을 분야(정규화 그룹)로 걸러 보여준다.
+board.html의 .post-card 마크업을 그대로 재사용한다.
+
+파라미터
+  include.group : 정규화 그룹명(예: '개인회생·파산'). 없거나 'all' 이면 전체.
+  include.limit : 렌더할 최대 개수. 없거나 0 이면 전체.
+
+분류 매핑은 page/board.html과 100% 동일:
+  음주→음주운전 / 고소→고소장 / 형사→형사 / 개인회생·파산·워크아웃→개인회생·파산 /
+  국제이혼→국제이혼 / 등기·상속·부동산→등기·상속 / 민사→민사 / 그 외→기타
+해당 그룹 글이 0개면 아무것도 출력하지 않는다(위젯에서 자연 숨김).
+사용법: {% include board-cards.html group="개인회생·파산" limit=4 %}
+{%- endcomment -%}
+{%- assign _group = include.group | default: 'all' -%}
+{%- assign _limit = include.limit | default: 0 -%}
+{%- assign _posts = site.board | sort: 'date' | reverse -%}
+{%- assign _count = 0 -%}
+{%- capture _cards -%}
+{%- for post in _posts -%}
+  {%- assign c = post.category | first | default: post.category -%}
+  {%- assign g = '기타' -%}
+  {%- if c contains '음주' -%}{%- assign g = '음주운전' -%}
+  {%- elsif c contains '고소' -%}{%- assign g = '고소장' -%}
+  {%- elsif c contains '형사' -%}{%- assign g = '형사' -%}
+  {%- elsif c contains '개인회생' or c contains '파산' or c contains '워크아웃' -%}{%- assign g = '개인회생·파산' -%}
+  {%- elsif c contains '국제이혼' -%}{%- assign g = '국제이혼' -%}
+  {%- elsif c contains '등기' or c contains '상속' or c contains '부동산' -%}{%- assign g = '등기·상속' -%}
+  {%- elsif c contains '민사' -%}{%- assign g = '민사' -%}
+  {%- endif -%}
+  {%- if _group == 'all' or g == _group -%}
+    {%- if _limit == 0 or _count < _limit -%}
+      {%- assign _count = _count | plus: 1 -%}
+      <a href="{{ post.url }}" class="post-card js-reveal" data-group="{{ g }}">
+        <span class="post-card-thumb" style="background-image:url('{% include board-thumb.html p=post %}')">
+          {% if c %}<span class="post-card-cat">{{ c }}</span>{% endif %}
+        </span>
+        <span class="post-card-body">
+          <span class="post-card-title">{{ post.title }}</span>
+          <span class="post-card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+        </span>
+      </a>
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if _count > 0 -%}
+{% include board-cards-style.html %}
+<main class="post-grid">{{ _cards }}</main>
+{%- endif -%}

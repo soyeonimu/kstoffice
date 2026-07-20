@@ -1,0 +1,39 @@
+{%- comment -%}
+board.html의 .post-grid / .post-card / .board-head 스타일을 공유용으로 추출.
+분야별 게시판 페이지와 허브 위젯에서 board-cards.html이 자동으로 불러온다.
+(board.html 원본은 자체 <style>을 그대로 유지 — 값이 동일하므로 충돌 없음)
+주의: 레이아웃의 <main>(min-height:80vh)을 덮지 않도록 bare main{} 선택자는 넣지 않는다.
+      .post-grid 자체가 <main> 요소라 min-height를 명시해 위젯이 80vh로 늘어나는 것을 막는다.
+{%- endcomment -%}
+<style>
+  :root { --board-dark: #16273f; --board-gold: #E2C28D; --board-gold-d: #C9A24E; --board-border: #e6e8ec; }
+
+  /* 분야별 게시판 컨테이너 (board.html과 동일) */
+  .leaders-board { font-family: 'Pretendard', sans-serif; max-width: 1400px; margin: 0 auto; padding: 24px 32px 48px; }
+
+  /* ===== 헤드 ===== */
+  .leaders-board .board-head { padding: 8px 0 22px; border-bottom: 1px solid var(--board-border); margin-bottom: 22px; }
+  .leaders-board .board-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--board-gold-d); margin-bottom: 8px; }
+  .leaders-board .board-page-title { font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; color: #1a1a1a; }
+  .leaders-board .board-page-sub { font-size: 1rem; color: #6b7280; margin: 0; word-break: keep-all; }
+  .leaders-board .board-back { display: inline-block; margin-top: 40px; color: var(--board-gold-d); font-weight: 700; text-decoration: none; }
+  .leaders-board .board-back:hover { text-decoration: underline; }
+
+  /* ===== 카드 그리드 (board.html과 동일) ===== */
+  .post-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; align-items: start; align-content: start; min-height: auto; }
+  @media (max-width: 1200px) { .post-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (max-width: 900px)  { .post-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .post-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--board-border); border-radius: 14px; overflow: hidden; text-decoration: none; transition: 0.25s; box-shadow: 0 4px 16px rgba(0,0,0,.04); }
+  .post-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.09); border-color: var(--board-gold); }
+  .post-card-thumb { position: relative; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; background-color: #16273f; }
+  .post-card-cat { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 700; color: #fff; background: rgba(15,23,42,.82); backdrop-filter: blur(2px); padding: 4px 11px; border-radius: 100px; }
+  .post-card-body { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px 20px; }
+  .post-card-title { font-size: 1.02rem; font-weight: 700; color: #222; line-height: 1.45; word-break: keep-all; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .post-card-date { color: #9aa0a6; font-size: 13.5px; }
+
+  @media (max-width: 520px) {
+    .post-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .post-card-body { padding: 12px 13px 16px; }
+    .post-card-title { font-size: 0.92rem; }
+  }
+</style>

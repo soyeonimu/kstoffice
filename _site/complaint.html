@@ -501,6 +501,80 @@
     </div>
   </section>
 
+  <!-- 관련 상담·정보 위젯 (게시판 필터뷰) -->
+  <section class="leaders-section">
+    <div class="leaders-container">
+      <div class="section-lead"><h2 class="section-lead-title">관련 상담·정보</h2></div>
+      <style>
+  :root { --board-dark: #16273f; --board-gold: #E2C28D; --board-gold-d: #C9A24E; --board-border: #e6e8ec; }
+
+  /* 분야별 게시판 컨테이너 (board.html과 동일) */
+  .leaders-board { font-family: 'Pretendard', sans-serif; max-width: 1400px; margin: 0 auto; padding: 24px 32px 48px; }
+
+  /* ===== 헤드 ===== */
+  .leaders-board .board-head { padding: 8px 0 22px; border-bottom: 1px solid var(--board-border); margin-bottom: 22px; }
+  .leaders-board .board-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--board-gold-d); margin-bottom: 8px; }
+  .leaders-board .board-page-title { font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; color: #1a1a1a; }
+  .leaders-board .board-page-sub { font-size: 1rem; color: #6b7280; margin: 0; word-break: keep-all; }
+  .leaders-board .board-back { display: inline-block; margin-top: 40px; color: var(--board-gold-d); font-weight: 700; text-decoration: none; }
+  .leaders-board .board-back:hover { text-decoration: underline; }
+
+  /* ===== 카드 그리드 (board.html과 동일) ===== */
+  .post-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; align-items: start; align-content: start; min-height: auto; }
+  @media (max-width: 1200px) { .post-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (max-width: 900px)  { .post-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .post-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--board-border); border-radius: 14px; overflow: hidden; text-decoration: none; transition: 0.25s; box-shadow: 0 4px 16px rgba(0,0,0,.04); }
+  .post-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.09); border-color: var(--board-gold); }
+  .post-card-thumb { position: relative; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; background-color: #16273f; }
+  .post-card-cat { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 700; color: #fff; background: rgba(15,23,42,.82); backdrop-filter: blur(2px); padding: 4px 11px; border-radius: 100px; }
+  .post-card-body { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px 20px; }
+  .post-card-title { font-size: 1.02rem; font-weight: 700; color: #222; line-height: 1.45; word-break: keep-all; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .post-card-date { color: #9aa0a6; font-size: 13.5px; }
+
+  @media (max-width: 520px) {
+    .post-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .post-card-body { padding: 12px 13px 16px; }
+    .post-card-title { font-size: 0.92rem; }
+  }
+</style>
+
+<main class="post-grid"><a href="/board/online-impersonation-complaint/" class="post-card js-reveal" data-group="고소장">
+        <span class="post-card-thumb" style="background-image:url('/assets/img/board/sacheng-thumbnail.png')">
+          <span class="post-card-cat">고소장</span>
+        </span>
+        <span class="post-card-body">
+          <span class="post-card-title">온라인 사칭·명의도용 고소 — '사칭죄'는 없는데 어떻게 처벌하나 (수원)</span>
+          <span class="post-card-date">2026.07.11</span>
+        </span>
+      </a><a href="/board/suwon-used-trade-fraud-complaint/" class="post-card js-reveal" data-group="고소장">
+        <span class="post-card-thumb" style="background-image:url('/assets/img/board/junggo-thumbnail.png')">
+          <span class="post-card-cat">고소장</span>
+        </span>
+        <span class="post-card-body">
+          <span class="post-card-title">수원 중고거래 사기 고소장, 소액도 되나요 — 상대 특정부터 접수까지</span>
+          <span class="post-card-date">2026.07.11</span>
+        </span>
+      </a><a href="/board/unpaid-loan-fraud-vs-civil/" class="post-card js-reveal" data-group="고소장">
+        <span class="post-card-thumb" style="background-image:url('/assets/img/board/chayong-thumbnail.png')">
+          <span class="post-card-cat">고소장</span>
+        </span>
+        <span class="post-card-body">
+          <span class="post-card-title">빌려준 돈 안 갚을 때, 사기죄 고소 vs 민사 무엇으로 받아낼까 (수원)</span>
+          <span class="post-card-date">2026.07.11</span>
+        </span>
+      </a><a href="/board/groupchat-insult-complaint/" class="post-card js-reveal" data-group="고소장">
+        <span class="post-card-thumb" style="background-image:url('/assets/img/board/moyok-thumbnail.png')">
+          <span class="post-card-cat">고소장</span>
+        </span>
+        <span class="post-card-body">
+          <span class="post-card-title">단톡방에서 욕먹었는데 모욕죄 고소 될까요? 캡처 전에 확인할 것</span>
+          <span class="post-card-date">2026.07.10</span>
+        </span>
+      </a></main>
+      <p style="text-align:center;margin-top:20px"><a href="/board/complaint/">고소장 게시판 더보기 →</a></p>
+    </div>
+  </section>
+
   <!-- ④ 상담 유도 CTA (설득 다음에) -->
   <section class="related-legal">
   <div class="leaders-container">

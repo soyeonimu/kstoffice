@@ -97,3 +97,6 @@ rehab:
   - title: "자가진단"
     url: "/rehab/diagnosis"
     desc: "1분 무료 진단"
+  - title: "변제금 계산기"
+    url: "/rehab/calculator"
+    desc: "월 예상 변제금"

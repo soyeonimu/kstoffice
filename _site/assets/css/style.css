@@ -1040,19 +1040,44 @@ header, .site-header, .nav-container {
 .scope-note { font-size: 0.88rem; color: #94a3b8; line-height: 1.7; word-break: keep-all; background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin: 0; }
 
 /* ④ CTA */
-/* 상담 CTA: 밝은 밴드(연베이지) — 카드 느낌 제거 + 양옆 흰 여백과 이질감 없음 */
-.leaders-consult-cta { background: linear-gradient(180deg, #f8f6f1, #f1ede4); border-top: 1px solid rgba(226,194,141,.5); border-bottom: 1px solid rgba(226,194,141,.5); padding: 72px 0; }
-.consult-cta-box { width: 100%; box-sizing: border-box; background: none; border-radius: 0; padding: 0; text-align: center; }
-.cta-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: #C9A24E; margin-bottom: 12px; }
-.consult-cta-title { color: #16273f; font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 16px; word-break: keep-all; }
-.consult-cta-desc { color: #5b6b85; font-size: 1.02rem; line-height: 1.7; margin: 0 auto 30px; max-width: 620px; word-break: keep-all; }
-.cta-btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 16px; }
-.consult-cta-btn { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #E2C28D, #F2E3C9); color: #1a1207; font-weight: 800; font-size: 1.05rem; padding: 16px 40px; border-radius: 100px; text-decoration: none; transition: var(--transition); }
+/* ===== 상담 CTA: 명함(Business Card)형 =====
+   좌 = 문구 / 우 = 연락처. 좌측 골드 사이드바 + 각진 모서리 + 명함 그림자 */
+.leaders-consult-cta { background: #fbfaf7; padding: 64px 0; }
+.consult-cta-box {
+  width: 100%; box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(250px, 0.9fr);
+  column-gap: 44px;
+  align-content: center;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #e8e2d5;
+  border-left: 5px solid #C9A24E;          /* 명함 좌측 골드 바 */
+  border-radius: 4px;                       /* 각지게 = 명함 */
+  box-shadow: 0 20px 44px rgba(15,23,42,.10), 0 2px 6px rgba(15,23,42,.05);
+  padding: 42px 46px;
+}
+.cta-eyebrow { grid-column: 1; display: inline-block; justify-self: start; font-size: 11px; font-weight: 800; letter-spacing: 2.5px; color: #C9A24E; margin-bottom: 10px; }
+.consult-cta-title { grid-column: 1; color: #16273f; font-size: clamp(1.35rem, 3vw, 1.85rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 14px; word-break: keep-all; line-height: 1.4; }
+.consult-cta-desc { grid-column: 1; color: #5b6b85; font-size: 0.98rem; line-height: 1.7; margin: 0; max-width: none; word-break: keep-all; }
+/* 우측 연락처 블록 */
+.cta-btn-row {
+  grid-column: 2; grid-row: 1 / span 3;
+  display: flex; flex-direction: column; gap: 10px;
+  align-self: center; justify-content: center;
+  border-left: 1px solid #efe9db; padding-left: 36px; margin: 0;
+}
+.consult-cta-btn { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #E2C28D, #F2E3C9); color: #1a1207; font-weight: 800; font-size: 1rem; padding: 14px 24px; border-radius: 6px; text-decoration: none; transition: var(--transition); white-space: nowrap; }
 .consult-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(226,194,141,.4); }
-/* 전화 버튼: 밝은 배경용 아웃라인 */
-.consult-cta-btn--tel { background: #fff; color: #16273f; border: 1.5px solid #ddd7cb; }
-.consult-cta-btn--tel:hover { background: #fff; border-color: #C9A24E; color: #16273f; box-shadow: 0 8px 18px rgba(0,0,0,.06); }
-.cta-reassure { color: #8a93a3; font-size: 0.88rem; margin: 0; word-break: keep-all; }
+.consult-cta-btn--tel { background: #16273f; color: #fff; border: 0; font-size: 1.12rem; letter-spacing: .01em; }
+.consult-cta-btn--tel:hover { background: #0f1c30; color: #fff; box-shadow: 0 12px 26px rgba(22,39,63,.28); }
+.cta-reassure { grid-column: 2; grid-row: 4; color: #97a0ae; font-size: 0.8rem; margin: 12px 0 0; padding-left: 36px; word-break: keep-all; }
+
+@media (max-width: 860px) {
+  .consult-cta-box { grid-template-columns: 1fr; padding: 30px 22px; }
+  .cta-btn-row { grid-column: 1; grid-row: auto; border-left: 0; padding-left: 0; margin-top: 22px; }
+  .cta-reassure { grid-column: 1; grid-row: auto; padding-left: 0; }
+}
 
 .js-reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
 .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -1066,7 +1091,7 @@ header, .site-header, .nav-container {
   .detail-card { padding: 26px 22px; }
   .leaders-insight { padding: 36px 22px; }
   .leaders-consult-cta { padding: 56px 0; }
-  .consult-cta-box { padding: 0; }
+  .consult-cta-box { padding: 30px 22px; }
   .consult-cta-btn { width: 100%; }
   .comparison-table td.label { width: 30%; }
 }
@@ -1235,16 +1260,16 @@ details[open] .leaders-plus-icon::before, details[open] .leaders-plus-icon::afte
   /* 카드·박스 여백 축소 */
   .leaders-page .detail-card { padding: 20px 16px; }
   .leaders-page .leaders-insight { padding: 24px 18px; }
-  .leaders-page .consult-cta-box { padding: 0; }
+  .leaders-page .consult-cta-box { padding: 26px 20px; }
 }
 
 /* ===== 카드 남발 느낌 완화 — 그림자·간격·CTA박스 패딩 경량화(전역) ===== */
 .leaders-page .leaders-table-card { box-shadow: 0 6px 16px rgba(0,0,0,0.035); }
 .leaders-page .detail-card { box-shadow: none; }
 .leaders-page .leaders-detail-grid { gap: 16px; }
-.leaders-page .consult-cta-box { padding: 0; }
+.leaders-page .consult-cta-box { padding: 42px 46px; }
 @media (max-width: 640px) {
-  .leaders-page .consult-cta-box { padding: 0; }
+  .leaders-page .consult-cta-box { padding: 26px 20px; }
   .leaders-page .leaders-detail-grid { gap: 12px; }
 }
 

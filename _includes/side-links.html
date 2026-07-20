@@ -1,5 +1,5 @@
 <!-- 플로팅 상담 스피드다이얼 (원형 FAB + 위로 펼침) -->
-<div class="lds-sd is-open" id="ldsSd" aria-label="빠른 상담 바로가기">
+<div class="lds-sd" id="ldsSd" aria-label="빠른 상담 바로가기">
 
   <!-- 펼쳐지는 액션 항목들 (아래에서 위로) -->
   <div class="lds-sd__actions" id="ldsSdActions">
@@ -59,11 +59,11 @@
   <button type="button"
           class="lds-sd__fab"
           id="ldsSdFab"
-          aria-expanded="true"
+          aria-expanded="false"
           aria-controls="ldsSdActions"
-          aria-label="상담 메뉴 닫기"
+          aria-label="퀵메뉴 열기"
           onclick="ldsSdToggle()">
-    <span class="lds-sd__fab-open" aria-hidden="true">빠른<br>상담</span>
+    <span class="lds-sd__fab-open" aria-hidden="true">퀵메뉴</span>
     <span class="lds-sd__fab-close" aria-hidden="true">✕</span>
   </button>
 
@@ -135,7 +135,6 @@
     font-size: 15px;
     font-weight: 800;
     letter-spacing: .01em;
-    line-height: 1.08;
     text-align: center;
   }
   .lds-sd__fab-close{

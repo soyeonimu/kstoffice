@@ -20,12 +20,15 @@ complaint:
     desc: "합의 전략·유의점"
 
 criminal:
-  - title: "음주운전"
-    url: "/dui"
-    desc: "면허취소·정지 구제 서류"
   - title: "고소장 작성"
     url: "/complaint"
     desc: "고소장·의견서"
+  - title: "고소 가능성 자가진단"
+    url: "/criminal/self-check"
+    desc: "1분 고소 진단"
+  - title: "음주운전"
+    url: "/dui"
+    desc: "면허취소·정지 구제 서류"
   - title: "형사합의"
     url: "/settlement"
     desc: "합의서·처벌불원서"

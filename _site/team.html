@@ -203,7 +203,7 @@
           <a href="/inquiry/">상담게시판</a>
           <ul class="sub">
             <li><a href="/inquiry/">상담 게시판</a></li>
-            <li><a href="/board">법률정보</a></li>
+            <li><a href="/board">법률노트</a></li>
           </ul>
         </li>
       </ul>
@@ -624,9 +624,9 @@
   .side-inquiry-link {
     display: flex; align-items: center; justify-content: center; gap: 6px;
     margin-top: 14px; padding-top: 14px; border-top: 1px dashed #e2e8f0;
-    font-size: 0.92rem; font-weight: 700; color: #E2C28D; text-decoration: none; transition: 0.2s;
+    font-size: 0.92rem; font-weight: 700; color: #1f3a5f; text-decoration: none; transition: 0.2s;
   }
-  .side-inquiry-link:hover { color: #8a6f3e; }
+  .side-inquiry-link:hover { color: #14263f; }
 
   .side-recent { background: #fff; border: 1px solid #ececec; border-radius: 16px; padding: 22px 20px; }
   .side-recent-title { font-size: 1rem; font-weight: 800; color: #0f172a; margin: 0 0 8px; }
@@ -655,7 +655,7 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.58 2 11c0 2.83 1.93 5.31 4.84 6.72-.21.74-.77 2.79-.88 3.22-.14.54.2.53.42.39.17-.11 2.71-1.84 3.81-2.59.58.08 1.18.13 1.81.13 5.5 0 10-3.58 10-8S17.5 3 12 3z"/></svg>
     카카오톡 1:1 상담
   </a>
-  <a href="/board" class="side-inquiry-link">법률정보 게시판 바로가기 →</a>
+  <a href="/board" class="side-inquiry-link">리더스 법률노트 바로가기 →</a>
 </div>
 
 
@@ -686,7 +686,7 @@
   </main>
 
   <!-- 플로팅 상담 스피드다이얼 (원형 FAB + 위로 펼침) -->
-<div class="lds-sd is-open" id="ldsSd" aria-label="빠른 상담 바로가기">
+<div class="lds-sd" id="ldsSd" aria-label="빠른 상담 바로가기">
 
   <!-- 펼쳐지는 액션 항목들 (아래에서 위로) -->
   <div class="lds-sd__actions" id="ldsSdActions">
@@ -746,11 +746,11 @@
   <button type="button"
           class="lds-sd__fab"
           id="ldsSdFab"
-          aria-expanded="true"
+          aria-expanded="false"
           aria-controls="ldsSdActions"
-          aria-label="상담 메뉴 닫기"
+          aria-label="퀵메뉴 열기"
           onclick="ldsSdToggle()">
-    <span class="lds-sd__fab-open" aria-hidden="true">상담</span>
+    <span class="lds-sd__fab-open" aria-hidden="true">퀵메뉴</span>
     <span class="lds-sd__fab-close" aria-hidden="true">✕</span>
   </button>
 
@@ -794,22 +794,22 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    background: linear-gradient(135deg, #E2C28D, #d3ac6f);
-    color: #0f172a;
-    box-shadow: 0 10px 24px rgba(201, 162, 78, 0.42);
+    background: linear-gradient(135deg, #FF8A00, #F76B00);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(247, 107, 0, 0.45);
     transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
     -webkit-tap-highlight-color: transparent;
     animation: ldsFabPulse 2.2s ease-out infinite;
   }
   @keyframes ldsFabPulse{
-    0%   { box-shadow: 0 10px 24px rgba(201,162,78,.42), 0 0 0 0 rgba(201,162,78,.5); }
-    70%  { box-shadow: 0 10px 24px rgba(201,162,78,.42), 0 0 0 15px rgba(201,162,78,0); }
-    100% { box-shadow: 0 10px 24px rgba(201,162,78,.42), 0 0 0 0 rgba(201,162,78,0); }
+    0%   { box-shadow: 0 10px 24px rgba(247,107,0,.42), 0 0 0 0 rgba(247,107,0,.5); }
+    70%  { box-shadow: 0 10px 24px rgba(247,107,0,.42), 0 0 0 15px rgba(247,107,0,0); }
+    100% { box-shadow: 0 10px 24px rgba(247,107,0,.42), 0 0 0 0 rgba(247,107,0,0); }
   }
   @media (prefers-reduced-motion: reduce){ .lds-sd__fab{ animation: none; } }
   .lds-sd__fab:hover{
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(201, 162, 78, 0.5);
+    box-shadow: 0 14px 30px rgba(247, 107, 0, 0.5);
   }
   .lds-sd__fab-open,
   .lds-sd__fab-close{
@@ -819,9 +819,10 @@
     transition: opacity .22s ease, transform .28s ease;
   }
   .lds-sd__fab-open{
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 800;
-    letter-spacing: .04em;
+    letter-spacing: .01em;
+    text-align: center;
   }
   .lds-sd__fab-close{
     opacity: 0;
@@ -1004,7 +1005,7 @@
   @media (max-width: 768px){
     .lds-sd{ right: 14px; bottom: 18px; }
     .lds-sd__fab{ width: 54px; height: 54px; }
-    .lds-sd__fab-open{ font-size: 23px; }
+    .lds-sd__fab-open{ font-size: 13px; }
     .lds-sd__fab-close{ font-size: 21px; }
     .lds-sd__actions{ bottom: 64px; gap: 10px; }
     .lds-sd__ic{ width: 42px; height: 42px; flex-basis: 42px; font-size: 18px; }

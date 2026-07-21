@@ -1,25 +1,5 @@
+# 고소장 전용 상세 메뉴
 complaint:
-  - title: "고소장 작성 안내"
-    url: "/complaint"
-    desc: "준비서류·작성 포인트"
-    highlight: true
-  - title: "절차"
-    url: "/process"
-    desc: "접수부터 송치까지"
-  - title: "작성 사례"
-    url: "/cases-complaint"
-    desc: "실제 진행 사례"
-  - title: "FAQ"
-    url: "/faq-complaint"
-    desc: "자주 묻는 질문"
-  - title: "신고 vs 고소"
-    url: "/difference"
-    desc: "선택 기준 정리"
-  - title: "형사합의"
-    url: "/settlement"
-    desc: "합의 전략·유의점"
-
-criminal:
   - title: "고소장 작성 안내"
     url: "/complaint"
     desc: "준비서류·작성 포인트"
@@ -42,6 +22,12 @@ criminal:
   - title: "FAQ"
     url: "/faq-complaint"
     desc: "자주 묻는 질문"
+
+# 형사사건 큰 분류 (고소장 외 단독 주제 페이지에서 사용)
+criminal:
+  - title: "고소장"
+    url: "/complaint"
+    desc: "고소장 작성·접수"
   - title: "형사합의"
     url: "/settlement"
     desc: "합의서·처벌불원서"

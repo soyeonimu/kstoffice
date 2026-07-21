@@ -22,7 +22,7 @@ board.html의 .post-card 마크업을 그대로 재사용한다.
   {%- assign g = '기타' -%}
   {%- if c contains '음주' -%}{%- assign g = '음주운전' -%}
   {%- elsif c contains '고소' -%}{%- assign g = '고소장' -%}
-  {%- elsif c contains '형사' -%}{%- assign g = '형사' -%}
+  {%- elsif c contains '형사' or c contains '진술' or c contains '탄원' or c contains '반성' -%}{%- assign g = '형사' -%}
   {%- elsif c contains '개인회생' or c contains '파산' or c contains '워크아웃' -%}{%- assign g = '개인회생·파산' -%}
   {%- elsif c contains '국제이혼' -%}{%- assign g = '국제이혼' -%}
   {%- elsif c contains '등기' or c contains '상속' or c contains '부동산' -%}{%- assign g = '등기·상속' -%}

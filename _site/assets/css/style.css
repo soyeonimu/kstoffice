@@ -399,6 +399,8 @@ img, video { max-width: 100%; height: auto; }
 
 /* 상담 가능 지역: 대표 지역 텍스트 + 전체보기 링크 */
 .f-regions-txt { color: rgba(255,255,255,0.4); }
+.f-regions-txt a { color: rgba(255,255,255,0.62); text-decoration: none; transition: color .2s; }
+.f-regions-txt a:hover { color: #E2C28D; }
 .f-regions-more { color: #E2C28D !important; font-weight: 700; margin-left: 4px; white-space: nowrap; }
 .f-regions-more:hover { text-decoration: underline; }
 

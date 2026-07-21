@@ -1007,6 +1007,7 @@ header, .site-header, .nav-container {
 .comparison-table td.label { background: #fcfcfc; color: var(--text-main); font-weight: 700; text-align: center; width: 20%; }
 .comparison-table td.highlight-cell { background: rgba(226,194,141,.05); color: var(--text-main); }
 .comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table td small { display: block; margin-top: 6px; font-size: .82rem; color: var(--text-sub); opacity: .85; line-height: 1.5; word-break: keep-all; }
 
 /* 상세 카드 그리드 */
 .leaders-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 20px; }

@@ -23,6 +23,25 @@ complaint:
     url: "/faq-complaint"
     desc: "자주 묻는 질문"
 
+# 불송치 이의신청 전용 하위 메뉴
+objection:
+  - title: "불송치 이의신청 안내"
+    url: "/criminal/objection"
+    desc: "제도·절차 개요"
+    highlight: true
+  - title: "이의신청서 작성법"
+    url: "/criminal/objection/how-to"
+    desc: "무엇을 어떻게 쓰나"
+  - title: "불송치 이유서 확보"
+    url: "/criminal/objection/reason-notice"
+    desc: "정보공개청구로 확인"
+  - title: "이의신청·재수사·항고 차이"
+    url: "/criminal/objection/vs-appeal"
+    desc: "내 상황에 맞는 불복"
+  - title: "누가 할 수 있나"
+    url: "/criminal/objection/who"
+    desc: "고소인·피해자 / 고발인 제외"
+
 # 형사사건 큰 분류 목록 — 현재 어느 페이지에서도 subnav로 쓰지 않음(형제 분류를 띄우지 않기 위해).
 # 각 큰 분류는 하위 페이지가 생기면 전용 그룹(예: objection:, dui:)을 만들어 그 페이지들에 붙인다.
 criminal:

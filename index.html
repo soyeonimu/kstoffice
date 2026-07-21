@@ -627,7 +627,7 @@ function submitMainForm(e,type){
     .then(function(){showMainSuccess(form,btn,successId);})
     .catch(function(){showMainSuccess(form,btn,successId);});
 }
-function showMainSuccess(form,btn,successId){
+function showMainSuccess(form,btn,successId){if(window.ksNaverLead)ksNaverLead();
   btn.textContent='신청됨 ✓';
   var el=document.getElementById(successId);
   if(el)el.style.display='block';

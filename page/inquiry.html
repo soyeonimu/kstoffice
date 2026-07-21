@@ -551,7 +551,7 @@ function submitInquiry() {
   });
 }
 
-function showSuccess() {
+function showSuccess() {if(window.ksNaverLead)ksNaverLead();
   document.getElementById('writeForm').style.display = 'none';
   document.getElementById('writeSuccess').style.display = '';
   // Naver 전환추적: 상담 신청완료 (lead)

@@ -252,7 +252,7 @@ permalink: /contact
 
 <!-- ===== 간편 상담신청 폼 전송 (GAS, 일반 상담 엔드포인트) ===== -->
 <script>
-  function ldsContactSubmit(e) {
+  function ldsContactSubmit(e) {if(window.ksNaverLead)ksNaverLead();
     e.preventDefault();
     var form = e.target;
     var agree = document.getElementById('cf-agree');

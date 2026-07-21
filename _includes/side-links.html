@@ -393,7 +393,7 @@
       formType: 'floating',
       source: '플로팅_상담신청'
     });
-    var done = function () {
+    var done = function () {if(window.ksNaverLead)ksNaverLead();
       btn.textContent = '신청 완료 ✓';
       var el = form.querySelector('.lds-sd__success');
       if (el) el.style.display = 'block';

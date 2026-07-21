@@ -188,7 +188,7 @@
       formType: 'footer',
       source: '푸터_상담'
     });
-    var done = function () {
+    var done = function () {if(window.ksNaverLead)ksNaverLead();
       btn.textContent = '신청 완료 ✓';
       var el = form.querySelector('.f-lead-success');
       if (el) el.style.display = 'block';

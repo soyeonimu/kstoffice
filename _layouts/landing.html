@@ -358,6 +358,18 @@
   }
   </script>
   <!-- End Naver 전환추적 공통 스크립트 -->
+  <!-- 네이버 전환추적: 상담 신청 완료 시 호출하는 공통 함수 -->
+  <script>
+  window.ksNaverLead = function () {
+    try {
+      if (!window.wcs_add) window.wcs_add = {};
+      wcs_add["wa"] = "s_2ae8887f01b0";
+      if (!window._nasa) window._nasa = {};
+      if (window.wcs && window.wcs.cnv) { _nasa["cnv"] = wcs.cnv("2", "1"); wcs_do(_nasa); }
+    } catch (e) {}
+  };
+  </script>
+
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->

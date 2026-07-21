@@ -918,6 +918,7 @@ function submitPhone(e){
   if(!/^01[016789]\d{7,8}$/.test(phone)){
     alert("올바른 휴대폰 번호를 입력해주세요.\n예) 010-1234-5678");return;
   }
+  if(window.ksNaverLead)ksNaverLead();
   fetch("https://script.google.com/macros/s/AKfycbwAS0c4fyhQ_m2sFNKboilQeMcwd3V5WAuUakALziAFI-X7t0GgcIueFKMkMBXJTJhXDw/exec",{
     method:"POST",
     body:JSON.stringify({

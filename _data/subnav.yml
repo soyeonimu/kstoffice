@@ -23,6 +23,25 @@ complaint:
     url: "/faq-complaint"
     desc: "자주 묻는 질문"
 
+# 형사합의 전용 하위 메뉴
+settlement:
+  - title: "형사합의 안내"
+    url: "/settlement"
+    desc: "합의 전략·유의점"
+    highlight: true
+  - title: "합의서 작성법"
+    url: "/settlement/how-to"
+    desc: "문구가 결과를 가른다"
+  - title: "처벌불원서"
+    url: "/settlement/no-punishment"
+    desc: "1심 선고 전까지"
+  - title: "형사공탁"
+    url: "/settlement/deposit"
+    desc: "합의가 안 될 때"
+  - title: "합의금은 어떻게"
+    url: "/settlement/amount"
+    desc: "금액을 좌우하는 요소"
+
 # 불송치 이의신청 전용 하위 메뉴
 objection:
   - title: "불송치 이의신청 안내"

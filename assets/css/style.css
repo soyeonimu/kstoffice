@@ -1042,7 +1042,7 @@ header, .site-header, .nav-container {
 /* ④ CTA */
 /* ===== 상담 CTA: 명함(Business Card)형 =====
    좌 = 문구 / 우 = 연락처. 좌측 골드 사이드바 + 각진 모서리 + 명함 그림자 */
-.leaders-consult-cta { background: #fbfaf7; padding: 64px 0; }
+.leaders-consult-cta { background: transparent; padding: 56px 0 64px; }
 .consult-cta-box {
   width: 100%; box-sizing: border-box;
   display: grid;

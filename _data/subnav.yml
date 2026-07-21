@@ -115,6 +115,16 @@ criminal:
     url: "/dui"
     desc: "면허취소·정지 대응 서류"
 
+# 리더스 소개
+about:
+  - title: "구성원 소개"
+    url: "/team"
+    desc: "법무사·사무소 이력"
+    highlight: true
+  - title: "오시는 길"
+    url: "/location"
+    desc: "약도·주차·대중교통"
+
 # 국제이혼·가사
 divorce:
   - title: "국제이혼 안내"

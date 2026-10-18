@@ -195,6 +195,7 @@
       if (el) el.style.display = 'block';
       form.querySelectorAll('input,button').forEach(function (f) { f.disabled = true; });
     };
+    if (window.ksLeadMeta) ksLeadMeta(params);
     fetch(GAS, { method: 'POST', mode: 'no-cors', body: params }).then(done).catch(done);
   };
 </script>

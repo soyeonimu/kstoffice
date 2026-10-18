@@ -623,6 +623,7 @@ function submitMainForm(e,type){
     formType:isMiddle?'main_middle':'main_bottom',
     source:isMiddle?'메인페이지_중간폼':'메인페이지_하단CTA'
   });
+  if (window.ksLeadMeta) ksLeadMeta(params);
   fetch(MAIN_GAS,{method:'POST',mode:'no-cors',body:params})
     .then(function(){showMainSuccess(form,btn,successId);})
     .catch(function(){showMainSuccess(form,btn,successId);});

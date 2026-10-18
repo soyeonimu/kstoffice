@@ -1,31 +1,40 @@
 /**
- * 상담 폼 유입 추적 패치 — 실제 배포된 리드 수집 스크립트에 추가
+ * 상담 폼 유입 추적 패치 — 배포된 두 Apps Script에 각각 추가
  * ─────────────────────────────────────────────
- * 적용 방법:
- *   1. 사이트 폼이 전송하는 웹앱(…AKfycbxLHMOg…/exec)의 Apps Script 편집기를 연다
- *   2. 이 파일의 ksTrack_ 함수를 통째로 맨 아래에 붙여넣는다
- *   3. doPost 안에서 sheet.appendRow([...]) 바로 다음 줄에 추가:
- *        ksTrack_(sheet, e);
- *   4. 배포 → 배포 관리 → 기존 배포 '수정' → 버전: 새 버전 → 배포
- *      (새 배포를 만들면 URL이 바뀌므로 반드시 '기존 배포 수정')
+ * ① 리드 수집 스크립트 (…AKfycbxLHMOg…/exec · 시트 '리드')
+ *    홈·연락처·푸터·플로팅 폼. doPost 안 sh.appendRow([...]) 다음 줄에:
+ *        ksTrack_(sh, e);
  *
- * 동작: 헤더 행에 아래 열이 없으면 오른쪽 끝에 만들고, 방금 추가된 행에 값을 채운다.
+ * ② 상담 게시판 스크립트 (…AKfycbzcn7…/exec · 시트 '상담문의')
+ *    /inquiry/ 글쓰기. saveInquiry 안 sh.appendRow([...]) 다음 줄에:
+ *        ksTrackRow_(sh, data);
+ *    (게시판 목록·상세는 A~L열만 읽으므로 추적 열은 공개되지 않음)
+ *
+ * 공통: 아래 두 함수를 스크립트 맨 아래에 붙여넣고
+ *       배포 → 배포 관리 → 기존 배포 '수정' → 버전: 새 버전 → 배포
+ *       (새 배포를 만들면 URL이 바뀌어 사이트 폼이 끊김)
+ *
+ * 동작: 헤더 행에 추적 열이 없으면 오른쪽 끝에 만들고, 방금 추가된 행에 값을 채운다.
  *       기존 열·기존 로직은 건드리지 않는다.
  */
 function ksTrack_(sheet, e) {
+  var d = (e && e.parameter) || {};
+  // no-cors 전송은 Content-Type이 text/plain으로 바뀌므로 타입과 무관하게 JSON 파싱을 시도
+  if (!d.page && e && e.postData && e.postData.contents) {
+    try { d = JSON.parse(e.postData.contents); } catch (err) {}
+  }
+  ksTrackRow_(sheet, d);
+}
+
+function ksTrackRow_(sheet, d) {
   try {
+    if (!d || !d.page) return; // 추적값이 없는 요청(구버전 폼 등)은 건너뜀
     var FIELDS = [
-      ['page', '제출페이지'], ['pageTitle', '제출페이지제목'],
+      ['page', '제출페이지'], ['pageTitle', '제출페이지제목'], ['prevPage', '직전페이지'],
       ['landingPage', '최초유입페이지'], ['firstReferrer', '최초리퍼러'], ['firstVisit', '최초방문일시'],
       ['utmSource', 'utm_source'], ['utmMedium', 'utm_medium'], ['utmCampaign', 'utm_campaign'],
       ['utmTerm', 'utm_term'], ['utmContent', 'utm_content']
     ];
-    var d = (e && e.parameter) || {};
-    if (!d.page && e && e.postData && /json/.test(e.postData.type || '')) {
-      try { d = JSON.parse(e.postData.contents); } catch (err) {}
-    }
-    if (!d.page) return; // 추적값이 없는 요청(구버전 폼 등)은 건너뜀
-
     var lastCol = Math.max(sheet.getLastColumn(), 1);
     var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
     var row = sheet.getLastRow();
@@ -39,6 +48,6 @@ function ksTrack_(sheet, e) {
       sheet.getRange(row, col).setValue(d[f[0]] || '');
     });
   } catch (err) {
-    console.error('ksTrack_ 실패: ' + err);
+    console.error('ksTrackRow_ 실패: ' + err);
   }
 }

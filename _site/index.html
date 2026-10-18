@@ -104,12 +104,15 @@
   };
   </script>
 
-  <!-- 상담 폼 유입 추적: 최초 유입(랜딩·외부 리퍼러·UTM)을 30일간 기억하고, 제출 시 현재 페이지와 함께 보냄 -->
+  <!-- 상담 폼 유입 추적: 최초 유입(랜딩·외부 리퍼러·UTM)을 30일간 기억하고, 제출 시 현재·직전 페이지와 함께 보냄 -->
 <script>
 (function () {
   var KEY = 'ks_first_touch', TTL = 30 * 864e5;
   function cut(s, n) { return String(s || '').slice(0, n); }
   function path() { try { return decodeURI(location.pathname); } catch (e) { return location.pathname; } }
+  /* 직전 페이지: 사이트 안에서 넘어온 경우의 경로 (예: 게시글 → /inquiry/) */
+  var prev = '';
+  try { var r = document.referrer && new URL(document.referrer); if (r && r.hostname === location.hostname) prev = decodeURI(r.pathname); } catch (e) {}
   var ft = null;
   try { ft = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
   if (!ft || !ft.ts || Date.now() - ft.ts > TTL) {
@@ -127,18 +130,22 @@
     };
     try { localStorage.setItem(KEY, JSON.stringify(ft)); } catch (e) {}
   }
-  /* 폼 전송 값(URLSearchParams)에 추적 필드를 덧붙임 */
+  /* 폼 전송 값에 추적 필드를 덧붙임 — URLSearchParams(폼) 또는 일반 객체(JSON 전송) */
   window.ksLeadMeta = function (params) {
     var m = {
       page: cut(path(), 300),
       pageTitle: cut(document.title, 200),
+      prevPage: cut(prev, 300),
       landingPage: ft.landing,
       firstReferrer: ft.referrer,
       firstVisit: new Date(ft.ts).toISOString(),
       utmSource: ft.utm_source, utmMedium: ft.utm_medium, utmCampaign: ft.utm_campaign,
       utmTerm: ft.utm_term, utmContent: ft.utm_content
     };
-    for (var k in m) params.append(k, m[k] || '');
+    for (var k in m) {
+      if (typeof params.append === 'function') params.append(k, m[k] || '');
+      else params[k] = m[k] || '';
+    }
     return params;
   };
 })();

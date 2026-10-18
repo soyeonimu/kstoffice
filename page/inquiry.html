@@ -532,6 +532,7 @@ function submitInquiry() {
   btn.textContent = '등록 중...';
 
   var payload = { action:'write', category:cat, name:name, phone:phone, debt:debt, time:time, password:pw, title:title, content:body };
+  if (window.ksLeadMeta) ksLeadMeta(payload);
 
   if (GAS_URL.includes('YOUR_INQUIRY_SCRIPT_ID')) {
     setTimeout(function(){ showSuccess(); }, 800);

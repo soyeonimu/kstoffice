@@ -105,6 +105,46 @@
   };
   </script>
 
+  <!-- 상담 폼 유입 추적: 최초 유입(랜딩·외부 리퍼러·UTM)을 30일간 기억하고, 제출 시 현재 페이지와 함께 보냄 -->
+<script>
+(function () {
+  var KEY = 'ks_first_touch', TTL = 30 * 864e5;
+  function cut(s, n) { return String(s || '').slice(0, n); }
+  function path() { try { return decodeURI(location.pathname); } catch (e) { return location.pathname; } }
+  var ft = null;
+  try { ft = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+  if (!ft || !ft.ts || Date.now() - ft.ts > TTL) {
+    var q = new URLSearchParams(location.search), ref = '';
+    try { if (document.referrer && new URL(document.referrer).hostname !== location.hostname) ref = document.referrer; } catch (e) {}
+    ft = {
+      ts: Date.now(),
+      landing: cut(path(), 300),
+      referrer: cut(ref, 300),
+      utm_source: cut(q.get('utm_source'), 100),
+      utm_medium: cut(q.get('utm_medium'), 100),
+      utm_campaign: cut(q.get('utm_campaign'), 100),
+      utm_term: cut(q.get('utm_term'), 100),
+      utm_content: cut(q.get('utm_content'), 100)
+    };
+    try { localStorage.setItem(KEY, JSON.stringify(ft)); } catch (e) {}
+  }
+  /* 폼 전송 값(URLSearchParams)에 추적 필드를 덧붙임 */
+  window.ksLeadMeta = function (params) {
+    var m = {
+      page: cut(path(), 300),
+      pageTitle: cut(document.title, 200),
+      landingPage: ft.landing,
+      firstReferrer: ft.referrer,
+      firstVisit: new Date(ft.ts).toISOString(),
+      utmSource: ft.utm_source, utmMedium: ft.utm_medium, utmCampaign: ft.utm_campaign,
+      utmTerm: ft.utm_term, utmContent: ft.utm_content
+    };
+    for (var k in m) params.append(k, m[k] || '');
+    return params;
+  };
+})();
+</script>
+
 </head>
 
 <body>
@@ -496,17 +536,17 @@
       <span class="related-legal-eyebrow">관련 법률정보</span>
       <h2 class="related-legal-title">이 주제, 더 자세히 알아보기</h2>
     </div>
-    <div class="related-legal-grid"><a class="related-legal-card" href="/board/deposit-return-steps/">
+    <div class="related-legal-grid"><a class="related-legal-card" href="/board/judgment-unpaid-enforcement/">
+        <span class="related-legal-thumb" style="background-image:url('/assets/img/board/judgment-unpaid-enforcement-thumbnail.png')"></span>
+        <span class="related-legal-body"><span class="related-legal-cat">민사</span><span class="related-legal-name">판결 받고도 돈 안 갚을 때, 통장압류·강제집행 순서대로 정리</span>
+        </span>
+      </a><a class="related-legal-card" href="/board/deposit-return-steps/">
         <span class="related-legal-thumb" style="background-image:url('/assets/img/board/deposit-return-steps-thumbnail.png')"></span>
         <span class="related-legal-body"><span class="related-legal-cat">민사</span><span class="related-legal-name">전세보증금 안 돌려줄 때, 이사 나가기 전에 할 일</span>
         </span>
       </a><a class="related-legal-card" href="/board/content-certification-diy/">
         <span class="related-legal-thumb" style="background-image:url('/assets/img/board/content-certification-diy-thumbnail.png')"></span>
         <span class="related-legal-body"><span class="related-legal-cat">민사</span><span class="related-legal-name">내용증명, 혼자 써도 되지만 이걸 모르면 헛수고입니다</span>
-        </span>
-      </a><a class="related-legal-card" href="/board/civil-brief-writing/">
-        <span class="related-legal-thumb" style="background-image:url('/assets/img/board/civil-brief-writing-thumbnail.png')"></span>
-        <span class="related-legal-body"><span class="related-legal-cat">민사</span><span class="related-legal-name">준비서면, 같은 말을 반복하면 오히려 손해입니다</span>
         </span>
       </a></div>
   </div>
@@ -594,16 +634,16 @@
 <div class="side-recent">
   <p class="side-recent-title">최근 글</p>
   
+  <a class="side-recent-item" href="/board/judgment-unpaid-enforcement/"><span class="side-recent-cat">민사</span>
+    <span class="side-recent-name">판결 받고도 돈 안 갚을 때, 통장압류·강제집행 순서대로 정리</span>
+  </a>
+  
   <a class="side-recent-item" href="/board/multiple-heirs-strategy/"><span class="side-recent-cat">상속</span>
     <span class="side-recent-name">빚 있는 상속, 형제가 여럿이면 이렇게 정리합니다</span>
   </a>
   
   <a class="side-recent-item" href="/board/special-limited-acceptance/"><span class="side-recent-cat">상속</span>
     <span class="side-recent-name">상속 3개월 지나 빚을 알았다면, 특별한정승인이 있습니다</span>
-  </a>
-  
-  <a class="side-recent-item" href="/board/renunciation-next-heir/"><span class="side-recent-cat">상속</span>
-    <span class="side-recent-name">상속포기했는데 조카에게 빚 독촉이? 순위가 넘어갑니다</span>
   </a>
   
 </div>
@@ -1015,6 +1055,7 @@
       if (el) el.style.display = 'block';
       form.querySelectorAll('input,button').forEach(function (f) { f.disabled = true; });
     };
+    if (window.ksLeadMeta) ksLeadMeta(params);
     fetch(GAS, { method: 'POST', mode: 'no-cors', body: params }).then(done).catch(done);
   }
 
@@ -1234,6 +1275,7 @@
       if (el) el.style.display = 'block';
       form.querySelectorAll('input,button').forEach(function (f) { f.disabled = true; });
     };
+    if (window.ksLeadMeta) ksLeadMeta(params);
     fetch(GAS, { method: 'POST', mode: 'no-cors', body: params }).then(done).catch(done);
   };
 </script>

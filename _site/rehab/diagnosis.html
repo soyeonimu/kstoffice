@@ -370,6 +370,46 @@
   };
   </script>
 
+  <!-- 상담 폼 유입 추적: 최초 유입(랜딩·외부 리퍼러·UTM)을 30일간 기억하고, 제출 시 현재 페이지와 함께 보냄 -->
+<script>
+(function () {
+  var KEY = 'ks_first_touch', TTL = 30 * 864e5;
+  function cut(s, n) { return String(s || '').slice(0, n); }
+  function path() { try { return decodeURI(location.pathname); } catch (e) { return location.pathname; } }
+  var ft = null;
+  try { ft = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+  if (!ft || !ft.ts || Date.now() - ft.ts > TTL) {
+    var q = new URLSearchParams(location.search), ref = '';
+    try { if (document.referrer && new URL(document.referrer).hostname !== location.hostname) ref = document.referrer; } catch (e) {}
+    ft = {
+      ts: Date.now(),
+      landing: cut(path(), 300),
+      referrer: cut(ref, 300),
+      utm_source: cut(q.get('utm_source'), 100),
+      utm_medium: cut(q.get('utm_medium'), 100),
+      utm_campaign: cut(q.get('utm_campaign'), 100),
+      utm_term: cut(q.get('utm_term'), 100),
+      utm_content: cut(q.get('utm_content'), 100)
+    };
+    try { localStorage.setItem(KEY, JSON.stringify(ft)); } catch (e) {}
+  }
+  /* 폼 전송 값(URLSearchParams)에 추적 필드를 덧붙임 */
+  window.ksLeadMeta = function (params) {
+    var m = {
+      page: cut(path(), 300),
+      pageTitle: cut(document.title, 200),
+      landingPage: ft.landing,
+      firstReferrer: ft.referrer,
+      firstVisit: new Date(ft.ts).toISOString(),
+      utmSource: ft.utm_source, utmMedium: ft.utm_medium, utmCampaign: ft.utm_campaign,
+      utmTerm: ft.utm_term, utmContent: ft.utm_content
+    };
+    for (var k in m) params.append(k, m[k] || '');
+    return params;
+  };
+})();
+</script>
+
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->

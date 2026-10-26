@@ -206,7 +206,7 @@ SEO helpers:
 
     <header class="article-header js-reveal">
       {% if page.category %}
-        <a class="article-category" itemprop="articleSection" href="/board/?cat={{ page.category | uri_escape }}" title="'{{ page.category }}' 글 모아보기">{{ page.category }}</a>
+        <a class="article-category" itemprop="articleSection" href="/board/#cat={{ page.category | uri_escape }}" title="'{{ page.category }}' 글 모아보기">{{ page.category }}</a>
       {% endif %}
 
       <h1 class="article-title" itemprop="headline">{{ page.title }}</h1>

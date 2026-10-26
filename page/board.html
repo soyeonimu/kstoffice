@@ -185,7 +185,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   searchInp.addEventListener('input', applyFilter);
 
-  // 다른 페이지에서 ?cat=음주운전 형태로 들어오면 해당 탭을 자동 선택
+  // 다른 페이지에서 #cat=음주운전(신규) 또는 ?cat=음주운전(기존 링크) 형태로 들어오면 해당 탭을 자동 선택
+  // #cat 을 쓰는 이유: ?cat= 은 검색엔진이 별도 URL로 수집해 '동일 제목 웹문서 다수'로 진단됨
   function catToGroup(c) {
     c = c || '';
     if (c.indexOf('음주') >= 0) return '음주운전';
@@ -198,6 +199,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return 'all';
   }
   var _incoming = new URLSearchParams(location.search).get('cat');
+  if (!_incoming && location.hash.indexOf('#cat=') === 0) {
+    try { _incoming = decodeURIComponent(location.hash.slice(5)); } catch (e) { _incoming = location.hash.slice(5); }
+  }
   if (_incoming) {
     var _grp = catToGroup(_incoming), _target = null;
     btns.forEach(function (b) { if (b.dataset.filter === _grp) _target = b; });

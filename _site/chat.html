@@ -171,6 +171,14 @@
       </a>
     </div>
 
+    <!-- 모바일·태블릿(≤1024px) 전용: 메뉴를 열지 않아도 바로 보이는 상담게시판 버튼 -->
+    <a href="/inquiry/" class="header-board" aria-label="상담 게시판">
+      <svg class="header-board-icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none" aria-hidden="true">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linejoin="round"/>
+      </svg>
+      상담게시판
+    </a>
+
     <!-- 모바일 메뉴 버튼 -->
     <button
       type="button"
@@ -353,6 +361,33 @@
   .header-cta-icon{ flex:0 0 auto; }
   /* 태블릿·모바일(≤1024px)에서는 햄버거 노출 시점과 동일하게 헤더 버튼 숨김 → 메뉴로 접근 */
   @media (max-width: 1024px){ .header-loc, .header-cta{ display:none; } }
+
+  /* 상담게시판 버튼: PC에서는 숨김(GNB에 메뉴 있음), ≤1024px에서 햄버거 왼쪽에 노출 */
+  .header-board{ display:none; }
+  @media (max-width: 1024px){
+    .header-board{
+      display:inline-flex; align-items:center; gap:5px; margin-left:auto;
+      background:var(--point-gold); color:#0f172a; font-weight:800; font-size:0.85rem;
+      padding:8px 14px; border-radius:999px; text-decoration:none; white-space:nowrap;
+      box-shadow:0 4px 12px rgba(226,194,141,.28);
+    }
+    .header-board:active{ background:var(--point-gold-light, #F2E3C9); }
+    .header-board-icon{ flex:0 0 auto; }
+    .header-board + .menu-toggle{ margin-left:4px; }
+    /* 햄버거 크기 고정: 991px 이하에만 크기가 있어 992~1024px에서 점처럼 찌그러지던 문제 + 좁은 폭에서 눌림 방지 */
+    .menu-toggle{
+      flex:0 0 30px; width:30px; height:22px; padding:0;
+      flex-direction:column; justify-content:space-between;
+      background:none; border:none; cursor:pointer;
+    }
+    .menu-toggle .bar{ display:block; width:100%; height:2px; background-color:#fff; }
+  }
+  @media (max-width: 360px){
+    .header-board{ padding:7px 11px; font-size:0.8rem; }
+    .header-board-icon{ display:none; }
+    .logo{ max-width:150px; }
+    .logo-img{ height:auto; max-width:100%; }
+  }
 </style>
 
 
@@ -560,16 +595,16 @@
 <div class="side-recent">
   <p class="side-recent-title">최근 글</p>
   
-  <a class="side-recent-item" href="/board/judgment-unpaid-enforcement/"><span class="side-recent-cat">민사</span>
-    <span class="side-recent-name">판결 받고도 돈 안 갚을 때, 통장압류·강제집행 순서대로 정리</span>
+  <a class="side-recent-item" href="/board/renunciation-insurance-pension/"><span class="side-recent-cat">상속</span>
+    <span class="side-recent-name">상속포기해도 사망보험금·유족연금은 받을 수 있나요</span>
   </a>
   
-  <a class="side-recent-item" href="/board/multiple-heirs-strategy/"><span class="side-recent-cat">상속</span>
-    <span class="side-recent-name">빚 있는 상속, 형제가 여럿이면 이렇게 정리합니다</span>
+  <a class="side-recent-item" href="/board/before-renunciation-dont/"><span class="side-recent-cat">상속</span>
+    <span class="side-recent-name">상속포기 전에 이것만은 하지 마세요 — 예금 인출·차량 처분</span>
   </a>
   
-  <a class="side-recent-item" href="/board/special-limited-acceptance/"><span class="side-recent-cat">상속</span>
-    <span class="side-recent-name">상속 3개월 지나 빚을 알았다면, 특별한정승인이 있습니다</span>
+  <a class="side-recent-item" href="/board/deceased-debt-check/"><span class="side-recent-cat">상속</span>
+    <span class="side-recent-name">부모님 빚이 얼마인지 모를 때, 안심상속 조회부터 하세요</span>
   </a>
   
 </div>

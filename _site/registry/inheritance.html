@@ -102,6 +102,12 @@
       if (!window._nasa) window._nasa = {};
       if (window.wcs && window.wcs.cnv) { _nasa["cnv"] = wcs.cnv("2", "1"); wcs_do(_nasa); }
     } catch (e) {}
+    /* GA4(GTM) 상담 신청 완료 이벤트 — GTM에서 맞춤 이벤트 'generate_lead' 트리거로 GA4 이벤트 태그 연결 필요 */
+    try {
+      var ft = {}; try { ft = JSON.parse(localStorage.getItem('ks_first_touch') || '{}') || {}; } catch (e2) {}
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead', page_path: location.pathname, landing_page: ft.landing || '' });
+    } catch (e) {}
   };
   </script>
 

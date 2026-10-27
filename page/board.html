@@ -44,7 +44,9 @@ keywords: 수원 개인회생 정보, 수원 법무사 법률정보, 개인회�
       {%- elsif c contains '민사' -%}{%- assign g = '민사' -%}
       {%- endif -%}
       <a href="{{ post.url }}" class="post-card js-reveal" data-group="{{ g }}">
-        <span class="post-card-thumb" style="background-image:url('{% include board-thumb.html p=post %}')">
+        {%- capture _thumb -%}{% include board-thumb.html p=post %}{%- endcapture -%}
+        {%- if _thumb contains '/assets/img/board/' -%}{%- assign _tn = _thumb | split: '/' | last -%}{%- if site.data.img_opt[_tn] -%}{%- assign _thumb = _tn | split: '.' | first | prepend: '/assets/img/board/opt/thumb/' | append: '.webp' -%}{%- endif -%}{%- endif -%}
+        <span class="post-card-thumb" data-bg="{{ _thumb }}">
           {% if c %}<span class="post-card-cat">{{ c }}</span>{% endif %}
         </span>
         <span class="post-card-body">
@@ -152,7 +154,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPages = Math.max(1, Math.ceil(matched.length / per));
     if (currentPage > totalPages) currentPage = totalPages;
     const start = (currentPage - 1) * per;
-    matched.slice(start, start + per).forEach(c => c.style.display = 'flex');
+    matched.slice(start, start + per).forEach(c => {
+      c.style.display = 'flex';
+      // 썸네일은 현재 페이지에 보이는 카드만 불러온다 (전 카드 동시 다운로드 방지)
+      var t = c.querySelector('.post-card-thumb[data-bg]');
+      if (t && !t.style.backgroundImage) t.style.backgroundImage = "url('" + t.dataset.bg + "')";
+    });
     noResults.style.display = matched.length === 0 ? 'block' : 'none';
     renderPager(totalPages);
   }

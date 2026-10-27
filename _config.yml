@@ -30,3 +30,12 @@ simple_jekyll_search:
     board:
       output: true
       limit: 1000
+
+# 이미지 최적화(WebP) 적용 범위 — _plugins/img_opt.rb, scripts/optimize_images.py
+# 시험 적용: pilot 게시글만. 확인 후 all_posts: true 로 전체 확대
+img_opt:
+  all_posts: false
+  pilot:
+    - mortgage-cancellation-self
+    - self-registration-guide
+    - unpaid-loan-fraud-vs-civil

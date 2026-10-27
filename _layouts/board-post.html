@@ -265,7 +265,12 @@ SEO helpers:
     <hr class="article-divider">
 
     <div class="article-body js-reveal" itemprop="articleBody">
+      {%- assign _slug = page.url | split: '/' | last -%}
+      {%- if site.img_opt.all_posts or site.img_opt.pilot contains _slug -%}
+      {% include img-opt-content.html html=content %}
+      {%- else -%}
       {{ content }}
+      {%- endif -%}
     </div>
 
     <div class="article-tolist js-reveal">

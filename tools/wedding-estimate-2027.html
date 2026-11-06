@@ -33,11 +33,11 @@ textarea{width:100%;min-height:85px;border:1px solid #cfd6e2;border-radius:9px;p
 <div class="field"><label for="gift">평균 축의금 (원)</label><input id="gift" type="number" min="0" step="10000" value="100000"></div>
 <div class="field"><label for="payers">축의금 내는 사람 (명)</label><input id="payers" type="number" min="0" step="1" value="200"></div>
 </div>
-<div class="actions"><button type="button" id="saveQuote" class="primary">이 날짜 견적 저장</button><button type="button" id="newQuote">다른 날짜 견적 입력</button></div>
+
 <p class="storage">입력 내용은 현재 기기의 브라우저에 자동 저장됩니다. 다른 휴대폰이나 시크릿 모드에는 공유되지 않아요.</p>
 <p class="muted">기본 축의금은 1인당 10만원입니다. 보증인원이 더 많으면 보증인원 기준으로 식대를 계산합니다.</p>
 </section>
-<section class="box"><h2>저장한 날짜별 견적</h2><div id="savedQuotes"><p>저장된 견적이 없어요.</p></div><div class="compare" id="comparison"></div></section>
+
 <section class="box"><h2>축의금 양가 분리 계산 <small>(선택)</small></h2>
 <label class="check"><input type="checkbox" id="splitToggle"><span>신랑·신부 측 축의금을 각각 계산하기</span></label>
 <div class="grid" id="splitFields" hidden>
@@ -92,7 +92,14 @@ textarea{width:100%;min-height:85px;border:1px solid #cfd6e2;border-radius:9px;p
 <section class="box"><h2>계약 전에 꼭 확인</h2>
 <div id="checklist"></div>
 <p>당일 계약 혜택도 최종 견적에 반영한 금액으로 확인하고, 계약금·취소·변경 규정은 서면으로 받아두세요.</p>
-</section><p>개인용 비연결 페이지입니다. 홈페이지 메뉴에 노출하지 않고 검색 제외를 요청하지만, 공개 GitHub Pages이므로 완전한 비공개 페이지는 아닙니다. 민감한 정보는 입력하지 마세요. 계산은 브라우저 안에서만 진행됩니다.</p>
+</section>
+<section class="box"><h2>④ 날짜별 견적 최종 저장</h2>
+<p><strong>식대·대관료·하객·축의금·추가비용·계약 조건 메모·체크 항목까지 모두 입력한 뒤 저장하세요.</strong> 입력하는 중에는 현재 작성 중인 내용이 이 기기에 자동 임시 저장되고, 아래 버튼을 누르면 별도 날짜별 견적으로 저장됩니다.</p>
+<div class="actions"><button type="button" id="saveQuote" class="primary">이 날짜 견적 저장</button><button type="button" id="newQuote">다른 날짜 견적 입력</button></div>
+<p class="muted" id="saveStatus">저장한 견적을 불러와 수정한 다음 다시 저장하면 새 견적으로 추가됩니다. 기존 항목은 유지돼요.</p>
+</section>
+<section class="box"><h2>저장한 날짜별 견적</h2><div id="savedQuotes"><p>저장된 견적이 없어요.</p></div><div class="compare" id="comparison"></div></section>
+<p>개인용 비연결 페이지입니다. 홈페이지 메뉴에 노출하지 않고 검색 제외를 요청하지만, 공개 GitHub Pages이므로 완전한 비공개 페이지는 아닙니다. 민감한 정보는 입력하지 마세요. 계산은 브라우저 안에서만 진행됩니다.</p>
 </main>
 <script>
 (function(){

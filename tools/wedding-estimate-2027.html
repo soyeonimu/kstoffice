@@ -6,61 +6,83 @@ sitemap: false
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>웨딩 견적 계산기 · 개인용</title>
+<title>웨딩홀 견적 계산기 | 개인용</title>
 <style>
-:root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#202636;background:#f7f8fb}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1020px;margin:auto;padding:24px 16px 80px}h1{font-size:1.7rem;margin:0 0 8px}h2{font-size:1.08rem;margin:0 0 14px}p{color:#687185;line-height:1.65}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.tag{background:#e9eefc;color:#3154ad;padding:7px 10px;border-radius:40px;font-size:12px}.panel{background:#fff;border:1px solid #e2e7f0;border-radius:16px;padding:20px;margin-top:18px;box-shadow:0 3px 14px #16223c08}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}label{display:block;font-size:12px;font-weight:650;color:#505b70;margin-bottom:5px}input{width:100%;padding:12px;border:1px solid #cfd6e2;border-radius:9px;font:inherit;background:white;color:#202636}input:focus{outline:2px solid #829be7;border-color:transparent}.sub{font-size:12px;color:#687185;margin-top:10px}.scenarios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.scenario{border:1px solid #dce3ee;border-radius:14px;padding:15px;min-width:0}.scenario:nth-child(2){border-color:#6c87d0;background:#fbfcff}.scenario input{margin-bottom:10px}.calc{border-top:1px solid #e4e9f1;margin-top:8px;padding-top:12px}.line{display:flex;justify-content:space-between;gap:8px;margin:8px 0;font-size:13px}.line strong{text-align:right}.net{font-size:25px;font-weight:800;letter-spacing:-1px}.loss{color:#c53947}.profit{color:#187c56}.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}button{border:1px solid #ced6e5;background:#fff;border-radius:10px;padding:11px 14px;color:#2b3a5a;font-weight:650;cursor:pointer}button.primary{background:#304e99;color:#fff;border-color:#304e99}.note{font-size:12px}.foot{margin-top:22px}@media(max-width:720px){.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.scenarios{grid-template-columns:1fr}.wrap{padding-top:16px}.panel{padding:16px}}@media print{button{display:none}body{background:#fff}.panel{box-shadow:none;break-inside:avoid}.scenarios{grid-template-columns:repeat(3,minmax(0,1fr))}}
+*{box-sizing:border-box}body{margin:0;background:#f5f6fa;color:#242a39;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR",system-ui,sans-serif}main{max-width:750px;margin:auto;padding:20px 14px 65px}h1{font-size:25px;margin:5px 0}h2{font-size:18px;margin:0 0 15px}p{color:#667085;font-size:13px;line-height:1.7}.box{background:#fff;border:1px solid #e4e7ed;border-radius:16px;padding:18px;margin:16px 0;box-shadow:0 2px 10px #27304409}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{font-size:12px;color:#566074;font-weight:650;display:block;margin:0 0 6px}.field input{display:block;width:100%;font:inherit;border:1px solid #cfd6e2;background:#fff;border-radius:9px;padding:12px;color:#242a39;font-variant-numeric:tabular-nums}.field input:focus{outline:2px solid #a3b6f4;border-color:transparent}.span{grid-column:1/-1}.muted{font-size:12px;color:#687589}.result{background:#f0f5ff;border-radius:13px;padding:18px;margin:15px 0}.result .big{font-size:30px;font-weight:800;letter-spacing:-.8px}.red{color:#c42e42}.green{color:#14774b}.money{font-variant-numeric:tabular-nums}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-bottom:1px solid #e9edf3;padding:11px 4px;text-align:left}td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}tr.total{font-weight:800;background:#f8faff}button{cursor:pointer;border-radius:10px;border:1px solid #cbd4e7;padding:12px 16px;background:#fff;font-weight:700;color:#35445b}button.primary{background:#334fa0;color:white;border-color:#334fa0}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.extraRow{display:grid;grid-template-columns:1fr 155px;gap:12px;align-items:center;margin:10px 0}.extraRow label{font-size:14px}.extraRow input{width:100%;padding:10px;border:1px solid #cfd6e2;border-radius:8px;font:inherit}.hint{font-size:12px;color:#667085;background:#f6f8fc;border-radius:10px;padding:12px;margin-top:12px}.check{display:flex;align-items:flex-start;gap:9px;margin:13px 0;font-size:13px}.check input{width:17px;height:17px;flex:0 0 auto}small{color:#6c7482}@media(max-width:440px){.box{padding:15px}.extraRow{grid-template-columns:1fr 128px}h1{font-size:23px}.result .big{font-size:27px}}@media print{body{background:white}.box{box-shadow:none;break-inside:avoid}.actions{display:none}main{padding:0}}
 </style>
 </head>
-<body>
-<main class="wrap">
-<div class="top"><div><h1>웨딩홀 현장 협상 계산기</h1><p>여의도 더파티움 · 2027년 5월 8일(토) 12:10 기준</p></div><span class="tag">주소를 아는 사람만 찾아오는 비연결 페이지 · 인증 없음</span></div>
-<section class="panel">
-<h2>공통 가정</h2>
-<div class="fields">
-<div><label for="date">예식 날짜·시간</label><input id="date" type="text" value="2027-05-08 12:10"></div>
-<div><label for="guests">하객 수 (명)</label><input id="guests" type="number" min="0" step="1" value="200"></div>
-<div><label for="guarantee">최소 보증 인원 (명)</label><input id="guarantee" type="number" min="0" step="1" value="200"></div>
-<div><label for="gift">1인 평균 축의금 (원)</label><input id="gift" type="number" min="0" step="1000" value="100000"></div>
-<div><label for="payers">축의금 납부 인원 (명)</label><input id="payers" type="number" min="0" step="1" value="200"></div>
-<div><label for="extras">기타 비용 (원)</label><input id="extras" type="number" min="0" step="10000" value="0"></div>
-</div>
-<div class="sub">식대는 실제 참석 인원과 보증 인원 중 큰 수로 계산합니다. 축의금은 납부 인원 × 평균 금액으로 계산합니다.</div>
+<body><main>
+<h1>웨딩홀 견적 계산기</h1>
+<p>더파티움 여의도 · 상담실장이 제안한 금액을 입력하면 수지타산이 바로 계산돼요.</p>
+<section class="box"><h2>① 상담실장 제안 입력</h2>
+<div class="grid">
+<div class="field span"><label for="date">예식 날짜 및 시간</label><input id="date" type="text" value="2027-05-08 12:10"></div>
+<div class="field"><label for="meal">제안 식대 (1인 · 원)</label><input id="meal" type="number" min="0" step="1000" value="75000"></div>
+<div class="field"><label for="hall">제안 대관료 (원)</label><input id="hall" type="number" min="0" step="100000" value="7500000"></div>
+<div class="field"><label for="guests">실제 예상 하객 (명)</label><input id="guests" type="number" min="0" step="1" value="200"></div>
+<div class="field"><label for="guarantee">최소 보증 인원 (명)</label><input id="guarantee" type="number" min="0" step="1" value="200"></div>
+<div class="field"><label for="gift">평균 축의금 (원)</label><input id="gift" type="number" min="0" step="10000" value="100000"></div>
+<div class="field"><label for="payers">축의금 내는 사람 (명)</label><input id="payers" type="number" min="0" step="1" value="200"></div>
+</div><p class="muted">기본 축의금은 1인당 10만원입니다. 보증인원이 더 많으면 보증인원 기준으로 식대를 계산합니다.</p>
 </section>
-<section class="panel"><h2>세 가지 견적 비교</h2><div class="scenarios">
-<div class="scenario" data-i="0"><h2>① 최대 견적</h2><label>식대 1인당 (원)</label><input class="meal" type="number" min="0" value="85000"><label>대관료 (원)</label><input class="hall" type="number" min="0" value="9700000"><div class="calc"><div class="line">식대 합계 <strong class="mealTotal"></strong></div><div class="line">총 예식 비용 <strong class="cost"></strong></div><div class="line">축의금 총액 <strong class="revenue"></strong></div><div class="line">최종 손익 <strong class="net"></strong></div><div class="line">손익분기 평균 축의금 <strong class="breakEven"></strong></div></div></div>
-<div class="scenario" data-i="1"><h2>② 협상 목표</h2><label>식대 1인당 (원)</label><input class="meal" type="number" min="0" value="70000"><label>대관료 (원)</label><input class="hall" type="number" min="0" value="7000000"><div class="calc"><div class="line">식대 합계 <strong class="mealTotal"></strong></div><div class="line">총 예식 비용 <strong class="cost"></strong></div><div class="line">축의금 총액 <strong class="revenue"></strong></div><div class="line">최종 손익 <strong class="net"></strong></div><div class="line">손익분기 평균 축의금 <strong class="breakEven"></strong></div></div></div>
-<div class="scenario" data-i="2"><h2>③ 상담실장 제안</h2><label>식대 1인당 (원)</label><input class="meal" type="number" min="0" value="75000"><label>대관료 (원)</label><input class="hall" type="number" min="0" value="7500000"><div class="calc"><div class="line">식대 합계 <strong class="mealTotal"></strong></div><div class="line">총 예식 비용 <strong class="cost"></strong></div><div class="line">축의금 총액 <strong class="revenue"></strong></div><div class="line">최종 손익 <strong class="net"></strong></div><div class="line">손익분기 평균 축의금 <strong class="breakEven"></strong></div></div></div>
-</div><div class="btns"><button class="primary" id="copy">계산 결과 복사</button><button id="print">인쇄 / PDF 저장</button><button id="reset">초기값으로 되돌리기</button></div></section>
-<section class="panel"><h2>계약 전 현장 확인</h2><div id="checklist"></div><p class="note">확인 항목: 부가세·봉사료 포함 여부, 생화장식·본식사진 포함 범위, 식대 추가요금, 최소 보증 인원, 당일 계약 혜택, 계약금 및 취소·변경 규정. 별도 비용은 위 '기타 비용'에 넣으세요.</p></section>
-<p class="foot note">개인 상담용 계산기입니다. 이 페이지는 사이트 메뉴에 연결하지 않고 검색엔진 색인 제외를 요청하지만, 공개 GitHub Pages의 특성상 진정한 비공개나 비밀번호 인증을 제공하지 않습니다. 민감한 개인정보는 입력하지 마세요. 입력값은 서버에 전송되지 않으며 브라우저에만 표시됩니다.</p>
+<section class="box"><h2>② 기타 예상 비용 <small>(선택 입력)</small></h2><p>모두 기본 0원입니다. 견적에 이미 포함된 항목은 0원으로 두세요. 더파티움의 필수 추가요금으로 확인된 금액은 아닙니다.</p>
+<div id="extras">
+<div class="extraRow"><label for="photo">본식 스냅·원판·영상 추가</label><input id="photo" type="number" min="0" step="10000" value="0" aria-label="본식 스냅 원판 영상 추가 비용"></div>
+<div class="extraRow"><label for="dress">드레스·메이크업·헤어</label><input id="dress" type="number" min="0" step="10000" value="0"></div>
+<div class="extraRow"><label for="parents">혼주 메이크업·의상</label><input id="parents" type="number" min="0" step="10000" value="0"></div>
+<div class="extraRow"><label for="flowers">꽃·연출·부케 추가</label><input id="flowers" type="number" min="0" step="10000" value="0"></div>
+<div class="extraRow"><label for="drinks">음주류·식사 추가금</label><input id="drinks" type="number" min="0" step="10000" value="0"></div>
+<div class="extraRow"><label for="service">사회·축가·헬퍼·폐백 등</label><input id="service" type="number" min="0" step="10000" value="0"></div>
+<div class="extraRow"><label for="other">기타 (주차·답례품 등)</label><input id="other" type="number" min="0" step="10000" value="0"></div>
+</div><div class="hint">식대·대관료에 부가세가 포함됐는지, 생화장식과 본식사진이 어느 범위까지 포함되는지 계약서에서 반드시 확인하세요. 누락된 세금이나 필수 추가금만 별도로 입력하세요.</div>
+</section>
+<section class="box"><h2>③ 자동 수지타산</h2>
+<div class="result"><div class="muted">예상 최종 손익</div><div class="big money" id="net">-2,500,000원</div><div class="muted" id="explain"></div></div>
+<table aria-label="예상 수지타산 내역"><tbody>
+<tr><td>계산 식사 인원</td><td id="charged"></td></tr>
+<tr><td>식대 합계</td><td id="mealTotal"></td></tr>
+<tr><td>대관료</td><td id="hallTotal"></td></tr>
+<tr><td>기타 비용 합계</td><td id="extraTotal"></td></tr>
+<tr class="total"><td>총 예상 비용</td><td id="total"></td></tr>
+<tr><td>예상 축의금 수입</td><td id="revenue"></td></tr>
+<tr class="total"><td>최종 손익</td><td id="netTable"></td></tr>
+<tr><td>손익분기 평균 축의금</td><td id="breakeven"></td></tr>
+</tbody></table>
+<h2 style="margin-top:24px">축의금 평균별 손익 비교</h2>
+<table aria-label="축의금 평균 시나리오"><thead><tr><th>1인 평균 축의금</th><th>예상 손익</th></tr></thead><tbody id="scenario"></tbody></table>
+<div class="actions"><button class="primary" id="copy" type="button">결과 복사</button><button id="print" type="button">인쇄 / PDF</button><button id="reset" type="button">초기화</button></div>
+</section>
+<section class="box"><h2>계약 전에 꼭 확인</h2>
+<div id="checklist"></div>
+<p>당일 계약 혜택도 최종 견적에 반영한 금액으로 확인하고, 계약금·취소·변경 규정은 서면으로 받아두세요.</p>
+</section><p>개인용 비연결 페이지입니다. 홈페이지 메뉴에 노출하지 않고 검색 제외를 요청하지만, 공개 GitHub Pages이므로 완전한 비공개 페이지는 아닙니다. 민감한 정보는 입력하지 마세요. 계산은 브라우저 안에서만 진행됩니다.</p>
 </main>
 <script>
 (function(){
-const $=s=>document.querySelector(s), money=n=>Math.round(n).toLocaleString('ko-KR')+'원', number=id=>Math.max(0,Number($(id).value)||0), defaults={date:'2027-05-08 12:10',guests:200,guarantee:200,gift:100000,payers:200,extras:0}, initial=[[85000,9700000],[70000,7000000],[75000,7500000]];
-const checks=['부가세·봉사료 포함 여부','식대에 음료·주류 포함 여부','200명 보증 확약 및 초과 인원 단가','생화장식·본식사진 포함 범위','당일 계약 추가 할인','계약금 환불 및 날짜 변경 규정'];
-$('#checklist').innerHTML=checks.map((t,i)=>'<label style="display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px;font-weight:450"><input type="checkbox" style="width:18px;height:18px" id="c'+i+'"><span>'+t+'</span></label>').join('');
-let latest=[];
-function recalc(){
-const guests=number('#guests'),guarantee=number('#guarantee'),payers=number('#payers'),gift=number('#gift'),extras=number('#extras'),charged=Math.max(guests,guarantee),revenue=payers*gift;
-latest=[...document.querySelectorAll('.scenario')].map((card,i)=>{
-const meal=Math.max(0,Number(card.querySelector('.meal').value)||0),hall=Math.max(0,Number(card.querySelector('.hall').value)||0),mealTotal=charged*meal,cost=mealTotal+hall+extras,net=revenue-cost,breakEven=payers?Math.ceil(cost/payers):null;
-card.querySelector('.mealTotal').textContent=money(mealTotal);card.querySelector('.cost').textContent=money(cost);card.querySelector('.revenue').textContent=money(revenue);
-const el=card.querySelector('.net');el.textContent=(net>=0?'+':'−')+money(Math.abs(net));el.className='net '+(net>=0?'profit':'loss');
-card.querySelector('.breakEven').textContent=breakEven===null?'계산 불가':money(breakEven);return {label:['최대 견적','협상 목표','상담실장 제안'][i],meal,hall,cost,net,breakEven};
-});
+const $=s=>document.querySelector(s);
+const basic={meal:75000,hall:7500000,guests:200,guarantee:200,gift:100000,payers:200,date:"2027-05-08 12:10"};
+const extras=["photo","dress","parents","flowers","drinks","service","other"];
+const fmt=n=>Math.round(n).toLocaleString("ko-KR")+"원";
+const val=id=>Math.max(0,Number($("#"+id).value)||0);
+const checks=["식대·대관료 부가세 포함 여부","음료·주류가 식대에 포함되는지","200명 보증 및 인원 변경 기한","생화장식·본식사진 포함 범위","필수 제휴업체 및 외부업체 반입료","당일 계약 할인과 추가 혜택","계약금 환불 및 날짜 변경·취소 규정"];
+$("#checklist").innerHTML=checks.map((s,i)=>'<label class="check"><input type="checkbox"><span>'+s+'</span></label>').join("");
+let report="";
+function render(){
+const charged=Math.max(val("guests"),val("guarantee")),mealTotal=charged*val("meal"),extra=extras.reduce((sum,k)=>sum+val(k),0),total=mealTotal+val("hall")+extra,revenue=val("payers")*val("gift"),net=revenue-total,be=val("payers")?Math.ceil(total/val("payers")):null;
+$("#charged").textContent=charged.toLocaleString("ko-KR")+"명";$("#mealTotal").textContent=fmt(mealTotal);$("#hallTotal").textContent=fmt(val("hall"));$("#extraTotal").textContent=fmt(extra);$("#total").textContent=fmt(total);$("#revenue").textContent=fmt(revenue);
+const show=n=>(n>=0?"+":"−")+fmt(Math.abs(n));$("#net").textContent=show(net);$("#net").className="big money "+(net>=0?"green":"red");$("#netTable").textContent=show(net);
+$("#explain").textContent=net>=0?"축의금을 기준으로 예상 비용을 충당하고 남는 금액입니다.":"축의금만으로 부족해 별도 부담해야 할 예상 금액입니다.";
+$("#breakeven").textContent=be===null?"계산 불가":fmt(be);
+const cases=[100000,120000,150000];if(!cases.includes(val("gift")))cases.push(val("gift"));cases.sort((a,b)=>a-b);
+$("#scenario").innerHTML=cases.map(a=>{let n=val("payers")*a-total;return '<tr><td>'+fmt(a)+(a===val("gift")?' (입력값)':'')+'</td><td class="'+(n>=0?'green':'red')+'">'+show(n)+'</td></tr>'}).join("");
+report=$("#date").value+" | 하객 "+val("guests")+"명, 보증 "+val("guarantee")+"명\n식대 "+fmt(val("meal"))+" × "+charged+"명 = "+fmt(mealTotal)+"\n대관료 "+fmt(val("hall"))+" / 기타 "+fmt(extra)+"\n총비용 "+fmt(total)+"\n축의금 "+fmt(revenue)+" (평균 "+fmt(val("gift"))+" × "+val("payers")+"명)\n최종 손익 "+show(net)+"\n손익분기 평균 축의금 "+(be===null?"계산 불가":fmt(be));
 }
-document.querySelectorAll('input[type="number"]').forEach(el=>el.addEventListener('input',recalc));
-$('#copy').addEventListener('click',async()=>{
-const head='웨딩 견적 비교 | '+$('#date').value+' | 하객 '+number('#guests')+'명 / 보증 '+number('#guarantee')+'명 / 평균 축의금 '+money(number('#gift'))+' / 납부 '+number('#payers')+'명';
-const report=head+'\n'+latest.map(x=>x.label+': 식대 '+money(x.meal)+', 대관료 '+money(x.hall)+', 총비용 '+money(x.cost)+', 최종손익 '+(x.net>=0?'+':'-')+money(Math.abs(x.net))).join('\n');
-try{await navigator.clipboard.writeText(report);$('#copy').textContent='복사 완료';setTimeout(()=>$('#copy').textContent='계산 결과 복사',1500)}catch(e){window.prompt('아래 내용을 복사하세요',report)}
-});
-$('#print').addEventListener('click',()=>window.print());
-$('#reset').addEventListener('click',()=>{Object.keys(defaults).forEach(k=>$('#'+k).value=defaults[k]);document.querySelectorAll('.scenario').forEach((c,i)=>{c.querySelector('.meal').value=initial[i][0];c.querySelector('.hall').value=initial[i][1]});document.querySelectorAll('#checklist input').forEach(c=>c.checked=false);recalc()});
-recalc();
+document.querySelectorAll("input[type=number],#date").forEach(e=>e.addEventListener("input",render));
+$("#copy").onclick=async()=>{try{await navigator.clipboard.writeText(report);$("#copy").textContent="복사 완료";setTimeout(()=>$("#copy").textContent="결과 복사",1400)}catch(e){window.prompt("결과를 복사하세요",report)}};
+$("#print").onclick=()=>window.print();
+$("#reset").onclick=()=>{Object.entries(basic).forEach(([k,v])=>$("#"+k).value=v);extras.forEach(k=>$("#"+k).value=0);document.querySelectorAll("#checklist input").forEach(x=>x.checked=false);render()};
+render();
 })();
-</script>
-</body></html>
+</script></body></html>

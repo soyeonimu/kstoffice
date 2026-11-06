@@ -24,6 +24,7 @@ textarea{width:100%;min-height:85px;border:1px solid #cfd6e2;border-radius:9px;p
 <p>더파티움 여의도 · 상담실장이 제안한 금액을 입력하면 수지타산이 바로 계산돼요.</p>
 <section class="box"><h2>① 상담실장 제안 입력</h2>
 <div class="grid">
+<div class="field span"><label for="venue">웨딩홀 / 장소</label><input id="venue" type="text" value="더파티움 여의도" placeholder="예: 더파티움 여의도"></div>
 <div class="field span"><label for="date">예식 날짜 및 시간</label><input id="date" type="text" value="2027-05-08 12:10"></div>
 <div class="field"><label for="meal">제안 식대 (1인 · 원)</label><input id="meal" type="number" min="0" step="1000" value="75000"></div>
 <div class="field"><label for="hall">제안 대관료 (원)</label><input id="hall" type="number" min="0" step="100000" value="7500000"></div>
@@ -97,8 +98,8 @@ textarea{width:100%;min-height:85px;border:1px solid #cfd6e2;border-radius:9px;p
 (function(){
 "use strict";
 const $=s=>document.querySelector(s);
-const ids=["date","meal","hall","guests","guarantee","gift","payers","groomCount","groomGift","brideCount","brideGift","originalMeal","originalHall","photo","dress","parents","flowers","drinks","service","other","benefits","deposit","guestDeadline","cancellation","memo"];
-const defaults={date:"2027-05-08 12:10",meal:75000,hall:7500000,guests:200,guarantee:200,gift:100000,payers:200,groomCount:100,groomGift:100000,brideCount:100,brideGift:100000,originalMeal:85000,originalHall:9700000,deposit:0};
+const ids=["venue","date","meal","hall","guests","guarantee","gift","payers","groomCount","groomGift","brideCount","brideGift","originalMeal","originalHall","photo","dress","parents","flowers","drinks","service","other","benefits","deposit","guestDeadline","cancellation","memo"];
+const defaults={venue:"더파티움 여의도",date:"2027-05-08 12:10",meal:75000,hall:7500000,guests:200,guarantee:200,gift:100000,payers:200,groomCount:100,groomGift:100000,brideCount:100,brideGift:100000,originalMeal:85000,originalHall:9700000,deposit:0};
 const extras=["photo","dress","parents","flowers","drinks","service","other"];
 const checks=["식대·대관료 부가세 포함 여부","음료·주류가 식대에 포함되는지","200명 보증 및 인원 변경 기한","생화장식·본식사진 포함 범위","필수 제휴업체 및 외부업체 반입료","당일 계약 할인과 추가 혜택","계약금 환불 및 날짜 변경·취소 규정"];
 const key="kstoffice_wedding_calc_v3", fmt=n=>Math.round(n).toLocaleString("ko-KR")+"원",num=id=>Math.max(0,Number($("#"+id).value)||0);
@@ -117,13 +118,13 @@ const out=$("#savedQuotes"), cmp=$("#comparison");out.innerHTML="";cmp.innerHTML
 if(!saved.length){out.textContent="저장된 견적이 없어요.";return}
 saved.forEach((item,i)=>{const d=compute(item);const row=document.createElement("div");row.className="savedRow";
 const main=document.createElement("div");main.className="savedMain";
-const title=document.createElement("strong");title.textContent=item.date||"날짜 미정";main.appendChild(title);
-const detail=document.createElement("small");detail.textContent="식대 "+fmt(Number(item.meal)||0)+" / 대관료 "+fmt(Number(item.hall)||0)+" / 총 "+fmt(d.cost)+" / 손익 "+signed(d.net);main.appendChild(detail);
+const title=document.createElement("strong");title.textContent=(item.venue||"장소 미입력")+" · "+(item.date||"날짜 미정");main.appendChild(title);
+const detail=document.createElement("small");detail.textContent="예상 하객 "+(Number(item.guests)||0)+"명 / 축의금 납부 "+(item.split?(Number(item.groomCount)||0)+(Number(item.brideCount)||0):(Number(item.payers)||0))+"명 / 식대 "+fmt(Number(item.meal)||0)+" / 대관료 "+fmt(Number(item.hall)||0)+" / 총 "+fmt(d.cost)+" / 손익 "+signed(d.net);main.appendChild(detail);
 const actions=document.createElement("div");const load=document.createElement("button");load.textContent="불러오기";load.onclick=()=>{apply(item);render();window.scrollTo({top:0,behavior:"smooth"})};
 const del=document.createElement("button");del.textContent="삭제";del.onclick=()=>{if(window.confirm("이 견적을 삭제할까요?")){saved.splice(i,1);persist();renderQuotes()}};
 actions.append(load,del);row.append(main,actions);out.appendChild(row)});
-const t=document.createElement("table");const header=document.createElement("tr");["날짜·시간","식대","대관료","총비용","예상 손익"].forEach(s=>{const th=document.createElement("th");th.textContent=s;header.appendChild(th)});t.appendChild(header);
-saved.forEach(item=>{const d=compute(item),tr=document.createElement("tr");[item.date||"-",fmt(Number(item.meal)||0),fmt(Number(item.hall)||0),fmt(d.cost),signed(d.net)].forEach(s=>{const td=document.createElement("td");td.textContent=s;tr.appendChild(td)});t.appendChild(tr)});cmp.appendChild(t)}
+const t=document.createElement("table");const header=document.createElement("tr");["장소","날짜·시간","예상 하객","축의금 납부 인원","식대","대관료","총비용","예상 손익"].forEach(s=>{const th=document.createElement("th");th.textContent=s;header.appendChild(th)});t.appendChild(header);
+saved.forEach(item=>{const d=compute(item),tr=document.createElement("tr");[item.venue||"미입력",item.date||"-",(Number(item.guests)||0)+"명",(item.split?(Number(item.groomCount)||0)+(Number(item.brideCount)||0):(Number(item.payers)||0))+"명",fmt(Number(item.meal)||0),fmt(Number(item.hall)||0),fmt(d.cost),signed(d.net)].forEach(s=>{const td=document.createElement("td");td.textContent=s;tr.appendChild(td)});t.appendChild(tr)});cmp.appendChild(t)}
 function render(){
 const charged=Math.max(num("guests"),num("guarantee")),mealTotal=charged*num("meal"),extra=extras.reduce((sum,k)=>sum+num(k),0),total=mealTotal+num("hall")+extra,rev=revenue(),net=rev-total,pc=payerCount(),be=pc?Math.ceil(total/pc):null,split=$("#splitToggle").checked;
 $("#splitFields").hidden=!split;
@@ -137,7 +138,7 @@ const old=charged*num("originalMeal")+num("originalHall"),discount=old-(charged*
 $("#discountSummary").textContent="최초 식대·대관료 합계 "+fmt(old)+" → 제안 금액 "+fmt(charged*num("meal")+num("hall"))+" / "+(discount>=0?"절약 ":"증가 ")+fmt(Math.abs(discount))+" (기타 비용 제외)";
 const baseCases=[100000,120000,150000];if(!split&&!baseCases.includes(num("gift")))baseCases.push(num("gift"));baseCases.sort((a,b)=>a-b);
 $("#scenario").innerHTML=baseCases.map(g=>{const v=pc*g-total;return '<tr><td>'+fmt(g)+'</td><td class="'+(v>=0?"green":"red")+'">'+signed(v)+'</td></tr>'}).join("");
-report=$("#date").value+" | 하객 "+num("guests")+"명, 보증 "+num("guarantee")+"명\n식대 "+fmt(num("meal"))+" × "+charged+"명 = "+fmt(mealTotal)+"\n대관료 "+fmt(num("hall"))+" / 기타 "+fmt(extra)+"\n총비용 "+fmt(total)+"\n축의금 "+fmt(rev)+(split?" (양가 분리 계산)":" (평균 "+fmt(num("gift"))+" × "+pc+"명)")+"\n최종 손익 "+signed(net)+"\n할인 전후 차액 "+signed(discount)+"\n손익분기 평균 축의금 "+(be===null?"계산 불가":fmt(be));
+report=$("#venue").value+" | "+$("#date").value+" | 하객 "+num("guests")+"명, 보증 "+num("guarantee")+"명\n식대 "+fmt(num("meal"))+" × "+charged+"명 = "+fmt(mealTotal)+"\n대관료 "+fmt(num("hall"))+" / 기타 "+fmt(extra)+"\n총비용 "+fmt(total)+"\n축의금 "+fmt(rev)+(split?" (양가 분리 계산)":" (평균 "+fmt(num("gift"))+" × "+pc+"명)")+"\n최종 손익 "+signed(net)+"\n할인 전후 차액 "+signed(discount)+"\n손익분기 평균 축의금 "+(be===null?"계산 불가":fmt(be));
 persist();
 }
 try{const stored=JSON.parse(localStorage.getItem(key)||"null");if(stored){apply(stored.current);saved=Array.isArray(stored.saved)?stored.saved.slice(0,30):[]}}catch(e){storageAvailable=false}

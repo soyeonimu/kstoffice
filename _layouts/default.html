@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script>document.documentElement.classList.add('js');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="naver-site-verification" content="400c94bb4e4ae0175c803e6c603bf3d7eda27bb0" />
@@ -25,8 +26,11 @@
     body { margin: 0; padding-top: var(--header-h, 85px); font-family: 'Pretendard', -apple-system, sans-serif; background-color: #fff; color: #333; }
     main { min-height: 80vh; display: block; }
     .header--hidden { transform: translateY(-100%); transition: transform 0.3s ease; }
-    .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
-    .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+    /* 스크롤 등장 효과 — 스크립트가 켜졌고 움직임 줄이기 설정이 아닐 때만 숨김(기본은 항상 보임) */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .js-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .js .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+    }
 
     /* 옵트인 사이드바 (page.sidebar == true 인 콘텐츠 페이지) */
     /* 개인회생·파산 페이지처럼 양쪽 벽에 붙는 풀블리드 레이아웃으로 통일 */

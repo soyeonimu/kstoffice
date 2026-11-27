@@ -17,7 +17,8 @@
   .sc-btn:hover { transform: translateY(-2px); border-color: #E2C28D; background: #F9F6F0; box-shadow: 0 6px 16px rgba(15,23,42,.08); }
   /* 메인 CTA(자가진단)만 브랜드 네이비로 강조 */
   .sc-btn.sc-main { background: #0f172a; color: #fff; border-color: #0f172a; }
-  .sc-btn.sc-main:hover { background: #C9A24E; border-color: #C9A24E; color: #fff; }
+  .sc-btn.sc-main:hover { background: #E2C28D; border-color: #E2C28D; color: #0f172a; }
+  .sc-btn.sc-main:hover svg { color: #0f172a; }
   /* 아이콘은 차콜 톤으로 통일 (메인 CTA만 흰색) */
   .sc-btn svg { color: #64748b; }
   .sc-btn.sc-main svg { color: #fff; }
@@ -68,7 +69,7 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.58 2 11c0 2.83 1.93 5.31 4.84 6.72-.21.74-.77 2.79-.88 3.22-.14.54.2.53.42.39.17-.11 2.71-1.84 3.81-2.59.58.08 1.18.13 1.81.13 5.5 0 10-3.58 10-8S17.5 3 12 3z"/></svg>
     카카오톡 1:1 상담
   </a>
-  <a href="/board" class="side-inquiry-link">리더스 법률노트 바로가기 →</a>
+  <a href="/board" class="side-inquiry-link">리더스 법률노트 바로가기</a>
 </div>
 
 {% assign recent = site.board | where_exp: "p", "p.url != page.url" | sort: "date" | reverse %}

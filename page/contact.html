@@ -25,21 +25,21 @@ permalink: /contact
 .l-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
 /* --- HERO SECTION --- */
-.simple-hero { padding: 100px 0 50px; text-align: center; }
-.hero-badge { color: var(--gold-accent); font-size: 15px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 16px; display: block; }
+.simple-hero { padding: 72px 0 32px; text-align: center; }
+.hero-badge { color: var(--gold-accent); font-size: 15px; font-weight: 700; margin-bottom: 16px; display: block; }
 .hero-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 850; line-height: 1.3; margin-bottom: 24px; letter-spacing: -0.03em; }
 .hero-title span { color: var(--gold-accent); }
 .hero-desc { color: var(--text-body); font-size: 1.15rem; max-width: 700px; margin: 0 auto; font-weight: 300; }
 
 /* --- CORE NUMBERS (경력 요약) --- */
-.number-bar { background: var(--soft-bg); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding: 24px 0; }
+.number-bar { margin: 40px 0 0; background: var(--soft-bg); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding: 24px 0; }
 .number-grid { display: flex; justify-content: space-around; text-align: center; }
 .num-box .num { font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 900; color: var(--gold-accent); line-height: 1; display: block; margin-bottom: 6px; }
 .num-box .label { font-size: 15px; font-weight: 700; color: var(--text-pure); }
 .num-line { width: 1px; height: 45px; background: var(--border-subtle); }
 
 /* --- DIRECT NUMBER DISPLAY --- */
-.connect-section { padding: 60px 0 100px; }
+.connect-section { padding: 8px 0 64px; }
 .connect-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
 .number-card { 
@@ -67,7 +67,8 @@ permalink: /contact
   font-weight: 700; font-size: 15px; transition: 0.25s; text-align: center; box-shadow: var(--card-shadow);
 }
 .channel-btn:hover { border-color: var(--gold-accent); transform: translateY(-3px); }
-.channel-btn .ch-ic { font-size: 26px; line-height: 1; }
+.channel-btn .ch-ic { display: inline-flex; line-height: 1; color: var(--gold-accent); }
+.channel-btn.is-kakao .ch-ic, .channel-btn.is-naver .ch-ic { color: inherit; }
 .channel-btn .ch-sub { font-size: 12px; color: var(--text-muted); font-weight: 500; }
 .channel-btn.is-kakao { background: #fee500; color: #191600; border-color: #fee500; }
 .channel-btn.is-naver { background: #03c75a; color: #fff; border-color: #03c75a; }
@@ -93,7 +94,7 @@ permalink: /contact
   font-size: 17px; font-weight: 800; cursor: pointer; transition: 0.2s;
 }
 .form-submit:hover { filter: brightness(1.05); }
-.form-submit:disabled { opacity: 0.7; cursor: default; }
+.form-submit:disabled { opacity: 0.7; cursor: not-allowed; filter: grayscale(.4); }
 .form-note { text-align: center; font-size: 12.5px; color: #64748b; margin-top: 14px; line-height: 1.5; }
 .form-success { display: none; text-align: center; color: var(--gold-accent); font-weight: 700; font-size: 15px; margin-top: 14px; }
 .cf-agree { display: flex; align-items: flex-start; gap: 8px; margin-top: 14px; font-size: 13px; line-height: 1.5; color: var(--text-muted); cursor: pointer; }
@@ -116,12 +117,17 @@ permalink: /contact
   .connect-grid { grid-template-columns: 1fr; gap: 16px; }
   .number-grid { flex-direction: column; gap: 20px; }
   .num-line { display: none; }
-  .simple-hero { padding: 80px 0 30px; }
-  .number-card { padding: 32px 20px; }
+  .simple-hero { padding: 28px 0 20px; }
+  .hero-badge { font-size: 14px; margin-bottom: 10px; }
+  .hero-title { font-size: 1.6rem; margin-bottom: 12px; }
+  .hero-desc { font-size: 1rem; }
+  .number-card { padding: 22px 20px; border-radius: 16px; }
+  .card-title { font-size: 1.05rem; margin-bottom: 6px; }
+  .number-bar { margin-top: 32px; }
   .channel-grid { grid-template-columns: 1fr; gap: 12px; }
   .channel-btn { flex-direction: row; min-height: 60px; justify-content: flex-start; gap: 14px; padding: 16px 20px; }
   .channel-btn .ch-body { text-align: left; }
-  .connect-section { padding: 40px 0 0; }
+  .connect-section { padding: 0; }
   .channel-section { padding-top: 56px; }
   .contact-form { padding: 28px 20px; }
 }
@@ -134,21 +140,9 @@ permalink: /contact
 
   <!-- 상단 카피라이팅 -->
   <section class="simple-hero l-container">
-    <span class="hero-badge">검찰 실무를 거친 법무사 3인</span>
     <h1 class="hero-title">내 가족의 상황처럼,<br><span>처음부터 끝까지 직접 챙깁니다</span></h1>
-    <p class="hero-desc">단 한 장의 서류도 대행 직원이 아닌 대표 법무사가 직접 검토하고 책임 작성합니다.</p>
+    <p class="hero-desc">검찰 실무를 거친 대표 법무사 3인이 단 한 장의 서류도 대행 직원 없이 직접 검토하고 책임 작성합니다.</p>
   </section>
-
-  <!-- 핵심 수치 요약 -->
-  <div class="number-bar">
-    <div class="l-container number-grid">
-      <div class="num-box"><span class="num">3인</span><span class="label">검찰 출신 대표 법무사</span></div>
-      <div class="num-line"></div>
-      <div class="num-box"><span class="num">1992년</span><span class="label">세 사람 모두 검찰 입직</span></div>
-      <div class="num-line"></div>
-      <div class="num-box"><span class="num">수원</span><span class="label">수원지방검찰청 실무</span></div>
-    </div>
-  </div>
 
   <!-- 직관적인 번호 노출 섹션 -->
   <section class="connect-section l-container">
@@ -179,41 +173,52 @@ permalink: /contact
     <div class="channel-grid">
 
       <a href="tel:010-4710-6885" class="channel-btn">
-        <span class="ch-ic" aria-hidden="true">📱</span>
+        <span class="ch-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span>
         <span class="ch-body"><span>법무사 직통</span><br><span class="ch-sub">010-4710-6885</span></span>
       </a>
 
       <a href="tel:031-225-6885" class="channel-btn">
-        <span class="ch-ic" aria-hidden="true">☎️</span>
+        <span class="ch-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
         <span class="ch-body"><span>대표 전화</span><br><span class="ch-sub">031-225-6885</span></span>
       </a>
 
       <!-- 카카오톡 채널 상담 -->
       <a href="https://pf.kakao.com/_xmkRSG/chat" target="_blank" rel="noopener" class="channel-btn is-kakao">
-        <span class="ch-ic" aria-hidden="true">💬</span>
+        <span class="ch-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
         <span class="ch-body"><span>카카오톡 상담</span><br><span class="ch-sub">1:1 채팅 문의</span></span>
       </a>
 
       <!-- 네이버 예약 -->
       <a href="https://naver.me/xwmIDcba" target="_blank" rel="noopener" class="channel-btn is-naver">
-        <span class="ch-ic" aria-hidden="true">📅</span>
+        <span class="ch-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
         <span class="ch-body"><span>네이버 예약</span><br><span class="ch-sub">방문 상담 예약</span></span>
       </a>
 
       <!-- 상담게시판 -->
       <a href="/inquiry/" class="channel-btn">
-        <span class="ch-ic" aria-hidden="true">✍️</span>
+        <span class="ch-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
         <span class="ch-body"><span>상담게시판</span><br><span class="ch-sub">온라인 문의 남기기</span></span>
       </a>
 
       <!-- 개인회생 진단 -->
       <a href="/rehab/diagnosis" class="channel-btn">
-        <span class="ch-ic" aria-hidden="true">⚖️</span>
+        <span class="ch-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span>
         <span class="ch-body"><span>개인회생 진단</span><br><span class="ch-sub">1분 자가진단</span></span>
       </a>
 
     </div>
   </section>
+
+  <!-- 핵심 수치 요약 -->
+  <div class="number-bar">
+    <div class="l-container number-grid">
+      <div class="num-box"><span class="num">3인</span><span class="label">검찰 출신 대표 법무사</span></div>
+      <div class="num-line"></div>
+      <div class="num-box"><span class="num">1992년</span><span class="label">세 사람 모두 검찰 입직</span></div>
+      <div class="num-line"></div>
+      <div class="num-box"><span class="num">수원</span><span class="label">수원지방검찰청 실무</span></div>
+    </div>
+  </div>
 
   <!-- 간단 상담신청 폼 -->
   <section class="form-section l-container">
@@ -238,7 +243,7 @@ permalink: /contact
       </label>
       <button type="submit" class="form-submit">무료 상담 신청</button>
       <p class="form-note">법무사 업무 범위(서류 작성 대리) 내에서 안내드리며, 개별 사건의 결과를 보장하지 않습니다.</p>
-      <p class="form-success">✅ 상담 신청이 접수되었습니다. 곧 연락드리겠습니다.</p>
+      <p class="form-success">상담 신청이 접수되었습니다. 곧 연락드리겠습니다.</p>
     </form>
   </section>
 
@@ -248,7 +253,7 @@ permalink: /contact
     <div class="location-card" style="margin-top:24px;">
       <p class="loc-name">리더스 합동 법무사 사무소</p>
       <p class="loc-addr">수원시 영통구 광교중앙로248번길 7-2, A동 702호</p>
-      <a href="/location" class="location-link">📍 지도·약도 보기</a>
+      <a href="/location" class="location-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>지도·약도 보기</a>
     </div>
   </section>
 

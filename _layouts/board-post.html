@@ -243,7 +243,7 @@ SEO helpers:
 
     <a class="article-backlink" href="/board/">← 리더스 법률노트</a>
 
-    <header class="article-header js-reveal">
+    <header class="article-header">
       {% if page.category %}
         <a class="article-category" itemprop="articleSection" href="/board/#cat={{ page.category | uri_escape }}" title="'{{ page.category }}' 글 모아보기">{{ page.category }}</a>
       {% endif %}
@@ -264,7 +264,7 @@ SEO helpers:
 
     <hr class="article-divider">
 
-    <div class="article-body js-reveal" itemprop="articleBody">
+    <div class="article-body" itemprop="articleBody">
       {%- assign _slug = page.url | split: '/' | last -%}
       {%- if site.img_opt.all_posts or site.img_opt.pilot contains _slug -%}
       {% include img-opt-content.html html=content %}

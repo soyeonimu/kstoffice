@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script>document.documentElement.classList.add('js');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>수원 개인회생 무료 상담 신청 | 리더스 합동 법무사</title>
@@ -92,8 +93,10 @@
     .landing-footer a { color: rgba(255,255,255,0.45); text-decoration: underline; }
 
     /* 애니메이션 */
-    .js-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
-    .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: no-preference) {
+      .js .js-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .js .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+    }
 
     /* ── 모바일 헤더 ── */
     @media (max-width: 640px) {

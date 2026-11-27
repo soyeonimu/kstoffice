@@ -49,8 +49,10 @@ layout: default
 .post-arrow { font-size: 1.2rem; transition: 0.3s; color: var(--board-dark); }
 .post-list-item:hover .post-arrow { transform: translateX(10px); color: var(--board-gold); }
 
-.js-reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: no-preference) {
+  .js .js-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+  .js .js-reveal.is-visible { opacity: 1; transform: translateY(0); }
+}
 
 @media (max-width: 768px) {
   .board-hero { padding-top: 100px; }
